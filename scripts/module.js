@@ -1,11 +1,3 @@
-Hooks.once('init', async function () {
-
-});
-
-Hooks.once('ready', async function () {
-
-});
-
 const fontSize = 20;
 const fontMod = 1;
 const colors = {
