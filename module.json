@@ -16,12 +16,13 @@
     }
   ],
   "relationships": {
-    "systems": [{
+    "systems": [
+      {
         "id": "pf2e",
         "type": "system",
         "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json"
-    }],
-    "requires": []
+      }
+    ]
   },
   "esmodules": [
     "scripts/module.js"
@@ -42,8 +43,10 @@
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
+  "changelog": "https://github.com/cadowtin/pf2e-rpg-numbers/blob/master/CHANGELOG.md",
+  "bugs": "https://github.com/cadowtin/pf2e-rpg-numbers/issues",
   "license": "LICENSE",
-  "readme": "README.md",
+  "readme": "https://github.com/cadowtin/pf2e-rpg-numbers/blob/master/README.md",
   "media": [
     {
       "type": "icon",
