@@ -3,7 +3,6 @@
   "title": "PF2E RPG Numbers",
   "description": "A module that gives damage pop up text when you roll damage in pf2e.",
   "version": "#{VERSION}#",
-  "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": "10",
@@ -24,7 +23,7 @@
         "compatibility": {
           "minimum": "5.2.1",
           "verified": "5.3.0"
-      }
+        }
       }
     ]
   },
