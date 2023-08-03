@@ -29,7 +29,7 @@
     ]
   },
   "scripts": [
-    "scripts/module.js"
+    "./scripts/module.js"
   ],
   "languages": [
     {
