@@ -63,11 +63,11 @@ function extractTerm(term, flavor = '') {
     }
 }
 
-function extractDamageInfo(input) {
+function extractDamageInfo(rolls) {
     const result = [];
-    console.log({ input })
+    console.log({ rolls })
 
-    for (const inp of input) {
+    for (const inp of rolls) {
         for (const term of inp.terms) {
             for (const roll of term.rolls) {
                 const dmg = { type: roll.type, value: roll.total };
@@ -83,57 +83,61 @@ function extractDamageInfo(input) {
     return result;
 }
 
-function extractDamageInfoCombined(input) {
+function extractDamageInfoCombined(rolls) {
     const result = [];
-    console.log({ input })
 
-    for (const inp of input) {
+    for (const inp of rolls) {
         for (const term of inp.terms) {
             for (const roll of term.rolls) {
                 const dmg = { type: roll.type, value: roll.total };
                 result.push(dmg);
-                //console.log("----dmg----");
-                //console.log(dmg);
             }
-            //console.log({inp, term})
-            //extractTerm(term, inp?.options?.flavor ?? '');
         }
     }
-
     return result;
 }
 
-function generateDamageScroll(dmg_list) {
-    const seq = new Sequence();
-    for (const dmg of dmg_list.filter(d => d.value > 0)) {
-        style.fill = colors?.[dmg.type];
-        seq.scrollingText()
-            .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
-            .text(`${dmg.value}`, style)
-            .jitter(1)
-            .anchor("TOP")
-            .waitUntilFinished(-1800)
+/**
+ * 
+ * @param {{type: string, value: string}[]} dmg_list list of type and value
+ * @param {string[]} targets list of token ids 
+ */
+function generateDamageScroll(dmg_list, targets) {
+    for (const target_id of targets) {
+        const tok = game.canvas.tokens.get(target_id);
+        const size = tok.document.texture.scaleY * tok.document.width;
+        const topOffset = size / 4;
+
+        const seq = new Sequence();
+        for (const dmg of dmg_list.filter(d => d.value > 0)) {
+            style.fill = colors?.[dmg.type] ?? 'white';
+            seq.scrollingText()
+                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
+                .text(`${dmg.value}`, style)
+                .jitter(1)
+                .anchor("TOP")
+                .waitUntilFinished(-1800)
+        }
+        seq.play();
     }
-    seq.play();
+}
+
+/**
+ * 
+ * @param {any} msg Message data from create Chat Message
+ * @returns {string[]} A list of all the ids of the targets
+ */
+function getTargetList(msg) {
+    if (msg.flags?.["pf2e-target-damage"]?.targets) {
+        return msg.flags.pf2e - target - damage.targets.map(t => t.id);
+    } else {
+        return [(await fromUuid(msg.flags.pf2e.target.token)).id];
+    }
 }
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
     const dmg_list = extractDamageInfoCombined(msg.rolls);
-
-    if (msg.flags?.["pf2e-target-damage"]?.targets) {
-        for (const target in msg.flags?.["pf2e-target-damage"]?.targets) {
-            let tok = await game.canvas.tokens.get(target.id);
-            let size = tok.document.texture.scaleY * tok.document.width;
-            let topOffset = size * 0.5 / 2;
-            generateDamageScroll(dmg_list, tok, topOffset)
-        }
-    } else {
-        let tok = msg.target
-        let size = tok.document.texture.scaleY * tok.document.width;
-        let topOffset = size * 0.5 / 2;
-        generateDamageScroll(dmg_list, tok, topOffset)
-    }
-
-    //obviously triggered by a Hooks.callAll() that's gonna call every module/system that registered 'init', no matter what
+    const targets = getTargetList(msg);
+    generateDamageScroll(dmg_list, targets);
 });

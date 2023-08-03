@@ -1,24 +1,26 @@
 {
-  "id": "module",
-  "title": "New Module",
-  "description": "",
+  "id": "pf2e-rpg-numbers",
+  "title": "PF2E RPG Numbers",
+  "description": "A module that gives damage pop up text when you roll damage in pf2e.",
   "version": "#{VERSION}#",
   "library": "false",
   "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": 10,
-    "verified": 10,
+    "verified": 11,
     "maximum": 11
   },
   "authors": [
     {
-      "name": "The League of Extraordinary FVTT Developers",
-      "url": "https://github.com/League-of-Foundry-Developers",
-      "discord": "discordID#0001"
+      "name": "cadowtin"
     }
   ],
   "relationships": {
-    "systems": [],
+    "systems": [{
+        "id": "pf2e",
+        "type": "system",
+        "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json"
+    }],
     "requires": []
   },
   "esmodules": [
