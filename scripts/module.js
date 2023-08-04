@@ -1,3 +1,6 @@
+Hooks.on("init", function () {
+    console.log("PF2e RPG Numbers is initiated");
+});
 Hooks.on("ready", function () {
     console.log("PF2e RPG Numbers is ready");
 });
