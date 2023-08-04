@@ -1,38 +1,3 @@
-const fontSize = 20;
-const fontMod = 1;
-const colors = {
-    acid: "0x56fc03",
-    bludgeoning: "0xc7c7c7",
-    cold: "0x0394fc",
-    fire: "0xfc5603",
-    force: "0xff006a",
-    lightning: "0x0313fc",
-    "": "0xffffff",
-    piercing: "0xc7c7c7",
-    poison: "0x0b6625",
-    mental: "0x710996",
-    radiant: "0xffff54",
-    slashing: "0xc7c7c7",
-    electricity: "0x54ffb2",
-    healing: "0x09ff00",
-    negative: "0x4e4e68",
-    positive: "0xffffbf",
-    chaotic: "0xa600a6",
-    evil: "0x611f90",
-    good: "0x9d730a",
-    lawful: "0x683e00",
-    sonic: "darkcyan",
-    bleed: "0x99001a",
-};
-
-const style = {
-    "fill": "white",
-    "fontSize": fontSize * fontMod,
-    align: "center",
-    dropShadow: true,
-    strokeThickness: 5,
-}
-
 function extractTerm(term, flavor = '') {
     if (term.class === "NumericTerm") {
         result.push({ dmg: term.number, type: term.options.flavor ?? flavor });
@@ -95,6 +60,40 @@ function extractDamageInfoCombined(rolls) {
  * @param {string[]} targets list of token ids 
  */
 function generateDamageScroll(dmg_list, targets) {
+    const fontSize = 20;
+    const fontMod = 1;
+    const colors = {
+        acid: "0x56fc03",
+        bludgeoning: "0xc7c7c7",
+        cold: "0x0394fc",
+        fire: "0xfc5603",
+        force: "0xff006a",
+        lightning: "0x0313fc",
+        "": "0xffffff",
+        piercing: "0xc7c7c7",
+        poison: "0x0b6625",
+        mental: "0x710996",
+        radiant: "0xffff54",
+        slashing: "0xc7c7c7",
+        electricity: "0x54ffb2",
+        healing: "0x09ff00",
+        negative: "0x4e4e68",
+        positive: "0xffffbf",
+        chaotic: "0xa600a6",
+        evil: "0x611f90",
+        good: "0x9d730a",
+        lawful: "0x683e00",
+        sonic: "darkcyan",
+        bleed: "0x99001a",
+    };
+
+    const style = {
+        "fill": "white",
+        "fontSize": fontSize * fontMod,
+        align: "center",
+        dropShadow: true,
+        strokeThickness: 5,
+    }
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
