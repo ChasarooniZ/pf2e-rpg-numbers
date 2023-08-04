@@ -3,7 +3,6 @@
   "title": "PF2E RPG Numbers",
   "description": "A module that gives damage pop up text when you roll damage in pf2e.",
   "version": "#{VERSION}#",
-  "manifestPlusVersion": "1.2.0",
   "compatibility": {
     "minimum": "10",
     "verified": "11",
@@ -19,15 +18,16 @@
       {
         "id": "pf2e",
         "type": "system",
-        "manifest": "https://github.com/foundryvtt/pf2e/releases/latest/download/system.json",
-        "compatibility": {
-          "minimum": "5.2.1",
-          "verified": "5.3.0"
-        }
+        "compatibility": [
+          {
+            "minimum": "5.2.1",
+            "verified": "5.3.0"
+          }
+        ]
       }
     ]
   },
-  "scripts": [
+  "esmodules": [
     "./scripts/module.js"
   ],
   "languages": [
@@ -40,7 +40,5 @@
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
   "download": "#{DOWNLOAD}#",
-  "changelog": "https://github.com/cadowtin/pf2e-rpg-numbers/blob/master/CHANGELOG.md",
-  "bugs": "https://github.com/cadowtin/pf2e-rpg-numbers/issues",
   "readme": "https://github.com/cadowtin/pf2e-rpg-numbers/blob/master/README.md"
 }
