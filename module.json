@@ -5,37 +5,15 @@
   "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "10",
-    "verified": "11",
-    "maximum": "11"
+    "verified": "11"
   },
   "authors": [
     {
       "name": "cadowtin"
     }
   ],
-  "relationships": {
-    "systems": [
-      {
-        "id": "pf2e",
-        "type": "system",
-        "compatibility": [
-          {
-            "minimum": "5.2.1",
-            "verified": "5.3.0"
-          }
-        ]
-      }
-    ]
-  },
-  "esmodules": [
+  "scripts": [
     "./scripts/module.js"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
   ],
   "url": "#{URL}#",
   "manifest": "#{MANIFEST}#",
