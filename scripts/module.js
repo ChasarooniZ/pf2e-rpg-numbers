@@ -32,6 +32,7 @@ const style = {
     dropShadow: true,
     strokeThickness: 5,
 }
+console.log({colors})
 
 function extractTerm(term, flavor = '') {
     if (term.class === "NumericTerm") {
@@ -128,6 +129,7 @@ function getTargetList(msg) {
 }
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
+    console.log({msg})
     if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
     const dmg_list = extractDamageInfoCombined(msg.rolls);
     const targets = getTargetList(msg);
