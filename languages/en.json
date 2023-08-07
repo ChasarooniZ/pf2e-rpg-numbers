@@ -14,6 +14,10 @@
                 "name": "% offset from top of token",
                 "hint": "Offset percentage from top of token, input as whole number (IE. 70 is 70%)"
             },
+            "jitter": {
+                "name": "Jitter",
+                "hint": "How much the text will move around its spawn point (0 = doesn't move, 1 is it could spawn on the edges of the token)"
+            },
             "number-scale-type": {
                 "name": "Number Scale Type",
                 "hint": "Scaling type for the size of the RPG Numbers",

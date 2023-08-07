@@ -23,7 +23,17 @@
           "verified": "5.3.0"
         }
       }
-    ]
+    ],
+    "requires": [
+      {
+          "id": "sequencer",
+          "type": "module",
+          "compatibility": {
+              "minimum": "3.0.0",
+              "verified": "3.1.2"
+          }
+      }
+  ]
   },
   "esmodules": [
     "scripts/module.js",

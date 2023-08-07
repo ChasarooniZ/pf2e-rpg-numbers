@@ -38,6 +38,7 @@ export function generateDamageScroll(dmg_list, targets) {
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
         const fontSize = game.settings.get("pf2e-rpg-numbers", 'font-size');
+        const jitter = game.settings.get("pf2e-rpg-numbers", 'jitter');
         const colors = {
             acid: "0x56fc03",
             bludgeoning: "0xc7c7c7",
@@ -78,7 +79,7 @@ export function generateDamageScroll(dmg_list, targets) {
             seq.scrollingText()
                 .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
                 .text(`${dmg.value}`, style)
-                .jitter(1)
+                .jitter(jitter)
                 .anchor("TOP")
                 .waitUntilFinished(-1800)
         }
