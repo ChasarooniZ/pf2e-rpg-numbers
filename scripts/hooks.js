@@ -10,9 +10,9 @@ Hooks.on("init", async () => {
 })
 
 Hooks.on("ready", async () => {
+    if (!game.user.isGM) return;
     console.log("PF2e RPG Numbers is ready");
     game.ui.notify("PF2e RPG Numbers is ready")
-    if (!game.user.isGM) return;
     game.RPGNumbers = new RPGNumbers();
 })
 

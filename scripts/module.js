@@ -35,7 +35,7 @@ class RPGNumbers {
         }
     };
 
-    static extractTerm(term, flavor = '') {
+    extractTerm(term, flavor = '') {
         if (term.class === "NumericTerm") {
             result.push({ dmg: term.number, type: term.options.flavor ?? flavor });
         } else if (term.class === "Die") {
@@ -64,7 +64,7 @@ class RPGNumbers {
      */
     //TODO make this work
     //TODO add options to toggle doubling amt of numbers on crit etc. or combining them
-    static extractDamageInfo(rolls) {
+    extractDamageInfo(rolls) {
         const result = [];
         console.log({ rolls })
     
@@ -89,7 +89,7 @@ class RPGNumbers {
      * @param {any} rolls Roll value from pf2e chat message
      * @returns 
      */
-    static extractDamageInfoCombined(rolls) {
+    extractDamageInfoCombined(rolls) {
         const result = [];
     
         for (const inp of rolls) {
@@ -112,7 +112,7 @@ class RPGNumbers {
     //TODO settings on size etc.
     //TODO add scaling based on % health
     //TODO add scaling based on size
-    static generateDamageScroll(dmg_list, targets) {
+    generateDamageScroll(dmg_list, targets) {
         for (const target_id of targets) {
             const tok = game.canvas.tokens.get(target_id);
             const size = tok.document.texture.scaleY * tok.document.width;
@@ -137,7 +137,7 @@ class RPGNumbers {
      * @param {any} msg Message data from create Chat Message
      * @returns {string[]} A list of all the ids of the targets
      */
-    static getTargetList(msg) {
+    getTargetList(msg) {
         if (msg.flags?.["pf2e-target-damage"]?.targets) {
             return msg.flags.pf2e - target - damage.targets.map(t => t.id);
         } else {
