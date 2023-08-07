@@ -13,6 +13,15 @@
             "top-offset": {
                 "name": "% offset from top of token",
                 "hint": "Offset percentage from top of token, input as whole number (IE. 70 is 70%)"
+            },
+            "number-scale-type": {
+                "name": "Number Scale Type",
+                "hint": "Scaling type for the size of the RPG Numbers",
+                "choices": {
+                    "percent-remaining-health": "% Remaining HP",
+                    "percent-max-health": "% Remaining HP",
+                    "none": "None"
+                }
             }
         }
     }

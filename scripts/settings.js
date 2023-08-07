@@ -32,7 +32,7 @@ Hooks.on("init", () => {
         config: true,
         default: "percentMaxHealth",
         type: String,
-        string: {
+        choices: {
             ["percentRemainingHealth"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.percent-remaining-health"),
             ["percentMaxHealth"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.percent-max-health"),
             ["none"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.none"),
