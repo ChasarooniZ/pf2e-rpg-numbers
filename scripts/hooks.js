@@ -7,14 +7,14 @@
 Hooks.on("init", async () => {
     console.log("PF2e RPG Numbers is initiated"); if (!game.user.isGM) return;
     game.RPGNumbers = new RPGNumbers();
-});
+})
 
 Hooks.on("ready", async () => {
     console.log("PF2e RPG Numbers is ready");
     game.ui.notify("PF2e RPG Numbers is ready")
     if (!game.user.isGM) return;
     game.RPGNumbers = new RPGNumbers();
-});
+})
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     console.log({ msg })
@@ -22,4 +22,4 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
     const dmg_list = game.RPGNumbers.extractDamageInfoCombined(msg.rolls);
     const targets = game.RPGNumbers.getTargetList(msg);
     game.RPGNumbers.generateDamageScroll(dmg_list, targets);
-});
+})
