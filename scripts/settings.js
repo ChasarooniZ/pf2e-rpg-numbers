@@ -25,4 +25,18 @@ Hooks.on("init", () => {
         type: Number,
     });
 
+    game.settings.register("pf2e-rpg-numbers", "number-scale-type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.hint"),
+        scope: "world",
+        config: true,
+        default: "percentMaxHealth",
+        type: String,
+        string: {
+            ["percentRemainingHealth"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.percent-remaining-health"),
+            ["percentMaxHealth"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.percent-max-health"),
+            ["none"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.choices.none"),
+        },
+    });
+
 });
