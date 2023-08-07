@@ -118,5 +118,5 @@ export function getFontScale(scaleType, dmg, tok) {
     if (scaleType === "none") {
         return 1;
     }
-    return max(1, min(scale + 1, maxFontScale))
+    return Math.max(1, Math.min(scale + 1, maxFontScale))
 }
