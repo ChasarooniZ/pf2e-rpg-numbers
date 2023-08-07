@@ -1,3 +1,6 @@
+Hooks.once("init", () => {
+    Settings.register();
+});
 // import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
 Hooks.on("ready", async () => {
@@ -36,9 +39,8 @@ export function generateDamageScroll(dmg_list, targets) {
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
-        const topOffset = size / 4;
-        const fontSize = 20;
-        const fontMod = 1;
+        const topOffset = size * (Settings.topOffset / 100);
+        const fontSize = Settings.fontSize;
         const colors = {
             acid: "0x56fc03",
             bludgeoning: "0xc7c7c7",
@@ -65,7 +67,7 @@ export function generateDamageScroll(dmg_list, targets) {
         };
         const style = {
             "fill": "white",
-            "fontSize": fontSize * fontMod,
+            "fontSize": fontSize,
             align: "center",
             dropShadow: true,
             strokeThickness: 5,
@@ -74,6 +76,7 @@ export function generateDamageScroll(dmg_list, targets) {
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
         for (const dmg of dmg_list_filtered) {
+            style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? 'white';
             seq.scrollingText()
                 .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
@@ -103,4 +106,18 @@ export function extractDamageInfoCombined(rolls) {
         }
     }
     return result;
+}
+
+export function getFontScale(scaleType, dmg, tok) {
+    let scale = scaleType;
+    if (scaleType === "percentMaxHealth") {
+        scale *= (dmg / (tok.actor.system.attributes.hp.max + tok.actor.system.attributes.hp.temp));
+    }
+    if (scaleType === "percentRemainingHealth") {
+        scale *= (dmg / (tok.actor.system.attributes.hp.value + tok.actor.system.attributes.hp.temp));
+    }
+    if (scaleType === "none") {
+        return 1;
+    }
+    return scale;
 }
