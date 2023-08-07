@@ -1,5 +1,5 @@
 
-function extractTerm(term, flavor = '') {
+export function extractTerm(term, flavor = '') {
     if (term.class === "NumericTerm") {
         result.push({ dmg: term.number, type: term.options.flavor ?? flavor });
     } else if (term.class === "Die") {
@@ -29,7 +29,7 @@ function extractTerm(term, flavor = '') {
  * @param {*} rolls 
  * @returns 
  */
-function extractDamageInfo(rolls) {
+export function extractDamageInfo(rolls) {
     const result = [];
     console.log({ rolls })
 
@@ -54,7 +54,7 @@ function extractDamageInfo(rolls) {
  * @param {any} rolls Roll value from pf2e chat message
  * @returns 
  */
-function extractDamageInfoCombined(rolls) {
+export function extractDamageInfoCombined(rolls) {
     const result = [];
 
     for (const inp of rolls) {
@@ -78,7 +78,7 @@ function extractDamageInfoCombined(rolls) {
  * @param {{type: string, value: string}[]} dmg_list list of type and value
  * @param {string[]} targets list of token ids 
  */
-function generateDamageScroll(dmg_list, targets) {
+export function generateDamageScroll(dmg_list, targets) {
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
@@ -137,7 +137,7 @@ function generateDamageScroll(dmg_list, targets) {
  * @param {any} msg Message data from create Chat Message
  * @returns {string[]} A list of all the ids of the targets
  */
-function getTargetList(msg) {
+export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
         return msg.flags['pf2e-target-damage'].targets.map(t => t.id);
     } else {

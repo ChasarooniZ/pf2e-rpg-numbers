@@ -1,5 +1,5 @@
-// HOOKS STUFF
 import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
+// HOOKS STUFF
 Hooks.on("ready", async () => {
     if (!game.user.isGM) return;
     console.error("PF2e RPG Numbers is ready");
