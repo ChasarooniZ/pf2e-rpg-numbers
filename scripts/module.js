@@ -1,13 +1,12 @@
 // HOOKS STUFF
 Hooks.on("init", async () => {
-    console.error("PF2e RPG Numbers is initiated"); if (!game.user.isGM) return;
-    game.RPGNumbers = new RPGNumbers();
+    console.error("PF2e RPG Numbers is initiated");
 })
 
 Hooks.on("ready", async () => {
     if (!game.user.isGM) return;
     console.error("PF2e RPG Numbers is ready");
-    game.ui.notify("PF2e RPG Numbers is ready")
+    ui.notifications.notify("PF2e RPG Numbers is ready")
     //game.RPGNumbers = new RPGNumbers();
 })
 
