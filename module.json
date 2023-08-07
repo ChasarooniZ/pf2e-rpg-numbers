@@ -25,9 +25,8 @@
       }
     ]
   },
-  "scripts": [
-    "scripts/module.js",
-    "scripts/utility.js"
+  "esmodules": [
+    "scripts/module.js"
   ],
   "languages": [
     {
