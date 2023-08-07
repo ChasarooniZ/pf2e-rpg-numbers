@@ -18,8 +18,8 @@
                 "name": "Number Scale Type",
                 "hint": "Scaling type for the size of the RPG Numbers",
                 "choices": {
-                    "percent-remaining-health": "% Remaining HP",
-                    "percent-max-health": "% Remaining HP",
+                    "percent-remaining-health": "% of Remaining HP",
+                    "percent-max-health": "% of Max HP",
                     "none": "None"
                 }
             }
