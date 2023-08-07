@@ -153,7 +153,8 @@ class RPGNumbers {
  */
 
 Hooks.on("init", function () {
-    console.log("PF2e RPG Numbers is initiated");
+    console.log("PF2e RPG Numbers is initiated");if(!game.user.isGM) return;
+    game.RPGNumbers = new RPGNumbers();
 });
 Hooks.on("ready", function () {
     console.log("PF2e RPG Numbers is ready");
@@ -162,7 +163,7 @@ Hooks.on("ready", function () {
 Hooks.on("createChatMessage", async function (msg, status, id) {
     console.log({ msg })
     if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
-    const dmg_list = RPGNumbers.extractDamageInfoCombined(msg.rolls);
-    const targets = RPGNumbers.getTargetList(msg);
-    RPGNumbers.generateDamageScroll(dmg_list, targets);
+    const dmg_list = game.RPGNumbers.extractDamageInfoCombined(msg.rolls);
+    const targets = game.RPGNumbers.getTargetList(msg);
+    game.RPGNumbers.generateDamageScroll(dmg_list, targets);
 });
