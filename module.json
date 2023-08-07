@@ -26,8 +26,7 @@
     ]
   },
   "esmodules": [
-    "scripts/module.js",
-    "scripts/settings.js"
+    "scripts/module.js"
   ],
   "languages": [
     {
