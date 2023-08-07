@@ -25,7 +25,7 @@
       }
     ]
   },
-  "esmodules": [
+  "scripts": [
     "scripts/module.js",
     "scripts/hooks.js"
   ],
