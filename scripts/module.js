@@ -44,7 +44,7 @@ class RPGNumbers {
                 result.push({ dmg: dieResult.result, type: term.options.flavor ?? flavor });
             }
         } else if (term.class === "Grouping") {
-            extractTerm(term.term, term?.options?.flavor ?? flavor);
+            this.extractTerm(term.term, term?.options?.flavor ?? flavor);
         } else if (term.class === "ArithmeticExpression") {
             for (const operand of term?.operands) {
                 extractTerm(operand, flavor);
@@ -52,7 +52,7 @@ class RPGNumbers {
         } else if (!term?.class) {
             for (const t of term.rolls) {
                 for (const tt of term.terms) {
-                    extractTerm(tt, tt?.options?.flavor ?? flavor);
+                    this.extractTerm(tt, tt?.options?.flavor ?? flavor);
                 }
             }
         }
@@ -78,7 +78,7 @@ class RPGNumbers {
                     //console.log(dmg);
                 }
                 //console.log({inp, term})
-                //extractTerm(term, inp?.options?.flavor ?? '');
+                //this.extractTerm(term, inp?.options?.flavor ?? '');
             }
         }
     

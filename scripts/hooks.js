@@ -4,14 +4,16 @@
  * @property {string} type - Type of damage
  * @property {number} value - How much damage it was
  */
-Hooks.on("init", function () {
+Hooks.on("init", async () => {
     console.log("PF2e RPG Numbers is initiated"); if (!game.user.isGM) return;
     game.RPGNumbers = new RPGNumbers();
 });
 
-Hooks.on("ready", function () {
+Hooks.on("ready", async () => {
     console.log("PF2e RPG Numbers is ready");
     game.ui.notify("PF2e RPG Numbers is ready")
+    if (!game.user.isGM) return;
+    game.RPGNumbers = new RPGNumbers();
 });
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
