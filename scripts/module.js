@@ -7,12 +7,11 @@ Hooks.on("ready", async () => {
 })
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
-    console.log({ msg })
+    //console.log({ msg })
     if (!msg.isDamageRoll) return;
-    // const dmg_list = extractDamageInfoCombined(msg.rolls);
-    let dmg_list = [{ value: 10, type: "" }]
+    const dmg_list = extractDamageInfoCombined(msg.rolls);
     const targets = getTargetList(msg);
-    console.log({targets, dmg_list})
+    //console.log({ targets, dmg_list })
     generateDamageScroll(dmg_list, targets);
 })
 
@@ -24,6 +23,15 @@ export function getTargetList(msg) {
     }
 }
 
+//TODO settings on visuals (colors)
+//TODO settings on size etc.
+//TODO add scaling based on % health
+//TODO add scaling based on size
+/**
+ * Generates damage scrolling text for a passed in list of damage values
+ * @param {{type: string, value: string}[]} dmg_list list of type and value
+ * @param {string[]} targets list of token ids 
+ */
 export function generateDamageScroll(dmg_list, targets) {
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
@@ -76,4 +84,23 @@ export function generateDamageScroll(dmg_list, targets) {
         }
         seq.play();
     }
+}
+
+/**
+ * Extracts the list of damage info from pf2e chat message, only breaks it up between the overarching damage types
+ * @param {any} rolls Roll value from pf2e chat message
+ * @returns 
+ */
+export function extractDamageInfoCombined(rolls) {
+    const result = [];
+
+    for (const inp of rolls) {
+        for (const term of inp.terms) {
+            for (const roll of term.rolls) {
+                const dmg = { type: roll.type, value: roll.total };
+                result.push(dmg);
+            }
+        }
+    }
+    return result;
 }
