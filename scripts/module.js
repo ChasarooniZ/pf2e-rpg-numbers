@@ -1,6 +1,3 @@
-Hooks.once("init", () => {
-    Settings.register();
-});
 // import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
 Hooks.on("ready", async () => {
@@ -39,8 +36,8 @@ export function generateDamageScroll(dmg_list, targets) {
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
-        const topOffset = size * (Settings.topOffset / 100);
-        const fontSize = Settings.fontSize;
+        const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
+        const fontSize = game.settings.get("pf2e-rpg-numbers", 'font-size');
         const colors = {
             acid: "0x56fc03",
             bludgeoning: "0xc7c7c7",
@@ -109,7 +106,7 @@ export function extractDamageInfoCombined(rolls) {
 }
 
 export function getFontScale(scaleType, dmg, tok) {
-    let scale = scaleType;
+    let scale = game.settings.get("pf2e-rpg-numbers", 'max-font-scale');
     if (scaleType === "percentMaxHealth") {
         scale *= (dmg / (tok.actor.system.attributes.hp.max + tok.actor.system.attributes.hp.temp));
     }

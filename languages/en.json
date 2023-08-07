@@ -1,16 +1,16 @@
 {
-	"I18N.LANGUAGE": "English",
+    "I18N.LANGUAGE": "English",
     "pf2e-rpg-numbers": {
         "module-settings": {
-            "fontSize": {
+            "font-size": {
                 "name": "Font Size",
                 "hint": "Default size of the font"
             },
-            "maxFontScale": {
+            "max-font-scale": {
                 "name": "Maximum Font Scale",
                 "hint": "Maximum Size to scale font to"
             },
-            "topOffset": {
+            "top-offset": {
                 "name": "% offset from top of token",
                 "hint": "Offset percentage from top of token, input as whole number (IE. 70 is 70%)"
             }
