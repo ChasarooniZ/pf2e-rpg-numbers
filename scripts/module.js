@@ -106,7 +106,7 @@ export function extractDamageInfoCombined(rolls) {
 }
 
 export function getFontScale(scaleType, dmg, tok) {
-    let scale = game.settings.get("pf2e-rpg-numbers", 'max-font-scale');
+    let scale = game.settings.get("pf2e-rpg-numbers", 'max-font-scale') - 1;
     if (scaleType === "percentMaxHealth") {
         scale *= (dmg / (tok.actor.system.attributes.hp.max + tok.actor.system.attributes.hp.temp));
     }
@@ -116,5 +116,5 @@ export function getFontScale(scaleType, dmg, tok) {
     if (scaleType === "none") {
         return 1;
     }
-    return scale;
+    return scale + 1;
 }
