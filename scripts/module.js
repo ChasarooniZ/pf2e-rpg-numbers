@@ -136,7 +136,7 @@ function generateDamageScroll(dmg_list, targets) {
  */
 function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
-        return msg.flags.pf2e - target - damage.targets.map(t => t.id);
+        return msg.flags['pf2e-target-damage'].targets.map(t => t.id);
     } else {
         return [(await fromUuid(msg.flags.pf2e.target.token)).id];
     }
