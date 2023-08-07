@@ -26,7 +26,8 @@
     ]
   },
   "esmodules": [
-    "scripts/module.js"
+    "scripts/module.js",
+    "scripts/hook.js"
   ],
   "languages": [
     {
