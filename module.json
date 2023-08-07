@@ -27,7 +27,6 @@
   },
   "scripts": [
     "scripts/module.js",
-    "scripts/hooks.js"
   ],
   "languages": [
     {
