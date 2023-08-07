@@ -1,3 +1,24 @@
+// HOOKS STUFF
+Hooks.on("init", async () => {
+    console.error("PF2e RPG Numbers is initiated"); if (!game.user.isGM) return;
+    game.RPGNumbers = new RPGNumbers();
+})
+
+Hooks.on("ready", async () => {
+    if (!game.user.isGM) return;
+    console.error("PF2e RPG Numbers is ready");
+    game.ui.notify("PF2e RPG Numbers is ready")
+    //game.RPGNumbers = new RPGNumbers();
+})
+
+Hooks.on("createChatMessage", async function (msg, status, id) {
+    console.log({ msg })
+    if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
+    const dmg_list = extractDamageInfoCombined(msg.rolls);
+    const targets = getTargetList(msg);
+    generateDamageScroll(dmg_list, targets);
+})
+
 function extractTerm(term, flavor = '') {
     if (term.class === "NumericTerm") {
         result.push({ dmg: term.number, type: term.options.flavor ?? flavor });
@@ -20,13 +41,14 @@ function extractTerm(term, flavor = '') {
     }
 }
 
+
+//TODO make this work
+//TODO add options to toggle doubling amt of numbers on crit etc. or combining them
 /**
  * Extracts the list of damage info from pf2e chat message, breaks down into each individual item
  * @param {*} rolls 
  * @returns 
  */
-//TODO make this work
-//TODO add options to toggle doubling amt of numbers on crit etc. or combining them
 function extractDamageInfo(rolls) {
     const result = [];
     console.log({ rolls })
@@ -66,15 +88,16 @@ function extractDamageInfoCombined(rolls) {
     return result;
 }
 
+
+//TODO settings on visuals (colors)
+//TODO settings on size etc.
+//TODO add scaling based on % health
+//TODO add scaling based on size
 /**
  * Generates damage scrolling text for a passed in list of damage values
  * @param {{type: string, value: string}[]} dmg_list list of type and value
  * @param {string[]} targets list of token ids 
  */
-//TODO settings on visuals (colors)
-//TODO settings on size etc.
-//TODO add scaling based on % health
-//TODO add scaling based on size
 function generateDamageScroll(dmg_list, targets) {
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
@@ -141,23 +164,3 @@ function getTargetList(msg) {
         return [(await fromUuid(msg.flags.pf2e.target.token)).id];
     }
 }
-
-Hooks.on("init", async () => {
-    console.error("PF2e RPG Numbers is initiated"); if (!game.user.isGM) return;
-    game.RPGNumbers = new RPGNumbers();
-})
-
-Hooks.on("ready", async () => {
-    if (!game.user.isGM) return;
-    console.error("PF2e RPG Numbers is ready");
-    game.ui.notify("PF2e RPG Numbers is ready")
-    //game.RPGNumbers = new RPGNumbers();
-})
-
-Hooks.on("createChatMessage", async function (msg, status, id) {
-    console.log({ msg })
-    if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
-    const dmg_list = extractDamageInfoCombined(msg.rolls);
-    const targets = getTargetList(msg);
-    generateDamageScroll(dmg_list, targets);
-})
