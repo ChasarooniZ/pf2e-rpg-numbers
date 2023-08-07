@@ -1,4 +1,4 @@
-import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
+// import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
 Hooks.on("ready", async () => {
     console.error("PF2e RPG Numbers is ready");
@@ -8,8 +8,8 @@ Hooks.on("ready", async () => {
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     console.log({ msg })
-    if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
-    const dmg_list = extractDamageInfoCombined(msg.rolls);
-    const targets = getTargetList(msg);
-    generateDamageScroll(dmg_list, targets);
+    // if (msg?.flags?.pf2e?.context?.type !== 'damage-roll') return;
+    // const dmg_list = extractDamageInfoCombined(msg.rolls);
+    // const targets = getTargetList(msg);
+    // generateDamageScroll(dmg_list, targets);
 })
