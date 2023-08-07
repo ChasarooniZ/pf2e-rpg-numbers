@@ -24,6 +24,19 @@ Hooks.on("init", () => {
         default: 25,
         type: Number,
     });
+    game.settings.register("pf2e-rpg-numbers", "jitter", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.hint"),
+        scope: "world",
+        config: true,
+        default: 0.5,
+        range: {
+          min: 0,
+          max: 1,
+          step: 0.05
+        },
+        type: Number,
+    });
 
     game.settings.register("pf2e-rpg-numbers", "number-scale-type", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.number-scale-type.name"),
