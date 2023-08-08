@@ -32,8 +32,8 @@
                 "hint": "How to split damage numbers from roll (None: total only, By Type: By damage type, All: Splits all terms)",
                 "choices": {
                     "none": "None",
-                    "split-by-type": "By Type",
-                    "split-all": "All"
+                    "by-damage-type": "By Damage Type",
+                    "all": "All"
                 }
             }
         }
