@@ -65,5 +65,13 @@ Hooks.on("init", () => {
             ["all"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.all"),
         },
     });
+    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
 
 });
