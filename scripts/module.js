@@ -7,7 +7,7 @@ Hooks.on("ready", async () => {
 })
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
-    //console.log({ msg })
+    debugLog({ msg })
     if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = getDamageList(msg.rolls);
     const targets = getTargetList(msg);
@@ -25,7 +25,6 @@ export function getTargetList(msg) {
 
 export function getDamageList(rolls) {
     const split_type = game.settings.get("pf2e-rpg-numbers", 'damage-split');
-    debugLog(split_type);
     let dmg_list = [];
     switch (split_type) {
         case 'none':
@@ -135,7 +134,6 @@ export function extractDamageInfoAll(rolls) {
             result = result.concat(extractTerm(term))
         }
     }
-    debugLog(result)
     return result;
 }
 
@@ -197,6 +195,7 @@ export function extractTerm(term, flavor = '') {
             result.push({ value: term.total, type: term.flavor || flavor })
             break;
     }
+    debugLog({type: term.constructor.name, result}, 'extractTerm')
 
     return result;
 }
@@ -216,7 +215,7 @@ export function getFontScale(scaleType, dmg, tok) {
     return Math.max(1, Math.min(scale + 1, maxFontScale))
 }
 
-export function debugLog(data) {
+export function debugLog(data, context = "") {
     if (game.settings.get("pf2e-rpg-numbers", 'debug-mode'))
-        console.log("PF2E-RPG-#s", data);
+        console.log(`PF2E-RPG-#s: ${context}`, data);
 }
