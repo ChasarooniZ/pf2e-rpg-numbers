@@ -87,8 +87,8 @@ export function generateDamageScroll(dmg_list, targets) {
         dropShadow: true,
         strokeThickness: 5,
     }
-    const duration = game.settings.get("pf2e-rpg-numbers", 'duration')*1000;
-    const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers')*1000 - duration;
+    const duration = game.settings.get("pf2e-rpg-numbers", 'duration') * 1000;
+    const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers') * 1000 - duration;
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
@@ -100,13 +100,14 @@ export function generateDamageScroll(dmg_list, targets) {
         for (const dmg of dmg_list_filtered) {
             style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? 'white';
-            seq.scrollingText()
-                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
+            seq.effect()
+                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true, randomOffset: jitter })
                 .text(`${dmg.value}`, style)
-                .jitter(jitter)
-                .anchor("TOP")
+                .anchor({ x: 0.5, y: 0.2 })
                 .duration(duration)
                 .waitUntilFinished(wait_time)
+                .scaleIn(0.5, duration / 3)
+                .fadeOut(duration / 3)
         }
         seq.play();
     }
