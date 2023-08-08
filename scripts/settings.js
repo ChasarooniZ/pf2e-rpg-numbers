@@ -73,5 +73,31 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.duration.hint"),
+        scope: "world",
+        config: true,
+        default: 2,
+        range: {
+          min: 0,
+          max: 10,
+          step: 0.1
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "wait-time-between-numbers", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.wait-time-between-numbers.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.wait-time-between-numbers.hint"),
+        scope: "world",
+        config: true,
+        default: 0.1,
+        range: {
+          min: 0,
+          max: 5,
+          step: 0.05
+        },
+        type: Number,
+    });
 
 });

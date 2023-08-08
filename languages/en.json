@@ -39,6 +39,14 @@
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
+            },
+            "duration": {
+                "name": "Text Duration",
+                "hint": "How long until the text despawns in seconds"
+            },
+            "wait-time-between-numbers": {
+                "name": "Wait Time between numbers",
+                "hint": "How long in between each number should the game wait"
             }
         }
     }

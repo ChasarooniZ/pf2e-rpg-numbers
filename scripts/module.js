@@ -53,44 +53,47 @@ export function getDamageList(rolls) {
  * @param {string[]} targets list of token ids 
  */
 export function generateDamageScroll(dmg_list, targets) {
+    const fontSize = game.settings.get("pf2e-rpg-numbers", 'font-size');
+    const jitter = game.settings.get("pf2e-rpg-numbers", 'jitter');
+    const colors = {
+        acid: "0x56fc03",
+        bludgeoning: "0xc7c7c7",
+        cold: "0x0394fc",
+        fire: "0xfc5603",
+        force: "0xff006a",
+        lightning: "0x0313fc",
+        "": "0xffffff",
+        piercing: "0xc7c7c7",
+        poison: "0x0b6625",
+        mental: "0x710996",
+        radiant: "0xffff54",
+        slashing: "0xc7c7c7",
+        electricity: "0x54ffb2",
+        healing: "0x09ff00",
+        negative: "0x4e4e68",
+        positive: "0xffffbf",
+        chaotic: "0xa600a6",
+        evil: "0x611f90",
+        good: "0x9d730a",
+        lawful: "0x683e00",
+        sonic: "darkcyan",
+        bleed: "0x99001a",
+        precision: "0xf5bf03"
+    };
+    const style = {
+        "fill": "white",
+        "fontSize": fontSize,
+        align: "center",
+        dropShadow: true,
+        strokeThickness: 5,
+    }
+    const duration = game.settings.get("pf2e-rpg-numbers", 'duration')*1000;
+    const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers')*1000 - duration;
+
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
-        const fontSize = game.settings.get("pf2e-rpg-numbers", 'font-size');
-        const jitter = game.settings.get("pf2e-rpg-numbers", 'jitter');
-        const colors = {
-            acid: "0x56fc03",
-            bludgeoning: "0xc7c7c7",
-            cold: "0x0394fc",
-            fire: "0xfc5603",
-            force: "0xff006a",
-            lightning: "0x0313fc",
-            "": "0xffffff",
-            piercing: "0xc7c7c7",
-            poison: "0x0b6625",
-            mental: "0x710996",
-            radiant: "0xffff54",
-            slashing: "0xc7c7c7",
-            electricity: "0x54ffb2",
-            healing: "0x09ff00",
-            negative: "0x4e4e68",
-            positive: "0xffffbf",
-            chaotic: "0xa600a6",
-            evil: "0x611f90",
-            good: "0x9d730a",
-            lawful: "0x683e00",
-            sonic: "darkcyan",
-            bleed: "0x99001a",
-            precision: "0xf5bf03"
-        };
-        const style = {
-            "fill": "white",
-            "fontSize": fontSize,
-            align: "center",
-            dropShadow: true,
-            strokeThickness: 5,
-        }
 
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
@@ -102,7 +105,8 @@ export function generateDamageScroll(dmg_list, targets) {
                 .text(`${dmg.value}`, style)
                 .jitter(jitter)
                 .anchor("TOP")
-                .waitUntilFinished(-1800)
+                .duration(duration)
+                .waitUntilFinished(wait_time)
         }
         seq.play();
     }
@@ -194,7 +198,7 @@ export function extractTerm(term, flavor = '') {
             result.push({ value: term.total, type: term.flavor || flavor })
             break;
     }
-    debugLog({type: term.constructor.name, result}, 'extractTerm')
+    debugLog({ type: term.constructor.name, result }, 'extractTerm')
 
     return result;
 }
