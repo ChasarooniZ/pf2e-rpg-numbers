@@ -9,7 +9,7 @@ Hooks.on("ready", async () => {
 Hooks.on("createChatMessage", async function (msg, status, id) {
     //console.log({ msg })
     if (!msg.isDamageRoll || !game.user.isGM) return;
-    const dmg_list = extractDamageInfoCombined(msg.rolls);
+    const dmg_list = getDamageList(msg.rolls);
     const targets = getTargetList(msg);
     //console.log({ targets, dmg_list })
     generateDamageScroll(dmg_list, targets);
@@ -21,6 +21,26 @@ export function getTargetList(msg) {
     } else { // No pf2e target damage module
         return [msg?.target?.token?.id ?? msg.token.id];
     }
+}
+
+export function getDamageList(rolls) {
+    const split_type = game.settings.get("pf2e-rpg-numbers", 'damage-split');
+    let dmg_list = [];
+    switch (split_type) {
+        case 'none':
+            dmg_list = extractDamageInfoSimple(rolls);
+            break;
+        case 'split-by-type':
+            dmg_list = extractDamageInfoCombined(rolls);
+            break;
+        case 'split-all':
+            dmg_list = extractDamageInfoAll(rolls);
+            break;
+        default:
+            dmg_list = extractDamageInfoSimple(rolls);
+            break;
+    }
+    return dmg_list;
 }
 
 //TODO settings on visuals (colors)
@@ -98,11 +118,84 @@ export function extractDamageInfoCombined(rolls) {
     for (const inp of rolls) {
         for (const term of inp.terms) {
             for (const roll of term.rolls) {
-                const dmg = { type: roll.type, value: roll.total };
-                result.push(dmg);
+                result.push({ type: roll.type, value: roll.total });
             }
         }
     }
+    return result;
+}
+
+export function extractDamageInfoAll(rolls) {
+    let result = [];
+
+    for (const inp of rolls) {
+        for (const term of inp.terms) {
+            result = result.concat(extractTerm(term))
+        }
+    }
+    console.log(result)
+    return result;
+}
+
+export function extractDamageInfoSimple(rolls) {
+    return [{ type: '', value: rolls.total }]
+}
+
+export function extractTerm(term, flavor = '') {
+    let result = [];
+    switch (term.class) {
+        case 'PoolTerm':
+            for (const roll of term.rolls) {
+                result = result.concat(extractTerm(roll, term.flavor || flavor));
+            }
+            break;
+        case '_DamageInstance2':
+            for (const item of term.terms) {
+                result = result.concat(extractTerm(item, term.types || flavor));
+            }
+            break;
+        case 'Grouping':
+            result = result.concat(extractTerm(term.term, term.flavor || flavor));
+            break;
+        case '_ArithmeticExpression2':
+            switch (term.operator) {
+                case '+':
+                    for (const op of term.operands) {
+                        result = result.concat(extractTerm(op, term.flavor || flavor));
+                    }
+                    break;
+                case '-':
+                    result = result.concat(extractTerm(term.operands[0], term.flavor || flavor));
+                    result = result.concat(extractTerm(term.operands[1], term.flavor || flavor)).map(t => { return { value: -t.value, type: t.type } });
+                case '*':
+                    if (['NumericTerm', 'Die'].includes(term.operands[0].class)) {
+                        result = result.concat(extractTerm(term.operands[1], term.flavor || flavor).flatMap(i => [i, i]));
+                    } else if (['NumericTerm', 'Die'].includes(term.operands[1].class)) {
+                        result = result.concat(extractTerm(term.operands[0], term.flavor || flavor).flatMap(i => [i, i]));
+                    } else {
+                        result.push({ value: term.total, type: term.flavor || flavor })
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            break;
+        case 'Die':
+            for (const dice of term.results) {
+                result.push({ value: dice.result, type: term.flavor || flavor })
+            }
+            break;
+        case 'NumericTerm':
+            result.push({ value: term.number, type: term.flavor || flavor })
+            break;
+
+        default:
+            console.error({ msg: "Unrecognized Term when extracting parts", term })
+            result.push({ value: term.total, type: term.flavor || flavor })
+            break;
+    }
+
     return result;
 }
 

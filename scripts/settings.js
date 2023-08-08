@@ -52,4 +52,18 @@ Hooks.on("init", () => {
         },
     });
 
+    game.settings.register("pf2e-rpg-numbers", "damage-split", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.hint"),
+        scope: "world",
+        config: true,
+        default: "split-by-type",
+        type: String,
+        choices: {
+            ["none"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.none"),
+            ["split-by-type"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.split-by-type"),
+            ["split-all"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.split-all"),
+        },
+    });
+
 });

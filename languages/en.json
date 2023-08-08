@@ -26,6 +26,15 @@
                     "percent-max-health": "% of Max HP",
                     "none": "None"
                 }
+            },
+            "damage-split": {
+                "name": "Damage Split",
+                "hint": "How to split damage numbers from roll (None: total only, By Type: By damage type, All: Splits all terms)",
+                "choices": {
+                    "none": "None",
+                    "split-by-type": "By Type",
+                    "split-all": "All"
+                }
             }
         }
     }
