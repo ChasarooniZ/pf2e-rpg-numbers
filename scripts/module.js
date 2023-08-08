@@ -11,7 +11,7 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
     if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = getDamageList(msg.rolls);
     const targets = getTargetList(msg);
-    //console.log({ targets, dmg_list })
+    console.log({ targets, dmg_list })
     generateDamageScroll(dmg_list, targets);
 })
 
@@ -25,6 +25,7 @@ export function getTargetList(msg) {
 
 export function getDamageList(rolls) {
     const split_type = game.settings.get("pf2e-rpg-numbers", 'damage-split');
+    console.log(split_type);
     let dmg_list = [];
     switch (split_type) {
         case 'none':
