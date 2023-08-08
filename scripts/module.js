@@ -168,14 +168,13 @@ export function extractTerm(term, flavor = '') {
                     result = result.concat(extractTerm(term.operands[0], term.flavor || flavor));
                     result = result.concat(extractTerm(term.operands[1], term.flavor || flavor)).map(t => { return { value: -t.value, type: t.type } });
                 case '*':
-                    if (['NumericTerm', 'Die'].includes(term.operands[0].class)) {
+                    if (['NumericTerm', 'Die'].includes(term.operands[0].constructor.name)) {
                         result = result.concat(extractTerm(term.operands[1], term.flavor || flavor).flatMap(i => [i, i]));
-                    } else if (['NumericTerm', 'Die'].includes(term.operands[1].class)) {
+                    } else if (['NumericTerm', 'Die'].includes(term.operands[1].constructor.name)) {
                         result = result.concat(extractTerm(term.operands[0], term.flavor || flavor).flatMap(i => [i, i]));
                     } else {
                         result.push({ value: term.total, type: term.flavor || flavor })
                     }
-
                     break;
                 default:
                     break;
