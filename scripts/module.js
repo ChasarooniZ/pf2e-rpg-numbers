@@ -8,7 +8,7 @@ Hooks.on("ready", async () => {
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     //console.log({ msg })
-    if (!msg.isDamageRoll) return;
+    if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = extractDamageInfoCombined(msg.rolls);
     const targets = getTargetList(msg);
     //console.log({ targets, dmg_list })
