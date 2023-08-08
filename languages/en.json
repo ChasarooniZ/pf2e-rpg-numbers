@@ -35,6 +35,10 @@
                     "by-damage-type": "By Damage Type",
                     "all": "All"
                 }
+            },
+            "debug-mode": {
+                "name": "Debug Mode",
+                "hint": "Have the console receive messages for different stuff"
             }
         }
     }

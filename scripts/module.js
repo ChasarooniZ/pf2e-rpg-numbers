@@ -11,7 +11,7 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
     if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = getDamageList(msg.rolls);
     const targets = getTargetList(msg);
-    console.log({ targets, dmg_list })
+    debugLog({ targets, dmg_list })
     generateDamageScroll(dmg_list, targets);
 })
 
@@ -25,7 +25,7 @@ export function getTargetList(msg) {
 
 export function getDamageList(rolls) {
     const split_type = game.settings.get("pf2e-rpg-numbers", 'damage-split');
-    console.log(split_type);
+    debugLog(split_type);
     let dmg_list = [];
     switch (split_type) {
         case 'none':
@@ -134,7 +134,7 @@ export function extractDamageInfoAll(rolls) {
             result = result.concat(extractTerm(term))
         }
     }
-    console.log(result)
+    debugLog(result)
     return result;
 }
 
@@ -192,7 +192,7 @@ export function extractTerm(term, flavor = '') {
             break;
 
         default:
-            console.error("Unrecognized Term when extracting parts", term )
+            console.error("Unrecognized Term when extracting parts", term)
             result.push({ value: term.total, type: term.flavor || flavor })
             break;
     }
@@ -213,4 +213,9 @@ export function getFontScale(scaleType, dmg, tok) {
         return 1;
     }
     return Math.max(1, Math.min(scale + 1, maxFontScale))
+}
+
+export function debugLog(data) {
+    if (game.settings.get("pf2e-rpg-numbers", 'debug-mode'))
+        console.log("PF2E-RPG-#s", data);
 }
