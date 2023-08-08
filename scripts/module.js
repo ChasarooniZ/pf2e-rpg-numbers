@@ -30,10 +30,10 @@ export function getDamageList(rolls) {
         case 'none':
             dmg_list = extractDamageInfoSimple(rolls);
             break;
-        case 'split-by-type':
+        case 'by-damage-type':
             dmg_list = extractDamageInfoCombined(rolls);
             break;
-        case 'split-all':
+        case 'all':
             dmg_list = extractDamageInfoAll(rolls);
             break;
         default:
@@ -143,13 +143,13 @@ export function extractDamageInfoSimple(rolls) {
 
 export function extractTerm(term, flavor = '') {
     let result = [];
-    switch (term.class) {
-        case 'PoolTerm':
+    switch (term.constructor.name) {
+        case 'InstancePool':
             for (const roll of term.rolls) {
                 result = result.concat(extractTerm(roll, term.flavor || flavor));
             }
             break;
-        case '_DamageInstance2':
+        case 'DamageInstance':
             for (const item of term.terms) {
                 result = result.concat(extractTerm(item, term.types || flavor));
             }
@@ -157,7 +157,7 @@ export function extractTerm(term, flavor = '') {
         case 'Grouping':
             result = result.concat(extractTerm(term.term, term.flavor || flavor));
             break;
-        case '_ArithmeticExpression2':
+        case 'ArithmeticExpression':
             switch (term.operator) {
                 case '+':
                     for (const op of term.operands) {
@@ -191,7 +191,7 @@ export function extractTerm(term, flavor = '') {
             break;
 
         default:
-            console.error({ msg: "Unrecognized Term when extracting parts", term })
+            console.error("Unrecognized Term when extracting parts", term )
             result.push({ value: term.total, type: term.flavor || flavor })
             break;
     }

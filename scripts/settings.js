@@ -57,12 +57,12 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.hint"),
         scope: "world",
         config: true,
-        default: "split-by-type",
+        default: "by-damage-type",
         type: String,
         choices: {
             ["none"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.none"),
-            ["split-by-type"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.split-by-type"),
-            ["split-all"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.split-all"),
+            ["by-damage-type"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.by-damage-type"),
+            ["all"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.all"),
         },
     });
 
