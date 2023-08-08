@@ -29,7 +29,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.hint"),
         scope: "world",
         config: true,
-        default: 0.5,
+        default: 0.3,
         range: {
           min: 0,
           max: 1,

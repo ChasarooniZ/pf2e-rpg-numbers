@@ -103,7 +103,7 @@ export function generateDamageScroll(dmg_list, targets) {
             seq.effect()
                 .atLocation(tok, { offset: { y: topOffset }, gridUnits: true, randomOffset: jitter })
                 .text(`${dmg.value}`, style)
-                .anchor({ x: 0.5, y: 0.2 })
+                .anchor({ x: 0.5, y: 0.8 })
                 .duration(duration)
                 .waitUntilFinished(wait_time)
                 .scaleIn(0.5, duration / 3)
