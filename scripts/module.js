@@ -83,6 +83,7 @@ export function generateDamageScroll(dmg_list, targets) {
             lawful: "0x683e00",
             sonic: "darkcyan",
             bleed: "0x99001a",
+            precision: "0xf5bf03"
         };
         const style = {
             "fill": "white",
