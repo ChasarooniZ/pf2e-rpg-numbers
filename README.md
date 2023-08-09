@@ -1,7 +1,5 @@
-![](https://img.shields.io/badge/Foundry-v10-informational)
-<!--- Downloads @ Latest Badge -->
-<!--- replace <user>/<repo> with your username/repository -->
-<!--- ![Latest Release Download Count](https://img.shields.io/github/downloads/<user>/<repo>/latest/module.zip) -->
+![](https://img.shields.io/badge/Foundry-v11-informational)
+![Latest Release Download Count](https://img.shields.io/github/downloads/Chasarooniz/pf2e-rpg-numbers/latest/module.zip)
 
 <!--- Forge Bazaar Install % Badge -->
 <!--- replace <your-module-name> with the `name` in your manifest -->
