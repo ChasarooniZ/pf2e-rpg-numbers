@@ -10,11 +10,10 @@
 Shows numbers when you roll to damage.
 ![attack](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/132d3509-d3a0-4a20-af1b-4f8c89a49c72)
 ## Table of Contents
-1. [Features](#example)
-2. [Example2](#example2)
-3. [Third Example](#third-example)
-4. [FAQ](#FAQ)
-## Features Explained
+- [Features](#features)
+- [Settings](#Settings)
+- [FAQ](#FAQ)
+## Features
 Coming Soon
 ## Settings
 Coming Soon
