@@ -2,7 +2,6 @@
 - Am aware some features are missing, check the issues tab for those or add any yourself.
 - Made this module because its something I enjoyed seeing, so I hope you can enjoy it too.
 - As a note, extra functionality is added when using target damage with this module!
-- 
 # 11.0.2 - Fix for Module.json + Changelog
 - Added fix for Module.json
 - Created Changelog
