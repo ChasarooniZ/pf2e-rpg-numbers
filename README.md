@@ -18,5 +18,5 @@ Coming Soon
 ## Settings
 Coming Soon
 ## FAQ
-**Q: Will you add support for <Insert System Here>?**
+**Q: Will you add support for \<Insert System Here\>?**
 - This module will only support the **PF2e** system
