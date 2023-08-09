@@ -158,6 +158,10 @@ export function extractTerm(term, flavor = '') {
             for (const item of term.terms) {
                 result = result.concat(extractTerm(item, term.types || flavor));
             }
+            const keepPersistent = !!item.options.evaluatePersistent;
+            result = result
+                .filter(res => res.type.startsWith('persistent,') ? keepPersistent : true)
+                .map(r => ({ value: r.value, type: r.type.replace(/persistent/g, '') }))
             break;
         case 'Grouping':
             result = result.concat(extractTerm(term.term, term.flavor || flavor));
