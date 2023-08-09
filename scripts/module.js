@@ -158,7 +158,7 @@ export function extractTerm(term, flavor = '') {
             for (const item of term.terms) {
                 result = result.concat(extractTerm(item, term.types || flavor));
             }
-            const keepPersistent = !!item.options.evaluatePersistent;
+            const keepPersistent = !!term.options.evaluatePersistent;
             result = result
                 .filter(res => res.type.startsWith('persistent,') ? keepPersistent : true)
                 .map(r => ({ value: r.value, type: r.type.replace(/persistent/g, '') }))
