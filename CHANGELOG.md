@@ -1,3 +1,7 @@
+# 11.1.1 Make a Wish (Hidden check + GM Only mode)
+- Added a check if token is hidden, if so, should only play for GMs
+  - Planning to add support for PF2E Perception's visibility as well
+- Added a GM only option so that you can enjoy the numbers all to yourself
 # 11.1.0 - Initial Release
 - Am aware some features are missing, check the issues tab for those or add any yourself.
 - Made this module because its something I enjoyed seeing, so I hope you can enjoy it too.
