@@ -89,12 +89,13 @@ export function generateDamageScroll(dmg_list, targets) {
     }
     const duration = game.settings.get("pf2e-rpg-numbers", 'duration') * 1000;
     const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers') * 1000 - duration;
+    const onlyGM = game.settings.get("pf2e-rpg-numbers", 'show-only-GM');
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
-        const usersToPlayFor = getVisibleUsers(tok);
+        const usersToPlayFor = onlyGM ? game.users.filter(u => u.isGM).map(u => u.id) : getVisibleUsers(tok);
 
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
@@ -122,7 +123,7 @@ export function getVisibleUsers(tok) {
         // if (game.modules.get("pf2e-perception").active) {
 
         // } else {
-            list = game.users.map(u => u.id);
+        list = game.users.map(u => u.id);
         // }
     }
     return list;
