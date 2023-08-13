@@ -99,5 +99,12 @@ Hooks.on("init", () => {
         },
         type: Number,
     });
-
+    game.settings.register("pf2e-rpg-numbers", "show-only-GM", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.show-only-GM.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.show-only-GM.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
 });
