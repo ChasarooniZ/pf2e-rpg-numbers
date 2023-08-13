@@ -94,6 +94,7 @@ export function generateDamageScroll(dmg_list, targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
+        const usersToPlayFor = getVisibleUsers(tok);
 
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
@@ -108,9 +109,23 @@ export function generateDamageScroll(dmg_list, targets) {
                 .waitUntilFinished(wait_time)
                 .scaleIn(0.5, duration / 3)
                 .fadeOut(duration / 3)
+                .forUsers(usersToPlayFor)
         }
         seq.play();
     }
+}
+
+export function getVisibleUsers(tok) {
+    let list = game.users.filter(u => u.isGM).map(u => u.id);
+    if (!tok.document.hidden) {
+        // check vision if pf2e perception active
+        // if (game.modules.get("pf2e-perception").active) {
+
+        // } else {
+            list = game.users.map(u => u.id);
+        // }
+    }
+    return list;
 }
 
 /**
