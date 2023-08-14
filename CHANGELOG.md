@@ -1,3 +1,5 @@
+# 11.2.2 Null Check
+- Added null check for character uuid
 # 11.2.1 Bugfix
 - Fixed bug with pf2e perception support
 # 11.2.0 Pf2e Perception Support
