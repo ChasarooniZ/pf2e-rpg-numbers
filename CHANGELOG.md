@@ -1,3 +1,5 @@
+# 11.2.1 Bugfix
+- Fixed bug with pf2e perception support
 # 11.2.0 Pf2e Perception Support
 - Added a check to support Pf2e perception
   -  Damage will no longer show if the target is `unnoticed` or `undetected` in that module for a particular user
