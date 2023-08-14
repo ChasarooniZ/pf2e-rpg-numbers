@@ -127,7 +127,7 @@ export function getVisibleUsers(tok) {
                     cantSee.push(canvas.tokens.get(key)?.actor?.uuid);
                 }
             }
-            list.concat(game.users.players.filter(u => !cantSee.includes(u.character.uuid)).map(u => u.id));
+            list.concat(game.users.players.filter(u => !cantSee.includes(u?.character?.uuid)).map(u => u.id));
         } else {
             list = game.users.map(u => u.id);
         }
