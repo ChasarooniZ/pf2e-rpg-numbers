@@ -120,11 +120,17 @@ export function getVisibleUsers(tok) {
     let list = game.users.filter(u => u.isGM).map(u => u.id);
     if (!tok.document.hidden) {
         // check vision if pf2e perception active
-        // if (game.modules.get("pf2e-perception").active) {
-
-        // } else {
-        list = game.users.map(u => u.id);
-        // }
+        if (game.modules.get("pf2e-perception").active) {
+            let cantSee = [];
+            for (const [key, value] of Object.entries(tok.document?.flags?.['pf2e-perception'])) {
+                if (['undetected', 'unnoticed'].includes(value?.visibility)) {
+                    cantSee.push(canvas.tokens.get(key)?.actor?.uuid);
+                }
+            }
+            list.concat(game.users.players.filter(u => !cantSee.includes(u.character.uuid)).map(u => u.id));
+        } else {
+            list = game.users.map(u => u.id);
+        }
     }
     return list;
 }
