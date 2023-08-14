@@ -1,3 +1,6 @@
+# 11.2.0 Pf2e Perception Support
+- Added a check to support Pf2e perception
+  -  Damage will no longer show if the target is `unnoticed` or `undetected` in that module for a particular user
 # 11.1.1 Make a Wish (Hidden check + GM Only mode)
 - Added a check if token is hidden, if so, should only play for GMs
   - Planning to add support for PF2E Perception's visibility as well
