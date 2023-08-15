@@ -1,5 +1,13 @@
 Hooks.on("init", () => {
 
+    game.settings.register("pf2e-rpg-numbers", "enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
     game.settings.register("pf2e-rpg-numbers", "font-size", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.font-size.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.font-size.hint"),
