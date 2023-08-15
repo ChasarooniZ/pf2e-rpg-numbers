@@ -1,12 +1,13 @@
 // import {generateDamageScroll, extractDamageInfoCombined, getTargetList} from './utility.js'
 // HOOKS STUFF
 Hooks.on("ready", async () => {
-    console.error("PF2e RPG Numbers is ready");
-    ui.notifications.notify("PF2e RPG Numbers is ready")
+    //console.error("PF2e RPG Numbers is ready");
+    //ui.notifications.notify("PF2e RPG Numbers is ready")
     //game.RPGNumbers = new RPGNumbers();
 })
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
+    if (!game.settings.get("pf2e-rpg-numbers", 'enabled')) return;
     debugLog({ msg })
     if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = getDamageList(msg.rolls);
@@ -45,7 +46,6 @@ export function getDamageList(rolls) {
 
 //TODO settings on visuals (colors)
 //TODO settings on size etc.
-//TODO add scaling based on % health
 //TODO add scaling based on size
 /**
  * Generates damage scrolling text for a passed in list of damage values

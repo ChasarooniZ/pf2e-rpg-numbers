@@ -2,6 +2,10 @@
     "I18N.LANGUAGE": "English",
     "pf2e-rpg-numbers": {
         "module-settings": {
+            "enabled": {
+                "name": "Enable Module",
+                "hint": "Enables all functionality of module"
+            },
             "font-size": {
                 "name": "Font Size",
                 "hint": "Default size of the font"
