@@ -115,4 +115,18 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
+    
+    game.settings.register("pf2e-rpg-numbers", "animation-scale", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.animation-scale.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.animation-scale.hint"),
+        scope: "world",
+        config: true,
+        default: 1,
+        range: {
+          min: 0,
+          max: 2,
+          step: 0.05
+        },
+        type: Number,
+    });
 });
