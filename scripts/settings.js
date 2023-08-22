@@ -100,11 +100,11 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.wait-time-between-numbers.hint"),
         scope: "world",
         config: true,
-        default: 0.1,
+        default: 100,
         range: {
             min: 0,
-            max: 5,
-            step: 0.05
+            max: 1000,
+            step: 1
         },
         type: Number,
     });

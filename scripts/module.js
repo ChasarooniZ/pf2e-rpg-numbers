@@ -94,7 +94,7 @@ export function generateDamageScroll(dmg_list, targets) {
     }
     const duration = game.settings.get("pf2e-rpg-numbers", 'duration') * 1000;
     const anim_scale = game.settings.get("pf2e-rpg-numbers", 'animation-scale');
-    const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers') * 1000 - duration;
+    const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers') - duration;
     const onlyGM = game.settings.get("pf2e-rpg-numbers", 'show-only-GM');
 
     for (const target_id of targets) {
@@ -108,7 +108,7 @@ export function generateDamageScroll(dmg_list, targets) {
 
         if (game.settings.get("pf2e-rpg-numbers", 'show-total')) {
             const tot = dmg_list.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0)
-            style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.25;
+            style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.1;
             style.fill = colors[findTypeWithLargestTotal(dmg_list)] ?? 'white';
             seq.effect()
                 .atLocation(tok, {
@@ -125,6 +125,7 @@ export function generateDamageScroll(dmg_list, targets) {
                 .duration(duration)
                 .scaleIn(0.5, duration / 3)
                 .fadeOut(duration / 3)
+                .zIndex(2)
                 .forUsers(usersToPlayFor)
         }
 
