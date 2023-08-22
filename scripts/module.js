@@ -106,6 +106,28 @@ export function generateDamageScroll(dmg_list, targets) {
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
 
+        if (game.settings.get("pf2e-rpg-numbers", 'show-total')) {
+            const tot = dmg_list.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0)
+            style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.25;
+            style.fill = colors[findTypeWithLargestTotal(dmg_list)] ?? 'white';
+            seq.effect()
+                .atLocation(tok, {
+                    offset: {
+                        y: topOffset
+                    },
+                    gridUnits: true,
+                })
+                .text(`${tot}`, style)
+                .anchor({
+                    x: 0.5,
+                    y: 0.8
+                })
+                .duration(duration)
+                .scaleIn(0.5, duration / 3)
+                .fadeOut(duration / 3)
+                .forUsers(usersToPlayFor)
+        }
+
         for (const dmg of dmg_list_filtered) {
             const xMod = Math.round(Math.random()) * 2 - 1;;
             style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
@@ -128,21 +150,22 @@ export function generateDamageScroll(dmg_list, targets) {
                 .scaleIn(0.5, duration / 3)
                 .animateProperty("sprite", "position.x", {
                     from: 0,
-                    to: size * xMod / 2* anim_scale,
-                    ease: "easeInOutCubic",
+                    to: size * xMod / 2 * anim_scale,
+                    ease: "easeOutSine",
                     duration: duration,
                     gridUnits: true
                 })
                 .loopProperty("sprite", "position.y", {
                     from: 0,
-                    to: -size / 1.9 * anim_scale,
+                    to: -size / 4 * anim_scale,
                     duration: duration / 2,
                     gridUnits: true,
                     pingPong: true
                 })
-                //.fadeOut(duration / 3)
+                .fadeOut(duration / 3)
                 .forUsers(usersToPlayFor)
         }
+
         seq.play();
     }
 }
@@ -303,6 +326,17 @@ export function getFontScale(scaleType, dmg, tok) {
         return 1;
     }
     return Math.max(1, Math.min(scale + 1, maxFontScale))
+}
+
+export function findTypeWithLargestTotal(dmg_list) {
+    const typeMap = dmg_list.reduce((acc, { type, value }) => {
+        acc[type] = (acc[type] || 0) + value;
+        return acc;
+    }, {});
+
+    return Object.keys(typeMap).reduce((maxType, type) =>
+        typeMap[type] > typeMap[maxType] ? type : maxType
+    );
 }
 
 export function debugLog(data, context = "") {

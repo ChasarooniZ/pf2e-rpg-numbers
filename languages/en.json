@@ -59,8 +59,11 @@
             "animation-scale": {
                 "name": "Animation Scale",
                 "hint": "How far out from the token should the numbers move"
+            },
+            "show-total": {
+                "name": "Show Total",
+                "hint": "Show total as a number in the center of the token in addition to other numbers"
             }
-        }
         }
     }
 }

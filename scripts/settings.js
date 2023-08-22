@@ -29,21 +29,22 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.top-offset.hint"),
         scope: "world",
         config: true,
-        default: 25,
-        type: Number,
-    });
-    game.settings.register("pf2e-rpg-numbers", "jitter", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.hint"),
-        scope: "world",
-        config: true,
-        default: 0.3,
+        default: -25,
         range: {
-          min: 0,
-          max: 1,
-          step: 0.05
+            min: -100,
+            max: 100,
+            step: 5
         },
         type: Number,
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "show-total", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.show-total.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.show-total.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
     });
 
     game.settings.register("pf2e-rpg-numbers", "number-scale-type", {
@@ -88,9 +89,9 @@ Hooks.on("init", () => {
         config: true,
         default: 2,
         range: {
-          min: 0,
-          max: 10,
-          step: 0.1
+            min: 0,
+            max: 10,
+            step: 0.1
         },
         type: Number,
     });
@@ -101,9 +102,9 @@ Hooks.on("init", () => {
         config: true,
         default: 0.1,
         range: {
-          min: 0,
-          max: 5,
-          step: 0.05
+            min: 0,
+            max: 5,
+            step: 0.05
         },
         type: Number,
     });
@@ -115,7 +116,7 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
-    
+
     game.settings.register("pf2e-rpg-numbers", "animation-scale", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.animation-scale.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.animation-scale.hint"),
@@ -123,9 +124,22 @@ Hooks.on("init", () => {
         config: true,
         default: 1,
         range: {
-          min: 0,
-          max: 2,
-          step: 0.05
+            min: 0,
+            max: 2,
+            step: 0.05
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "jitter", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.jitter.hint"),
+        scope: "world",
+        config: true,
+        default: 0,
+        range: {
+            min: 0,
+            max: 1,
+            step: 0.05
         },
         type: Number,
     });
