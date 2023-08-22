@@ -8,11 +8,16 @@ Hooks.on("ready", async () => {
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     if (!game.settings.get("pf2e-rpg-numbers", 'enabled')) return;
-    debugLog({ msg })
+    debugLog({
+        msg
+    })
     if (!msg.isDamageRoll || !game.user.isGM) return;
     const dmg_list = getDamageList(msg.rolls);
     const targets = getTargetList(msg);
-    debugLog({ targets, dmg_list })
+    debugLog({
+        targets,
+        dmg_list
+    })
     generateDamageScroll(dmg_list, targets);
 })
 
@@ -88,6 +93,7 @@ export function generateDamageScroll(dmg_list, targets) {
         strokeThickness: 5,
     }
     const duration = game.settings.get("pf2e-rpg-numbers", 'duration') * 1000;
+    const anim_scale = game.settings.get("pf2e-rpg-numbers", 'animation-scale');
     const wait_time = game.settings.get("pf2e-rpg-numbers", 'wait-time-between-numbers') * 1000 - duration;
     const onlyGM = game.settings.get("pf2e-rpg-numbers", 'show-only-GM');
 
@@ -106,15 +112,41 @@ export function generateDamageScroll(dmg_list, targets) {
             style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? 'white';
             seq.effect()
-                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true, randomOffset: jitter })
+                .atLocation(tok, {
+                    offset: {
+                        y: topOffset
+                    },
+                    gridUnits: true,
+                    randomOffset: jitter
+                })
                 .text(`${dmg.value}`, style)
-                .anchor({ x: 0.5, y: 0.8 })
+                .anchor({
+                    x: 0.5,
+                    y: 0.8
+                })
                 .duration(duration)
                 .waitUntilFinished(wait_time)
                 .scaleIn(0.5, duration / 3)
-                .animateProperty("sprite", "position.x", { from: 0, to: (size * xMod) / 2, ease: "easeOutQuad", duration: duration, gridUnits: true })
-                .animateProperty("sprite", "position.y", { from: 0, to: size / 1.9, duration: duration / 2, gridUnits: true })
-                .animateProperty("sprite", "position.y", { from: size / 1.9, to: 0, duration: duration / 2, gridUnits: true, fromEnd: true })
+                .animateProperty("sprite", "position.x", {
+                    from: 0,
+                    to: (size * xMod) / 2,
+                    ease: "easeOutQuad",
+                    duration: duration,
+                    gridUnits: true
+                })
+                .animateProperty("sprite", "position.y", {
+                    from: 0,
+                    to: -size / 1.9,
+                    duration: duration / 2,
+                    gridUnits: true
+                })
+                .animateProperty("sprite", "position.y", {
+                    from: 0,
+                    to: size / 1.9,
+                    duration: duration / 2,
+                    gridUnits: true,
+                    fromEnd: true
+                })
                 //.fadeOut(duration / 3)
                 .forUsers(usersToPlayFor)
         }
@@ -152,7 +184,10 @@ export function extractDamageInfoCombined(rolls) {
     for (const inp of rolls) {
         for (const term of inp.terms) {
             for (const roll of term.rolls) {
-                result.push({ type: roll.type, value: roll.total });
+                result.push({
+                    type: roll.type,
+                    value: roll.total
+                });
             }
         }
     }
@@ -171,7 +206,10 @@ export function extractDamageInfoAll(rolls) {
 }
 
 export function extractDamageInfoSimple(rolls) {
-    return [{ type: '', value: rolls.total }]
+    return [{
+        type: '',
+        value: rolls.total
+    }]
 }
 
 export function extractTerm(term, flavor = '') {
@@ -189,7 +227,10 @@ export function extractTerm(term, flavor = '') {
             const keepPersistent = !!term.options.evaluatePersistent;
             result = result
                 .filter(res => res.type.startsWith('persistent,') ? keepPersistent : true)
-                .map(r => ({ value: r.value, type: r.type.replace(/persistent,/g, '') }))
+                .map(r => ({
+                    value: r.value,
+                    type: r.type.replace(/persistent,/g, '')
+                }))
             break;
         case 'Grouping':
             result = result.concat(extractTerm(term.term, term.flavor || flavor));
@@ -203,14 +244,22 @@ export function extractTerm(term, flavor = '') {
                     break;
                 case '-':
                     result = result.concat(extractTerm(term.operands[0], term.flavor || flavor));
-                    result = result.concat(extractTerm(term.operands[1], term.flavor || flavor)).map(t => { return { value: -t.value, type: t.type } });
+                    result = result.concat(extractTerm(term.operands[1], term.flavor || flavor)).map(t => {
+                        return {
+                            value: -t.value,
+                            type: t.type
+                        }
+                    });
                 case '*':
                     if (['NumericTerm', 'Die'].includes(term.operands[0].constructor.name)) {
                         result = result.concat(extractTerm(term.operands[1], term.flavor || flavor).flatMap(i => [i, i]));
                     } else if (['NumericTerm', 'Die'].includes(term.operands[1].constructor.name)) {
                         result = result.concat(extractTerm(term.operands[0], term.flavor || flavor).flatMap(i => [i, i]));
                     } else {
-                        result.push({ value: term.total, type: term.flavor || flavor })
+                        result.push({
+                            value: term.total,
+                            type: term.flavor || flavor
+                        })
                     }
                     break;
                 default:
@@ -219,19 +268,31 @@ export function extractTerm(term, flavor = '') {
             break;
         case 'Die':
             for (const dice of term.results) {
-                result.push({ value: dice.result, type: term.flavor || flavor })
+                result.push({
+                    value: dice.result,
+                    type: term.flavor || flavor
+                })
             }
             break;
         case 'NumericTerm':
-            result.push({ value: term.number, type: term.flavor || flavor })
+            result.push({
+                value: term.number,
+                type: term.flavor || flavor
+            })
             break;
 
         default:
             console.error("Unrecognized Term when extracting parts", term)
-            result.push({ value: term.total, type: term.flavor || flavor })
+            result.push({
+                value: term.total,
+                type: term.flavor || flavor
+            })
             break;
     }
-    debugLog({ type: term.constructor.name, result }, 'extractTerm')
+    debugLog({
+        type: term.constructor.name,
+        result
+    }, 'extractTerm')
 
     return result;
 }

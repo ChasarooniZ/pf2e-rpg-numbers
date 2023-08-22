@@ -55,7 +55,12 @@
             "show-only-GM": {
                 "name": "Show numbers only for GM",
                 "hint": "Show them only for the game if you like them, but not that much"
+            },
+            "animation-scale": {
+                "name": "Animation Scale",
+                "hint": "How far out from the token should the numbers move"
             }
+        }
         }
     }
 }
