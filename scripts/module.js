@@ -99,7 +99,6 @@ export function generateDamageScroll(dmg_list, targets) {
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
-        const center = tok.center;
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
         const usersToPlayFor = onlyGM ? game.users.filter(u => u.isGM).map(u => u.id) : getVisibleUsers(tok);
@@ -129,23 +128,17 @@ export function generateDamageScroll(dmg_list, targets) {
                 .scaleIn(0.5, duration / 3)
                 .animateProperty("sprite", "position.x", {
                     from: 0,
-                    to: (size * xMod) / 2,
-                    ease: "easeOutQuad",
+                    to: size * xMod / 2* anim_scale,
+                    ease: "easeInOutCubic",
                     duration: duration,
                     gridUnits: true
                 })
-                .animateProperty("sprite", "position.y", {
+                .loopProperty("sprite", "position.y", {
                     from: 0,
-                    to: -size / 1.9,
-                    duration: duration / 2,
-                    gridUnits: true
-                })
-                .animateProperty("sprite", "position.y", {
-                    from: 0,
-                    to: size / 1.9,
+                    to: -size / 1.9 * anim_scale,
                     duration: duration / 2,
                     gridUnits: true,
-                    fromEnd: true
+                    pingPong: true
                 })
                 //.fadeOut(duration / 3)
                 .forUsers(usersToPlayFor)
