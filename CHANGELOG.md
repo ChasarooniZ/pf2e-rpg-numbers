@@ -1,3 +1,6 @@
+# 11.2.4 Enable Setting + removed Pop up
+- Added option to disable module
+- Removed pop up text on start
 # 11.2.3 Actually Assigning a variable does something
 - Actually Updated list of people that can see the numbers so it isn't just the GM all the time
 # 11.2.2 Null Check
