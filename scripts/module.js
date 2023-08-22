@@ -93,13 +93,17 @@ export function generateDamageScroll(dmg_list, targets) {
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
+        const center = tok.center;
+        const pixel_scale = (tok.width + tok.height) / 2;
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (game.settings.get("pf2e-rpg-numbers", 'top-offset') / 100);
         const usersToPlayFor = onlyGM ? game.users.filter(u => u.isGM).map(u => u.id) : getVisibleUsers(tok);
 
         const dmg_list_filtered = dmg_list.filter(d => d.value > 0);
         const seq = new Sequence();
+
         for (const dmg of dmg_list_filtered) {
+            const xMod = Math.round(Math.random()) * 2 - 1;;
             style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? 'white';
             seq.effect()
@@ -109,7 +113,10 @@ export function generateDamageScroll(dmg_list, targets) {
                 .duration(duration)
                 .waitUntilFinished(wait_time)
                 .scaleIn(0.5, duration / 3)
-                .fadeOut(duration / 3)
+                .animateProperty("sprite", "position.x", { from: center.x, to: center.x + (xMod * pixel_scale / 2), ease: "easeOutQuad", duration: duration })
+                .animateProperty("sprite", "position.y", { from: center.y, to: center.y + (pixel_scale / 1.9), duration: duration / 2 })
+                .animateProperty("sprite", "position.y", { from: center.y + (pixel_scale / 1.9), to: center.y, duration: duration / 2, fromEnd: true })
+                //.fadeOut(duration / 3)
                 .forUsers(usersToPlayFor)
         }
         seq.play();
