@@ -1,3 +1,15 @@
+# 11.3.0 Total Upgrade
+- Added new settings option to `Show Total `
+  - This allows you to show the total of all the numbers in the center
+  - Mimics the Baldur's Gate 3 damage pop ups in a way
+- Updated Animation
+  - Now flows out more similar to Baldur's gate
+  - Not perfect but good enough
+- Added scaling to animation size (to make bigger or larger)
+**Important Breaking Settings Changes**
+- Changed setting for `wait-time` from seconds -> ms (If you had this already installed please update your wait time, recommended is 150 ms)
+- Changed Default setting for `offset`, recommended is -25 (as it lines it up with the top middle of the token)
+  - Offset setting is distance (%) from the center, with negative being up and positive being down
 # 11.2.4 Enable Setting + removed Pop up
 - Added option to disable module
 - Removed pop up text on start
