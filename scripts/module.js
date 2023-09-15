@@ -222,7 +222,7 @@ export function generateRollScroll(roll_deets) {
         .scaleIn(0.5, duration / 3)
         .fadeOut(duration / 3)
         .zIndex(2)
-        .forUsers(game.users.filter(u => roll_deets.whisper.length === 0 || roll_deets.whisper.includes(u.id)))
+        .forUsers(roll_deets.whisper.length === 0 ? game.users.map(u => u.id) : roll_deets.whisper)
         .play()
 }
 
