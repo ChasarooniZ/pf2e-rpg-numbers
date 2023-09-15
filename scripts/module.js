@@ -11,14 +11,26 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
     debugLog({
         msg
     })
-    if (!msg.isDamageRoll || !game.user.isGM) return;
-    const dmg_list = getDamageList(msg.rolls);
-    const targets = getTargetList(msg);
-    debugLog({
-        targets,
-        dmg_list
-    })
-    generateDamageScroll(dmg_list, targets);
+    if (game.user.isGM) {
+        if (msg.isDamageRoll && game.settings.get("pf2e-rpg-numbers", 'dmg-enabled')) {
+            const dmg_list = getDamageList(msg.rolls);
+            const targets = getTargetList(msg);
+            debugLog({
+                targets,
+                dmg_list
+            })
+            generateDamageScroll(dmg_list, targets);
+        }
+        if (msg.isCheckRoll && game.settings.get("pf2e-rpg-numbers", 'checks-enabled')) {
+            const roll_deets = {
+                outcome: msg.flags.pf2e.context.outcome ?? 'none',
+                token: msg.token,
+                whisper: msg.whisper,
+                roll: msg.rolls[0]?.total ?? ''
+            }
+            generateRollScroll(roll_deets);
+        }
+    }
 })
 
 export function getTargetList(msg) {
@@ -169,6 +181,49 @@ export function generateDamageScroll(dmg_list, targets) {
 
         seq.play();
     }
+}
+
+/**
+ * 
+ * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | ''}} roll_deets 
+ */
+export function generateRollScroll(roll_deets) {
+    const fontSize = game.settings.get("pf2e-rpg-numbers", 'check-font-size');
+    const colors = {
+        none: 'white',
+        criticalFailure: 'rgb(255, 0, 0)',
+        failure: 'rgb(255, 69, 0)',
+        success: 'rgb(0, 0, 255)',
+        criticalSuccess: 'rgb(0, 128, 0)'
+
+    }
+    const style = {
+        "fill": colors[roll_deets.outcome],
+        "fontSize": fontSize,
+        align: "center",
+        dropShadow: true,
+        strokeThickness: 5,
+    }
+    const duration = game.settings.get("pf2e-rpg-numbers", 'check-duration') * 1000;
+    const seq = new Sequence();
+    seq.effect()
+        .atLocation(roll_deets.token, {
+            offset: {
+                y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.document.width
+            },
+            gridUnits: true,
+        })
+        .text(`${roll_deets.roll}`, style)
+        .anchor({
+            x: 0.5,
+            y: 0.8
+        })
+        .duration(duration)
+        .scaleIn(0.5, duration / 3)
+        .fadeOut(duration / 3)
+        .zIndex(2)
+        .forUsers(game.users.filter(u => roll_deets.whisper.length === 0 || roll_deets.whisper.includes(u.id)))
+        .play()
 }
 
 export function getVisibleUsers(tok) {

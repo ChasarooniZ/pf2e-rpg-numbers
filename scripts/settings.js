@@ -8,6 +8,14 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "dmg-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
     game.settings.register("pf2e-rpg-numbers", "font-size", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.font-size.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.font-size.hint"),
@@ -74,14 +82,6 @@ Hooks.on("init", () => {
             ["all"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.damage-split.choices.all"),
         },
     });
-    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
-        scope: "world",
-        config: true,
-        default: false,
-        type: Boolean,
-    });
     game.settings.register("pf2e-rpg-numbers", "duration", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.duration.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.duration.hint"),
@@ -142,5 +142,46 @@ Hooks.on("init", () => {
             step: 0.05
         },
         type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "check-font-size", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.hint"),
+        scope: "world",
+        config: true,
+        default: 30,
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "check-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-duration.hint"),
+        scope: "world",
+        config: true,
+        default: 2,
+        range: {
+            min: 0,
+            max: 10,
+            step: 0.1
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "check-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+
+
+
+
+    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
     });
 });
