@@ -21,7 +21,7 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
             })
             generateDamageScroll(dmg_list, targets);
         }
-        if (msg.isCheckRoll && game.settings.get("pf2e-rpg-numbers", 'checks-enabled')) {
+        if (msg.isCheckRoll && game.settings.get("pf2e-rpg-numbers", 'check-enabled')) {
             const roll_deets = {
                 outcome: msg.flags.pf2e.context.outcome ?? 'none',
                 token: msg.token,

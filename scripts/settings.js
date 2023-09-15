@@ -143,6 +143,16 @@ Hooks.on("init", () => {
         },
         type: Number,
     });
+
+
+    game.settings.register("pf2e-rpg-numbers", "check-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
     game.settings.register("pf2e-rpg-numbers", "check-font-size", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.hint"),
@@ -163,14 +173,6 @@ Hooks.on("init", () => {
             step: 0.1
         },
         type: Number,
-    });
-    game.settings.register("pf2e-rpg-numbers", "check-enabled", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-enabled.hint"),
-        scope: "world",
-        config: true,
-        default: true,
-        type: Boolean,
     });
 
 
