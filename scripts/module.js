@@ -209,7 +209,7 @@ export function generateRollScroll(roll_deets) {
     seq.effect()
         .atLocation(roll_deets.token, {
             offset: {
-                y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.document.width
+                y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
             },
             gridUnits: true,
         })
