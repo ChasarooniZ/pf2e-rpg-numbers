@@ -209,10 +209,10 @@ export function generateRollScroll(roll_deets) {
     seq.effect()
         .atLocation(roll_deets.token,
             {
-            // offset: {
-            //     y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
-            // },
-            // gridUnits: true,
+            offset: {
+                y: -0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
+            },
+            gridUnits: true,
         })
         .text(`${roll_deets.roll}`, style)
         .anchor({
