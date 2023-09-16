@@ -207,11 +207,12 @@ export function generateRollScroll(roll_deets) {
     const duration = game.settings.get("pf2e-rpg-numbers", 'check-duration') * 1000;
     const seq = new Sequence();
     seq.effect()
-        .atLocation(roll_deets.token, {
-            offset: {
-                y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
-            },
-            gridUnits: true,
+        .atLocation(roll_deets.token,
+            {
+            // offset: {
+            //     y: 0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
+            // },
+            // gridUnits: true,
         })
         .text(`${roll_deets.roll}`, style)
         .anchor({
