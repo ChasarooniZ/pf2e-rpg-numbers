@@ -79,8 +79,24 @@
             "dmg-enabled": {
                 "name": "Enable Damage Numbers",
                 "hint": "Show damage numbers"
+            },
+            "check-outcome-result": {
+                "name": "Choose what to show for d20 check rolls",
+                "hint": "Numbers shows the d20 + mods result, outcome shows crit success, success etc., and outcome w/o combat crits shows the outcome without combat critical misses and hits meant as compatibility with pf2e animations.",
+                "choices": {
+                    "numbers": "Numbers",
+                    "outcome-except-combat-crits": "Outcome w/o Combat crits",
+                    "outcome": "Outcome"
+                }
             }
-
+        },
+        "display-text": {
+            "outcomes": {
+                "criticalFailure": "Critical Failure",
+                "failure": "Failure",
+                "success": "Success",
+                "criticalSuccess": "Critical Success"
+            }
         }
     }
 }

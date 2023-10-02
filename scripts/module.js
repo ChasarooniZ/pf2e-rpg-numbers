@@ -26,7 +26,8 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
                 outcome: msg.flags.pf2e.context.outcome ?? 'none',
                 token: msg.token,
                 whisper: msg.whisper,
-                roll: msg.rolls[0]?.total ?? ''
+                roll: msg.rolls[0]?.total ?? '',
+                type: msg.flags.pf2e.context.type
             }
             generateRollScroll(roll_deets);
         }
@@ -185,7 +186,7 @@ export function generateDamageScroll(dmg_list, targets) {
 
 /**
  * 
- * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | ''}} roll_deets 
+ * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | '', type: 'attack-roll'}} roll_deets 
  */
 export function generateRollScroll(roll_deets) {
     const fontSize = game.settings.get("pf2e-rpg-numbers", 'check-font-size');
@@ -205,6 +206,28 @@ export function generateRollScroll(roll_deets) {
         strokeThickness: 5,
     }
     const duration = game.settings.get("pf2e-rpg-numbers", 'check-duration') * 1000;
+    let text = roll_deets.roll;
+    switch (game.settings.get("pf2e-rpg-numbers", 'check-outcome-result')) {
+        case "numbers":
+            text = roll_deets.roll;
+            break;
+        case "outcome-except-combat-crits":
+            if (roll_deets.type === "attack-roll" || roll_deets.outcome === 'none') {
+                text = roll_deets.roll;
+            } else {
+                text = game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${roll_deets.outcome}`)
+            }
+            break;
+        case "outcome":
+            if (roll_deets.outcome === 'none') {
+                text = roll_deets.roll;
+            } else {
+                text = game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${roll_deets.outcome}`)
+            }
+            break;
+        default:
+            break;
+    }
     const seq = new Sequence();
     seq.effect()
         .atLocation(roll_deets.token,
@@ -214,7 +237,7 @@ export function generateRollScroll(roll_deets) {
             },
             gridUnits: true,
         })
-        .text(`${roll_deets.roll}`, style)
+        .text(`${text}`, style)
         .anchor({
             x: 0.5,
             y: 0.8

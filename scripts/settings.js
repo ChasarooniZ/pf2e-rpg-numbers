@@ -153,6 +153,19 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "check-outcome-result", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.hint"),
+        scope: "world",
+        config: true,
+        default: "outcome-except-combat-crits",
+        type: String,
+        choices: {
+            ["numbers"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.choices.numbers"),
+            ["outcome-except-combat-crits"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.choices.outcome-except-combat-crits"),
+            ["outcome"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.choices.outcome"),
+        },
+    });
     game.settings.register("pf2e-rpg-numbers", "check-font-size", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-font-size.hint"),
