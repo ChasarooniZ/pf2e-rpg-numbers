@@ -1,3 +1,7 @@
+# 11.4.0 Checks
+- Added option to show check results
+  - Should only ever show rolls the user has access to per user
+  - Can toggle between numbers and the actual text
 # 11.3.0 Total Upgrade
 - Added new settings option to `Show Total `
   - This allows you to show the total of all the numbers in the center
