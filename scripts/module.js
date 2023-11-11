@@ -296,7 +296,7 @@ export function shakeScreen(uuid, damage) {
         default:
             shake_amt = 0;
     }
-    if (shake_amt === 'Infinity') shake_amt = max;
+    if (!isFinite('Infinity')) shake_amt = max;
     let userToShake;
     if (actor.hasPlayerOwner) {
         userToShake = Object.entries(actor.ownership).filter(perm => perm[1] === 3 && perm[0] !== gmID).map(p => p[0]);
