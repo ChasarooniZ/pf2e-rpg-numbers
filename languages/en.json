@@ -110,7 +110,7 @@
                     "%-max-hp": "% Max HP"
                 }
             },
-            "shake-include-temp-hp": {
+            "shake-intensity-include-temp-hp": {
                 "name": "Should scaling include Temp HP",
                 "hint": "If you picked an intensity that scales off hp, toggling this on causes it to include temp hp"
             },

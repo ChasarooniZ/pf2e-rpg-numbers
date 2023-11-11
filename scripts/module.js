@@ -32,7 +32,7 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
             generateRollScroll(roll_deets);
         }
         if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'shake-enabled')) {
-            let dmg = msg.msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
+            let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
             if (dmg)
                 shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
         }
