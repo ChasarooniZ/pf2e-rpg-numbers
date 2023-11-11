@@ -288,7 +288,7 @@ export function shakeScreen(uuid, damage) {
             shake_amt = max;
             break;
         case '%-current-hp':
-            shake_amt = max * (damage / (hp.value + (includeTempHP ? hp.temp : 0)));
+            shake_amt = max * (damage / (hp.value + damage + (includeTempHP ? hp.temp : 0)));
             break;
         case '%-max-hp':
             shake_amt = max * (damage / (hp.max + (includeTempHP ? hp.temp : 0)));
@@ -296,6 +296,7 @@ export function shakeScreen(uuid, damage) {
         default:
             shake_amt = 0;
     }
+    if (shake_amt === 'Infinity') shake_amt = max;
     let userToShake;
     if (actor.hasPlayerOwner) {
         userToShake = Object.entries(actor.ownership).filter(perm => perm[1] === 3 && perm[0] !== gmID).map(p => p[0]);
