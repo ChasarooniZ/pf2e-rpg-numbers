@@ -297,7 +297,7 @@ export function shakeScreen(uuid, damage) {
     }
     let userToShake;
     if (actor.hasPlayerOwner) {
-        userToShake = [game.users.players.find(user => Object.entries(actor.ownership).filter(perm => perm[1] === 3).map(p => p[1]).includes(user.id)).id]
+        userToShake = Object.entries(actor.ownership).filter(perm => perm[1] === 3).map(p => p[1])
     } else {
         userToShake = [game.users.activeGM.id];
     }
