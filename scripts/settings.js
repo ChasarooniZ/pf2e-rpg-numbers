@@ -189,6 +189,71 @@ Hooks.on("init", () => {
     });
 
 
+    game.settings.register("pf2e-rpg-numbers", "shake-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "shake-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-duration.hint"),
+        scope: "world",
+        config: true,
+        default: 250,
+        range: {
+            min: 0,
+            max: 2000,
+            step: 10
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "shake-intensity-max", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-max.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-max.hint"),
+        scope: "world",
+        config: true,
+        default: 35,
+        range: {
+            min: 1,
+            max: 100,
+            step: 1
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "shake-intensity-type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-type.hint"),
+        scope: "world",
+        config: true,
+        default: "%-current-hp",
+        type: String,
+        choices: {
+            ["max"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-type.choices.max"),
+            ["%-current-hp"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-type.choices.%-current-hp"),
+            ["%-max-hp"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-type.choices.%-max-hp"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "shake-intensity-include-temp-hp", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-include-temp-hp.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-intensity-include-temp-hp.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+    game.settings.register("pf2e-rpg-numbers", "shake-gm-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-gm-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.shake-gm-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
 
 
     game.settings.register("pf2e-rpg-numbers", "debug-mode", {

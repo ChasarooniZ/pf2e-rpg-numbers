@@ -88,6 +88,35 @@
                     "outcome-except-combat-crits": "Outcome w/o Combat crits",
                     "outcome": "Outcome"
                 }
+            },
+            "shake-enabled": {
+                "name": "Shake the screen when taking damage",
+                "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"
+            },
+            "shake-duration": {
+                "name": "Screen shake duration",
+                "hint": "How long in to shake the screen in MS"
+            },
+            "shake-intensity-max": {
+                "name": "Shake Intensity",
+                "hint": "How hard to shake the screen"
+            },
+            "shake-intensity-type": {
+                "name": "Shake Intensity Scaling",
+                "hint": "How should screen shake intensity scale. None - just uses max value, % Current HP - scales off current HP, % Max HP - Scales off Max HP",
+                "choices": {
+                    "max": "None",
+                    "%-current-hp": "% Current HP",
+                    "%-max-hp": "% Max HP"
+                }
+            },
+            "shake-include-temp-hp": {
+                "name": "Should scaling include Temp HP",
+                "hint": "If you picked an intensity that scales off hp, toggling this on causes it to include temp hp"
+            },
+            "shake-gm-enabled": {
+                "name": "Enable shaking for GM",
+                "hint": "Causes GM to experience screen shake for any actors and their tokens that don't have a player owner"
             }
         },
         "display-text": {

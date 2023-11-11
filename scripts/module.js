@@ -31,6 +31,11 @@ Hooks.on("createChatMessage", async function (msg, status, id) {
             }
             generateRollScroll(roll_deets);
         }
+        if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'shake-enabled')) {
+            let dmg = msg.msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
+            if (dmg)
+                shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
+        }
     }
 })
 
@@ -232,11 +237,11 @@ export function generateRollScroll(roll_deets) {
     seq.effect()
         .atLocation(roll_deets.token,
             {
-            offset: {
-                y: -0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
-            },
-            gridUnits: true,
-        })
+                offset: {
+                    y: -0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width
+                },
+                gridUnits: true,
+            })
         .text(`${text}`, style)
         .anchor({
             x: 0.5,
@@ -267,6 +272,40 @@ export function getVisibleUsers(tok) {
         }
     }
     return list;
+}
+
+export function shakeScreen(uuid, damage) {
+    const actor = fromUuidSync(uuid);
+    if (!actor.hasPlayerOwner && !game.settings.get("pf2e-rpg-numbers", 'shake-gm-enabled')) return;
+    const hp = actor.system.attributes.hp;
+    const shakeType = game.settings.get("pf2e-rpg-numbers", 'shake-intensity-type');
+    const max = game.settings.get("pf2e-rpg-numbers", 'shake-intensity-max');
+    const includeTempHP = game.settings.get("pf2e-rpg-numbers", 'shake-intensity-include-temp-hp');
+    let shake_amt = 0;
+    switch (shakeType) {
+        case 'max':
+            shake_amt = max;
+            break;
+        case '%-current-hp':
+            shake_amt = max * (damage / (hp.value + (includeTempHP ? hp.temp : 0)));
+            break;
+        case '%-max-hp':
+            shake_amt = max * (damage / (hp.max + (includeTempHP ? hp.temp : 0)));
+            break;
+        default:
+            shake_amt = 0;
+    }
+    let userToShake;
+    if (actor.hasPlayerOwner) {
+        userToShake = [game.users.players.find(user => Object.entries(actor.ownership).filter(perm => perm[1] === 3).map(p => p[1]).includes(user.id)).id]
+    } else {
+        userToShake = [game.users.activeGM.id];
+    }
+    new Sequence()
+        .canvasPan()
+        .shake({ duration: 250, strength: shake_amt })
+        .forUsers(userToShake)
+        .play()
 }
 
 /**
