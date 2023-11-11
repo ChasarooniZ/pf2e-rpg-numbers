@@ -277,6 +277,7 @@ export function getVisibleUsers(tok) {
 export function shakeScreen(uuid, damage) {
     const actor = fromUuidSync(uuid);
     if (!actor.hasPlayerOwner && !game.settings.get("pf2e-rpg-numbers", 'shake-gm-enabled')) return;
+    const gmID = game.users.activeGM.id;
     const hp = actor.system.attributes.hp;
     const shakeType = game.settings.get("pf2e-rpg-numbers", 'shake-intensity-type');
     const max = game.settings.get("pf2e-rpg-numbers", 'shake-intensity-max');
@@ -297,9 +298,9 @@ export function shakeScreen(uuid, damage) {
     }
     let userToShake;
     if (actor.hasPlayerOwner) {
-        userToShake = Object.entries(actor.ownership).filter(perm => perm[1] === 3).map(p => p[1])
+        userToShake = Object.entries(actor.ownership).filter(perm => perm[1] === 3 && perm[0] !== gmID).map(p => p[0]);
     } else {
-        userToShake = [game.users.activeGM.id];
+        userToShake = [gmID];
     }
     new Sequence()
         .canvasPan()
