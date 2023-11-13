@@ -65,8 +65,8 @@
                 "hint": "Show total as a number in the center of the token in addition to other damage numbers"
             },
             "check-enabled": {
-                "name": "Enable Checks",
-                "hint": "Show number pop ups when attempting checks"
+                "name": "[Checks] Enable RPG Checks & Attacks",
+                "hint": "Show number pop ups when attempting checks & attacjs"
             },
             "check-duration": {
                 "name": "Check Duration",
@@ -77,7 +77,7 @@
                 "hint": "Size of Check Font"
             },
             "dmg-enabled": {
-                "name": "Enable Damage Numbers",
+                "name": "[Damage] Enable Damage Numbers",
                 "hint": "Show damage numbers"
             },
             "check-outcome-result": {
@@ -90,7 +90,7 @@
                 }
             },
             "shake-enabled": {
-                "name": "Shake the screen when taking damage",
+                "name": "[Shake] Enable Damage Shake",
                 "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"
             },
             "shake-duration": {
