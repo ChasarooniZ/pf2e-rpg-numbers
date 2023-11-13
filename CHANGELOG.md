@@ -1,3 +1,8 @@
+# 11.5.0 - Shaking Things Up
+- **Screen Shake Feature**
+  - Adds new option to shake the screen for the token owner when taking damage
+  - Options to set scaling etc.
+![screen shake example](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/923e8814-be6f-424b-82b2-bf23d317f465)
 # 11.4.0 Checks
 - Added option to show check results
   - Should only ever show rolls the user has access to per user
