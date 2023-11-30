@@ -1,3 +1,5 @@
+# 11.6.0 - PF2e Toolbelt Support
+- Support for using PF2E toolbelt's token target feature as the source of targets for damage popups
 # 11.5.0 - Shaking Things Up
 - **Screen Shake Feature**
   - Adds new option to shake the screen for the token owner when taking damage
