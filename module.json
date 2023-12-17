@@ -39,6 +39,12 @@
     "scripts/module.js",
     "scripts/settings.js"
   ],
+  "scripts": [
+    "scripts/utlity.js",
+    "scripts/helpers/anim.js",
+    "scripts/helpers/misc.js",
+    "scripts/helpers/Rollterms.js"
+  ],
   "languages": [
     {
       "lang": "en",
