@@ -1,7 +1,7 @@
-import { debugLog, renderTokenConfigHandler, MODULE_ID } from "./helpers/misc.js"
-import { generateDamageScroll, generateRollScroll, shakeScreen, damageShakeRollDamage, shakeOnDamageToken } from "./helpers/anim.js"
+import { debugLog, MODULE_ID } from "./helpers/misc.js"
+import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageToken } from "./helpers/anim.js"
 import { getDamageList } from "./helpers/rollTerms.js"
-import { injectConfig} from "./helpers/injectConfig.js"
+import { injectConfig } from "./helpers/injectConfig.js"
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
@@ -63,7 +63,8 @@ Hooks.on("ready", () => {
                         min: 0,
                         max: 360,
                     }
-                });
+                }
+            );
         }
     });
     //Hooks.on("renderTokenConfig", renderTokenConfigHandler);
