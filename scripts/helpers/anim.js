@@ -321,7 +321,8 @@ export function damageShakeRollDamage(token, targets) {
     })
 }
 
-export function shakeOnDamageToken(token) {
+export function shakeOnDamageToken(actor_uuid) {
+    const token = fromUuidSync(actor_uuid).token;
     const { x: tok_x, y: tok_y, w: tok_width } = token;
     const shake_distance = 0.2;
     const shakes = 7
