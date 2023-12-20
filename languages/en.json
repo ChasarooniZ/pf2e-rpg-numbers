@@ -121,6 +121,10 @@
             "dmg-shake-directional-enabled": {
                 "name": "[Token Shake] Enable Token shaking on damage",
                 "hint": "When you apply damage to a token cause it to shake"
+            },
+            "rotate-on-attack": {
+                "name": "[Attack Rotate] Enable Token rotating on attacking",
+                "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determien where the front is"
             }
         },
         "display-text": {
