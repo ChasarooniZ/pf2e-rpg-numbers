@@ -323,7 +323,7 @@ export function damageShakeRollDamage(token, targets) {
 
 export function shakeOnDamageToken(actor_uuid) {
     if (!actor_uuid) return;
-    let tok_uuid = actor_uuid.split('.').slice(0,-2).join('.');
+    let tok_uuid = actor_uuid.split('.').slice(0, -2).join('.');
     const token = fromUuidSync(tok_uuid).token.object;
     const { x: tok_x, y: tok_y, w: tok_width } = token;
     const shake_distance = 0.2;
@@ -331,18 +331,18 @@ export function shakeOnDamageToken(actor_uuid) {
     const seq = new Sequence();
     for (let i = 0; i < shakes; i++) {
         const sign = i % 2 === 0 ? 1 : -1;
-        const details = { x: tok_x + (tok_width * shake_distance * sign), y: tok_y, ease: "easeInOutSine" };
+        const details = { x: tok_x + (tok_width * shake_distance * sign), y: tok_y };
         seq.animation()
             .waitUntilFinished(10)
             .on(token)
             .moveSpeed(10)
-            .moveTowards(details)
+            .moveTowards(details, { ease: "easeInOutSine" })
     }
 
     seq.animation()
         .waitUntilFinished()
         .on(token)
         .moveSpeed(10)
-        .moveTowards({ x: tok_x, y: tok_y, ease: 'easeInOutSine' })
+        .moveTowards({ x: tok_x, y: tok_y }, { ease: 'easeInOutSine' })
         .play()
 }
