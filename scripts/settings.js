@@ -254,9 +254,9 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    game.settings.register("pf2e-rpg-numbers", "dmg-shake-enabled", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-enabled.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-enabled.hint"),
+    game.settings.register("pf2e-rpg-numbers", "dmg-shake-directional-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-directional-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-directional-enabled.hint"),
         scope: "world",
         config: true,
         default: false,
