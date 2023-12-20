@@ -43,7 +43,7 @@
     "scripts/utility.js",
     "scripts/helpers/anim.js",
     "scripts/helpers/misc.js",
-    "scripts/helpers/rollterms.js"
+    "scripts/helpers/rollTerms.js"
   ],
   "languages": [
     {
