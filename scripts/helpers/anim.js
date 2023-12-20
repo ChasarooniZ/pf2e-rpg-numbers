@@ -124,7 +124,7 @@ export function generateDamageScroll(dmg_list, targets) {
  * Generates scrolling text for a Check
  * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | '', type: 'attack-roll'}} roll_deets 
  */
- export function generateRollScroll(roll_deets) {
+export function generateRollScroll(roll_deets) {
     const fontSize = game.settings.get("pf2e-rpg-numbers", 'check-font-size');
     const colors = {
         none: 'white',

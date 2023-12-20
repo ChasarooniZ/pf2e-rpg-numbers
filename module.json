@@ -26,24 +26,18 @@
     ],
     "requires": [
       {
-          "id": "sequencer",
-          "type": "module",
-          "compatibility": {
-              "minimum": "3.0.0",
-              "verified": "3.1.2"
-          }
+        "id": "sequencer",
+        "type": "module",
+        "compatibility": {
+          "minimum": "3.0.0",
+          "verified": "3.1.2"
+        }
       }
-  ]
+    ]
   },
   "esmodules": [
     "scripts/module.js",
     "scripts/settings.js"
-  ],
-  "scripts": [
-    "scripts/utility.js",
-    "scripts/helpers/anim.js",
-    "scripts/helpers/misc.js",
-    "scripts/helpers/rollTerms.js"
   ],
   "languages": [
     {
