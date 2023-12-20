@@ -1,0 +1,12 @@
+<div class="form-group">
+	<label>{{localize "pf2e-rpg-numbers.options.rotationOffset.name"}}</label>
+	<div class="form-fields">
+		<input
+			type="number"
+			name="flags.pf2e-rpg-numbers.rotationOffset"
+			data-type="Number"
+			value="{{rotationOffset}}"
+			placeholder="0"
+		/>
+	</div>
+</div>

@@ -130,6 +130,11 @@
                 "success": "Success",
                 "criticalSuccess": "Critical Success"
             }
+        },
+        "options": {
+                "rotationOffset": {
+                    "name": "Rotation Offset"
+                }
         }
     }
 }

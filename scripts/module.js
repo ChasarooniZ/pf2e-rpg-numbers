@@ -1,6 +1,7 @@
-import { debugLog } from "./helpers/misc.js"
+import { debugLog, renderTokenConfigHandler, MODULE_ID } from "./helpers/misc.js"
 import { generateDamageScroll, generateRollScroll, shakeScreen, damageShakeRollDamage, shakeOnDamageToken } from "./helpers/anim.js"
 import { getDamageList } from "./helpers/rollTerms.js"
+
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
@@ -8,12 +9,12 @@ Hooks.on("ready", () => {
     //ui.notifications.notify("PF2e RPG Numbers is ready")
     // game.RPGNumbers = new RPGNumbers();
     Hooks.on("createChatMessage", async function (msg, status, id) {
-        if (!game.settings.get("pf2e-rpg-numbers", 'enabled')) return;
+        if (!game.settings.get(MODULE_ID, 'enabled')) return;
         debugLog({
             msg
         })
         if (game.user.isGM) {
-            if (msg.isDamageRoll && game.settings.get("pf2e-rpg-numbers", 'dmg-enabled')) {
+            if (msg.isDamageRoll && game.settings.get(MODULE_ID, 'dmg-enabled')) {
                 const dmg_list = getDamageList(msg.rolls);
                 const targets = getTargetList(msg);
                 debugLog({
@@ -22,7 +23,7 @@ Hooks.on("ready", () => {
                 })
                 generateDamageScroll(dmg_list, targets);
             }
-            if (msg.isCheckRoll && game.settings.get("pf2e-rpg-numbers", 'check-enabled')) {
+            if (msg.isCheckRoll && game.settings.get(MODULE_ID, 'check-enabled')) {
                 const roll_deets = {
                     outcome: msg.flags.pf2e.context.outcome ?? 'none',
                     token: msg.token,
@@ -32,21 +33,21 @@ Hooks.on("ready", () => {
                 }
                 generateRollScroll(roll_deets);
             }
-            // if (msg.isDamageRoll && game.settings.get("pf2e-rpg-numbers", 'dmg-shake-directional-enabled')) {
+            // if (msg.isDamageRoll && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
             //     const targets = getTargetList(msg);
             //     damageShakeRollDamage(msg.token, targets);
             // }
-            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'dmg-shake-directional-enabled')) {
+            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
                 shakeOnDamageToken(msg.flags.pf2e.appliedDamage?.uuid)
             }
-            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'shake-enabled')) {
+            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'shake-enabled')) {
                 let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
                 if (dmg)
                     shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
             }
         }
     });
-
+    Hooks.on("renderTokenConfig", renderTokenConfigHandler);
     console.log("PF2e RPG Numbers is ready");
 })
 
@@ -59,5 +60,13 @@ export function getTargetList(msg) {
     } else { // No pf2e target damage module
         return [msg?.target?.token?.id ?? msg.token.id];
     }
+}
+
+export function createUpdateMessage() {
+    
+    ChatMessage.create({
+        content: chatContent,
+        whisper: ChatMessage.getWhisperRecipients("GM"),
+      });
 }
 
