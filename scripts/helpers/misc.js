@@ -22,25 +22,28 @@ export function debugLog(data, context = "") {
 		html,
 		{
 			moduleId: MODULE_ID,
-			tab: {
-				name: MODULE_ID,
+            inject: `.tab[data-tab="character"]`,
+            "rotationOffset": {
+                type: "number",
 				label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
-				icon: "fas fa-caret-down fa-fw",
-			},
+				placeholder: 0,
+                min: 0,
+                max: 360,
+            }
 		},
 		tokenConfig.object
 	);
-	const posTab = html.find(`.tab[data-tab="character"]`);
+	// const posTab = html.find(`.tab[data-tab="character"]`);
 
-	if (tokenConfig.options.sheetConfig) {
-		var rotationOffset = tokenConfig.object.getFlag(MODULE_ID, "rotationOffset") || "0";
-	} else {
-		rotationOffset = tokenConfig.token.flags?.[MODULE_ID]?.rotationOffset || "0";
-	}
-	let data = {
-		rotationOffset: rotationOffset,
-	};
+	// if (tokenConfig.options.sheetConfig) {
+	// 	var rotationOffset = tokenConfig.object.getFlag(MODULE_ID, "rotationOffset") || "0";
+	// } else {
+	// 	rotationOffset = tokenConfig.token.flags?.[MODULE_ID]?.rotationOffset || "0";
+	// }
+	// let data = {
+	// 	rotationOffset: rotationOffset,
+	// };
 
-	const insertHTML = await renderTemplate("modules/" + MODULE_ID + "/templates/token-config.html", data);
-	posTab.append(insertHTML);
+	// const insertHTML = await renderTemplate("modules/" + MODULE_ID + "/templates/token-config.html", data);
+	// posTab.append(insertHTML);
 }
