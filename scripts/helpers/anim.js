@@ -322,6 +322,7 @@ export function damageShakeRollDamage(token, targets) {
 }
 
 export function shakeOnDamageToken(actor_uuid) {
+    if (!actor_uuid) return;
     let tok_uuid = actor_uuid.split('.').slice(0,-2).join('.');
     const token = fromUuidSync(tok_uuid).token.object;
     const { x: tok_x, y: tok_y, w: tok_width } = token;
