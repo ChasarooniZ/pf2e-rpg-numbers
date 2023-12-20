@@ -1,7 +1,7 @@
 import { debugLog, renderTokenConfigHandler, MODULE_ID } from "./helpers/misc.js"
 import { generateDamageScroll, generateRollScroll, shakeScreen, damageShakeRollDamage, shakeOnDamageToken } from "./helpers/anim.js"
 import { getDamageList } from "./helpers/rollTerms.js"
-
+import { injectConfig} from "./helpers/injectConfig.js"
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
@@ -62,7 +62,7 @@ Hooks.on("ready", () => {
                 });
         }
     });
-    Hooks.on("renderTokenConfig", renderTokenConfigHandler);
+    //Hooks.on("renderTokenConfig", renderTokenConfigHandler);
     console.log("PF2e RPG Numbers is ready");
 })
 

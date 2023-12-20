@@ -259,7 +259,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-directional-enabled.hint"),
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
 
@@ -268,7 +268,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.rotate-on-attack.hint"),
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
 
