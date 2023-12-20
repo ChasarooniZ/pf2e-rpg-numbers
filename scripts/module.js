@@ -1,6 +1,6 @@
 import { debugLog } from "./helpers/misc.js"
 import { generateDamageScroll, generateRollScroll, shakeScreen, damageShakeRollDamage, shakeOnDamageToken } from "./helpers/anim.js"
-import { getDamageList } from "./helpers/trollTerms.js"
+import { getDamageList } from "./helpers/rollTerms.js"
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
