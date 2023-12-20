@@ -17,22 +17,18 @@ export function debugLog(data, context = "") {
  * @param {JQuery} html
  */
  export async function renderTokenConfigHandler(tokenConfig, html) {
-	injectConfig.inject(
-		tokenConfig,
-		html,
-		{
-			moduleId: MODULE_ID,
-            inject: `.tab[data-tab="character"]`,
-            "rotationOffset": {
-                type: "number",
-				label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
-				placeholder: 0,
-                min: 0,
-                max: 360,
-            }
-		},
-		tokenConfig.object
-	);
+    injectConfig.quickInject([{documentName: "Token"}],
+    {
+        moduleId: MODULE_ID,
+        inject: `.tab[data-tab="character"]`,
+        "rotationOffset": {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
+            default: 0,
+            min: 0,
+            max: 360,
+        }
+    });
 	// const posTab = html.find(`.tab[data-tab="character"]`);
 
 	// if (tokenConfig.options.sheetConfig) {
