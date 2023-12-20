@@ -254,7 +254,14 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-
+    game.settings.register("pf2e-rpg-numbers", "dmg-shake-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-shake-enabled.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
 
     game.settings.register("pf2e-rpg-numbers", "debug-mode", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),

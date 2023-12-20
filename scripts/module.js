@@ -1,6 +1,6 @@
 import { debugLog } from "./helpers/misc.js"
-import { generateDamageScroll, generateRollScroll, shakeScreen } from "./helpers/anim.js"
-import { getDamageList } from "./helpers/rollTerms.js"
+import { generateDamageScroll, generateRollScroll, shakeScreen, damageShakeRollDamage, shakeOnDamageToken } from "./helpers/anim.js"
+import { getDamageList } from "./helpers/trollTerms.js"
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
@@ -31,6 +31,13 @@ Hooks.on("ready", () => {
                     type: msg.flags.pf2e.context.type
                 }
                 generateRollScroll(roll_deets);
+            }
+            // if (msg.isDamageRoll && game.settings.get("pf2e-rpg-numbers", 'dmg-shake-directional-enabled')) {
+            //     const targets = getTargetList(msg);
+            //     damageShakeRollDamage(msg.token, targets);
+            // }
+            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'dmg-shake-directional-enabled')) {
+                shakeOnDamageToken(msg.token)
             }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get("pf2e-rpg-numbers", 'shake-enabled')) {
                 let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;

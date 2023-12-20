@@ -117,6 +117,10 @@
             "shake-gm-enabled": {
                 "name": "Enable shaking for GM",
                 "hint": "Causes GM to experience screen shake for any actors and their tokens that don't have a player owner"
+            },
+            "dmg-shake-gm-enabled": {
+                "name": "[Token Shake] Enable Token shaking on damage",
+                "hint": "When you apply damage to a token cause it to shake"
             }
         },
         "display-text": {
