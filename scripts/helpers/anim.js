@@ -322,7 +322,7 @@ export function damageShakeRollDamage(token, targets) {
 }
 
 export function shakeOnDamageToken(token) {
-    const { x: tok_x, y: tok_y, w: tok_width } = target;
+    const { x: tok_x, y: tok_y, w: tok_width } = token;
     const shake_distance = 0.2;
     const shakes = 7
     const seq = new Sequence();
@@ -331,14 +331,14 @@ export function shakeOnDamageToken(token) {
         const details = { x: tok_x + (tok_width * shake_distance * sign), y: tok_y, ease: "easeInOutSine" };
         seq.animation()
             .waitUntilFinished(10)
-            .on(target)
+            .on(token)
             .moveSpeed(10)
             .moveTowards(details)
     }
 
     seq.animation()
         .waitUntilFinished()
-        .on(target)
+        .on(token)
         .moveSpeed(10)
         .moveTowards({ x: tok_x, y: tok_y, ease: 'easeInOutSine' })
         .play()
