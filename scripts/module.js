@@ -46,6 +46,21 @@ Hooks.on("ready", () => {
                     shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
             }
         }
+
+        if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
+            injectConfig.quickInject([{ documentName: "Token" }],
+                {
+                    moduleId: MODULE_ID,
+                    inject: `.tab[data-tab="character"]`,
+                    "rotationOffset": {
+                        type: "range",
+                        label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
+                        default: 0,
+                        min: 0,
+                        max: 360,
+                    }
+                });
+        }
     });
     Hooks.on("renderTokenConfig", renderTokenConfigHandler);
     console.log("PF2e RPG Numbers is ready");
@@ -63,10 +78,9 @@ export function getTargetList(msg) {
 }
 
 export function createUpdateMessage() {
-    
     ChatMessage.create({
         content: chatContent,
         whisper: ChatMessage.getWhisperRecipients("GM"),
-      });
+    });
 }
 
