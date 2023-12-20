@@ -3,11 +3,11 @@ import { generateDamageScroll, generateRollScroll, shakeScreen } from "./helpers
 import { getDamageList } from "./helpers/rollTerms.js"
 
 // HOOKS STUFF
-Hooks.on("ready", async () => {
+// Hooks.on("ready", async () => {
     //console.error("PF2e RPG Numbers is ready");
     //ui.notifications.notify("PF2e RPG Numbers is ready")
-    //game.RPGNumbers = new RPGNumbers();
-})
+    // game.RPGNumbers = new RPGNumbers();
+// })
 
 Hooks.on("createChatMessage", async function (msg, status, id) {
     if (!game.settings.get("pf2e-rpg-numbers", 'enabled')) return;
