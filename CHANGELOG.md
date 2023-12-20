@@ -1,3 +1,5 @@
+# 11.7.0
+- Refactor of code for easier maintenance
 # 11.6.0 - PF2e Toolbelt Support
 - Support for using PF2E toolbelt's token target feature as the source of targets for damage popups
 # 11.5.0 - Shaking Things Up
