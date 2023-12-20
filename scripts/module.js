@@ -3,7 +3,7 @@ import { generateDamageScroll, generateRollScroll, shakeScreen } from "./helpers
 import { getDamageList } from "./helpers/rollTerms.js"
 
 // HOOKS STUFF
-Hooks.once("ready", async () => {
+Hooks.once("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     //ui.notifications.notify("PF2e RPG Numbers is ready")
     // game.RPGNumbers = new RPGNumbers();
