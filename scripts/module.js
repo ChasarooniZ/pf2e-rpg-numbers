@@ -51,7 +51,11 @@ Hooks.on("ready", () => {
             injectConfig.quickInject([{ documentName: "Token" }],
                 {
                     moduleId: MODULE_ID,
-                    inject: `.tab[data-tab="character"]`,
+                    tab: {
+                        name: MODULE_ID,
+                        label: "PF2e RPG #s",
+                        icon: "fas fa-dragon"
+                    },
                     "rotationOffset": {
                         type: "range",
                         label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
