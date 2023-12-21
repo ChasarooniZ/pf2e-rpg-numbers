@@ -61,11 +61,9 @@ Hooks.on("ready", () => {
                     icon: "fas fa-dragon"
                 },
                 "rotationOffset": {
-                    type: "range",
+                    type: "number",
                     label: game.i18n.localize("pf2e-rpg-numbers.options.rotation-offset"),
                     default: 0,
-                    min: 0,
-                    max: 360,
                 }
             }
         );
