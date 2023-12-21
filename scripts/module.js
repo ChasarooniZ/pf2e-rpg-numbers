@@ -37,7 +37,7 @@ Hooks.on("ready", () => {
             //     const targets = getTargetList(msg);
             //     damageShakeRollDamage(msg.token, targets);
             // }
-            if (!!msg.flags?.pf2e?.context?.type === "attack-roll" && game.settings.get(MODULE_ID, 'rotate-on-attack')) {
+            if (msg.flags?.pf2e?.context?.type === "attack-roll" && game.settings.get(MODULE_ID, 'rotate-on-attack')) {
                 turnTokenOnAttack(msg?.token?.object, msg?.target?.object);
             }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
