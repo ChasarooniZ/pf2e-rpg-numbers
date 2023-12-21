@@ -143,9 +143,12 @@
                 "criticalSuccess": "Critical Success"
             }
         },
-        "options": {
+        "token-options": {
                 "tab-label": "PF2e RPG #s",
-                "rotation-offset": "Rotation Offset"
+                "rotation-offset": {
+                    "name": "Rotation Offset",
+                    "hint": "DOES NOT WORK, due to a bug with sequencer atm"
+                }
         }
     }
 }
