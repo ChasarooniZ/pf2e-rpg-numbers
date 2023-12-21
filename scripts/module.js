@@ -46,28 +46,27 @@ Hooks.on("ready", () => {
                     shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
             }
         }
-
-        if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
-            injectConfig.quickInject([{ documentName: "Token" }],
-                {
-                    moduleId: MODULE_ID,
-                    tab: {
-                        name: MODULE_ID,
-                        label: "PF2e RPG #s",
-                        icon: "fas fa-dragon"
-                    },
-                    "rotationOffset": {
-                        type: "range",
-                        label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
-                        default: 0,
-                        min: 0,
-                        max: 360,
-                    }
-                }
-            );
-        }
     });
-    //Hooks.on("renderTokenConfig", renderTokenConfigHandler);
+
+    if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
+        injectConfig.quickInject([{ documentName: "Token" }],
+            {
+                moduleId: MODULE_ID,
+                tab: {
+                    name: MODULE_ID,
+                    label: "PF2e RPG #s",
+                    icon: "fas fa-dragon"
+                },
+                "rotationOffset": {
+                    type: "range",
+                    label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
+                    default: 0,
+                    min: 0,
+                    max: 360,
+                }
+            }
+        );
+    }
     console.log("PF2e RPG Numbers is ready");
 })
 
