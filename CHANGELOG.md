@@ -1,3 +1,14 @@
+# 11.8.0
+- **Token Damage Shake**
+  - Added new option that causes tokens to shake when they take damage (from a chat card)
+- **Rotate on Attack**
+  - Added new option to have token rotate when you make an attack (uses the attack roll type to determine)
+  - Token rotates back after a second or so
+  - Will probably add more optional settings
+  - Have written stuff for token properties to set offset to the animation (so your token's "face" is looking at the target), but Sequencer seems to have a bug related to offset for rotate atm, so am waiting for that to be fixed for this to work
+- **Check Color Themes**
+  - Added start of compatability of themes so you can have color options, will expand as requested
+  - Will also be expanding settings when I go back to change a bunch of how I handled settings
 # 11.7.0
 - Refactor of code for easier maintenance
 # 11.6.0 - PF2e Toolbelt Support
