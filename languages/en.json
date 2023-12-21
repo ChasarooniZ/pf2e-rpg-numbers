@@ -89,6 +89,14 @@
                     "outcome": "Outcome"
                 }
             },
+            "check-color-scheme": {
+                "name": "Select check theme",
+                "hint": "(Changes coloration of checks) Currently have a default theme, and a dark mode theme, will add more visibility etc. for it later",
+                "choices": {
+                    "default": "Default",
+                    "dark": "Dark Theme"
+                }
+            },
             "shake-enabled": {
                 "name": "[Shake] Enable Damage Shake",
                 "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"

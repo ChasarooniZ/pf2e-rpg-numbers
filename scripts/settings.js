@@ -1,4 +1,5 @@
 Hooks.on("init", () => {
+    const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
 
     game.settings.register("pf2e-rpg-numbers", "enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.name"),
@@ -153,6 +154,18 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "check-color-scheme", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-color-scheme.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-color-scheme.hint"),
+        scope: "world",
+        config: true,
+        default: "default",
+        type: String,
+        choices: {
+            ["default"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-color-scheme.choices.default"),
+            ["dark"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-color-scheme.choices.dark"),
+        },
+    });
     game.settings.register("pf2e-rpg-numbers", "check-outcome-result", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.check-outcome-result.hint"),
@@ -270,6 +283,7 @@ Hooks.on("init", () => {
         config: true,
         default: true,
         type: Boolean,
+        onChange: debouncedReload
     });
 
     game.settings.register("pf2e-rpg-numbers", "debug-mode", {

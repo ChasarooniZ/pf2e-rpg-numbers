@@ -126,16 +126,26 @@ export function generateDamageScroll(dmg_list, targets) {
  */
 export function generateRollScroll(roll_deets) {
     const fontSize = game.settings.get("pf2e-rpg-numbers", 'check-font-size');
-    const colors = {
-        none: 'white',
-        criticalFailure: 'rgb(255, 0, 0)',
-        failure: 'rgb(255, 69, 0)',
-        success: 'rgb(0, 0, 255)',
-        criticalSuccess: 'rgb(0, 128, 0)'
-
+    const theme = game.settings.get("pf2e-rpg-numbers", 'check-color-scheme');
+    const colors =
+    {
+        default: {
+            none: 'white',
+            criticalFailure: 'rgb(255, 0, 0)',
+            failure: 'rgb(255, 69, 0)',
+            success: 'rgb(0, 0, 255)',
+            criticalSuccess: 'rgb(0, 128, 0)'
+        },
+        dark: {
+            none: 'white',
+            criticalFailure: 'rgb(255, 0, 0)',
+            failure: 'rgb(255, 129, 0)',
+            success: 'rgb(0, 241, 255)',
+            criticalSuccess: 'rgb(107, 255, 0)'
+        }
     }
     const style = {
-        "fill": colors[roll_deets.outcome],
+        "fill": colors[theme][roll_deets.outcome],
         "fontSize": fontSize,
         align: "center",
         dropShadow: true,
