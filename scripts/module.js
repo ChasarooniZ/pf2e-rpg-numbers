@@ -1,5 +1,5 @@
 import { debugLog, MODULE_ID } from "./helpers/misc.js"
-import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageToken } from "./helpers/anim.js"
+import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageToken, turnTokenOnAttack } from "./helpers/anim.js"
 import { getDamageList } from "./helpers/rollTerms.js"
 import { injectConfig } from "./helpers/injectConfig.js"
 
@@ -37,6 +37,9 @@ Hooks.on("ready", () => {
             //     const targets = getTargetList(msg);
             //     damageShakeRollDamage(msg.token, targets);
             // }
+            if (!!msg.flags.pf2e.context.type && game.settings.get(MODULE_ID, 'rotate-on-attack')) {
+                turnTokenOnAttack(msg?.token?.object, msg?.target?.object);
+            }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
                 shakeOnDamageToken(msg.flags.pf2e.appliedDamage?.uuid)
             }

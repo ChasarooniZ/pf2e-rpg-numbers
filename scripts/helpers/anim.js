@@ -346,3 +346,21 @@ export function shakeOnDamageToken(actor_uuid) {
         .moveTowards({ x: tok_x, y: tok_y }, { ease: 'easeInOutSine' })
         .play()
 }
+
+/**
+ * Turns token towards target when attacking
+ * @param {*} token 
+ * @param {*} target 
+ */
+export function turnTokenOnAttack(token, target) {
+    if (!token || !target || token === target) return;
+    const angle = token.angle;
+    new Sequence().animation()
+        .on(token)
+        .rotateTowards(target, { duration: 500, ease: 'easeInCubic' })
+        .waitUntilFinished(250)
+        .animation()
+        .on(token)
+        .rotateIn(angle, 500, { ease: "easeOutCubic" })
+        .play()
+}
