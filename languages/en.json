@@ -136,9 +136,8 @@
             }
         },
         "options": {
-                "rotationOffset": {
-                    "name": "Rotation Offset"
-                }
+                "tab-label": "PF2e RPG #s",
+                "rotation-offset": "Rotation Offset"
         }
     }
 }
