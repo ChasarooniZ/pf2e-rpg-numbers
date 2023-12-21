@@ -57,12 +57,12 @@ Hooks.on("ready", () => {
                 moduleId: MODULE_ID,
                 tab: {
                     name: MODULE_ID,
-                    label: "PF2e RPG #s",
+                    label: game.i18n.localize("pf2e-rpg-numbers.options.tab-label"),
                     icon: "fas fa-dragon"
                 },
                 "rotationOffset": {
                     type: "range",
-                    label: game.i18n.localize("pf2e-rpg-numbers.options.rotationOffset"),
+                    label: game.i18n.localize("pf2e-rpg-numbers.options.rotation-offset"),
                     default: 0,
                     min: 0,
                     max: 360,
