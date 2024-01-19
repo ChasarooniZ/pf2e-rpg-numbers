@@ -286,7 +286,7 @@ export function getVisibleUsers(tok) {
     let list = game.users.filter(u => u.isGM).map(u => u.id);
     if (!tok.document.hidden) {
         // check vision if pf2e perception active
-        if (game.modules.get("pf2e-perception").active) {
+        if (game.modules.get("pf2e-perception")?.active) {
             let cantSee = [];
             for (const key in tok.document?.flags?.['pf2e-perception']) {
                 if (['undetected', 'unnoticed'].includes(tok.document?.flags?.['pf2e-perception']?.[key]?.visibility)) {
