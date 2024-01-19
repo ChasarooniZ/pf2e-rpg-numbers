@@ -1,4 +1,10 @@
-# 11.8.0
+# 11.8.1 - Drental to the Rescue
+- Fixed Issue where showing Damage Numbers to specific players wouldn't work without perception module (thanks to @Drental)
+- Token Damage Shake
+  - @pedrogrullada has informed me that the **Token Damage Shake** feature causes auras to behave in unexpected ways.
+  - Added a warning to the tooltip for it
+  - Advice is that if that is an issue disable that feature for now, My plan is to deal with it sometime before the next update
+# 11.8.0 - Shaking and Turning to a New Theme
 - **Token Damage Shake**
   - Added new option that causes tokens to shake when they take damage (from a chat card)
 - **Rotate on Attack**
@@ -9,7 +15,7 @@
 - **Check Color Themes**
   - Added start of compatability of themes so you can have color options, will expand as requested
   - Will also be expanding settings when I go back to change a bunch of how I handled settings
-# 11.7.0
+# 11.7.0 - Code Refactor
 - Refactor of code for easier maintenance
 # 11.6.0 - PF2e Toolbelt Support
 - Support for using PF2E toolbelt's token target feature as the source of targets for damage popups
