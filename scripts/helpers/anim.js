@@ -370,10 +370,10 @@ export function shakeOnDamageToken(actor_uuid) {
 export function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
     const angle = token.angle;
-    const angle_offset = token.data.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
+    const rotationOffset = token.data.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
     new Sequence().animation()
         .on(token)
-        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', rotationOffset: angle_offset })
+        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', rotationOffset})
         .waitUntilFinished(250)
         .animation()
         .on(token)
