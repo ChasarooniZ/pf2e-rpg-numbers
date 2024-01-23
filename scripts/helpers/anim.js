@@ -192,7 +192,7 @@ export function generateRollScroll(roll_deets) {
         .scaleIn(0.5, duration / 3)
         .fadeOut(duration / 3)
         .zIndex(2)
-        .forUsers(roll_deets.whisper.length === 0 ? game.users.map(u => u.id) : roll_deets.whisper)
+        .forUsers(getVisibleUsers(token).filter(player => (roll_deets.whisper.length === 0 ? game.users.map(u => u.id) : roll_deets.whisper).includes(player)))
         .play()
 }
 
@@ -256,7 +256,7 @@ export function findTypeWithLargestTotal(dmg_list) {
 }
 
 /**
- * HOw much to scale the font off of (1 = 100% of default font size)
+ * How much to scale the font off of (1 = 100% of default font size)
  * @param {*} scaleType Type of scaling to use
  * @param {*} dmg How much damage was dealt (to know how big to scale it)
  * @param {*} tok Token this is affecting (to know how big to scale it)
@@ -340,25 +340,35 @@ export function shakeOnDamageToken(actor_uuid) {
     if (!actor_uuid) return;
     let tok_uuid = actor_uuid.split('.').slice(0, -2).join('.');
     const token = fromUuidSync(tok_uuid).object;
-    const { x: tok_x, y: tok_y, w: tok_width } = token;
-    const shake_distance = 0.2;
+    const usersToPlayFor = getVisibleUsers(token);
+    const { w: tok_width } = token;
+    const shake_distance_percent = 0.2;
     const shakes = 7
-    const seq = new Sequence();
-    for (let i = 0; i < shakes; i++) {
-        const sign = i % 2 === 0 ? 1 : -1;
-        const details = { x: tok_x + (tok_width * shake_distance * sign), y: tok_y };
-        seq.animation()
-            .waitUntilFinished(10)
-            .on(token)
-            .moveSpeed(10)
-            .moveTowards(details, { ease: "easeInOutSine" })
-    }
+    const duration = 1000;
 
-    seq.animation()
-        .waitUntilFinished()
+    const mov_amt = shake_distance_percent * tok_width;
+    let values = [0];
+    for (let i = 0; i < shakes; i++) {
+        values = values.concat([mov_amt, 0, -mov_amt, 0]);
+    }
+    const it_dur = duration / values.length;
+    new Sequence()
+        .animation()
         .on(token)
-        .moveSpeed(10)
-        .moveTowards({ x: tok_x, y: tok_y }, { ease: 'easeInOutSine' })
+        .hide()
+        .waitUntilFinished()
+        .effect() //Make sure this only plays to people that can see it
+        .atLocation(token)
+        .file(token.document.texture.src)
+        .scaleToObject(1, { considerTokenScale: true })
+        .loopProperty("spriteContainer", "position.x", { values, duration: it_dur, ease: 'easeInOutSine', pingPong: true })
+        .duration(duration)
+        .waitUntilFinished()
+        .forUsers(usersToPlayFor)
+        .animation()
+        .on(token)
+        .show()
+        .waitUntilFinished()
         .play()
 }
 
@@ -373,7 +383,7 @@ export function turnTokenOnAttack(token, target) {
     const rotationOffset = token.data.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
     new Sequence().animation()
         .on(token)
-        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', rotationOffset})
+        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', rotationOffset })
         .waitUntilFinished(250)
         .animation()
         .on(token)
