@@ -2,6 +2,7 @@ import { debugLog, MODULE_ID } from "./helpers/misc.js"
 
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
+    Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
     game.settings.register("pf2e-rpg-numbers", "enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.name"),
@@ -278,8 +279,8 @@ Hooks.on("init", () => {
         type: Boolean,
     });
     game.settings.register("pf2e-rpg-numbers", "tok-shake-distance", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.distance.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.distance.hint"),
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.hint"),
         scope: "world",
         config: true,
         default: 20,
@@ -291,8 +292,8 @@ Hooks.on("init", () => {
         type: Number,
     });
     game.settings.register("pf2e-rpg-numbers", "tok-shake-shakes", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.shakes.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.shakes.hint"),
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.hint"),
         scope: "world",
         config: true,
         default: 7,
@@ -304,8 +305,8 @@ Hooks.on("init", () => {
         type: Number,
     });
     game.settings.register("pf2e-rpg-numbers", "tok-shakes-duration", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.duration.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.duration.hint"),
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"),
         scope: "world",
         config: true,
         default: 500,
@@ -342,14 +343,17 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-
-    Hooks.on("renderSettingsConfig", renderSettingsConfig);
 });
 
+/**
+ * Credit tok PF2e Token Action HUD for the code on this to reference, helped a tooon
+ * @param {} _ 
+ * @param {*} html 
+ */
 export function renderSettingsConfig(_, html) {
     const tab = html.find(`.tab[data-tab=${MODULE_ID}]`);
 
-    function beforeGroup(name, key, dom = "h3") {
+    function beforeGroup(key, name, dom = "h3") {
         const localized = game.i18n.localize(`pf2e-rpg-numbers.module-settings.headers.${key}`);
         tab
             .find(`[name="${MODULE_ID}.${name}"]`)
