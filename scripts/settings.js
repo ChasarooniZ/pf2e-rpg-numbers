@@ -2,7 +2,6 @@ import { debugLog, MODULE_ID } from "./helpers/misc.js"
 
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
-    Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
     game.settings.register("pf2e-rpg-numbers", "enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.name"),
@@ -278,6 +277,45 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-distance", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.distance.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.distance.hint"),
+        scope: "world",
+        config: true,
+        default: 20,
+        range: {
+            min: 1,
+            max: 100,
+            step: 1
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-shakes", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.shakes.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.shakes.hint"),
+        scope: "world",
+        config: true,
+        default: 7,
+        range: {
+            min: 1,
+            max: 20,
+            step: 1
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shakes-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.screen-shake.duration.hint"),
+        scope: "world",
+        config: true,
+        default: 500,
+        range: {
+            min: 0,
+            max: 2000,
+            step: 10
+        },
+        type: Number,
+    });
 
     game.settings.register("pf2e-rpg-numbers", "rotate-on-attack", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.name"),
@@ -303,6 +341,9 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+
+
+    Hooks.on("renderSettingsConfig", renderSettingsConfig);
 });
 
 export function renderSettingsConfig(_, html) {

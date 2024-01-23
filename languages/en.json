@@ -106,7 +106,7 @@
             },
             "screen-shake": {
                 "enabled": {
-                    "name": "Enable Damage Shake, WARNING Currently can do weird stuff to Auras so use at own risk",
+                    "name": "Enable Damage Shake",
                     "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"
                 },
                 "duration": {
@@ -139,6 +139,18 @@
                 "enabled": {
                     "name": "Enable Token shaking on damage",
                     "hint": "When you apply damage to a token cause it to shake"
+                },
+                "distance": {
+                    "name": "Token shaking distance",
+                    "hint": "Distance as % of width of Token"
+                },
+                "shakes": {
+                    "name": "Number of times token shakes",
+                    "hint": "Number of time token shakes"
+                },
+                "duration": {
+                    "name": "Duration of Shake",
+                    "hint": "Amt of time (ms) that token shakes"
                 }
             },
             "rotate-on-attack": {

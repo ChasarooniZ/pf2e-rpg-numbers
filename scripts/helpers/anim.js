@@ -345,14 +345,15 @@ export function shakeOnDamageToken(actor_uuid) {
     const token = fromUuidSync(tok_uuid).object;
     const usersToPlayFor = getVisibleUsers(token);
     const { w: tok_width } = token;
-    const shake_distance_percent = 0.2;
-    const shakes = 7
-    const duration = 1000;
+    const shake_distance_percent = game.settings.get("pf2e-rpg-numbers", 'tok-shake-distance') / 100;
+    const shakes = game.settings.get("pf2e-rpg-numbers", 'tok-shake-shakes');
+    const duration = game.settings.get("pf2e-rpg-numbers", 'tok-shakes-duration');
 
     const mov_amt = shake_distance_percent * tok_width;
     let values = [0];
     for (let i = 0; i < shakes; i++) {
-        values = values.concat([mov_amt, 0, -mov_amt, 0]);
+        const mod = (i % 2) - 1;
+        values = values.concat([mod * mov_amt, 0]);
     }
     const it_dur = duration / values.length;
     new Sequence()
