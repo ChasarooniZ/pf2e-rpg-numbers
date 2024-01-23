@@ -7,7 +7,8 @@
 
 
 # PF2e RPG Numbers
-Shows numbers when you roll to damage.
+A module that started to just show damage numbers when you attack but now does other cool things too
+
 ![attack](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/132d3509-d3a0-4a20-af1b-4f8c89a49c72)
 ## Table of Contents
 - [Features](#features)
@@ -20,9 +21,14 @@ Shows numbers when you roll to damage.
 ### Check Numbers
 - Number or outcome pop ups for attacks & checks
 - ![check](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/773b5b4d-cd00-4007-9eda-85ca4059f8de)
-### Damage Shake
+### On Damage Screen Shake
 - Cause screen to shake when taking damage
 - ![screen shake example](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/04b51492-81c5-4027-b7cb-f8524ec94927)
+### On Damage Token Shake
+- Cause tokens to shake when they take damage
+### Token Rotate on Attack
+- Allow you have the tokens rotate towards who they are attacking upon attacking
+- They will rotate back after a delay
 ## Settings
 - **Enable Module**
   - Enables/disables use of all module features

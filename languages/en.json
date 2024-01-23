@@ -98,7 +98,7 @@
                 }
             },
             "shake-enabled": {
-                "name": "[Shake] Enable Damage Shake",
+                "name": "[Shake] Enable Damage Shake, WARNING Currently can do weird stuff to Auras so use at own risk",
                 "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"
             },
             "shake-duration": {
