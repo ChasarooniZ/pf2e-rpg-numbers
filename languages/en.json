@@ -11,7 +11,8 @@
                 "check-animations": "Checks & Attack Animations",
                 "screen-shake": "Screen Shake",
                 "token-dmg-shake": "Token Damage Shake",
-                "rotate-on-attack": "Rotate on Attack"
+                "rotate-on-attack": "Rotate on Attack",
+                "debug": "Debug"
             },
             "dmg-numbers": {
                 "enabled": {

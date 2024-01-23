@@ -352,7 +352,7 @@ export function shakeOnDamageToken(actor_uuid) {
     const mov_amt = shake_distance_percent * tok_width;
     let values = [0];
     for (let i = 0; i < shakes; i++) {
-        const mod = (i % 2) - 1;
+        const mod = (i % 2) ? 1 : -1;
         values = values.concat([mod * mov_amt, 0]);
     }
     const it_dur = duration / values.length;
