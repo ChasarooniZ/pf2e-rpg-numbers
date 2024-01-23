@@ -132,7 +132,7 @@
             },
             "rotate-on-attack": {
                 "name": "[Attack Rotate] Enable Token rotating on attacking",
-                "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determien where the front is"
+                "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
             }
         },
         "display-text": {

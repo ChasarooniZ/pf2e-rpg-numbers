@@ -331,6 +331,11 @@ export function damageShakeRollDamage(token, targets) {
     })
 }
 
+/**
+ * Shakes token on damage
+ * @param {*} actor_uuid Token's Actor Uuid I am getting token id from via scuffed method
+ * @returns 
+ */
 export function shakeOnDamageToken(actor_uuid) {
     if (!actor_uuid) return;
     let tok_uuid = actor_uuid.split('.').slice(0, -2).join('.');
@@ -368,7 +373,7 @@ export function turnTokenOnAttack(token, target) {
     const angle_offset = token.data.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
     new Sequence().animation()
         .on(token)
-        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', offset: angle_offset })
+        .rotateTowards(target, { duration: 500, ease: 'easeInCubic', rotationOffset: angle_offset })
         .waitUntilFinished(250)
         .animation()
         .on(token)
