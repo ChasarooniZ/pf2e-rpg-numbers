@@ -6,29 +6,36 @@
                 "name": "Enable Module",
                 "hint": "Enables all functionality of module"
             },
+            "headers": {
+                "dmg-numbers": "Damage Numbers",
+                "check-animations": "Checks & Attack Animations",
+                "screen-shake": "Screen Shake",
+                "token-dmg-shake": "Token Damage Shake",
+                "rotate-on-attack": "Rotate on Attack"
+            },
             "dmg-numbers": {
                 "enabled": {
-                    "name": "[Damage #s] Enable Damage Numbers",
+                    "name": "Enable Damage Numbers",
                     "hint": "Show damage numbers"
                 },
                 "font-size": {
-                    "name": "[Damage #s] Font Size",
+                    "name": "Font Size",
                     "hint": "Default size of the damage font"
                 },
                 "max-font-scale": {
-                    "name": "[Damage #s] Maximum Font Scale",
+                    "name": "Maximum Font Scale",
                     "hint": "Maximum Size to scale the damage font to"
                 },
                 "top-offset": {
-                    "name": "[Damage #s] % offset from top of token",
+                    "name": "% offset from top of token",
                     "hint": "Offset percentage from top of token for the damage, input as whole number (IE. 70 is 70%)"
                 },
                 "jitter": {
-                    "name": "[Damage #s] Jitter",
+                    "name": "Jitter",
                     "hint": "How much the damage text will move around its spawn point (0 = doesn't move, 1 is it could spawn on the edges of the token)"
                 },
                 "number-scale-type": {
-                    "name": "[Damage #s] Number Scale Type",
+                    "name": "Number Scale Type",
                     "hint": "Scaling type for the size of the damage RPG Numbers",
                     "choices": {
                         "percent-remaining-health": "% of Remaining HP",
@@ -37,7 +44,7 @@
                     }
                 },
                 "damage-split": {
-                    "name": "[Damage #s] Damage Split",
+                    "name": "Damage Split",
                     "hint": "How to split damage numbers from roll (None: total only, By Type: By damage type, All: Splits all terms)",
                     "choices": {
                         "none": "None",
@@ -46,41 +53,41 @@
                     }
                 },
                 "duration": {
-                    "name": "[Damage #s] Text Duration",
+                    "name": "Text Duration",
                     "hint": "How long until  the damage text despawns in seconds"
                 },
                 "wait-time-between-numbers": {
-                    "name": "[Damage #s] Wait Time between numbers (ms)",
+                    "name": "Wait Time between numbers (ms)",
                     "hint": "How long in between each damage number should the game wait before spawning the next, in milliseconds."
                 },
                 "show-only-GM": {
-                    "name": "[Damage #s] Show numbers only for GM",
+                    "name": "Show numbers only for GM",
                     "hint": "Show  the damage numbers only for the game if you like them, but not that much"
                 },
                 "animation-scale": {
-                    "name": "[Damage #s] Animation Scale",
+                    "name": "Animation Scale",
                     "hint": "How far out from the token should  the damage numbers move"
                 },
                 "show-total": {
-                    "name": "[Damage #s] Show Total",
+                    "name": "Show Total",
                     "hint": "Show total as a number in the center of the token in addition to other damage numbers"
                 }
             },
             "check-animations": {
                 "enabled": {
-                    "name": "[Check Anim] Enable RPG Checks & Attacks",
+                    "name": "Enable RPG Checks & Attacks",
                     "hint": "Show number pop ups when attempting checks & attacks"
                 },
                 "duration": {
-                    "name": "[Check Anim] Check Duration",
+                    "name": "Check Duration",
                     "hint": "Time for check number pop up to show"
                 },
                 "font-size": {
-                    "name": "[Check Anim] Check Font Size",
+                    "name": "Check Font Size",
                     "hint": "Size of Check Font"
                 },
                 "outcome-result": {
-                    "name": "[Check Anim] Choose what to show for d20 check rolls",
+                    "name": "Choose what to show for d20 check rolls",
                     "hint": "Numbers shows the d20 + mods result, outcome shows crit success, success etc., and outcome w/o combat crits shows the outcome without combat critical misses and hits meant as compatibility with pf2e animations.",
                     "choices": {
                         "numbers": "Numbers",
@@ -89,7 +96,7 @@
                     }
                 },
                 "color-scheme": {
-                    "name": "[Check Anim] Select check theme",
+                    "name": "Select check theme",
                     "hint": "(Changes coloration of checks) Currently have a default theme, and a dark mode theme, will add more visibility etc. for it later",
                     "choices": {
                         "default": "Default",
@@ -99,19 +106,19 @@
             },
             "screen-shake": {
                 "enabled": {
-                    "name": "[Screen Shake] Enable Damage Shake, WARNING Currently can do weird stuff to Auras so use at own risk",
+                    "name": "Enable Damage Shake, WARNING Currently can do weird stuff to Auras so use at own risk",
                     "hint": "Shakes the screen when you apply damage using pf2e's apply damage button"
                 },
                 "duration": {
-                    "name": "[Screen Shake] Duration",
+                    "name": "Duration",
                     "hint": "How long in to shake the screen in MS"
                 },
                 "intensity-max": {
-                    "name": "[Screen Shake] Intensity",
+                    "name": "Intensity",
                     "hint": "How hard to shake the screen"
                 },
                 "intensity-type": {
-                    "name": "[Screen Shake] Intensity Scaling",
+                    "name": "Intensity Scaling",
                     "hint": "How should screen shake intensity scale. None - just uses max value, % Current HP - scales off current HP, % Max HP - Scales off Max HP",
                     "choices": {
                         "max": "None",
@@ -120,23 +127,23 @@
                     }
                 },
                 "intensity-include-temp-hp": {
-                    "name": "[Screen Shake] Should scaling include Temp HP",
+                    "name": "Should scaling include Temp HP",
                     "hint": "If you picked an intensity that scales off hp, toggling this on causes it to include temp hp"
                 },
                 "gm-enabled": {
-                    "name": "[Screen Shake] Enable shaking for GM",
+                    "name": "Enable shaking for GM",
                     "hint": "Causes GM to experience screen shake for any actors and their tokens that don't have a player owner"
                 }
             },
             "token-dmg-shake": {
                 "enabled": {
-                    "name": "[Token Shake] Enable Token shaking on damage",
+                    "name": "Enable Token shaking on damage",
                     "hint": "When you apply damage to a token cause it to shake"
                 }
             },
             "rotate-on-attack": {
                 "enabled": {
-                    "name": "[Attack Rotate] Enable Token rotating on attacking",
+                    "name": "Enable Token rotating on attacking",
                     "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
                 }
             },

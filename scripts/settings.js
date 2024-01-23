@@ -1,5 +1,8 @@
+import { debugLog, MODULE_ID } from "./helpers/misc.js"
+
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
+    Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
     game.settings.register("pf2e-rpg-numbers", "enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.enabled.name"),
@@ -301,3 +304,23 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 });
+
+export function renderSettingsConfig(_, html) {
+    const tab = html.find(`.tab[data-tab=${MODULE_ID}]`);
+
+    function beforeGroup(name, key, dom = "h3") {
+        const localized = game.i18n.localize(`pf2e-rpg-numbers.module-settings.headers.${key}`);
+        tab
+            .find(`[name="${MODULE_ID}.${name}"]`)
+            .closest(".form-group")
+            .before(`<${dom}>${localized}</${dom}>`);
+    }
+
+    beforeGroup("dmg-numbers", "dmg-enabled");
+    beforeGroup("check-animations", "check-enabled");
+    beforeGroup("screen-shake", "shake-enabled");
+    beforeGroup("token-dmg-shake", "dmg-shake-directional-enabled");
+    beforeGroup("rotate-on-attack", "rotate-on-attack");
+
+    beforeGroup("debug", "debug-mode");
+}
