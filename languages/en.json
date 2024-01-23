@@ -164,7 +164,7 @@
             "tab-label": "PF2e RPG #s",
             "rotation-offset": {
                 "name": "Rotation Offset",
-                "hint": "DOES NOT WORK, due to a bug with sequencer atm"
+                "hint": "Sets how much to offset rotation by. 0: Bottom, 90: Right, 180: Top, 270: Left"
             }
         }
     }
