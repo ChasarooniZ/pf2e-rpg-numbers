@@ -304,7 +304,7 @@ Hooks.on("init", () => {
         },
         type: Number,
     });
-    game.settings.register("pf2e-rpg-numbers", "tok-shakes-duration", {
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-duration", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"),
         scope: "world",
@@ -316,6 +316,58 @@ Hooks.on("init", () => {
             step: 10
         },
         type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["nothing"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.nothing"),
+            ["%-current-hp"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-current-hp"),
+            ["%-max-hp"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-max-hp"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-distance", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.no"),
+            ["max"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.max"),
+            ["mid"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.mid"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-shakes", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.no"),
+            ["max"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.max"),
+            ["mid"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.mid"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.no"),
+            ["max"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.max"),
+            ["mid"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.mid"),
+        },
     });
 
     game.settings.register("pf2e-rpg-numbers", "rotate-on-attack", {
@@ -364,7 +416,8 @@ export function renderSettingsConfig(_, html) {
     beforeGroup("dmg-numbers", "dmg-enabled");
     beforeGroup("check-animations", "check-enabled");
     beforeGroup("screen-shake", "shake-enabled");
-    beforeGroup("token-dmg-shake", "dmg-shake-directional-enabled");
+    beforeGroup("token-dmg-shake.title", "dmg-shake-directional-enabled");
+    beforeGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     beforeGroup("rotate-on-attack", "rotate-on-attack");
 
     beforeGroup("debug", "debug-mode");

@@ -336,17 +336,15 @@ export function damageShakeRollDamage(token, targets) {
 
 /**
  * Shakes token on damage
- * @param {*} actor_uuid Token's Actor Uuid I am getting token id from via scuffed method
+ * @param {*} actor_uuid Token's Actor Uuid
  * @returns 
  */
-export function shakeOnDamageToken(actor_uuid) {
+export function shakeOnDamageToken(actor_uuid, dmg) {
     if (!actor_uuid) return;
     const token = canvas.tokens.placeables.find(t => t.actor.uuid === actor_uuid);
+    const [shake_distance_percent, shakes, duration] = getTokenShakeScale(token, dmg);
     const usersToPlayFor = getVisibleUsers(token);
     const { w: tok_width } = token;
-    const shake_distance_percent = game.settings.get("pf2e-rpg-numbers", 'tok-shake-distance') / 100;
-    const shakes = game.settings.get("pf2e-rpg-numbers", 'tok-shake-shakes');
-    const duration = game.settings.get("pf2e-rpg-numbers", 'tok-shakes-duration');
 
     const mov_amt = shake_distance_percent * tok_width;
     let values = [0];
@@ -392,4 +390,44 @@ export function turnTokenOnAttack(token, target) {
         .on(token)
         .rotateIn(angle, 500, { ease: "easeOutCubic" })
         .play()
+}
+
+export function getTokenShakeScale(token, dmg) {
+    const result = ['distance', 'shakes', 'duration'];
+    let values = {
+        distance: game.settings.get("pf2e-rpg-numbers", 'tok-shake-distance') / 100,
+        shakes: game.settings.get("pf2e-rpg-numbers", 'tok-shake-shakes'),
+        duration: game.settings.get("pf2e-rpg-numbers", 'tok-shakes-duration')
+    }
+    const scaleType = game.settings.get("pf2e-rpg-numbers", 'tok-shake-scaling-type');
+    const hp = token.actor.system.attributes.hp;
+    let scale = 1;
+    switch (scaleType) {
+        case 'nothing':
+            break;
+        case '%-current-hp':
+            scale = (damage / (hp.value + damage + hp.temp));
+            break;
+        case '%-max-hp':
+            scale = (damage / (hp.max + hp.temp));
+            break
+        default:
+            break;
+    }
+
+    return result.map(it => {
+        let scaling_option = game.settings.get("pf2e-rpg-numbers", `tok-shake-scaling-${it}`);
+        let val = values[it];
+        switch (scaling_option) {
+            case 'no':
+                return val;
+            case 'max':
+                return val * scale;
+            case 'mid':
+                return val * scale * 2;
+            default:
+                return val;
+        }
+    })
+
 }

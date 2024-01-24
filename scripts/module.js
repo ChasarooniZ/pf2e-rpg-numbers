@@ -41,7 +41,7 @@ Hooks.on("ready", () => {
                 turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
             }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
-                shakeOnDamageToken(msg.flags.pf2e.appliedDamage?.uuid)
+                shakeOnDamageToken(msg.flags.pf2e.appliedDamage?.uuid, dmg)
             }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'shake-enabled')) {
                 let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;

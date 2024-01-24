@@ -10,7 +10,10 @@
                 "dmg-numbers": "Damage Numbers",
                 "check-animations": "Checks & Attack Animations",
                 "screen-shake": "Screen Shake",
-                "token-dmg-shake": "Token Damage Shake",
+                "token-dmg-shake": {
+                    "title": "Token Damage Shake",
+                    "scaling": "Token Damage Shake - Scaling"
+                },
                 "rotate-on-attack": "Rotate on Attack",
                 "debug": "Debug"
             },
@@ -152,7 +155,50 @@
                 "duration": {
                     "name": "Duration of Shake",
                     "hint": "Amt of time (ms) that token shakes"
+                },
+                "only-temp-hp-disable-shake": {
+                    "name": "Temporary HP Absorbs Shakes?",
+                    "hint": "Toggle this on if you want the token not to shake if all the damage dealt is only to temporary HP"
+                },
+                "scaling": {
+                    "type": {
+                        "name": "Token Shaking Scaling",
+                        "hint": "What to scale the shaking off of",
+                        "choices": {
+                            "nothing": "Nothing",
+                            "%-current-hp": "% Current HP",
+                            "%-max-hp": "% Max HP"
+                        }
+                    },
+                    "distance": {
+                        "name": "Scale distance of shakes",
+                        "hint": "Scales the distance of the shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
+                        "choices": {
+                            "no": "No",
+                            "max": "Max",
+                            "mid": "Middle"
+                        }
+                    },
+                    "shakes": {
+                        "name": "Scale number of shakes",
+                        "hint": "Scale how many times they shake (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
+                        "choices": {
+                            "no": "No",
+                            "max": "Max",
+                            "mid": "Middle"
+                        }
+                    },
+                    "duration": {
+                        "name": "Scale duration",
+                        "hint": "Scale duration of shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
+                        "choices": {
+                            "no": "No",
+                            "max": "Max",
+                            "mid": "Middle"
+                        }
+                    }
                 }
+
             },
             "rotate-on-attack": {
                 "enabled": {
