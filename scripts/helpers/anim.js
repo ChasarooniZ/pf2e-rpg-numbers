@@ -341,8 +341,7 @@ export function damageShakeRollDamage(token, targets) {
  */
 export function shakeOnDamageToken(actor_uuid) {
     if (!actor_uuid) return;
-    let tok_uuid = actor_uuid.split('.').slice(0, -2).join('.');
-    const token = fromUuidSync(tok_uuid).object;
+    const token = canvas.tokens.placeables.find(t => t.actor.uuid === actor_uuid);
     const usersToPlayFor = getVisibleUsers(token);
     const { w: tok_width } = token;
     const shake_distance_percent = game.settings.get("pf2e-rpg-numbers", 'tok-shake-distance') / 100;
@@ -364,7 +363,7 @@ export function shakeOnDamageToken(actor_uuid) {
         .effect() //Make sure this only plays to people that can see it
         .atLocation(token)
         .file(token.document.texture.src)
-        .scaleToObject(1, { considerTokenScale: true })
+        .scaleToObject(token.document.src.scaleX)
         .loopProperty("spriteContainer", "position.x", { values, duration: it_dur, ease: 'easeInOutSine', pingPong: true })
         .duration(duration)
         .waitUntilFinished()
