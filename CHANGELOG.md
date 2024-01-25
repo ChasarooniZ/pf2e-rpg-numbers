@@ -1,3 +1,21 @@
+# 11.8.2 - Pointing and Customizations
+- Rotate Towards Improvements
+  - Rotation Offsets in token settings now work, so you can have any token turn towards their opponent before the take them out regardless of where they start
+  - ![Rotating_example_1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/b1097d1e-0684-4c12-8d58-f24a203f5e22)
+- Settings Menu Overhaul
+  - Settings menu now has **HEADERS** to make it easier to tell what setting affects what
+  - In addition, I've made a brief pass through the settings text to make it more accurate/easier to read
+- Token Damage Shake Bug Fixes + Updates
+  - Aura Bug Fixes
+    - @pedrogrullada Pointed out this functionality caused issues with auras
+    - I have rewritten token shake to temporarily make the token invisible and shake an image copy of it instead fixing this issues
+  - Settings
+    - There are now settings for `distance`, `shakes`, and `duration`
+    - There is also options to enable some basic scaling options, they are pretty rudimentary, but as I think of ideas I will add more
+- Bug Fixes
+  - Fixed bug where player tokens wouldn't properly shake
+  - Fixed bug where it was possible for checks to be visible for people who couldn't see the token
+
 # 11.8.1 - Drental to the Rescue
 - Fixed Issue where showing Damage Numbers to specific players wouldn't work without perception module (thanks to @Drental)
 - Token Damage Shake
