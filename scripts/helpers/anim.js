@@ -361,8 +361,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
         .effect() //Make sure this only plays to people that can see it
         .atLocation(token)
         .file(token.document.texture.src)
-        .scaleToObject()
-        .spriteScale(token.document.texture.src.scaleX)
+        .scaleToObject(token.document.texture.scaleX)
         .loopProperty("spriteContainer", "position.x", { values, duration: it_dur, ease: 'easeInOutSine', pingPong: true })
         .duration(duration)
         .waitUntilFinished()
