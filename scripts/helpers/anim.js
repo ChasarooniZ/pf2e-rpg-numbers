@@ -407,10 +407,10 @@ export function getTokenShakeScale(token, dmg) {
         case 'nothing':
             break;
         case '%-current-hp':
-            scale = (damage / (hp.value + damage + hp.temp));
+            scale = (dmg / (hp.value + dmg + hp.temp));
             break;
         case '%-max-hp':
-            scale = (damage / (hp.max + hp.temp));
+            scale = (dmg / (hp.max + hp.temp));
             break
         default:
             break;
