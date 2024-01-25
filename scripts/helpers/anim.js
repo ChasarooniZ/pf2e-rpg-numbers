@@ -397,7 +397,7 @@ export function getTokenShakeScale(token, dmg) {
     let values = {
         distance: game.settings.get("pf2e-rpg-numbers", 'tok-shake-distance') / 100,
         shakes: game.settings.get("pf2e-rpg-numbers", 'tok-shake-shakes'),
-        duration: game.settings.get("pf2e-rpg-numbers", 'tok-shakes-duration')
+        duration: game.settings.get("pf2e-rpg-numbers", 'tok-shake-duration')
     }
     const scaleType = game.settings.get("pf2e-rpg-numbers", 'tok-shake-scaling-type');
     const hp = token.actor.system.attributes.hp;
