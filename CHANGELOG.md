@@ -1,3 +1,5 @@
+# 11.8.4Bug Fix
+- Fixed issue with code for new release not being in newest update
 # 11.8.3 Numbers on Apply
 - Added setting to show the damage number on apply instead of roll (@maplealmond)
 - NOTE - this setting doesn't give the damage colors, and is all consolidated to one number for now, if I have time i might look into ways of making it function like on roll, but it is lower priority
