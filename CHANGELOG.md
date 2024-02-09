@@ -1,4 +1,4 @@
-# 11.8.4Bug Fix
+# 11.8.4 Bug Fix
 - Fixed issue with code for new release not being in newest update
 # 11.8.3 Numbers on Apply
 - Added setting to show the damage number on apply instead of roll (@maplealmond)
