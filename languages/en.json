@@ -22,6 +22,14 @@
                     "name": "Enable Damage Numbers",
                     "hint": "Show damage numbers"
                 },
+                "on-apply-or-roll": {
+                    "name": "When to show damage numbers",
+                    "hint": "[NOTE] If you set on apply, this module will both reveal the resistance/weakness amt as players see the final number, and will only let you see 1 number for your damage roll",
+                    "choices": {
+                        "apply": "On Apply",
+                        "roll": "On Roll"
+                    }
+                },
                 "font-size": {
                     "name": "Font Size",
                     "hint": "Default size of the damage font"

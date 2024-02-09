@@ -20,6 +20,18 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "dmg-on-apply-or-roll", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.hint"),
+        scope: "world",
+        config: true,
+        default: "roll",
+        type: String,
+        choices: {
+            ["apply"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.choices.apply"),
+            ["roll"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.choices.roll")
+        }
+    });
     game.settings.register("pf2e-rpg-numbers", "font-size", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.hint"),
