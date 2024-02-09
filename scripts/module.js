@@ -14,7 +14,7 @@ Hooks.on("ready", () => {
             msg
         })
         if (game.user.isGM) {
-            if (msg.isDamageRoll && game.settings.get(MODULE_ID, 'dmg-enabled')) {
+            if (msg.isDamageRoll && game.settings.get(MODULE_ID, 'dmg-enabled') && !game.settings.get(MODULE_ID, 'dmg-on-apply-or-roll')) {
                 const dmg_list = getDamageList(msg.rolls);
                 const targets = getTargetList(msg);
                 debugLog({
@@ -40,15 +40,21 @@ Hooks.on("ready", () => {
             if (msg.flags?.pf2e?.context?.type === "attack-roll" && game.settings.get(MODULE_ID, 'rotate-on-attack')) {
                 turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
             }
-            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
+            if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && (game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled') || game.settings.get(MODULE_ID, 'dmg-on-apply-or-roll') === 'roll')) {
                 let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
-                if (dmg)
+                if (dmg) {
                     shakeOnDamageToken(msg.flags.pf2e.appliedDamage?.uuid, dmg)
+                }
             }
             if (!!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing && game.settings.get(MODULE_ID, 'shake-enabled')) {
                 let dmg = msg.flags.pf2e.appliedDamage.updates.find(u => u.path === "system.attributes.hp.value")?.value;
-                if (dmg)
-                    shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
+                if (dmg) {
+                    if (game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled'))
+                        shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
+                    if (game.settings.get(MODULE_ID, 'dmg-on-apply-or-roll') === 'apply')
+                        generateDamageScroll([{ type: 'none', value: dmg }], canvas.tokens.placeables.find(tok => tok.actor.uuid === msg.flags.pf2e.appliedDamage.uuid)?.id)
+                }
+
             }
         }
     });

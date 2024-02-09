@@ -375,8 +375,8 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
 
 /**
  * Turns token towards target when attacking
- * @param {*} token 
- * @param {*} target 
+ * @param {*} token Attack token that will turn
+ * @param {*} target Person they are attacking
  */
 export function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
@@ -390,6 +390,14 @@ export function turnTokenOnAttack(token, target) {
         .on(token)
         .rotateIn(angle, 500, { ease: "easeOutCubic" })
         .play()
+}
+
+/**
+ * Critical hit animation like in fire emblem
+ * @param {*} token 
+ */
+export function fireEmblemCrit(token) {
+
 }
 
 export function getTokenShakeScale(token, dmg) {
