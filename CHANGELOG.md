@@ -1,3 +1,6 @@
+# 11.8.6 Color Alignment 
+- Updated damage colors to better match system
+- Precision will be its own color as I want it to stand out
 # 11.8.5 Moar Bug Fixes!!
 - Fixed Auras disappearing again (current usage turns opacity to 0 then back to original value)
 - Fixed setting that allows user to show number on Damage application
