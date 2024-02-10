@@ -353,6 +353,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
         values = values.concat([mod * mov_amt, 0]);
     }
     const it_dur = duration / values.length;
+    const original_opacity = token.alpha;
     new Sequence()
         .animation()
         .on(token)
@@ -368,7 +369,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
         .forUsers(usersToPlayFor)
         .animation()
         .on(token)
-        .opacity(1)
+        .opacity(original_opacity)
         .waitUntilFinished()
         .play()
 }
