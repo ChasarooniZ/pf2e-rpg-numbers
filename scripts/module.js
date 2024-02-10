@@ -8,7 +8,7 @@ Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     //ui.notifications.notify("PF2e RPG Numbers is ready")
     // game.RPGNumbers = new RPGNumbers();
-    Hooks.on("createChatMessage", async function (msg, status, id) {
+    Hooks.on("createChatMessage", async function (msg, status, userid) {
         if (!game.settings.get(MODULE_ID, 'enabled')) return;
         debugLog({
             msg
@@ -52,7 +52,9 @@ Hooks.on("ready", () => {
                     if (game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled'))
                         shakeScreen(msg.flags.pf2e.appliedDamage.uuid, dmg)
                     if (game.settings.get(MODULE_ID, 'dmg-on-apply-or-roll') === 'apply')
-                        generateDamageScroll([{ type: 'none', value: dmg }], canvas.tokens.placeables.find(tok => tok.actor.uuid === msg.flags.pf2e.appliedDamage.uuid)?.id)
+                        generateDamageScroll(
+                            [{ type: 'none', value: dmg }],
+                            canvas.tokens.placeables.filter(tok => tok.actor.uuid === msg.flags.pf2e.appliedDamage.uuid).map(t => t.id))
                 }
 
             }
