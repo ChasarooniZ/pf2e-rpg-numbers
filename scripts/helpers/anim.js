@@ -356,7 +356,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
     new Sequence()
         .animation()
         .on(token)
-        .hide()
+        .opacity(0)
         .waitUntilFinished()
         .effect() //Make sure this only plays to people that can see it
         .atLocation(token)
@@ -368,7 +368,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
         .forUsers(usersToPlayFor)
         .animation()
         .on(token)
-        .show()
+        .opacity(1)
         .waitUntilFinished()
         .play()
 }
