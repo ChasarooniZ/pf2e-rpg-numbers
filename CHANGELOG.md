@@ -1,5 +1,4 @@
 # 11.8.5 Moar Bug Fixes!!
-- Finally closes #16  #10 
 - Fixed Auras disappearing again (current usage turns opacity to 0 then back to original value)
 - Fixed setting that allows user to show number on Damage application
    - Note doesn't include color floor damage type or options to show damage breakdown
