@@ -4,7 +4,7 @@
    - Hopefully shouldn't cause issues (was prev only on gm's pc)
 - Minor Bug Fixes
    - Refactor helped to fix some logic bugs around on shake effects
-   - Also fixed the `On Roll` option for RPG numbers, it now works! (@TomChristopher)
+   - Also fixed the `On Roll` option for RPG numbers, it now works! (@TomChristoffer)
 # 11.8.6 Color Alignment 
 - Updated damage colors to better match system
 - Precision will be its own color as I want it to stand out
