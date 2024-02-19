@@ -1,3 +1,12 @@
+# 11.8.6 Color Alignment 
+- Updated damage colors to better match system
+- Precision will be its own color as I want it to stand out
+# 11.8.5 Moar Bug Fixes!!
+- Fixed Auras disappearing again (current usage turns opacity to 0 then back to original value)
+- Fixed setting that allows user to show number on Damage application
+   - Note doesn't include color floor damage type or options to show damage breakdown
+     - I'm currently not sure of a good method/hook to get that data as I'm using the Chat Message creation hook.
+     - If you have any ideas feel free to propose them in a PR or issue
 # 11.8.4 Bug Fix
 - Fixed issue with code for new release not being in newest update
 # 11.8.3 Numbers on Apply
