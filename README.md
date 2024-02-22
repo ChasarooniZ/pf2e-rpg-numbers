@@ -50,3 +50,12 @@ A module that started to just show damage numbers when you attack but now does o
 ## FAQ
 **Q: Will you add support for \<Insert System Here\>?**
 A: This module will only support the **PF2e** system
+
+
+## Attributions
+- [`Deep_Impact_(Speedenza).wav`](https://freesound.org/people/Speedenza/sounds/167840/)
+  - This sound is not in the public domain.
+    License: Creative Commons BY-NC (Attribution Noncommercial) 3.0
+    License text: http://creativecommons.org/licenses/by-nc/3.0/
+- [`vent4_(pligativator).wav](https://freesound.org/people/plingativator/sounds/160558/)
+  - This SOund is being used under the Attribution 4.0 License
