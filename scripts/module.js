@@ -2,6 +2,7 @@ import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js
 import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageToken, turnTokenOnAttack } from "./helpers/anim.js"
 import { getDamageList } from "./helpers/rollTerms.js"
 import { injectConfig } from "./helpers/injectConfig.js"
+import { createFinishingMoveAnimation } from "./helpers/finishing-move.js"
 
 // HOOKS STUFF
 Hooks.on("ready", () => {
@@ -87,8 +88,7 @@ Hooks.on("ready", () => {
     });
     if (game.user.isGM) {
         Hooks.on("getSceneControlButtons", (controls, b, c) => {
-            if (!canvas.scene) return;
-            let isFinishingMove = canvas.scene.getFlag(MODULE_ID, "finishingMoveActive");
+            let isFinishingMove = game.user.getFlag(MODULE_ID, "finishingMoveActive");
             controls
                 .find((c) => c.name == "token")
                 .tools.push({
@@ -100,9 +100,9 @@ Hooks.on("ready", () => {
                     active: isFinishingMove,
                     onClick: async (toggle) => {
                         if (toggle) {
-                            canvas.scene.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
                         } else {
-                            canvas.scene.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
                         }
                     },
                 });
