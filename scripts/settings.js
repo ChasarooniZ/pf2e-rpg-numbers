@@ -415,6 +415,7 @@ Hooks.on("init", () => {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.hint"),
         scope: "world",
+        config: true,
         default: 40,
         range: {
             min: 1,
