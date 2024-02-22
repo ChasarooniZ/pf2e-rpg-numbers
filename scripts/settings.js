@@ -462,6 +462,7 @@ export function renderSettingsConfig(_, html) {
     beforeGroup("token-dmg-shake.title", "dmg-shake-directional-enabled");
     beforeGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     beforeGroup("rotate-on-attack", "rotate-on-attack");
+    beforeGroup("finishing-move", "finishing-move.enabled");
 
     beforeGroup("debug", "debug-mode");
 }
