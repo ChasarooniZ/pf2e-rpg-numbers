@@ -20,6 +20,19 @@ Hooks.on("ready", () => {
                 isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
                 isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
                 appliedDamage: msg.flags.pf2e.appliedDamage,
+                actionType: msg.flags.pf2e.origin.type,
+                itemName: msg?.item?.name ?? ''
+            }
+
+            //Finishing Moves
+            if (dat.actionType === 'action' && game.settings.get(MODULE_ID, 'finishing-move.enabled')) {
+                if (canvas.scene.getFlag(MODULE_ID, "finishingMoveActive")) {
+                    debugLog({
+                        itemName: dat.itemName,
+                        actionType: dat.actionType
+                    })
+                    createFinishingMoveAnimation(dat.itemName);
+                }
             }
 
             // RPG Numbers on Damage Roll
@@ -35,7 +48,7 @@ Hooks.on("ready", () => {
                 })
                 generateDamageScroll(dmg_list, targets);
             }
-            
+
             // RPG Numbers on Check Roll
             if (dat.isCheckRoll && game.settings.get(MODULE_ID, 'check-enabled')) {
                 const roll_deets = {
@@ -51,7 +64,7 @@ Hooks.on("ready", () => {
             //     const targets = getTargetList(msg);
             //     damageShakeRollDamage(msg.token, targets);
             // }
-            
+
             // RPG Numbers on Attack Roll
             if (dat.isAttackRoll && game.settings.get(MODULE_ID, 'rotate-on-attack')) {
                 turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
@@ -72,6 +85,29 @@ Hooks.on("ready", () => {
             }
         }
     });
+    if (game.user.isGM) {
+        Hooks.on("getSceneControlButtons", (controls, b, c) => {
+            if (!canvas.scene) return;
+            let isFinishingMove = canvas.scene.getFlag(MODULE_ID, "finishingMoveActive");
+            controls
+                .find((c) => c.name == "token")
+                .tools.push({
+                    name: MODULE_ID,
+                    title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
+                    icon: "fas fa-message-captions",
+                    toggle: true,
+                    visible: game.user.isGM,
+                    active: isFinishingMove,
+                    onClick: async (toggle) => {
+                        if (toggle) {
+                            canvas.scene.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                        } else {
+                            canvas.scene.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                        }
+                    },
+                });
+        });
+    }
 
     if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
         injectConfig.quickInject([{ documentName: "Token" }],

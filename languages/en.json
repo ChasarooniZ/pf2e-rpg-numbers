@@ -1,6 +1,11 @@
 {
     "I18N.LANGUAGE": "English",
     "pf2e-rpg-numbers": {
+        "controls": {
+            "finishing-move": {
+                "name": "Show Finishing Moves"
+            }
+        },
         "module-settings": {
             "enabled": {
                 "name": "Enable Module",
@@ -15,6 +20,8 @@
                     "scaling": "Token Damage Shake - Scaling"
                 },
                 "rotate-on-attack": "Rotate on Attack",
+                "finishing-move": "Finishing Moves",
+                "fire-emblem-crits": "Fire Emblem Crits",
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -206,12 +213,70 @@
                         }
                     }
                 }
-
             },
             "rotate-on-attack": {
                 "enabled": {
                     "name": "Enable Token rotating on attacking",
                     "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
+                }
+            },
+            "finishing-move": {
+                "enabled": {
+                    "name": "Enable Finishing Moves",
+                    "hint": "When you use an action and have the HUD Element toggled on it gives you a cool readout of the action."
+                },
+                "mode": {
+                    "name": "When to show moves",
+                    "hint": "Doesn't Require HUD toggle",
+                    "choices": {
+                        "toggled": "Always Show on Toggle",
+                        "always": "Always Show",
+                        "always-if-seen": "👀 Msg",
+                        "if-seen-or-toggle": "👀 Msg OR Toggled",
+                        "if-seen-and-toggle": "👀 Msg AND Toggled"
+                    }
+                },
+                "show-on": {
+                    "actions": {
+                        "name": "On Any type of Action",
+                        "hint": "Show on any type of actions",
+                        "one": {
+                            "name": "Show 1 Action",
+                            "hint": "Show one action"
+                        },
+                        "two": {
+                            "name": "Show 2 Action",
+                            "hint": "Show two action"
+                        },
+                        "three": {
+                            "name": "Show 3 Action",
+                            "hint": "Show three action"
+                        },
+                        "reaction": {
+                            "name": "Show Reactions",
+                            "hint": "Show reactions"
+                        },
+                        "free": {
+                            "name": "Show Free Action",
+                            "hint": "Show free action"
+                        }
+                    },
+                    "spells": {
+                        "name": "On Spells",
+                        "hint": "Show on spells"
+                    },
+                    "attacks": {
+                        "name": "On Attacks",
+                        "hint": "Show on attacks"
+                    }
+                },
+                "sound-effect": {
+                    "name": "Finishing Move Word SFX",
+                    "hint": "Sound Effect to play for each Word that appears",
+                    "volume": {
+                        "name": "Finishing Move SFX",
+                        "hint": "Sound Effect to play for each Word that appears"
+                    }
                 }
             },
             "debug-mode": {

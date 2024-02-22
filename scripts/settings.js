@@ -392,13 +392,44 @@ Hooks.on("init", () => {
         onChange: debouncedReload
     });
 
-    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+    //Finishing Move
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled.hint"),
         scope: "world",
         config: true,
         default: false,
         type: Boolean,
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.sound-effect", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.sound-effect.volume", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.hint"),
+        scope: "world",
+        type: String,
+        default: 'modules/pf2e-rpg-numbers/resources/sounds/Critical ⁄ Skill_activation.ogg',
+        filePicker: 'audio',
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+        scope: "world",
+        default: 40,
+        range: {
+            min: 1,
+            max: 100,
+            step: 1
+        },
+        type: Number,
     });
     game.settings.register("pf2e-rpg-numbers", "updateMessage", {
         scope: "world",
