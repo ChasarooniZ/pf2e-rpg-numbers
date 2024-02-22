@@ -19,8 +19,8 @@ Hooks.on("ready", () => {
                 isCheckRoll: msg.isCheckRoll,
                 isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
                 isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
-                appliedDamage: msg.flags.pf2e.appliedDamage,
-                actionType: msg.flags.pf2e.origin.type,
+                appliedDamage: msg.flags.pf2e?.appliedDamage,
+                actionType: msg.flags?.pf2e?.origin?.type,
                 itemName: msg?.item?.name ?? ''
             }
 
