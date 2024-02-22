@@ -407,21 +407,13 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.hint"),
         scope: "world",
         config: true,
-        default: false,
-        type: Boolean,
-    });
-    game.settings.register("pf2e-rpg-numbers", "finishing-move.sound-effect.volume", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.hint"),
-        scope: "world",
         type: String,
         default: 'modules/pf2e-rpg-numbers/resources/sounds/Critical ⁄ Skill_activation.ogg',
         filePicker: 'audio',
     });
-
-    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.sound-effect.volume", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.hint"),
         scope: "world",
         default: 40,
         range: {
@@ -430,6 +422,14 @@ Hooks.on("init", () => {
             step: 1
         },
         type: Number,
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "debug-mode", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.hint"),
+        scope: "world",
+        default: false,
+        type: Boolean,
     });
     game.settings.register("pf2e-rpg-numbers", "updateMessage", {
         scope: "world",
