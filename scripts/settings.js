@@ -424,6 +424,32 @@ Hooks.on("init", () => {
         },
         type: Number,
     });
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.duration.word", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.duration.word.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.duration.word.hint"),
+        scope: "world",
+        config: true,
+        default: 250,
+        range: {
+            min: 0,
+            max: 2000,
+            step: 25
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.duration.end", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.duration.end.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.duration.end.hint"),
+        scope: "world",
+        config: true,
+        default: 1000,
+        range: {
+            min: 0,
+            max: 5000,
+            step: 25
+        },
+        type: Number,
+    });
     game.settings.register("pf2e-rpg-numbers", "finishing-move.show-on.actions", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.show-on.actions.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.show-on.actions.hint"),

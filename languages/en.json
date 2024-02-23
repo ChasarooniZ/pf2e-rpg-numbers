@@ -278,12 +278,22 @@
                         "hint": "Show on attacks"
                     }
                 },
+                "duration": {
+                    "end": {
+                        "name": "End Duration",
+                        "hint": "Duration to show all text on screen at the end in ms"
+                    },
+                    "word": {
+                        "name": "Word Duration",
+                        "hint": "How long to Wait before showing next word in ms"
+                    }
+                },
                 "sound-effect": {
-                    "name": "Finishing Move Word SFX",
+                    "name": "Finishing Move SFX",
                     "hint": "Sound Effect to play for each Word that appears",
                     "volume": {
-                        "name": "Finishing Move SFX",
-                        "hint": "Sound Effect to play for each Word that appears"
+                        "name": "Finishing Move SFX Volume",
+                        "hint": "Sound Effect Volume to play for each Word that appears"
                     }
                 }
             },

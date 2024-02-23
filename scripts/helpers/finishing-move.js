@@ -5,11 +5,10 @@ export function createFinishingMoveAnimation(text) {
     let textBorderColor = "red";
     let volume = game.settings.get(MODULE_ID, 'finishing-move.sound-effect.volume') / 100;
     let sfx =  game.settings.get(MODULE_ID, 'finishing-move.sound-effect')
-    const scaleTime = 250;
+    const endDuration = game.settings.get(MODULE_ID, 'finishing-move.duration.end')
+    const delayDiff = game.settings.get(MODULE_ID, 'finishing-move.duration.word')
     const sideBorderAmt = 0.15;
     const leftBorder = 1 - sideBorderAmt;
-    const endDuration = 1000;
-    const delayDiff = 250;
     const style = {
         "fill": textColor,
         "dropShadowColor": textBorderColor,
@@ -32,7 +31,7 @@ export function createFinishingMoveAnimation(text) {
             .text(word, style)
             .screenSpace()
             .screenSpaceAnchor({ x: sideBorderAmt + (moveAmt * i) + (moveAmt / 2), y: 0.4 })
-            .scaleIn(3, scaleTime, { ease: "easeOutCubic" })
+            .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
             .screenSpaceScale({
                 x: 1.0,         // Scale on the effect's X scale
                 y: 1.0,         // Scale on the effect's Y scale
