@@ -445,7 +445,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.show-on.actions.two.hint"),
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
     game.settings.register("pf2e-rpg-numbers", "finishing-move.show-on.actions.three", {
@@ -453,7 +453,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.show-on.actions.three.hint"),
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
     game.settings.register("pf2e-rpg-numbers", "finishing-move.show-on.actions.free", {
