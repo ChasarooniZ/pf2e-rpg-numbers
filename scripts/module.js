@@ -57,8 +57,8 @@ Hooks.on("ready", () => {
             if (isUseFinishingMove(dat.item) && game.settings.get(MODULE_ID, 'finishing-move.enabled')) {
                 if (game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
                     debugLog({
-                        item
-                    })
+                        item: dat.item
+                    }, "Finishing Move")
                     createFinishingMoveAnimation(dat.item.name);
                 }
             }
