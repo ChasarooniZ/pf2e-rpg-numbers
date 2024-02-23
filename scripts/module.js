@@ -54,7 +54,7 @@ Hooks.on("ready", () => {
             }
 
             //Finishing Moves
-            if (isUseFinishingMove(dat.item) && game.settings.get(MODULE_ID, 'finishing-move.enabled')) {
+            if (game.settings.get(MODULE_ID, 'finishing-move.enabled') &&isUseFinishingMove(dat.item)) {
                 if (game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
                     debugLog({
                         item: dat.item
