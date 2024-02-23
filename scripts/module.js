@@ -5,6 +5,30 @@ import { injectConfig } from "./helpers/injectConfig.js"
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js"
 
 // HOOKS STUFF
+Hooks.on("init", () => {
+    Hooks.on("getSceneControlButtons", (controls, b, c) => {
+        if (!game.user.isGM) return;
+        let isFinishingMove = game.user.getFlag(MODULE_ID, "finishingMoveActive");
+        controls
+            .find((c) => c.name == "token")
+            .tools.push({
+                name: MODULE_ID,
+                title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
+                icon: "fas fa-message-captions",
+                toggle: true,
+                visible: game.user.isGM,
+                active: isFinishingMove,
+                onClick: async (toggle) => {
+                    if (toggle) {
+                        game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                    } else {
+                        game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
+                    }
+                },
+            });
+    });
+})
+
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     //ui.notifications.notify("PF2e RPG Numbers is ready")
@@ -21,13 +45,17 @@ Hooks.on("ready", () => {
                 isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
                 isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
                 appliedDamage: msg.flags.pf2e?.appliedDamage,
-                actionType: msg.flags?.pf2e?.origin?.type,
-                itemName: msg?.item?.name ?? ''
+                item: {
+                    name: msg?.item?.name ?? '',
+                    actionCount: msg?.item?.system?.actions?.value,
+                    actionType: msg.flags?.pf2e?.context?.type === "attack-roll" ? 'attack' : msg?.item?.system?.actionType?.value ?? msg?.item?.type,
+                    isCantrip: msg?.item?.system?.traits?.value?.includes('cantrip')
+                }
             }
 
             //Finishing Moves
-            if (dat.actionType === 'action' && game.settings.get(MODULE_ID, 'finishing-move.enabled')) {
-                if (canvas.scene.getFlag(MODULE_ID, "finishingMoveActive")) {
+            if (isUseFinishingMove(dat.item) && game.settings.get(MODULE_ID, 'finishing-move.enabled')) {
+                if (game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
                     debugLog({
                         itemName: dat.itemName,
                         actionType: dat.actionType
@@ -86,28 +114,6 @@ Hooks.on("ready", () => {
             }
         }
     });
-    if (game.user.isGM) {
-        Hooks.on("getSceneControlButtons", (controls, b, c) => {
-            let isFinishingMove = game.user.getFlag(MODULE_ID, "finishingMoveActive");
-            controls
-                .find((c) => c.name == "token")
-                .tools.push({
-                    name: MODULE_ID,
-                    title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
-                    icon: "fas fa-message-captions",
-                    toggle: true,
-                    visible: game.user.isGM,
-                    active: isFinishingMove,
-                    onClick: async (toggle) => {
-                        if (toggle) {
-                            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
-                        } else {
-                            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle)
-                        }
-                    },
-                });
-        });
-    }
 
     if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
         injectConfig.quickInject([{ documentName: "Token" }],
@@ -130,6 +136,40 @@ Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is ready");
 })
 
+
+export function isUseFinishingMove(item) {
+    const actionType = item.actionType;
+    const actionCount = item.actionCount;
+    switch (actionType) {
+        case 'action':
+            switch (actionCount) {
+                case 1:
+                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.one')
+                case 2:
+                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.two')
+                case 3:
+
+                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.three')
+                default:
+                    return false;
+            }
+        case 'reaction':
+            return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.reaction')
+        case 'free':
+
+            return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.free')
+        case 'spell':
+            if (item.isCantrip) {
+                return game.settings.get(MODULE_ID, 'finishing-move.show-on.spells') && game.settings.get(MODULE_ID, 'finishing-move.show-on.spells.cantrips');
+            } else {
+                return game.settings.get(MODULE_ID, 'finishing-move.show-on.spells') && game.settings.get(MODULE_ID, 'finishing-move.show-on.spells.ranked');
+            }
+        case 'attacks':
+            return game.settings.get(MODULE_ID, 'finishing-move.show-on.attacks');
+        default:
+            return false;
+    }
+}
 
 export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
