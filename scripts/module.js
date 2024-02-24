@@ -118,8 +118,10 @@ Hooks.on("ready", () => {
     });
 
     Hooks.on('modifiersMatter', (data) => {
+        console.log({modifiers: data})
+        if (!game.settings.get(MODULE_ID, 'plus-one.enabled')) return;
         data.forEach((mod) => {
-            ui.notifications.info(`<b>${mod.name}</b> (<i>${mod.significance}</i>) ${mod.value > 0 ? `+${mod.value}` : mod.value} to ${mod.appliedTo}`)
+            ui.notifications.info(`<b>${mod.name}</b> (<i>${mod.significance}</i>) ${mod.value > 0 ? '+' : '-'} ${mod.value} to ${mod.appliedTo}`)
         })
     })
 
