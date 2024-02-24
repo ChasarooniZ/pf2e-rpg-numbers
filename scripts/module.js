@@ -3,7 +3,7 @@ import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageTok
 import { getDamageList } from "./helpers/rollTerms.js"
 import { injectConfig } from "./helpers/injectConfig.js"
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js"
-import { sendUpdateChatMessage } from "./helpers/updateMessage.js"
+// import { sendUpdateChatMessage } from "./helpers/updateMessage.js"
 
 // HOOKS STUFF
 Hooks.on("init", () => {
