@@ -3,6 +3,7 @@ import { generateDamageScroll, generateRollScroll, shakeScreen, shakeOnDamageTok
 import { getDamageList } from "./helpers/rollTerms.js"
 import { injectConfig } from "./helpers/injectConfig.js"
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js"
+import { sendUpdateChatMessage } from "./helpers/updateMessage.js"
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -31,6 +32,7 @@ Hooks.on("init", () => {
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
+    // sendUpdateChatMessage();
     //ui.notifications.notify("PF2e RPG Numbers is ready")
     // game.RPGNumbers = new RPGNumbers();
     Hooks.on("createChatMessage", async function (msg, status, userid) {
@@ -49,7 +51,8 @@ Hooks.on("ready", () => {
                     name: msg?.item?.name ?? '',
                     actionCount: msg?.item?.system?.actions?.value,
                     actionType: msg.flags?.pf2e?.context?.type === "attack-roll" ? 'attack' : msg?.item?.system?.actionType?.value ?? msg?.item?.type,
-                    isCantrip: msg?.item?.system?.traits?.value?.includes('cantrip')
+                    isCantrip: msg?.item?.system?.traits?.value?.includes('cantrip'),
+                    isPlayerCharacter: msg?.item?.actor?.hasPlayerOwner
                 }
             }
 
@@ -114,6 +117,12 @@ Hooks.on("ready", () => {
         }
     });
 
+    Hooks.on('modifiersMatter', (data) => {
+        data.forEach((mod) => {
+            ui.notifications.info(`<b>${mod.name}</b> (<i>${mod.significance}</i>) ${mod.value > 0 ? `+${mod.value}` : mod.value} to ${mod.appliedTo}`)
+        })
+    })
+
     if (game.settings.get(MODULE_ID, 'rotate-on-attack')) {
         injectConfig.quickInject([{ documentName: "Token" }],
             {
@@ -132,6 +141,8 @@ Hooks.on("ready", () => {
             }
         );
     }
+
+    
     console.log("PF2e RPG Numbers is ready");
 })
 
@@ -139,32 +150,33 @@ Hooks.on("ready", () => {
 export function isUseFinishingMove(item) {
     const actionType = item.actionType;
     const actionCount = item.actionCount;
+    const pcOrNPC = item.isPlayerCharacter ? 'pcs' : 'npcs';
     switch (actionType) {
         case 'action':
             switch (actionCount) {
                 case 1:
-                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.one')
+                    return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.one`)
                 case 2:
-                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.two')
+                    return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.two`)
                 case 3:
 
-                    return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.three')
+                    return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.three`)
                 default:
                     return false;
             }
         case 'reaction':
-            return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.reaction')
+            return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.reaction`)
         case 'free':
 
-            return game.settings.get(MODULE_ID, 'finishing-move.show-on.actions') && game.settings.get(MODULE_ID, 'finishing-move.show-on.actions.free')
+            return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.free`)
         case 'spell':
             if (item.isCantrip) {
-                return game.settings.get(MODULE_ID, 'finishing-move.show-on.spells') && game.settings.get(MODULE_ID, 'finishing-move.show-on.spells.cantrips');
+                return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.cantrips`);
             } else {
-                return game.settings.get(MODULE_ID, 'finishing-move.show-on.spells') && game.settings.get(MODULE_ID, 'finishing-move.show-on.spells.ranked');
+                return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) && game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.ranked`);
             }
         case 'attacks':
-            return game.settings.get(MODULE_ID, 'finishing-move.show-on.attacks');
+            return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.attacks`);
         default:
             return false;
     }

@@ -20,8 +20,13 @@
                     "scaling": "Token Damage Shake - Scaling"
                 },
                 "rotate-on-attack": "Rotate on Attack",
-                "finishing-move": "Finishing Moves",
+                "finishing-move": {
+                    "title": "Finishing Moves",
+                    "pcs": "Finishing Moves: PC Settings",
+                    "npcs": "Finishing Moves: NPC Settings"
+                },
                 "fire-emblem-crits": "Fire Emblem Crits",
+                "plus-one": "Every +1 Matters",
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -236,6 +241,16 @@
                         "if-seen-and-toggle": "👀 Msg AND Toggled"
                     }
                 },
+                "show-for": {
+                    "pcs": {
+                        "name": "Show for PCs",
+                        "hint": "Show finishing move visual for PCs"
+                    },
+                    "npcs": {
+                        "name": "Show for NPCs",
+                        "hint": "Show finishing move visual for NPCs"
+                    }
+                },
                 "show-on": {
                     "actions": {
                         "name": "On Any type of Action",
@@ -296,6 +311,16 @@
                         "hint": "Sound Effect Volume to play for each Word that appears"
                     }
                 }
+            },
+            "plus-one": {
+                "enabled": {
+                    "name": "Enabled Every +1 Matters Features",
+                    "hint": "Adds features related to modifiers matters. Requires modifiers matters to be installed, as well as PF2e Animations IIRC."
+                }
+            },
+            "get-update-msg": {
+                "name": "Show Update Messages",
+                "hint": "Get Messages that give information about new updates (Which i will try to do now for major releases"
             },
             "debug-mode": {
                 "name": "Debug Mode",
