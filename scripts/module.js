@@ -7,7 +7,7 @@ import { generateDamageScroll } from "./helpers/animation/generateDamageScroll";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js";
-// import { sendUpdateChatMessage } from "./helpers/updateMessage.js"
+import { createCritAnimation } from "./helpers/animation/crit-animation.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -32,33 +32,13 @@ Hooks.on("init", () => {
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
-    // sendUpdateChatMessage();
-    //ui.notifications.notify("PF2e RPG Numbers is ready")
-    // game.RPGNumbers = new RPGNumbers();
-    Hooks.on("createChatMessage", async function (msg, status, userid) {
+    Hooks.on("createChatMessage", async function (msg, _status, userid) {
         if (!game.settings.get(MODULE_ID, "enabled")) return;
         debugLog({
             msg,
         });
         if (game.user.id === userid) {
-            const dat = {
-                isDamageRoll: msg.isDamageRoll,
-                isCheckRoll: msg.isCheckRoll,
-                isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
-                isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
-                appliedDamage: msg.flags.pf2e?.appliedDamage,
-                item: {
-                    name: msg?.item?.name ?? "",
-                    actionCount: msg?.item?.system?.actions?.value,
-                    actionType:
-                        msg.flags?.pf2e?.context?.type === "attack-roll"
-                            ? "attack"
-                            : msg?.item?.system?.actionType?.value ?? msg?.item?.type,
-                    isCantrip: msg?.item?.system?.traits?.value?.includes("cantrip"),
-                    isPlayerCharacter: msg?.item?.actor?.hasPlayerOwner,
-                },
-            };
-
+            const dat = getData(msg);
             //Finishing Moves
             finishingMove(dat);
 
@@ -67,10 +47,6 @@ Hooks.on("ready", () => {
 
             // RPG Numbers on Check Roll
             checkRollNumbers(dat, msg);
-            // if (msg.isDamageRoll && game.settings.get(MODULE_ID, 'dmg-shake-directional-enabled')) {
-            //     const targets = getTargetList(msg);
-            //     damageShakeRollDamage(msg.token, targets);
-            // }
 
             // Rotate on Attack Roll
             rotateOnAttack(dat, msg);
@@ -80,6 +56,8 @@ Hooks.on("ready", () => {
         }
     });
 
+    /**
+     * TODO Add visual pop ups over characters who's modifiers to rolls mattered (IDK how feasible this is)
     Hooks.on("modifiersMatter", (data) => {
         console.log({ modifiers: data });
         if (!game.settings.get(MODULE_ID, "plus-one.enabled")) return;
@@ -90,7 +68,7 @@ Hooks.on("ready", () => {
                 }`
             );
         });
-    });
+    });*/
 
     if (game.settings.get(MODULE_ID, "rotate-on-attack")) {
         injectConfig.quickInject([{ documentName: "Token" }], {
@@ -111,6 +89,26 @@ Hooks.on("ready", () => {
 
     console.log("PF2e RPG Numbers is ready");
 });
+
+function getData(msg) {
+    return {
+        isDamageRoll: msg.isDamageRoll,
+        isCheckRoll: msg.isCheckRoll,
+        isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
+        isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
+        appliedDamage: msg.flags.pf2e?.appliedDamage,
+        item: {
+            name: msg?.item?.name ?? "",
+            actionCount: msg?.item?.system?.actions?.value,
+            actionType:
+                msg.flags?.pf2e?.context?.type === "attack-roll"
+                    ? "attack"
+                    : msg?.item?.system?.actionType?.value ?? msg?.item?.type,
+            isCantrip: msg?.item?.system?.traits?.value?.includes("cantrip"),
+            isPlayerCharacter: msg?.item?.actor?.hasPlayerOwner,
+        },
+    };
+}
 
 function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
@@ -135,7 +133,9 @@ function rotateOnAttack(dat, msg) {
 }
 
 function checkRollNumbers(dat, msg) {
-    if (dat.isCheckRoll && game.settings.get(MODULE_ID, "check-enabled")) {
+    const doChecks = game.settings.get(MODULE_ID, "check-enabled");
+    const doCrits = game.settings.get(MODULE_ID, "crit.enabled");
+    if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
             token: msg.token,
@@ -143,7 +143,8 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        generateRollScroll(roll_deets);
+        if (doChecks) generateRollScroll(roll_deets);
+        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets);
     }
 }
 

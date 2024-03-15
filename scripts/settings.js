@@ -392,6 +392,28 @@ Hooks.on("init", () => {
         onChange: debouncedReload
     });
 
+    //Critical Hit
+    game.settings.register("pf2e-rpg-numbers", "critical.enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean
+    });
+    game.settings.register("pf2e-rpg-numbers", "critical.type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.type.hint"),
+        scope: "world",
+        config: true,
+        default: "persona",
+        type: String,
+        choices: {
+            ["persona"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.type.choices.persona"),
+            ["fire-emblem"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.type.choices.fire-emblem"),
+        },
+    });
+
     //Finishing Move
     game.settings.register("pf2e-rpg-numbers", "finishing-move.enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled.name"),
@@ -627,14 +649,14 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    game.settings.register("pf2e-rpg-numbers", "plus-one.enabled", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.plus-one.enabled.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.plus-one.enabled.hint"),
-        scope: "world",
-        config: true,
-        default: false,
-        type: Boolean,
-    });
+    // game.settings.register("pf2e-rpg-numbers", "plus-one.enabled", {
+    //     name: game.i18n.localize("pf2e-rpg-numbers.module-settings.plus-one.enabled.name"),
+    //     hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.plus-one.enabled.hint"),
+    //     scope: "world",
+    //     config: true,
+    //     default: false,
+    //     type: Boolean,
+    // });
 
     game.settings.register("pf2e-rpg-numbers", "debug-mode", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.debug-mode.name"),
@@ -644,14 +666,14 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
-    game.settings.register("pf2e-rpg-numbers", "get-update-msg", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.get-update-msg.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.get-update-msg.hint"),
-        scope: "world",
-        config: true,
-        default: true,
-        type: Boolean,
-    });
+    // game.settings.register("pf2e-rpg-numbers", "get-update-msg", {
+    //     name: game.i18n.localize("pf2e-rpg-numbers.module-settings.get-update-msg.name"),
+    //     hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.get-update-msg.hint"),
+    //     scope: "world",
+    //     config: true,
+    //     default: true,
+    //     type: Boolean,
+    // });
 
     game.settings.register("pf2e-rpg-numbers", "updateMessage", {
         scope: "world",
