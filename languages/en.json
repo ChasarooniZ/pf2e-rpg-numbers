@@ -9,7 +9,7 @@
         "module-settings": {
             "enabled": {
                 "name": "Enable Module",
-                "hint": "Enables all functionality of module"
+                "hint": "Enables functionality of module"
             },
             "headers": {
                 "dmg-numbers": "Damage Numbers",

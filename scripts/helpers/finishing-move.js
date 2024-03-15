@@ -9,6 +9,7 @@ export function createFinishingMoveAnimation(text) {
     const delayDiff = game.settings.get(MODULE_ID, 'finishing-move.duration.word')
     const sideBorderAmt = 0.15;
     const leftBorder = 1 - sideBorderAmt;
+    const chatWidth = chat.offsetWidth;
     const style = {
         "fill": textColor,
         "dropShadowColor": textBorderColor,
