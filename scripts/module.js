@@ -1,11 +1,9 @@
 import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
-import {
-    generateDamageScroll,
-    generateRollScroll,
-    shakeScreen,
-    shakeOnDamageToken,
-    turnTokenOnAttack,
-} from "./helpers/anim.js";
+import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack";
+import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken";
+import { shakeScreen } from "./helpers/animation/shakeScreen";
+import { generateRollScroll } from "./helpers/animation/generateRollScroll";
+import { generateDamageScroll } from "./helpers/animation/generateDamageScroll";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js";
@@ -120,14 +118,11 @@ function onDamageApplication(dat) {
         if (dmg) {
             if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled"))
                 shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
-            if (game.settings.get(MODULE_ID, "shake-enabled"))
-                shakeScreen(dat.appliedDamage.uuid, dmg);
+            if (game.settings.get(MODULE_ID, "shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
             if (game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply")
                 generateDamageScroll(
                     [{ type: "none", value: dmg }],
-                    canvas.tokens.placeables
-                        .filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid)
-                        .map((t) => t.id)
+                    canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
                 );
         }
     }
@@ -153,9 +148,11 @@ function checkRollNumbers(dat, msg) {
 }
 
 function damageRollNumbers(dat, msg) {
-    if (dat.isDamageRoll &&
+    if (
+        dat.isDamageRoll &&
         game.settings.get(MODULE_ID, "dmg-enabled") &&
-        game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "roll") {
+        game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "roll"
+    ) {
         const dmg_list = getDamageList(msg.rolls);
         const targets = getTargetList(msg);
         debugLog(

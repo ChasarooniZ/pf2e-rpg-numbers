@@ -1,36 +1,40 @@
 export function createCritAnimation() {
     let screenWidth = window.screen.availWidth;
     let amt = 0.35;
-    let msg = "Pick a God and Pray!"
+    let msg = "Pick a God and Pray!";
     const style = {
-        "fill": "white",
-        "stroke": "black",
-        "fontFamily": "Impact, Charcoal, sans-serif",
-        "fontSize": 36,
+        fill: "white",
+        stroke: "black",
+        fontFamily: "Impact, Charcoal, sans-serif",
+        fontSize: 36,
         //fontWeight: "bold",
-        "strokeThickness": 3
-    }
+        strokeThickness: 3,
+    };
 
     const duration = 3000;
     const dist = amt * screenWidth;
     const height = screen.height / 10;
     const padding = height / 10;
-    const rectHeight = height + (padding * 2)
+    const rectHeight = height + padding * 2;
     const width = screen.width;
     new Sequence()
         .effect()
-        .shape('rectangle', {
+        .shape("rectangle", {
             lineSize: 0,
             width,
             height: rectHeight,
-            fillColor: '#e39df5',
+            fillColor: "#e39df5",
             fillAlpha: 1,
-            name: "feCritA"
-        }
-        )
+            name: "feCritA",
+        })
         .duration(duration)
         .animateProperty("shapes.feCritA", "scale.y", { from: 1, to: 0.6, duration: 3000, ease: "easeInCubic" })
-        .animateProperty("shapes.feCritA", "position.y", { from: 0, to: (rectHeight * .4) / 2, duration: 3000, ease: "easeInCubic" })
+        .animateProperty("shapes.feCritA", "position.y", {
+            from: 0,
+            to: (rectHeight * 0.4) / 2,
+            duration: 3000,
+            ease: "easeInCubic",
+        })
         //.attachTo(token)
         .screenSpace()
         //.screenSpaceAboveUI()
@@ -49,7 +53,7 @@ export function createCritAnimation() {
         //.animateProperty("sprite", "position.x", { from: -dist, to: 0, duration: 1000, ease: "easeOutElastic"})
         //.animateProperty("sprite", "position.x", { from: 0, to: dist, duration: 1000, ease: "easeOutCubic", fromEnd: true})
         .effect()
-        .file(token?.document?.texture?.src ?? 'icons/svg/cowled.svg')
+        .file(token?.document?.texture?.src ?? "icons/svg/cowled.svg")
         .animateProperty("sprite", "position.x", { from: -dist, to: dist, duration: 3000, ease: "easeInBack" })
         .scale(0.3)
         .screenSpace()
@@ -57,5 +61,11 @@ export function createCritAnimation() {
         //.screenSpaceAboveUI()
         .scale(token?.document?.texture?.scaleX)
         .size(height)
-        .play()
+        .play();
 }
+
+/**
+ * Critical hit animation like in fire emblem
+ * @param {*} token
+ */
+export function fireEmblemCrit(token) {}
