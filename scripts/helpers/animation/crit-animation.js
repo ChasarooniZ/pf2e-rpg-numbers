@@ -26,7 +26,7 @@ export function fireEmblemCrit(token) {
     const padding = height / 10;
     const rectHeight = height + padding * 2;
     const width = screen.width;
-    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src ?? "icons/svg/cowled.svg"
+    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src || "icons/svg/cowled.svg"
 
     const tokenScale = { x: token?.document?.texture?.scaleX ?? 1, y: token?.document?.texture?.scaleY ?? 1 };
     const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg;
