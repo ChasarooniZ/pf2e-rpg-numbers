@@ -1,4 +1,4 @@
-import { getVisibleUsers } from "../anim";
+import { getVisibleUsers } from "../anim.js";
 
 /**
  * Generates scrolling text for a Check
