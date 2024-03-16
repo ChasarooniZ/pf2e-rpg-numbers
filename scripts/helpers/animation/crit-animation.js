@@ -1,3 +1,5 @@
+import { MODULE_ID } from "../misc.js";
+
 export function createCritAnimation(token, type) {
     const isAttack = type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
