@@ -1,15 +1,15 @@
 import { MODULE_ID } from "../misc.js";
 
-export function createCritAnimation(token, type) {
-    const isAttack = type === "attack-roll";
+export function createCritAnimation(roll_deets) {
+    const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
     if ((showOn === 'checks' && isAttack) || (showOn === 'attacks' && !isAttack)) return;
     switch (game.settings.get(MODULE_ID, "critical.type")) {
         case "persona":
-            personaCrit(token);
+            personaCrit(roll_deets.token);
             break;
         case "fire-emblem":
-            fireEmblemCrit(token);
+            fireEmblemCrit(roll_deets.token);
             break;
         default:
             return;
