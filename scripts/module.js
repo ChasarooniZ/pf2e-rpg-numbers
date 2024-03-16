@@ -1,9 +1,9 @@
 import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
-import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack";
-import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken";
-import { shakeScreen } from "./helpers/animation/shakeScreen";
-import { generateRollScroll } from "./helpers/animation/generateRollScroll";
-import { generateDamageScroll } from "./helpers/animation/generateDamageScroll";
+import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
+import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
+import { shakeScreen } from "./helpers/animation/shakeScreen.js";
+import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
+import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/finishing-move.js";
