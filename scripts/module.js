@@ -84,6 +84,18 @@ Hooks.on("ready", () => {
                 notes: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.hint"),
                 default: 0,
             },
+            fireEmblemImg: {
+                type: "filepicker",
+                label: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.name"),
+                notes: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.hint"),
+                default: "",
+            },
+            personaImg: {
+                type: "filepicker",
+                label: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.name"),
+                notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
+                default: "",
+            },
         });
     }
 
@@ -144,7 +156,7 @@ function checkRollNumbers(dat, msg) {
             type: msg.flags.pf2e.context.type,
         };
         if (doChecks) generateRollScroll(roll_deets);
-        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets);
+        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets, roll_deets.type);
     }
 }
 

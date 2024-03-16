@@ -27,6 +27,7 @@
                 },
                 "fire-emblem-crits": "Fire Emblem Crits",
                 "plus-one": "Every +1 Matters",
+                "critical": "Critical Hit",
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -225,6 +226,33 @@
                     "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
                 }
             },
+            "critical": {
+                "enabled": {
+                    "name": "Enable Critical Animations",
+                    "hint": "Enable cool animations to show for critical hits. (note tokens have options to have alternative image)"
+                },
+                "sound": {
+                    "name": "Critical Animation Sound",
+                    "hint": "Sound to use for critical animation"
+                },
+                "type": {
+                    "name": "Critical Animation Type",
+                    "hint": "Choose type for critical animation",
+                    "choices": {
+                        "persona": "Persona",
+                        "fire-emblem": "Fire Emblem"
+                    }
+                },
+                "show-on": {
+                    "name": "Show Critical Animation On",
+                    "hint": "Choose whether to show critical animation on attacks, checks, or both",
+                    "choices": {
+                        "attacks": "Attacks",
+                        "checks": "Checks",
+                        "both": "Both"
+                    }
+                }
+            },
             "finishing-move": {
                 "enabled": {
                     "name": "Enable Finishing Moves",
@@ -339,7 +367,15 @@
             "tab-label": "PF2e RPG #s",
             "rotation-offset": {
                 "name": "Rotation Offset",
-                "hint": "Sets how much to offset rotation by. Down ⬇ - 0, Right ➡ - 90, Up ⬆ - 180, Left ⬅ - 270"
+                "hint": "Sets how much to offset rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+            },
+            "fire-emblem-img": {
+                "name": "Fire Emblem Critical Pic",
+                "hint": "Image to show for critical hits for token when 'Fire Emblem' is selected"
+            },
+            "persona-img": {
+                "name": "Persona Critical Pic",
+                "hint": "Image to show for critical hits for token when 'Persona' is selected"
             }
         }
     }

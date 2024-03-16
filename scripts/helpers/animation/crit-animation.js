@@ -1,6 +1,10 @@
-export function createCritAnimation(token) {
+export function createCritAnimation(token, type) {
+    const isAttack = type === "attack-roll";
+    const showOn = game.settings.get(MODULE_ID, "critical.show-on");
+    if ((showOn === 'checks' && isAttack) || (showOn === 'attacks' && !isAttack)) return;
     switch (game.settings.get(MODULE_ID, "critical.type")) {
         case "persona":
+            personaCrit(token);
             break;
         case "fire-emblem":
             fireEmblemCrit(token);
@@ -22,9 +26,10 @@ export function fireEmblemCrit(token) {
     const padding = height / 10;
     const rectHeight = height + padding * 2;
     const width = screen.width;
+    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src ?? "icons/svg/cowled.svg"
 
     const tokenScale = { x: token?.document?.texture?.scaleX ?? 1, y: token?.document?.texture?.scaleY ?? 1 };
-    const usingToken = !!token?.document?.texture?.src;
+    const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg;
     const distScale = usingToken ? tokenScale.x + tokenScale.y / 2 : 1;
     //TODO set who it plays for
     new Sequence()
@@ -52,7 +57,7 @@ export function fireEmblemCrit(token) {
         .screenSpacePosition({ x: 0, y: -rectHeight / 2 })
         .screenSpaceAnchor({ x: 0, y: 0.5 })
         .effect()
-        .file(token?.document?.texture?.src ?? "icons/svg/cowled.svg")
+        .file(img)
         .animateProperty("sprite", "position.x", {
             from: -dist / (2 * distScale),
             to: dist,
@@ -91,66 +96,109 @@ for pair in r.split(","):
 export function personaCrit(token) {
     const width = window.screen.availWidth;
     const height = window.screen.availHeight;
-    new Sequence().shape("polygon", {
-        isMask: true,
-        points: [
-            [0.0 * width, 0.55 * height],
-            [0.02 * width, 0.52 * height],
-            [0.09 * width, 0.51 * height],
-            [0.15 * width, 0.44 * height],
-            [0.23 * width, 0.4 * height],
-            [0.32 * width, 0.38 * height],
-            [0.34 * width, 0.36 * height],
-            [0.35 * width, 0.35 * height],
-            [0.41 * width, 0.28 * height],
-            [0.43 * width, 0.3 * height],
-            [0.5 * width, 0.26 * height],
-            [0.53 * width, 0.27 * height],
-            [0.58 * width, 0.26 * height],
-            [0.59 * width, 0.26 * height],
-            [0.62 * width, 0.24 * height],
-            [0.65 * width, 0.25 * height],
-            [0.71 * width, 0.23 * height],
-            [0.78 * width, 0.15 * height],
-            [0.85 * width, 0.14 * height],
-            [0.89 * width, 0.14 * height],
-            [0.95 * width, 0.11 * height],
-            [0.97 * width, 0.12 * height],
-            [1.0 * width, 0.09 * height],
-            [1.0 * width, 0.55 * height],
-            [0.97 * width, 0.53 * height],
-            [0.96 * width, 0.55 * height],
-            [0.92 * width, 0.55 * height],
-            [0.8 * width, 0.56 * height],
-            [0.72 * width, 0.57 * height],
-            [0.69 * width, 0.58 * height],
-            [0.64 * width, 0.63 * height],
-            [0.62 * width, 0.63 * height],
-            [0.61 * width, 0.65 * height],
-            [0.59 * width, 0.63 * height],
-            [0.57 * width, 0.62 * height],
-            [0.55 * width, 0.64 * height],
-            [0.53 * width, 0.65 * height],
-            [0.49 * width, 0.63 * height],
-            [0.43 * width, 0.63 * height],
-            [0.39 * width, 0.64 * height],
-            [0.37 * width, 0.65 * height],
-            [0.36 * width, 0.65 * height],
-            [0.34 * width, 0.68 * height],
-            [0.32 * width, 0.67 * height],
-            [0.29 * width, 0.72 * height],
-            [0.27 * width, 0.71 * height],
-            [0.27 * width, 0.73 * height],
-            [0.24 * width, 0.72 * height],
-            [0.22 * width, 0.73 * height],
-            [0.2 * width, 0.7 * height],
-            [0.16 * width, 0.73 * height],
-            [0.14 * width, 0.71 * height],
-            [0.13 * width, 0.72 * height],
-            [0.1 * width, 0.71 * height],
-            [0.05 * width, 0.72 * height],
-            [0.06 * width, 0.7 * height],
-            [0.0 * width, 0.73 * height],
-        ],
-    });
+    const points = [
+        [-0.1 * width, 0.55 * height],
+        [0.02 * width, 0.52 * height],
+        [0.09 * width, 0.51 * height],
+        [0.15 * width, 0.44 * height],
+        [0.23 * width, 0.4 * height],
+        [0.32 * width, 0.38 * height],
+        [0.34 * width, 0.36 * height],
+        [0.35 * width, 0.35 * height],
+        [0.41 * width, 0.28 * height],
+        [0.43 * width, 0.3 * height],
+        [0.5 * width, 0.26 * height],
+        [0.53 * width, 0.27 * height],
+        [0.58 * width, 0.26 * height],
+        [0.59 * width, 0.26 * height],
+        [0.62 * width, 0.24 * height],
+        [0.65 * width, 0.25 * height],
+        [0.71 * width, 0.23 * height],
+        [0.78 * width, 0.15 * height],
+        [0.85 * width, 0.14 * height],
+        [0.89 * width, 0.14 * height],
+        [0.95 * width, 0.11 * height],
+        [0.97 * width, 0.12 * height],
+        [1.1 * width, 0.09 * height],
+        [1.1 * width, 0.55 * height],
+        [0.97 * width, 0.53 * height],
+        [0.96 * width, 0.55 * height],
+        [0.92 * width, 0.55 * height],
+        [0.8 * width, 0.56 * height],
+        [0.72 * width, 0.57 * height],
+        [0.69 * width, 0.58 * height],
+        [0.64 * width, 0.63 * height],
+        [0.62 * width, 0.63 * height],
+        [0.61 * width, 0.65 * height],
+        [0.59 * width, 0.63 * height],
+        [0.57 * width, 0.62 * height],
+        [0.55 * width, 0.64 * height],
+        [0.53 * width, 0.65 * height],
+        [0.49 * width, 0.63 * height],
+        [0.43 * width, 0.63 * height],
+        [0.39 * width, 0.64 * height],
+        [0.37 * width, 0.65 * height],
+        [0.36 * width, 0.65 * height],
+        [0.34 * width, 0.68 * height],
+        [0.32 * width, 0.67 * height],
+        [0.29 * width, 0.72 * height],
+        [0.27 * width, 0.71 * height],
+        [0.27 * width, 0.73 * height],
+        [0.24 * width, 0.72 * height],
+        [0.22 * width, 0.73 * height],
+        [0.2 * width, 0.7 * height],
+        [0.16 * width, 0.73 * height],
+        [0.14 * width, 0.71 * height],
+        [0.13 * width, 0.72 * height],
+        [0.1 * width, 0.71 * height],
+        [0.05 * width, 0.72 * height],
+        [0.06 * width, 0.7 * height],
+        [-0.1 * width, 0.73 * height],
+    ];
+    const duration = 1500;
+    const pointsOffset = points.map(([w, h]) => [w - width / 2, h - height / 2]);
+
+    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.actor?.img || "icons/svg/cowled.svg";
+    new Sequence()
+        .effect()
+        .shape("polygon", {
+            //isMask: true,
+            points: pointsOffset,
+            fillColor: game.user.color,
+            fillAlpha: 1,
+        })
+        .screenSpace()
+        .screenSpacePosition({ x: 0, y: 0 })
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpaceAboveUI()
+        .zIndex(-1)
+        .duration(duration)
+        .effect()
+        .file(img)
+        .zIndex(0)
+        .shape("polygon", {
+            isMask: true,
+            points: pointsOffset,
+        })
+        .screenSpace()
+        .screenSpacePosition({ x: 0, y: 0 })
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpaceAboveUI()
+        .duration(duration)
+        .effect()
+
+        .zIndex(1)
+        .shape("polygon", {
+            //isMask: true,
+            points: pointsOffset,
+            fillAlpha: 0,
+            lineSize: 10,
+            lineColor: "white",
+        })
+        .screenSpace()
+        .screenSpacePosition({ x: 0, y: 0 })
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpaceAboveUI()
+        .duration(duration)
+        .play();
 }
