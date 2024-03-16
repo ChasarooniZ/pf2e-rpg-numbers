@@ -146,7 +146,7 @@ function rotateOnAttack(dat, msg) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = game.settings.get(MODULE_ID, "check-enabled");
-    const doCrits = game.settings.get(MODULE_ID, "crit.enabled");
+    const doCrits = game.settings.get(MODULE_ID, "critical.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
