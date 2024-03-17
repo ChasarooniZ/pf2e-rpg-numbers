@@ -177,54 +177,61 @@ export function personaCrit(token, users) {
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const sound = game.settings.get(MODULE_ID, "critical.sound");
     const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
-    new Sequence()
-        .effect()
-        .shape("polygon", {
-            //isMask: true,
-            points: pointsOffset,
-            fillColor: game.user.color,
-            fillAlpha: 1,
-        })
-        .screenSpace()
-        .screenSpacePosition({ x: 0, y: 0 })
-        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpaceAboveUI()
-        .zIndex(-1)
-        .duration(duration)
-        .forUsers(users)
-        .effect()
-        .file(img)
-        .zIndex(0)
-        .shape("polygon", {
-            isMask: true,
-            points: pointsOffset,
-        })
-        .screenSpace()
-        .screenSpacePosition({ x: 0, y: 0 })
-        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpaceAboveUI()
-        .duration(duration)
-        .forUsers(users)
-        .effect()
-        .zIndex(1)
-        .shape("polygon", {
-            //isMask: true,
-            points: pointsOffset,
-            fillAlpha: 0,
-            lineSize: 10,
-            lineColor: "white",
-        })
-        .screenSpace()
-        .screenSpacePosition({ x: 0, y: 0 })
-        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpaceAboveUI()
-        .duration(duration)
-        .forUsers(users)
-        .sound()
-        .file(sound)
-        .duration(duration * 1.25)
-        .fadeOutAudio(duration / 4)
-        .volume(volume)
-        .forUsers(users)
-        .play();
+    const image = new Image();
+    image.src = img;
+
+    image.onload = ({ target }) => {
+        const imgHeight = target.height;
+        new Sequence()
+            .effect()
+            .shape("polygon", {
+                //isMask: true,
+                points: pointsOffset,
+                fillColor: game.user.color,
+                fillAlpha: 1,
+            })
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            .screenSpaceAboveUI()
+            .zIndex(-1)
+            .duration(duration)
+            .forUsers(users)
+            .effect()
+            .file(img)
+            .zIndex(0)
+            .shape("polygon", {
+                isMask: true,
+                points: pointsOffset,
+            })
+            .scale(height/imgHeight)
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            .screenSpaceAboveUI()
+            .duration(duration)
+            .forUsers(users)
+            .effect()
+            .zIndex(1)
+            .shape("polygon", {
+                //isMask: true,
+                points: pointsOffset,
+                fillAlpha: 0,
+                lineSize: 10,
+                lineColor: "white",
+            })
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            .screenSpaceAboveUI()
+            .duration(duration)
+            .forUsers(users)
+            .sound()
+            .file(sound)
+            .duration(duration * 1.25)
+            .fadeOutAudio(duration / 4)
+            .volume(volume)
+            .forUsers(users)
+            .play();
+    };
 }
