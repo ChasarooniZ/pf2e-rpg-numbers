@@ -91,7 +91,7 @@ export function fireEmblemCrit(token, users) {
         .sound()
         .file(sound)
         .duration(duration * 1.25)
-        .fadeoutAudio(duration / 4)
+        .fadeOutAudio(duration / 4)
         .volume(volume)
         .forUsers(users)
         .play();
@@ -223,7 +223,7 @@ export function personaCrit(token, users) {
         .sound()
         .file(sound)
         .duration(duration * 1.25)
-        .fadeoutAudio(duration / 4)
+        .fadeOutAudio(duration / 4)
         .volume(volume)
         .forUsers(users)
         .play();
