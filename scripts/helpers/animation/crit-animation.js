@@ -1,15 +1,17 @@
+import { getVisibleUsers } from "../anim.js";
 import { MODULE_ID } from "../misc.js";
 
 export function createCritAnimation(roll_deets) {
     const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
-    if ((showOn === 'checks' && isAttack) || (showOn === 'attacks' && !isAttack)) return;
+    if ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)) return;
+    const users = getVisibleUsers(roll_deets.token);
     switch (game.settings.get(MODULE_ID, "critical.type")) {
         case "persona":
-            personaCrit(roll_deets.token);
+            personaCrit(roll_deets.token, users);
             break;
         case "fire-emblem":
-            fireEmblemCrit(roll_deets.token);
+            fireEmblemCrit(roll_deets.token, users);
             break;
         default:
             return;
@@ -20,7 +22,7 @@ export function createCritAnimation(roll_deets) {
  * Critical hit animation like in fire emblem
  * @param {*} token
  */
-export function fireEmblemCrit(token) {
+export function fireEmblemCrit(token, users) {
     let screenWidth = window.screen.availWidth;
     let amt = 0.35;
     let dist = amt * screenWidth;
@@ -28,7 +30,11 @@ export function fireEmblemCrit(token) {
     const padding = height / 10;
     const rectHeight = height + padding * 2;
     const width = screen.width;
-    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src || "icons/svg/cowled.svg"
+    const img =
+        token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src || "icons/svg/cowled.svg";
+    const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
+    const sound = game.settings.get(MODULE_ID, "critical.sound");
+    const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
 
     const tokenScale = { x: token?.document?.texture?.scaleX ?? 1, y: token?.document?.texture?.scaleY ?? 1 };
     const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg;
@@ -45,12 +51,12 @@ export function fireEmblemCrit(token) {
             name: "feCritA",
         })
         .opacity(0.7)
-        .duration(3000)
-        .animateProperty("shapes.feCritA", "scale.y", { from: 1, to: 0.6, duration: 3000, ease: "easeInCubic" })
+        .duration(duration)
+        .animateProperty("shapes.feCritA", "scale.y", { from: 1, to: 0.6, duration: duration, ease: "easeInCubic" })
         .animateProperty("shapes.feCritA", "position.y", {
             from: 0,
             to: (rectHeight * 0.4) / 2,
-            duration: 3000,
+            duration: duration,
             ease: "easeInCubic",
         })
         //.attachTo(token)
@@ -58,12 +64,13 @@ export function fireEmblemCrit(token) {
         //.screenSpaceAboveUI()
         .screenSpacePosition({ x: 0, y: -rectHeight / 2 })
         .screenSpaceAnchor({ x: 0, y: 0.5 })
+        .forUsers(users)
         .effect()
         .file(img)
         .animateProperty("sprite", "position.x", {
             from: -dist / (2 * distScale),
             to: dist,
-            duration: 3000,
+            duration: duration,
             ease: "easeInBack",
         })
         .scale(0.3)
@@ -76,10 +83,17 @@ export function fireEmblemCrit(token) {
             ratioX: true, // If Y is scaled, setting this to true will preserve the width/height ratio
             ratioY: false, // If X is scaled, setting this to true will preserve the height/width ratio
         })
-        .duration(3000)
+        .duration(duration)
         //.screenSpaceAboveUI()
         .scale(1)
         .size(height)
+        .forUsers(users)
+        .sound()
+        .file(sound)
+        .duration(duration * 1.25)
+        .fadeoutAudio(duration / 4)
+        .volume(volume)
+        .forUsers(users)
         .play();
 }
 
@@ -95,7 +109,7 @@ for pair in r.split(","):
     print("[" + widthPer + "* width, " + heightPer + "* height],")
  */
 //https://www.cssportal.com/css-clip-path-generator/
-export function personaCrit(token) {
+export function personaCrit(token, users) {
     const width = window.screen.availWidth;
     const height = window.screen.availHeight;
     const points = [
@@ -157,10 +171,12 @@ export function personaCrit(token) {
         [0.06 * width, 0.7 * height],
         [-0.1 * width, 0.73 * height],
     ];
-    const duration = 1500;
     const pointsOffset = points.map(([w, h]) => [w - width / 2, h - height / 2]);
 
     const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.actor?.img || "icons/svg/cowled.svg";
+    const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
+    const sound = game.settings.get(MODULE_ID, "critical.sound");
+    const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
     new Sequence()
         .effect()
         .shape("polygon", {
@@ -175,6 +191,7 @@ export function personaCrit(token) {
         .screenSpaceAboveUI()
         .zIndex(-1)
         .duration(duration)
+        .forUsers(users)
         .effect()
         .file(img)
         .zIndex(0)
@@ -187,8 +204,8 @@ export function personaCrit(token) {
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .screenSpaceAboveUI()
         .duration(duration)
+        .forUsers(users)
         .effect()
-
         .zIndex(1)
         .shape("polygon", {
             //isMask: true,
@@ -202,5 +219,12 @@ export function personaCrit(token) {
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .screenSpaceAboveUI()
         .duration(duration)
+        .forUsers(users)
+        .sound()
+        .file(sound)
+        .duration(duration * 1.25)
+        .fadeoutAudio(duration / 4)
+        .volume(volume)
+        .forUsers(users)
         .play();
 }

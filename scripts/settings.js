@@ -458,6 +458,14 @@ Hooks.on("init", () => {
             ["both"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on.choices.both"),
         },
     });
+    game.settings.register("pf2e-rpg-numbers", "critical.duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.duration.hint"),
+        scope: "world",
+        config: true,
+        default: 1.5,
+        type: Number
+    });
     game.settings.register("pf2e-rpg-numbers", "critical.sound", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.sound.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.sound.hint"),
@@ -466,6 +474,19 @@ Hooks.on("init", () => {
         default: "",
         type: String,
         filePicker: "audio"
+    });
+    game.settings.register("pf2e-rpg-numbers", "critical.volume", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.volume.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.volume.hint"),
+        scope: "world",
+        config: true,
+        default: 50,
+        range: {
+            min: 1,
+            max: 100,
+            step: 1,
+        },
+        type: Number,
     });
 
     //Finishing Move
