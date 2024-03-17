@@ -31,13 +31,13 @@ export function fireEmblemCrit(token, users) {
     const rectHeight = height + padding * 2;
     const width = screen.width;
     const img =
-        token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.document?.texture?.src || "icons/svg/cowled.svg";
+        token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || token?.texture?.src || "icons/svg/cowled.svg";
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const sound = game.settings.get(MODULE_ID, "critical.sound");
     const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
 
-    const tokenScale = { x: token?.document?.texture?.scaleX ?? 1, y: token?.document?.texture?.scaleY ?? 1 };
-    const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg;
+    const tokenScale = { x: token?.texture?.scaleX ?? 1, y: token?.texture?.scaleY ?? 1 };
+    const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg;
     const distScale = usingToken ? tokenScale.x + tokenScale.y / 2 : 1;
     //TODO set who it plays for
     new Sequence()
@@ -204,7 +204,7 @@ export function personaCrit(token, users) {
                 isMask: true,
                 points: pointsOffset,
             })
-            .scale(height/imgHeight)
+            .scale(height / imgHeight)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
