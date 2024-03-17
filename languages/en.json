@@ -266,6 +266,14 @@
                     "name": "Enable Finishing Moves",
                     "hint": "When you use an action and have the HUD Element toggled on it gives you a cool readout of the action."
                 },
+                "enabled-players": {
+                    "name": "Enable Finishing Moves Option for Players",
+                    "hint": "Allow players to use finishing move feature (Reloads Foundry)"
+                },
+                "keep-on": {
+                    "name": "Keep Finishing Moves On",
+                    "hint": "No longer turns off finishing move after you make a finishing move effect"
+                },
                 "mode": {
                     "name": "When to show moves",
                     "hint": "Doesn't Require HUD toggle",

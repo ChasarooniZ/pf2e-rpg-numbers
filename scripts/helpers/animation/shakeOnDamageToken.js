@@ -36,7 +36,6 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
             pingPong: true,
         })
         .duration(duration)
-        .waitUntilFinished()
         .forUsers(usersToPlayFor)
         .animation()
         .on(token)

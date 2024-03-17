@@ -464,7 +464,7 @@ Hooks.on("init", () => {
         scope: "world",
         config: true,
         default: 1.5,
-        type: Number
+        type: Number,
     });
     game.settings.register("pf2e-rpg-numbers", "critical.sound", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.sound.name"),
@@ -473,7 +473,7 @@ Hooks.on("init", () => {
         config: true,
         default: "",
         type: String,
-        filePicker: "audio"
+        filePicker: "audio",
     });
     game.settings.register("pf2e-rpg-numbers", "critical.volume", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.volume.name"),
@@ -493,6 +493,25 @@ Hooks.on("init", () => {
     game.settings.register("pf2e-rpg-numbers", "finishing-move.enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.enabled-players", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled-players.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.enabled-players.hint"),
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+        onChange: debouncedReload,
+    });
+    
+    game.settings.register("pf2e-rpg-numbers", "finishing-move.keep-on", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.keep-on.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.keep-on.hint"),
         scope: "world",
         config: true,
         default: false,

@@ -6,13 +6,13 @@ import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
-import { createFinishingMoveAnimation } from "./helpers/finishing-move.js";
+import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move.js";
 import { createCritAnimation } from "./helpers/animation/crit-animation.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
     Hooks.on("getSceneControlButtons", (controls, _b, _c) => {
-        if (!game.user.isGM) return;
+        if (!game.user.isGM || game.settings.get(MODULE_ID, "finishing-move.enabled-players")) return;
         let isFinishingMove = game.user.getFlag(MODULE_ID, "finishingMoveActive");
         controls
             .find((con) => con.name == "token")
@@ -181,16 +181,14 @@ function damageRollNumbers(dat, msg) {
 }
 
 function finishingMove(dat) {
-    if (game.settings.get(MODULE_ID, "finishing-move.enabled") && isUseFinishingMove(dat.item)) {
-        if (game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
-            debugLog(
-                {
-                    item: dat.item,
-                },
-                "Finishing Move"
-            );
-            createFinishingMoveAnimation(dat.item.name);
-        }
+    if (game.settings.get(MODULE_ID, "finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
+        debugLog(
+            {
+                item: dat.item,
+            },
+            "Finishing Move"
+        );
+        createFinishingMoveAnimation(dat.item.name);
     }
 }
 
