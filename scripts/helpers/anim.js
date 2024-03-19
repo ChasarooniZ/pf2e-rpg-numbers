@@ -127,3 +127,9 @@ export function getTokenShakeScale(token, dmg) {
         }
     });
 }
+
+export function getVisibleAndMsgVisibleUsers(roll_deets) {
+    getVisibleUsers(roll_deets.token).filter((player) =>
+        (roll_deets.whisper.length === 0 ? game.users.map((u) => u.id) : roll_deets.whisper).includes(player)
+    );
+}

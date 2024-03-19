@@ -24,6 +24,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
     new Sequence()
         .animation()
         .on(token)
+        .delay(duration / 10)
         .opacity(0)
         .effect()
         .atLocation(token)
@@ -36,10 +37,10 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
             pingPong: true,
         })
         .duration(duration)
+        .waitUntilFinished()
         .forUsers(usersToPlayFor)
         .animation()
         .on(token)
         .opacity(original_opacity)
-        .waitUntilFinished()
         .play();
 }

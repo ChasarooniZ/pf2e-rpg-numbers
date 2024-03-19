@@ -1,11 +1,11 @@
-import { getVisibleUsers } from "../anim.js";
+import { getVisibleAndMsgVisibleUsers} from "../anim.js";
 import { MODULE_ID } from "../misc.js";
 
 export function createCritAnimation(roll_deets) {
     const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
     if ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)) return;
-    const users = getVisibleUsers(roll_deets.token);
+    const users = getVisibleAndMsgVisibleUsers(roll_deets)
     switch (game.settings.get(MODULE_ID, "critical.type")) {
         case "persona":
             personaCrit(roll_deets.token, users);
