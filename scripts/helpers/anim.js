@@ -129,7 +129,7 @@ export function getTokenShakeScale(token, dmg) {
 }
 
 export function getVisibleAndMsgVisibleUsers(roll_deets) {
-    getVisibleUsers(roll_deets.token).filter((player) =>
+    return getVisibleUsers(roll_deets.token).filter((player) =>
         roll_deets.whisper.length === 0 ? true : roll_deets.whisper.includes(player)
     );
 }
