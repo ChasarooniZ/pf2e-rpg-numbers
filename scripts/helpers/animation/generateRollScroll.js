@@ -1,4 +1,4 @@
-import { getVisibleAndMsgVisibleUsers } from "../anim";
+import { getVisibleAndMsgVisibleUsers } from "../anim.js";
 
 /**
  * Generates scrolling text for a Check
