@@ -593,10 +593,10 @@ Hooks.on("init", () => {
     //     type: Boolean,
     // });
 
-    game.settings.register("pf2e-rpg-numbers", "updateMessage", {
+    game.settings.register("pf2e-rpg-numbers", "last-version", {
         scope: "world",
         config: false,
-        default: "",
+        default: "0.0.0",
         type: String,
     });
 });

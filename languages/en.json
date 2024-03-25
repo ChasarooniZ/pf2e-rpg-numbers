@@ -362,10 +362,6 @@
                     "hint": "Adds features related to modifiers matters. Requires modifiers matters to be installed, as well as PF2e Animations IIRC."
                 }
             },
-            "get-update-msg": {
-                "name": "Show Update Messages",
-                "hint": "Get Messages that give information about new updates (Which i will try to do now for major releases"
-            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"

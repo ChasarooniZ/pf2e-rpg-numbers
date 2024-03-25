@@ -8,6 +8,7 @@ import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move.js";
 import { createCritAnimation } from "./helpers/animation/crit-animation.js";
+import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -70,33 +71,35 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    if (game.settings.get(MODULE_ID, "rotate-on-attack")) {
-        injectConfig.quickInject([{ documentName: "Token" }], {
-            moduleId: MODULE_ID,
-            tab: {
-                name: MODULE_ID,
-                label: game.i18n.localize("pf2e-rpg-numbers.token-options.tab-label"),
-                icon: "fas fa-dragon",
-            },
-            rotationOffset: {
-                type: "number",
-                label: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.name"),
-                notes: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.hint"),
-                default: 0,
-            },
-            fireEmblemImg: {
-                type: "filepicker",
-                label: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.name"),
-                notes: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.hint"),
-                default: "",
-            },
-            personaImg: {
-                type: "filepicker",
-                label: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.name"),
-                notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
-                default: "",
-            },
-        });
+    injectConfig.quickInject([{ documentName: "Token" }], {
+        moduleId: MODULE_ID,
+        tab: {
+            name: MODULE_ID,
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.tab-label"),
+            icon: "fas fa-dragon",
+        },
+        rotationOffset: {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.hint"),
+            default: 0,
+        },
+        fireEmblemImg: {
+            type: "filepicker",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.hint"),
+            default: "",
+        },
+        personaImg: {
+            type: "filepicker",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
+            default: "",
+        },
+    });
+
+    if (game.user.isGM) {
+        sendUpdateMessage();
     }
 
     console.log("PF2e RPG Numbers is ready");
