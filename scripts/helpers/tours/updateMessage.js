@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../helpers/misc.js";
+import { MODULE_ID } from "../misc.js";
 import { EnhancedTour } from "../library/EnhancedTour.js";
 import { TOUR_LIST, TOURS, TOUR_BASICS } from "./tour-setup.js";
 
