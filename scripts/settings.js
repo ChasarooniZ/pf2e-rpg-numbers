@@ -471,7 +471,7 @@ Hooks.on("init", () => {
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.sound.hint"),
         scope: "world",
         config: true,
-        default: "",
+        default: "modules/pf2e-rpg-numbers/resources/sounds/swoosh-universfield.mp3",
         type: String,
         filePicker: "audio",
     });
@@ -508,7 +508,7 @@ Hooks.on("init", () => {
         type: Boolean,
         onChange: debouncedReload,
     });
-    
+
     game.settings.register("pf2e-rpg-numbers", "finishing-move.keep-on", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.keep-on.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.finishing-move.keep-on.hint"),

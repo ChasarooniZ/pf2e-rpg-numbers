@@ -59,3 +59,6 @@ A: This module will only support the **PF2e** system
     License text: http://creativecommons.org/licenses/by-nc/3.0/
 - [`vent4_(pligativator).wav](https://freesound.org/people/plingativator/sounds/160558/)
   - This SOund is being used under the Attribution 4.0 License
+- [`swoosh-universifled]([swoosh-universfield](https://pixabay.com/sound-effects/swoosh-142322/))
+  - Free for use under the Pixabay Content License
+  - 
