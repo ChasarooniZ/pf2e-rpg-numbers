@@ -71,8 +71,11 @@ export function generateRollScroll(roll_deets) {
         .fadeOut(duration / 3)
         .zIndex(2)
         .forUsers(
-            getVisibleUsers(roll_deets.token).filter((player) => (roll_deets.whisper.length === 0 ? game.users.map((u) => u.id) : roll_deets.whisper).includes(player)
-            )
+            getVisibleAndMsgVisibleUsers(roll_deets)
         )
         .play();
+
+        
 }
+
+
