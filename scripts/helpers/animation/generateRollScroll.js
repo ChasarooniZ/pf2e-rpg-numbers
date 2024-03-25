@@ -1,4 +1,4 @@
-import { getVisibleUsers } from "../anim.js";
+import { getVisibleAndMsgVisibleUsers } from "../anim";
 
 /**
  * Generates scrolling text for a Check
@@ -70,12 +70,6 @@ export function generateRollScroll(roll_deets) {
         .scaleIn(0.5, duration / 3)
         .fadeOut(duration / 3)
         .zIndex(2)
-        .forUsers(
-            getVisibleAndMsgVisibleUsers(roll_deets)
-        )
+        .forUsers(getVisibleAndMsgVisibleUsers(roll_deets))
         .play();
-
-        
 }
-
-
