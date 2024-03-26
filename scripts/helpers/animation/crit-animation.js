@@ -224,11 +224,11 @@ export function personaCrit(token, users, imgData) {
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
     const flags = token.flags?.["pf2e-rpg-numbers"];
     const [personaImg, critScale, critOffsetX, critOffsetY, critRotation] = [
-        flags.personaImg,
-        flags.critScale || 100,
-        flags.critOffsetX || 0,
-        flags.critOffsetY || 0,
-        flags.critRotation || 0,
+        flags?.personaImg || "",
+        flags?.critScale || 100,
+        flags?.critOffsetX || 0,
+        flags?.critOffsetY || 0,
+        flags?.critRotation || 0,
     ];
 
     const imageUrl = personaImg || imgData.img;
