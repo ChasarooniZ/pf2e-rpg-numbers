@@ -1,3 +1,6 @@
+# 11.9.1
+  - Fixed Finishing Move Toggle
+  - Fixed bug where flag was null on control being toggled on or off
 # 11.9.0 Jazz it Up!
 - **Critical Animations**
   - Added Critical Hit Animation Options
