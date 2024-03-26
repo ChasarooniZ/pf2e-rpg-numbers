@@ -14,7 +14,7 @@ import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 Hooks.on("init", () => {
     Hooks.on("getSceneControlButtons", (controls, _b, _c) => {
         if (!game.user.isGM && !game.settings.get(MODULE_ID, "finishing-move.enabled-players")) return;
-        let isFinishingMove = game.user.getFlag(MODULE_ID, "finishingMoveActive");
+        let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
         controls
             .find((con) => con.name == "token")
             .tools.push({
