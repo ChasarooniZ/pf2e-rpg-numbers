@@ -16,6 +16,7 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
         yScale: 1,
         xOffset: 0,
         yOffset: 0,
+        isToken: true,
     };
 
     if (
@@ -30,6 +31,7 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
         } else {
             // actor
             imgData.img = roll_deets?.token?.actor?.img;
+            imgData.isToken = false;
         }
     } else {
         return;
@@ -69,12 +71,12 @@ export function fireEmblemCrit(token, users, imgData) {
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
-    const imageUrl = token.document.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
+    const imageUrl = token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
     const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
 
-    if (!!token.document.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg) {
+    if (!!token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg && imgData.isToken) {
         imgData.xScale = 1;
         imgData.yScale = 1;
     }
@@ -232,7 +234,7 @@ export function personaCrit(token, users, imgData) {
     ];
 
     const imageUrl = personaImg || imgData.img;
-    const imageScaler = personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
+    const imageScaler = personaImg ? 1 : (ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1);
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
     const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
