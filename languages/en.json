@@ -261,8 +261,8 @@
                     }
                 },
                 "show-on-token-type": {
-                    "name": "Show Critical Animation for Token Types",
-                    "hint": "Choose whether to show critical animations for PCs, NPCS, or Both",
+                    "name": "Show Critical Animation For",
+                    "hint": "Choose to show critical animations for PCs, NPCS, or Both",
                     "choices": {
                         "pc": "PCs",
                         "npc": "NPCs",
