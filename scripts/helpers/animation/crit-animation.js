@@ -246,7 +246,7 @@ export function personaCrit(token, users, imgData) {
 
         const scale = (critScale / 100) * (screenHeight / imageHeight) * imageScaler;
         const offsetX = critOffsetX * imagePercent * scale;
-        const offsetY = (personaImg ? 0 : imagePercent * 40) + critOffsetY * imagePercent * scale;
+        const offsetY = (personaImg ? 0 : imagePercent * 20) + critOffsetY * imagePercent * scale;
 
         new Sequence()
             .effect()
