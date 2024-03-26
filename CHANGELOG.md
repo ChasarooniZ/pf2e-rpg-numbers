@@ -1,6 +1,15 @@
-# 11.9.1
-  - Fixed Finishing Move Toggle
-  - Fixed bug where flag was null on control being toggled on or off
+# 11.9.2 Settings + Improvements
+- **Critical Animation - Changes** (@TheTenk & @pedrogrullada)
+  - Added setting to set to show for PCs or NPCs or Both
+  - Added setting to set whether the default crit animation is token or actor image for animations
+  - **Persona Tweaks** - Added an offset for default images for the Persona aniamtion so that they should look a little better by default
+  - Added Scaling to aniamtions if they use token to better match the size of the token on the page
+- **Finishing Moves**
+  - Fixed issue with visibility of text (@TheTenk)
+  - Improved Quality of animation thanks to (@Clemente)
+# 11.9.1 Bug Fixes
+- Fixed Finishing Move Toggle
+- Fixed bug where flag was null on control being toggled on or off
 # 11.9.0 Jazz it Up!
 - **Critical Animations**
   - Added Critical Hit Animation Options
