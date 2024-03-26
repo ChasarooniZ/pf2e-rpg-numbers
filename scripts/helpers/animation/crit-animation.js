@@ -222,8 +222,7 @@ export function personaCrit(token, users, imgData) {
         [-0.1 * screenWidth, 0.73 * screenHeight],
     ];
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
-    const { personaImg, critScale, critOffsetX, critOffsetY, critRotation } =
-        token.flags?.["pf2e-rpg-numbers"] || {};
+    const { personaImg, critScale, critOffsetX, critOffsetY, critRotation } = token.flags?.["pf2e-rpg-numbers"] || {};
 
     const imageUrl = personaImg || imgData.img;
     const imageScaler = personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
@@ -238,9 +237,9 @@ export function personaCrit(token, users, imgData) {
         const imageHeight = target.height;
         const imagePercent = (imageHeight * imageScaler) / 100;
 
-        const scale = critScale / 100;
-        const offsetX = critOffsetX * imagePercent;
-        const offsetY = (personaImg ? 0 : imagePercent * 40) + critOffsetY * imagePercent;
+        const scale = (critScale / 100) * (screenHeight / imageHeight) * imageScaler;
+        const offsetX = critOffsetX * imagePercent * scale;
+        const offsetY = (personaImg ? 0 : imagePercent * 40) + critOffsetY * imagePercent * scale;
 
         new Sequence()
             .effect()
@@ -256,7 +255,7 @@ export function personaCrit(token, users, imgData) {
             .file(imageUrl)
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
-            .scale((screenHeight / imageHeight) * imageScaler * scale)
+            .scale(scale)
             .spriteOffset({ x: offsetX, y: offsetY })
             .spriteRotation(critRotation)
             .screenSpace()
