@@ -1,3 +1,21 @@
+# 11.9.0 Jazz it Up!
+- **Critical Animations**
+  - Added Critical Hit Animation Options
+  - Can also customize critical hit animation pictures in token settings
+  - Fire Emblem
+    - ![critical fire emblem](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/a7d982cc-340a-4fc5-a341-7229c9662b37)
+  - Persona 5
+    - ![critical persona](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/3cdf1572-fabc-4328-a812-1030e219447e)
+- **Finishing Moves**
+   - Added Finishing Move effect (based loosely on [this](https://youtu.be/FhjszLnffwM?si=DtAv2131fXnMOwJ5&t=14)]
+   - To use them toggle on the setting, and then toggle the tool in Token Tools and use an action/attack/spell etc.
+      - _Note: By default you will need to toggle on every time you want to use a finishing move_
+   - ![finishing Move](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/1b085475-4d4a-4dfa-999d-e9efc03d1ff7)
+- **Tour**
+   - Added tour for this, and every major update from here on to give info on the feature
+- Code Stuff
+  - Refactored a lot of stuff, reformatted a lot of stuff
+  - Fixed bug with reading -numbers when splitting up text for damage roll
 # 11.8.7 Fixing old issues
 - Minor refactor of some of the code for future readability
 - Animations are now created on the side of the **User that rolled**
