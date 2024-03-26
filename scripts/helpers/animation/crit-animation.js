@@ -223,7 +223,7 @@ export function personaCrit(token, users, imgData) {
     ];
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
     const { personaImg, critScale, critOffsetX, critOffsetY, critRotation } =
-        token.document.flags?.["pf2e-rpg-numbers"] || {};
+        token.flags?.["pf2e-rpg-numbers"] || {};
 
     const imageUrl = personaImg || imgData.img;
     const imageScaler = personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
