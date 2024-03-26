@@ -458,6 +458,33 @@ Hooks.on("init", () => {
             ["both"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on.choices.both"),
         },
     });
+    game.settings.register("pf2e-rpg-numbers", "critical.show-on-token-type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"),
+        scope: "world",
+        config: true,
+        default: "pc+npc",
+        type: String,
+        choices: {
+            ["pc"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on-token-type.choices.pc"),
+            ["npc"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on-token-type.choices.npc"),
+            ["pc+npc"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.show-on-token-type.choices.pc+npc"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "critical.default-img", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.hint"),
+        scope: "world",
+        config: true,
+        default: "pc-tok-npc-tok",
+        type: String,
+        choices: {
+            ["pc-tok-npc-tok"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.choices.pc-tok-npc-tok"),
+            ["pc-act-npc-act"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.choices.pc-act-npc-act"),
+            ["pc-tok-npc-act"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.choices.pc-tok-npc-act"),
+            ["pc-act-npc-tok"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.default-img.choices.pc-act-npc-tok"),
+        },
+    });
     game.settings.register("pf2e-rpg-numbers", "critical.duration", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.duration.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.duration.hint"),

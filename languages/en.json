@@ -259,6 +259,25 @@
                         "checks": "Checks",
                         "both": "Both"
                     }
+                },
+                "show-on-token-type": {
+                    "name": "Show Critical Animation for Token Types",
+                    "hint": "Choose whether to show critical animations for PCs, NPCS, or Both",
+                    "choices": {
+                        "pc": "PCs",
+                        "npc": "NPCs",
+                        "pc-npc": "PCs & NPCs"
+                    }
+                },
+                "default-img": {
+                    "name": "Critical Animation Default Image",
+                    "hint": "Choose which to have the default image",
+                    "choices": {
+                        "pc-tok-npc-tok": "PCs: Token | NPCs: Token",
+                        "pc-act-npc-act": "PCs: Actor | NPCs: Actor",
+                        "pc-tok-npc-act": "PCs: Token | NPCs: Actor",
+                        "pc-act-npc-tok": "PCs: Actor | NPCs: Token"
+                    }
                 }
             },
             "finishing-move": {

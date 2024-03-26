@@ -1,17 +1,56 @@
-import { getVisibleAndMsgVisibleUsers} from "../anim.js";
+import { getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { MODULE_ID } from "../misc.js";
 
 export function createCritAnimation(roll_deets) {
+    //TODO add option for default color
     const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
     if ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)) return;
-    const users = getVisibleAndMsgVisibleUsers(roll_deets)
+
+    const enabledTokenType = game.settings.get(MODULE_ID, "critical.show-on-token-type");
+    const defaultImgType = game.settings.get(MODULE_ID, "critical.default-img");
+    const actorType = roll_deets.token.actor.type;
+    let imgData = {
+        img: "icons/svg/cowled.svg",
+        xScale: 1,
+        yScale: 1,
+        xOffset: 0,
+        yOffset: 0,
+    };
+
+    if (actorType === "character") {
+        //PC Handle
+        if (enabledTokenType === "npc") return;
+        if (defaultImgType.startWith("pc-tok")) {
+            // Token
+            imgData.img = roll_deets?.token?.texture?.src;
+            imgData.xScale = token?.texture?.scaleX ?? 1;
+            imgData.yScale = token?.texture?.scaleY ?? 1;
+        } else {
+            // actor
+            imgData.img = roll_deets?.token?.actor?.img;
+        }
+    } else {
+        // NPC Handle
+        if (enabledTokenType === "pc") return;
+        if (defaultImgType.includes("npc-tok")) {
+            // Token
+            imgData.img = roll_deets?.token?.texture?.src;
+            imgData.xScale = token?.texture?.scaleX ?? 1;
+            imgData.yScale = token?.texture?.scaleY ?? 1;
+        } else {
+            // actor
+            imgData.img = roll_deets?.token?.actor?.img;
+        }
+    }
+
+    const users = getVisibleAndMsgVisibleUsers(roll_deets);
     switch (game.settings.get(MODULE_ID, "critical.type")) {
         case "persona":
-            personaCrit(roll_deets.token, users);
+            personaCrit(roll_deets.token, users, imgData);
             break;
         case "fire-emblem":
-            fireEmblemCrit(roll_deets.token, users);
+            fireEmblemCrit(roll_deets.token, users, imgData);
             break;
         default:
             return;
@@ -22,7 +61,7 @@ export function createCritAnimation(roll_deets) {
  * Critical hit animation like in fire emblem
  * @param {*} token
  */
-export function fireEmblemCrit(token, users) {
+export function fireEmblemCrit(token, users, imgData) {
     let screenWidth = window.screen.availWidth;
     let amt = 0.35;
     let dist = amt * screenWidth;
@@ -30,16 +69,15 @@ export function fireEmblemCrit(token, users) {
     const padding = height / 10;
     const rectHeight = height + padding * 2;
     const width = screen.width;
-    const img =
-        token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || token?.texture?.src || "icons/svg/cowled.svg";
+    const img = token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.data;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const sound = game.settings.get(MODULE_ID, "critical.sound");
     const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
-
-    const tokenScale = { x: token?.texture?.scaleX ?? 1, y: token?.texture?.scaleY ?? 1 };
-    const usingToken = !!token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg;
-    const distScale = usingToken ? tokenScale.x + tokenScale.y / 2 : 1;
-    //TODO set who it plays for
+    if (!!token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg) {
+        imgData.xScale = 1;
+        imgData.yScale = 1;
+    }
+    const distScale = imgData.xScale / 2;
     new Sequence()
         .effect()
         .shape("rectangle", {
@@ -76,8 +114,8 @@ export function fireEmblemCrit(token, users) {
         .scale(0.3)
         .screenSpace()
         .screenSpaceScale({
-            x: 0.2 * (usingToken ? tokenScale.x : 1), // Scale on the effect's X scale
-            y: 0.2 * (usingToken ? tokenScale.y : 1), // Scale on the effect's Y scale
+            x: 0.2 * imgData.xScale, // Scale on the effect's X scale
+            y: 0.2 * imgData.yScale, // Scale on the effect's Y scale
             fitX: false, // Causes the effect to set its width to fit the width of the screen
             fitY: true, // Causes the effect to set its height to fit the height of the screen
             ratioX: true, // If Y is scaled, setting this to true will preserve the width/height ratio
@@ -108,7 +146,7 @@ for pair in r.split(","):
     print("[" + widthPer + "* width, " + heightPer + "* height],")
  */
 //https://www.cssportal.com/css-clip-path-generator/
-export function personaCrit(token, users) {
+export function personaCrit(token, users, imgData) {
     const width = window.screen.availWidth;
     const height = window.screen.availHeight;
     const points = [
@@ -171,8 +209,8 @@ export function personaCrit(token, users) {
         [-0.1 * width, 0.73 * height],
     ];
     const pointsOffset = points.map(([w, h]) => [w - width / 2, h - height / 2]);
-
-    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || token?.actor?.img || "icons/svg/cowled.svg";
+    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || imgData.img;
+    const imgScaler = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const sound = game.settings.get(MODULE_ID, "critical.sound");
     const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
@@ -203,7 +241,7 @@ export function personaCrit(token, users) {
                 isMask: true,
                 points: pointsOffset,
             })
-            .scale(height / imgHeight)
+            .scale((height / imgHeight) * imgScaler)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
