@@ -266,7 +266,7 @@
                     "choices": {
                         "pc": "PCs",
                         "npc": "NPCs",
-                        "pc-npc": "PCs & NPCs"
+                        "pc+npc": "PCs & NPCs"
                     }
                 },
                 "default-img": {
