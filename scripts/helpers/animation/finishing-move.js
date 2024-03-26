@@ -13,11 +13,11 @@ export function createFinishingMoveAnimation(text) {
     const style = {
         fill: textColor,
         dropShadowColor: textBorderColor,
-        dropShadowBlur: 10,
+        dropShadowBlur: 10 * 4,
         dropShadowDistance: 0,
         dropShadow: true,
         fontFamily: "Impact, Charcoal, sans-serif",
-        fontSize: 48,
+        fontSize: 48 * 4,
         //fontWeight: "bold",
         strokeThickness: 2,
     };
@@ -31,6 +31,7 @@ export function createFinishingMoveAnimation(text) {
             .text(word, style)
             .screenSpace()
             .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })
+            .scale(0.25)
             .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
             .screenSpaceScale({
                 x: 1.0, // Scale on the effect's X scale
