@@ -22,7 +22,7 @@ export function createCritAnimation(roll_deets) {
         (actorType === "character" && enabledTokenType !== "npc") ||
         (actorType !== "character" && enabledTokenType !== "pc")
     ) {
-        if (actorType === "character" ? defaultImgType.startWith("pc-tok") : defaultImgType.includes("npc-tok")) {
+        if (actorType === "character" ? defaultImgType?.startWith("pc-tok") : defaultImgType?.includes("npc-tok")) {
             // Token
             imgData.img = roll_deets?.token?.texture?.src;
             imgData.xScale = roll_deets?.token?.texture?.scaleX ?? 1;
