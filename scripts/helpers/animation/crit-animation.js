@@ -18,30 +18,21 @@ export function createCritAnimation(roll_deets) {
         yOffset: 0,
     };
 
-    if (actorType === "character") {
-        //PC Handle
-        if (enabledTokenType === "npc") return;
-        if (defaultImgType.startWith("pc-tok")) {
+    if (
+        (actorType === "character" && enabledTokenType !== "npc") ||
+        (actorType !== "character" && enabledTokenType !== "pc")
+    ) {
+        if (actorType === "character" ? defaultImgType.startWith("pc-tok") : defaultImgType.includes("npc-tok")) {
             // Token
             imgData.img = roll_deets?.token?.texture?.src;
-            imgData.xScale = token?.texture?.scaleX ?? 1;
-            imgData.yScale = token?.texture?.scaleY ?? 1;
+            imgData.xScale = roll_deets?.token?.texture?.scaleX ?? 1;
+            imgData.yScale = roll_deets?.token?.texture?.scaleY ?? 1;
         } else {
             // actor
             imgData.img = roll_deets?.token?.actor?.img;
         }
     } else {
-        // NPC Handle
-        if (enabledTokenType === "pc") return;
-        if (defaultImgType.includes("npc-tok")) {
-            // Token
-            imgData.img = roll_deets?.token?.texture?.src;
-            imgData.xScale = token?.texture?.scaleX ?? 1;
-            imgData.yScale = token?.texture?.scaleY ?? 1;
-        } else {
-            // actor
-            imgData.img = roll_deets?.token?.actor?.img;
-        }
+        return;
     }
 
     const users = getVisibleAndMsgVisibleUsers(roll_deets);
@@ -58,32 +49,44 @@ export function createCritAnimation(roll_deets) {
 }
 
 /**
- * Critical hit animation like in fire emblem
- * @param {*} token
+ * Perform a critical hit animation resembling the style of Fire Emblem.
+ * This function creates an animated effect around the provided token, displaying
+ * an image moving across the screen along with other visual effects and sounds.
+ *
+ * @param {Token} token - The token object around which the animation will be centered.
+ * @param {User[]} users - An array of users who will see the animation.
+ * @param {Object} imgData - An object containing image data, including image URL and scaling information.
+ * @param {string} imgData.img - The URL of the image to be displayed in the animation.
+ * @param {number} imgData.xScale - The horizontal scaling factor of the image.
+ * @param {number} imgData.yScale - The vertical scaling factor of the image.
+ * @returns {void}
  */
 export function fireEmblemCrit(token, users, imgData) {
-    let screenWidth = window.screen.availWidth;
-    let amt = 0.35;
-    let dist = amt * screenWidth;
-    const height = screen.height / 10;
-    const padding = height / 10;
-    const rectHeight = height + padding * 2;
-    const width = screen.width;
-    const img = token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.data;
+    const screenWidth = window.screen.availWidth;
+    const scaleFactor = 0.35;
+    const distance = scaleFactor * screenWidth;
+    const windowHeight = screen.height / 10;
+    const padding = windowHeight / 10;
+    const rectangleHeight = windowHeight + padding * 2;
+    const windowWidth = screen.width;
+    const imageUrl = token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
-    const sound = game.settings.get(MODULE_ID, "critical.sound");
-    const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
+    const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
+    const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
+
     if (!!token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg) {
         imgData.xScale = 1;
         imgData.yScale = 1;
     }
-    const distScale = imgData.xScale / 2;
+
+    const scaleFactorHalf = imgData.xScale / 2;
+
     new Sequence()
         .effect()
         .shape("rectangle", {
             lineSize: 0,
-            width,
-            height: rectHeight,
+            width: windowWidth,
+            height: rectangleHeight,
             fillColor: game.user.color,
             fillAlpha: 1,
             name: "feCritA",
@@ -93,43 +96,40 @@ export function fireEmblemCrit(token, users, imgData) {
         .animateProperty("shapes.feCritA", "scale.y", { from: 1, to: 0.6, duration: duration, ease: "easeInCubic" })
         .animateProperty("shapes.feCritA", "position.y", {
             from: 0,
-            to: (rectHeight * 0.4) / 2,
+            to: (rectangleHeight * 0.4) / 2,
             duration: duration,
             ease: "easeInCubic",
         })
-        //.attachTo(token)
         .screenSpace()
-        //.screenSpaceAboveUI()
-        .screenSpacePosition({ x: 0, y: -rectHeight / 2 })
+        .screenSpacePosition({ x: 0, y: -rectangleHeight / 2 })
         .screenSpaceAnchor({ x: 0, y: 0.5 })
         .forUsers(users)
         .effect()
-        .file(img)
+        .file(imageUrl)
         .animateProperty("sprite", "position.x", {
-            from: -dist / (2 * distScale),
-            to: dist,
+            from: -distance / (2 * scaleFactorHalf),
+            to: distance,
             duration: duration,
             ease: "easeInBack",
         })
         .scale(0.3)
         .screenSpace()
         .screenSpaceScale({
-            x: 0.2 * imgData.xScale, // Scale on the effect's X scale
-            y: 0.2 * imgData.yScale, // Scale on the effect's Y scale
-            fitX: false, // Causes the effect to set its width to fit the width of the screen
-            fitY: true, // Causes the effect to set its height to fit the height of the screen
-            ratioX: true, // If Y is scaled, setting this to true will preserve the width/height ratio
-            ratioY: false, // If X is scaled, setting this to true will preserve the height/width ratio
+            x: 0.2 * imgData.xScale,
+            y: 0.2 * imgData.yScale,
+            fitX: false,
+            fitY: true,
+            ratioX: true,
+            ratioY: false,
         })
         .duration(duration)
-        //.screenSpaceAboveUI()
         .scale(1)
-        .size(height)
+        .size(windowHeight)
         .forUsers(users)
         .sound()
-        .file(sound)
+        .file(soundUrl)
         .fadeOutAudio(duration / 4)
-        .volume(volume)
+        .volume(volumeLevel)
         .forUsers(users)
         .play();
 }
@@ -146,10 +146,23 @@ for pair in r.split(","):
     print("[" + widthPer + "* width, " + heightPer + "* height],")
  */
 //https://www.cssportal.com/css-clip-path-generator/
+/**
+ * Perform a critical hit animation resembling a persona-like effect.
+ * This function creates an animated effect centered around the provided token, displaying
+ * an image with a polygonal mask, along with other visual effects and sounds.
+ *
+ * @param {Token} token - The token object around which the animation will be centered.
+ * @param {User[]} users - An array of users who will see the animation.
+ * @param {Object} imgData - An object containing image data, including image URL and scaling information.
+ * @param {string} imgData.img - The URL of the image to be displayed in the animation.
+ * @param {number} imgData.scaleX - The horizontal scaling factor of the image.
+ * @param {number} imgData.yScale - The vertical scaling factor of the image.
+ * @returns {void}
+ */
 export function personaCrit(token, users, imgData) {
-    const width = window.screen.availWidth;
-    const height = window.screen.availHeight;
-    const points = [
+    const screenWidth = window.screen.availWidth;
+    const screenHeight = window.screen.availHeight;
+    const polygonPoints = [
         [-0.1 * width, 0.55 * height],
         [0.02 * width, 0.52 * height],
         [0.09 * width, 0.51 * height],
@@ -208,22 +221,24 @@ export function personaCrit(token, users, imgData) {
         [0.06 * width, 0.7 * height],
         [-0.1 * width, 0.73 * height],
     ];
-    const pointsOffset = points.map(([w, h]) => [w - width / 2, h - height / 2]);
-    const img = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || imgData.img;
-    const imgScaler = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
+    const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
+    const imageUrl = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || imgData.img;
+    const imageScaler = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg
+        ? (imgData.scaleX + imgData.yScale) / 2
+        : 1;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
-    const sound = game.settings.get(MODULE_ID, "critical.sound");
-    const volume = game.settings.get(MODULE_ID, "critical.volume") / 100;
+    const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
+    const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
+
     const image = new Image();
-    image.src = img;
+    image.src = imageUrl;
 
     image.onload = ({ target }) => {
-        const imgHeight = target.height;
+        const imageHeight = target.height;
         new Sequence()
             .effect()
             .shape("polygon", {
-                //isMask: true,
-                points: pointsOffset,
+                points: centeredPoints,
                 fillColor: game.user.color,
                 fillAlpha: 1,
             })
@@ -235,13 +250,13 @@ export function personaCrit(token, users, imgData) {
             .duration(duration)
             .forUsers(users)
             .effect()
-            .file(img)
+            .file(imageUrl)
             .zIndex(0)
             .shape("polygon", {
                 isMask: true,
-                points: pointsOffset,
+                points: centeredPoints,
             })
-            .scale((height / imgHeight) * imgScaler)
+            .scale((screenHeight / imageHeight) * imageScaler)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
@@ -251,8 +266,7 @@ export function personaCrit(token, users, imgData) {
             .effect()
             .zIndex(1)
             .shape("polygon", {
-                //isMask: true,
-                points: pointsOffset,
+                points: centeredPoints,
                 fillAlpha: 0,
                 lineSize: 10,
                 lineColor: "white",
@@ -264,9 +278,9 @@ export function personaCrit(token, users, imgData) {
             .duration(duration)
             .forUsers(users)
             .sound()
-            .file(sound)
+            .file(soundUrl)
             .fadeOutAudio(duration / 4)
-            .volume(volume)
+            .volume(volumeLevel)
             .forUsers(users)
             .play();
     };
