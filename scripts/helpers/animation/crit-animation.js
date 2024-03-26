@@ -235,6 +235,10 @@ export function personaCrit(token, users, imgData) {
 
     image.onload = ({ target }) => {
         const imageHeight = target.height;
+        const offset = {
+            x: 0,
+            y: !token.data.flags?.["pf2e-rpg-numbers"]?.personaImg ? (imageHeight * imageScaler) / 4 : 0,
+        };
         new Sequence()
             .effect()
             .shape("polygon", {
@@ -257,6 +261,7 @@ export function personaCrit(token, users, imgData) {
                 points: centeredPoints,
             })
             .scale((screenHeight / imageHeight) * imageScaler)
+            .spriteOffset(offset)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
