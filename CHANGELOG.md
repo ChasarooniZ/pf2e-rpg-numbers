@@ -1,3 +1,10 @@
+# 11.9.4 Crit Config + Improvements
+-  **Persona Crit Settings**
+  - New settings for Persona Crit animations `Crit Offset X`, `Crit Offset Y`, `Crit Scale`, `Crit Rotation` 
+![image](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/7eb4f14a-a0a4-4c0a-8e28-e49d8ac3c883)
+- Actually fixed bug caused by spelling mistake for criticals on PCs
+# 11.9.3 Bug Fix
+-Fixed bug caused by spelling mistake for criticals on PCs
 # 11.9.2 Settings + Improvements
 - **Critical Animation - Changes** (@TheTenk & @pedrogrullada)
   - Added setting to set to show for PCs or NPCs or Both
