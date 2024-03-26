@@ -183,7 +183,7 @@ function checkRollNumbers(dat, msg) {
             type: msg.flags.pf2e.context.type,
         };
         if (doChecks) generateRollScroll(roll_deets);
-        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets, roll_deets.type);
+        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets);
     }
 }
 
