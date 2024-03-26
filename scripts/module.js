@@ -96,6 +96,30 @@ Hooks.on("ready", () => {
             notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
             default: "",
         },
+        critOffsetX: {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.hint"),
+            default: 0,
+        },
+        critOffsetY: {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.hint"),
+            default: 0,
+        },
+        critScale: {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.hint"),
+            default: 100,
+        },
+        critRotation: {
+            type: "number",
+            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.name"),
+            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.hint"),
+            default: 0,
+        },
     });
 
     if (game.user.isGM) {
@@ -195,59 +219,59 @@ function finishingMove(dat) {
     }
 }
 
-export function isUseFinishingMove(item) {
-    const actionType = item.actionType;
-    const actionCount = item.actionCount;
-    const pcOrNPC = item.isPlayerCharacter ? "pcs" : "npcs";
-    switch (actionType) {
-        case "action":
-            switch (actionCount) {
-                case 1:
-                    return (
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.one`)
-                    );
-                case 2:
-                    return (
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.two`)
-                    );
-                case 3:
-                    return (
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-                        game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.three`)
-                    );
-                default:
-                    return false;
-            }
-        case "reaction":
-            return (
-                game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-                game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.reaction`)
-            );
-        case "free":
-            return (
-                game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-                game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.free`)
-            );
-        case "spell":
-            if (item.isCantrip) {
-                return (
-                    game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
-                    game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.cantrips`)
-                );
-            } else {
-                return (
-                    game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
-                    game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.ranked`)
-                );
-            }
-        case "attacks":
-            return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.attacks`);
-        default:
-            return false;
-    }
-}
+// export function isUseFinishingMove(item) {
+//     const actionType = item.actionType;
+//     const actionCount = item.actionCount;
+//     const pcOrNPC = item.isPlayerCharacter ? "pcs" : "npcs";
+//     switch (actionType) {
+//         case "action":
+//             switch (actionCount) {
+//                 case 1:
+//                     return (
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.one`)
+//                     );
+//                 case 2:
+//                     return (
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.two`)
+//                     );
+//                 case 3:
+//                     return (
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.three`)
+//                     );
+//                 default:
+//                     return false;
+//             }
+//         case "reaction":
+//             return (
+//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.reaction`)
+//             );
+//         case "free":
+//             return (
+//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.free`)
+//             );
+//         case "spell":
+//             if (item.isCantrip) {
+//                 return (
+//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
+//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.cantrips`)
+//                 );
+//             } else {
+//                 return (
+//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
+//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.ranked`)
+//                 );
+//             }
+//         case "attacks":
+//             return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.attacks`);
+//         default:
+//             return false;
+//     }
+// }
 
 export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {

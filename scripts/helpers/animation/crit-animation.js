@@ -1,7 +1,7 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { MODULE_ID } from "../misc.js";
 
-export function createCritAnimation(roll_deets) {
+export function createCritAnimation(roll_deets, critType = game.settings.get(MODULE_ID, "critical.type")) {
     //TODO add option for default color
     const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
@@ -36,7 +36,7 @@ export function createCritAnimation(roll_deets) {
     }
 
     const users = getVisibleAndMsgVisibleUsers(roll_deets);
-    switch (game.settings.get(MODULE_ID, "critical.type")) {
+    switch (critType) {
         case "persona":
             personaCrit(roll_deets.token, users, imgData);
             break;
@@ -69,12 +69,12 @@ export function fireEmblemCrit(token, users, imgData) {
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
-    const imageUrl = token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
+    const imageUrl = token.document.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
     const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
 
-    if (!!token.data.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg) {
+    if (!!token.document.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg) {
         imgData.xScale = 1;
         imgData.yScale = 1;
     }
@@ -222,10 +222,11 @@ export function personaCrit(token, users, imgData) {
         [-0.1 * screenWidth, 0.73 * screenHeight],
     ];
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
-    const imageUrl = token.data.flags?.["pf2e-rpg-numbers"]?.personaImg || imgData.img;
-    const imageScaler = !!token.data.flags?.["pf2e-rpg-numbers"]?.personaImg
-        ? (imgData.scaleX + imgData.yScale) / 2
-        : 1;
+    const { personaImg, critScale, critOffsetX, critOffsetY, critRotation } =
+        token.document.flags?.["pf2e-rpg-numbers"] || {};
+
+    const imageUrl = personaImg || imgData.img;
+    const imageScaler = personaImg ? (imgData.scaleX + imgData.yScale) / 2 : 1;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
     const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
@@ -235,17 +236,15 @@ export function personaCrit(token, users, imgData) {
 
     image.onload = ({ target }) => {
         const imageHeight = target.height;
-        const offset = {
-            x: 0,
-            y: !token.data.flags?.["pf2e-rpg-numbers"]?.personaImg ? (imageHeight * imageScaler) / 4 : 0,
-        };
+        const imagePercent = (imageHeight * imageScaler) / 100;
+
+        const scale = critScale / 100;
+        const offsetX = critOffsetX * imagePercent;
+        const offsetY = (personaImg ? 0 : imagePercent * 40) + critOffsetY * imagePercent;
+
         new Sequence()
             .effect()
-            .shape("polygon", {
-                points: centeredPoints,
-                fillColor: game.user.color,
-                fillAlpha: 1,
-            })
+            .shape("polygon", { points: centeredPoints, fillColor: game.user.color, fillAlpha: 1 })
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
@@ -256,12 +255,10 @@ export function personaCrit(token, users, imgData) {
             .effect()
             .file(imageUrl)
             .zIndex(0)
-            .shape("polygon", {
-                isMask: true,
-                points: centeredPoints,
-            })
-            .scale((screenHeight / imageHeight) * imageScaler)
-            .spriteOffset(offset)
+            .shape("polygon", { isMask: true, points: centeredPoints })
+            .scale((screenHeight / imageHeight) * imageScaler * scale)
+            .spriteOffset({ x: offsetX, y: offsetY })
+            .spriteRotation(critRotation)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
@@ -270,12 +267,7 @@ export function personaCrit(token, users, imgData) {
             .forUsers(users)
             .effect()
             .zIndex(1)
-            .shape("polygon", {
-                points: centeredPoints,
-                fillAlpha: 0,
-                lineSize: 10,
-                lineColor: "white",
-            })
+            .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })

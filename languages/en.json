@@ -407,6 +407,24 @@
             "persona-img": {
                 "name": "Persona Critical Pic",
                 "hint": "Image to show for critical hits for token when 'Persona' is selected"
+            },
+            "crit": {
+                "offset-x": {
+                    "name": "Crit X Offset",
+                    "hint": "This is as a %, so 100, would move it to the right one full image length"
+                },
+                "offset-y": {
+                    "name": "Crit Y Offset",
+                    "hint": "This is as a %, so 100, would move it down one full image length"
+                },
+                "scale": {
+                    "name": "Crit Scale",
+                    "hint": "Size of critical hit image to scale in %"
+                },
+                "rotation": {
+                    "name": "Crit Rotation",
+                    "hint": "How much to rotate the critical hit effect"
+                }
             }
         }
     }
