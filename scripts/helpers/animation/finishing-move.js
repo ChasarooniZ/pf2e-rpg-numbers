@@ -19,7 +19,7 @@ export function createFinishingMoveAnimation(text) {
         fontFamily: "Impact, Charcoal, sans-serif",
         fontSize: 48,
         //fontWeight: "bold",
-        strokeThickness: 3,
+        strokeThickness: 2,
     };
     const seq = new Sequence();
     const words = text.split(" ");
