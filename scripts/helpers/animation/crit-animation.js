@@ -1,11 +1,18 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { MODULE_ID } from "../misc.js";
 
+/**
+ * Creates a critical animation based on the provided roll details.
+ * @param {object} roll_deets - The details of the roll triggering the animation.
+ * @param {string} [critType=game.settings.get(MODULE_ID, "critical.type")] - The type of critical animation to display.
+ * @returns {void}
+ */
 export function createCritAnimation(roll_deets, critType = game.settings.get(MODULE_ID, "critical.type")) {
     //TODO add option for default color
     const isAttack = roll_deets.type === "attack-roll";
     const showOn = game.settings.get(MODULE_ID, "critical.show-on");
-    if ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)) return;
+    if (roll_deets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)))
+        return;
 
     const enabledTokenType = game.settings.get(MODULE_ID, "critical.show-on-token-type");
     const defaultImgType = game.settings.get(MODULE_ID, "critical.default-img");
@@ -20,6 +27,7 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
     };
 
     if (
+        roll_deets.type === "custom" ||
         (actorType === "character" && enabledTokenType !== "npc") ||
         (actorType !== "character" && enabledTokenType !== "pc")
     ) {
@@ -110,7 +118,7 @@ export function fireEmblemCrit(token, users, imgData, config) {
         .screenSpaceAnchor({ x: 0, y: 0.5 })
         .forUsers(users)
         .delay(config.delay)
-        
+
         .effect()
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {

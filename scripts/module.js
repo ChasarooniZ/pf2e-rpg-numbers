@@ -33,6 +33,7 @@ Hooks.on("init", () => {
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
+    createAPI();
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
         if (!game.settings.get(MODULE_ID, "enabled")) return;
         debugLog({
@@ -183,7 +184,7 @@ function checkRollNumbers(dat, msg) {
             type: msg.flags.pf2e.context.type,
         };
         if (doChecks) generateRollScroll(roll_deets);
-        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets);
+        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets, roll_deets.type);
     }
 }
 
@@ -273,6 +274,11 @@ function finishingMove(dat) {
 //     }
 // }
 
+/**
+ * Extracts target IDs from a message object.
+ * @param {object} msg - The message object containing target information.
+ * @returns {string[]} An array of target IDs.
+ */
 export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
         return msg.flags["pf2e-target-damage"].targets.map((t) => t.id);
