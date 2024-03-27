@@ -32,6 +32,7 @@ export function createFinishingMoveAnimation(text) {
             .screenSpace()
             .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })
             .scale(0.25)
+            .zIndex(2)
             .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
             .screenSpaceScale({
                 x: 1.0, // Scale on the effect's X scale
