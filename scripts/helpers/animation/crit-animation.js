@@ -36,14 +36,17 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
     } else {
         return;
     }
+    const config = {
+        delay: game.settings.get(MODULE_ID, "critical.delay") * 1000,
+    };
 
     const users = getVisibleAndMsgVisibleUsers(roll_deets);
     switch (critType) {
         case "persona":
-            personaCrit(roll_deets.token, users, imgData);
+            personaCrit(roll_deets.token, users, imgData, config);
             break;
         case "fire-emblem":
-            fireEmblemCrit(roll_deets.token, users, imgData);
+            fireEmblemCrit(roll_deets.token, users, imgData, config);
             break;
         default:
             return;
@@ -63,7 +66,7 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
  * @param {number} imgData.yScale - The vertical scaling factor of the image.
  * @returns {void}
  */
-export function fireEmblemCrit(token, users, imgData) {
+export function fireEmblemCrit(token, users, imgData, config) {
     const screenWidth = window.screen.availWidth;
     const scaleFactor = 0.35;
     const distance = scaleFactor * screenWidth;
@@ -106,6 +109,8 @@ export function fireEmblemCrit(token, users, imgData) {
         .screenSpacePosition({ x: 0, y: -rectangleHeight / 2 })
         .screenSpaceAnchor({ x: 0, y: 0.5 })
         .forUsers(users)
+        .delay(config.delay)
+        
         .effect()
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
@@ -128,11 +133,14 @@ export function fireEmblemCrit(token, users, imgData) {
         .scale(1)
         .size(windowHeight)
         .forUsers(users)
+        .delay(config.delay)
+
         .sound()
         .file(soundUrl)
         .fadeOutAudio(duration / 4)
         .volume(volumeLevel)
         .forUsers(users)
+        .delay(config.delay)
         .play();
 }
 
@@ -161,7 +169,7 @@ for pair in r.split(","):
  * @param {number} imgData.yScale - The vertical scaling factor of the image.
  * @returns {void}
  */
-export function personaCrit(token, users, imgData) {
+export function personaCrit(token, users, imgData, config) {
     const screenWidth = window.screen.availWidth;
     const screenHeight = window.screen.availHeight;
     const polygonPoints = [
@@ -234,7 +242,7 @@ export function personaCrit(token, users, imgData) {
     ];
 
     const imageUrl = personaImg || imgData.img;
-    const imageScaler = personaImg ? 1 : (ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1);
+    const imageScaler = personaImg ? 1 : ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1;
     const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
     const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
     const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
@@ -260,7 +268,9 @@ export function personaCrit(token, users, imgData) {
             .zIndex(-1)
             .duration(duration)
             .forUsers(users)
-            .effect()
+            .delay(config.delay)
+
+            .effect() // Image
             .file(imageUrl)
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
@@ -273,7 +283,9 @@ export function personaCrit(token, users, imgData) {
             .screenSpaceAboveUI()
             .duration(duration)
             .forUsers(users)
-            .effect()
+            .delay(config.delay)
+
+            .effect() //Outline
             .zIndex(1)
             .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
             .screenSpace()
@@ -282,11 +294,14 @@ export function personaCrit(token, users, imgData) {
             .screenSpaceAboveUI()
             .duration(duration)
             .forUsers(users)
+            .delay(config.delay)
+
             .sound()
             .file(soundUrl)
             .fadeOutAudio(duration / 4)
             .volume(volumeLevel)
             .forUsers(users)
+            .delay(config.delay)
             .play();
     };
 }

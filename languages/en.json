@@ -270,7 +270,7 @@
                     }
                 },
                 "default-img": {
-                    "name": "Critical Animation Default Image",
+                    "name": "Default Image",
                     "hint": "Choose which to have the default image",
                     "choices": {
                         "pc-tok-npc-tok": "PCs: Token | NPCs: Token",
@@ -278,6 +278,10 @@
                         "pc-tok-npc-act": "PCs: Token | NPCs: Actor",
                         "pc-act-npc-tok": "PCs: Actor | NPCs: Token"
                     }
+                },
+                "delay": {
+                    "name": "Delay",
+                    "hint": "How long to delay when the critical animation shows up in seconds"
                 }
             },
             "finishing-move": {
