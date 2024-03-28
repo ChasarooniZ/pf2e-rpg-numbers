@@ -34,3 +34,7 @@ export function setSetting(key, value) {
 }
 
 export function registerSetting(key, localize_key)
+
+export function localize(context, key) {
+    return game.i18n.localize(`${MODULE_ID}.${context}.${key}`)
+}

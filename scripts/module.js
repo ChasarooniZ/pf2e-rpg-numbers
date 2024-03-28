@@ -19,7 +19,7 @@ Hooks.on("init", () => {
             .find((con) => con.name == "token")
             .tools.push({
                 name: MODULE_ID,
-                title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
+                title: Helpers.localize("controls", "finishing-move.name"),
                 icon: "fas fa-message-captions",
                 toggle: true,
                 visible: game.user.isGM,
@@ -77,49 +77,49 @@ Hooks.on("ready", () => {
         moduleId: MODULE_ID,
         tab: {
             name: MODULE_ID,
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.tab-label"),
+            label: Helpers.localize("token-options", "tab-label"),
             icon: "fas fa-dragon",
         },
         rotationOffset: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.hint"),
+            label: Helpers.localize("token-options", "rotation-offset.name"),
+            notes: Helpers.localize("token-options", "rotation-offset.hint"),
             default: 0,
         },
         fireEmblemImg: {
             type: "filepicker",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.hint"),
+            label: Helpers.localize("token-options", "fire-emblem-img.name"),
+            notes: Helpers.localize("token-options", "fire-emblem-img.hint"),
             default: "",
         },
         personaImg: {
             type: "filepicker",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
+            label: Helpers.localize("token-options", "persona-img.name"),
+            notes: Helpers.localize("token-options", "persona-img.hint"),
             default: "",
         },
         critOffsetX: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.hint"),
+            label: Helpers.localize("token-options", "crit.offset-x.name"),
+            notes: Helpers.localize("token-options", "crit.offset-x.hint"),
             default: 0,
         },
         critOffsetY: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.hint"),
+            label: Helpers.localize("token-options", "crit.offset-y.name"),
+            notes: Helpers.localize("token-options", "crit.offset-y.hint"),
             default: 0,
         },
         critScale: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.hint"),
+            label: Helpers.localize("token-options", "crit.scale.name"),
+            notes: Helpers.localize("token-options", "crit.scale.hint"),
             default: 100,
         },
         critRotation: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.hint"),
+            label: Helpers.localize("token-options", "crit.rotation.name"),
+            notes: Helpers.localize("token-options", "crit.rotation.hint"),
             default: 0,
         },
     });
@@ -155,8 +155,7 @@ function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
-            if (Helpers.getSetting("dmg-shake-directional-enabled"))
-                shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
+            if (Helpers.getSetting("dmg-shake-directional-enabled")) shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
             if (Helpers.getSetting("shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
             if (Helpers.getSetting("dmg-on-apply-or-roll") === "apply")
                 generateDamageScroll(
@@ -301,7 +300,7 @@ export function createUpdateMessage() {
 function insertTokenHeaderButtons(tokenSheet, buttons) {
     let obj = tokenSheet?.object ?? tokenSheet?.token;
     buttons.unshift({
-        label: Helpers.getSetting(SETTINGS.HIDE_ACTOR_HEADER_TEXT) ? "" : "Configure",
+        label: Helpers.getSetting("token-header.text") ? "" : Helpers.localize("token-options", "tab-label"),
         icon: "fas fa-dragon",
         class: "pf2e-rpg-numbers-config-button",
         onclick: () => {
