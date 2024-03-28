@@ -12,12 +12,12 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
-    game.settings.register("pf2e-rpg-numbers", "header.text", {
-        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.header.text.name"),
-        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.header.text.hint"),
+    game.settings.register("pf2e-rpg-numbers", "token-header.text", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-header.text.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-header.text.hint"),
         scope: "world",
         config: true,
-        default: true,
+        default: false,
         type: Boolean,
     });
     game.settings.register("pf2e-rpg-numbers", "dmg-enabled", {

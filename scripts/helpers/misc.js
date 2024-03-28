@@ -13,3 +13,24 @@ export function doSomethingOnDamageApply() {
         game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply"
     );
 }
+
+export function wait(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/**
+ * @param key
+ * @returns {*}
+ */
+export function getSetting(key) {
+    return game.settings.get(MODULE_ID, key);
+}
+
+export function setSetting(key, value) {
+    if (value === undefined) {
+        throw new Error("setSetting | value must not be undefined!");
+    }
+    return game.settings.set(MODULE_ID, key, value);
+}
+
+export function registerSetting(key, localize_key)
