@@ -9,6 +9,7 @@ import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move.js";
 import { createCritAnimation } from "./helpers/animation/crit-animation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
+import { createAPI } from "./helpers/api.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
