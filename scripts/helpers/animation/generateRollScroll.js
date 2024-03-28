@@ -4,6 +4,15 @@ import { getVisibleAndMsgVisibleUsers } from "../anim.js";
  * Generates scrolling text for a Check
  * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | '', type: 'attack-roll'}} roll_deets
  */
+/**
+ * Generates and displays a scrolling roll result on the canvas.
+ * @param {object} roll_deets - Details of the roll to display.
+ * @param {string} roll_deets.roll - The result of the roll.
+ * @param {string[]} roll_deets.whisper - The users the message is whispered to
+ * @param {'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess'} roll_deets.outcome - The outcome of the roll.
+ * @param {string} roll_deets.type - The type of roll (e.g., "attack-roll").
+ * @param {object} roll_deets.token - The token associated with the roll.
+ */
 export function generateRollScroll(roll_deets) {
     const fontSize = game.settings.get("pf2e-rpg-numbers", "check-font-size");
     const theme = game.settings.get("pf2e-rpg-numbers", "check-color-scheme");
