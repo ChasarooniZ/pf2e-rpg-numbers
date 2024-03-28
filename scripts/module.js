@@ -124,8 +124,8 @@ Hooks.on("ready", () => {
         },
         previewCrit: {
             type: "custom",
-            html: '<button onclick="createCritAnimation({ type: "custom", whisper: [game.user.id], app.token }">Test Crit Animation</button>'
-        }
+            html: "<button onclick=\"createCritAnimation({ type: 'custom', whisper: [game.user.id], app.token }\">Test Crit Animation</button>",
+        },
     });
 
     if (game.user.isGM) {
