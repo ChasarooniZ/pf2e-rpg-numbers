@@ -11,6 +11,12 @@
                 "name": "Enable Module",
                 "hint": "Enables functionality of module"
             },
+            "token-header": {
+                "text": {
+                    "name": "Shorten Token Header Text",
+                    "hint": "Shortens the Token Header to just icon"
+                }
+            },
             "headers": {
                 "dmg-numbers": "Damage Numbers",
                 "check-animations": "Checks & Attack Animations",

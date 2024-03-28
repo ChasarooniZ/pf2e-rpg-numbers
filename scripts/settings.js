@@ -12,6 +12,14 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
     });
+    game.settings.register("pf2e-rpg-numbers", "header.text", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.header.text.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.header.text.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
     game.settings.register("pf2e-rpg-numbers", "dmg-enabled", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.name"),
         hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.hint"),
@@ -513,6 +521,14 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
         },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "critical.delay", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.delay.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.delay.hint"),
+        scope: "world",
+        config: true,
+        default: 1,
         type: Number,
     });
 
