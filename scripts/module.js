@@ -121,6 +121,10 @@ Hooks.on("ready", () => {
             notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.hint"),
             default: 0,
         },
+        previewCrit: {
+            type: "custom",
+            html: '<button onclick="createCritAnimation({ type: "custom", whisper: [game.user.id], app.token }">Test Crit Animation</button>'
+        }
     });
 
     if (game.user.isGM) {
