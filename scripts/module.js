@@ -23,7 +23,7 @@ Hooks.on("init", () => {
                 title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
                 icon: "fas fa-message-captions",
                 toggle: true,
-                visible: game.user.isGM,
+                visible: game.settings.get(MODULE_ID, "finishing-move.enabled"),
                 active: isFinishingMove,
                 onClick: async (toggle) => {
                     game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
