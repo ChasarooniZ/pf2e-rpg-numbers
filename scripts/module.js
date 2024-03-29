@@ -124,7 +124,7 @@ Hooks.on("ready", () => {
         },
         previewCrit: {
             type: "custom",
-            html: "<button onclick=\"() => {createCritAnimation({ type: 'custom', whisper: [game.user.id], app?.token})}\">Test Crit Animation</button>",
+            html: '<button onclick="testCritAnimation(app.token)">Test Crit Animation</button>',
         },
     });
 
@@ -134,6 +134,10 @@ Hooks.on("ready", () => {
 
     console.log("PF2e RPG Numbers is ready");
 });
+
+function testCritAnimation(token) {
+    createCritAnimation({ type: "custom", whisper: [game.user.id], token: token ?? game.user.character });
+}
 
 function getData(msg) {
     return {
