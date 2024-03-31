@@ -12,8 +12,9 @@ A module that started to just show damage numbers when you attack but now does o
 ![attack](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/132d3509-d3a0-4a20-af1b-4f8c89a49c72)
 ## Table of Contents
 - [Features](#features)
-- [Settings](#Settings)
-- [FAQ](#FAQ)
+- [Settings](#settings)
+- [API](#api)
+- [FAQ](#faq)
 ## Features
 ### Damage Numbers
 - Numbers that pop up based on the damage dealt (when it is rolled)
@@ -46,7 +47,8 @@ A module that started to just show damage numbers when you attack but now does o
   - `% Remaining HP` - Scales based on % of the current health the damage is
   - `% Max HP` - Scales based on % of the max health the damage is
   - `None` - Is just the size of the font
-- 
+## API
+ - [Link to API](https://github.com/ChasarooniZ/pf2e-rpg-numbers/wiki/API)
 ## FAQ
 **Q: Will you add support for \<Insert System Here\>?**
 A: This module will only support the **PF2e** system
