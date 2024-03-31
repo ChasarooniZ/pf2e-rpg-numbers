@@ -1,3 +1,27 @@
+# 11.9.9 - API Support + Fixes
+- **API Support**
+  - Added API support for some functions, example macros to come when I get around to it
+  - Access api like follows, with functions details below `game.pf2eRPGNumbers`
+    - `damageNumbers.generate(dmgList, targetIds)` - Generate Damage Numbers
+    - `damageNumbers.getDamageList(msg)` - Get damage list from message
+    - `finishingMove.generate(text)` - Create finishing move text
+    - `rollNumbers.generate({roll, outcome, token})` - Create Roll Text scroll`
+    - `critAnimation.generate({token, critType})` - Create Crit Animation
+    - `turnTokenAttack.generate(tokenObject, targetObject)` - Run Turn Token animation
+  - **Note** __API IS IN EARLY PHASE AND IS SUBJECT TO CHANGE (to make it easier to use/better named etc.)__
+- **Crit Animation**
+  - Added Option to delay when critical effect appears (substitute for adding dice so nice support for now)
+- **Bug Fixes**
+  - Fixed bug where Finishing Moves controls wouldn't be shown to players
+# 11.9.8 - Finishers on Top
+- Set finisher animation to render on top of critical hit animation
+# 11.9.7 Catching all the Bugs
+- Fixed issue with Fire Emblem Crit not working (@rigo)
+- Fixed issue with Perosna Crit not working with custom image (@JonDemand, @rigo)
+# 11.9.6 - Scale Bruteforce Fix
+- Checks to see if scale is a number otherwise inputs 1 for fire emblem crit animation
+# 11.9.5  - Quick Fixes
+- Checks for null Persona 5 image
 # 11.9.4 Crit Config + Improvements
 -  **Persona Crit Settings**
   - New settings for Persona Crit animations `Crit Offset X`, `Crit Offset Y`, `Crit Scale`, `Crit Rotation` 
