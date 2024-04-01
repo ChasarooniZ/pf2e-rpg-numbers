@@ -515,6 +515,14 @@ Hooks.on("init", () => {
         },
         type: Number,
     });
+    game.settings.register("pf2e-rpg-numbers", "critical.delay", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.delay.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.critical.delay.hint"),
+        scope: "world",
+        config: true,
+        default: 0,
+        type: Number,
+    });
 
     //Finishing Move
     game.settings.register("pf2e-rpg-numbers", "finishing-move.enabled", {
