@@ -1,5 +1,5 @@
 import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
-import * as critButton from '../templates/previewCrit.html';
+import * as critButton from "../templates/previewCrit.html";
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
@@ -125,7 +125,17 @@ Hooks.on("ready", () => {
         },
         previewCrit: {
             type: "custom",
-            html: critButton,
+            html: `<button id="critButton">Test Crit Animation</button>
+            <script>
+                document.getElementById('critButton').addEventListener('click', function (e) {
+                    e.preventDefault();
+                    ui.notifications.info("This is an info message");
+                    console.log({
+                        e,
+                        test: "TESTANIM"
+                    });
+                });
+            </script>`,
         },
     });
 
