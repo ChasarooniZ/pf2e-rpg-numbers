@@ -1,5 +1,4 @@
 import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
-import * as critButton from "../templates/previewCrit.html";
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
