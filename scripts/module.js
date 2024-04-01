@@ -125,7 +125,7 @@ Hooks.on("ready", () => {
         previewCrit: {
             type: "custom",
             html: `<button id="critButton">Test Crit Animation</button>
-            <script src="./helpers/testCrit">
+            <script src="./modules/pf2e-rpg-numbers/scripts/helpers/testCrit.js">
             </script>`,
         },
     });
