@@ -125,15 +125,7 @@ Hooks.on("ready", () => {
         previewCrit: {
             type: "custom",
             html: `<button id="critButton">Test Crit Animation</button>
-            <script>
-                document.getElementById('critButton').addEventListener('click', function (e) {
-                    e.preventDefault();
-                    ui.notifications.info("This is an info message");
-                    console.log({
-                        e,
-                        test: "TESTANIM"
-                    });
-                });
+            <script src="./helpers/testCrit">
             </script>`,
         },
     });
