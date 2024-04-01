@@ -1,4 +1,5 @@
 import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
+import * as critButton from '../templates/previewCrit.html';
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
@@ -124,7 +125,7 @@ Hooks.on("ready", () => {
         },
         previewCrit: {
             type: "custom",
-            html: await fetch('.../templates/previewCrit.html').then(response => response.text()),
+            html: critButton,
         },
     });
 
