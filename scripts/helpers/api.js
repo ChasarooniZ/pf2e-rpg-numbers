@@ -2,7 +2,45 @@ import { createCritAnimation } from "./animation/crit-animation.js";
 import { createFinishingMoveAnimation } from "./animation/finishing-move.js";
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
+import { MODULE_ID } from "./misc.js";
 import { getDamageList } from "./rollTerms.js";
+/**
+ * Define your class that extends FormApplication
+ */
+class MyFormApplication extends FormApplication {
+    constructor(exampleOption) {
+        super();
+        this.exampleOption = exampleOption;
+    }
+
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            classes: ["form"],
+            popOut: true,
+            template: `modules/${MODULE_ID}/templates/settings.hb`,
+            id: "my-form-application",
+            title: "My FormApplication",
+        });
+    }
+
+    getData() {
+        // Send data to the template
+        return {
+            msg: this.exampleOption,
+            color: "red",
+        };
+    }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+    }
+
+    async _updateObject(event, formData) {
+        console.log(formData.exampleInput);
+    }
+}
+
+window.MyFormApplication = MyFormApplication;
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -30,9 +68,12 @@ export function createAPI() {
             },
         },
         turnTokenAttack: {
-            generate: function(tokenObject, targetTokenObject) {
-                turnTokenAttack(tokenObject, targetTokenObject)
-            }
-        }
+            generate: function (tokenObject, targetTokenObject) {
+                turnTokenAttack(tokenObject, targetTokenObject);
+            },
+        },
+        viewSettings: function () {
+            new MyFormApplication("example").render(true);
+        },
     };
 }
