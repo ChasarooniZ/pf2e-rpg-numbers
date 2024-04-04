@@ -2,8 +2,6 @@
 //License: MIT
 //Documentation: https://github.com/theripper93/injectConfig
 
-import { testCrit } from "./testCrit.js";
-
 export var injectConfig = {
     inject: function injectConfig(app, html, data, object) {
         this._generateTabStruct(app, html, data, object);
@@ -32,10 +30,7 @@ export var injectConfig = {
             switch (elemData.type) {
                 case "text":
                     injectHtml += `<div class="form-group">
-                        <label for="${k}">${v.label || ""}</label>
-                            <input type="text" name="${flag}" value="${flagValue}" placeholder="${
-                        v.placeholder || ""
-                    }">${notes}
+                    <input type="text" name="${flag}" value="${flagValue}" placeholder="${v.placeholder || ""}">${notes}
                     </div>`;
                     break;
                 case "number":
@@ -115,11 +110,6 @@ export var injectConfig = {
         }
         injectPoint.after(injectHtml);
         if (app) app?.setPosition({ height: "auto", width: data.tab ? app.options.width + tabSize : "auto" });
-
-        html.on("click", "#critButton", function () {
-            // Call the createClickAnimation function
-            testCrit();
-        });
         return injectHtml;
 
         function createTab(name, label, icon) {
