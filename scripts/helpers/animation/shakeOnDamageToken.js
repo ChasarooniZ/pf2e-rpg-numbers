@@ -29,7 +29,7 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
             },
         ];
 
-        await TokenMagic.addUpdateFiltersOnSelected(params);
+        await TokenMagic.addFilters(token, params);
     } else {
         const { w: tok_width } = token;
         const mov_amt = shake_distance_percent * tok_width;
