@@ -32,7 +32,15 @@
           "verified": "3.1.2"
         }
       }
-    ]
+    ],
+    "recommends": [
+      {
+          "id": "tokenmagic",
+          "type": "module",
+          "reason": "This module allows for usage of the upgraded token shake animation.",
+          "compatibility": {}
+      }
+  ]
   },
   "esmodules": [
     "scripts/module.js",

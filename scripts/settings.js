@@ -299,131 +299,119 @@ Hooks.on("init", () => {
         default: false,
         type: Boolean,
     });
-    if (game.modules.get("tokenmagic").active) {
-        game.settings.register("pf2e-rpg-numbers", "dmg-shake-directional-enabled", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.hint"),
-            scope: "world",
-            config: true,
-            default: true,
-            type: Boolean,
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-distance", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.hint"),
-            scope: "world",
-            config: true,
-            default: 20,
-            range: {
-                min: 1,
-                max: 100,
-                step: 1,
-            },
-            type: Number,
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-shakes", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.hint"),
-            scope: "world",
-            config: true,
-            default: 7,
-            range: {
-                min: 1,
-                max: 20,
-                step: 1,
-            },
-            type: Number,
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-duration", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"),
-            scope: "world",
-            config: true,
-            default: 500,
-            range: {
-                min: 0,
-                max: 2000,
-                step: 10,
-            },
-            type: Number,
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-type", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.hint"),
-            scope: "world",
-            config: true,
-            default: "no",
-            type: String,
-            choices: {
-                ["nothing"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.nothing"
-                ),
-                ["%-current-hp"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-current-hp"
-                ),
-                ["%-max-hp"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-max-hp"
-                ),
-            },
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-distance", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.hint"),
-            scope: "world",
-            config: true,
-            default: "no",
-            type: String,
-            choices: {
-                ["no"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.no"
-                ),
-                ["max"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.max"
-                ),
-                ["mid"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.mid"
-                ),
-            },
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-shakes", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.hint"),
-            scope: "world",
-            config: true,
-            default: "no",
-            type: String,
-            choices: {
-                ["no"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.no"
-                ),
-                ["max"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.max"
-                ),
-                ["mid"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.mid"
-                ),
-            },
-        });
-        game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-duration", {
-            name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"),
-            hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"),
-            scope: "world",
-            config: true,
-            default: "no",
-            type: String,
-            choices: {
-                ["no"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.no"
-                ),
-                ["max"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.max"
-                ),
-                ["mid"]: game.i18n.localize(
-                    "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.mid"
-                ),
-            },
-        });
-    }
+    game.settings.register("pf2e-rpg-numbers", "dmg-shake-directional-enabled", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.hint"),
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-distance", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.hint"),
+        scope: "world",
+        config: true,
+        default: 20,
+        range: {
+            min: 1,
+            max: 100,
+            step: 1,
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-shakes", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.hint"),
+        scope: "world",
+        config: true,
+        default: 7,
+        range: {
+            min: 1,
+            max: 20,
+            step: 1,
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"),
+        scope: "world",
+        config: true,
+        default: 500,
+        range: {
+            min: 0,
+            max: 2000,
+            step: 10,
+        },
+        type: Number,
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-type", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["nothing"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.nothing"
+            ),
+            ["%-current-hp"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-current-hp"
+            ),
+            ["%-max-hp"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.choices.%-max-hp"
+            ),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-distance", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.no"),
+            ["max"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.max"
+            ),
+            ["mid"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.choices.mid"
+            ),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-shakes", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.no"),
+            ["max"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.max"),
+            ["mid"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.choices.mid"),
+        },
+    });
+    game.settings.register("pf2e-rpg-numbers", "tok-shake-scaling-duration", {
+        name: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"),
+        hint: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"),
+        scope: "world",
+        config: true,
+        default: "no",
+        type: String,
+        choices: {
+            ["no"]: game.i18n.localize("pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.no"),
+            ["max"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.max"
+            ),
+            ["mid"]: game.i18n.localize(
+                "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.choices.mid"
+            ),
+        },
+    });
 
     game.settings.register("pf2e-rpg-numbers", "rotate-on-attack", {
         name: game.i18n.localize("pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.name"),
