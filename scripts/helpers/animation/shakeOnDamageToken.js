@@ -6,7 +6,7 @@ import { getTokenShakeScale, getVisibleUsers } from "../anim.js";
  * @returns
  */
 
-export function shakeOnDamageToken(actor_uuid, dmg) {
+export async function shakeOnDamageToken(actor_uuid, dmg) {
     if (!actor_uuid) return;
     const token = canvas.tokens.placeables.find((t) => t.actor.uuid === actor_uuid);
     const [shake_distance_percent, shakes, duration] = getTokenShakeScale(token, dmg);

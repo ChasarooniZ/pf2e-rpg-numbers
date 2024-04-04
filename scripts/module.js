@@ -157,12 +157,12 @@ function getData(msg) {
     };
 }
 
-function onDamageApplication(dat) {
+async function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
             if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled"))
-                shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
+                await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
             if (game.settings.get(MODULE_ID, "shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
             if (game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply")
                 generateDamageScroll(
