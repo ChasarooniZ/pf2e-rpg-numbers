@@ -164,7 +164,10 @@ async function onDamageApplication(dat) {
             if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled"))
                 await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
             if (game.settings.get(MODULE_ID, "shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
-            if (game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply")
+            if (
+                game.settings.get(MODULE_ID, "dmg-enabled") &&
+                game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply"
+            )
                 generateDamageScroll(
                     [{ type: "none", value: dmg }],
                     canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
