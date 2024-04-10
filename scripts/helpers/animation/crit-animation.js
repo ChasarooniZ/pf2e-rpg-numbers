@@ -92,7 +92,7 @@ export function fireEmblemCrit(token, users, imgData, config) {
         imgData.yScale = 1;
     }
 
-    const scaleFactorHalf = imgData.xScale / 2;
+    const scaleFactorHalf = (imgData.yScale + imgData.xScale) / 2;
 
     new Sequence()
         .effect()
