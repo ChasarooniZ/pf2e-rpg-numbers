@@ -1,19 +1,19 @@
 # 11.9.11 - Magical Shaking and Secret Numbers
 - **Token Shake**
-  - Added new Optional Upgraded animation for token shaek, using Token Magic
-  - Removed the invisiblity from old Token Shake
+  - Added new Optional Upgraded animation for token shake, using Token Magic
+  - Removed the invisibility from old Token Shake (@A Helpful Drow)
   - Adds recommendation to install [Token Magic](https://foundryvtt.com/packages/tokenmagic/)
   - Fixed Token Shake causing tokens to turn invisible
 - **Finishing Move**
-  - Added Toolclip so that the tool makes more sense
+  - Added Toolclip so that the tool makes more sense (@LiquidGabs)
   - Added setting to use Player Color instead of Red as the glow color
-  - Added quality setting (scales the text quality)
+  - Added quality setting (scales the text quality)  (@Things COuld Get Dicey)
 - **Damage Numbers**
-  - Changes the border color to a dark cyan when the only user that can see it is the GM
-  - Fixed issue where disabling RPG Numbers doesn't disable them for `on Apply`
+  - Changes the border color to a dark cyan when the only user that can see it is the GM (@Things COuld Get Dicey)
+  - Fixed issue where disabling RPG Numbers doesn't disable them for `on Apply` (@A Helpful Drow)
   - Fixed Bug where sometimes numbers didn't generate due to issue with parsing of the type
 - **Check Numbers**
-  - Changes the border color to a dark cyan when the only user that can see it is the GM
+  - Changes the border color to a dark cyan when the only user that can see it is the GM (@Things COuld Get Dicey)
 - **Critical**
   - Fixes bug where Fire Emblem Crit started off screen
 # 11.9.10 - Fix Crit Break again
@@ -37,7 +37,7 @@
 - Set finisher animation to render on top of critical hit animation
 # 11.9.7 Catching all the Bugs
 - Fixed issue with Fire Emblem Crit not working (@rigo)
-- Fixed issue with Perosna Crit not working with custom image (@JonDemand, @rigo)
+- Fixed issue with Persona Crit not working with custom image (@JonDemand, @rigo)
 # 11.9.6 - Scale Bruteforce Fix
 - Checks to see if scale is a number otherwise inputs 1 for fire emblem crit animation
 # 11.9.5  - Quick Fixes
