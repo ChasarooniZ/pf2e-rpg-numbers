@@ -55,10 +55,7 @@ export function generateRollScroll(roll_deets) {
     }
     const usersToPlayFor = getVisibleAndMsgVisibleUsers(roll_deets);
     if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
-        style.dropShadow = true;
-        style.dropShadowDistance = 0;
-        style.dropShadowColor = "rgb(193, 127, 240)";
-        style.dropShadowBlur = 12;
+        style.stroke = 'rgb(0, 100, 100)';
     }
     const seq = new Sequence();
     seq.effect()
