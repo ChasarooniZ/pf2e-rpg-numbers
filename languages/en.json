@@ -3,7 +3,15 @@
     "pf2e-rpg-numbers": {
         "controls": {
             "finishing-move": {
-                "name": "Show Finishing Moves"
+                "name": "Show Finishing Moves",
+                "toolclip": {
+                    "heading": "Finishing Move",
+                    "items": {
+                        "description": {
+                            "paragraph": "Activate to have Finishing Move text appear when you send an action or attack to chat"
+                        }
+                    }
+                }
             }
         },
         "module-settings": {
@@ -296,6 +304,14 @@
                 "keep-on": {
                     "name": "Keep Finishing Moves On",
                     "hint": "No longer turns off finishing move after you make a finishing move effect"
+                },
+                "use-player-color": {
+                    "name": "Use Player Color",
+                    "hint": "Use Player Color for finishing move surrounding glow"
+                },
+                "quality": {
+                    "name": "Text Quality",
+                    "hint": "Set Quality of Finishing Move text (1 - lowest, 5 - highest)"
                 },
                 "mode": {
                     "name": "When to show moves",

@@ -2,7 +2,7 @@ import { MODULE_ID } from "../misc.js";
 
 export function createFinishingMoveAnimation(text) {
     let textColor = "black";
-    let textBorderColor = "red";
+    let textBorderColor = game.settings.get(MODULE_ID, "finishing-move.use-player-color") ? game.user.color : "red";
     let volume = game.settings.get(MODULE_ID, "finishing-move.sound-effect.volume") / 100;
     let sfx = game.settings.get(MODULE_ID, "finishing-move.sound-effect");
     const endDuration = game.settings.get(MODULE_ID, "finishing-move.duration.end");
@@ -10,14 +10,15 @@ export function createFinishingMoveAnimation(text) {
     const sideBorderAmt = 0.15;
     const leftBorder = 1 - sideBorderAmt;
     const chatWidth = chat.offsetWidth;
+    const quality = game.settings.get(MODULE_ID, "finishing-move.quality");
     const style = {
         fill: textColor,
         dropShadowColor: textBorderColor,
-        dropShadowBlur: 10 * 4,
+        dropShadowBlur: 10 * quality,
         dropShadowDistance: 0,
         dropShadow: true,
         fontFamily: "Impact, Charcoal, sans-serif",
-        fontSize: 48 * 4,
+        fontSize: 48 * quality,
         //fontWeight: "bold",
         strokeThickness: 2,
     };
@@ -31,7 +32,7 @@ export function createFinishingMoveAnimation(text) {
             .text(word, style)
             .screenSpace()
             .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })
-            .scale(0.25)
+            .scale(1 / quality)
             .zIndex(2)
             .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
             .screenSpaceScale({
@@ -46,5 +47,14 @@ export function createFinishingMoveAnimation(text) {
             .delay(delayDiff * i);
     });
     seq.play();
-    document.querySelector('li.control-tool.toggle[aria-label="Show Finishing Moves"]').click();
+    if (!game.settings.get(MODULE_ID, "finishing-move.keep-on")) {
+        // Turns off after run
+        document
+            .querySelector(
+                `li.control-tool.toggle[aria-label="${game.i18n.localize(
+                    "pf2e-rpg-numbers.controls.finishing-move.name"
+                )}"]`
+            )
+            .click();
+    }
 }

@@ -28,6 +28,17 @@ Hooks.on("init", () => {
                 onClick: async (toggle) => {
                     game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
                 },
+                toolclip: {
+                    src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
+                    heading: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.toolclip.heading"),
+                    items: [
+                        {
+                            paragraph: game.i18n.localize(
+                                "pf2e-rpg-numbers.controls.finishing-move.toolclip.items.description.paragraph"
+                            ),
+                        },
+                    ],
+                },
             });
     });
 });
