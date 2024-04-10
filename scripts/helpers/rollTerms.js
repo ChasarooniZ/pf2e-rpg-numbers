@@ -118,7 +118,7 @@ function processDamageInstance(term, result, flavor) {
     }
     const keepPersistent = !!term.options.evaluatePersistent;
     result = result
-        .filter((res) => (res.type.startsWith("persistent,") ? keepPersistent : true))
+        .filter((res) => (res?.type?.startsWith("persistent,") ? keepPersistent : true))
         .map((r) => ({
             value: r.value,
             type: r.type.replace(/persistent,/g, ""),
