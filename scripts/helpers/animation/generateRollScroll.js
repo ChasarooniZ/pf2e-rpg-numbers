@@ -53,6 +53,13 @@ export function generateRollScroll(roll_deets) {
         default:
             break;
     }
+    const usersToPlayFor = getVisibleAndMsgVisibleUsers(roll_deets);
+    if (usersToPlayFor.length === 1 && game.users.some(u => u.isGM && u.id === usersToPlayFor[0])) {
+        style.strokeThickness = 1;
+        style.dropShadow = true;
+        style.dropShadowDistance = 0;
+        style.dropShadowBlur = 5;
+    }
     const seq = new Sequence();
     seq.effect()
         .atLocation(roll_deets.token, {
@@ -70,6 +77,6 @@ export function generateRollScroll(roll_deets) {
         .scaleIn(0.5, duration / 3)
         .fadeOut(duration / 3)
         .zIndex(2)
-        .forUsers(getVisibleAndMsgVisibleUsers(roll_deets))
+        .forUsers(usersToPlayFor)
         .play();
 }
