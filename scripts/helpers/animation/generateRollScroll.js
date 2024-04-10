@@ -27,7 +27,7 @@ export function generateRollScroll(roll_deets) {
         fill: colors[theme][roll_deets.outcome],
         fontSize: fontSize,
         align: "center",
-        //dropShadow: true,
+        dropShadow: true,
         strokeThickness: 5,
     };
     const duration = game.settings.get("pf2e-rpg-numbers", "check-duration") * 1000;

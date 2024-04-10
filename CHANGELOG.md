@@ -1,3 +1,21 @@
+# 11.9.11 - Magical Shaking and Secret Numbers
+- **Token Shake**
+  - Added new Optional Upgraded animation for token shaek, using Token Magic
+  - Removed the invisiblity from old Token Shake
+  - Adds recommendation to install [Token Magic](https://foundryvtt.com/packages/tokenmagic/)
+  - Fixed Token Shake causing tokens to turn invisible
+- **Finishing Move**
+  - Added Toolclip so that the tool makes more sense
+  - Added setting to use Player Color instead of Red as the glow color
+  - Added quality setting (scales the text quality)
+- **Damage Numbers**
+  - Changes the border color to a dark cyan when the only user that can see it is the GM
+  - Fixed issue where disabling RPG Numbers doesn't disable them for `on Apply`
+  - Fixed Bug where sometimes numbers didn't generate due toissue with parsing of the type
+- **Check Numbers**
+  - Changes the border color to a dark cyan when the only user that can see it is the GM
+# 11.9.10 - Fix Crit Break again
+- Fixes issue with crit animation not firing
 # 11.9.9 - API Support + Fixes
 - **API Support**
   - Added API support for some functions, example macros to come when I get around to it
