@@ -27,7 +27,7 @@ export function generateRollScroll(roll_deets) {
         fill: colors[theme][roll_deets.outcome],
         fontSize: fontSize,
         align: "center",
-        dropShadow: true,
+        //dropShadow: true,
         strokeThickness: 5,
     };
     const duration = game.settings.get("pf2e-rpg-numbers", "check-duration") * 1000;
@@ -58,7 +58,7 @@ export function generateRollScroll(roll_deets) {
         style.dropShadow = true;
         style.dropShadowDistance = 0;
         style.dropShadowColor = "rgb(193, 127, 240)";
-        style.dropShadowBlur = 6;
+        style.dropShadowBlur = 12;
     }
     const seq = new Sequence();
     seq.effect()

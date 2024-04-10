@@ -38,7 +38,7 @@ export function generateDamageScroll(dmg_list, targets) {
         fill: "white",
         fontSize: fontSize,
         align: "center",
-        dropShadow: true,
+        //dropShadow: true,
         strokeThickness: 5,
     };
     const duration = game.settings.get("pf2e-rpg-numbers", "duration") * 1000;
@@ -54,8 +54,8 @@ export function generateDamageScroll(dmg_list, targets) {
         if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
             style.dropShadow = true;
             style.dropShadowDistance = 0;
-            style.dropShadowColor = "0x4B0082"
-            style.dropShadowBlur = 6;
+            style.dropShadowColor = "rgb(193, 127, 240)";
+            style.dropShadowBlur = 12;
         }
         const dmg_list_filtered = dmg_list.filter((d) => d.value > 0);
         const seq = new Sequence();
