@@ -54,11 +54,11 @@ export function generateRollScroll(roll_deets) {
             break;
     }
     const usersToPlayFor = getVisibleAndMsgVisibleUsers(roll_deets);
-    if (usersToPlayFor.length === 1 && game.users.some(u => u.isGM && u.id === usersToPlayFor[0])) {
-        style.strokeThickness = 1;
+    if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
         style.dropShadow = true;
         style.dropShadowDistance = 0;
-        style.dropShadowBlur = 5;
+        style.dropShadowColor = "0x4B0082";
+        style.dropShadowBlur = 6;
     }
     const seq = new Sequence();
     seq.effect()
