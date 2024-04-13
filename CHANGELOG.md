@@ -1,3 +1,5 @@
+# 11.9.12 -  Healing Numbers
+- Show healing for damage numbers
 # 11.9.11 - Magical Shaking and Secret Numbers
 - **Token Shake**
   - Added new Optional Upgraded animation for token shake, using Token Magic
