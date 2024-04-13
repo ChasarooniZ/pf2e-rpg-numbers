@@ -181,7 +181,7 @@ async function onDamageApplication(dat) {
                 game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply"
             )
                 generateDamageScroll(
-                    [{ type: "none", value: dmg }],
+                    [{ type: dat.isAppliedHealing ? 'healing' : 'bleed', value: dmg }],
                     canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
                 );
         }
