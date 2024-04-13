@@ -171,8 +171,9 @@ function processDie(term, result, flavor) {
 }
 
 function processNumericTerm(result, term, flavor) {
-    return result.push({
+    result.push({
         value: term.number,
         type: term.flavor || flavor,
     });
+    return result;
 }

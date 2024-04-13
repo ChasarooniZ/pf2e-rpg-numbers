@@ -153,7 +153,8 @@ function getData(msg) {
         isDamageRoll: msg.isDamageRoll,
         isCheckRoll: msg.isCheckRoll,
         isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
-        isApplyDamage: !!msg.flags?.pf2e?.appliedDamage && !msg.flags?.pf2e?.appliedDamage?.isHealing,
+        isApplyDamage: !!msg.flags?.pf2e?.appliedDamage,
+        isAppliedHealing:  msg.flags?.pf2e?.appliedDamage?.isHealing,
         appliedDamage: msg.flags.pf2e?.appliedDamage,
         item: {
             name: msg?.item?.name ?? "",

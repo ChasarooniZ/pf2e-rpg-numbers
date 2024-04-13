@@ -27,6 +27,7 @@ export function generateDamageScroll(dmg_list, targets) {
         lawful: "0x402600",
         mental: "midnightblue",
         poison: "0x5b7332",
+        healing: "lightgreen",
         sonic: "darkcyan",
         spirit: "0x5a5585",
         vitality: "0xffffe0",
