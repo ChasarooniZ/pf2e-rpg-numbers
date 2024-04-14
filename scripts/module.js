@@ -154,7 +154,7 @@ function getData(msg) {
         isCheckRoll: msg.isCheckRoll,
         isAttackRoll: msg.flags?.pf2e?.context?.type === "attack-roll",
         isApplyDamage: !!msg.flags?.pf2e?.appliedDamage,
-        isAppliedHealing:  msg.flags?.pf2e?.appliedDamage?.isHealing,
+        isAppliedHealing: msg.flags?.pf2e?.appliedDamage?.isHealing,
         appliedDamage: msg.flags.pf2e?.appliedDamage,
         item: {
             name: msg?.item?.name ?? "",
@@ -173,7 +173,7 @@ async function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
-            if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled"))
+            if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled") && !dat.isAppliedHealing)
                 await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
             if (game.settings.get(MODULE_ID, "shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
             if (
@@ -181,7 +181,7 @@ async function onDamageApplication(dat) {
                 game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply"
             )
                 generateDamageScroll(
-                    [{ type: dat.isAppliedHealing ? 'healing' : 'bleed', value: dmg }],
+                    [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],
                     canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
                 );
         }
