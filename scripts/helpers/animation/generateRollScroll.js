@@ -1,12 +1,13 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
+import { getSetting } from "../misc.js";
 
 /**
  * Generates scrolling text for a Check
  * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | '', type: 'attack-roll'}} roll_deets
  */
 export function generateRollScroll(roll_deets) {
-    const fontSize = game.settings.get("pf2e-rpg-numbers", "check-font-size");
-    const theme = game.settings.get("pf2e-rpg-numbers", "check-color-scheme");
+    const fontSize = getSetting("check-font-size");
+    const theme = getSetting("check-color-scheme");
     const colors = {
         default: {
             none: "white",
@@ -30,9 +31,9 @@ export function generateRollScroll(roll_deets) {
         dropShadow: true,
         strokeThickness: 5,
     };
-    const duration = game.settings.get("pf2e-rpg-numbers", "check-duration") * 1000;
+    const duration = getSetting("check-duration") * 1000;
     let text = roll_deets.roll;
-    switch (game.settings.get("pf2e-rpg-numbers", "check-outcome-result")) {
+    switch (getSetting("check-outcome-result")) {
         case "numbers":
             text = roll_deets.roll;
             break;

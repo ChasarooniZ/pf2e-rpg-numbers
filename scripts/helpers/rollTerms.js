@@ -1,6 +1,6 @@
-import { debugLog } from "./misc.js";
+import { debugLog, getSetting } from "./misc.js";
 export function getDamageList(rolls) {
-    const split_type = game.settings.get("pf2e-rpg-numbers", "damage-split");
+    const split_type = getSetting("damage-split");
     let dmg_list = [];
     switch (split_type) {
         case "none":

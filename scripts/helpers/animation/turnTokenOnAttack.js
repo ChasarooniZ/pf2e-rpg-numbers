@@ -5,8 +5,7 @@
  */
 
 export function turnTokenOnAttack(token, target) {
-    if (!token || !target || token === target)
-        return;
+    if (!token || !target || token === target) return;
     const angle = token.angle;
     const rotationOffset = token.document.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
     new Sequence()

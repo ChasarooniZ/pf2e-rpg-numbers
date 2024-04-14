@@ -1,3 +1,5 @@
+import { getSetting } from "../misc";
+
 /**
  * Shakes the screen based on damage taken and settings
  * @param {*} uuid Uuid of token that took damage
@@ -6,12 +8,12 @@
  */
 export function shakeScreen(uuid, damage) {
     const actor = fromUuidSync(uuid);
-    if (!actor.hasPlayerOwner && !game.settings.get("pf2e-rpg-numbers", "shake-gm-enabled")) return;
+    if (!actor.hasPlayerOwner && !getSetting("shake-gm-enabled")) return;
     const gmID = game.users.activeGM.id;
     const hp = actor.system.attributes.hp;
-    const shakeType = game.settings.get("pf2e-rpg-numbers", "shake-intensity-type");
-    const max = game.settings.get("pf2e-rpg-numbers", "shake-intensity-max");
-    const includeTempHP = game.settings.get("pf2e-rpg-numbers", "shake-intensity-include-temp-hp");
+    const shakeType = getSetting("shake-intensity-type");
+    const max = getSetting("shake-intensity-max");
+    const includeTempHP = getSetting("shake-intensity-include-temp-hp");
     let shake_amt = 0;
     switch (shakeType) {
         case "max":

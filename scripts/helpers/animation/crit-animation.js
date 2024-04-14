@@ -1,21 +1,21 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
-import { MODULE_ID } from "../misc.js";
+import { getSetting} from "../misc.js";
 
 /**
  * Creates a critical animation based on the provided roll details.
  * @param {object} roll_deets - The details of the roll triggering the animation.
- * @param {string} [critType=game.settings.get(MODULE_ID, "critical.type")] - The type of critical animation to display.
+ * @param {string} [critType=getSetting("critical.type")] - The type of critical animation to display.
  * @returns {void}
  */
-export function createCritAnimation(roll_deets, critType = game.settings.get(MODULE_ID, "critical.type")) {
+export function createCritAnimation(roll_deets, critType = getSetting("critical.type")) {
     //TODO add option for default color
     const isAttack = roll_deets.type === "attack-roll";
-    const showOn = game.settings.get(MODULE_ID, "critical.show-on");
+    const showOn = getSetting("critical.show-on");
     if (roll_deets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)))
         return;
 
-    const enabledTokenType = game.settings.get(MODULE_ID, "critical.show-on-token-type");
-    const defaultImgType = game.settings.get(MODULE_ID, "critical.default-img");
+    const enabledTokenType = getSetting("critical.show-on-token-type");
+    const defaultImgType = getSetting("critical.default-img");
     const actorType = roll_deets.token.actor.type;
     let imgData = {
         img: "icons/svg/cowled.svg",
@@ -45,7 +45,7 @@ export function createCritAnimation(roll_deets, critType = game.settings.get(MOD
         return;
     }
     const config = {
-        delay: game.settings.get(MODULE_ID, "critical.delay") * 1000,
+        delay: getSetting("critical.delay") * 1000,
     };
 
     const users = getVisibleAndMsgVisibleUsers(roll_deets);
@@ -83,9 +83,9 @@ export function fireEmblemCrit(token, users, imgData, config) {
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
     const imageUrl = token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
-    const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
-    const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
-    const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
+    const duration = getSetting("critical.duration") * 1000;
+    const soundUrl = getSetting("critical.sound");
+    const volumeLevel = getSetting("critical.volume") / 100;
 
     if (!!token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg && imgData.isToken) {
         imgData.xScale = 1;
@@ -250,10 +250,11 @@ export function personaCrit(token, users, imgData, config) {
     ];
 
     const imageUrl = personaImg || imgData.img;
-    const imageScaler = personaImg ? 1 : ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1;
-    const duration = game.settings.get(MODULE_ID, "critical.duration") * 1000;
-    const soundUrl = game.settings.get(MODULE_ID, "critical.sound");
-    const volumeLevel = game.settings.get(MODULE_ID, "critical.volume") / 100;
+    const tokenScaler = ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1;
+    const imageScaler = personaImg ? 1 : tokenScaler;
+    const duration = getSetting("critical.duration") * 1000;
+    const soundUrl = getSetting("critical.sound");
+    const volumeLevel = getSetting("critical.volume") / 100;
 
     const image = new Image();
     image.src = imageUrl;

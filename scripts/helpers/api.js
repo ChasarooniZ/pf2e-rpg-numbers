@@ -30,9 +30,9 @@ export function createAPI() {
             },
         },
         turnTokenAttack: {
-            generate: function(tokenObject, targetTokenObject) {
-                turnTokenAttack(tokenObject, targetTokenObject)
-            }
-        }
+            generate: function (tokenObject, targetTokenObject) {
+                turnTokenAttack(tokenObject, targetTokenObject);
+            },
+        },
     };
 }

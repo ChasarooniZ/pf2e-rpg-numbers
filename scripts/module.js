@@ -1,4 +1,4 @@
-import { debugLog, doSomethingOnDamageApply, MODULE_ID } from "./helpers/misc.js";
+import { debugLog, doSomethingOnDamageApply, getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
@@ -14,23 +14,23 @@ import { createAPI } from "./helpers/api.js";
 // HOOKS STUFF
 Hooks.on("init", () => {
     Hooks.on("getSceneControlButtons", (controls, _b, _c) => {
-        if (!game.user.isGM && !game.settings.get(MODULE_ID, "finishing-move.enabled-players")) return;
+        if (!game.user.isGM && !getSetting("finishing-move.enabled-players")) return;
         let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
         controls
             .find((con) => con.name == "token")
             .tools.push({
                 name: MODULE_ID,
-                title: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name"),
+                title: localize("controls.finishing-move.name"),
                 icon: "fas fa-message-captions",
                 toggle: true,
-                visible: game.settings.get(MODULE_ID, "finishing-move.enabled"),
+                visible: getSetting("finishing-move.enabled"),
                 active: isFinishingMove,
                 onClick: async (toggle) => {
                     game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
                 },
                 toolclip: {
                     src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
-                    heading: game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.toolclip.heading"),
+                    heading: localize("controls.finishing-move.toolclip.heading"),
                     items: [
                         {
                             paragraph: game.i18n.localize(
@@ -47,7 +47,7 @@ Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
-        if (!game.settings.get(MODULE_ID, "enabled")) return;
+        if (!getSetting("enabled")) return;
         debugLog({
             msg,
         });
@@ -74,7 +74,7 @@ Hooks.on("ready", () => {
      * TODO Add visual pop ups over characters who's modifiers to rolls mattered (IDK how feasible this is)
     Hooks.on("modifiersMatter", (data) => {
         console.log({ modifiers: data });
-        if (!game.settings.get(MODULE_ID, "plus-one.enabled")) return;
+        if (!getSetting("plus-one.enabled")) return;
         data?.significantModifiers?.forEach((mod) => {
             ui.notifications.info(
                 `<b>${mod.name}</b> (<i>${mod.significance}</i>) ${mod.value > 0 ? "+" : "-"} ${mod.value} to ${
@@ -88,49 +88,49 @@ Hooks.on("ready", () => {
         moduleId: MODULE_ID,
         tab: {
             name: MODULE_ID,
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.tab-label"),
+            label: localize("token-options.tab-label"),
             icon: "fas fa-dragon",
         },
         rotationOffset: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.rotation-offset.hint"),
+            label: localize("token-options.rotation-offset.name"),
+            notes: localize("token-options.rotation-offset.hint"),
             default: 0,
         },
         fireEmblemImg: {
             type: "filepicker",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.fire-emblem-img.hint"),
+            label: localize("token-options.fire-emblem-img.name"),
+            notes: localize("token-options.fire-emblem-img.hint"),
             default: "",
         },
         personaImg: {
             type: "filepicker",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.persona-img.hint"),
+            label: localize("token-options.persona-img.name"),
+            notes: localize("token-options.persona-img.hint"),
             default: "",
         },
         critOffsetX: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-x.hint"),
+            label: localize("token-options.crit.offset-x.name"),
+            notes: localize("token-options.crit.offset-x.hint"),
             default: 0,
         },
         critOffsetY: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.offset-y.hint"),
+            label: localize("token-options.crit.offset-y.name"),
+            notes: localize("token-options.crit.offset-y.hint"),
             default: 0,
         },
         critScale: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.scale.hint"),
+            label: localize("token-options.crit.scale.name"),
+            notes: localize("token-options.crit.scale.hint"),
             default: 100,
         },
         critRotation: {
             type: "number",
-            label: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.name"),
-            notes: game.i18n.localize("pf2e-rpg-numbers.token-options.crit.rotation.hint"),
+            label: localize("token-options.crit.rotation.name"),
+            notes: localize("token-options.crit.rotation.hint"),
             default: 0,
         },
         // previewCrit: {
@@ -173,13 +173,10 @@ async function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
-            if (game.settings.get(MODULE_ID, "dmg-shake-directional-enabled") && !dat.isAppliedHealing)
+            if (getSetting("dmg-shake-directional-enabled") && !dat.isAppliedHealing)
                 await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
-            if (game.settings.get(MODULE_ID, "shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
-            if (
-                game.settings.get(MODULE_ID, "dmg-enabled") &&
-                game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "apply"
-            )
+            if (getSetting("shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
+            if (getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "apply")
                 generateDamageScroll(
                     [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],
                     canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
@@ -189,14 +186,14 @@ async function onDamageApplication(dat) {
 }
 
 function rotateOnAttack(dat, msg) {
-    if (dat.isAttackRoll && game.settings.get(MODULE_ID, "rotate-on-attack")) {
+    if (dat.isAttackRoll && getSetting("rotate-on-attack")) {
         turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
     }
 }
 
 function checkRollNumbers(dat, msg) {
-    const doChecks = game.settings.get(MODULE_ID, "check-enabled");
-    const doCrits = game.settings.get(MODULE_ID, "critical.enabled");
+    const doChecks = getSetting("check-enabled");
+    const doCrits = getSetting("critical.enabled") && getSetting("critical.player-enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
@@ -211,11 +208,7 @@ function checkRollNumbers(dat, msg) {
 }
 
 function damageRollNumbers(dat, msg) {
-    if (
-        dat.isDamageRoll &&
-        game.settings.get(MODULE_ID, "dmg-enabled") &&
-        game.settings.get(MODULE_ID, "dmg-on-apply-or-roll") === "roll"
-    ) {
+    if (dat.isDamageRoll && getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "roll") {
         const dmg_list = getDamageList(msg.rolls);
         const targets = getTargetList(msg);
         debugLog(
@@ -231,7 +224,7 @@ function damageRollNumbers(dat, msg) {
 }
 
 function finishingMove(dat) {
-    if (game.settings.get(MODULE_ID, "finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
+    if (getSetting("finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
         debugLog(
             {
                 item: dat.item,
@@ -251,46 +244,46 @@ function finishingMove(dat) {
 //             switch (actionCount) {
 //                 case 1:
 //                     return (
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.one`)
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.one`)
 //                     );
 //                 case 2:
 //                     return (
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.two`)
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.two`)
 //                     );
 //                 case 3:
 //                     return (
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.three`)
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.three`)
 //                     );
 //                 default:
 //                     return false;
 //             }
 //         case "reaction":
 //             return (
-//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.reaction`)
+//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions.reaction`)
 //             );
 //         case "free":
 //             return (
-//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                 game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.actions.free`)
+//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
+//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions.free`)
 //             );
 //         case "spell":
 //             if (item.isCantrip) {
 //                 return (
-//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
-//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.cantrips`)
+//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells`) &&
+//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells.cantrips`)
 //                 );
 //             } else {
 //                 return (
-//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells`) &&
-//                     game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.spells.ranked`)
+//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells`) &&
+//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells.ranked`)
 //                 );
 //             }
 //         case "attacks":
-//             return game.settings.get(MODULE_ID, `finishing-move.${pcOrNPC}.show-on.attacks`);
+//             return getSetting(`finishing-move.${pcOrNPC}.show-on.attacks`);
 //         default:
 //             return false;
 //     }

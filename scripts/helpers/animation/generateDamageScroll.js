@@ -1,4 +1,5 @@
 import { getVisibleUsers, getFontScale, findTypeWithLargestTotal } from "../anim.js";
+import { getSetting } from "../misc.js";
 
 //TODO settings on visuals (colors)
 //TODO settings on size etc.
@@ -9,8 +10,8 @@ import { getVisibleUsers, getFontScale, findTypeWithLargestTotal } from "../anim
  * @param {string[]} targets list of token ids
  */
 export function generateDamageScroll(dmg_list, targets) {
-    const fontSize = game.settings.get("pf2e-rpg-numbers", "font-size");
-    const jitter = game.settings.get("pf2e-rpg-numbers", "jitter");
+    const fontSize = getSetting("font-size");
+    const jitter = getSetting("jitter");
     const colors = {
         bludgeoning: "0x3c3c3c",
         piercing: "0x3c3c3c",
@@ -42,15 +43,15 @@ export function generateDamageScroll(dmg_list, targets) {
         dropShadow: true,
         strokeThickness: 5,
     };
-    const duration = game.settings.get("pf2e-rpg-numbers", "duration") * 1000;
-    const anim_scale = game.settings.get("pf2e-rpg-numbers", "animation-scale");
-    const wait_time = game.settings.get("pf2e-rpg-numbers", "wait-time-between-numbers") - duration;
-    const onlyGM = game.settings.get("pf2e-rpg-numbers", "show-only-GM");
+    const duration = getSetting("duration") * 1000;
+    const anim_scale = getSetting("animation-scale");
+    const wait_time = getSetting("wait-time-between-numbers") - duration;
+    const onlyGM = getSetting("show-only-GM");
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
-        const topOffset = size * (game.settings.get("pf2e-rpg-numbers", "top-offset") / 100);
+        const topOffset = size * (getSetting("top-offset") / 100);
         const usersToPlayFor = onlyGM ? game.users.filter((u) => u.isGM).map((u) => u.id) : getVisibleUsers(tok);
         if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
             style.stroke = 'rgb(0, 100, 100)';
@@ -58,7 +59,7 @@ export function generateDamageScroll(dmg_list, targets) {
         const dmg_list_filtered = dmg_list.filter((d) => d.value > 0);
         const seq = new Sequence();
 
-        if (game.settings.get("pf2e-rpg-numbers", "show-total")) {
+        if (getSetting("show-total")) {
             const tot = dmg_list.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0);
             style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.1;
             style.fill = colors[findTypeWithLargestTotal(dmg_list)] ?? "white";

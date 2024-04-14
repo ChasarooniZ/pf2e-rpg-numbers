@@ -1,3 +1,5 @@
+import { getSetting } from "./misc";
+
 /**
  *
  * @param {*} dmg_list
@@ -20,7 +22,7 @@ export function findTypeWithLargestTotal(dmg_list) {
  * @returns scale of font, 1 = 100% of original size
  */
 export function getFontScale(scaleType, dmg, tok) {
-    const maxFontScale = game.settings.get("pf2e-rpg-numbers", "max-font-scale");
+    const maxFontScale = getSetting("max-font-scale");
     let scale = maxFontScale - 1;
     if (scaleType === "percentMaxHealth") {
         scale *= dmg / (tok.actor.system.attributes.hp.max + tok.actor.system.attributes.hp.temp);
@@ -92,11 +94,11 @@ export function damageShakeRollDamage(token, targets) {
 export function getTokenShakeScale(token, dmg) {
     const result = ["distance", "shakes", "duration"];
     let values = {
-        distance: game.settings.get("pf2e-rpg-numbers", "tok-shake-distance") / 100,
-        shakes: game.settings.get("pf2e-rpg-numbers", "tok-shake-shakes"),
-        duration: game.settings.get("pf2e-rpg-numbers", "tok-shake-duration"),
+        distance: getSetting("tok-shake-distance") / 100,
+        shakes: getSetting("tok-shake-shakes"),
+        duration: getSetting("tok-shake-duration"),
     };
-    const scaleType = game.settings.get("pf2e-rpg-numbers", "tok-shake-scaling-type");
+    const scaleType = getSetting("tok-shake-scaling-type");
     const hp = token.actor.system.attributes.hp;
     let scale = 1;
     switch (scaleType) {
@@ -113,7 +115,7 @@ export function getTokenShakeScale(token, dmg) {
     }
 
     return result.map((it) => {
-        let scaling_option = game.settings.get("pf2e-rpg-numbers", `tok-shake-scaling-${it}`);
+        let scaling_option = getSetting(`tok-shake-scaling-${it}`);
         let val = values[it];
         switch (scaling_option) {
             case "no":

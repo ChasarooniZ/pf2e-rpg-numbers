@@ -239,6 +239,10 @@
                     "name": "Enable Critical Animations",
                     "hint": "Enable cool animations to show for critical hits. (note tokens have options to have alternative image)"
                 },
+                "player-enabled": {
+                    "name": "Enable Critical Animations - For You",
+                    "hint": "Enable cool animations to show for critical hits for yourself. (note tokens have options to have alternative image)"
+                },
                 "sound": {
                     "name": "Critical Animation Sound",
                     "hint": "Sound to use for critical animation"
