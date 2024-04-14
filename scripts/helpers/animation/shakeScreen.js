@@ -1,4 +1,4 @@
-import { getSetting } from "../misc";
+import { getSetting } from "../misc.js";
 
 /**
  * Shakes the screen based on damage taken and settings
