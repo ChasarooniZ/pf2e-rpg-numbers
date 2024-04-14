@@ -38,7 +38,7 @@ export function registerSetting(settingID, data) {
     };
     if (data.onChange) settingData.onChange = data.onChange;
     if (data.choices)
-        settingsData.choices = data.choices.reduce(
+        settingData.choices = data.choices.reduce(
             (obj, current) => ({
                 ...obj,
                 [current]: localize(`module-settings.${data.desc}.choices.${current}`),
