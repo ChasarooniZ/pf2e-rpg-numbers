@@ -71,8 +71,8 @@
                     "name": "Number Scale Type",
                     "hint": "Scaling type for the size of the damage RPG Numbers",
                     "choices": {
-                        "percent-remaining-health": "% of Remaining HP",
-                        "percent-max-health": "% of Max HP",
+                        "percentRemainingHealth": "% of Remaining HP",
+                        "percentMaxHealth": "% of Max HP",
                         "none": "None"
                     }
                 },
@@ -194,7 +194,7 @@
                         "name": "Token Shaking Scaling",
                         "hint": "What to scale the shaking off of",
                         "choices": {
-                            "nothing": "Nothing",
+                            "no": "Nothing",
                             "%-current-hp": "% Current HP",
                             "%-max-hp": "% Max HP"
                         }

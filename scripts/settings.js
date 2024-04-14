@@ -367,10 +367,7 @@ Hooks.on("init", () => {
         config: true,
         default: "persona",
         type: String,
-        choices: {
-            ["persona"]: "persona",
-            ["fire-emblem"]: "fire-emblem",
-        },
+        choices: ["persona", "fire-emblem"],
     });
 
     registerSetting("critical.show-on", {
@@ -379,11 +376,7 @@ Hooks.on("init", () => {
         config: true,
         default: "attacks",
         type: String,
-        choices: {
-            ["attacks"]: "attacks",
-            ["checks"]: "checks",
-            ["both"]: "both",
-        },
+        choices: ["attacks", "checks", "both"],
     });
 
     registerSetting("critical.show-on-token-type", {
@@ -392,11 +385,7 @@ Hooks.on("init", () => {
         config: true,
         default: "pc+npc",
         type: String,
-        choices: {
-            ["pc"]: "pc",
-            ["npc"]: "npc",
-            ["pc+npc"]: "pc+npc",
-        },
+        choices: ["pc", "npc", "pc+npc"],
     });
 
     registerSetting("critical.default-img", {
@@ -405,12 +394,7 @@ Hooks.on("init", () => {
         config: true,
         default: "pc-tok-npc-tok",
         type: String,
-        choices: {
-            ["pc-tok-npc-tok"]: "pc-tok-npc-tok",
-            ["pc-act-npc-act"]: "pc-act-npc-act",
-            ["pc-tok-npc-act"]: "pc-tok-npc-act",
-            ["pc-act-npc-tok"]: "pc-act-npc-tok",
-        },
+        choices: ["pc-tok-npc-tok", "pc-act-npc-act", "pc-tok-npc-act", "pc-act-npc-tok"],
     });
 
     registerSetting("critical.duration", {
