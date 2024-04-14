@@ -12,7 +12,7 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    registerSetting("dmg-enabled", {
+    registerSetting("dmg-numbers", {
         desc: "dmg-numbers.enabled",
         scope: "world",
         config: true,
@@ -143,7 +143,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("check-enabled", {
+    registerSetting("check-animations", {
         desc: "check-animations.enabled",
         scope: "world",
         config: true,
@@ -296,7 +296,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("tok-shake-scaling-type", {
+    registerSetting("token-dmg-shake.scaling", {
         desc: "token-dmg-shake.scaling.type",
         scope: "world",
         config: true,
@@ -342,7 +342,7 @@ Hooks.on("init", () => {
     });
 
     //Critical Hit
-    registerSetting("critical.enabled", {
+    registerSetting("critical", {
         desc: "critical.enabled",
         scope: "world",
         config: true,
@@ -436,7 +436,7 @@ Hooks.on("init", () => {
     });
 
     //Finishing Move
-    registerSetting("finishing-move.enabled", {
+    registerSetting("finishing-move.title", {
         desc: "finishing-move.enabled",
         scope: "world",
         config: true,
