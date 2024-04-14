@@ -29,7 +29,7 @@ export function localize(str) {
  */
 export function registerSetting(settingID, data) {
     const settingData = {
-        name: data.desc ? localize(`module-settings.${data.desc}.hint`) : "",
+        name: data.desc ? localize(`module-settings.${data.desc}.name`) : "",
         hint: data.desc ? localize(`module-settings.${data.desc}.hint`) : "",
         scope: data.scope,
         config: data.config,
