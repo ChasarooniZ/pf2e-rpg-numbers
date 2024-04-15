@@ -17,7 +17,7 @@ export function createCritAnimation(roll_deets, critType = getSetting("critical.
     const enabledTokenType = getSetting("critical.show-on-token-type");
     const defaultImgType = getSetting("critical.default-img");
     const actorType = roll_deets.token.actor.type;
-    let imgData = {
+    const imgData = {
         img: "icons/svg/cowled.svg",
         xScale: 1,
         yScale: 1,
@@ -48,7 +48,7 @@ export function createCritAnimation(roll_deets, critType = getSetting("critical.
         delay: getSetting("critical.delay") * 1000,
     };
 
-    const users = getVisibleAndMsgVisibleUsers(roll_deets);
+    const users = getVisibleAndMsgVisibleUsers(roll_deets).filter(uID => game.users.get(uID).getFlag(MODULE_ID, "critEnabled") !== false);
     switch (critType) {
         case "persona":
             personaCrit(roll_deets.token, users, imgData, config);

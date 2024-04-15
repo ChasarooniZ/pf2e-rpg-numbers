@@ -173,16 +173,24 @@ async function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
-            if (getSetting("dmg-shake-directional-enabled") && !dat.isAppliedHealing)
-                await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
+            await activateShakeToken(dat, dmg);
             if (getSetting("shake-enabled") && !dat.isAppliedHealing) shakeScreen(dat.appliedDamage.uuid, dmg);
-            if (getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "apply")
-                generateDamageScroll(
-                    [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],
-                    canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
-                );
+            activateOnApplyDamageScroll(dat, dmg);
         }
     }
+}
+
+function activateOnApplyDamageScroll(dat, dmg) {
+    if (getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "apply")
+        generateDamageScroll(
+            [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],
+            canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
+        );
+}
+
+async function activateShakeToken(dat, dmg) {
+    if (getSetting("dmg-shake-directional-enabled") && !dat.isAppliedHealing)
+        await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
 }
 
 function rotateOnAttack(dat, msg) {
@@ -193,7 +201,7 @@ function rotateOnAttack(dat, msg) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = getSetting("critical.enabled") && getSetting("critical.player-enabled");
+    const doCrits = getSetting("critical.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
