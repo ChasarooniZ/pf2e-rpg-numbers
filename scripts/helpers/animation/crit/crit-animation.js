@@ -49,7 +49,7 @@ export function createCritAnimation(roll_deets, critType = getSetting("critical.
     const config = {
         delay: getSetting("critical.delay") * 1000,
         sfx: getSetting("critical.sound"),
-        volume: token.flags?.["pf2e-rpg-numbers"]?.["critSFX"] || getSetting("critical.volume") / 100,
+        volume: roll_deets?.token?.flags?.["pf2e-rpg-numbers"]?.["critSFX"] || getSetting("critical.volume") / 100,
     };
 
     const users = getVisibleAndMsgVisibleUsers(roll_deets).filter(
