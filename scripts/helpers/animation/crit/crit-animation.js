@@ -1,5 +1,5 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
-import { getSetting } from "../../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 import { fireEmblemCrit } from "./fireEmblemCrit.js";
 import { personaCrit } from "./personaCrit.js";
 
