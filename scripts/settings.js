@@ -2,6 +2,7 @@ import { getSetting, MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
+    Hooks.on("renderSettingsConfig", renderSettingsConfig);
     //const setCritFlag = setUserFlag("critPlayerEnabled", getSetting("critical.player-enabled"));
 
     registerSetting("enabled", {
@@ -551,7 +552,7 @@ Hooks.on("init", () => {
  * @param {} _
  * @param {*} html
  */
-export function renderModuleSettings(_, html) {
+export function renderSettingsConfig(_, html) {
     // Find the tab related to the module
     const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
 
