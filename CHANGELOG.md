@@ -1,3 +1,11 @@
+# 11.9.14 - More Fixes and Revamp
+- Created some helper functions to get and register settings to clean up the code and simplify it a lot
+- Added Setting for players to disable critical animations for themselves
+- Fixed negative numbers showing up when being healed
+- Fixed bug where healing caused token to shake and screen to shake
+- Actually added color for on apply
+# 11.9.13 - Applying a whole new color
+- Added color to on apply (green for heal, red for damage)
 # 11.9.12 -  Healing Numbers
 - Show healing for damage numbers
 # 11.9.11 - Magical Shaking and Secret Numbers
