@@ -175,7 +175,7 @@ async function onDamageApplication(dat) {
         if (dmg) {
             if (getSetting("dmg-shake-directional-enabled") && !dat.isAppliedHealing)
                 await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
-            if (getSetting("shake-enabled")) shakeScreen(dat.appliedDamage.uuid, dmg);
+            if (getSetting("shake-enabled") && !dat.isAppliedHealing) shakeScreen(dat.appliedDamage.uuid, dmg);
             if (getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "apply")
                 generateDamageScroll(
                     [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],

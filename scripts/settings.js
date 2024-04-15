@@ -12,7 +12,7 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    registerSetting("dmg-numbers", {
+    registerSetting("dmg-enabled", {
         desc: "dmg-numbers.enabled",
         scope: "world",
         config: true,
@@ -143,7 +143,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("check-animations", {
+    registerSetting("check-enabled", {
         desc: "check-animations.enabled",
         scope: "world",
         config: true,
@@ -296,7 +296,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("token-dmg-shake.scaling", {
+    registerSetting("tok-shake-scaling-type", {
         desc: "token-dmg-shake.scaling.type",
         scope: "world",
         config: true,
@@ -342,7 +342,7 @@ Hooks.on("init", () => {
     });
 
     //Critical Hit
-    registerSetting("critical", {
+    registerSetting("critical.enabled", {
         desc: "critical.enabled",
         scope: "world",
         config: true,
@@ -436,7 +436,7 @@ Hooks.on("init", () => {
     });
 
     //Finishing Move
-    registerSetting("finishing-move.title", {
+    registerSetting("finishing-move.enabled", {
         desc: "finishing-move.enabled",
         scope: "world",
         config: true,
@@ -551,25 +551,33 @@ Hooks.on("init", () => {
  * @param {} _
  * @param {*} html
  */
-export function renderSettingsConfig(_, html) {
-    const tab = html.find(`.tab[data-tab=${MODULE_ID}]`);
+export function renderModuleSettings(_, html) {
+    // Find the tab related to the module
+    const moduleTab = html.find(`.tab[data-tab=${MODULE_ID}]`);
 
-    function beforeGroup(key, name, dom = "h3") {
-        const localized = game.i18n.localize(`pf2e-rpg-numbers.module-settings.headers.${key}`);
-        tab.find(`[name="${MODULE_ID}.${name}"]`).closest(".form-group").before(`<${dom}>${localized}</${dom}>`);
+    // Helper function to add settings groups before a specified key
+    function addSettingsGroup(headerKey, settingID, elementType = "h3") {
+        // Retrieve the localized name for the setting
+        const localizedName = game.i18n.localize(`pf2e-rpg-numbers.module-settings.headers.${headerKey}`);
+        // Find the target element and add the localized name before it
+        moduleTab
+            .find(`[name="${MODULE_ID}.${settingID}"]`)
+            .closest(".form-group")
+            .before(`<${elementType}>${localizedName}</${elementType}>`);
     }
 
-    beforeGroup("dmg-numbers", "dmg-enabled");
-    beforeGroup("check-animations", "check-enabled");
-    beforeGroup("screen-shake", "shake-enabled");
-    beforeGroup("token-dmg-shake.title", "dmg-shake-directional-enabled");
-    beforeGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
-    beforeGroup("rotate-on-attack", "rotate-on-attack");
-    beforeGroup("critical", "critical.enabled");
-    beforeGroup("finishing-move.title", "finishing-move.enabled");
-    beforeGroup("finishing-move.pcs", "finishing-move.show-for.pcs", "h4");
-    beforeGroup("finishing-move.npcs", "finishing-move.show-for.npcs", "h4");
-    //TODO beforeGroup("plus-one", "plus-one.enabled")
+    // Adding settings groups for various options
+    addSettingsGroup("dmg-numbers", "dmg-enabled");
+    addSettingsGroup("check-animations", "check-enabled");
+    addSettingsGroup("screen-shake", "shake-enabled");
+    addSettingsGroup("finishing-move.title", "finishing-move.enabled");
+    addSettingsGroup("token-dmg-shake.title", "dmg-shake-directional-enabled");
+    addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
+    addSettingsGroup("rotate-on-attack", "rotate-on-attack");
+    addSettingsGroup("critical", "critical.enabled");
+    // TODO: Uncomment and add settings group for "plus-one" when implemented
+    // addSettingsGroup("plus-one", "plus-one.enabled")
 
-    beforeGroup("debug", "debug-mode");
+    // Adding settings group for debug mode
+    addSettingsGroup("debug", "debug-mode");
 }
