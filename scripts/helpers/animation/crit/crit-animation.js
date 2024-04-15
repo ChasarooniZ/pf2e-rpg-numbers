@@ -1,7 +1,7 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting } from "../../misc.js";
-import { fireEmblemCrit } from "./fireEmblemCrit";
-import { personaCrit } from "./personaCrit";
+import { fireEmblemCrit } from "./fireEmblemCrit.js";
+import { personaCrit } from "./personaCrit.js";
 
 /**
  * Creates a critical animation based on the provided roll details.

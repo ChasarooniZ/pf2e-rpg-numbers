@@ -1,4 +1,4 @@
-import { createCritAnimation } from "./animation/crit-animation.js";
+import { createCritAnimation } from "./animation/crit/crit-animation.js";
 import { createFinishingMoveAnimation } from "./animation/finishing-move.js";
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
