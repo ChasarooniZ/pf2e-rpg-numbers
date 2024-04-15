@@ -447,6 +447,10 @@
                 "rotation": {
                     "name": "Crit Rotation",
                     "hint": "How much to rotate the critical hit effect"
+                },
+                "sfx": {
+                    "name": "Crit SFX",
+                    "hint": "Set this to override the default crit sound with custom one"
                 }
             }
         }

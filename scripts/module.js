@@ -7,7 +7,7 @@ import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.j
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move.js";
-import { createCritAnimation } from "./helpers/animation/crit-animation.js";
+import { createCritAnimation } from "./helpers/animation/crit/crit-animation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
 
@@ -84,6 +84,16 @@ Hooks.on("ready", () => {
         });
     });*/
 
+    setupTokenMenu();
+
+    if (game.user.isGM) {
+        sendUpdateMessage();
+    }
+
+    console.log("PF2e RPG Numbers is ready");
+});
+
+function setupTokenMenu() {
     injectConfig.quickInject([{ documentName: "Token" }], {
         moduleId: MODULE_ID,
         tab: {
@@ -133,18 +143,14 @@ Hooks.on("ready", () => {
             notes: localize("token-options.crit.rotation.hint"),
             default: 0,
         },
-        // previewCrit: {
-        //     type: "custom",
-        //     html: `<button id="critButton">Test Crit Animation</button>`
-        // },
+        critSFX: {
+            type: "filepicker",
+            label: localize("token-options.crit.sfx.name"),
+            notes: localize("token-options.crit.rotation.hint"),
+            default: "",
+        },
     });
-
-    if (game.user.isGM) {
-        sendUpdateMessage();
-    }
-
-    console.log("PF2e RPG Numbers is ready");
-});
+}
 
 //createCritAnimation({ type: "custom", whisper: [game.user.id], token: token ?? game.user.character });
 
