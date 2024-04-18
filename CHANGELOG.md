@@ -1,4 +1,4 @@
-# 1.9.15 - Custom Critical Sounds
+# 11.9.15 - Custom Critical Sounds
 - Added custom Critical SFX to token options
 - Refactored some of the critical code
 - Fixed bug where crits wouldn't fire
