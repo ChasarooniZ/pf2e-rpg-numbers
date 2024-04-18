@@ -1,11 +1,8 @@
-# 1.10.0 - Custom Critical Sounds
+# 1.9.15 - Custom Critical Sounds
 - Added custom Critical SFX to token options
 - Refactored some of the critical code
 - Fixed bug where crits wouldn't fire
-- using new versioning syntax from here one out to fit more in line with [Semantic Versioning](https://semver.org/)
----
-### New Versioning Syntax
----
+- ~~using new versioning syntax from here one out to fit more in line with [Semantic Versioning](https://semver.org/)~~
 
 # 11.9.14 - More Fixes and Revamp
 - Created some helper functions to get and register settings to clean up the code and simplify it a lot
