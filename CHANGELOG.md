@@ -2,7 +2,7 @@
 - Added custom Critical SFX to token options
 - Refactored some of the critical code
 - Fixed bug where crits wouldn't fire
-- using new versioning syntax from here one out to fit more in line with [Semantic Versioning]9https://semver.org/)
+- using new versioning syntax from here one out to fit more in line with [Semantic Versioning](https://semver.org/)
 ---
 ### New Versioning Syntax
 ---
