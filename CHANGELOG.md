@@ -1,6 +1,12 @@
-# 11.9.15 - Custom Critical Sounds
+# 1.10.0 - Custom Critical Sounds
 - Added custom Critical SFX to token options
 - Refactored some of the critical code
+- Fixed bug where crits wouldn't fire
+- using new versioning syntax from here one out to fit more in line with [Semantic Versioning]9https://semver.org/)
+---
+### New Versioning Syntax
+---
+
 # 11.9.14 - More Fixes and Revamp
 - Created some helper functions to get and register settings to clean up the code and simplify it a lot
 - Added Setting for players to disable critical animations for themselves
