@@ -49,3 +49,43 @@ export function registerSetting(settingID, data) {
 
     game.settings.register(MODULE_ID, settingID, settingData);
 }
+
+function transformData(dataArray) {
+    const result = {};
+
+    for (const item of dataArray) {
+        const keys = item.key.split(".");
+        let temp = result;
+
+        for (let i = 0; i < keys.length; i++) {
+            const key = keys[i];
+            if (i === keys.length - 1) {
+                temp[key] = item.value;
+            } else {
+                if (!temp[key]) {
+                    temp[key] = {};
+                }
+                temp = temp[key];
+            }
+        }
+    }
+
+    return { settings: result };
+}
+
+export function exportDebugInfo() {
+    const settingsInfo = [...game.settings.settings.values()]
+        .filter((val) => val.namespace === "pf2e-rpg-numbers")
+        .map((v) => ({ key: v.key, value: game.settings.get(v.namespace, v.key) }));
+    const settingsJSON = transformData(settingsInfo);
+    settingsJSON.modulesEnabled = {
+        sequencer: game.modules.get("sequencer").active,
+        "token-magic": game.modules.get("tokenmagic").active,
+    };
+    const name = `pf2e-rpg-numbers_DEBUG_(${new Intl.DateTimeFormat("en-GB", {
+        dateStyle: "long",
+        timeStyle: "short",
+        timeZone: "America/Chicago",
+    }).format(new Date())})`;
+    saveDataToFile(JSON.stringify(settingsJSON, null, 2), "json", `${name}.json`);
+}

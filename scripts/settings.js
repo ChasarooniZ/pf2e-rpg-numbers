@@ -1,4 +1,4 @@
-import { getSetting, MODULE_ID, registerSetting } from "./helpers/misc.js";
+import { exportDebugInfo, MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
@@ -575,6 +575,10 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
+
+    const exportButton = $(`<button class="export-debug-info">Export Debug Info</button>`);
+    exportButton.on("click", exportDebugInfo);
+    moduleTab.find(`[name="${MODULE_ID}.${"debug-mode"}"]`).closest(".form-group").after(exportButton);
     // TODO: Uncomment and add settings group for "plus-one" when implemented
     // addSettingsGroup("plus-one", "plus-one.enabled")
 
