@@ -3,7 +3,6 @@ import { getSetting, MODULE_ID, registerSetting } from "./helpers/misc.js";
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
-    //const setCritFlag = setUserFlag("critPlayerEnabled", getSetting("critical.player-enabled"));
 
     registerSetting("enabled", {
         desc: "enabled",
@@ -358,7 +357,7 @@ Hooks.on("init", () => {
         default: true,
         type: Boolean,
         onChange: (value) => {
-            game.user.setFlag(MODULE_ID, "renderSettingsConfig", value);
+            game.user.setFlag(MODULE_ID, "critEnabled", value);
         },
     });
 

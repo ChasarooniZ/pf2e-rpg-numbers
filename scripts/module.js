@@ -146,7 +146,7 @@ function setupTokenMenu() {
         critSFX: {
             type: "filepicker.audio",
             label: localize("token-options.crit.sfx.name"),
-            notes: localize("token-options.crit.rotation.hint"),
+            notes: localize("token-options.crit.sfx.hint"),
             default: "",
         },
     });
