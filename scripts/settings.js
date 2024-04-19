@@ -577,7 +577,7 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("critical", "critical.enabled");
 
     const exportButton = $(`<button class="export-debug-info">Export Debug Info</button>`);
-    exportButton.find(".export-debug-info").click(() => exportDebugInfo());
+    exportButton.click(() => exportDebugInfo());
     moduleTab.find(`[name="${MODULE_ID}.${"debug-mode"}"]`).closest(".form-group").after(exportButton);
     // TODO: Uncomment and add settings group for "plus-one" when implemented
     // addSettingsGroup("plus-one", "plus-one.enabled")
