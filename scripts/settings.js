@@ -1,7 +1,24 @@
-import { exportDebugInfo, MODULE_ID, registerSetting } from "./helpers/misc.js";
+import { MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
-    const debouncedReload = foundry.utils.debounce(() => window.location.reload(), 100);
+    const debouncedReload = foundry.utils.debounce(
+        () =>
+            new Dialog({
+                title: "Settings Reload",
+                content: "You need to reload foundry to apply this setting change, would you like to reload?",
+                buttons: {
+                    button1: {
+                        label: "Yes",
+                        callback: () => {
+                            window.location.reload();
+                        },
+                        icon: `<i class="fas fa-check"></i>`,
+                    },
+                    button2: { label: "No", callback: () => {}, icon: `<i class="fas fa-times"></i>` },
+                },
+            }).render(true),
+        100
+    );
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
     registerSetting("enabled", {
@@ -575,12 +592,6 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
-
-    const exportButton = $(`<button class="export-debug-info">Export Debug Info</button>`);
-    exportButton.click(() => exportDebugInfo());
-    moduleTab.find(`[name="${MODULE_ID}.${"debug-mode"}"]`).closest(".form-group").after(exportButton);
-    // TODO: Uncomment and add settings group for "plus-one" when implemented
-    // addSettingsGroup("plus-one", "plus-one.enabled")
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");

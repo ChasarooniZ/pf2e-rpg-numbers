@@ -133,7 +133,7 @@ export function personaCrit(token, users, imgData, config) {
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
             .scale(typeof scale === "number" ? scale : 1)
-            .spriteOffset({ x: offsetX, y: offsetY })
+            .spriteOffset({ x: offsetX, y: offsetY }, { gridUnits: false })
             .spriteRotation(critRotation)
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
