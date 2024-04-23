@@ -1,3 +1,10 @@
+# 11.9.16 - Bug Fixes
+- Fixed performance issue implemented accidentally
+- Fixed localization of token setting description for custom crit SFX
+- Fixed possible bug where the offset of a token was set based on grid units
+- Made reload ask before reloading
+- Fixed setting that allows a player to opt out of critical effects
+
 # 11.9.15 - Custom Critical Sounds
 - Added custom Critical SFX to token options
 - Refactored some of the critical code
