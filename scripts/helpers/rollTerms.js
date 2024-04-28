@@ -28,7 +28,9 @@ export function extractDamageInfoCombined(rolls) {
     const result = [];
 
     for (const inp of rolls) {
+        if (!inp?.terms) continue;
         for (const term of inp.terms) {
+            if (!terms?.rolls) continue;
             for (const roll of term.rolls) {
                 result.push({
                     type: roll.type,
@@ -44,6 +46,7 @@ export function extractDamageInfoAll(rolls) {
     let result = [];
 
     for (const inp of rolls) {
+        if (!inp?.terms) continue;
         for (const term of inp.terms) {
             result = result.concat(extractTerm(term));
         }
