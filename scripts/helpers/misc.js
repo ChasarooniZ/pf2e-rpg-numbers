@@ -27,10 +27,11 @@ export function localize(str) {
  * @param {*} settingID
  * @param {*} data {desc: "name + hint connection + choices"}
  */
-export function registerSetting(settingID, data) {
+export function registerSetting(settingCat, settingID, data) {
+    const category = settingCat ? `${settingCat}.` : "";
     const settingData = {
-        name: data.desc ? localize(`module-settings.${data.desc}.name`) : "",
-        hint: data.desc ? localize(`module-settings.${data.desc}.hint`) : "",
+        name: data.desc ? localize(`module-settings.${category}${data.desc}.name`) : "",
+        hint: data.desc ? localize(`module-settings.${category}${data.desc}.hint`) : "",
         scope: data.scope,
         config: data.config,
         default: data.default,

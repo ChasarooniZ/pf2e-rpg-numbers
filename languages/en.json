@@ -134,6 +134,58 @@
                         "default": "Default",
                         "dark": "Dark Theme"
                     }
+                },
+                "sfx": {
+                    "enabled": {
+                        "name": "Check SFX",
+                        "hint": "Select whether to play sfx on check results"
+                        }
+                    },
+                    "in-combat": {
+                        "name": "Check SFX in or out Combat",
+                        "hint": "Select whether to play sfx in combat, not in combat, or in and out of combat",
+                        "choices": {
+                            "both": "Both",
+                            "combat": "Combat Only",
+                            "not-combat": "Not in Combat"
+                        }
+                    },
+                    "disable-combat-crits": {
+                        "name": "Check SFX disable Combat Crits",
+                        "hint": "Select whether to disable crits sfx in combat (To increase compatibility with PF2e Animations)"
+                    },
+                    "option": {
+                        "name": "Check SFX Option",
+                        "hint": "Select what SFX to play and when. (none - no sfx, Success or Fail - Play success sound effect on any success and fail sfx on any fail, Crits Only - Play on critical Success or Fail only, ",
+                        "choices": {
+                            "none": "None",
+                            "all": "All",
+                            "success-or-fail": "Success or Fail",
+                            "crits-only": "Crits Only"
+                        }
+                    },
+                    "volume": {
+                        "name": "Check SFX Volume",
+                        "hint": "How Loud SFX are"
+                    },
+                    "file": {
+                        "criticalSuccess": {
+                            "name": "Check SFX: Crit. Success",
+                            "hint": "Select SFX (not this does nothing on the 'Success or Failure' Setting)"
+                        },
+                        "success": {
+                            "name": "Check SFX: Success",
+                            "hint": "Select SFX (used as Success in the 'Success or Failure' Setting)"
+                        },
+                        "failure": {
+                            "name": "Check SFX: Failure",
+                            "hint": "Select SFX (used as Failure in the 'Success or Failure' Setting)"
+                        },
+                        "criticalFailure": {
+                            "name": "Check SFX: Crit. Failure",
+                            "hint": "Select SFX (not this does nothing on the 'Success or Failure' Setting)"
+                        }
+                    }
                 }
             },
             "screen-shake": {
@@ -450,7 +502,7 @@
                 },
                 "sfx": {
                     "name": "Crit SFX",
-                    "hint": "Set this to override the default crit sound with custom one"
+                    "hint": "Set this to override the default crit sound with custom one."
                 }
             }
         }
