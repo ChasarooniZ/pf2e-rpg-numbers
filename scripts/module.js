@@ -67,6 +67,8 @@ Hooks.on("ready", () => {
 
             //On Damage Application
             onDamageApplication(dat);
+
+            //basicActionAnimations(msg);
         }
     });
 
@@ -164,13 +166,6 @@ function getData(msg) {
         appliedDamage: msg.flags.pf2e?.appliedDamage,
         item: {
             name: msg?.item?.name ?? "",
-            actionCount: msg?.item?.system?.actions?.value,
-            actionType:
-                msg.flags?.pf2e?.context?.type === "attack-roll"
-                    ? "attack"
-                    : msg?.item?.system?.actionType?.value ?? msg?.item?.type,
-            isCantrip: msg?.item?.system?.traits?.value?.includes("cantrip"),
-            isPlayerCharacter: msg?.item?.actor?.hasPlayerOwner,
         },
     };
 }
@@ -250,59 +245,11 @@ function finishingMove(dat) {
     }
 }
 
-// export function isUseFinishingMove(item) {
-//     const actionType = item.actionType;
-//     const actionCount = item.actionCount;
-//     const pcOrNPC = item.isPlayerCharacter ? "pcs" : "npcs";
-//     switch (actionType) {
-//         case "action":
-//             switch (actionCount) {
-//                 case 1:
-//                     return (
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.one`)
-//                     );
-//                 case 2:
-//                     return (
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.two`)
-//                     );
-//                 case 3:
-//                     return (
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                         getSetting(`finishing-move.${pcOrNPC}.show-on.actions.three`)
-//                     );
-//                 default:
-//                     return false;
-//             }
-//         case "reaction":
-//             return (
-//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions.reaction`)
-//             );
-//         case "free":
-//             return (
-//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions`) &&
-//                 getSetting(`finishing-move.${pcOrNPC}.show-on.actions.free`)
-//             );
-//         case "spell":
-//             if (item.isCantrip) {
-//                 return (
-//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells`) &&
-//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells.cantrips`)
-//                 );
-//             } else {
-//                 return (
-//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells`) &&
-//                     getSetting(`finishing-move.${pcOrNPC}.show-on.spells.ranked`)
-//                 );
-//             }
-//         case "attacks":
-//             return getSetting(`finishing-move.${pcOrNPC}.show-on.attacks`);
-//         default:
-//             return false;
-//     }
-// }
+function basicActionAnimations(msg) {
+    if(getSetting("basic-action.enabled")) {
+
+    }
+}
 
 /**
  * Extracts target IDs from a message object.
