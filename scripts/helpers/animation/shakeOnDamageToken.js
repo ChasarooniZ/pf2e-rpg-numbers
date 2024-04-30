@@ -5,31 +5,32 @@ import { getTokenShakeScale, getVisibleUsers } from "../anim.js";
  * @param {*} actor_uuid Token's Actor Uuid
  * @returns
  */
+const params = [
+    {
+        filterType: "transform",
+        filterId: "tokenShake",
+        autoDestroy: true,
+        animated: {
+            translationX: {
+                animType: "sinOscillation",
+            },
+        },
+    },
+];
 
-export async function shakeOnDamageToken(actor_uuid, dmg) {
+export function shakeOnDamageToken(actor_uuid, dmg) {
     if (!actor_uuid) return;
     const token = canvas.tokens.placeables.find((t) => t.actor.uuid === actor_uuid);
     const [shake_distance_percent, shakes, duration] = getTokenShakeScale(token, dmg);
     const usersToPlayFor = getVisibleUsers(token);
     if (game.modules.get("tokenmagic").active) {
-        let params = [
-            {
-                filterType: "transform",
-                filterId: "tokenShake",
-                autoDestroy: true,
-                animated: {
-                    translationX: {
-                        animType: "sinOscillation",
-                        val1: -shake_distance_percent,
-                        val2: +shake_distance_percent,
-                        loopDuration: duration / shakes,
-                        loops: shakes,
-                    },
-                },
-            },
-        ];
-
-        await TokenMagic.addFilters(token, params);
+        params[0].animated.translationX = Object.assign(params[0].animated.translationX, {
+            val1: -shake_distance_percent,
+            val2: +shake_distance_percent,
+            loopDuration: duration / shakes,
+            loops: shakes,
+        });
+        TokenMagic.addFilters(token, params);
     } else {
         const { w: tok_width } = token;
         const mov_amt = shake_distance_percent * tok_width;
