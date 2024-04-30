@@ -43,7 +43,7 @@ export function registerSetting(settingCat, settingID, data) {
         settingData.choices = data.choices.reduce(
             (obj, current) => ({
                 ...obj,
-                [current]: localize(`module-settings.${data.desc}.choices.${current}`),
+                [current]: localize(`module-settings.${category}${data.desc}.choices.${current}`),
             }),
             {}
         );
