@@ -170,11 +170,11 @@ function getData(msg) {
     };
 }
 
-async function onDamageApplication(dat) {
+function onDamageApplication(dat) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
-            await activateShakeToken(dat, dmg);
+            activateShakeToken(dat, dmg);
             if (getSetting("shake-enabled") && !dat.isAppliedHealing) shakeScreen(dat.appliedDamage.uuid, dmg);
             activateOnApplyDamageScroll(dat, dmg);
         }
@@ -189,9 +189,9 @@ function activateOnApplyDamageScroll(dat, dmg) {
         );
 }
 
-async function activateShakeToken(dat, dmg) {
+function activateShakeToken(dat, dmg) {
     if (getSetting("dmg-shake-directional-enabled") && !dat.isAppliedHealing)
-        await shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
+        shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
 }
 
 function isRotateOnAttack(dat) {
