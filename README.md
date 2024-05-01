@@ -62,7 +62,14 @@ A: This module will only support the **PF2e** system
     License: Creative Commons BY-NC (Attribution Noncommercial) 3.0
     License text: http://creativecommons.org/licenses/by-nc/3.0/
 - [`vent4_(pligativator).wav](https://freesound.org/people/plingativator/sounds/160558/)
-  - This SOund is being used under the Attribution 4.0 License
+  - This Sound is being used under the Attribution 4.0 License
 - [`swoosh-universifled]([swoosh-universfield](https://pixabay.com/sound-effects/swoosh-142322/))
   - Free for use under the Pixabay Content License
-  - 
+- `Negative answer lose`
+  - Free to use under Mixkit License
+- [`Jpn_L_drum1.mp3`](https://taira-komori.jpn.org/playing01en.html)
+  - Stuff on site is free
+- [`Success_1`](https://pixabay.com/sound-effects/success-48018/)
+  - Free for use under the Pixabay Content License
+- `correct-answer-tone`
+  - Free to use under Mixkit License

@@ -74,9 +74,9 @@ export function generateRollScroll(roll_deets) {
         .forUsers(usersToPlayFor);
 
     // Simplify sound effect handling
-    handleSFX(outcome, type, seq).play();
+    handleSFX(outcome, type, seq, usersToPlayFor).play();
 }
-function handleSFX(outcome, type, seq) {
+function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
         const isAttack = type === "attack-roll";
         const combatSetting = getSetting("check-animations.sfx.check-or-attack");
@@ -99,7 +99,8 @@ function handleSFX(outcome, type, seq) {
             if (!ignoreSFX) {
                 seq.sound()
                     .file(getSetting(`check-animations.sfx.file.${outcome}`))
-                    .volume(getSetting("check-animations.sfx.volume") / 100);
+                    .volume(getSetting("check-animations.sfx.volume") / 100)
+                    .forUsers(usersToPlayFor);
             }
         }
     }

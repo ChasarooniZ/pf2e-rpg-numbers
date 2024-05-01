@@ -252,7 +252,7 @@ Hooks.on("init", () => {
         desc: "sfx.file.criticalSuccess",
         scope: "world",
         config: true,
-        default: "",
+        default: "modules/pf2e-rpg-numbers/resources/sounds/checks/success_1.mp3",
         type: String,
         filePicker: "audio"
     });
@@ -261,7 +261,7 @@ Hooks.on("init", () => {
         desc: "sfx.file.success",
         scope: "world",
         config: true,
-        default: "",
+        default: "modules/pf2e-rpg-numbers/resources/sounds/checks/correct-answer-tone.ogg",
         type: String,
         filePicker: "audio"
     });
@@ -270,7 +270,7 @@ Hooks.on("init", () => {
         desc: "sfx.file.failure",
         scope: "world",
         config: true,
-        default: "",
+        default: "modules/pf2e-rpg-numbers/resources/sounds/checks/Jpn_L_drum1.mp3",
         type: String,
         filePicker: "audio"
     });
@@ -279,7 +279,7 @@ Hooks.on("init", () => {
         desc: "sfx.file.criticalFailure",
         scope: "world",
         config: true,
-        default: "",
+        default: "modules/pf2e-rpg-numbers/resources/sounds/checks/negative-answer-lose.ogg",
         type: String,
         filePicker: "audio"
     });
