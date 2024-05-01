@@ -467,8 +467,8 @@
         "token-options": {
             "tab-label": "PF2e RPG #s",
             "rotation-offset": {
-                "name": "Rotation Offset",
-                "hint": "Sets how much to offset rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+                "name": "Turn On Attack - Rotation Offset",
+                "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
             },
             "fire-emblem-img": {
                 "name": "Fire Emblem Critical Pic",

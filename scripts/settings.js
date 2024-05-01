@@ -348,7 +348,7 @@ Hooks.on("init", () => {
     });
 
     //Token Damage Shake
-    registerSetting("token-damage-shake", "dmg-shake-directional-enabled", {
+    registerSetting("token-dmg-shake", "dmg-shake-directional-enabled", {
         desc: "enabled",
         scope: "world",
         config: true,
@@ -356,7 +356,7 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    registerSetting("token-damage-shake", "tok-shake-distance", {
+    registerSetting("token-dmg-shake", "tok-shake-distance", {
         desc: "distance",
         scope: "world",
         config: true,
@@ -369,7 +369,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("token-damage-shake", "tok-shake-shakes", {
+    registerSetting("token-dmg-shake", "tok-shake-shakes", {
         desc: "shakes",
         scope: "world",
         config: true,
@@ -382,7 +382,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("token-damage-shake", "tok-shake-duration", {
+    registerSetting("token-dmg-shake", "tok-shake-duration", {
         desc: "duration",
         scope: "world",
         config: true,
@@ -395,7 +395,7 @@ Hooks.on("init", () => {
         type: Number,
     });
 
-    registerSetting("token-damage-shake", "tok-shake-scaling-type", {
+    registerSetting("token-dmg-shake", "tok-shake-scaling-type", {
         desc: "scaling.type",
         scope: "world",
         config: true,
@@ -404,7 +404,7 @@ Hooks.on("init", () => {
         choices: ["no", "%-current-hp", "%-max-hp"],
     });
 
-    registerSetting("token-damage-shake", "tok-shake-scaling-distance", {
+    registerSetting("token-dmg-shake", "tok-shake-scaling-distance", {
         desc: "scaling.distance",
         scope: "world",
         config: true,
@@ -413,7 +413,7 @@ Hooks.on("init", () => {
         choices: ["no", "max", "mid"],
     });
 
-    registerSetting("token-damage-shake", "tok-shake-scaling-shakes", {
+    registerSetting("token-dmg-shake", "tok-shake-scaling-shakes", {
         desc: "scaling.shakes",
         scope: "world",
         config: true,
@@ -422,7 +422,7 @@ Hooks.on("init", () => {
         choices: ["no", "max", "mid"],
     });
 
-    registerSetting("token-damage-shake", "tok-shake-scaling-duration", {
+    registerSetting("token-dmg-shake", "tok-shake-scaling-duration", {
         desc: "scaling.duration",
         scope: "world",
         config: true,
