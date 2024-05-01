@@ -103,42 +103,42 @@
                 "show-total": {
                     "name": "Show Total",
                     "hint": "Show total as a number in the center of the token in addition to other damage numbers"
+                }
+            },
+            "check-animations": {
+                "enabled": {
+                    "name": "Enable RPG Checks & Attacks",
+                    "hint": "Show number pop ups when attempting checks & attacks"
                 },
-                "check-animations": {
+                "duration": {
+                    "name": "Check Duration",
+                    "hint": "Time for check number pop up to show"
+                },
+                "font-size": {
+                    "name": "Check Font Size",
+                    "hint": "Size of Check Font"
+                },
+                "outcome-result": {
+                    "name": "Choose what to show for d20 check rolls",
+                    "hint": "Numbers shows the d20 + mods result, outcome shows crit success, success etc., and outcome w/o combat crits shows the outcome without combat critical misses and hits meant as compatibility with pf2e animations.",
+                    "choices": {
+                        "numbers": "Numbers",
+                        "outcome-except-combat-crits": "Outcome w/o Combat crits",
+                        "outcome": "Outcome"
+                    }
+                },
+                "color-scheme": {
+                    "name": "Select check theme",
+                    "hint": "(Changes coloration of checks) Currently have a default theme, and a dark mode theme, will add more visibility etc. for it later",
+                    "choices": {
+                        "default": "Default",
+                        "dark": "Dark Theme"
+                    }
+                },
+                "sfx": {
                     "enabled": {
-                        "name": "Enable RPG Checks & Attacks",
-                        "hint": "Show number pop ups when attempting checks & attacks"
-                    },
-                    "duration": {
-                        "name": "Check Duration",
-                        "hint": "Time for check number pop up to show"
-                    },
-                    "font-size": {
-                        "name": "Check Font Size",
-                        "hint": "Size of Check Font"
-                    },
-                    "outcome-result": {
-                        "name": "Choose what to show for d20 check rolls",
-                        "hint": "Numbers shows the d20 + mods result, outcome shows crit success, success etc., and outcome w/o combat crits shows the outcome without combat critical misses and hits meant as compatibility with pf2e animations.",
-                        "choices": {
-                            "numbers": "Numbers",
-                            "outcome-except-combat-crits": "Outcome w/o Combat crits",
-                            "outcome": "Outcome"
-                        }
-                    },
-                    "color-scheme": {
-                        "name": "Select check theme",
-                        "hint": "(Changes coloration of checks) Currently have a default theme, and a dark mode theme, will add more visibility etc. for it later",
-                        "choices": {
-                            "default": "Default",
-                            "dark": "Dark Theme"
-                        }
-                    },
-                    "sfx": {
-                        "enabled": {
-                            "name": "Check SFX",
-                            "hint": "Select whether to play sfx on check results"
-                        }
+                        "name": "Check SFX",
+                        "hint": "Select whether to play sfx on check results"
                     },
                     "in-combat": {
                         "name": "Check SFX in or out Combat",
