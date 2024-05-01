@@ -654,7 +654,15 @@ Hooks.on("init", () => {
             },
         ],
         onDown: () => {
-            game.user.setFlag(MODULE_ID, "finishingMoveActive", true);
+            if (!game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
+                document
+                    .querySelector(
+                        `li.control-tool.toggle[aria-label="${game.i18n.localize(
+                            "pf2e-rpg-numbers.controls.finishing-move.name"
+                        )}"]`
+                    )
+                    .click();
+            }
         },
         onUp: () => {},
         restricted: false,
