@@ -149,7 +149,7 @@
                             "checks": "Checks Only"
                         }
                     },
-                    "option": {
+                    "options": {
                         "name": "Check SFX Option",
                         "hint": "Select what SFX to play and when. (none - no sfx, Success or Fail - Play success sound effect on any success and fail sfx on any fail, Crits Only - Play on critical Success or Fail only, ",
                         "choices": {

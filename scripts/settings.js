@@ -217,8 +217,8 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    registerSetting("check-animations", "check-animations.sfx.check--or-attack", {
-        desc: "sfx.check--or-attack",
+    registerSetting("check-animations", "check-animations.sfx.check-or-attack", {
+        desc: "sfx.check-or-attack",
         scope: "world",
         config: true,
         default: !game?.modules?.get("pf2e-jb2a-macros")?.active ? "both" : "checks",
