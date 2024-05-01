@@ -1,80 +1,107 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { getSetting } from "../misc.js";
 
-/**
- * Generates scrolling text for a Check
- * @param {{outcome: 'none' | 'criticalFailure' | 'failure' | 'success' | 'criticalSuccess', token: token, whisper: string[] roll: number | '', type: 'attack-roll'}} roll_deets
- */
+// Define constant colors outside the function to avoid recreating them on every call
+const colors = {
+    default: {
+        none: "white",
+        criticalFailure: "rgb(255, 0, 0)",
+        failure: "rgb(255, 69, 0)",
+        success: "rgb(0, 0, 255)",
+        criticalSuccess: "rgb(0, 128, 0)",
+    },
+    dark: {
+        none: "white",
+        criticalFailure: "rgb(255, 0, 0)",
+        failure: "rgb(255, 129, 0)",
+        success: "rgb(0, 241, 255)",
+        criticalSuccess: "rgb(107, 255, 0)",
+    },
+};
+
 export function generateRollScroll(roll_deets) {
+    // Destructure frequently used variables
+    const { outcome, token, roll, type } = roll_deets;
     const fontSize = getSetting("check-font-size");
     const theme = getSetting("check-color-scheme");
-    const colors = {
-        default: {
-            none: "white",
-            criticalFailure: "rgb(255, 0, 0)",
-            failure: "rgb(255, 69, 0)",
-            success: "rgb(0, 0, 255)",
-            criticalSuccess: "rgb(0, 128, 0)",
-        },
-        dark: {
-            none: "white",
-            criticalFailure: "rgb(255, 0, 0)",
-            failure: "rgb(255, 129, 0)",
-            success: "rgb(0, 241, 255)",
-            criticalSuccess: "rgb(107, 255, 0)",
-        },
-    };
     const style = {
-        fill: colors[theme][roll_deets.outcome],
+        fill: colors[theme][outcome],
         fontSize: fontSize,
         align: "center",
         dropShadow: true,
         strokeThickness: 5,
     };
     const duration = getSetting("check-duration") * 1000;
-    let text = roll_deets.roll;
+    let text;
+
+    // Simplify text determination using a switch statement
     switch (getSetting("check-outcome-result")) {
         case "numbers":
-            text = roll_deets.roll;
+            text = roll;
             break;
         case "outcome-except-combat-crits":
-            if (roll_deets.type === "attack-roll" || roll_deets.outcome === "none") {
-                text = roll_deets.roll;
-            } else {
-                text = game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${roll_deets.outcome}`);
-            }
+            text =
+                type === "attack-roll" || outcome === "none"
+                    ? roll
+                    : game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${outcome}`);
             break;
         case "outcome":
-            if (roll_deets.outcome === "none") {
-                text = roll_deets.roll;
-            } else {
-                text = game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${roll_deets.outcome}`);
-            }
+            text = outcome === "none" ? roll : game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${outcome}`);
             break;
         default:
             break;
     }
+
+    // Determine users to play for
     const usersToPlayFor = getVisibleAndMsgVisibleUsers(roll_deets);
-    if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
-        style.stroke = 'rgb(0, 100, 100)';
-    }
+
+    // Optimize stroke color calculation
+    style.stroke =
+        usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])
+            ? "rgb(0, 100, 100)"
+            : undefined;
+
+    // Simplify sequence creation and animation
     const seq = new Sequence();
     seq.effect()
-        .atLocation(roll_deets.token, {
-            offset: {
-                y: -0.4 * roll_deets.token.texture.scaleY * roll_deets.token.width,
-            },
-            gridUnits: true,
-        })
+        .atLocation(token, { offset: { y: -0.4 * token.texture. scaleY * token.width }, gridUnits: true })
         .text(`${text}`, style)
-        .anchor({
-            x: 0.5,
-            y: 0.8,
-        })
+        .anchor({ x: 0.5, y: 0.8 })
         .duration(duration)
         .scaleIn(0.5, duration / 3)
         .fadeOut(duration / 3)
         .zIndex(2)
-        .forUsers(usersToPlayFor)
-        .play();
+        .forUsers(usersToPlayFor);
+
+    // Simplify sound effect handling
+    handleSFX(outcome, type, seq).play();
+}
+function handleSFX(outcome, type, seq) {
+    if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
+        const isAttack = type === "attack-roll";
+        const combatSetting = getSetting("check-animations.sfx.check-or-attack");
+        if (combatSetting === "both" || combatSetting === (isAttack ? "attacks" : "checks")) {
+            let ignoreSFX = false;
+            switch (getSetting("check-animations.sfx.options")) {
+                case "none":
+                    ignoreSFX = true;
+                    break;
+                case "all":
+                    ignoreSFX = false;
+                    break;
+                case "success-or-fail":
+                    outcome = outcome.replace("success", "").toLowerCase();
+                    break;
+                case "crits-only":
+                    ignoreSFX = outcome.startsWith("critical");
+                    break;
+            }
+            if (!ignoreSFX) {
+                seq.sound()
+                    .file(getSetting(`check-animations.sfx.file.${outcome}`))
+                    .volume(getSetting("check-animations.sfx.volume") / 100);
+            }
+        }
+    }
+    return seq;
 }

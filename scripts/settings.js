@@ -217,21 +217,13 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    registerSetting("check-animations", "check-animations.sfx.in-combat", {
-        desc: "sfx.in-combat",
+    registerSetting("check-animations", "check-animations.sfx.check--or-attack", {
+        desc: "sfx.check--or-attack",
         scope: "world",
         config: true,
-        default: "both",
+        default: !game?.modules?.get("pf2e-jb2a-macros")?.active ? "both" : "checks",
         type: String,
-        choices: ["both", "combat", "not-combat"],
-    });
-
-    registerSetting("check-animations", "check-animations.sfx.disable-combat-crits", {
-        desc: "sfx.disable-combat-crits",
-        scope: "world",
-        config: true,
-        default: !!game?.modules?.get("pf2e-jb2a-macros")?.active,
-        type: Boolean,
+        choices: ["both", "attacks", "checks"],
     });
 
     registerSetting("check-animations", "check-animations.sfx.options", {

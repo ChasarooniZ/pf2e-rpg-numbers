@@ -140,18 +140,14 @@
                         "name": "Check SFX",
                         "hint": "Select whether to play sfx on check results"
                     },
-                    "in-combat": {
-                        "name": "Check SFX in or out Combat",
-                        "hint": "Select whether to play sfx in combat, not in combat, or in and out of combat",
+                    "check-or-attack": {
+                        "name": "Check SFX for Attack Rolls",
+                        "hint": "Select whether to play sfx for Attack Rolls, checks only, or both",
                         "choices": {
                             "both": "Both",
-                            "combat": "Combat Only",
-                            "not-combat": "Not in Combat"
+                            "attacks": "Attacks Only",
+                            "checks": "Checks Only"
                         }
-                    },
-                    "disable-combat-crits": {
-                        "name": "Check SFX disable Combat Crits",
-                        "hint": "Select whether to disable crits sfx in combat (To increase compatibility with PF2e Animations)"
                     },
                     "option": {
                         "name": "Check SFX Option",
