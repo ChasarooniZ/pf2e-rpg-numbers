@@ -89,7 +89,7 @@ Hooks.on("ready", () => {
     setupTokenMenu();
 
     if (game.user.isGM) {
-        sendUpdateMessage();
+        //sendUpdateMessage();
     }
 
     console.log("PF2e RPG Numbers is ready");

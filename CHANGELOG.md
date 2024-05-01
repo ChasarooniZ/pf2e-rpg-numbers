@@ -1,3 +1,12 @@
+# 11.10.0 - The Sounds of Success
+- Added SFX option to `Check Rolls`
+  - **Must be enabled in settings to use**
+  - Can set SFX for each result of a check as well as control the circumstances they're triggered
+- Bugfixes
+  - Reworked `Token Shake` code to hopefully remove a possible lag spot
+  - Removed old code that could have been causing issues
+  - Caught exception that sometimes shows up when parsing roll terms when rolling with weird dice such as `1d7` etc.
+  - Started work of adding animations for `basicActionMacros`
 # 11.9.16 - Bug Fixes
 - Fixed performance issue implemented accidentally
 - Fixed localization of token setting description for custom crit SFX
