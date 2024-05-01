@@ -1,3 +1,5 @@
+# 11.10.1 - Localization
+- Fixed localization of some settings
 # 11.10.0 - The Sounds of Success
 - Added SFX option to `Check Rolls`
   - **Must be enabled in settings to use**
