@@ -68,7 +68,7 @@ Hooks.on("ready", () => {
             //On Damage Application
             onDamageApplication(dat);
 
-            //basicActionAnimations(msg);
+            basicActionAnimations(msg);
         }
     });
 
@@ -247,7 +247,7 @@ function finishingMove(dat) {
 
 function basicActionAnimations(msg) {
     if(getSetting("basic-action.enabled")) {
-
+        createBasicActionAnimation(msg);
     }
 }
 

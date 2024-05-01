@@ -135,3 +135,14 @@ export function getVisibleAndMsgVisibleUsers(roll_deets) {
         roll_deets.whisper.length === 0 ? true : roll_deets.whisper.includes(player)
     );
 }
+
+export function getMultiVisibleAndMsgVisible(tokens, msgWhispers) {
+    let users = getVisibleUsers(tokens[0]);
+    let allButFirstToken = tokens.slice(1);
+    for (t of allButFirstToken) {
+        if (user.length === 0) break;
+        users.filter((u) => getVisibleUsers(t).includes(u));
+        if (user.length === 0) break;
+    }
+    return users.filter((player) => (msgWhispers.length === 0 ? true : msgWhispers.includes(player)));
+}

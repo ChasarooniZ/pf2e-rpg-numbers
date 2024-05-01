@@ -1,60 +1,69 @@
 {
-  "id": "pf2e-rpg-numbers",
-  "title": "PF2e RPG Numbers",
-  "description": "A module that gives damage pop up text when you roll damage in pf2e.",
-  "version": "#{VERSION}#",
-  "compatibility": {
-    "minimum": "10",
-    "verified": "11"
-  },
-  "authors": [
-    {
-      "name": "chasarooniZ"
-    }
-  ],
-  "relationships": {
-    "systems": [
-      {
-        "id": "pf2e",
-        "type": "system",
-        "compatibility": {
-          "minimum": "5.2.1",
-          "verified": "5.3.0"
+    "id": "pf2e-rpg-numbers",
+    "title": "PF2e RPG Numbers",
+    "description": "A module that gives damage pop up text when you roll damage in pf2e.",
+    "version": "#{VERSION}#",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11"
+    },
+    "authors": [
+        {
+            "name": "chasarooniZ"
         }
-      }
     ],
-    "requires": [
-      {
-        "id": "sequencer",
-        "type": "module",
-        "compatibility": {
-          "minimum": "3.0.0",
-          "verified": "3.1.2"
+    "relationships": {
+        "systems": [
+            {
+                "id": "pf2e",
+                "type": "system",
+                "compatibility": {
+                    "minimum": "5.2.1",
+                    "verified": "5.3.0"
+                }
+            }
+        ],
+        "requires": [
+            {
+                "id": "sequencer",
+                "type": "module",
+                "compatibility": {
+                    "minimum": "3.0.0",
+                    "verified": "3.1.2"
+                }
+            }
+        ],
+        "recommends": [
+            {
+                "id": "tokenmagic",
+                "type": "module",
+                "reason": "This module allows for usage of the upgraded token shake animation.",
+                "compatibility": {}
+            },
+            {
+                "id": "animated-spell-effects-cartoon",
+                "type": "module",
+                "reason": "This module allows for usage of the basic action animation feature.",
+                "compatibility": {}
+            },
+            {
+                "id": "jb2a_premium",
+                "type": "module",
+                "reason": "This module allows for extra usage of the basic action animation feature. (Will use this for some better visuals for some of the animations if it's appropriate)",
+                "compatibility": {}
+            }
+        ]
+    },
+    "esmodules": ["scripts/module.js", "scripts/settings.js"],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "languages/en.json"
         }
-      }
     ],
-    "recommends": [
-      {
-          "id": "tokenmagic",
-          "type": "module",
-          "reason": "This module allows for usage of the upgraded token shake animation.",
-          "compatibility": {}
-      }
-  ]
-  },
-  "esmodules": [
-    "scripts/module.js",
-    "scripts/settings.js"
-  ],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "languages/en.json"
-    }
-  ],
-  "url": "#{URL}#",
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
-  "readme": "https://github.com/chasarooniZ/pf2e-rpg-numbers/blob/master/README.md"
+    "url": "#{URL}#",
+    "manifest": "#{MANIFEST}#",
+    "download": "#{DOWNLOAD}#",
+    "readme": "https://github.com/chasarooniZ/pf2e-rpg-numbers/blob/master/README.md"
 }

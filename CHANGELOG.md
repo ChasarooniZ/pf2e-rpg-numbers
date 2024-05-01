@@ -1,3 +1,20 @@
+# 11.11.0 - Basic Action Animations (WIP)
+- Added new Option for Basic Action Animations
+  - These are sequencer animations that I put together (may add sound/more options later)
+  - At base these require [`animated-spell-effects-cartoon`](https://foundryvtt.com/packages/animated-spell-effects-cartoon) I picked this as my starting point because all the animations are free
+    - It is my mission to offer everything of meaning for free as with the spirit of Paizo and their open access to their rules
+  - At some point I will also add animations for JB2A Premium pack (as I own it)
+    - I will include an option when this happens to pick one
+  - **NOTE** Not all actions are implemented, I will be working on them slowly over the coming weeks
+  - The following actions are implemented with no sounds in this initial release:
+    - `Demoralize`
+    - `Feint`
+    - `Grapple`
+    - `Reposition`
+    - `Shove`
+    - `Trip`
+# 11.10.2 - Add Keybind for Finishing Moves
+- Added a keybind to activate finishing move
 # 11.10.1 - Localization
 - Fixed localization of some settings
 # 11.10.0 - The Sounds of Success
