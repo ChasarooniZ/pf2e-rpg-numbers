@@ -47,7 +47,7 @@
                 "compatibility": {}
             },
             {
-                "id": "jb2a_premium",
+                "id": "jb2a_patreon",
                 "type": "module",
                 "reason": "This module allows for extra usage of the basic action animation feature. (Will use this for some better visuals for some of the animations if it's appropriate)",
                 "compatibility": {}
