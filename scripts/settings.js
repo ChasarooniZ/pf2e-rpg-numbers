@@ -1,4 +1,4 @@
-import { MODULE_ID, registerSetting } from "./helpers/misc.js";
+import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
     const debouncedReload = foundry.utils.debounce(
@@ -254,7 +254,7 @@ Hooks.on("init", () => {
         config: true,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/success_1.mp3",
         type: String,
-        filePicker: "audio"
+        filePicker: "audio",
     });
 
     registerSetting("check-animations", "check-animations.sfx.file.success", {
@@ -263,7 +263,7 @@ Hooks.on("init", () => {
         config: true,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/correct-answer-tone.ogg",
         type: String,
-        filePicker: "audio"
+        filePicker: "audio",
     });
 
     registerSetting("check-animations", "check-animations.sfx.file.failure", {
@@ -272,7 +272,7 @@ Hooks.on("init", () => {
         config: true,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/Jpn_L_drum1.mp3",
         type: String,
-        filePicker: "audio"
+        filePicker: "audio",
     });
 
     registerSetting("check-animations", "check-animations.sfx.file.criticalFailure", {
@@ -281,7 +281,7 @@ Hooks.on("init", () => {
         config: true,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/negative-answer-lose.ogg",
         type: String,
-        filePicker: "audio"
+        filePicker: "audio",
     });
 
     //TODO actually add code to play sounds and do all checks
@@ -642,6 +642,23 @@ Hooks.on("init", () => {
         config: false,
         default: "0.0.0",
         type: String,
+    });
+
+    game.keybindings.register(MODULE_ID, "activateFinishingMove", {
+        name: localize("keybinds.activate-finishing-move.name"),
+        hint: localize("keybinds.activate-finishing-move.hint"),
+        editable: [
+            {
+                key: "Q",
+                modifiers: ["Shift"],
+            },
+        ],
+        onDown: () => {
+            game.user.setFlag(MODULE_ID, "finishingMoveActive", true);
+        },
+        onUp: () => {},
+        restricted: false,
+        precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
 });
 
