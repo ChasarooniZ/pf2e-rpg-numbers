@@ -500,6 +500,12 @@
                     "hint": "Set this to override the default crit sound with custom one."
                 }
             }
+        },
+        "keybinds": {
+            "activate-finishing-move": {
+                "name": "Activate Finishing Move",
+                "hint": "Activates finishing move if you have it enabled"
+            }
         }
     }
 }
