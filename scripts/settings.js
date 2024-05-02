@@ -285,8 +285,8 @@ Hooks.on("init", () => {
     });
     
     // Basic Actions
-    registerSetting("basic-actions", "basic-actions.enable", {
-        desc: "enable",
+    registerSetting("basic-actions", "basic-actions.enabled", {
+        desc: "enabled",
         scope: "world",
         config: true,
         default: game.modules.get("animated-spell-effects-cartoon")?.active,
