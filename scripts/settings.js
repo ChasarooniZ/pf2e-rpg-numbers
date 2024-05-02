@@ -283,9 +283,15 @@ Hooks.on("init", () => {
         type: String,
         filePicker: "audio",
     });
-
-    //TODO actually add code to play sounds and do all checks
-    //TODO Find sounds for the sfx to be played
+    
+    // Basic Actions
+    registerSetting("basic-actions", "basic-actions.enable", {
+        desc: "basic-actions.enable",
+        scope: "world",
+        config: true,
+        default: true,
+        type: Boolean,
+    });
 
     //Screen Shake Settings
     registerSetting("screen-shake", "shake-enabled", {
@@ -699,6 +705,7 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
+    addSettingsGroup("basic-actions", "basic-actions.enabled");
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");
