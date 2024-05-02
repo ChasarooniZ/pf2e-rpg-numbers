@@ -10,6 +10,7 @@ import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move
 import { createCritAnimation } from "./helpers/animation/crit/crit-animation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
+import { createBasicActionAnimation } from "./helpers/animation/basicActionAnimation.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
