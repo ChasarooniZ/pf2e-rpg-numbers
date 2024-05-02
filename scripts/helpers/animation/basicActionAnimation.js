@@ -112,6 +112,8 @@ export function createBasicActionAnimation(msg) {
             case "action:trip":
                 seq = trip(data, seq);
                 break;
+            default:
+                return;
         }
         seq.play();
     } catch (error) {
