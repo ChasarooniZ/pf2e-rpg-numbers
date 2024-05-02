@@ -70,13 +70,14 @@ const TODO_LIST = [
 export function createBasicActionAnimation(msg) {
     try {
         const { token: tokenID, target: targetUUID, options, outcome } = msg.flags.pf2e.context;
-        const token = canvas.tokens.get(tokenID);
+        const token = canvas?.tokens?.get(tokenID);
+        const action = options.find((opt) => ACTION_LIST.includes(opt));
+        if (!action || !token) return;
         const isFailure = outcome?.includes("failure");
         const target = canvas.tokens.placeables.find((t) => t.document.uuid === targetUUID.token);
         const isJb2aPremActive = game.modules.get("jb2a_patreon")?.active;
         const isAnimSpellFXCartoonActive = game.modules.get("animated-spell-effects-cartoon")?.active;
         const usersToPlayFor = getMultiVisibleAndMsgVisible([token, target], msg.whisper);
-        const action = options.find((opt) => ACTION_LIST.includes(opt));
 
         const data = {
             token,
@@ -244,7 +245,7 @@ function demoralize(data, seq) {
             .scaleToObject()
             .scale(1)
             .anchor({ x: 0.5, y: 0.7 })
-            .forUsers(getMultiVisibleAndMsgVisible([data.token], msg.whisper))
+            .forUsers(getMultiVisibleAndMsgVisible([data.token], data.whisper))
             .effect()
             .file("animated-spell-effects-cartoon.magic.mind sliver")
             .filter("ColorMatrix", { hue: 180 })
