@@ -244,7 +244,7 @@ function demoralize(data, seq) {
             .scaleToObject()
             .scale(1)
             .anchor({ x: 0.5, y: 0.7 })
-            .forUsers(getMultiVisibleAndMsgVisible([token], msg.whisper))
+            .forUsers(getMultiVisibleAndMsgVisible([data.token], msg.whisper))
             .effect()
             .file("animated-spell-effects-cartoon.magic.mind sliver")
             .filter("ColorMatrix", { hue: 180 })
