@@ -246,7 +246,7 @@ function finishingMove(dat) {
 }
 
 function basicActionAnimations(msg) {
-    if (getSetting("basic-action.enabled")) {
+    if (getSetting("basic-actions.enabled")) {
         createBasicActionAnimation(msg);
     }
 }
