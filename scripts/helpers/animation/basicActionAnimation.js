@@ -9,7 +9,8 @@ const ACTION_LIST = [
     "action:trip",
 ];
 
-const TODO_LIST = [ //Basic Actions
+const TODO_LIST = [
+    //Basic Actions
     "action:administer-first-aid",
     "action:administer-first-aid:stabilize",
     "action:administer-first-aid:stop-bleeding",
@@ -62,8 +63,8 @@ const TODO_LIST = [ //Basic Actions
     //Downtime
     "action:create-forgery",
     "action:subsist",
-    "action:treat-disease"
-]
+    "action:treat-disease",
+];
 
 export function createBasicActionAnimation(msg) {
     try {
@@ -74,7 +75,7 @@ export function createBasicActionAnimation(msg) {
         const isJb2aPremActive = game.modules.get("jb2a_patreon")?.active;
         const isAnimSpellFXCartoonActive = game.modules.get("animated-spell-effects-cartoon")?.active;
         const usersToPlayFor = getMultiVisibleAndMsgVisible([token, target], msg.whisper);
-        const action = options.find(ACTION_LIST);
+        const action = options.find((opt) => ACTION_LIST.includes(opt));
 
         const data = {
             token,
