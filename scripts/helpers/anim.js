@@ -140,9 +140,9 @@ export function getMultiVisibleAndMsgVisible(tokens, msgWhispers) {
     let users = getVisibleUsers(tokens[0]);
     let allButFirstToken = tokens.slice(1);
     for (const t of allButFirstToken) {
-        if (user.length === 0) break;
+        if (users.length === 0) break;
         users.filter((u) => getVisibleUsers(t).includes(u));
-        if (user.length === 0) break;
+        if (users.length === 0) break;
     }
     return users.filter((player) => (msgWhispers.length === 0 ? true : msgWhispers.includes(player)));
 }
