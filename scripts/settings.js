@@ -705,7 +705,7 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
-    addSettingsGroup("basic-actions", "basic-actions.enabled");
+    addSettingsGroup("basic-actions.title", "basic-actions.enabled");
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");
