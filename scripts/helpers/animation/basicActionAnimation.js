@@ -1,4 +1,4 @@
-import { getMultiVisibleAndMsgVisible } from "../anim";
+import { getMultiVisibleAndMsgVisible } from "../anim.js";
 
 const ACTION_LIST = [
     "action:demoralize",
