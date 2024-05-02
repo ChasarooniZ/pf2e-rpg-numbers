@@ -139,7 +139,7 @@ export function getVisibleAndMsgVisibleUsers(roll_deets) {
 export function getMultiVisibleAndMsgVisible(tokens, msgWhispers) {
     let users = getVisibleUsers(tokens[0]);
     let allButFirstToken = tokens.slice(1);
-    for (t of allButFirstToken) {
+    for (const t of allButFirstToken) {
         if (user.length === 0) break;
         users.filter((u) => getVisibleUsers(t).includes(u));
         if (user.length === 0) break;
