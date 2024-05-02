@@ -7,6 +7,7 @@ const ACTION_LIST = [
     "action:reposition",
     "action:shove",
     "action:trip",
+    "action:tumble-through",
 ];
 
 const TODO_LIST = [
@@ -83,6 +84,7 @@ export function createBasicActionAnimation(msg) {
             isFailure,
             users: usersToPlayFor,
             action,
+            whisper: msg.whisper,
             animModule: {
                 jb2a: {
                     active: isJb2aPremActive,
@@ -97,6 +99,9 @@ export function createBasicActionAnimation(msg) {
         switch (action) {
             case "action:demoralize":
                 seq = demoralize(data, seq);
+                break;
+            case "action:tumble-through":
+                seq = tumbleThrough(data, seq);
                 break;
             case "action:feint":
                 seq = feint(data, seq);
@@ -156,12 +161,29 @@ function reposition(data, seq) {
             .scaleToObject()
             .atLocation(data.target)
             .delay(400)
-            .scale(0.7)
+            .scale(1.5)
             .mirrorX(!mirror)
-            .spriteRotation(spriteRotationMath(data.token, data.target) + mirror * 180)
-            .forUsers(data.users);
+            .spriteRotation(spriteRotationMath(data.token, data.target));
     }
     return seq;
+}
+
+function feint(data, seq) {
+    if (data.animModule.cartoonSpell) {
+        const mirror = Sequencer.Helpers.random_int_between(0, 2);
+        seq.effect()
+            .file("animated-spell-effects-cartoon.simple.39")
+            .mirrorY(!!mirror)
+            .atLocation(data.token, {
+                offset: { x: -token.w * 0.5, y: mirror ? token.h / 4 : -token.h / 4 },
+                local: true,
+            })
+            .stretchTo(data.target, {
+                offset: { x: token.w * 0.75, y: mirror ? token.h / 4 : -token.h / 4 },
+                local: true,
+            })
+            .missed(data.isFailure);
+    }
 }
 
 function grapple(data, seq) {
@@ -199,7 +221,7 @@ function grapple(data, seq) {
     return seq;
 }
 
-function feint(data, seq) {
+function tumbleThrough(data, seq) {
     if (data.animModule.cartoonSpell) {
         const mirror = Sequencer.Helpers.random_int_between(0, 2);
         seq.effect()
@@ -208,7 +230,7 @@ function feint(data, seq) {
             .mirrorY(!!mirror)
             .atLocation(data.token)
             .scale(1.2)
-            .stretchTo(data.target, { offset: { x: data.target.w, y: 0 }, local: true })
+            .stretchTo(data.target, { offset: { x: data.target.w }, local: true })
             .forUsers(data.users);
     }
     return seq;
@@ -217,28 +239,34 @@ function feint(data, seq) {
 function demoralize(data, seq) {
     if (data.animModule.cartoonSpell) {
         seq.effect()
-            .file("animated-spell-effects-cartoon.misc.demon")
-            .atLocation(token)
-            .scaleToObject()
-            .scale(1)
-            .anchor({ x: 0.5, y: 0.7 })
-            .forUsers(data.users)
-            .effect()
-            .file("animated-spell-effects-cartoon.magic.mind sliver")
-            .filter("ColorMatrix", { hue: 180 })
-            .atLocation(token)
-            .stretchTo(target)
-            .delay(200)
-            .forUsers(data.users)
+            .file("animated-spell-effects-cartoon.simple.109")
+            .tint("#b3350e")
+            .mirrorX()
+            .mirrorY()
+            .atLocation(data.token, { offset: { x: -data.target.w / 2 }, local: true })
+            .stretchTo(data.target, { offset: { x: data.target.w / 2 }, local: true })
+            .spriteRotation(-20)
             .missed(data.isFailure)
-            .effect()
-            .file("animated-spell-effects-cartoon.energy.pulse.yellow")
-            .scaleToObject()
-            .atLocation(target)
-            .scale(1.3)
-            .delay(600)
             .forUsers(data.users)
-            .missed(data.isFailure);
+            .effect()
+            .file("animated-spell-effects-cartoon.simple.109")
+            .tint("#b3350e")
+            .mirrorX()
+            .mirrorY(false)
+            .atLocation(data.token, { offset: { x: -data.target.w / 2 }, local: true })
+            .stretchTo(data.target, { offset: { x: data.target.w / 2 }, local: true })
+            .spriteRotation(20)
+            .missed(data.isFailure)
+            .forUsers(data.users)
+            .effect()
+            .file("animated-spell-effects-cartoon.simple.113")
+            .scaleToObject(3.5)
+            .tint("#401204")
+            .delay(600)
+            .belowTokens()
+            .atLocation(data.target)
+            .missed(data.isFailure)
+            .forUsers(data.users);
     }
     return seq;
 }
@@ -252,9 +280,10 @@ function shove(data, seq) {
             .filter("ColorMatrix", { hue: -23 })
             .forUsers(data.users)
             .effect()
+            .delay(200)
             .scaleToObject(2)
             .file("animated-spell-effects-cartoon.air.gust.gray")
-            .spriteRotation(spriteRotationMath(data.token, data.target))
+            .spriteRotation(spriteRotationMath(data.token, data.target) - 180)
             .atLocation(data.target)
             .forUsers(data.users)
             .missed(data.isFailure);
