@@ -30,7 +30,7 @@ export function extractDamageInfoCombined(rolls) {
     for (const inp of rolls) {
         if (!inp?.terms) continue;
         for (const term of inp.terms) {
-            if (!terms?.rolls) continue;
+            if (!term?.rolls) continue;
             for (const roll of term.rolls) {
                 result.push({
                     type: roll.type,
