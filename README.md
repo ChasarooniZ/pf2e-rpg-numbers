@@ -61,9 +61,9 @@ A: This module will only support the **PF2e** system
   - This sound is not in the public domain.
     License: Creative Commons BY-NC (Attribution Noncommercial) 3.0
     License text: http://creativecommons.org/licenses/by-nc/3.0/
-- [`vent4_(pligativator).wav](https://freesound.org/people/plingativator/sounds/160558/)
+- [`vent4_(pligativator).wav`](https://freesound.org/people/plingativator/sounds/160558/)
   - This Sound is being used under the Attribution 4.0 License
-- [`swoosh-universifled]([swoosh-universfield](https://pixabay.com/sound-effects/swoosh-142322/))
+- [`swoosh-universifled`]([swoosh-universfield](https://pixabay.com/sound-effects/swoosh-142322/))
   - Free for use under the Pixabay Content License
 - `Negative answer lose`
   - Free to use under Mixkit License
