@@ -69,7 +69,7 @@ const TODO_LIST = [
 
 export function createBasicActionAnimation(msg) {
     try {
-        const { token: tokenID, target: targetUUID, options, outcome } = msg.flags.pf2e.context;
+        const { token: tokenID = '', target: targetUUID = '', options = [], outcome = ''} = msg?.flags?.pf2e?.context || {};
         const token = canvas?.tokens?.get(tokenID);
         const action = options.find((opt) => ACTION_LIST.includes(opt));
         if (!action || !token) return;
