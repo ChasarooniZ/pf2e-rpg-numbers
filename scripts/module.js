@@ -47,12 +47,12 @@ Hooks.on("init", () => {
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
-    Hooks.on("createChatMessage", async function (msg, _status, userid) {
+    Hooks.on("createChatMessage", async function (msg, _status, _userid) {
         if (!getSetting("enabled")) return;
         debugLog({
             msg,
         });
-        if (game.user.id === userid) {
+        if (game.user.isGM) {
             const dat = getData(msg);
             //Finishing Moves
             finishingMove(dat);
