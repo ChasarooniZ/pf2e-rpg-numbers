@@ -19,6 +19,8 @@
      - **Note** module now requires the GM to be online to function for any of the FX (they run through the GM now)
    - Fixed permissions error when applying damage to token
    - Fixed error when parsing rolls with die numbers that don't exist (d7 etc.)
+ - **V12 Update News**
+   - No plans to do work to future prepare for V12 until Sequencer is updated as well (and the pf2e system officially releases for that version)
 
 # 11.10.2 - Add Keybind for Finishing Moves
 - Added a keybind to activate finishing move
