@@ -1,5 +1,5 @@
 # 11.11.0 - Basic Action Animations (WIP)
-- Added new Option for Basic Action Animations
+- Added new Option for **Basic Action Animations**
   - These are sequencer animations that I put together (may add sound/more options later)
   - At base these require [`animated-spell-effects-cartoon`](https://foundryvtt.com/packages/animated-spell-effects-cartoon) I picked this as my starting point because all the animations are free
     - It is my mission to offer everything of meaning for free as with the spirit of Paizo and their open access to their rules
@@ -12,7 +12,14 @@
     - `Grapple`
     - `Reposition`
     - `Shove`
-    - `Trip`
+    - `Trip` 
+    - `Tumble Through`
+ - Bug Fixes
+   - Possible Performance fix
+     - **Note** module now requires the GM to be online to function for any of the FX (they run through the GM now)
+   - Fixed permissions error when applying damage to token
+   - Fixed error when parsing rolls with die numbers that don't exist (d7 etc.)
+
 # 11.10.2 - Add Keybind for Finishing Moves
 - Added a keybind to activate finishing move
 # 11.10.1 - Localization
