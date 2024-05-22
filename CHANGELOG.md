@@ -1,3 +1,6 @@
+# 11.10.1 - Patch
+- Fixed Issue with feint animation
+- Added easing to roll scroll
 # 11.11.0 - Basic Action Animations (WIP)
 - Added new Option for **Basic Action Animations**
   - These are sequencer animations that I put together (may add sound/more options later)
