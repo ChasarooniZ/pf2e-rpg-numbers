@@ -67,7 +67,7 @@ Hooks.on("ready", () => {
             if (isRotateOnAttack(dat)) rotateOnAttack(msg);
 
             //On Damage Application
-            onDamageApplication(dat);
+            onDamageApplication(dat, msg);
 
             basicActionAnimations(msg);
         }
@@ -171,7 +171,7 @@ function getData(msg) {
     };
 }
 
-function onDamageApplication(dat) {
+function onDamageApplication(dat, msg) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
@@ -230,7 +230,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        generateDamageScroll(dmg_list, targets);
+        generateDamageScroll(dmg_list, targets, msg);
     }
 }
 

@@ -9,7 +9,7 @@ import { getSetting } from "../misc.js";
  * @param {{type: string, value: string}[]} dmg_list list of type and value
  * @param {string[]} targets list of token ids
  */
-export function generateDamageScroll(dmg_list, targets) {
+export function generateDamageScroll(dmg_list, targets, msg) {
     const fontSize = getSetting("font-size");
     const jitter = getSetting("jitter");
     const colors = {
@@ -52,7 +52,7 @@ export function generateDamageScroll(dmg_list, targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
         const topOffset = size * (getSetting("top-offset") / 100);
-        const usersToPlayFor = onlyGM ? game.users.filter((u) => u.isGM).map((u) => u.id) : getVisibleUsers(tok);
+        const usersToPlayFor = onlyGM ? game.users.filter((u) => u.isGM).map((u) => u.id) :getVisibleAndMsgVisibleUsers({token: msg.token, whisper: msg.whisper});
         if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
             style.stroke = 'rgb(0, 100, 100)';
         }
