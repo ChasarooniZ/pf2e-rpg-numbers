@@ -260,8 +260,8 @@ function basicActionAnimations(msg) {
 export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
         return msg.flags["pf2e-target-damage"].targets.map((t) => t.id);
-    } else if (msg.flags?.["pf2e-toolbelt"]?.target?.targets) {
-        return msg.flags?.["pf2e-toolbelt"].target.targets.map((t) => t.token.split(".").pop());
+    } else if (msg.flags?.["pf2e-toolbelt"]?.targetHelper?.targets) {
+        return msg.flags?.["pf2e-toolbelt"].targetHelper.targets.map((t) => t.split(".").pop());
     } else {
         // No pf2e target damage module
         return [msg?.target?.token?.id ?? msg.token.id];
