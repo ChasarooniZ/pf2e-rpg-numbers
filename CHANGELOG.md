@@ -1,4 +1,8 @@
-# 11.10.1 - Patch
+# 11.11.2 - Bug Fixes
+- Fixed issue with **Damage Numbers** not resepcting message visibility (@Intervención)
+- Updated parsing of `PF2e Toolbelt` msg falgs to grab targets on newer versions of pf2e Toolbelt
+- Added manifest to `animated-spell-effects` to allow use of the **Basic Action Animations** feature
+# 11.11.1 - Patch
 - Fixed Issue with feint animation
 - Added easing to roll scroll
 # 11.11.0 - Basic Action Animations (WIP)
