@@ -281,6 +281,14 @@
                 "enabled": {
                     "name": "Enable Token rotating on attacking",
                     "hint": "When you attack the token turns towards who it attacks, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
+                },
+                "duration": {
+                    "name": "Token Rotation Duration",
+                    "hint": "How long it takes the token to turn towards the enemy in seconds (Default is 0.5 s, overall time to turn and turn back is 1.5 x the time here)"
+                },
+                "scale-on-size": {
+                    "name": "Enable Token Rotation Duration Size Scaling",
+                    "hint": "Allow Rotation to take longer based on the size of the attacker (scales on the number of squares it takes up)"
                 }
             },
             "critical": {
