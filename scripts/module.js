@@ -67,7 +67,7 @@ Hooks.on("ready", () => {
             if (isRotateOnAttack(dat)) rotateOnAttack(msg);
 
             //On Damage Application
-            onDamageApplication(dat);
+            onDamageApplication(dat, msg);
 
             basicActionAnimations(msg);
         }
@@ -171,7 +171,7 @@ function getData(msg) {
     };
 }
 
-function onDamageApplication(dat) {
+function onDamageApplication(dat, msg) {
     if (dat.isApplyDamage && doSomethingOnDamageApply) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
@@ -230,7 +230,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        generateDamageScroll(dmg_list, targets);
+        generateDamageScroll(dmg_list, targets, msg);
     }
 }
 
@@ -260,8 +260,8 @@ function basicActionAnimations(msg) {
 export function getTargetList(msg) {
     if (msg.flags?.["pf2e-target-damage"]?.targets) {
         return msg.flags["pf2e-target-damage"].targets.map((t) => t.id);
-    } else if (msg.flags?.["pf2e-toolbelt"]?.target?.targets) {
-        return msg.flags?.["pf2e-toolbelt"].target.targets.map((t) => t.token.split(".").pop());
+    } else if (msg.flags?.["pf2e-toolbelt"]?.targetHelper?.targets) {
+        return msg.flags?.["pf2e-toolbelt"].targetHelper.targets.map((t) => t.split(".").pop());
     } else {
         // No pf2e target damage module
         return [msg?.target?.token?.id ?? msg.token.id];

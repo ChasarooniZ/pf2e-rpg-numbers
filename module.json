@@ -43,6 +43,7 @@
             {
                 "id": "animated-spell-effects-cartoon",
                 "type": "module",
+                "manifest": "https://raw.githubusercontent.com/jackkerouac/animated-spell-effects-cartoon/main/module.json",
                 "reason": "This module allows for usage of the basic action animation feature.",
                 "compatibility": {}
             }
