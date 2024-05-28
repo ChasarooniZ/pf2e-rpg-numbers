@@ -68,7 +68,7 @@ export function generateRollScroll(roll_deets) {
         .text(`${text}`, style)
         .anchor({ x: 0.5, y: 0.8 })
         .duration(duration)
-        .scaleIn(0.5, duration / 3)
+        .scaleIn(0.5, duration / 3, {ease: 'easeOutQuint'})
         .fadeOut(duration / 3)
         .zIndex(2)
         .forUsers(usersToPlayFor);

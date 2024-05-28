@@ -69,7 +69,12 @@ const TODO_LIST = [
 
 export function createBasicActionAnimation(msg) {
     try {
-        const { token: tokenID = '', target: targetUUID = '', options = [], outcome = ''} = msg?.flags?.pf2e?.context || {};
+        const {
+            token: tokenID = "",
+            target: targetUUID = "",
+            options = [],
+            outcome = "",
+        } = msg?.flags?.pf2e?.context || {};
         const token = canvas?.tokens?.get(tokenID);
         const action = options.find((opt) => ACTION_LIST.includes(opt));
         if (!action || !token) return;
@@ -176,11 +181,11 @@ function feint(data, seq) {
             .file("animated-spell-effects-cartoon.simple.39")
             .mirrorY(!!mirror)
             .atLocation(data.token, {
-                offset: { x: -token.w * 0.5, y: mirror ? token.h / 4 : -token.h / 4 },
+                offset: { x: -data.token.w * 0.5, y: mirror ? data.token.h / 4 : -data.token.h / 4 },
                 local: true,
             })
             .stretchTo(data.target, {
-                offset: { x: token.w * 0.75, y: mirror ? token.h / 4 : -token.h / 4 },
+                offset: { x: data.token.w * 0.75, y: mirror ? data.token.h / 4 : -data.token.h / 4 },
                 local: true,
             })
             .missed(data.isFailure);
