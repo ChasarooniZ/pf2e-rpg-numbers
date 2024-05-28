@@ -1,4 +1,4 @@
-import { getVisibleUsers, getFontScale, findTypeWithLargestTotal } from "../anim.js";
+import { getFontScale, findTypeWithLargestTotal, getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { getSetting } from "../misc.js";
 
 //TODO settings on visuals (colors)
