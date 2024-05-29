@@ -13,7 +13,7 @@ export function turnTokenOnAttack(token, target) {
     const tokWxH = (token.document.height + token.document.width)/2;
     const baseTurnTime = getSetting("rotate-on-attack.duration") * 1000;
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
-    const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((1 - tokWxH) / 2)) : baseTurnTime;
+    const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((tokWxH - 1) / 2)) : baseTurnTime;
 
     new Sequence()
         .animation()
