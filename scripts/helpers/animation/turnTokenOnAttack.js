@@ -4,17 +4,24 @@
  * @param {*} target Person they are attacking
  */
 
+import { getSetting } from "../misc.js";
+
 export function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
     const angle = token.angle;
     const rotationOffset = token.document.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
+    const tokWxH = (token.document.height + token.document.width)/2;
+    const baseTurnTime = getSetting("rotate-on-attack.duration") * 1000;
+    const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
+    const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((tokWxH - 1) / 2)) : baseTurnTime;
+
     new Sequence()
         .animation()
         .on(token)
-        .rotateTowards(target, { duration: 500, ease: "easeInCubic", rotationOffset })
-        .waitUntilFinished(250)
+        .rotateTowards(target, { duration: turnTime, ease: "easeInCubic", rotationOffset })
+        .waitUntilFinished(turnTime/2)
         .animation()
         .on(token)
-        .rotateIn(angle, 500, { ease: "easeOutCubic" })
+        .rotateIn(angle, turnTime, { ease: "easeOutCubic" })
         .play();
 }

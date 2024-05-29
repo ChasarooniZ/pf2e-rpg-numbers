@@ -446,6 +446,27 @@ Hooks.on("init", () => {
         onChange: debouncedReload,
     });
 
+    registerSetting("rotate-on-attack", "rotate-on-attack.duration", {
+        desc: "duration",
+        scope: "world",
+        config: true,
+        default: 0.5,
+        range: {
+            min: 0,
+            max: 2,
+            step: 0.1,
+        },
+        type: Number,
+    });
+
+    registerSetting("rotate-on-attack", "rotate-on-attack.scale-on-size", {
+        desc: "scale-on-size",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
     //Critical Hit
     registerSetting("critical", "critical.enabled", {
         desc: "enabled",
