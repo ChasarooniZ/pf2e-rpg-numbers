@@ -4,7 +4,7 @@
  * @param {*} target Person they are attacking
  */
 
-import { getSetting } from "../misc";
+import { getSetting } from "../misc.js";
 
 export function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
