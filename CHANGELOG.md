@@ -1,3 +1,8 @@
+# 11.12.0 - Token Turning Updates
+- Turn on Token Attack _new options_
+  - **_New Setting._** Scale based on token size (scales how long it takes to turn based on the number of squares the token takes up)
+    - _Must be enabled in the settings_
+  - **_New setting._** Rotation time (set how long it takes for the token to rotate)
 # 11.11.2 - Bug Fixes
 - Fixed issue with **Damage Numbers** not resepcting message visibility (@Intervención)
 - Updated parsing of `PF2e Toolbelt` msg falgs to grab targets on newer versions of pf2e Toolbelt
