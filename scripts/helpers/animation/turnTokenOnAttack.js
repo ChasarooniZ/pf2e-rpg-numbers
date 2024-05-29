@@ -11,7 +11,7 @@ export function turnTokenOnAttack(token, target) {
     const angle = token.angle;
     const rotationOffset = token.document.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
     const tokWxH = (token.document.height + token.document.width)/2;
-    const baseTurnTime = getSetting("rotate-on-attack.duration")
+    const baseTurnTime = getSetting("rotate-on-attack.duration") * 1000;
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
     const turnTime = scaleTurnTime ? baseTurnTime * tokWxH : baseTurnTime;
 
