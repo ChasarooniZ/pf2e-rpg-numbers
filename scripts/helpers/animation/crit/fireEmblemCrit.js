@@ -14,7 +14,7 @@ import { getSetting } from "../../misc.js";
  * @returns {void}
  */
 
-export function fireEmblemCrit(token, users, imgData, config) {
+export async function fireEmblemCrit(token, users, imgData, config) {
     const screenWidth = window.screen.availWidth;
     const scaleFactor = 0.35;
     const distance = scaleFactor * screenWidth;
@@ -34,7 +34,7 @@ export function fireEmblemCrit(token, users, imgData, config) {
 
     const scaleFactorHalf = (imgData.yScale + imgData.xScale) / 2;
 
-    new Sequence()
+    await new Sequence()
         .effect()
         .shape("rectangle", {
             lineSize: 0,

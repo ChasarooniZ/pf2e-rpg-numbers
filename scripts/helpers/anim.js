@@ -65,7 +65,7 @@ export function getVisibleUsers(tok) {
     return list;
 }
 
-export function damageShakeRollDamage(token, targets) {
+export async function damageShakeRollDamage(token, targets) {
     targets.forEach((target) => {
         const default_shake = target === token || !token;
         const { x: tok_x, y: tok_y, w: tok_width } = target;
@@ -82,7 +82,7 @@ export function damageShakeRollDamage(token, targets) {
             seq.animation().waitUntilFinished(10).on(target).moveSpeed(10).moveTowards(details);
         }
 
-        seq.animation()
+        await seq.animation()
             .waitUntilFinished()
             .on(target)
             .moveSpeed(10)
