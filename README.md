@@ -1,13 +1,10 @@
 ![](https://img.shields.io/badge/Foundry-v11-informational)
 ![Latest Release Download Count](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-rpg-numbers/latest/module.zip)
 
-<!--- Forge Bazaar Install % Badge -->
-<!--- replace <your-module-name> with the `name` in your manifest -->
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-rpg-numbers&colorB=4aa94a)
 
-
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X2YNZZR)
 ![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
-
 # PF2e RPG Numbers
 A module that started to just show damage numbers when you attack but now does other cool things too
 
