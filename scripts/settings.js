@@ -1,24 +1,6 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
-    const debouncedReload = foundry.utils.debounce(
-        () =>
-            new Dialog({
-                title: "Settings Reload",
-                content: "You need to reload foundry to apply this setting change, would you like to reload?",
-                buttons: {
-                    button1: {
-                        label: "Yes",
-                        callback: () => {
-                            window.location.reload();
-                        },
-                        icon: `<i class="fas fa-check"></i>`,
-                    },
-                    button2: { label: "No", callback: () => {}, icon: `<i class="fas fa-times"></i>` },
-                },
-            }).render(true),
-        100
-    );
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
 
     registerSetting("", "enabled", {
@@ -442,8 +424,7 @@ Hooks.on("init", () => {
         scope: "world",
         config: true,
         default: true,
-        type: Boolean,
-        onChange: debouncedReload,
+        type: Boolean, requiresReload: true
     });
 
     registerSetting("rotate-on-attack", "rotate-on-attack.duration", {
@@ -576,7 +557,7 @@ Hooks.on("init", () => {
         config: true,
         default: false,
         type: Boolean,
-        onChange: debouncedReload,
+        requiresReload: true,
     });
 
     registerSetting("finishing-move", "finishing-move.keep-on", {
