@@ -65,7 +65,7 @@ export function getVisibleUsers(tok) {
     return list;
 }
 
-export async function damageShakeRollDamage(token, targets) {
+export function damageShakeRollDamage(token, targets) {
     targets.forEach((target) => {
         const default_shake = target === token || !token;
         const { x: tok_x, y: tok_y, w: tok_width } = target;
