@@ -108,7 +108,7 @@ export function personaCrit(token, users, imgData, config) {
     const image = new Image();
     image.src = imageUrl;
 
-    image.onload = ({ target }) => {
+    image.onload = async ({ target }) => {
         const imageHeight = target.height;
         const imagePercent = (imageHeight * imageScaler) / 100;
 
@@ -116,7 +116,7 @@ export function personaCrit(token, users, imgData, config) {
         const offsetX = critOffsetX * imagePercent * scale;
         const offsetY = (personaImg ? 0 : imagePercent * 20) + critOffsetY * imagePercent * scale;
 
-        new Sequence()
+        await new Sequence()
             .effect()
             .shape("polygon", { points: centeredPoints, fillColor: game.user.color, fillAlpha: 1 })
             .screenSpace()

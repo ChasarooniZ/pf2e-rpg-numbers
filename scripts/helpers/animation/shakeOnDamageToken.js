@@ -18,7 +18,7 @@ const params = [
     },
 ];
 
-export function shakeOnDamageToken(actor_uuid, dmg) {
+export async function shakeOnDamageToken(actor_uuid, dmg) {
     if (!actor_uuid) return;
     const token = canvas.tokens.placeables.find((t) => t.actor.uuid === actor_uuid);
     const [shake_distance_percent, shakes, duration] = getTokenShakeScale(token, dmg);
@@ -40,7 +40,7 @@ export function shakeOnDamageToken(actor_uuid, dmg) {
             values = values.concat([mod * mov_amt, 0]);
         }
         const it_dur = duration / values.length;
-        new Sequence()
+        await new Sequence()
             .animation()
             .on(token)
             .delay(duration / 10)
