@@ -4,8 +4,8 @@
     "description": "A module that gives damage pop up text when you roll damage in pf2e.",
     "version": "#{VERSION}#",
     "compatibility": {
-        "minimum": "10",
-        "verified": "11"
+        "minimum": "12",
+        "verified": "12"
     },
     "authors": [
         {
