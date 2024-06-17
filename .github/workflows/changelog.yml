@@ -1,11 +1,13 @@
+name: Update Changelog
 on:
   release:
-    types: [released]
+    types: [published]
 
 jobs:
-
   update-changelog:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     
     steps:
     - uses: actions/checkout@v3
@@ -14,14 +16,10 @@ jobs:
 
     - name: Update Changelog
       run: |
-        RELEASE_TITLE=${{ github.event.release.name }}
-        RELEASE_BODY=${{ github.event.release.body }}
-        IS_PRERELEASE=${{ github.event.release.prerelease }}
-        
-        if [[ $IS_PRERELEASE == "false" ]]; then
-          echo "# $RELEASE_TITLE" | cat - CHANGELOG.md > temp && mv temp CHANGELOG.md
+        if [[ ${{ github.event.release.prerelease }} == "false" ]]; then
+          echo "## ${{ github.event.release.name }}" | cat - CHANGELOG.md > temp && mv temp CHANGELOG.md
           echo "" >> CHANGELOG.md
-          echo "$RELEASE_BODY" >> CHANGELOG.md
+          echo "${{ github.event.release.body }}Y" >> CHANGELOG.md
           echo "" >> CHANGELOG.md
         fi   
     - name: Commit Changelog
