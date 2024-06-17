@@ -17,7 +17,7 @@ jobs:
     - name: Update Changelog
       run: |
         if [[ ${{ github.event.release.prerelease }} == "false" ]]; then
-          echo "## ${{ github.event.release.name }}" | cat - CHANGELOG.md > temp && mv temp CHANGELOG.md
+          echo "## $RELEASE_TITLE" | tee -a CHANGELOG.md > /dev/null
           echo "" >> CHANGELOG.md
           echo "${{ github.event.release.body }}Y" >> CHANGELOG.md
           echo "" >> CHANGELOG.md
