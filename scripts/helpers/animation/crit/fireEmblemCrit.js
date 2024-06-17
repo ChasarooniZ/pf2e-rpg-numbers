@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting, getUserColor } from "../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
@@ -40,7 +40,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
             lineSize: 0,
             width: windowWidth,
             height: rectangleHeight,
-            fillColor: game.user.color,
+            fillColor: getUserColor(game.user),
             fillAlpha: 1,
             name: "feCritA",
         })

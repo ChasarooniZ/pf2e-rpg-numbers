@@ -65,31 +65,32 @@ export function getVisibleUsers(tok) {
     return list;
 }
 
-export function damageShakeRollDamage(token, targets) {
-    targets.forEach((target) => {
-        const default_shake = target === token || !token;
-        const { x: tok_x, y: tok_y, w: tok_width } = target;
-        let ray = new Ray(token, target);
-        const shake_distance = 0.2;
-        let ray_projection_amt = (tok_width / ray.distance) * shake_distance;
-        const shakes = 7;
-        const seq = new Sequence();
-        for (let i = 0; i < shakes; i++) {
-            const sign = i % 2 === 0 ? 1 : -1;
-            let details = ray.project(1 + sign * ray_projection_amt);
-            if (default_shake) details = { x: tok_x + tok_width * shake_distance * sign, y: tok_y };
-            details.ease = "easeInOutSine";
-            seq.animation().waitUntilFinished(10).on(target).moveSpeed(10).moveTowards(details);
-        }
+//WIP?
+// export function damageShakeRollDamage(token, targets) {
+//     targets.forEach((target) => {
+//         const default_shake = target === token || !token;
+//         const { x: tok_x, y: tok_y, w: tok_width } = target;
+//         let ray = new Ray(token, target);
+//         const shake_distance = 0.2;
+//         let ray_projection_amt = (tok_width / ray.distance) * shake_distance;
+//         const shakes = 7;
+//         const seq = new Sequence();
+//         for (let i = 0; i < shakes; i++) {
+//             const sign = i % 2 === 0 ? 1 : -1;
+//             let details = ray.project(1 + sign * ray_projection_amt);
+//             if (default_shake) details = { x: tok_x + tok_width * shake_distance * sign, y: tok_y };
+//             details.ease = "easeInOutSine";
+//             seq.animation().waitUntilFinished(10).on(target).moveSpeed(10).moveTowards(details);
+//         }
 
-        seq.animation()
-            .waitUntilFinished()
-            .on(target)
-            .moveSpeed(10)
-            .moveTowards({ x: tok_x, y: tok_y, ease: "easeInOutSine" })
-            .play();
-    });
-}
+//         seq.animation()
+//             .waitUntilFinished()
+//             .on(target)
+//             .moveSpeed(10)
+//             .moveTowards({ x: tok_x, y: tok_y, ease: "easeInOutSine" })
+//             .play();
+//     });
+// }
 
 export function getTokenShakeScale(token, dmg) {
     const result = ["distance", "shakes", "duration"];
