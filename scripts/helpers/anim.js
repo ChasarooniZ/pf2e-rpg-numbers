@@ -82,7 +82,7 @@ export async function damageShakeRollDamage(token, targets) {
             seq.animation().waitUntilFinished(10).on(target).moveSpeed(10).moveTowards(details);
         }
 
-        await seq.animation()
+        seq.animation()
             .waitUntilFinished()
             .on(target)
             .moveSpeed(10)
