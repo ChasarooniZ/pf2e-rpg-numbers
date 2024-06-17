@@ -1,6 +1,6 @@
-import { getSetting} from "../misc.js";
+import { getSetting } from "../misc.js";
 
-export function createFinishingMoveAnimation(text) {
+export async function createFinishingMoveAnimation(text) {
     let textColor = "black";
     let textBorderColor = getSetting("finishing-move.use-player-color") ? game.user.color : "red";
     let volume = getSetting("finishing-move.sound-effect.volume") / 100;
@@ -46,7 +46,7 @@ export function createFinishingMoveAnimation(text) {
             .volume(volume)
             .delay(delayDiff * i);
     });
-    seq.play();
+    await seq.play();
     if (!getSetting("finishing-move.keep-on")) {
         // Turns off after run
         document

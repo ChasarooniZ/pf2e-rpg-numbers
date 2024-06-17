@@ -37,7 +37,7 @@ export function registerSetting(settingCat, settingID, data) {
         default: data.default,
         type: data.type,
     };
-    if (data.onChange) settingData.onChange = data.onChange;
+    if (data.requiresReload) settingData.requiresReload = data.requiresReload;
     if (data.filePicker) settingData.filePicker = data.filePicker;
     if (data.choices)
         settingData.choices = data.choices.reduce(

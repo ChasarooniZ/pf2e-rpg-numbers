@@ -6,7 +6,7 @@
 
 import { getSetting } from "../misc.js";
 
-export function turnTokenOnAttack(token, target) {
+export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
     const angle = token.angle;
     const rotationOffset = token.document.flags?.["pf2e-rpg-numbers"]?.rotationOffset ?? 0;
@@ -15,7 +15,7 @@ export function turnTokenOnAttack(token, target) {
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
     const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((tokWxH - 1) / 2)) : baseTurnTime;
 
-    new Sequence()
+    await new Sequence()
         .animation()
         .on(token)
         .rotateTowards(target, { duration: turnTime, ease: "easeInCubic", rotationOffset })

@@ -6,7 +6,7 @@ import { getSetting } from "../misc.js";
  * @param {*} damage Amount of damage taken
  * @returns
  */
-export function shakeScreen(uuid, damage) {
+export async function shakeScreen(uuid, damage) {
     const actor = fromUuidSync(uuid);
     if (!actor.hasPlayerOwner && !getSetting("shake-gm-enabled")) return;
     const gmID = game.users.activeGM.id;
@@ -35,5 +35,5 @@ export function shakeScreen(uuid, damage) {
     } else {
         userToShake = [gmID];
     }
-    new Sequence().canvasPan().shake({ duration: 250, strength: shake_amt }).forUsers(userToShake).play();
+    await new Sequence().canvasPan().shake({ duration: 250, strength: shake_amt }).forUsers(userToShake).play();
 }

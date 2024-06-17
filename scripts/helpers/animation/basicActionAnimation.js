@@ -67,7 +67,7 @@ const TODO_LIST = [
     "action:treat-disease",
 ];
 
-export function createBasicActionAnimation(msg) {
+export async function createBasicActionAnimation(msg) {
     try {
         const {
             token: tokenID = "",
@@ -120,13 +120,14 @@ export function createBasicActionAnimation(msg) {
                 break;
             case "action:shove":
                 seq = shove(data, seq);
+                break;
             case "action:trip":
                 seq = trip(data, seq);
                 break;
             default:
                 return;
         }
-        seq.play();
+        await seq.play();
     } catch (error) {
         console.error("PF2e RPG Numbers", error);
     }
@@ -190,6 +191,7 @@ function feint(data, seq) {
             })
             .missed(data.isFailure);
     }
+    return seq;
 }
 
 function grapple(data, seq) {

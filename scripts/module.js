@@ -47,12 +47,12 @@ Hooks.on("init", () => {
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
-    Hooks.on("createChatMessage", async function (msg, _status, _userid) {
-        if (!getSetting("enabled")) return;
-        debugLog({
-            msg,
-        });
-        if (game.user.isGM) {
+    if (game.user.isGM) {
+        Hooks.on("createChatMessage", async function (msg, _status, _userid) {
+            if (!getSetting("enabled")) return;
+            debugLog({
+                msg,
+            });
             const dat = getData(msg);
             //Finishing Moves
             finishingMove(dat);
@@ -70,8 +70,8 @@ Hooks.on("ready", () => {
             onDamageApplication(dat, msg);
 
             basicActionAnimations(msg);
-        }
-    });
+        });
+    }
 
     /**
      * TODO Add visual pop ups over characters who's modifiers to rolls mattered (IDK how feasible this is)
