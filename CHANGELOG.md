@@ -1,3 +1,11 @@
+# 12.0.0 - V12 Support
+- Should now support v12
+- Changed most sequencers calls to `await`
+  - Should help to fix performance issues + inconsistency 
+- Fixed issue with `feint` basic action animation
+- Transitioned settings to use `requireReload` instead of custom function
+- Known Bugs
+  - **Damage Numbers** don't properly bounce, maybe an issue with Sequencer, looking into it
 # 11.12.0 - Token Turning Updates
 - Turn on Token Attack _new options_
   - **_New Setting._** Scale based on token size (scales how long it takes to turn based on the number of squares the token takes up)
