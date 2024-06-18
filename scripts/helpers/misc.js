@@ -22,6 +22,11 @@ export function localize(str) {
     return game.i18n.localize(`${MODULE_ID}.${str}`);
 }
 
+export function getUserColor(user) {
+    const [r,g,b] = user.color.rgb.map(color => color * 255);
+    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+ }
+
 /**
  *
  * @param {*} settingID

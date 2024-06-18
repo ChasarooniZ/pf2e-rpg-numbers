@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting, getUserColor } from "../../misc.js";
 
 /**
  *  Conversion method from css clip path
@@ -118,7 +118,7 @@ export function personaCrit(token, users, imgData, config) {
 
         await new Sequence()
             .effect()
-            .shape("polygon", { points: centeredPoints, fillColor: game.user.color, fillAlpha: 1 })
+            .shape("polygon", { points: centeredPoints, fillColor: getUserColor(game.user), fillAlpha: 1 })
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })

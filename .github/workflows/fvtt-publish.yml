@@ -1,0 +1,24 @@
+name: Publish module
+on:
+  release:
+    types: [published] 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+     - name: Check if release is not a prerelease
+       if: ${{ !github.event.release.prerelease }}
+       run: echo "This is a non-prerelease release"
+
+     - name: Publish Module to FoundryVTT Website
+       if: ${{ !github.event.release.prerelease }}
+       id: publish-to-foundry-website
+       uses: cs96and/FoundryVTT-release-package@v1.0.2
+       with:
+          version: ${{github.event.release.tag_name}}
+          notes-url: https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}
+          package-token: ${{ secrets.PACKAGE_TOKEN }}
+          manifest-url: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json
