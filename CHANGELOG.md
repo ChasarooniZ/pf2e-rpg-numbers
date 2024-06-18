@@ -1,3 +1,8 @@
+# 12.0.2 - Bug Swatter
+- Fixed errors with **Damage Numbers** not processing targets properl (@malkyn)
+- Fixed errors with **Shake Token** not chekcing properly if you even have tokenMagic Installed (@malkyn)
+# 12.0.1 - Color Fixes
+- Fixed issue with getting user color that caused Crit Animations & Finishing Moves to not work (@sasane)
 # 12.0.0 - V12 Support
 - Should now support v12
 - Changed most sequencers calls to `await`
