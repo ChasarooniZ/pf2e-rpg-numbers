@@ -23,7 +23,7 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
     const token = canvas.tokens.placeables.find((t) => t.actor.uuid === actor_uuid);
     const [shake_distance_percent, shakes, duration] = getTokenShakeScale(token, dmg);
     const usersToPlayFor = getVisibleUsers(token);
-    if (game.modules.get("tokenmagic").active) {
+    if (game.modules.get("tokenmagic")?.active) {
         params[0].animated.translationX = Object.assign(params[0].animated.translationX, {
             val1: -shake_distance_percent,
             val2: +shake_distance_percent,
