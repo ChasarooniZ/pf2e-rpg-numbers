@@ -1,3 +1,5 @@
+# [12.0.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.2...12.0.3) - Fix On Apply Damage
+- Fixed bug with On Apply Damage Application, *was missing a parameter* (@malkyn)
 # [12.0.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.1...12.0.2) - Bug Swatter
 - Fixed errors with **Damage Numbers** not processing targets properl (@malkyn)
 - Fixed errors with **Shake Token** not chekcing properly if you even have tokenMagic Installed (@malkyn)
