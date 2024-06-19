@@ -1,3 +1,5 @@
+# [12.1.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.3...12.1.0) - Dice So Nice Support
+- Now waits on Dice So Nice roll for `Damage Numbers`, `Roll Numbers`, `Critical Animations`, and `Basic Action Animations`
 # [12.0.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.2...12.0.3) - Fix On Apply Damage
 - Fixed bug with On Apply Damage Application, *was missing a parameter* (@malkyn)
 # [12.0.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.1...12.0.2) - Bug Swatter
