@@ -13,6 +13,8 @@ A module that started to just show damage numbers when you attack but now does o
 - [Settings](#settings)
 - [API](#api)
 - [FAQ](#faq)
+  
+[Changelog](https://github.com/ChasarooniZ/pf2e-rpg-numbers/blob/main/CHANGELOG.md) | [Contributers](https://github.com/ChasarooniZ/pf2e-rpg-numbers/blob/main/CONTRIBUTER.md)
 ## Features
 ### Damage Numbers
 - Numbers that pop up based on the damage dealt (when it is rolled)
