@@ -1,4 +1,4 @@
-import { debugLog, doSomethingOnDamageApply, getSetting, localize, MODULE_ID } from "./helpers/misc.js";
+import { debugLog, doSomethingOnDamageApply, getSetting, handleDiceSoNice, localize, MODULE_ID } from "./helpers/misc.js";
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
@@ -214,8 +214,9 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        if (doChecks) generateRollScroll(roll_deets);
-        if (doCrits && roll_deets.outcome === "criticalSuccess") createCritAnimation(roll_deets);
+        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg.id);
+        if (doCrits && roll_deets.outcome === "criticalSuccess")
+            handleDiceSoNice(createCritAnimation, [roll_deets], msg.id);
     }
 }
 
@@ -231,7 +232,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        generateDamageScroll(dmg_list, targets, msg);
+        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg.id);
     }
 }
 
@@ -249,7 +250,7 @@ function finishingMove(dat) {
 
 function basicActionAnimations(msg) {
     if (getSetting("basic-actions.enabled")) {
-        createBasicActionAnimation(msg);
+        handleDiceSoNice(createBasicActionAnimation, [msg], msg.id);
     }
 }
 
