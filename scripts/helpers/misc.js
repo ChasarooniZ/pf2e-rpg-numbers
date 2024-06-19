@@ -18,14 +18,33 @@ export function doSomethingOnDamageApply() {
     );
 }
 
+export function handleDiceSoNice(func, params, msgID = null) {
+    if (
+        game.modules.get("dice-so-nice")?.active &&
+        !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages")
+    ) {
+        const hookId = Hooks.on("diceSoNiceRollComplete", (id) => {
+            if (id === msgID || msgID === null) {
+                func(...params);
+                disableHook();
+            }
+        });
+        function disableHook() {
+            Hooks.off("createChatMessage", hookId);
+        }
+    } else {
+        func(...params);
+    }
+}
+
 export function localize(str) {
     return game.i18n.localize(`${MODULE_ID}.${str}`);
 }
 
 export function getUserColor(user) {
-    const [r,g,b] = user.color.rgb.map(color => color * 255);
+    const [r, g, b] = user.color.rgb.map((color) => color * 255);
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
- }
+}
 
 /**
  *
