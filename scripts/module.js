@@ -177,16 +177,17 @@ function onDamageApplication(dat, msg) {
         if (dmg) {
             activateShakeToken(dat, dmg);
             if (getSetting("shake-enabled") && !dat.isAppliedHealing) shakeScreen(dat.appliedDamage.uuid, dmg);
-            activateOnApplyDamageScroll(dat, dmg);
+            activateOnApplyDamageScroll(dat, dmg, msg);
         }
     }
 }
 
-function activateOnApplyDamageScroll(dat, dmg) {
+function activateOnApplyDamageScroll(dat, dmg, msg) {
     if (getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "apply")
         generateDamageScroll(
             [{ type: dat.isAppliedHealing ? "healing" : "bleed", value: dat.isAppliedHealing ? -dmg : dmg }],
-            canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id)
+            canvas.tokens.placeables.filter((tok) => tok.actor.uuid === dat.appliedDamage.uuid).map((t) => t.id),
+            msg
         );
 }
 
