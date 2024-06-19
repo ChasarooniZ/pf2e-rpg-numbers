@@ -1,5 +1,5 @@
 ## Bug Finders 
 - sasane
 - malkyn
-### Supporters
+## Supporters
 - Skrinch (First Supporter <3)
