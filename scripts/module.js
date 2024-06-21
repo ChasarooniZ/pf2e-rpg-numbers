@@ -214,9 +214,9 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg.id);
+        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg);
         if (doCrits && roll_deets.outcome === "criticalSuccess")
-            handleDiceSoNice(createCritAnimation, [roll_deets], msg.id);
+            handleDiceSoNice(createCritAnimation, [roll_deets], msg);
     }
 }
 
@@ -232,7 +232,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg.id);
+        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg);
     }
 }
 
@@ -250,7 +250,7 @@ function finishingMove(dat) {
 
 function basicActionAnimations(msg) {
     if (getSetting("basic-actions.enabled")) {
-        handleDiceSoNice(createBasicActionAnimation, [msg], msg.id);
+        handleDiceSoNice(createBasicActionAnimation, [msg], msg);
     }
 }
 

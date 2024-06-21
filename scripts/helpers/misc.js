@@ -18,13 +18,14 @@ export function doSomethingOnDamageApply() {
     );
 }
 
-export function handleDiceSoNice(func, params, msgID = null) {
+export function handleDiceSoNice(func, params, msg = null) {
     if (
         game.modules.get("dice-so-nice")?.active &&
         !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages")
+        && msg?.rolls?.find(roll => roll.dice.length > 0)
     ) {
         const hookId = Hooks.on("diceSoNiceRollComplete", (id) => {
-            if (id === msgID || msgID === null) {
+            if (id === msg.id || msg === null) {
                 func(...params);
                 disableHook();
             }

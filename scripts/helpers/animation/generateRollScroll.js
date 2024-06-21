@@ -64,11 +64,11 @@ export function generateRollScroll(roll_deets) {
     // Simplify sequence creation and animation
     const seq = new Sequence();
     seq.effect()
-        .atLocation(token, { offset: { y: -0.4 * token.texture. scaleY * token.width }, gridUnits: true })
+        .atLocation(token, { offset: { y: -0.4 * token.texture.scaleY * token.width }, gridUnits: true })
         .text(`${text}`, style)
         .anchor({ x: 0.5, y: 0.8 })
         .duration(duration)
-        .scaleIn(0.5, duration / 3, {ease: 'easeOutQuint'})
+        .scaleIn(0.5, duration / 3, { ease: "easeOutQuint" })
         .fadeOut(duration / 3)
         .zIndex(2)
         .forUsers(usersToPlayFor);
