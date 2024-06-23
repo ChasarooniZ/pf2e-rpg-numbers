@@ -1,3 +1,5 @@
+# [12.1.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.1.0...12.1.1) -  Dice So Nice Support: Electric Boogaloo
+- Fixed bug where **Dice So Nice** support would stall out code on rolls with no dice (@Rigo)
 # [12.1.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.3...12.1.0) - Dice So Nice Support
 - Now waits on Dice So Nice roll for `Damage Numbers`, `Roll Numbers`, `Critical Animations`, and `Basic Action Animations`
 # [12.0.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.2...12.0.3) - Fix On Apply Damage

@@ -679,7 +679,7 @@ Hooks.on("init", () => {
 });
 
 /**
- * Credit tok PF2e Token Action HUD for the code on this to reference, helped a tooon
+ * Credit to PF2e Token Action HUD for the code on this to reference, helped a tooon
  * @param {} _
  * @param {*} html
  */
