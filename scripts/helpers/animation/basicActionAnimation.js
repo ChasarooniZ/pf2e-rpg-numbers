@@ -133,11 +133,13 @@ export async function createBasicActionAnimation(msg) {
     }
 }
 
-function trip(data, seq) {
+async function trip(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.smoke.25"];
+        await Sequencer.Preloader.preloadForClients(fx);
         const mirror = Sequencer.Helpers.random_int_between(0, 2);
         seq.effect()
-            .file("animated-spell-effects-cartoon.smoke.25")
+            .file(fx[0])
             .mirrorX()
             .mirrorY(!!mirror)
             .atLocation(data.token)
@@ -149,11 +151,13 @@ function trip(data, seq) {
     return seq;
 }
 
-function reposition(data, seq) {
+async function reposition(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.simple.109"];
+        await Sequencer.Preloader.preloadForClients(fx);
         const mirror = Sequencer.Helpers.random_int_between(0, 2);
         seq.effect()
-            .file("animated-spell-effects-cartoon.simple.109")
+            .file(fx[0])
             .tint("#b3216f")
             .mirrorX()
             .mirrorY(!!mirror)
@@ -164,7 +168,7 @@ function reposition(data, seq) {
             .forUsers(data.users)
             .effect()
             .missed(data.isFailure)
-            .file("animated-spell-effects-cartoon.simple.109")
+            .file(fx[0])
             .scaleToObject()
             .atLocation(data.target)
             .delay(400)
@@ -175,11 +179,13 @@ function reposition(data, seq) {
     return seq;
 }
 
-function feint(data, seq) {
+async function feint(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.simple.39"];
+        await Sequencer.Preloader.preloadForClients(fx);
         const mirror = Sequencer.Helpers.random_int_between(0, 2);
         seq.effect()
-            .file("animated-spell-effects-cartoon.simple.39")
+            .file(fx[0])
             .mirrorY(!!mirror)
             .atLocation(data.token, {
                 offset: { x: -data.token.w * 0.5, y: mirror ? data.token.h / 4 : -data.token.h / 4 },
@@ -194,10 +200,12 @@ function feint(data, seq) {
     return seq;
 }
 
-function grapple(data, seq) {
+async function grapple(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.simple.109", "animated-spell-effects-cartoon.simple.113"];
+        await Sequencer.Preloader.preloadForClients(fx);
         seq.effect()
-            .file("animated-spell-effects-cartoon.simple.109")
+            .file(fx[0])
             .tint("#b3350e")
             .mirrorX()
             .mirrorY()
@@ -207,7 +215,7 @@ function grapple(data, seq) {
             .missed(data.isFailure)
             .forUsers(data.users)
             .effect()
-            .file("animated-spell-effects-cartoon.simple.109")
+            .file(fx[0])
             .tint("#b3350e")
             .mirrorX()
             .mirrorY(false)
@@ -217,7 +225,7 @@ function grapple(data, seq) {
             .missed(data.isFailure)
             .forUsers(data.users)
             .effect()
-            .file("animated-spell-effects-cartoon.simple.113")
+            .file(fx[1])
             .scaleToObject(3.5)
             .tint("#401204")
             .delay(600)
@@ -229,11 +237,13 @@ function grapple(data, seq) {
     return seq;
 }
 
-function tumbleThrough(data, seq) {
+async function tumbleThrough(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.smoke.05"];
+        await Sequencer.Preloader.preloadForClients(fx);
         const mirror = Sequencer.Helpers.random_int_between(0, 2);
         seq.effect()
-            .file("animated-spell-effects-cartoon.smoke.05")
+            .file(fx[0])
             .missed(data.isFailure)
             .mirrorY(!!mirror)
             .atLocation(data.token)
@@ -244,17 +254,23 @@ function tumbleThrough(data, seq) {
     return seq;
 }
 
-function demoralize(data, seq) {
+async function demoralize(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = [
+            "animated-spell-effects-cartoon.misc.demon",
+            "animated-spell-effects-cartoon.magic.mind sliver",
+            "animated-spell-effects-cartoon.energy.pulse.yellow",
+        ];
+        await Sequencer.Preloader.preloadForClients(fx);
         seq.effect()
-            .file("animated-spell-effects-cartoon.misc.demon")
+            .file(fx[0])
             .atLocation(data.token)
             .scaleToObject()
             .scale(1)
             .anchor({ x: 0.5, y: 0.7 })
             .forUsers(getMultiVisibleAndMsgVisible([data.token], data.whisper))
             .effect()
-            .file("animated-spell-effects-cartoon.magic.mind sliver")
+            .file(fx[1])
             .filter("ColorMatrix", { hue: 180 })
             .atLocation(data.token)
             .stretchTo(data.target)
@@ -262,7 +278,7 @@ function demoralize(data, seq) {
             .forUsers(data.users)
             .missed(data.isFailure)
             .effect()
-            .file("animated-spell-effects-cartoon.energy.pulse.yellow")
+            .file(fx[2])
             .scaleToObject()
             .atLocation(data.target)
             .scale(1.3)
@@ -273,18 +289,20 @@ function demoralize(data, seq) {
     return seq;
 }
 
-function shove(data, seq) {
+async function shove(data, seq) {
     if (data.animModule.cartoonSpell) {
+        const fx = ["animated-spell-effects-cartoon.cantrips.mending.yellow","animated-spell-effects-cartoon.air.gust.gray"];
+        await Sequencer.Preloader.preloadForClients(fx);
         seq.effect()
             .scaleToObject(3)
-            .file("animated-spell-effects-cartoon.cantrips.mending.yellow")
+            .file(fx[0])
             .atLocation(data.token)
             .filter("ColorMatrix", { hue: -23 })
             .forUsers(data.users)
             .effect()
             .delay(200)
             .scaleToObject(2)
-            .file("animated-spell-effects-cartoon.air.gust.gray")
+            .file(fx[1])
             .spriteRotation(spriteRotationMath(data.token, data.target) - 180)
             .atLocation(data.target)
             .forUsers(data.users)

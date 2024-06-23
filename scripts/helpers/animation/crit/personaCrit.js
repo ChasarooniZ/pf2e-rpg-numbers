@@ -116,6 +116,7 @@ export function personaCrit(token, users, imgData, config) {
         const offsetX = critOffsetX * imagePercent * scale;
         const offsetY = (personaImg ? 0 : imagePercent * 20) + critOffsetY * imagePercent * scale;
 
+        await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
         await new Sequence()
             .effect()
             .shape("polygon", { points: centeredPoints, fillColor: getUserColor(game.user), fillAlpha: 1 })

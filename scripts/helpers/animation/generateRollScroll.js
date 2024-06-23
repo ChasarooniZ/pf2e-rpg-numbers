@@ -64,11 +64,11 @@ export function generateRollScroll(roll_deets) {
     // Simplify sequence creation and animation
     const seq = new Sequence();
     seq.effect()
-        .atLocation(token, { offset: { y: -0.4 * token.texture. scaleY * token.width }, gridUnits: true })
+        .atLocation(token, { offset: { y: -0.4 * token.texture.scaleY * token.width }, gridUnits: true })
         .text(`${text}`, style)
         .anchor({ x: 0.5, y: 0.8 })
         .duration(duration)
-        .scaleIn(0.5, duration / 3, {ease: 'easeOutQuint'})
+        .scaleIn(0.5, duration / 3, { ease: "easeOutQuint" })
         .fadeOut(duration / 3)
         .zIndex(2)
         .forUsers(usersToPlayFor);
@@ -76,7 +76,7 @@ export function generateRollScroll(roll_deets) {
     // Simplify sound effect handling
     handleSFX(outcome, type, seq, usersToPlayFor).play();
 }
-function handleSFX(outcome, type, seq, usersToPlayFor) {
+async function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
         const isAttack = type === "attack-roll";
         const combatSetting = getSetting("check-animations.sfx.check-or-attack");
@@ -97,6 +97,7 @@ function handleSFX(outcome, type, seq, usersToPlayFor) {
                     break;
             }
             if (!ignoreSFX) {
+                await Sequencer.Preloader.preloadForClients(`check-animations.sfx.file.${outcome}`);
                 seq.sound()
                     .file(getSetting(`check-animations.sfx.file.${outcome}`))
                     .volume(getSetting("check-animations.sfx.volume") / 100)

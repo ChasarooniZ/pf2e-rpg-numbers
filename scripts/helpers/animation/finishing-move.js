@@ -26,6 +26,7 @@ export async function createFinishingMoveAnimation(text) {
     const words = text.split(" ");
     const moveAmt = (leftBorder - sideBorderAmt) / words.length;
     const totalDuration = words.length * delayDiff + endDuration;
+    await Sequencer.Preloader.preloadForClients(sfx);
     words.forEach((word, i) => {
         word = ` ${word} `;
         seq.effect()

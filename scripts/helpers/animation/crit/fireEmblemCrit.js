@@ -33,7 +33,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
     }
 
     const scaleFactorHalf = (imgData.yScale + imgData.xScale) / 2;
-
+    await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
     await new Sequence()
         .effect()
         .shape("rectangle", {
