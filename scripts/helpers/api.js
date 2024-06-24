@@ -7,8 +7,8 @@ import { getDamageList } from "./rollTerms.js";
 export function createAPI() {
     game.pf2eRPGNumbers = {
         damageNumbers: {
-            generate: function (dmgList, targetIDs) {
-                generateDamageScroll(dmgList, targetIDs);
+            generate: async function (dmgList, targetIDs) {
+                return generateDamageScroll(dmgList, targetIDs);
             },
             getDamageList: function (msg) {
                 return getDamageList(msg.rolls);

@@ -48,6 +48,7 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
     const wait_time = getSetting("wait-time-between-numbers") - duration;
     const onlyGM = getSetting("show-only-GM");
 
+    const seq = new Sequence();
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
@@ -59,13 +60,13 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
             style.stroke = "rgb(0, 100, 100)";
         }
         const dmg_list_filtered = dmg_list.filter((d) => d.value > 0);
-        const seq = new Sequence();
 
         if (getSetting("show-total")) {
             const tot = dmg_list.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0);
             style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.1;
             style.fill = colors[findTypeWithLargestTotal(dmg_list)] ?? "white";
             seq.effect()
+                .syncGroup(`${msg.id}-total`)
                 .atLocation(tok, {
                     offset: {
                         y: topOffset,
@@ -84,11 +85,12 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
                 .forUsers(usersToPlayFor);
         }
 
-        for (const dmg of dmg_list_filtered) {
+        dmg_list_filtered.forEach((dmg, index) => {
             const xMod = Math.round(Math.random()) * 2 - 1;
             style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? "white";
             seq.effect()
+                .syncGroup(`${msg.id}-breakdown-${index}`)
                 .atLocation(tok, {
                     offset: {
                         y: topOffset,
@@ -120,7 +122,7 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
                 })
                 .fadeOut(duration / 3)
                 .forUsers(usersToPlayFor);
-        }
-        await seq.play();
+        });
     }
+    await seq.play();
 }
