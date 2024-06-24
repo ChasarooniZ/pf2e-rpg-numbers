@@ -19,7 +19,7 @@ const colors = {
     },
 };
 
-export function generateRollScroll(roll_deets) {
+export async function generateRollScroll(roll_deets) {
     // Destructure frequently used variables
     const { outcome, token, roll, type } = roll_deets;
     const fontSize = getSetting("check-font-size");
@@ -74,7 +74,8 @@ export function generateRollScroll(roll_deets) {
         .forUsers(usersToPlayFor);
 
     // Simplify sound effect handling
-    (await handleSFX(outcome, type, seq, usersToPlayFor)).play();
+    const seq_handled = (await handleSFX(outcome, type, seq, usersToPlayFor))
+    await seq_handled.play();
 }
 async function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
