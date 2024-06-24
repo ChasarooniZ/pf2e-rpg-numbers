@@ -74,7 +74,7 @@ export function generateRollScroll(roll_deets) {
         .forUsers(usersToPlayFor);
 
     // Simplify sound effect handling
-    handleSFX(outcome, type, seq, usersToPlayFor).play();
+    (await handleSFX(outcome, type, seq, usersToPlayFor)).play();
 }
 async function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
