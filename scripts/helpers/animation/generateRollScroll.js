@@ -98,9 +98,10 @@ async function handleSFX(outcome, type, seq, usersToPlayFor) {
                     break;
             }
             if (!ignoreSFX) {
-                await Sequencer.Preloader.preloadForClients(`check-animations.sfx.file.${outcome}`);
+                const sfx = getSetting(`check-animations.sfx.file.${outcome}`)
+                await Sequencer.Preloader.preloadForClients(sfx);
                 seq.sound()
-                    .file(getSetting(`check-animations.sfx.file.${outcome}`))
+                    .file(sfx)
                     .volume(getSetting("check-animations.sfx.volume") / 100)
                     .forUsers(usersToPlayFor);
             }
