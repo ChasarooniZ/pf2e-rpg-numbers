@@ -2,6 +2,14 @@ import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 
 Hooks.on("init", () => {
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
+    //TODO finalize this
+    game.settings.registerMenu(mod, 'settingsMenu', {
+        name: game.i18n.localize("CCSS.settings.settingsMenu.name"),
+        label: game.i18n.localize("CCSS.settings.settingsMenu.label"),
+        icon: "fas fa-wrench",
+        type: SettingsForm,
+        restricted: false
+    });
 
     registerSetting("", "enabled", {
         desc: "enabled",

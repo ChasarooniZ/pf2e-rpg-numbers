@@ -11,10 +11,7 @@ import { personaCrit } from "./personaCrit.js";
  */
 export function createCritAnimation(rollDeets, critType = getSetting("critical.type")) {
     //TODO add option for default color
-    const isAttack = rollDeets.type === "attack-roll";
-    const showOn = getSetting("critical.show-on");
-    if (rollDeets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack)))
-        return;
+    if (cancelCriticalHit(rollDeets)) return;
 
     const enabledTokenType = getSetting("critical.show-on-token-type");
     const defaultImgType = getSetting("critical.default-img");
@@ -65,4 +62,10 @@ export function createCritAnimation(rollDeets, critType = getSetting("critical.t
         default:
             return;
     }
+}
+
+function cancelCriticalHit(rollDeets) {
+    const isAttack = rollDeets.type === "attack-roll";
+    const showOn = getSetting("critical.show-on");
+    return rollDeets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack));
 }
