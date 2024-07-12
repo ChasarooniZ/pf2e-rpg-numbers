@@ -1,24 +1,13 @@
-name: Publish module
+name: Publish new version to foundry
 on:
   release:
-    types: [published] 
+    types: [released]
 jobs:
-  build:
+  refresh-feed:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
     steps:
-     - name: Check if release is not a prerelease
-       if: ${{ !github.event.release.prerelease }}
-       run: echo "This is a non-prerelease release"
-
-     - name: Publish Module to FoundryVTT Website
-       if: ${{ !github.event.release.prerelease }}
-       id: publish-to-foundry-website
-       uses: cs96and/FoundryVTT-release-package@v1.0.2
-       with:
-          version: ${{github.event.release.tag_name}}
-          notes-url: https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}
-          package-token: ${{ secrets.PACKAGE_TOKEN }}
-          manifest-url: https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json
+      - name: Run fvtt apu
+        uses: JamesIves/fetch-api-data-action@v2
+        with:
+          endpoint: https://api.foundryvtt.com/_api/packages/release_version/
+          configuration: '{ "method": "POST", "headers": { "Content-Type": "application/json", "Authorization": "${{ secrets.FVTT_API_TOKEN }}" }, "body": { "id": "pf2e-rpg-numbers", "dry-run": false, "release": { "version": "${{github.event.release.tag_name}}", "manifest": "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json", "notes": "https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}", "compatibility": { "minimum": "12", "verified": "12", "maximum": "" } } } }'
