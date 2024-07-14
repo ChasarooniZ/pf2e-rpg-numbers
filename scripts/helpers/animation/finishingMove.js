@@ -1,8 +1,8 @@
-import { getSetting, getUserColor } from "../misc.js";
+import { getSetting} from "../misc.js";
 
 export async function createFinishingMoveAnimation(text) {
     let textColor = "black";
-    let textBorderColor = getSetting("finishing-move.use-player-color") ? getUserColor(game.user) : "red";
+    let textBorderColor = getSetting("finishing-move.use-player-color") ? game.user.color.css : "red";
     let volume = getSetting("finishing-move.sound-effect.volume") / 100;
     let sfx = getSetting("finishing-move.sound-effect");
     const endDuration = getSetting("finishing-move.duration.end");
