@@ -6,7 +6,7 @@ import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { injectConfig } from "./helpers/injectConfig.js";
-import { createFinishingMoveAnimation } from "./helpers/animation/finishing-move.js";
+import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.js";
 import { createCritAnimation } from "./helpers/animation/crit/crit-animation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
