@@ -64,6 +64,8 @@ Hooks.on("ready", () => {
             checkRollNumbers(dat, msg);
 
             // Rotate on Attack Roll
+            if (isAttackBounce(dat)) attackbounce(msg);
+
             if (isRotateOnAttack(dat)) rotateOnAttack(msg);
 
             //On Damage Application
