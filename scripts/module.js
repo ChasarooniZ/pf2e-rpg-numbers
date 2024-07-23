@@ -1,4 +1,11 @@
-import { debugLog, doSomethingOnDamageApply, getSetting, handleDiceSoNice, localize, MODULE_ID } from "./helpers/misc.js";
+import {
+    debugLog,
+    doSomethingOnDamageApply,
+    getSetting,
+    handleDiceSoNice,
+    localize,
+    MODULE_ID,
+} from "./helpers/misc.js";
 import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
@@ -260,14 +267,18 @@ function basicActionAnimations(msg) {
  * @returns {string[]} An array of target IDs.
  */
 export function getTargetList(msg) {
-    if (msg.flags?.["pf2e-target-damage"]?.targets) {
-        return msg.flags["pf2e-target-damage"].targets.map((t) => t.id);
-    } else if (msg.flags?.["pf2e-toolbelt"]?.targetHelper?.targets) {
-        return msg.flags?.["pf2e-toolbelt"].targetHelper.targets.map((t) => t.split(".").pop());
-    } else {
-        // No pf2e target damage module
-        return [msg?.target?.token?.id ?? msg.token.id];
+    const pf2eTargetDamage = msg.flags?.["pf2e-target-damage"]?.targets;
+    if (pf2eTargetDamage) {
+        return pf2eTargetDamage.map((t) => t.id);
     }
+
+    const pf2eToolbeltTargets = msg.flags?.["pf2e-toolbelt"]?.targetHelper?.targets;
+    if (pf2eToolbeltTargets) {
+        return pf2eToolbeltTargets.map((t) => t.split(".").pop());
+    }
+
+    // No pf2e target damage module
+    return [msg?.target?.token?.id ?? msg.token.id];
 }
 
 export function createUpdateMessage() {
