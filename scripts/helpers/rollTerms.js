@@ -1,182 +1,100 @@
 import { debugLog, getSetting } from "./misc.js";
+
 export function getDamageList(rolls) {
     const split_type = getSetting("damage-split");
-    let dmg_list = [];
     switch (split_type) {
-        case "none":
-            dmg_list = extractDamageInfoSimple(rolls);
-            break;
         case "by-damage-type":
-            dmg_list = extractDamageInfoCombined(rolls);
-            break;
+            return extractDamageInfoCombined(rolls);
         case "all":
-            dmg_list = extractDamageInfoAll(rolls);
-            break;
+            return extractDamageInfoAll(rolls);
+        case "none":
         default:
-            dmg_list = extractDamageInfoSimple(rolls);
-            break;
+            return extractDamageInfoSimple(rolls);
     }
-    return dmg_list;
 }
 
-/**
- * Extracts the list of damage info from pf2e chat message, only breaks it up between the overarching damage types
- * @param {any} rolls Roll value from pf2e chat message
- * @returns
- */
 export function extractDamageInfoCombined(rolls) {
-    const result = [];
-
-    for (const inp of rolls) {
-        if (!inp?.terms) continue;
-        for (const term of inp.terms) {
-            if (!term?.rolls) continue;
-            for (const roll of term.rolls) {
-                result.push({
-                    type: roll.type,
-                    value: roll.total,
-                });
-            }
-        }
-    }
-    return result;
+    return rolls.flatMap(inp => 
+        inp?.terms?.flatMap(term => 
+            term?.rolls?.map(roll => ({
+                type: roll.type,
+                value: roll.total,
+            })) || []
+        ) || []
+    );
 }
 
 export function extractDamageInfoAll(rolls) {
-    let result = [];
-
-    for (const inp of rolls) {
-        if (!inp?.terms) continue;
-        for (const term of inp.terms) {
-            result = result.concat(extractTerm(term));
-        }
-    }
-    return result;
+    return rolls.flatMap(inp => 
+        inp?.terms?.flatMap(term => extractTerm(term)) || []
+    );
 }
 
 export function extractDamageInfoSimple(rolls) {
-    return [
-        {
-            type: "",
-            value: rolls.total,
-        },
-    ];
+    return [{ type: "", value: rolls.total }];
 }
 
 export function extractTerm(term, flavor = "") {
     let result = [];
-    switch (term.constructor.name) {
-        case "InstancePool":
-            result = processInstancePool(term, result, flavor);
-            break;
-        case "DamageInstance":
-            result = processDamageInstance(term, result, flavor);
-            break;
-        case "Grouping":
-            result = processGrouping(result, term, flavor);
-            break;
-        case "ArithmeticExpression":
-            result = processArithmeticExpression(term, result, flavor);
-            break;
-        case "Die":
-            result = processDie(term, result, flavor);
-            break;
-        case "NumericTerm":
-            result = processNumericTerm(result, term, flavor);
-            break;
+    const termName = term.constructor.name;
 
-        default:
-            console.error("Unrecognized Term when extracting parts", term);
-            result.push({
-                value: term.total,
-                type: term.flavor || flavor,
-            });
-            break;
+    if (termProcessors[termName]) {
+        result = termProcessors[termName](term, result, flavor);
+    } else {
+        console.error("Unrecognized Term when extracting parts", term);
+        result.push({ value: term.total, type: term.flavor || flavor });
     }
-    debugLog(
-        {
-            type: term.constructor.name,
-            result,
-        },
-        "extractTerm"
-    );
 
+    debugLog({ type: termName, result }, "extractTerm");
     return result;
 }
 
-function processGrouping(result, term, flavor) {
+const termProcessors = {
+    "InstancePool": processInstancePool,
+    "DamageInstance": processDamageInstance,
+    "Grouping": processGrouping,
+    "ArithmeticExpression": processArithmeticExpression,
+    "Die": processDie,
+    "NumericTerm": processNumericTerm,
+};
+
+function processGrouping(term, result, flavor) {
     return result.concat(extractTerm(term.term, term.flavor || flavor));
 }
 
 function processInstancePool(term, result, flavor) {
-    for (const roll of term.rolls) {
-        result = result.concat(extractTerm(roll, term.flavor || flavor));
-    }
-    return result;
+    return result.concat(term.rolls.flatMap(roll => extractTerm(roll, term.flavor || flavor)));
 }
 
 function processDamageInstance(term, result, flavor) {
-    for (const item of term.terms) {
-        result = result.concat(extractTerm(item, term.types || flavor));
-    }
+    result = term.terms.flatMap(item => extractTerm(item, term.types || flavor));
     const keepPersistent = !!term.options.evaluatePersistent;
-    result = result
-        .filter((res) => (res?.type?.startsWith("persistent,") ? keepPersistent : true))
-        .map((r) => ({
-            value: r.value,
-            type: r.type.replace(/persistent,/g, ""),
-        }));
-    return result;
+    return result.filter(res => (res?.type?.startsWith("persistent,") ? keepPersistent : true))
+                 .map(r => ({ value: r.value, type: r.type.replace(/persistent,/g, "") }));
 }
 
 function processArithmeticExpression(term, result, flavor) {
-    switch (term.operator) {
-        case "+":
-            for (const op of term.operands) {
-                result = result.concat(extractTerm(op, term.flavor || flavor));
-            }
-            break;
-        case "-":
-            result = result.concat(extractTerm(term.operands[0], term.flavor || flavor));
-            result = result.concat(extractTerm(term.operands[1], term.flavor || flavor)).map((t) => {
-                return {
-                    value: -t.value,
-                    type: t.type,
-                };
-            });
-            break;
-        case "*":
-            if (["NumericTerm", "Die"].includes(term.operands[0].constructor.name)) {
-                result = result.concat(extractTerm(term.operands[1], term.flavor || flavor).flatMap((i) => [i, i]));
-            } else if (["NumericTerm", "Die"].includes(term.operands[1].constructor.name)) {
-                result = result.concat(extractTerm(term.operands[0], term.flavor || flavor).flatMap((i) => [i, i]));
-            } else {
-                result.push({
-                    value: term.total,
-                    type: term.flavor || flavor,
-                });
-            }
-            break;
-        default:
-            break;
+    const operands = term.operands.map(op => extractTerm(op, term.flavor || flavor)).flat();
+    if (term.operator === "+") {
+        return result.concat(operands);
+    }
+    if (term.operator === "-") {
+        const [first, second] = operands;
+        second.value = -second.value;
+        return result.concat(first, second);
+    }
+    if (term.operator === "*") {
+        const [first, second] = operands;
+        return result.concat(first, first);
     }
     return result;
 }
 
 function processDie(term, result, flavor) {
-    for (const dice of term.results) {
-        result.push({
-            value: dice.result,
-            type: term.flavor || flavor,
-        });
-    }
-    return result;
+    return result.concat(term.results.map(dice => ({ value: dice.result, type: term.flavor || flavor })));
 }
 
 function processNumericTerm(result, term, flavor) {
-    result.push({
-        value: term.number,
-        type: term.flavor || flavor,
-    });
+    result.push({ value: term.number, type: term.flavor || flavor });
     return result;
 }
