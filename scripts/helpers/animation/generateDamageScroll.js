@@ -1,17 +1,23 @@
 import { getFontScale, findTypeWithLargestTotal, getVisibleAndMsgVisibleUsers } from "../anim.js";
 import { getSetting } from "../misc.js";
 
-//TODO settings on visuals (colors)
-//TODO settings on size etc.
-//TODO add scaling based on size
 /**
  * Generates damage scrolling text for a passed in list of damage values
  * @param {{type: string, value: string}[]} dmg_list list of type and value
  * @param {string[]} targets list of token ids
  */
 export async function generateDamageScroll(dmg_list, targets, msg) {
-    const fontSize = getSetting("font-size");
-    const jitter = getSetting("jitter");
+    const settings = {
+        fontSize: getSetting("font-size"),
+        jitter: getSetting("jitter"),
+        duration: getSetting("duration") * 1000,
+        animScale: getSetting("animation-scale"),
+        waitTime: getSetting("wait-time-between-numbers") - getSetting("duration") * 1000,
+        onlyGM: getSetting("show-only-GM"),
+        topOffsetPercentage: getSetting("top-offset") / 100,
+        showTotal: getSetting("show-total"),
+    };
+
     const colors = {
         bludgeoning: "0x3c3c3c",
         piercing: "0x3c3c3c",
@@ -36,93 +42,79 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
         "": "0xffffff",
         precision: "0xf5bf03",
     };
+
     const style = {
         fill: "white",
-        fontSize: fontSize,
+        fontSize: settings.fontSize,
         align: "center",
         dropShadow: true,
         strokeThickness: 5,
     };
-    const duration = getSetting("duration") * 1000;
-    const anim_scale = getSetting("animation-scale");
-    const wait_time = getSetting("wait-time-between-numbers") - duration;
-    const onlyGM = getSetting("show-only-GM");
 
     const seq = new Sequence();
+
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
         const size = tok.document.texture.scaleY * tok.document.width;
-        const topOffset = size * (getSetting("top-offset") / 100);
-        const usersToPlayFor = onlyGM
+        const topOffset = size * settings.topOffsetPercentage;
+        const usersToPlayFor = settings.onlyGM
             ? game.users.filter((u) => u.isGM).map((u) => u.id)
             : getVisibleAndMsgVisibleUsers({ token: tok, whisper: msg.whisper });
+
         if (usersToPlayFor.length === 1 && game.users.some((u) => u.isGM && u.id === usersToPlayFor[0])) {
             style.stroke = "rgb(0, 100, 100)";
         }
-        const dmg_list_filtered = dmg_list.filter((d) => d.value > 0);
 
-        if (getSetting("show-total")) {
-            const tot = dmg_list.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0);
-            style.fontSize = fontSize * getFontScale("percentMaxHealth", tot, tok) * 1.1;
+        const dmgListFiltered = dmg_list.filter((d) => d.value > 0);
+
+        if (settings.showTotal) {
+            const totalDamage = dmgListFiltered.reduce((tot_dmg, curr_dmg) => tot_dmg + curr_dmg.value, 0);
+            style.fontSize = settings.fontSize * getFontScale("percentMaxHealth", totalDamage, tok) * 1.1;
             style.fill = colors[findTypeWithLargestTotal(dmg_list)] ?? "white";
+
             seq.effect()
                 .syncGroup(`${msg.id}-total`)
-                .atLocation(tok, {
-                    offset: {
-                        y: topOffset,
-                    },
-                    gridUnits: true,
-                })
-                .text(`${tot}`, style)
-                .anchor({
-                    x: 0.5,
-                    y: 0.8,
-                })
-                .duration(duration)
-                .scaleIn(0.5, duration / 3)
-                .fadeOut(duration / 3)
+                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true })
+                .text(`${totalDamage}`, style)
+                .anchor({ x: 0.5, y: 0.8 })
+                .duration(settings.duration)
+                .scaleIn(0.5, settings.duration / 3)
+                .fadeOut(settings.duration / 3)
                 .zIndex(2)
                 .forUsers(usersToPlayFor);
         }
 
-        dmg_list_filtered.forEach((dmg, index) => {
+        dmgListFiltered.forEach((dmg, index) => {
             const xMod = Math.round(Math.random()) * 2 - 1;
-            style.fontSize = fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
+            style.fontSize = settings.fontSize * getFontScale("percentMaxHealth", dmg.value, tok);
             style.fill = colors[dmg.type] ?? "white";
+
             seq.effect()
                 .syncGroup(`${msg.id}-breakdown-${index}`)
-                .atLocation(tok, {
-                    offset: {
-                        y: topOffset,
-                    },
-                    gridUnits: true,
-                    randomOffset: jitter,
-                })
+                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true, randomOffset: settings.jitter })
                 .text(`${dmg.value}`, style)
-                .anchor({
-                    x: 0.5,
-                    y: 0.8,
-                })
-                .duration(duration)
-                .waitUntilFinished(wait_time)
-                .scaleIn(0.5, duration / 3)
+                .anchor({ x: 0.5, y: 0.8 })
+                .duration(settings.duration)
+                .waitUntilFinished(settings.waitTime)
+                .scaleIn(0.5, settings.duration / 3)
                 .animateProperty("sprite", "position.x", {
                     from: 0,
-                    to: ((size * xMod) / 2) * anim_scale,
+                    to: ((size * xMod) / 2) * settings.animScale,
                     ease: "easeOutSine",
-                    duration: duration,
+                    duration: settings.duration,
                     gridUnits: true,
                 })
                 .loopProperty("sprite", "position.y", {
                     from: 0,
-                    to: (-size / 4) * anim_scale,
-                    duration: duration / 2,
+                    to: (-size / 4) * settings.animScale,
+                    duration: settings.duration / 2,
                     gridUnits: true,
                     pingPong: true,
                 })
-                .fadeOut(duration / 3)
+                .fadeOut(settings.duration / 3)
                 .forUsers(usersToPlayFor);
         });
     }
+
     await seq.play();
 }
