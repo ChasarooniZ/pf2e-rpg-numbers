@@ -34,10 +34,11 @@ A module that started to just show damage numbers when you attack but now does o
 
 ### Critical Images
 - Fire Emblem Critical
-  - [Example images](https://tcrf.net/Fire_Emblem_Awakening/Critical_Cut-ins)
+  - ![image](https://github.com/user-attachments/assets/508ad2e3-b4f2-455a-aad9-bdc0b6ec592e)
+
   - Sizing should be as follows:
     - **Height** >= 20% of Screen height
-    - **Ratio** 7:5 (width to height) for following the fire emblem awakening style
+    - **Ratio** 7:2 (width to height) for following the fire emblem awakening style
 ## Settings
 - **Enable Module**
   - Enables/disables use of all module features
