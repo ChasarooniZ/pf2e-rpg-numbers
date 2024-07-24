@@ -35,6 +35,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
     const scaleFactorHalf = (imgData.yScale + imgData.xScale) / 2;
     await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
     await new Sequence()
+        //background
         .effect()
         .shape("rectangle", {
             lineSize: 0,
@@ -58,7 +59,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .screenSpaceAnchor({ x: 0, y: 0.5 })
         .forUsers(users)
         .delay(config.delay)
-
+        .screenSpaceAboveUI()
+        //Image
         .effect()
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
@@ -79,7 +81,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .duration(duration)
         .forUsers(users)
         .delay(config.delay)
-
+        .screenSpaceAboveUI()
+        //Sound
         .sound()
         .file(soundUrl)
         .fadeOutAudio(duration / 4)
