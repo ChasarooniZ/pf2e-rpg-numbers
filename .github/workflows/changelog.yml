@@ -1,31 +1,31 @@
-name: Update Changelog
-on:
-  release:
-    types: [published]
+# name: Update Changelog
+# on:
+#   release:
+#     types: [published]
 
-jobs:
-  update-changelog:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
+# jobs:
+#   update-changelog:
+#     runs-on: ubuntu-latest
+#     permissions:
+#       contents: write
     
-    steps:
-    - uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+#     steps:
+#     - uses: actions/checkout@v4
+#       with:
+#         fetch-depth: 0
 
-    - name: Update Changelog
-      run: |
-        if [[ ${{ github.event.release.prerelease }} == "false" ]]; then
-          echo "## $RELEASE_TITLE" | tee -a CHANGELOG.md > /dev/null
-          echo "" >> CHANGELOG.md
-          echo "${{ github.event.release.body }}Y" >> CHANGELOG.md
-          echo "" >> CHANGELOG.md
-        fi   
-    - name: Commit Changelog
-      run: |
-        git config user.name 'GitHub Actions'
-        git config user.email 'github-actions@example.com'
-        git add CHANGELOG.md
-        git commit -m "Update Changelog for ${{ github.event.release.tag_name }}"
-        git push
+#     - name: Update Changelog
+#       run: |
+#         if [[ ${{ github.event.release.prerelease }} == "false" ]]; then
+#           echo "## $RELEASE_TITLE" | tee -a CHANGELOG.md > /dev/null
+#           echo "" >> CHANGELOG.md
+#           echo "${{ github.event.release.body }}" >> CHANGELOG.md
+#           echo "" >> CHANGELOG.md
+#         fi   
+#     - name: Commit Changelog
+#       run: |
+#         git config user.name 'GitHub Actions'
+#         git config user.email 'github-actions@example.com'
+#         git add CHANGELOG.md
+#         git commit -m "Update Changelog for ${{ github.event.release.tag_name }}"
+#         git push

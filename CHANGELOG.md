@@ -1,3 +1,14 @@
+# [12.2.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.1.1...12.2.0) - Some Fixes
+- `Fire Emblem Crits`
+  - Fixed bug with squashing an image that wasn't a square (@spen)
+- `Damage Numbers`
+  - Rewrote a lot of the code, ideally for a bit of optimization with performance
+- `Backend Changes`
+  - Versions now autopublish
+  - Most animations now preload <3
+  - Most animations now use async and awaits
+  - user color is now grabbed properly using the `color.css` property
+  - started work on the backend to give this module its own custom settings menu, but it'll probably be a bit till i get the time to do that work as it's involved
 # [12.1.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.1.0...12.1.1) -  Dice So Nice Support: Electric Boogaloo
 - Fixed bug where **Dice So Nice** support would stall out code on rolls with no dice (@Rigo)
 # [12.1.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.0.3...12.1.0) - Dice So Nice Support
