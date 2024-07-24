@@ -62,8 +62,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .effect()
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
-            from: -distance / (2 * scaleFactorHalf),
-            to: distance,
+            from: -distance * 1.5 / (scaleFactorHalf),
+            to: distance * 2,
             duration: duration,
             ease: "easeInBack",
         })

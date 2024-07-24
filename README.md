@@ -31,6 +31,13 @@ A module that started to just show damage numbers when you attack but now does o
 ### Token Rotate on Attack
 - Allow you have the tokens rotate towards who they are attacking upon attacking
 - They will rotate back after a delay
+
+### Critical Images
+- Fire Emblem Critical
+  - [Example images](https://tcrf.net/Fire_Emblem_Awakening/Critical_Cut-ins)
+  - Sizing should be as follows:
+    - **Height** >= 20% of Screen height
+    - **Ratio** 7:5 (width to height) for following the fire emblem awakening style
 ## Settings
 - **Enable Module**
   - Enables/disables use of all module features

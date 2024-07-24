@@ -1,3 +1,6 @@
+# [12.2.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.2.0...12.2.1) - Fix Fire Emblem Swing
+- `Fire Emblem Crits`
+  - Fixed fire emblem crit to actually move the whole screen
 # [12.2.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.1.1...12.2.0) - Some Fixes
 - `Fire Emblem Crits`
   - Fixed bug with squashing an image that wasn't a square (@spen)
