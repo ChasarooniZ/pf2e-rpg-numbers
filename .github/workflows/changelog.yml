@@ -1,31 +1,35 @@
-# name: Update Changelog
-# on:
-#   release:
-#     types: [published]
+# .github/workflows/update-changelog.yaml
+name: "Update Changelog"
 
-# jobs:
-#   update-changelog:
-#     runs-on: ubuntu-latest
-#     permissions:
-#       contents: write
-    
-#     steps:
-#     - uses: actions/checkout@v4
-#       with:
-#         fetch-depth: 0
+on:
+  release:
+    types: [released]
 
-#     - name: Update Changelog
-#       run: |
-#         if [[ ${{ github.event.release.prerelease }} == "false" ]]; then
-#           echo "## $RELEASE_TITLE" | tee -a CHANGELOG.md > /dev/null
-#           echo "" >> CHANGELOG.md
-#           echo "${{ github.event.release.body }}" >> CHANGELOG.md
-#           echo "" >> CHANGELOG.md
-#         fi   
-#     - name: Commit Changelog
-#       run: |
-#         git config user.name 'GitHub Actions'
-#         git config user.email 'github-actions@example.com'
-#         git add CHANGELOG.md
-#         git commit -m "Update Changelog for ${{ github.event.release.tag_name }}"
-#         git push
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the 
+      # updated CHANGELOG back to the repository.
+      # https://github.blog/changelog/2023-02-02-github-actions-updating-the-default-github_token-permissions-to-read-only/
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.target_commitish }}
+
+      - name: Update Changelog
+        uses: stefanzweifel/changelog-updater-action@v1
+        with:
+          latest-version: ${{ github.event.release.tag_name }}
+          release-notes: ${{ github.event.release.body }}
+
+      - name: Commit updated CHANGELOG
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: ${{ github.event.release.target_commitish }}
+          commit_message: Update CHANGELOG
+          file_pattern: CHANGELOG.md
