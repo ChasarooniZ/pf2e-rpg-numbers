@@ -67,19 +67,16 @@ export async function fireEmblemCrit(token, users, imgData, config) {
             duration: duration,
             ease: "easeInBack",
         })
-        .scale(0.3)
         .screenSpace()
         .screenSpaceScale({
-            x: 0.2 * imgData.xScale,
-            y: 0.2 * imgData.yScale,
+            x:  0.134 * imgData.xScale,
+            y:  0.134 * imgData.yScale,
             fitX: false,
             fitY: true,
             ratioX: true,
             ratioY: false,
         })
         .duration(duration)
-        .scale(1)
-        .size(windowHeight)
         .forUsers(users)
         .delay(config.delay)
 
