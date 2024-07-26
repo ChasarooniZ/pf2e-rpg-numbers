@@ -71,7 +71,10 @@ Hooks.on("ready", () => {
             checkRollNumbers(dat, msg);
 
             // Rotate on Attack Roll
-            if (isRotateOnAttack(dat)) rotateOnAttack(msg);
+            if (data.isAttackRoll) {
+                if (isRotateOnAttack()) rotateOnAttack(msg);
+                if (isBounceOnAttack()) bounceToTarget(msg.tok)
+            }
 
             //On Damage Application
             onDamageApplication(dat, msg);
@@ -203,9 +206,14 @@ function activateShakeToken(dat, dmg) {
         shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
 }
 
-function isRotateOnAttack(dat) {
-    return dat.isAttackRoll && getSetting("rotate-on-attack");
+function isRotateOnAttack() {
+    return getSetting("rotate-on-attack");
 }
+
+function isBounceOnAttack() {
+    return getSetting("bounce-on-attack.enabled");
+}
+
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
@@ -230,7 +238,7 @@ function checkRollNumbers(dat, msg) {
 function damageRollNumbers(dat, msg) {
     if (dat.isDamageRoll && getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "roll") {
         const dmg_list = getDamageList(msg.rolls);
-        const targets = getTargetList(msg);
+        const targets =  getTargetList(msg);
         debugLog(
             {
                 msg,
