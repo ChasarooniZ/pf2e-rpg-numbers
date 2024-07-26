@@ -4,7 +4,7 @@
 //     if (trustedUsersOnly && !game.user.isTrusted) return;
 
 import { injectConfig } from "../injectConfig.js";
-import { MODULE_ID } from "../misc.js";
+import { localize, MODULE_ID } from "../misc.js";
 
 //     /**
 //      * Character sheets
