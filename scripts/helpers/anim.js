@@ -65,6 +65,30 @@ export function getVisibleUsers(tok) {
     return list;
 }
 
+export function visibleToAllUsers(tok) {
+    let list = game.users.filter((u) => u.isGM).map((u) => u.id);
+    if (tok?.document) {
+        tok = tok.document;
+    }
+    if (!tok?.hidden) {
+        // check vision if pf2e perception active
+        if (game.modules.get("pf2e-perception")?.active) {
+            let cantSee = [];
+            for (const key in tok?.flags?.["pf2e-perception"]) {
+                if (["undetected", "unnoticed"].includes(tok?.flags?.["pf2e-perception"]?.[key]?.visibility)) {
+                    cantSee.push(canvas.tokens.get(key)?.actor?.uuid);
+                }
+            }
+            list = list.concat(
+                game.users.players.filter((u) => !cantSee.includes(u?.character?.uuid)).map((u) => u.id)
+            );
+        } else {
+            list = game.users.map((u) => u.id);
+        }
+    }
+    return list;
+}
+
 //WIP?
 // export function damageShakeRollDamage(token, targets) {
 //     targets.forEach((target) => {
