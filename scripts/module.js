@@ -75,7 +75,8 @@ Hooks.on("ready", () => {
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
                 if (isRotateOnAttack()) rotateOnAttack(msg);
-                if (isShakeOnAttack(msg.token.actor)) shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
+                if (isShakeOnAttack(msg.token.actor))
+                    handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
             }
 
             //On Damage Application
