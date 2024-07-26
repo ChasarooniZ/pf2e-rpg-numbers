@@ -12,12 +12,12 @@ import { shakeScreen } from "./helpers/animation/shakeScreen.js";
 import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { injectConfig } from "./helpers/injectConfig.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.js";
 import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
 import { createBasicActionAnimation } from "./helpers/animation/basicActionAnimation.js";
+import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -102,65 +102,6 @@ Hooks.on("ready", () => {
 
     console.log("PF2e RPG Numbers is ready");
 });
-
-function setupTokenMenu() {
-    injectConfig.quickInject([{ documentName: "Token" }], {
-        moduleId: MODULE_ID,
-        tab: {
-            name: MODULE_ID,
-            label: localize("token-options.tab-label"),
-            icon: "fas fa-dragon",
-        },
-        rotationOffset: {
-            type: "number",
-            label: localize("token-options.rotation-offset.name"),
-            notes: localize("token-options.rotation-offset.hint"),
-            default: 0,
-        },
-        fireEmblemImg: {
-            type: "filepicker",
-            label: localize("token-options.fire-emblem-img.name"),
-            notes: localize("token-options.fire-emblem-img.hint"),
-            default: "",
-        },
-        personaImg: {
-            type: "filepicker",
-            label: localize("token-options.persona-img.name"),
-            notes: localize("token-options.persona-img.hint"),
-            default: "",
-        },
-        critOffsetX: {
-            type: "number",
-            label: localize("token-options.crit.offset-x.name"),
-            notes: localize("token-options.crit.offset-x.hint"),
-            default: 0,
-        },
-        critOffsetY: {
-            type: "number",
-            label: localize("token-options.crit.offset-y.name"),
-            notes: localize("token-options.crit.offset-y.hint"),
-            default: 0,
-        },
-        critScale: {
-            type: "number",
-            label: localize("token-options.crit.scale.name"),
-            notes: localize("token-options.crit.scale.hint"),
-            default: 100,
-        },
-        critRotation: {
-            type: "number",
-            label: localize("token-options.crit.rotation.name"),
-            notes: localize("token-options.crit.rotation.hint"),
-            default: 0,
-        },
-        critSFX: {
-            type: "filepicker.audio",
-            label: localize("token-options.crit.sfx.name"),
-            notes: localize("token-options.crit.sfx.hint"),
-            default: "",
-        },
-    });
-}
 
 //createCritAnimation({ type: "custom", whisper: [game.user.id], token: token ?? game.user.character });
 
