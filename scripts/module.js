@@ -18,6 +18,7 @@ import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
 import { createBasicActionAnimation } from "./helpers/animation/basicActionAnimation.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
+import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -70,9 +71,11 @@ Hooks.on("ready", () => {
             // RPG Numbers on Check Roll
             checkRollNumbers(dat, msg);
 
+            //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack(dat)) rotateOnAttack(msg);
+                if (isRotateOnAttack()) rotateOnAttack(msg);
+                if (isShakeOnAttack(msg.token.actor)) shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
             }
 
             //On Damage Application
@@ -146,7 +149,21 @@ function activateShakeToken(dat, dmg) {
         shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
 }
 
-function isRotateOnAttack(dat) {
+function isShakeOnAttack(actor) {
+    if (!getSetting("shake-on-attack.enabled")) return false;
+    const isPlayerOwned = actor.hasPlayerOwner;
+    switch (getSetting("shake-on-attack.type")) {
+        case "gm":
+            return !isPlayerOwned;
+        case "players":
+            return isPlayerOwned;
+        case "both":
+        default:
+            return true;
+    }
+}
+
+function isRotateOnAttack() {
     return getSetting("rotate-on-attack");
 }
 function rotateOnAttack(msg) {

@@ -427,6 +427,23 @@ Hooks.on("init", () => {
         choices: ["no", "max", "mid"],
     });
 
+    registerSetting("shake-on-attack", "shake-on-attack.enabled", {
+        desc: "enabled",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
+    registerSetting("shake-on-attack", "shake-on-attack.type", {
+        desc: "type",
+        scope: "world",
+        config: true,
+        default: false,
+        type: String,
+        choices: ["both", "gm", "players"],
+    });
+
     registerSetting("rotate-on-attack", "rotate-on-attack", {
         desc: "enabled",
         scope: "world",
