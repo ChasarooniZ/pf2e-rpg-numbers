@@ -18,10 +18,10 @@ export async function turnTokenOnAttack(token, target) {
     await new Sequence()
         .animation()
         .on(token)
-        .rotateTowards(target, { duration: turnTime, ease: "easeInCubic", rotationOffset })
+        .rotateTowards(target, { duration: turnTime, ease: "easeOutCubic", rotationOffset })
         .waitUntilFinished(turnTime/2)
         .animation()
         .on(token)
-        .rotateIn(angle, turnTime, { ease: "easeOutCubic" })
+        .rotateIn(angle, turnTime, { ease: "easeInCubic" })
         .play();
 }
