@@ -70,8 +70,10 @@ Hooks.on("ready", () => {
             // RPG Numbers on Check Roll
             checkRollNumbers(dat, msg);
 
-            // Rotate on Attack Roll
-            if (isRotateOnAttack(dat)) rotateOnAttack(msg);
+            if (dat.isAttackRoll) {
+                // Rotate on Attack Roll
+                if (isRotateOnAttack(dat)) rotateOnAttack(msg);
+            }
 
             //On Damage Application
             onDamageApplication(dat, msg);
@@ -120,7 +122,7 @@ function getData(msg) {
 }
 
 function onDamageApplication(dat, msg) {
-    if (dat.isApplyDamage && doSomethingOnDamageApply) {
+    if (dat.isApplyDamage && doSomethingOnDamageApply()) {
         const dmg = dat.appliedDamage.updates.find((u) => u.path === "system.attributes.hp.value")?.value;
         if (dmg) {
             activateShakeToken(dat, dmg);
@@ -145,7 +147,7 @@ function activateShakeToken(dat, dmg) {
 }
 
 function isRotateOnAttack(dat) {
-    return dat.isAttackRoll && getSetting("rotate-on-attack");
+    return getSetting("rotate-on-attack");
 }
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
