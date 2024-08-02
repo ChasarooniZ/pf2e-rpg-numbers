@@ -1,3 +1,11 @@
+# [12.3.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.2.1...12.3.0) - Feel the Attack
+- **Attack Screen Shake**
+  - Adds option to shake the screen when attacking (to add some punch)
+  - Can be enabled for players, gms or both
+- **Rotate on Attack**
+  - Changed the Easing on rotate on attack to make it feel more responsive'
+- **Misc**
+  - refactored code a bit
 # [12.2.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.2.0...12.2.1) - Fix Fire Emblem Swing
 
 - `Fire Emblem Crits`

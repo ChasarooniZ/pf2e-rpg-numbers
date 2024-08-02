@@ -186,6 +186,21 @@
                     }
                 }
             },
+            "shake-on-attack": {
+                "enabled": {
+                    "name": "Enable Shake on Attack",
+                    "hint": "Shakes the screen when you attack, shakes more when you crit"
+                },
+                "type": {
+                    "name": "Shake on Attack Enabled for?",
+                    "hint": "Choose who shake on attack is enabled for",
+                    "choices": {
+                        "both": "Both",
+                        "gm": "GM Only",
+                        "players": "Players Only"
+                    }
+                }
+            },
             "screen-shake": {
                 "enabled": {
                     "name": "Enable Damage Shake",
