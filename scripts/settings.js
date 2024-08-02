@@ -273,7 +273,7 @@ Hooks.on("init", () => {
         type: String,
         filePicker: "audio",
     });
-    
+
     // Basic Actions
     registerSetting("basic-actions", "basic-actions.enabled", {
         desc: "enabled",
@@ -431,7 +431,7 @@ Hooks.on("init", () => {
         desc: "enabled",
         scope: "world",
         config: true,
-        default: false,
+        default: true,
         type: Boolean,
     });
 
@@ -449,7 +449,8 @@ Hooks.on("init", () => {
         scope: "world",
         config: true,
         default: true,
-        type: Boolean, requiresReload: true
+        type: Boolean,
+        requiresReload: true,
     });
 
     registerSetting("rotate-on-attack", "rotate-on-attack.duration", {
@@ -727,6 +728,7 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("dmg-numbers", "dmg-enabled");
     addSettingsGroup("check-animations", "check-enabled");
     addSettingsGroup("screen-shake", "shake-enabled");
+    addSettingsGroup("shake-on-attack", "shake-on-attack.enabled");
     addSettingsGroup("finishing-move.title", "finishing-move.enabled");
     addSettingsGroup("token-dmg-shake.title", "dmg-shake-directional-enabled");
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
