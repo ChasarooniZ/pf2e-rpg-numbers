@@ -1,3 +1,15 @@
+# [12.3.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.3.0...12.3.1) - Fixing some Issues
+
+- `Finishing Moves`
+  - Fixed bug where finishing moves from players wouldn't show (@TheTenk)
+  - Thanks to a suggestion (@TheTenk) made finishing moves show over critical hit FX
+- `Criticals`
+  - Synced the spawn time of critical hit elements so they activate as one
+  - `Fire Emblem`
+    - Made sure the elements of this critical appear in the correct order
+- `General`
+  - Fixed header of Shake on Attack Setting
+  - Remigrated so that animations are triggered by the __player who created the message__
 # [12.3.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.2.1...12.3.0) - Feel the Attack
 
 - **Attack Screen Shake**
