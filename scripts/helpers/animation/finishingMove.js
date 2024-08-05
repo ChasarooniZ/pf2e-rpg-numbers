@@ -30,6 +30,8 @@ export async function createFinishingMoveAnimation(text) {
     words.forEach((word, i) => {
         word = ` ${word} `;
         seq.effect()
+            .zIndex(-2)
+            .syncGroup(`finishing-move-${text}`)
             .text(word, style)
             .screenSpace()
             .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })

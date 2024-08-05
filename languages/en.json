@@ -27,6 +27,7 @@
                     "title": "Token Damage Shake",
                     "scaling": "Token Damage Shake - Scaling"
                 },
+                "shake-on-attack": "Shake on Attack",
                 "rotate-on-attack": "Rotate on Attack",
                 "finishing-move": {
                     "title": "Finishing Moves",
