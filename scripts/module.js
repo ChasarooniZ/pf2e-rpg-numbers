@@ -104,7 +104,7 @@ Hooks.on("ready", () => {
         const actor = characterSheet.actor;
     });
 
-    Hooks.on("getItemSheetHeaderButtons ", function (itemSheet, menu) {
+    Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
         const item = itemSheet.item;
 
         // add RPG number header
