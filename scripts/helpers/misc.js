@@ -112,7 +112,7 @@ export class FinisherDialog extends FormApplication {
 
     async getData() {
         const data = super.getData();
-        const finisherData = this.actor.getFlag("yourmodule", "finisherData") || { color: "#000000", items: [] };
+        const finisherData = this.actor.getFlag(MODULE_ID, "finisherData") || { color: "#000000", items: [] };
         data.color = finisherData.color;
         data.items = finisherData.items;
         return data;
@@ -137,7 +137,7 @@ export class FinisherDialog extends FormApplication {
             color: formData["color"],
             items: items,
         };
-        await this.actor.setFlag("yourmodule", "finisherData", finisherData);
+        await this.actor.setFlag(MODULE_ID, "finisherData", finisherData);
     }
 
     _onAddRow(event) {
