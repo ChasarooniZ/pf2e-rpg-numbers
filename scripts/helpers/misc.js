@@ -126,16 +126,18 @@ export class FinisherDialog extends FormApplication {
 
     async _updateObject(event, formData) {
         const items = [];
-        const predicates = formData["predicate"] instanceof Array ? formData["predicate"] : [formData["predicate"]];
-        const onlyCrits = formData["onlyCrit"] instanceof Array ? formData["onlyCrit"] : [formData["onlyCrit"]];
-        const finisherTexts =
-            formData["finisherText"] instanceof Array ? formData["finisherText"] : [formData["finisherText"]];
+        const entries = Object.entries(formData);
+        const data = {
+            predicates: entries.filter(([category, _val]) => {category.startsWith("predicate")}).map(([_category, val]) => val),
+            onlyCrit: entries.filter(([category, _val]) => {category.startsWith("onlyCrit")}).map(([_category, val]) => val),
+            finisherText: entries.filter(([category, _val]) => {category.startsWith("finisherText")}).map(([_category, val]) => val),
+        };
 
         for (let i = 0; i < predicates.length; i++) {
             items.push({
-                predicate: predicates[i],
-                onlyCrit: Boolean(onlyCrits[i]),
-                finisherText: finisherTexts[i],
+                predicate: data.predicates[i],
+                onlyCrit: data.onlyCrits[i],
+                finisherText: data.finisherTexts[i],
             });
         }
 
