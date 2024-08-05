@@ -134,7 +134,7 @@ export class FinisherDialog extends FormApplication {
         for (let i = 0; i < predicates.length; i++) {
             items.push({
                 predicate: predicates[i],
-                onlyCrit: onlyCrits[i],
+                onlyCrit: Boolean(onlyCrits[i]),
                 finisherText: finisherTexts[i],
             });
         }
