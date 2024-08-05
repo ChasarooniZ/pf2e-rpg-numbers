@@ -102,6 +102,7 @@ Hooks.on("ready", () => {
     });*/
 
     Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
+        if (!getSetting("finishing-move.enabled")) return;
         const actor = characterSheet.actor;
         // add RPG number header
         menu.unshift({
@@ -116,6 +117,7 @@ Hooks.on("ready", () => {
     });
 
     Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
+        if (!getSetting("finishing-move.enabled")) return;
         const item = itemSheet.item;
 
         // add RPG number header
