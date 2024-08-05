@@ -100,6 +100,57 @@ Hooks.on("ready", () => {
         });
     });*/
 
+    Hooks.on("getActorSheetHeaderButtons", function (characterSheet, _menu) {
+        const actor = characterSheet.actor;
+    });
+
+    Hooks.on("getItemSheetHeaderButtons ", function (characterSheet, menu) {
+        const item = characterSheet.item;
+        const tokenIndex = menu.findIndex((it) => it.class === "configure-token");
+        const rightItems = menu.slice(tokenIndex);
+        const menuItem = {
+            class: "pf2e-rpg-numbers",
+            icon: "fa-solid fa-dragon",
+            label: "RPG #s ⚙",
+            onclick: (ev, itemD = item) => {
+                console.log({ ev, itemD });
+                const existingValue = game.settings.get("pf2e-rpg-numbers", "finishing-move.name") || "";
+                // Create and display the dialog box
+                new Dialog({
+                    title: "Finishing Move Name",
+                    content: `
+                    <form>
+                        <div class="form-group">
+                        <label for="finishing-move-name">Finishing Move Name</label>
+                        <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
+                        </div>
+                    </form>
+                    `,
+                    buttons: {
+                        save: {
+                            label: "Save Settings",
+                            callback: async (html) => {
+                                // Get the new value from the text input
+                                const newValue = html.find("#finishing-move-name").val().trim();
+
+                                // Save the new value to the module flag
+                                await game.settings.set("pf2e-rpg-numbers", "finishing-move.name", newValue);
+
+                                // Optionally, show a message or perform additional actions here
+                                ui.notifications.info(`Finishing Move Name updated to: ${newValue}`);
+                            },
+                        },
+                        cancel: {
+                            label: "Cancel",
+                        },
+                    },
+                    default: "save",
+                }).render(true);
+            },
+        };
+        menu.splice(tokenIndex, rightItems.length, menuItem, rightItems);
+    });
+
     setupTokenMenu();
 
     if (game.user.isGM) {
