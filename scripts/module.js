@@ -113,8 +113,8 @@ Hooks.on("ready", () => {
             icon: "fa-solid fa-dragon",
             label: "RPG #s",
             onclick: async (ev, itemD = item) => {
-                console.log({ ev, itemD });
-                const existingValue = game.settings.get("pf2e-rpg-numbers", "finishing-move.name") || "";
+                //console.log({ ev, itemD });
+                const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
                 // Create and display the dialog box
                 new Dialog({
                     title: "Finishing Move Name",
@@ -134,7 +134,7 @@ Hooks.on("ready", () => {
                                 const newValue = html.find("#finishing-move-name").val().trim();
 
                                 // Save the new value to the module flag
-                                await game.settings.set("pf2e-rpg-numbers", "finishing-move.name", newValue);
+                                await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
 
                                 // Optionally, show a message or perform additional actions here
                                 ui.notifications.info(`Finishing Move Name updated to: ${newValue}`);
