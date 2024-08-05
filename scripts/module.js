@@ -104,15 +104,15 @@ Hooks.on("ready", () => {
         const actor = characterSheet.actor;
     });
 
-    Hooks.on("getItemSheetHeaderButtons ", function (characterSheet, menu) {
-        const item = characterSheet.item;
+    Hooks.on("getItemSheetHeaderButtons ", function (itemSheet, menu) {
+        const item = itemSheet.item;
         const tokenIndex = menu.findIndex((it) => it.class === "configure-token");
         const rightItems = menu.slice(tokenIndex);
         const menuItem = {
             class: "pf2e-rpg-numbers",
             icon: "fa-solid fa-dragon",
             label: "RPG #s ⚙",
-            onclick: (ev, itemD = item) => {
+            onclick: async (ev, itemD = item) => {
                 console.log({ ev, itemD });
                 const existingValue = game.settings.get("pf2e-rpg-numbers", "finishing-move.name") || "";
                 // Create and display the dialog box
@@ -148,7 +148,7 @@ Hooks.on("ready", () => {
                 }).render(true);
             },
         };
-        menu.splice(tokenIndex, rightItems.length, menuItem, rightItems);
+        return menu.splice(tokenIndex, rightItems.length, menuItem, rightItems);
     });
 
     setupTokenMenu();
