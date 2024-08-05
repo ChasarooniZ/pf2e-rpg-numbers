@@ -118,7 +118,9 @@ export function personaCrit(token, users, imgData, config) {
 
         await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
         await new Sequence()
+            //BG Color
             .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
             .shape("polygon", { points: centeredPoints, fillColor: game.user.color.css, fillAlpha: 1 })
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
@@ -128,8 +130,9 @@ export function personaCrit(token, users, imgData, config) {
             .duration(duration)
             .forUsers(users)
             .delay(config.delay)
-
-            .effect() // Image
+            //Image
+            .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
             .file(imageUrl)
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
@@ -143,8 +146,9 @@ export function personaCrit(token, users, imgData, config) {
             .duration(duration)
             .forUsers(users)
             .delay(config.delay)
-
-            .effect() //Outline
+            //Outline
+            .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
             .zIndex(1)
             .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
             .screenSpace()

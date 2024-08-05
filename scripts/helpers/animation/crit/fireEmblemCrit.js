@@ -37,6 +37,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
     await new Sequence()
         //background
         .effect()
+        .zIndex(-1)
+        .syncGroup(`fe-crit-${token.uuid}`)
         .shape("rectangle", {
             lineSize: 0,
             width: windowWidth,
@@ -62,6 +64,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .screenSpaceAboveUI()
         //Image
         .effect()
+        .zIndex(0)
+        .syncGroup(`fe-crit-${token.uuid}`)
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
             from: -distance * 1.5 / (scaleFactorHalf),
@@ -84,6 +88,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .screenSpaceAboveUI()
         //Sound
         .sound()
+        .syncGroup(`fe-crit-${token.uuid}`)
         .file(soundUrl)
         .fadeOutAudio(duration / 4)
         .volume(volumeLevel)
