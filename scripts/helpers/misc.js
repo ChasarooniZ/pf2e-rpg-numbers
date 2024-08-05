@@ -133,7 +133,7 @@ export class FinisherDialog extends FormApplication {
             finisherText: entries.filter(([category, _val]) => {category.startsWith("finisherText")}).map(([_category, val]) => val),
         };
 
-        for (let i = 0; i < predicates.length; i++) {
+        for (let i = 0; i < data.predicates.length; i++) {
             items.push({
                 predicate: data.predicates[i],
                 onlyCrit: data.onlyCrits[i],
