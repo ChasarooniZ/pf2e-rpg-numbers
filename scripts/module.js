@@ -100,7 +100,7 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    Hooks.on("getActorSheetHeaderButtons", function (characterSheet, _menu) {
+    Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
         const actor = characterSheet.actor;
         // add RPG number header
         menu.unshift({
@@ -111,6 +111,7 @@ Hooks.on("ready", () => {
                 new FinisherDialog(actor).render(true);
             },
         });
+        return menu;
     });
 
     Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
