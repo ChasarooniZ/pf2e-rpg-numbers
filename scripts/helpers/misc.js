@@ -21,8 +21,8 @@ export function doSomethingOnDamageApply() {
 export function handleDiceSoNice(func, params, msg = null) {
     if (
         game.modules.get("dice-so-nice")?.active &&
-        !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages")
-        && msg?.rolls?.find(roll => roll.dice.length > 0)
+        !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages") &&
+        msg?.rolls?.find((roll) => roll.dice.length > 0)
     ) {
         const hookId = Hooks.on("diceSoNiceRollComplete", (id) => {
             if (id === msg.id || msg === null) {
@@ -92,6 +92,75 @@ function transformData(dataArray) {
     }
 
     return { settings: result };
+}
+
+export class FinisherDialog extends FormApplication {
+    constructor(actor, options = {}) {
+        super(actor, options);
+        this.actor = actor;
+    }
+
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            id: "finisher-dialog",
+            title: "Finisher Settings",
+            template: "path/to/template.html",
+            width: 600,
+            closeOnSubmit: true,
+        });
+    }
+
+    async getData() {
+        const data = super.getData();
+        const finisherData = this.actor.getFlag("yourmodule", "finisherData") || { color: "#000000", items: [] };
+        data.color = finisherData.color;
+        data.items = finisherData.items;
+        return data;
+    }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+        html.find(".add-row").click(this._onAddRow.bind(this));
+        html.find(".delete-row").click(this._onDeleteRow.bind(this));
+    }
+
+    async _updateObject(event, formData) {
+        const items = [];
+        for (let i = 0; i < formData["predicate"].length; i++) {
+            items.push({
+                predicate: formData["predicate"][i],
+                onlyCrit: formData["onlyCrit"][i],
+                finisherText: formData["finisherText"][i],
+            });
+        }
+        const finisherData = {
+            color: formData["color"],
+            items: items,
+        };
+        await this.actor.setFlag("yourmodule", "finisherData", finisherData);
+    }
+
+    _onAddRow(event) {
+        event.preventDefault();
+        const items = this.element.find(".finisher-item").length;
+        const newRow = $(`
+        <div class="form-group finisher-item">
+          <input type="text" name="predicate.${items}" value="" placeholder="Predicate">
+          <input type="checkbox" name="onlyCrit.${items}">
+          <input type="text" name="finisherText.${items}" value="" placeholder="Finisher Text">
+          <button type="button" class="delete-row">Delete</button>
+        </div>
+      `);
+        newRow.find(".delete-row").click(this._onDeleteRow.bind(this));
+        this.element.find(".finisher-items").append(newRow);
+    }
+
+    _onDeleteRow(event) {
+        event.preventDefault();
+        if (confirm("Are you sure you want to delete this row?")) {
+            $(event.currentTarget).closest(".finisher-item").remove();
+        }
+    }
 }
 
 // export function exportDebugInfo() {

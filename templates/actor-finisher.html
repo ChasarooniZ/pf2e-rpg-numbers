@@ -1,0 +1,19 @@
+<form>
+    <div class="form-group">
+      <label for="color">Finisher Color</label>
+      <input type="color" name="color" value="{{color}}">
+    </div>
+    <div class="finisher-items">
+      {{#each items}}
+      <div class="form-group finisher-item">
+        <input type="text" name="predicate.{{@index}}" value="{{this.predicate}}" placeholder="Predicate">
+        <input type="checkbox" name="onlyCrit.{{@index}}" {{#if this.onlyCrit}}checked{{/if}}>
+        <input type="text" name="finisherText.{{@index}}" value="{{this.finisherText}}" placeholder="Finisher Text">
+        <button type="button" class="delete-row">Delete</button>
+      </div>
+      {{/each}}
+    </div>
+    <button type="button" class="add-row">Add Row</button>
+    <button type="submit">Submit</button>
+  </form>
+  

@@ -102,6 +102,15 @@ Hooks.on("ready", () => {
 
     Hooks.on("getActorSheetHeaderButtons", function (characterSheet, _menu) {
         const actor = characterSheet.actor;
+        // add RPG number header
+        menu.unshift({
+            class: "pf2e-rpg-numbers",
+            icon: "fa-solid fa-dragon",
+            label: "RPG #s",
+            onclick: async (_ev, actorD = actor) => {
+                new FinisherDialog(actor).render(true);
+            },
+        });
     });
 
     Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
@@ -112,7 +121,7 @@ Hooks.on("ready", () => {
             class: "pf2e-rpg-numbers",
             icon: "fa-solid fa-dragon",
             label: "RPG #s",
-            onclick: async (ev, itemD = item) => {
+            onclick: async (_ev, itemD = item) => {
                 //console.log({ ev, itemD });
                 const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
                 // Create and display the dialog box
