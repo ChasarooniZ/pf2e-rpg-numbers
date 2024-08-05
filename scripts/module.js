@@ -108,7 +108,7 @@ Hooks.on("ready", () => {
         const item = itemSheet.item;
 
         // add RPG number header
-        menus.unshift({
+        menu.unshift({
             class: "pf2e-rpg-numbers",
             icon: "fa-solid fa-dragon",
             label: "RPG #s",
