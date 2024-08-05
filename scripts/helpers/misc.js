@@ -126,17 +126,24 @@ export class FinisherDialog extends FormApplication {
 
     async _updateObject(event, formData) {
         const items = [];
-        for (let i = 0; i < formData["predicate"].length; i++) {
+        const predicates = formData["predicate"] instanceof Array ? formData["predicate"] : [formData["predicate"]];
+        const onlyCrits = formData["onlyCrit"] instanceof Array ? formData["onlyCrit"] : [formData["onlyCrit"]];
+        const finisherTexts =
+            formData["finisherText"] instanceof Array ? formData["finisherText"] : [formData["finisherText"]];
+
+        for (let i = 0; i < predicates.length; i++) {
             items.push({
-                predicate: formData["predicate"][i],
-                onlyCrit: formData["onlyCrit"][i],
-                finisherText: formData["finisherText"][i],
+                predicate: predicates[i],
+                onlyCrit: onlyCrits[i],
+                finisherText: finisherTexts[i],
             });
         }
+
         const finisherData = {
             color: formData["color"],
             items: items,
         };
+
         await this.actor.setFlag(MODULE_ID, "finisherData", finisherData);
     }
 
@@ -144,13 +151,13 @@ export class FinisherDialog extends FormApplication {
         event.preventDefault();
         const items = this.element.find(".finisher-item").length;
         const newRow = $(`
-        <div class="form-group finisher-item">
-          <input type="text" name="predicate.${items}" value="" placeholder="Predicate">
-          <input type="checkbox" name="onlyCrit.${items}">
-          <input type="text" name="finisherText.${items}" value="" placeholder="Finisher Text">
-          <button type="button" class="delete-row">Delete</button>
-        </div>
-      `);
+          <div class="form-group finisher-item">
+            <input type="text" name="predicate.${items}" value="" placeholder="Predicate">
+            <input type="checkbox" name="onlyCrit.${items}">
+            <input type="text" name="finisherText.${items}" value="" placeholder="Finisher Text">
+            <button type="button" class="delete-row">Delete</button>
+          </div>
+        `);
         newRow.find(".delete-row").click(this._onDeleteRow.bind(this));
         this.element.find(".finisher-items").append(newRow);
     }
