@@ -63,7 +63,7 @@ Hooks.on("ready", () => {
             });
             const dat = getData(msg);
             //Finishing Moves
-            finishingMove(dat);
+            finishingMove(dat, msg);
 
             // RPG Numbers on Damage Roll
             damageRollNumbers(dat, msg);
@@ -147,7 +147,7 @@ Hooks.on("ready", () => {
                     default: "save",
                 }).render(true);
             },
-        })
+        });
         return menu;
     });
 
@@ -255,7 +255,7 @@ function damageRollNumbers(dat, msg) {
     }
 }
 
-function finishingMove(dat) {
+function finishingMove(dat, msg) {
     if (getSetting("finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
         debugLog(
             {
@@ -263,7 +263,8 @@ function finishingMove(dat) {
             },
             "Finishing Move"
         );
-        createFinishingMoveAnimation(dat.item.name);
+        const name = msg?.item?.getFlag(MODULE_ID, "finishing-move.name") || dat.item.name;
+        createFinishingMoveAnimation(name);
     }
 }
 
