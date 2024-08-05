@@ -106,12 +106,12 @@ Hooks.on("ready", () => {
 
     Hooks.on("getItemSheetHeaderButtons ", function (itemSheet, menu) {
         const item = itemSheet.item;
-        const tokenIndex = menu.findIndex((it) => it.class === "configure-token");
-        const rightItems = menu.slice(tokenIndex);
-        const menuItem = {
+
+        // add RPG number header
+        menus.unshift({
             class: "pf2e-rpg-numbers",
             icon: "fa-solid fa-dragon",
-            label: "RPG #s ⚙",
+            label: "RPG #s",
             onclick: async (ev, itemD = item) => {
                 console.log({ ev, itemD });
                 const existingValue = game.settings.get("pf2e-rpg-numbers", "finishing-move.name") || "";
@@ -147,8 +147,8 @@ Hooks.on("ready", () => {
                     default: "save",
                 }).render(true);
             },
-        };
-        return menu.splice(tokenIndex, rightItems.length, menuItem, rightItems);
+        })
+        return menu;
     });
 
     setupTokenMenu();
