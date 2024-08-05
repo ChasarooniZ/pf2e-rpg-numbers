@@ -104,7 +104,7 @@ export class FinisherDialog extends FormApplication {
         return mergeObject(super.defaultOptions, {
             id: "finisher-dialog",
             title: "Finisher Settings",
-            template: "path/to/template.html",
+            template: "modules/pf2e-rpg-numbers/templates/token-config.html",
             width: 600,
             closeOnSubmit: true,
         });
