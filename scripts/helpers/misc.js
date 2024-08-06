@@ -206,9 +206,10 @@ export class FinisherDialog extends ApplicationV2 {
         this.element.find(".finisher-items").append(newRow);
     }
 
-    _onDeleteRow(event) {
+    async _onDeleteRow(event) {
         event.preventDefault();
-        if (confirm("Are you sure you want to delete this row?")) {
+        let r = await Dialog.confirm({title: "Delete Row of Finishing Moves", content: "Are you sure you want to delete this row?"});
+        if (r) {
             event.target.closest(".finisher-item").remove();
         }
     }
