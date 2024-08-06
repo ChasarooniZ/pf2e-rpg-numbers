@@ -101,20 +101,20 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
-        if (!getSetting("finishing-move.enabled")) return;
-        const actor = characterSheet.actor;
-        // add RPG number header
-        menu.unshift({
-            class: "pf2e-rpg-numbers",
-            icon: "fa-solid fa-dragon",
-            label: "RPG #s",
-            onclick: async (_ev, actorD = actor) => {
-                new FinisherDialog(actor).render(true);
-            },
-        });
-        return menu;
-    });
+    // Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
+    //     if (!getSetting("finishing-move.enabled")) return;
+    //     const actor = characterSheet.actor;
+    //     // add RPG number header
+    //     menu.unshift({
+    //         class: "pf2e-rpg-numbers",
+    //         icon: "fa-solid fa-dragon",
+    //         label: "RPG #s",
+    //         onclick: async (_ev, actorD = actor) => {
+    //             new FinisherDialog(actor).render(true);
+    //         },
+    //     });
+    //     return menu;
+    // });
 
     Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
         if (!getSetting("finishing-move.enabled")) return;
