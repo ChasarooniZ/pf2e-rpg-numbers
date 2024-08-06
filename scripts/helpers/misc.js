@@ -94,9 +94,11 @@ function transformData(dataArray) {
     return { settings: result };
 }
 
-export class FinisherDialog extends FormApplication {
+import { ApplicationV2 } from "/common/application.mjs";
+
+export class FinisherDialog extends ApplicationV2 {
     constructor(actor, options = {}) {
-        super(actor, options);
+        super(options);
         this.actor = actor;
     }
 
@@ -106,68 +108,76 @@ export class FinisherDialog extends FormApplication {
             title: "Finisher Settings",
             template: "modules/pf2e-rpg-numbers/templates/actor-finisher.html",
             width: 600,
+            submitOnChange: false,
             closeOnSubmit: true,
         });
     }
 
     async getData() {
-        const data = super.getData();
         const finisherData = this.actor.getFlag(MODULE_ID, "finisherData") || { color: "#000000", items: [] };
-        data.color = finisherData.color;
-        data.items = finisherData.items;
-        return data;
-    }
-
-    activateListeners(html) {
-        super.activateListeners(html);
-        html.find(".add-row").click(this._onAddRow.bind(this));
-        html.find(".delete-row").click(this._onDeleteRow.bind(this));
-    }
-
-    async _updateObject(event, formData) {
-        const items = [];
-        const entries = Object.entries(formData);
-        const data = {
-            predicates: entries.filter(([category, _val]) => {category.startsWith("predicate")}).map(([_category, val]) => val),
-            onlyCrit: entries.filter(([category, _val]) => {category.startsWith("onlyCrit")}).map(([_category, val]) => val),
-            finisherText: entries.filter(([category, _val]) => {category.startsWith("finisherText")}).map(([_category, val]) => val),
+        return {
+            color: finisherData.color,
+            items: finisherData.items,
         };
+    }
 
-        for (let i = 0; i < data.predicates.length; i++) {
-            items.push({
-                predicate: data.predicates[i],
-                onlyCrit: data.onlyCrits[i],
-                finisherText: data.finisherTexts[i],
-            });
+    activateListeners() {
+        super.activateListeners();
+        this.element.find(".add-row").on("click", this._onAddRow.bind(this));
+        this.element.on("click", ".delete-row", this._onDeleteRow.bind(this));
+    }
+
+    async _onSubmit(event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        const items = [];
+        const color = formData.get("color");
+
+        for (const [key, value] of formData.entries()) {
+            if (key.startsWith("predicate.")) {
+                const index = key.split(".")[1];
+                items[index] = items[index] || {};
+                items[index].predicate = value;
+            } else if (key.startsWith("onlyCrit.")) {
+                const index = key.split(".")[1];
+                items[index] = items[index] || {};
+                items[index].onlyCrit = formData.get(key) === "on";
+            } else if (key.startsWith("finisherText.")) {
+                const index = key.split(".")[1];
+                items[index] = items[index] || {};
+                items[index].finisherText = value;
+            }
         }
 
         const finisherData = {
-            color: formData["color"],
-            items: items,
+            color: color,
+            items: items.filter((item) => item !== null),
         };
 
         await this.actor.setFlag(MODULE_ID, "finisherData", finisherData);
+        this.close();
     }
 
     _onAddRow(event) {
         event.preventDefault();
         const items = this.element.find(".finisher-item").length;
-        const newRow = $(`
+        const newRow = `
           <div class="form-group finisher-item">
             <input type="text" name="predicate.${items}" value="" placeholder="Predicate">
             <input type="checkbox" name="onlyCrit.${items}">
             <input type="text" name="finisherText.${items}" value="" placeholder="Finisher Text">
             <button type="button" class="delete-row">Delete</button>
           </div>
-        `);
-        newRow.find(".delete-row").click(this._onDeleteRow.bind(this));
+        `;
         this.element.find(".finisher-items").append(newRow);
     }
 
     _onDeleteRow(event) {
         event.preventDefault();
         if (confirm("Are you sure you want to delete this row?")) {
-            $(event.currentTarget).closest(".finisher-item").remove();
+            event.target.closest(".finisher-item").remove();
         }
     }
 }
