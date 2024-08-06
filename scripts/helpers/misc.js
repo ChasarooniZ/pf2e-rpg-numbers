@@ -1,5 +1,4 @@
-import { injectConfig } from "./injectConfig.js";
-
+const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 export const MODULE_ID = "pf2e-rpg-numbers";
 
 export function debugLog(data, context = "") {
@@ -94,43 +93,48 @@ function transformData(dataArray) {
     return { settings: result };
 }
 
-import { ApplicationV2 } from "/common/application.mjs";
-
 export class FinisherDialog extends ApplicationV2 {
-    constructor(actor, options = {}) {
-        super(options);
-        this.actor = actor;
-    }
-
-    static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
-            id: "finisher-dialog",
-            title: "Finisher Settings",
-            template: "modules/pf2e-rpg-numbers/templates/actor-finisher.html",
-            width: 600,
+    static DEFAULT_OPTIONS = {
+        id: "pf2e-rpg-numbers-actor",
+        tag: "form", //use for form
+        form: {
+            handler: FinisherDialog.myFormHandler,
             submitOnChange: false,
             closeOnSubmit: true,
-        });
+        },
+        position: {
+            width: 640,
+            height: "auto",
+        },
+        window: {
+            icon: "fas fa-gear", // You can now add an icon to the header
+            title: "FOO.form.title",
+            contentClasses: ["standard-form"],
+        },
+    };
+    static PARTS = {
+        foo: {
+            template: "modules/pf2e-rpg-numbers/templates/actor-finisher.html",
+        },
+        footer: {
+            template: "templates/generic/form-footer.hbs",
+        },
+    };
+
+    get title() {
+        return `PF2e RPG #s: Actor Config`;
     }
 
-    async getData() {
-        const finisherData = this.actor.getFlag(MODULE_ID, "finisherData") || { color: "#000000", items: [] };
-        return {
-            color: finisherData.color,
-            items: finisherData.items,
-        };
-    }
-
-    activateListeners() {
-        super.activateListeners();
-        this.element.find(".add-row").on("click", this._onAddRow.bind(this));
-        this.element.on("click", ".delete-row", this._onDeleteRow.bind(this));
-    }
-
-    async _onSubmit(event) {
-        event.preventDefault();
-        const form = event.target;
-        const formData = new FormData(form);
+    /**
+     * Process form submission for the sheet
+     * @this {MyApplication}                      The handler is called with the application as its bound scope
+     * @param {SubmitEvent} event                   The originating form submission event
+     * @param {HTMLFormElement} form                The form element that was submitted
+     * @param {FormDataExtended} formData           Processed data for the submitted form
+     * @returns {Promise<void>}
+     */
+    static async myFormHandler(_event, _form, formData) {
+        // Do things with the returned FormData
 
         const items = [];
         const color = formData.get("color");
@@ -157,11 +161,39 @@ export class FinisherDialog extends ApplicationV2 {
         };
 
         await this.actor.setFlag(MODULE_ID, "finisherData", finisherData);
-        this.close();
+    }
+    constructor(actor, options = {}) {
+        super(options);
+        this.actor = actor;
+    }
+
+    static get defaultOptions() {
+        return mergeObject(super.defaultOptions, {
+            id: "finisher-dialog",
+            title: "Finisher Settings",
+            template: "modules/pf2e-rpg-numbers/templates/actor-finisher.html",
+            width: 600,
+            submitOnChange: false,
+            closeOnSubmit: true,
+        });
+    }
+
+    _prepareContext(actor) {
+        const finisherData = actor.getFlag(MODULE_ID, "finisherData") || { color: "#000000", items: [] };
+        return {
+            color: finisherData.color,
+            items: finisherData.items,
+            actor,
+            buttons: [{ type: "submit", icon: "fa-solid fa-save", label: "SETTINGS.Save" }],
+        };
+    }
+
+    _onRender(_context, _options) {
+        this.element.find(".add-row").on("click", this._onAddRow.bind(this));
+        this.element.on("click", ".delete-row", this._onDeleteRow.bind(this));
     }
 
     _onAddRow(event) {
-        event.preventDefault();
         const items = this.element.find(".finisher-item").length;
         const newRow = `
           <div class="form-group finisher-item">
