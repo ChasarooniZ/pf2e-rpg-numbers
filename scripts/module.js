@@ -1,6 +1,7 @@
 import {
     debugLog,
     doSomethingOnDamageApply,
+    FinisherDialog,
     getSetting,
     handleDiceSoNice,
     localize,
@@ -63,7 +64,7 @@ Hooks.on("ready", () => {
             });
             const dat = getData(msg);
             //Finishing Moves
-            finishingMove(dat);
+            finishingMove(dat, msg);
 
             // RPG Numbers on Damage Roll
             damageRollNumbers(dat, msg);
@@ -99,6 +100,69 @@ Hooks.on("ready", () => {
             );
         });
     });*/
+
+    // Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
+    //     if (!getSetting("finishing-move.enabled")) return;
+    //     const actor = characterSheet.actor;
+    //     // add RPG number header
+    //     menu.unshift({
+    //         class: "pf2e-rpg-numbers",
+    //         icon: "fa-solid fa-dragon",
+    //         label: "RPG #s",
+    //         onclick: async (_ev, actorD = actor) => {
+    //             new FinisherDialog(actor).render(true);
+    //         },
+    //     });
+    //     return menu;
+    // });
+
+    Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
+        if (!getSetting("finishing-move.enabled")) return;
+        const item = itemSheet.item;
+
+        // add RPG number header
+        menu.unshift({
+            class: "pf2e-rpg-numbers",
+            icon: "fa-solid fa-dragon",
+            label: "RPG #s",
+            onclick: async (_ev, itemD = item) => {
+                //console.log({ ev, itemD });
+                const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
+                // Create and display the dialog box
+                new Dialog({
+                    title: "Finishing Move Name",
+                    content: `
+                    <form>
+                        <div class="form-group">
+                        <label for="finishing-move-name">Finishing Move Name</label>
+                        <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
+                        </div>
+                    </form>
+                    `,
+                    buttons: {
+                        save: {
+                            label: "Save Settings",
+                            callback: async (html) => {
+                                // Get the new value from the text input
+                                const newValue = html.find("#finishing-move-name").val().trim();
+
+                                // Save the new value to the module flag
+                                await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
+
+                                // Optionally, show a message or perform additional actions here
+                                ui.notifications.info(`Finishing Move Name updated to: ${newValue}`);
+                            },
+                        },
+                        cancel: {
+                            label: "Cancel",
+                        },
+                    },
+                    default: "save",
+                }).render(true);
+            },
+        });
+        return menu;
+    });
 
     setupTokenMenu();
 
@@ -204,7 +268,7 @@ function damageRollNumbers(dat, msg) {
     }
 }
 
-function finishingMove(dat) {
+function finishingMove(dat, msg) {
     if (getSetting("finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
         debugLog(
             {
@@ -212,7 +276,8 @@ function finishingMove(dat) {
             },
             "Finishing Move"
         );
-        createFinishingMoveAnimation(dat.item.name);
+        const name = msg?.item?.getFlag(MODULE_ID, "finishing-move.name") || dat.item.name;
+        createFinishingMoveAnimation(name);
     }
 }
 
