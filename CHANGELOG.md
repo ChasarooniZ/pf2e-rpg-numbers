@@ -1,7 +1,10 @@
+# [12.4.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.0...12.4.1) - V11 Fix
+- Fixed error with V11 (@TheTenk)
+
 # [12.4.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.3.1...12.4.0) - Start of some nice UI updates
 
 - `Finishing Moves`
-  - Added support for renaming items for the purposes of Finishing Moves with the menu item in the item's header
+  - Added support for renaming items for the purposes of Finishing Moves with the menu item in the item's header (@TheTenk)
   - More to come soon TM
   
 - `Version Support`
