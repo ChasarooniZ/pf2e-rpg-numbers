@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 //const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
-=======
-const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
->>>>>>> 3b9a3c22170e7320833eebe904ca79a8957919eb
 export const MODULE_ID = "pf2e-rpg-numbers";
 
 export function debugLog(data, context = "") {
