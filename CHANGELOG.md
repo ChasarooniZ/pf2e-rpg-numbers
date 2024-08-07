@@ -1,10 +1,11 @@
 # [12.4.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.2...12.4.3) - Finishers On Top
+
 - Made Finisher text render over Critical animation (@TheTenk)
 
 # [12.4.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.1...12.4.2) - Fix
 
 - Fixed error with import
-  
+
 # [12.4.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.0...12.4.1) - V11 Fix
 
 - Fixed error with V11 (@TheTenk)
@@ -584,6 +585,10 @@
   - Text options
   - Crit Message idea
   
+
+## 12.4.3 - 2024-08-07
+
+- Made Finisher text render over Critical animation (@TheTenk)
 
 ## 12.4.2 - 2024-08-07
 
