@@ -1,7 +1,7 @@
 import {
     debugLog,
     doSomethingOnDamageApply,
-    FinisherDialog,
+    //FinisherDialog,
     getSetting,
     handleDiceSoNice,
     localize,
