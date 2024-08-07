@@ -34,6 +34,7 @@ export async function createFinishingMoveAnimation(text) {
             .syncGroup(`finishing-move-${text}`)
             .text(word, style)
             .screenSpace()
+            .screenSpaceAboveUI()
             .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })
             .scale(1 / quality)
             .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
