@@ -586,8 +586,12 @@
   - Crit Message idea
   
 
-<<<<<<< HEAD
-=======
+# <<<<<<< HEAD
+
+## 12.4.4 - 2024-08-07
+
+- Made Finisher text render over Critical animation but for real this time (@TheTenk)
+
 ## 12.4.3 - 2024-08-07
 
 - Made Finisher text render over Critical animation (@TheTenk)
@@ -596,7 +600,8 @@
 
 - Fixed error with unused import affecting finisher
 
->>>>>>> 5adac3c7813d4b74bd4b2876b049085713d27c20
+> > > > > > > 5adac3c7813d4b74bd4b2876b049085713d27c20
+
 ## 12.4.1 - 2024-08-07
 
 - Fixed error with V11 (@TheTenk)
