@@ -578,6 +578,10 @@
   - Crit Message idea
   
 
+## 12.4.2 - 2024-08-07
+
+- Fixed error with unused import affecting finisher
+
 ## 12.4.1 - 2024-08-07
 
 - Fixed error with V11 (@TheTenk)
