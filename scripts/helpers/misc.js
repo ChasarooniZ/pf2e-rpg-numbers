@@ -213,7 +213,7 @@ function transformData(dataArray) {
 //             event.target.closest(".finisher-item").remove();
 //         }
 //     }
-}
+// }
 
 // export function exportDebugInfo() {
 //     const settingsInfo = [...game.settings.settings.values()]
