@@ -1,6 +1,11 @@
-# [12.4.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.1...12.4.2) - Import fix
+# [12.4.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.2...12.4.3) - Finishers On Top
 
-- Fixed error with unused import affecting finisher
+- Made Finisher text render over Critical animation (@TheTenk)
+
+# [12.4.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.1...12.4.2) - Fix
+
+- Fixed error with import
+
 # [12.4.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.0...12.4.1) - V11 Fix
 
 - Fixed error with V11 (@TheTenk)
@@ -581,6 +586,17 @@
   - Crit Message idea
   
 
+<<<<<<< HEAD
+=======
+## 12.4.3 - 2024-08-07
+
+- Made Finisher text render over Critical animation (@TheTenk)
+
+## 12.4.2 - 2024-08-07
+
+- Fixed error with unused import affecting finisher
+
+>>>>>>> 5adac3c7813d4b74bd4b2876b049085713d27c20
 ## 12.4.1 - 2024-08-07
 
 - Fixed error with V11 (@TheTenk)
