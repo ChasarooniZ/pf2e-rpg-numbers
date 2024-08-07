@@ -1,3 +1,6 @@
+# [12.4.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.1...12.4.2) - Import fix
+
+- Fixed error with unused import affecting finisher
 # [12.4.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.0...12.4.1) - V11 Fix
 
 - Fixed error with V11 (@TheTenk)
@@ -577,10 +580,6 @@
   - Text options
   - Crit Message idea
   
-
-## 12.4.2 - 2024-08-07
-
-- Fixed error with unused import affecting finisher
 
 ## 12.4.1 - 2024-08-07
 
