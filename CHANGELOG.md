@@ -588,6 +588,10 @@
 
 # <<<<<<< HEAD
 
+## 12.4.5 - 2024-08-09
+
+- Updated recommended dependencies for rerelease of aniamted spell fx cartooon
+
 ## 12.4.4 - 2024-08-07
 
 - Made Finisher text render over Critical animation but for real this time (@TheTenk)
