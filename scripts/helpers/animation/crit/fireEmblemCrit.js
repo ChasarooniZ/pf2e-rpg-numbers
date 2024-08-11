@@ -88,7 +88,6 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .screenSpaceAboveUI()
         //Sound
         .sound()
-        .syncGroup(`fe-crit-${token.uuid}`)
         .file(soundUrl)
         .fadeOutAudio(duration / 4)
         .volume(volumeLevel)
