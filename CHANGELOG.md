@@ -1,3 +1,17 @@
+# [12.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.5...12.4.6) - Fixes and Rise of Graphics
+- Fixed but with `Fire Emblem Crits` tha prevented them from firing
+- `BAsic Action Animation`
+  - Removed this feature, ceding this ground to use [Pf2e Graphics](https://github.com/MrVauxs/pf2e-graphics) instead
+- Removed `Animated Cartoon Spell Effects` as a recommended module (as it has been delisted)
+
+# [12.4.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.4...12.4.5) - Updated dependencies
+
+- Updated recommended dependencies for rerelease of aniamted spell fx cartooon
+
+# [12.4.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.3...12.4.4) - Finishers Return
+
+- Made Finisher text render over Critical animation but for real this time (@TheTenk)
+
 # [12.4.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.2...12.4.3) - Finishers On Top
 
 - Made Finisher text render over Critical animation (@TheTenk)
