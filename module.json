@@ -41,12 +41,6 @@
                 "reason": "This module allows for usage of the upgraded token shake animation.",
                 "manifest": "https://github.com/Feu-Secret/Tokenmagic/releases/latest/download/module.json",
                 "compatibility": {}
-            },
-            {
-                "id": "animated-spell-effects-cartoon",
-                "type": "module", 
-                "reason": "This module allows for usage of the basic action animation feature.",
-                "compatibility": {}
             }
         ]
     },

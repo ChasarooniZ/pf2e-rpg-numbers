@@ -17,7 +17,6 @@ import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.
 import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
 import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
 import { createAPI } from "./helpers/api.js";
-import { createBasicActionAnimation } from "./helpers/animation/basicActionAnimation.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
 import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
 
@@ -83,7 +82,6 @@ Hooks.on("ready", () => {
             //On Damage Application
             onDamageApplication(dat, msg);
 
-            basicActionAnimations(msg);
         }
     });
 
@@ -278,12 +276,6 @@ function finishingMove(dat, msg) {
         );
         const name = msg?.item?.getFlag(MODULE_ID, "finishing-move.name") || dat.item.name;
         createFinishingMoveAnimation(name);
-    }
-}
-
-function basicActionAnimations(msg) {
-    if (getSetting("basic-actions.enabled")) {
-        handleDiceSoNice(createBasicActionAnimation, [msg], msg);
     }
 }
 
