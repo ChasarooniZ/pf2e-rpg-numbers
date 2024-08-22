@@ -73,7 +73,7 @@ Hooks.on("ready", () => {
             //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg]);
+                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg], msg);
                 if (isShakeOnAttack(msg.token.actor))
                     handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
             }
