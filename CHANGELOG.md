@@ -1,6 +1,9 @@
 # [12.4.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.7...12.4.8) - Actually Supported now...
+
 - `Rotate on Attack`
   - Actually Supports Dice so Nice (fixed underlying bug)
+  
+
 # [12.4.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.6...12.4.7) - PF2e Graphics better support
 
 - `Rotate on Attack`
@@ -10,7 +13,9 @@
 # [12.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.5...12.4.6) - Fixes and Rise of Graphics
 
 - Fixed but with `Fire Emblem Crits` tha prevented them from firing
+  
 - `Basic Action Animation`
+  
   - Removed this feature, ceding this ground to use [Pf2e Graphics](https://github.com/MrVauxs/pf2e-graphics) instead
   
 - Removed `Animated Cartoon Spell Effects` as a recommended module (as it has been delisted)
@@ -613,6 +618,12 @@
   
 
 # <<<<<<< HEAD
+
+## 12.4.8 - 2024-08-22
+
+- `Rotate on Attack`
+  - Actually Supports Dice so Nice (fixed underlying bug)
+  
 
 ## 12.4.7 - 2024-08-22
 
