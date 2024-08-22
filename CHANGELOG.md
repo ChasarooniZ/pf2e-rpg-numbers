@@ -1,4 +1,4 @@
-# [12.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.6...12.4.7) - PF2e Graphics better support
+# [12.4.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.6...12.4.7) - PF2e Graphics better support
 - `Rotate on Attack`
   - Supports Dice so Nice
 # [12.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.5...12.4.6) - Fixes and Rise of Graphics
