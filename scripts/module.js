@@ -1,3 +1,12 @@
+import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
+import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.js";
+import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
+import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
+import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
+import { shakeScreen } from "./helpers/animation/shakeScreen.js";
+import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
+import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
+import { createAPI } from "./helpers/api.js";
 import {
     debugLog,
     doSomethingOnDamageApply,
@@ -5,20 +14,10 @@ import {
     getSetting,
     handleDiceSoNice,
     localize,
-    MODULE_ID,
+    MODULE_ID
 } from "./helpers/misc.js";
-import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
-import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
-import { shakeScreen } from "./helpers/animation/shakeScreen.js";
-import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
-import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.js";
-import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
-import { sendUpdateMessage } from "./helpers/tours/updateMessage.js";
-import { createAPI } from "./helpers/api.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
-import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -74,7 +73,7 @@ Hooks.on("ready", () => {
             //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack()) rotateOnAttack(msg);
+                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg]);
                 if (isShakeOnAttack(msg.token.actor))
                     handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
             }
