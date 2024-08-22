@@ -30,7 +30,7 @@ export function handleDiceSoNice(func, params, msg = null) {
             }
         });
         function disableHook() {
-            Hooks.off("createChatMessage", hookId);
+            Hooks.off("diceSoNiceRollComplete", hookId);
         }
     } else {
         func(...params);
