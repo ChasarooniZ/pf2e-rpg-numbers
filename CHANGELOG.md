@@ -1,3 +1,6 @@
+# [12.4.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.7...12.4.8) - Actually Supported now...
+- `Rotate on Attack`
+  - Actually Supports Dice so Nice (fixed underlying bug)
 # [12.4.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.6...12.4.7) - PF2e Graphics better support
 
 - `Rotate on Attack`
