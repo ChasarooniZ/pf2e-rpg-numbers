@@ -274,15 +274,6 @@ Hooks.on("init", () => {
         filePicker: "audio",
     });
 
-    // Basic Actions
-    registerSetting("basic-actions", "basic-actions.enabled", {
-        desc: "enabled",
-        scope: "world",
-        config: true,
-        default: game.modules.get("animated-spell-effects-cartoon")?.active,
-        type: Boolean,
-    });
-
     //Screen Shake Settings
     registerSetting("screen-shake", "shake-enabled", {
         desc: "enabled",
@@ -734,7 +725,6 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
-    addSettingsGroup("basic-actions.title", "basic-actions.enabled");
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");

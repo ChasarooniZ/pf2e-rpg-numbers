@@ -36,9 +36,6 @@
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",
-                "basic-actions": {
-                    "title": "Basic Actions"
-                },
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -476,12 +473,6 @@
                 "enabled": {
                     "name": "Enabled Every +1 Matters Features",
                     "hint": "Adds features related to modifiers matters. Requires modifiers matters to be installed, as well as PF2e Animations IIRC."
-                }
-            },
-            "basic-actions": {
-                "enabled": {
-                    "name": "Enable Basic Action Animations (BAA🐑)",
-                    "hint": "Enable animations for basic actions, (note not all basic actions are implemented, also  you need the `Animated Spell Effects: Cartoon` module to have the effects)"
                 }
             },
             "debug-mode": {
