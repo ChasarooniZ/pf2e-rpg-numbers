@@ -4,7 +4,7 @@
 # [12.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.5...12.4.6) - Fixes and Rise of Graphics
 
 - Fixed but with `Fire Emblem Crits` tha prevented them from firing
-- `BAsic Action Animation`
+- `Basic Action Animation`
   - Removed this feature, ceding this ground to use [Pf2e Graphics](https://github.com/MrVauxs/pf2e-graphics) instead
   
 - Removed `Animated Cartoon Spell Effects` as a recommended module (as it has been delisted)
