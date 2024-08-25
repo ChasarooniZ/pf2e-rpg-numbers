@@ -41,7 +41,7 @@ A module that started to just show damage numbers when you attack but now does o
     - **Ratio** 7:2 (width to height) for following the fire emblem awakening style
 - Persona Critical
   - ![image](https://media.discordapp.net/attachments/1211752457043189801/1277332108318343350/SplashHelper.png?ex=66ccc7ba&is=66cb763a&hm=40546ed37df0fae0c838914c28c6f1d25effdfc9faf6c299b4d0c1ffc5324baf&)
-  - *Template made by @cuyeet)
+  - *Template for 16:9 screen ratio (@cuyeet)
 ## Settings
 - **Enable Module**
   - Enables/disables use of all module features
