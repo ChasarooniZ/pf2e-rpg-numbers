@@ -1,5 +1,6 @@
 # [12.4.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.8...12.4.9) - Animated Crits
--  Added webm support for Persona Crits (@Bullesta)
+
+- Added webm support for Persona Crits (@Bullesta)
 
 # [12.4.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.7...12.4.8) - Actually Supported now...
 
@@ -621,6 +622,10 @@
   
 
 # <<<<<<< HEAD
+
+## 12.4.9 - 2024-09-03
+
+- Added webm support for Persona Crits (@Bullesta)
 
 ## 12.4.8 - 2024-08-22
 
