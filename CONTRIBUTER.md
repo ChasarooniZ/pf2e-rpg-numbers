@@ -8,5 +8,7 @@ Note this isn't everyone as I am a bit slow/lazy but i'll do my best to add peop
 - TheTenk
 ## Ideas people
 - TheTenk - help with improving the finisher system
+## Code
+- Bullesta - Added webm support for Persona Crits
 ## Supporters
 - Skrinch (First Supporter <3)

@@ -1,3 +1,6 @@
+# [12.4.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.8...12.4.9) - Animated Crits
+-  Added webm support for Persona Crits (@Bullesta)
+
 # [12.4.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.7...12.4.8) - Actually Supported now...
 
 - `Rotate on Attack`
