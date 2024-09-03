@@ -1,4 +1,4 @@
-import { getSetting} from "../../misc.js";
+import { getSetting } from "../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
@@ -75,8 +75,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         })
         .screenSpace()
         .screenSpaceScale({
-            x:  0.134 * imgData.xScale,
-            y:  0.134 * imgData.yScale,
+            x: 0.134 * imgData.xScale,
+            y: 0.134 * imgData.yScale,
             fitX: false,
             fitY: true,
             ratioX: true,
