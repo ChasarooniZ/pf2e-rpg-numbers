@@ -44,7 +44,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
             width: windowWidth,
             height: rectangleHeight,
             fillColor: game.user.color.css,
-            fillAlpha: 1,
+            fillAlpha: 0.6,
             name: "feCritA",
         })
         .opacity(0.7)
