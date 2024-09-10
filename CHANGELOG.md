@@ -28,11 +28,7 @@
 
 # [12.4.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.4...12.4.5) - Updated dependencies
 
-<<<<<<< HEAD
 -   Updated recommended dependencies for rerelease of animated spell fx cartoon
-=======
-- Updated recommended dependencies for rerelease of aniamted spell fx cartooon
->>>>>>> 4774207c37169a690255f9f3887801f43dfa4fd9
 
 # [12.4.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.3...12.4.4) - Finishers Return
 
