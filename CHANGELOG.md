@@ -576,6 +576,10 @@
 
 # <<<<<<< HEAD
 
+## 12.4.9 - 2024-09-03
+
+- Added webm support for Persona Crits (@Bullesta)
+
 ## 12.4.8 - 2024-08-22
 
 -   `Rotate on Attack`
