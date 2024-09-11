@@ -1,5 +1,5 @@
 import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
-import { createFinishingMoveAnimation } from "./helpers/animation/finishingMove.js";
+import { createFinishingMoveAnimation } from "./helpers/animation/text/finishingMove.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
 import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";

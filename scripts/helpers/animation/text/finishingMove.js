@@ -1,4 +1,4 @@
-import { getSetting} from "../misc.js";
+import { getSetting} from "../../misc.js";
 
 export async function createFinishingMoveAnimation(text) {
     let textColor = "black";
