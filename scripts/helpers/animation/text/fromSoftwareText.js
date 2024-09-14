@@ -17,7 +17,7 @@ export async function eldenRingNounVerbed(options = {}) {
     const users = options?.users ?? game.users.map(u => u.id);
 
     const [partOne, partTwo] = [text.slice(0, text.length / 2), text.slice(text.length / 2)];
-    const [partOneOffset, partTwoOffset] = [(partOne.length + 0.5) * fontSize / 2, (partTwo.length + 0.5) * fontSize / 2];
+    const [partOneOffset, partTwoOffset] = [(partOne.length + 0.5) * fontSize / 3, (partTwo.length + 0.5) * fontSize / 3];
 
     const rect = { height: fontSize * 3, width: 4000 };
     const fadein = 500;
