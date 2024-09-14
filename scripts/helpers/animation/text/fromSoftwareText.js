@@ -10,7 +10,7 @@ import { getSetting } from "../../misc.js";
  * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
  */
 export async function eldenRingNounVerbed(options = {}) {
-    const text = options.text ?? getSetting(`from-software.noun-verbed.sound-text`);
+    const text = options.text ?? getSetting(`from-software.noun-verbed.text`);
     const sound = options.sound ?? getSetting(`from-software.noun-verbed.sound-effect`);
     const fontSize = options.fontSize ?? getSetting(`from-software.noun-verbed.font-size`);
     const duration = (options.duration ?? getSetting(`from-software.noun-verbed.duration`)) * 1000;
@@ -71,7 +71,7 @@ export async function eldenRingNounVerbed(options = {}) {
  * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
  */
 export async function eldenRingDeath(options = {}) {
-    const text = options.text ?? getSetting(`from-software.death.sound-text`);
+    const text = options.text ?? getSetting(`from-software.death.text`);
     const sound = options.sound ?? getSetting(`from-software.death.sound-effect`);
     const fontSize = options.fontSize ?? getSetting(`from-software.death.font-size`);
     const duration = (options.duration ?? getSetting(`from-software.death.duration`)) * 1000;
