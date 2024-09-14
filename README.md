@@ -78,7 +78,7 @@ A: This module will only support the **PF2e** system
 - `Negative answer lose`
   - Free to use under Mixkit License
 - [`Jpn_L_drum1.mp3`](https://taira-komori.jpn.org/playing01en.html)
-  - Stuff on site is free
+  - Stuff on [site](https://taira-komori.jpn.org/freesounden.html) is [free](https://taira-komori.jpn.org/freesounden.html)
 - [`Success_1`](https://pixabay.com/sound-effects/success-48018/)
   - Free for use under the Pixabay Content License
 - `correct-answer-tone`
