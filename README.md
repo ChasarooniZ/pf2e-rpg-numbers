@@ -86,5 +86,7 @@ A: This module will only support the **PF2e** system
   - [wind blowing sfx](https://pixabay.com/sound-effects/wind-blowing-sfx-12809/)
   - Combined + edited in Audacity
   - Free for use under the Pixabay Content License
+- [bell](https://pixabay.com/sound-effects/bell-222490/)
+  - Free for use under the Pixabay Content License
 - `correct-answer-tone`
   - Free to use under Mixkit License
