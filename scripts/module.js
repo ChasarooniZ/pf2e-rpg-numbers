@@ -18,6 +18,7 @@ import {
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
+import { preDeleteCombat } from "./hooks.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -54,6 +55,7 @@ Hooks.on("init", () => {
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
+    Hooks.on("preDeleteCombat", preDeleteCombat);
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
         if (game.user.id === userid) {
             if (!getSetting("enabled")) return;

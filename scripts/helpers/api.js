@@ -3,6 +3,7 @@ import { createFinishingMoveAnimation } from "./animation/text/finishingMove.js"
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
 import { getDamageList } from "./rollTerms.js";
+import { eldenRingDeath, eldenRingNounVerbed } from "./animation/text/fromSoftwareText.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -34,5 +35,11 @@ export function createAPI() {
                 turnTokenAttack(tokenObject, targetTokenObject);
             },
         },
+        fromSoftware: {
+            eldenRing: {
+                nounVerbed: eldenRingNounVerbed,
+                death: eldenRingDeath
+            }
+        }
     };
 }

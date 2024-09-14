@@ -43,7 +43,8 @@ export function localize(str) {
 
 /**
  *
- * @param {*} settingID
+ * @param {string} settingsCat Category of Setting
+ * @param {string} settingID ID of the settings
  * @param {*} data {desc: "name + hint connection + choices"}
  */
 export function registerSetting(settingCat, settingID, data) {

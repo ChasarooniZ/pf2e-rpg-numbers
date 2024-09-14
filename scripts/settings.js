@@ -654,6 +654,83 @@ Hooks.on("init", () => {
         type: Number,
     });
 
+    //From Software Text
+    const fromSoftOptions = ["noun-verbed", "death"];
+    // Noun Verbed
+    fromSoftOptions.forEach(option => {
+        registerSetting(`from-software.${option}`, `from-software.${option}.enabled`, {
+            desc: "enabled",
+            scope: "world",
+            config: true,
+            default: false,
+            type: Boolean,
+        });
+        if (option === 'noun-verbed') {
+            registerSetting(`from-software.noun-verbed`, `from-software.noun-verbed.xp-threshold`, {
+                desc: "xp-threshold",
+                scope: "world",
+                config: true,
+                default: 120,
+                type: Number,
+            });
+        }
+        registerSetting(`from-software.${option}`, `from-software.${option}.font-size`, {
+            desc: "font-size",
+            scope: "world",
+            config: true,
+            default: 52,
+            range: {
+                min: 1,
+                max: 150,
+                step: 1,
+            },
+            type: Number,
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect`, {
+            desc: "sound-effect",
+            scope: "world",
+            config: true,
+            type: String,
+            default: "", //TODO replace with options for each type
+            filePicker: "audio",
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect.volume`, {
+            desc: "sound-effect.volume",
+            scope: "world",
+            config: true,
+            default: 40,
+            range: {
+                min: 1,
+                max: 100,
+                step: 1,
+            },
+            type: Number,
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.duration`, {
+            desc: "duration",
+            scope: "world",
+            config: true,
+            default: 3,
+            range: {
+                min: 0,
+                max: 6,
+                step: 0.1,
+            },
+            type: Number,
+        });
+        registerSetting(`from-software.${option}`, `from-software.${option}.text`, {
+            desc: "text",
+            scope: "world",
+            config: true,
+            default: localize(`module-settings.from-software.${option}.text.default`),
+            type: String,
+        });
+    })
+
+
     registerSetting("", "debug-mode", {
         desc: "debug-mode",
         scope: "world",
@@ -689,7 +766,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
