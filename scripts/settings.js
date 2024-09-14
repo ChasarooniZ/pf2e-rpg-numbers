@@ -692,7 +692,7 @@ Hooks.on("init", () => {
             scope: "world",
             config: true,
             type: String,
-            default: "", //TODO replace with options for each type
+            default: option === 'death' ? "modules/pf2e-rpg-numbers/resources/sounds/eldenRingDeath.ogg" : "modules/pf2e-rpg-numbers/resources/sounds/eldenRingVictoryReverb.ogg",
             filePicker: "audio",
         });
 
