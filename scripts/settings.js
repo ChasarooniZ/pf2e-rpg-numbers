@@ -725,7 +725,7 @@ Hooks.on("init", () => {
             desc: "text",
             scope: "world",
             config: true,
-            default: localize(`module-settings.from-software.${option}.text.default`),
+            default: option === 'death' ? 'You Died' : 'Enemy Felled',
             type: String,
         });
     })
