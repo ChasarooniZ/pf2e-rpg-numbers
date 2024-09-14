@@ -713,10 +713,10 @@ Hooks.on("init", () => {
             desc: "duration",
             scope: "world",
             config: true,
-            default: 3,
+            default: 6.5,
             range: {
                 min: 0,
-                max: 6,
+                max: 12,
                 step: 0.1,
             },
             type: Number,
