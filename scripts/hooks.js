@@ -1,4 +1,4 @@
-import { eldenRingNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
+import { eldenRingDeath, eldenRingNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { getSetting } from "./helpers/misc.js";
 
 /**
@@ -39,6 +39,14 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     // Trigger animation if conditions are met
     if (getSetting('from-software.noun-verbed.enable') && xp >= xpNeeded) {
         await eldenRingNounVerbed();
+    }
+}
+export async function applyTokenStatusEffect(token, status, isAdd) {
+    if (status == 'dead' && isAdded && getSetting('from-software.death.enable')) {
+        const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
+        if (userId) {
+            await eldenRingDeath({ users: [userId] })
+        }
     }
 }
 

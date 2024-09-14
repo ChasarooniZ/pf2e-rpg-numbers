@@ -55,7 +55,10 @@ Hooks.on("init", () => {
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
+    // Noun Verbed Elden Ring
     Hooks.on("preDeleteCombat", preDeleteCombat);
+    // You died Elden Ring
+    Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
         if (game.user.id === userid) {
             if (!getSetting("enabled")) return;
