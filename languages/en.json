@@ -36,6 +36,13 @@
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "Elden Ring Pop Ups",
+                        "noun-verbed": "Noun Verbed",
+                        "death": "You Died"
+                    }
+                },
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -479,6 +486,10 @@
                         "name": "End of Encounter XP Threshold",
                         "hint": "XP Threshold of the encounter to have the End of Encounter text to show (set to 0 to always show). [Trivial: <= 40, Low: 60, Moderate: 80, Severe: 120, Extreme: 160]"
                     },
+                    "font-size": {
+                        "name": "Noun Verbed Font Size",
+                        "hint": "Font size of the pop-up"
+                    },
                     "sound-effect": {
                         "name": "Noun Verbed SFX",
                         "hint": "Sound effect to play for 'Noun Verbed'",
@@ -501,6 +512,10 @@
                     "enabled": {
                         "name": "Show when owned character Dies",
                         "hint": "Show this message to a PC when their character assigned to their user died."
+                    },
+                    "font-size": {
+                        "name": "You Died Font Size",
+                        "hint": "Font size of the pop-up"
                     },
                     "sound-effect": {
                         "name": "You Died SFX",

@@ -802,6 +802,9 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
+    addSettingsGroup("fromSoftware.elden-ring.title", 'from-software.noun-verbed.enabled');
+    addSettingsGroup("fromSoftware.elden-ring.noun-verbed", 'from-software.noun-verbed.enabled', 'h4');
+    addSettingsGroup("fromSoftware.elden-ring.death", 'from-software.death.enabled', 'h4')
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");
