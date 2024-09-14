@@ -81,5 +81,10 @@ A: This module will only support the **PF2e** system
   - Stuff on [site](https://taira-komori.jpn.org/freesounden.html) is [free](https://taira-komori.jpn.org/freesounden.html)
 - [`Success_1`](https://pixabay.com/sound-effects/success-48018/)
   - Free for use under the Pixabay Content License
+- Elden Ring Victory
+  - [hit](https://pixabay.com/sound-effects/hit-40563/)
+  - [wind blowing sfx](https://pixabay.com/sound-effects/wind-blowing-sfx-12809/)
+  - Combined + edited in Audacity
+  - Free for use under the Pixabay Content License
 - `correct-answer-tone`
   - Free to use under Mixkit License
