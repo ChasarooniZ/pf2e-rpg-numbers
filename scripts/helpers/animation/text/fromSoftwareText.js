@@ -23,10 +23,10 @@ export async function eldenRingNounVerbed(options = {}) {
     const fadein = 500;
 
     return new Sequence()
-        .sound().file(sound).delay(fadein / 2).forUsers(users)
+        .sound().file(sound).delay(Math.max(fadein / 2, duration / 6)).forUsers(users)
         .effect().syncGroup("eldenRing.nounVerbed")
         .screenSpaceAboveUI().duration(duration - 100)
-        .fadeIn(fadein).fadeOut(fadein / 2)
+        .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace().screenSpacePosition({ x: 0, y: 0 })
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .shape("rectangle", {
@@ -38,7 +38,7 @@ export async function eldenRingNounVerbed(options = {}) {
         .filter("Blur", { strength: 1, blurY: 30, quality: 15, resolution: 4, kernelSize: 5 }).forUsers(users)
         .effect().syncGroup("eldenRing.nounVerbed")
         .screenSpaceAboveUI().duration(duration)
-        .fadeIn(fadein).fadeOut(fadein / 2)
+        .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace().screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .screenSpacePosition({ x: -partOneOffset, y: 0 })
         .text(partOne, {
@@ -49,7 +49,7 @@ export async function eldenRingNounVerbed(options = {}) {
         }).forUsers(users)
         .effect().syncGroup("eldenRing.nounVerbed")
         .screenSpaceAboveUI().duration(duration)
-        .fadeIn(fadein).fadeOut(fadein / 2)
+        .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace().screenSpacePosition({ x: partTwoOffset, y: 0 })
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .text(partTwo, {
@@ -81,10 +81,10 @@ export async function eldenRingDeath(options = {}) {
     const fadein = 500;
 
     return new Sequence()
-        .sound().file(sound).delay(fadein / 2).forUsers(users)
+        .sound().file(sound).delay(Math.max(fadein / 2, duration / 6)).forUsers(users)
         .effect().syncGroup("eldenRing.death")
         .screenSpaceAboveUI().duration(duration)
-        .fadeIn(fadein).fadeOut(fadein / 2)
+        .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace().screenSpacePosition({ x: 0, y: 0 })
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .shape("rectangle", {
@@ -96,7 +96,7 @@ export async function eldenRingDeath(options = {}) {
         .filter("Blur", { strength: 1, blurY: 30, quality: 15, resolution: 4, kernelSize: 5 }).forUsers(users)
         .effect().syncGroup("eldenRing.death")
         .screenSpaceAboveUI().duration(duration + 100)
-        .fadeIn(fadein).fadeOut(fadein / 2)
+        .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace().screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .text(text, {
             fill: "#82101d",
