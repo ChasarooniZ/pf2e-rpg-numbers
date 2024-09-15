@@ -16,7 +16,8 @@
   - Added API macros Compendium under `PF2e RPG Numbers Macros` to trigger some of the module's functions manually
 - `Languages`
   - Added machine translated upport for the following languages using [locize](https://translate.i18next.com/)
-    - Spanish, French, German, Polish, Japanese, Korean, Russian
+    - Spanish, French, German, Japanese, Korean, Russian
+    - Polish (@LioHart)
 # [12.4.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.9...12.4.10) - Fire Emblem Clear
 
 - Fixed transparency on the fire emblem crit background (@Nittles)
