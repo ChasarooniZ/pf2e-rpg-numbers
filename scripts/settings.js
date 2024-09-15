@@ -809,3 +809,6 @@ export function renderSettingsConfig(_, html) {
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");
 }
+
+
+- Español, Français, Deutsch, Polish, 日本語 (Japanese), 한국어 (Korean), 简体中文 (chinese), Russian, Português (Portuguese [Brasil])

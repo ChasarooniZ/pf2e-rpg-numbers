@@ -1,0 +1,602 @@
+{
+    "I18N.LANGUAGE": "Englisch",
+    "pf2e-rpg-numbers": {
+        "controls": {
+            "finishing-move": {
+                "name": "Finishing Moves anzeigen",
+                "toolclip": {
+                    "heading": "Finishing-Move",
+                    "items": {
+                        "description": {
+                            "paragraph": "Aktivieren Sie diese Option, damit der Text „Finishing Move“ angezeigt wird, wenn Sie eine Aktion oder einen Angriff an den Chat senden"
+                        }
+                    }
+                }
+            }
+        },
+        "module-settings": {
+            "enabled": {
+                "name": "Modul aktivieren",
+                "hint": "Aktiviert die Funktionalität des Moduls"
+            },
+            "headers": {
+                "dmg-numbers": "Schadenszahlen",
+                "check-animations": "Checks und Angriffsanimationen",
+                "screen-shake": "Bildschirmschütteln",
+                "token-dmg-shake": {
+                    "title": "Token-Schadensshake",
+                    "scaling": "Token Damage Shake – Skalierung"
+                },
+                "shake-on-attack": "Bei Angriff schütteln",
+                "rotate-on-attack": "Bei Angriff rotieren",
+                "finishing-move": {
+                    "title": "Finishing-Moves",
+                    "pcs": "Finishing Moves: PC-Einstellungen",
+                    "npcs": "Finishing Moves: NPC-Einstellungen"
+                },
+                "plus-one": "Jedes +1 zählt",
+                "critical": "Kritischer Treffer",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "Elden Ring Pop-Ups",
+                        "noun-verbed": "Substantiv Verb",
+                        "death": "Du bist gestorben"
+                    }
+                },
+                "debug": "Debuggen"
+            },
+            "dmg-numbers": {
+                "enabled": {
+                    "name": "Schadenszahlen aktivieren",
+                    "hint": "Schadenszahlen anzeigen"
+                },
+                "on-apply-or-roll": {
+                    "name": "Wann werden Schadenszahlen angezeigt?",
+                    "hint": "[HINWEIS] Wenn Sie „Anwenden“ aktivieren, zeigt dieses Modul sowohl die Widerstands-/Schwächestärke an, wenn die Spieler die endgültige Zahl sehen, als auch lässt Sie nur eine Zahl für Ihren Schadenswurf sehen",
+                    "choices": {
+                        "apply": "Auf „Bewerben“.",
+                        "roll": "Auf Rollen"
+                    }
+                },
+                "font-size": {
+                    "name": "Schriftgröße",
+                    "hint": "Standardgröße der Schadensschriftart"
+                },
+                "max-font-scale": {
+                    "name": "Maximaler Schriftgrad",
+                    "hint": "Maximale Größe, auf die die Schadensschrift skaliert werden soll"
+                },
+                "top-offset": {
+                    "name": "% Versatz vom oberen Rand des Tokens",
+                    "hint": "Offset-Prozentsatz vom oberen Rand des Tokens für den Schaden, Eingabe als ganze Zahl (z. B. 70 ist 70 %)."
+                },
+                "jitter": {
+                    "name": "Nervosität",
+                    "hint": "Wie weit sich der Schadenstext um seinen Spawnpunkt bewegt (0 = bewegt sich nicht, 1 bedeutet, dass er an den Rändern des Tokens erscheinen könnte)"
+                },
+                "number-scale-type": {
+                    "name": "Zahlenskalentyp",
+                    "hint": "Skalierungstyp für die Größe der Schadens-RPG-Zahlen",
+                    "choices": {
+                        "percentRemainingHealth": "% der verbleibenden HP",
+                        "percentMaxHealth": "% der maximalen HP",
+                        "none": "Keiner"
+                    }
+                },
+                "damage-split": {
+                    "name": "Schadensaufteilung",
+                    "hint": "So teilen Sie die Schadenszahlen vom Wurf auf (Keine: nur Gesamtsumme, Nach Typ: Nach Schadenstyp, Alle: Teilt alle Begriffe auf)",
+                    "choices": {
+                        "none": "Keiner",
+                        "by-damage-type": "Nach Schadensart",
+                        "all": "Alle"
+                    }
+                },
+                "duration": {
+                    "name": "Textdauer",
+                    "hint": "Wie lange dauert es in Sekunden, bis der Schadenstext verschwindet?"
+                },
+                "wait-time-between-numbers": {
+                    "name": "Wartezeit zwischen Zahlen (ms)",
+                    "hint": "Wie lange zwischen den einzelnen Schadenszahlen das Spiel warten soll, bevor die nächste erscheint, in Millisekunden."
+                },
+                "show-only-GM": {
+                    "name": "Zahlen nur für GM anzeigen",
+                    "hint": "Zeigen Sie die Schadenszahlen für das Spiel nur an, wenn sie Ihnen gefallen, aber nicht so sehr"
+                },
+                "animation-scale": {
+                    "name": "Animationsskala",
+                    "hint": "Wie weit sollten sich die Schadenszahlen vom Token entfernen?"
+                },
+                "show-total": {
+                    "name": "Gesamt anzeigen",
+                    "hint": "Zeigt die Gesamtsumme zusätzlich zu anderen Schadenszahlen als Zahl in der Mitte des Tokens an"
+                }
+            },
+            "check-animations": {
+                "enabled": {
+                    "name": "Aktivieren Sie RPG-Checks und -Angriffe",
+                    "hint": "Zeigt beim Versuch von Checks und Angriffen Nummern-Popups an"
+                },
+                "duration": {
+                    "name": "Überprüfen Sie die Dauer",
+                    "hint": "Es wird Zeit, bis die Schecknummer angezeigt wird"
+                },
+                "font-size": {
+                    "name": "Überprüfen Sie die Schriftgröße",
+                    "hint": "Größe der Check-Schriftart"
+                },
+                "outcome-result": {
+                    "name": "Wählen Sie aus, was für d20-Checkwürfe angezeigt werden soll",
+                    "hint": "„Zahlen“ zeigt das Ergebnis der d20 + Mods, das Ergebnis zeigt kritischen Erfolg, Erfolg usw. und „Ergebnis ohne kritische Kampftreffer“ zeigt das Ergebnis ohne kampfkritische Fehlschüsse und Treffer, die als Kompatibilität mit pf2e-Animationen gedacht sind.",
+                    "choices": {
+                        "numbers": "Zahlen",
+                        "outcome-except-combat-crits": "Ergebnis ohne kritische Treffer im Kampf",
+                        "outcome": "Ergebnis"
+                    }
+                },
+                "color-scheme": {
+                    "name": "Wählen Sie das Scheckthema aus",
+                    "hint": "(Ändert die Farbe der Schecks) Derzeit gibt es ein Standarddesign und ein Dark-Mode-Design, das später für mehr Sichtbarkeit usw. sorgen wird",
+                    "choices": {
+                        "default": "Standard",
+                        "dark": "Dunkles Thema"
+                    }
+                },
+                "sfx": {
+                    "enabled": {
+                        "name": "Überprüfen Sie SFX",
+                        "hint": "Wählen Sie aus, ob bei Prüfergebnissen SFX abgespielt werden soll"
+                    },
+                    "check-or-attack": {
+                        "name": "Überprüfen Sie den SFX auf Angriffswürfe",
+                        "hint": "Wählen Sie aus, ob SFX für Angriffswürfe, nur Würfe oder beides abgespielt werden soll",
+                        "choices": {
+                            "both": "Beide",
+                            "attacks": "Nur Angriffe",
+                            "checks": "Nur Schecks"
+                        }
+                    },
+                    "options": {
+                        "name": "Überprüfen Sie die SFX-Option",
+                        "hint": "Wählen Sie aus, welche SFX wann abgespielt werden sollen.  ",
+                        "choices": {
+                            "none": "Keiner",
+                            "all": "Alle",
+                            "success-or-fail": "Erfolg oder Misserfolg",
+                            "crits-only": "Nur kritische Treffer"
+                        }
+                    },
+                    "volume": {
+                        "name": "Überprüfen Sie die SFX-Lautstärke",
+                        "hint": "Wie laut SFX sind"
+                    },
+                    "file": {
+                        "criticalSuccess": {
+                            "name": "SFX prüfen: Krit. ",
+                            "hint": "Wählen Sie SFX (nicht, dass dies keine Auswirkung auf die Einstellung „Erfolg oder Misserfolg“ hat)"
+                        },
+                        "success": {
+                            "name": "Überprüfen Sie SFX: Erfolg",
+                            "hint": "Wählen Sie SFX (wird in der Einstellung „Erfolg oder Misserfolg“ als Erfolg verwendet)"
+                        },
+                        "failure": {
+                            "name": "SFX prüfen: Fehler",
+                            "hint": "Wählen Sie SFX (wird in der Einstellung „Erfolg oder Misserfolg“ als Fehler verwendet)"
+                        },
+                        "criticalFailure": {
+                            "name": "SFX prüfen: Krit. ",
+                            "hint": "Wählen Sie SFX (nicht, dass dies keine Auswirkung auf die Einstellung „Erfolg oder Misserfolg“ hat)"
+                        }
+                    }
+                }
+            },
+            "shake-on-attack": {
+                "enabled": {
+                    "name": "Aktivieren Sie „Shake on Attack“.",
+                    "hint": "Der Bildschirm zittert, wenn Sie angreifen, und noch mehr, wenn Sie einen kritischen Treffer erzielen"
+                },
+                "type": {
+                    "name": "Shake on Attack aktiviert für?",
+                    "hint": "Wählen Sie aus, für wen „Shake on Attack“ aktiviert ist",
+                    "choices": {
+                        "both": "Beide",
+                        "gm": "Nur GM",
+                        "players": "Nur für Spieler"
+                    }
+                }
+            },
+            "screen-shake": {
+                "enabled": {
+                    "name": "Aktivieren Sie Damage Shake",
+                    "hint": "Der Bildschirm wackelt, wenn Sie mit der Schaltfläche „Schaden anwenden“ von pf2e Schaden anrichten"
+                },
+                "duration": {
+                    "name": "Dauer",
+                    "hint": "Wie lange dauert es, den Bildschirm in MS zu schütteln?"
+                },
+                "intensity-max": {
+                    "name": "Intensität",
+                    "hint": "Wie schwer ist es, den Bildschirm zu schütteln"
+                },
+                "intensity-type": {
+                    "name": "Intensitätsskalierung",
+                    "hint": "Wie soll die Intensität der Bildschirmverwacklung skaliert werden? ",
+                    "choices": {
+                        "max": "Keiner",
+                        "%-current-hp": "% Aktuelle HP",
+                        "%-max-hp": "% Max. HP"
+                    }
+                },
+                "intensity-include-temp-hp": {
+                    "name": "Sollte die Skalierung temporäre HP umfassen?",
+                    "hint": "Wenn Sie eine Intensität ausgewählt haben, die nach PS skaliert, führt das Einschalten dazu, dass temporäre PS einbezogen werden"
+                },
+                "gm-enabled": {
+                    "name": "Aktivieren Sie das Schütteln für GM",
+                    "hint": "Verursacht beim GM ein Bildschirmzittern bei allen Schauspielern und ihren Spielsteinen, die keinen Spielerbesitzer haben"
+                }
+            },
+            "token-dmg-shake": {
+                "enabled": {
+                    "name": "Aktivieren Sie das Schütteln des Tokens bei Schaden",
+                    "hint": "Wenn Sie einem Spielstein Schaden zufügen, zittern Sie ihn"
+                },
+                "distance": {
+                    "name": "Token-Shake-Distanz",
+                    "hint": "Abstand in % der Breite des Tokens"
+                },
+                "shakes": {
+                    "name": "Anzahl der Token-Shakes",
+                    "hint": "Anzahl der Token-Shakes"
+                },
+                "duration": {
+                    "name": "Dauer des Shakes",
+                    "hint": "Zeitdauer (ms), in der das Token wackelt"
+                },
+                "only-temp-hp-disable-shake": {
+                    "name": "Temporäre HP absorbiert Erschütterungen?",
+                    "hint": "Schalten Sie diese Option ein, wenn Sie möchten, dass der Token nicht wackelt, wenn der gesamte verursachte Schaden nur temporäre HP betrifft"
+                },
+                "scaling": {
+                    "type": {
+                        "name": "Token-Shaking-Skalierung",
+                        "hint": "Wovon soll man das Abschütteln skalieren?",
+                        "choices": {
+                            "no": "Nichts",
+                            "%-current-hp": "% Aktuelle HP",
+                            "%-max-hp": "% Max. HP"
+                        }
+                    },
+                    "distance": {
+                        "name": "Skalieren Sie den Abstand der Erschütterungen",
+                        "hint": "Skaliert den Abstand der Erschütterungen (nein = keine Skalierung, max = Einstellung dafür als Maximum behandeln, mittel = Einstellung dafür als Mittelwert behandeln)",
+                        "choices": {
+                            "no": "NEIN",
+                            "max": "Max",
+                            "mid": "Mitte"
+                        }
+                    },
+                    "shakes": {
+                        "name": "Anzahl der Shakes skalieren",
+                        "hint": "Skalieren Sie, wie oft sie schütteln (nein = keine Skalierung, max = Einstellung dafür als Maximum behandeln, mittel = Einstellung dafür als mittleren Wert behandeln)",
+                        "choices": {
+                            "no": "NEIN",
+                            "max": "Max",
+                            "mid": "Mitte"
+                        }
+                    },
+                    "duration": {
+                        "name": "Skalendauer",
+                        "hint": "Skalierungsdauer der Shakes (nein = keine Skalierung, max = Einstellung dafür als Maximum behandeln, mittel = Einstellung dafür als Mittelwert behandeln)",
+                        "choices": {
+                            "no": "NEIN",
+                            "max": "Max",
+                            "mid": "Mitte"
+                        }
+                    }
+                }
+            },
+            "rotate-on-attack": {
+                "enabled": {
+                    "name": "Aktivieren Sie die Token-Rotation beim Angriff",
+                    "hint": "Wenn Sie angreifen, dreht sich der Spielstein zu demjenigen, den er angreift, und dreht sich dann wieder in seine ursprüngliche Rotation. "
+                },
+                "duration": {
+                    "name": "Dauer der Token-Rotation",
+                    "hint": "Wie lange es dauert, bis sich der Token dem Feind zuwendet, in Sekunden (Standard ist 0,5 s, die Gesamtzeit zum Umdrehen und Zurückdrehen beträgt hier das 1,5-fache der Zeit)"
+                },
+                "scale-on-size": {
+                    "name": "Aktivieren Sie die Größenskalierung der Token-Rotationsdauer",
+                    "hint": "Je nach Größe des Angreifers kann die Rotation länger dauern (abhängig von der Anzahl der Felder, die sie einnimmt)."
+                }
+            },
+            "critical": {
+                "enabled": {
+                    "name": "Aktivieren Sie kritische Animationen",
+                    "hint": "Aktivieren Sie coole Animationen, die bei kritischen Treffern angezeigt werden. "
+                },
+                "player-enabled": {
+                    "name": "Aktivieren Sie kritische Animationen – für Sie",
+                    "hint": "Aktivieren Sie coole Animationen, die Sie selbst bei kritischen Treffern anzeigen können. "
+                },
+                "sound": {
+                    "name": "Kritischer Animationston",
+                    "hint": "Sound für kritische Animationen"
+                },
+                "volume": {
+                    "name": "Kritisches Animationsvolumen",
+                    "hint": "% der Lautstärke für kritische Animationen"
+                },
+                "duration": {
+                    "name": "Kritische Animationsdauer",
+                    "hint": "Dauer des Tons und Effekts"
+                },
+                "type": {
+                    "name": "Kritischer Animationstyp",
+                    "hint": "Wählen Sie den Typ für kritische Animationen",
+                    "choices": {
+                        "persona": "Persona",
+                        "fire-emblem": "Feueremblem"
+                    }
+                },
+                "show-on": {
+                    "name": "Kritische Animation anzeigen an",
+                    "hint": "Wählen Sie, ob kritische Animationen bei Angriffen, Kontrollen oder beidem angezeigt werden sollen",
+                    "choices": {
+                        "attacks": "Angriffe",
+                        "checks": "Schecks",
+                        "both": "Beide"
+                    }
+                },
+                "show-on-token-type": {
+                    "name": "Kritische Animation anzeigen für",
+                    "hint": "Wählen Sie, ob Sie kritische Animationen für PCs, NPCS oder beides anzeigen möchten",
+                    "choices": {
+                        "pc": "PCs",
+                        "npc": "NPCs",
+                        "pc+npc": "PCs und NPCs"
+                    }
+                },
+                "default-img": {
+                    "name": "Standardbild",
+                    "hint": "Wählen Sie aus, welches das Standardbild haben soll",
+                    "choices": {
+                        "pc-tok-npc-tok": "PCs: Token | ",
+                        "pc-act-npc-act": "PCs: Schauspieler | ",
+                        "pc-tok-npc-act": "PCs: Token | ",
+                        "pc-act-npc-tok": "PCs: Schauspieler | "
+                    }
+                },
+                "delay": {
+                    "name": "Verzögerung",
+                    "hint": "Wie lange verzögert werden soll, wenn die kritische Animation angezeigt wird (in Sekunden)."
+                }
+            },
+            "finishing-move": {
+                "enabled": {
+                    "name": "Aktivieren Sie Finishing Moves",
+                    "hint": "Wenn Sie eine Aktion verwenden und das HUD-Element aktiviert haben, erhalten Sie eine coole Anzeige der Aktion."
+                },
+                "enabled-players": {
+                    "name": "Aktivieren Sie die Finishing-Moves-Option für Spieler",
+                    "hint": "Spielern die Nutzung der Finishing-Move-Funktion erlauben (Reloads Foundry)"
+                },
+                "keep-on": {
+                    "name": "Machen Sie mit den Finishing-Moves weiter",
+                    "hint": "Der Finishing-Move wird nicht mehr deaktiviert, nachdem Sie einen Finishing-Move-Effekt ausgeführt haben"
+                },
+                "use-player-color": {
+                    "name": "Verwenden Sie Spielerfarbe",
+                    "hint": "Verwenden Sie die Spielerfarbe, um den umgebenden Glanz des Zuges zu beenden"
+                },
+                "quality": {
+                    "name": "Textqualität",
+                    "hint": "Legen Sie die Qualität des Finishing-Move-Textes fest (1 – am niedrigsten, 5 – am höchsten)"
+                },
+                "mode": {
+                    "name": "Wann Bewegungen angezeigt werden sollen",
+                    "hint": "Erfordert keine HUD-Umschaltung",
+                    "choices": {
+                        "toggled": "Beim Umschalten immer anzeigen",
+                        "always": "Immer anzeigen",
+                        "always-if-seen": "👀 Msg",
+                        "if-seen-or-toggle": "👀 Nachricht ODER umgeschaltet",
+                        "if-seen-and-toggle": "👀 Nachricht UND umgeschaltet"
+                    }
+                },
+                "show-for": {
+                    "pcs": {
+                        "name": "Für PCs anzeigen",
+                        "hint": "Visualisierung des Finishing-Moves für PCs anzeigen"
+                    },
+                    "npcs": {
+                        "name": "Für NPCs anzeigen",
+                        "hint": "Visualisierung des Finishing-Moves für NPCs anzeigen"
+                    }
+                },
+                "show-on": {
+                    "actions": {
+                        "name": "Bei jeder Art von Aktion",
+                        "hint": "Bei jeder Art von Aktion anzeigen (AKa, nicht bei Zaubersprüchen oder Angriffen)",
+                        "one": {
+                            "name": "[Aktionen] 1 Aktion anzeigen",
+                            "hint": "Eine Aktion anzeigen"
+                        },
+                        "two": {
+                            "name": "[Aktionen] 2 Aktionen anzeigen",
+                            "hint": "Zeigen Sie zwei Aktionen"
+                        },
+                        "three": {
+                            "name": "[Aktionen] 3 Aktionen anzeigen",
+                            "hint": "Zeigen Sie drei Aktionen"
+                        },
+                        "reaction": {
+                            "name": "[Aktionen] Reaktionen anzeigen",
+                            "hint": "Reaktionen zeigen"
+                        },
+                        "free": {
+                            "name": "[Aktionen] Freie Aktion anzeigen",
+                            "hint": "Freie Aktion anzeigen"
+                        }
+                    },
+                    "spells": {
+                        "name": "Über Zauber",
+                        "hint": "Bei Zaubern anzeigen",
+                        "ranked": {
+                            "name": "Bei Ranglistenzaubern",
+                            "hint": "Wird bei Zaubern angezeigt, die Zauberslots belegen"
+                        },
+                        "cantrips": {
+                            "name": "Auf Cantrips",
+                            "hint": "Auf Cantrips anzeigen"
+                        }
+                    },
+                    "attacks": {
+                        "name": "Über Angriffe",
+                        "hint": "Bei Angriffen anzeigen"
+                    }
+                },
+                "duration": {
+                    "end": {
+                        "name": "Enddauer",
+                        "hint": "Dauer, um am Ende den gesamten Text auf dem Bildschirm anzuzeigen, in ms"
+                    },
+                    "word": {
+                        "name": "Wortdauer",
+                        "hint": "Wie lange soll in ms gewartet werden, bevor das nächste Wort angezeigt wird?"
+                    }
+                },
+                "sound-effect": {
+                    "name": "Finishing-Move-SFX",
+                    "hint": "Soundeffekt, der für jedes angezeigte Wort abgespielt wird",
+                    "volume": {
+                        "name": "Finishing Move SFX-Lautstärke",
+                        "hint": "Soundeffekt-Lautstärke, die für jedes angezeigte Wort abgespielt wird"
+                    }
+                }
+            },
+            "from-software": {
+                "noun-verbed": {
+                    "enabled": {
+                        "name": "Am Ende der Begegnung anzeigen?",
+                        "hint": "Zeigen Sie am Ende der Begegnung „Enemy Felled“ oder den von Ihnen hinzugefügten Text an"
+                    },
+                    "xp-threshold": {
+                        "name": "XP-Grenze am Ende der Begegnung",
+                        "hint": "XP-Schwellenwert der Begegnung, damit der Endtext der Begegnung angezeigt wird (auf 0 gesetzt, um ihn immer anzuzeigen). "
+                    },
+                    "font-size": {
+                        "name": "Substantiv-verbierte Schriftgröße",
+                        "hint": "Schriftgröße des Pop-ups"
+                    },
+                    "sound-effect": {
+                        "name": "Nomen Verbed SFX",
+                        "hint": "Soundeffekt zum Abspielen von „Noun Verbed“",
+                        "volume": {
+                            "name": "Nomen Verbed SFX Volume",
+                            "hint": "Lautstärke zum Abspielen des Soundeffekts für „Noun Verbed“"
+                        }
+                    },
+                    "duration": {
+                        "name": "Substantiv Verbed Dauer",
+                        "hint": "Gibt an, wie lange das Popup in Sekunden angezeigt werden soll"
+                    },
+                    "text": {
+                        "name": "Substantiv verbierter Text",
+                        "hint": "Text, der für das Substantiv Verb angezeigt werden soll",
+                        "default": "Feind niedergeschlagen"
+                    }
+                },
+                "death": {
+                    "enabled": {
+                        "name": "Anzeigen, wenn der besessene Charakter stirbt",
+                        "hint": "Zeigen Sie diese Nachricht einem PC, wenn der dem Benutzer zugewiesene Charakter gestorben ist."
+                    },
+                    "font-size": {
+                        "name": "Schriftgröße „Du bist gestorben“.",
+                        "hint": "Schriftgröße des Pop-ups"
+                    },
+                    "sound-effect": {
+                        "name": "Du bist gestorben SFX",
+                        "hint": "Soundeffekt zum Abspielen von „You Died“",
+                        "volume": {
+                            "name": "Du bist gestorben SFX-Lautstärke",
+                            "hint": "Lautstärke zum Abspielen des Soundeffekts für „You Died“"
+                        }
+                    },
+                    "duration": {
+                        "name": "Du bist gestorben. Dauer",
+                        "hint": "Gibt an, wie lange das Popup in Sekunden angezeigt werden soll"
+                    },
+                    "text": {
+                        "name": "Text „Du bist gestorben“.",
+                        "hint": "Anzuzeigender Text für „Du bist gestorben“",
+                        "default": "Du bist gestorben"
+                    }
+                }
+            },
+            "plus-one": {
+                "enabled": {
+                    "name": "Aktiviert „Every +1 Matters“-Funktionen",
+                    "hint": "Fügt Funktionen im Zusammenhang mit Modifikatorangelegenheiten hinzu. "
+                }
+            },
+            "debug-mode": {
+                "name": "Debug-Modus",
+                "hint": "Lassen Sie die Konsole Nachrichten für verschiedene Dinge empfangen"
+            }
+        },
+        "display-text": {
+            "outcomes": {
+                "criticalFailure": "Kritischer Fehler",
+                "failure": "Versagen",
+                "success": "Erfolg",
+                "criticalSuccess": "Kritischer Erfolg"
+            }
+        },
+        "token-options": {
+            "tab-label": "PF2e RPG #s",
+            "rotation-offset": {
+                "name": "Aktivieren Sie „Angriff – Rotationsversatz“.",
+                "hint": "Legt fest, um wie viel die Angriffsrotation beim Einschalten ausgeglichen werden soll. "
+            },
+            "fire-emblem-img": {
+                "name": "Kritisches Bild zu Fire Emblem",
+                "hint": "Bild, das für kritische Treffer für Token angezeigt wird, wenn „Fire Emblem“ ausgewählt ist"
+            },
+            "persona-img": {
+                "name": "Persona-kritisches Bild",
+                "hint": "Bild, das für kritische Treffer für Token angezeigt wird, wenn „Persona“ ausgewählt ist"
+            },
+            "crit": {
+                "offset-x": {
+                    "name": "Kritischer X-Offset",
+                    "hint": "Dies ist in %, also 100, würde es um eine volle Bildlänge nach rechts verschieben"
+                },
+                "offset-y": {
+                    "name": "Kritischer Y-Offset",
+                    "hint": "Dies ist in %, also 100, würde es um eine volle Bildlänge nach unten verschieben"
+                },
+                "scale": {
+                    "name": "Kritische Skala",
+                    "hint": "Größe des Bildes mit kritischem Treffer zum Skalieren in %"
+                },
+                "rotation": {
+                    "name": "Kritische Rotation",
+                    "hint": "Wie stark soll der kritische Treffereffekt gedreht werden?"
+                },
+                "sfx": {
+                    "name": "Kritischer SFX",
+                    "hint": "Stellen Sie dies ein, um den standardmäßigen kritischen Sound durch einen benutzerdefinierten zu überschreiben."
+                }
+            }
+        },
+        "keybinds": {
+            "activate-finishing-move": {
+                "name": "Aktivieren Sie Finishing Move",
+                "hint": "Aktiviert den Abschlusszug, wenn Sie ihn aktiviert haben"
+            }
+        }
+    }
+}

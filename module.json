@@ -50,6 +50,41 @@
             "lang": "en",
             "name": "English",
             "path": "languages/en.json"
+        },
+        {
+          "lang": "es",
+          "name": "Español",
+          "path": "languages/es.json"
+        },
+        {
+          "lang": "fr",
+          "name": "Français",
+          "path": "languages/fr.json"
+        },
+        {
+          "lang": "de",
+          "name": "Deutsch",
+          "path": "languages/de.json"
+        },
+        {
+          "lang": "pl",
+          "name": "Polish",
+          "path": "languages/pl.json"
+        },
+        {
+          "lang": "ja",
+          "name": "日本語 (Japanese)",
+          "path": "languages/ja.json"
+        },
+        {
+          "lang": "ko",
+          "name": "한국어 (Korean)",
+          "path": "languages/ko.json"
+        },
+        {
+          "lang": "ru",
+          "name": "Russian",
+          "path": "languages/ru.json"
         }
     ],
     "packs": [
