@@ -37,7 +37,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     const xp = game.pf2e.gm.calculateXP(partyCombatLevel, partyCombatMembers.length, enemyLevels, hazardLevels, {});
 
     // Trigger animation if conditions are met
-    if (getSetting('from-software.noun-verbed.enabled') && xp >= xpNeeded) {
+    if (getSetting('from-software.noun-verbed.enabled') && (xp?.xpPerPlayer ?? 0) >= xpNeeded) {
         await eldenRingNounVerbed();
     }
 }

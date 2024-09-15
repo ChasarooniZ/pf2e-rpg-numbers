@@ -1,3 +1,5 @@
+# [12.5.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.0...12.5.1) - Not Always Enemy Felled
+- Fixed issue with non calculating XP properly
 # [12.5.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.10...12.5.0) - Enemy Felled
 
 - `From Soft Text`
