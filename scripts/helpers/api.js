@@ -28,7 +28,7 @@ export function createAPI() {
         },
         critAnimation: {
             generate: function (token, critType = "persona") {
-                createCritAnimation({ type: "custom", whisper: [], token }, critType);
+                createCritAnimation({ type: "custom", whisper: [], token: token.document }, critType);
             },
         },
         turnTokenAttack: {
