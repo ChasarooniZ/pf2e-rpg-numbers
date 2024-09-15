@@ -1,5 +1,5 @@
 import { eldenRingDeath, eldenRingNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
-import { getSetting } from "./helpers/misc.js";
+import { getSetting, MODULE_ID } from "./helpers/misc.js";
 
 /**
  * Handles pre-deletion actions for combat encounters.
