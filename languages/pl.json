@@ -36,6 +36,13 @@
                 },
                 "plus-one": "Każde +1 ma znaczenie",
                 "critical": "Trafienie krytyczne",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "Wyskakujące okienka Elden Ring",
+                        "noun-verbed": "Rzeczownik odmieniony",
+                        "death": "Umarłeś"
+                    }
+                },
                 "debug": "Debugowanie"
             },
             "dmg-numbers": {
@@ -469,70 +476,70 @@
                     }
                 }
             },
-            "plus-one": {
-                "enabled": {
-                    "name": "Włączone funkcje Każdy +1 ma znaczenie",
-                    "hint": "Dodaje funkcje związane z modyfikatorami. Wymaga zainstalowania modifiers matters, a także PF2e Animations."
-                }
-            },
             "from-software": {
                 "noun-verbed": {
                     "enabled": {
-                        "name": "Pokazać w „Koniec spotkania”?",
-                        "hint": "Pokaż „Wróg Powalony” lub dowolny tekst dodany na koniec spotkania"
+                        "name": "Pokazać na koniec spotkania?",
+                        "hint": "Pokaż „Wróg wyeliminowany” lub jakikolwiek inny tekst dodany na koniec spotkania."
                     },
                     "xp-threshold": {
-                        "name": "Próg PD końca spotkania",
-                        "hint": "Próg XP spotkania, przy którym będzie wyświetlany tekst zakończenia spotkania (ustawiony na 0, aby zawsze był wyświetlany). "
+                        "name": "Próg PD na koniec spotkania",
+                        "hint": "Próg PD spotkania, aby wyświetlić tekst zakończenia spotkania (ustaw na 0, aby zawsze wyświetlać). [Trywialny: <= 40, Niski: 60, Umiarkowany: 80, Poważny: 120, Ekstremalny: 160]."
                     },
                     "font-size": {
-                        "name": "Rzeczownik Czasownik Rozmiar czcionki",
+                        "name": "Rozmiar czcionki rzeczownika odmienionego",
                         "hint": "Rozmiar czcionki wyskakującego okienka"
                     },
                     "sound-effect": {
-                        "name": "Rzeczownik Czasownik SFX",
-                        "hint": "Efekt dźwiękowy do odtworzenia dla „Noun Verbed”",
+                        "name": "SFX rzeczownika odmienionego",
+                        "hint": "Efekt dźwiękowy do odtworzenia dla „Rzeczownika odmienionego\"",
                         "volume": {
-                            "name": "Rzeczownik Czasownik SFX Volume",
-                            "hint": "Głośność, aby odtworzyć efekt dźwiękowy dla „Noun Verbed”"
+                            "name": "Głośność SFX rzeczownika odmienionego",
+                            "hint": "Głośność odtwarzania efektu dźwiękowego dla „Rzeczownika odmienionego\""
                         }
                     },
                     "duration": {
-                        "name": "Rzeczownik Czas trwania",
+                        "name": "Czas trwania rzeczownika odmiennego",
                         "hint": "Czas wyświetlania wyskakującego okienka w sekundach"
                     },
                     "text": {
-                        "name": "Rzeczownikowy tekst czasownikowy",
-                        "hint": "Tekst do wyświetlenia dla rzeczownika Verbed",
-                        "default": "Wróg Powalony"
+                        "name": "Tekst rzeczownika odmienionego",
+                        "hint": "Tekst do wyświetlenia dla rzeczownika odmienionego",
+                        "default": "Wróg wyeliminowany"
                     }
                 },
                 "death": {
                     "enabled": {
-                        "name": "Pokazuj, kiedy posiadana postać umiera",
-                        "hint": "Pokaż tę wiadomość komputerowi, gdy postać przypisana do użytkownika zginie."
+                        "name": "Pokaż, kiedy postać umiera",
+                        "hint": "Pokazuje tę wiadomość graczowi, gdy jego postać przypisana do gracza umrze."
                     },
                     "font-size": {
-                        "name": "Umarłeś Rozmiar czcionki",
+                        "name": "Rozmiar czcionki \"Umarłeś\"",
                         "hint": "Rozmiar czcionki wyskakującego okienka"
                     },
                     "sound-effect": {
-                        "name": "Umarłeś SFX",
-                        "hint": "Efekt dźwiękowy do zagrania w „You Died”",
+                        "name": "SFX Umarłeś",
+                        "hint": "Efekt dźwiękowy do odtworzenia dla \"Umarłeś\"",
                         "volume": {
-                            "name": "Umarłeś Tom SFX",
-                            "hint": "Głośność, aby odtworzyć efekt dźwiękowy dla „You Died”"
+                            "name": "Głośność SFX Umarłeś",
+                            "hint": "Głośność odtwarzania efektu dźwiękowego dla „Umarłeś\""
                         }
                     },
                     "duration": {
-                        "name": "Czas trwania śmierci",
+                        "name": "Czas trwania Umarłeś",
                         "hint": "Czas wyświetlania wyskakującego okienka w sekundach"
                     },
                     "text": {
-                        "name": "Umarłeś tekst",
-                        "hint": "Tekst do wyświetlenia dla „You Died”",
+                        "name": "Tekst „Umarłeś\"",
+                        "hint": "Tekst do wyświetlenia dla \"Umarłeś\"",
                         "default": "Umarłeś"
                     }
+                }
+            },
+            "plus-one": {
+                "enabled": {
+                    "name": "Włączone funkcje Każdy +1 ma znaczenie",
+                    "hint": "Dodaje funkcje związane z modyfikatorami. Wymaga zainstalowania modifiers matters, a także PF2e Animations."
                 }
             },
             "debug-mode": {
