@@ -17,7 +17,7 @@
 - `Languages`
   - Added machine translated upport for the following languages using [locize](https://translate.i18next.com/)
     - Spanish, French, German, Japanese, Korean, Russian
-    - Polish (@LioHart)
+  - Polish (@LioHeart)
 # [12.4.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.9...12.4.10) - Fire Emblem Clear
 
 - Fixed transparency on the fire emblem crit background (@Nittles)
