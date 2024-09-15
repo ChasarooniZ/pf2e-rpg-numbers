@@ -1,0 +1,602 @@
+{
+    "I18N.LANGUAGE": "영어",
+    "pf2e-rpg-numbers": {
+        "controls": {
+            "finishing-move": {
+                "name": "마무리 동작 표시",
+                "toolclip": {
+                    "heading": "마무리 동작",
+                    "items": {
+                        "description": {
+                            "paragraph": "활성화하면 액션이나 공격을 채팅에 보낼 때 마무리 동작 텍스트가 표시됩니다."
+                        }
+                    }
+                }
+            }
+        },
+        "module-settings": {
+            "enabled": {
+                "name": "모듈 활성화",
+                "hint": "모듈의 기능을 활성화합니다."
+            },
+            "headers": {
+                "dmg-numbers": "피해량",
+                "check-animations": "점검 및 공격 애니메이션",
+                "screen-shake": "화면 흔들림",
+                "token-dmg-shake": {
+                    "title": "토큰 데미지 쉐이크",
+                    "scaling": "토큰 데미지 쉐이크 - 스케일링"
+                },
+                "shake-on-attack": "공격 시 흔들기",
+                "rotate-on-attack": "공격 시 회전",
+                "finishing-move": {
+                    "title": "마무리 동작",
+                    "pcs": "마무리 작업: PC 설정",
+                    "npcs": "마무리 동작: NPC 설정"
+                },
+                "plus-one": "모든 +1 중요사항",
+                "critical": "치명타",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "엘든 링 팝업",
+                        "noun-verbed": "명사 동사",
+                        "death": "당신은 죽었습니다"
+                    }
+                },
+                "debug": "디버그"
+            },
+            "dmg-numbers": {
+                "enabled": {
+                    "name": "피해 수치 활성화",
+                    "hint": "피해 수치 표시"
+                },
+                "on-apply-or-roll": {
+                    "name": "피해 수치를 표시해야 하는 경우",
+                    "hint": "[참고] 적용을 설정하면 이 모듈은 플레이어가 최종 숫자를 볼 때 저항/약점을 모두 공개하고 데미지 롤에 대해 1개의 숫자만 볼 수 있게 합니다.",
+                    "choices": {
+                        "apply": "적용시",
+                        "roll": "롤에"
+                    }
+                },
+                "font-size": {
+                    "name": "글꼴 크기",
+                    "hint": "손상 글꼴의 기본 크기"
+                },
+                "max-font-scale": {
+                    "name": "최대 글꼴 크기",
+                    "hint": "손상 글꼴의 크기를 조정할 수 있는 최대 크기"
+                },
+                "top-offset": {
+                    "name": "토큰 상단으로부터의 오프셋(%)",
+                    "hint": "손상에 대한 토큰 상단의 오프셋 백분율, 정수로 입력(즉, 70은 70%)"
+                },
+                "jitter": {
+                    "name": "지터",
+                    "hint": "피해 텍스트가 스폰 지점 주위로 얼마나 이동할지(0 = 움직이지 않음, 1이면 토큰 가장자리에 스폰될 수 있음)"
+                },
+                "number-scale-type": {
+                    "name": "숫자 척도 유형",
+                    "hint": "피해 규모에 대한 스케일링 유형 RPG 수치",
+                    "choices": {
+                        "percentRemainingHealth": "남은 HP의 %",
+                        "percentMaxHealth": "최대 HP의 %",
+                        "none": "없음"
+                    }
+                },
+                "damage-split": {
+                    "name": "피해 분할",
+                    "hint": "피해량을 롤에서 분할하는 방법(없음: 전체만, 유형별: 피해 유형별, 전체: 모든 항목을 분할함)",
+                    "choices": {
+                        "none": "없음",
+                        "by-damage-type": "손상 유형별",
+                        "all": "모두"
+                    }
+                },
+                "duration": {
+                    "name": "텍스트 기간",
+                    "hint": "피해 텍스트가 몇 초 안에 사라질 때까지의 시간"
+                },
+                "wait-time-between-numbers": {
+                    "name": "숫자 간 대기 시간(ms)",
+                    "hint": "게임이 다음 데미지를 생성하기 전에 각 데미지 수치 사이의 시간을 밀리초 단위로 나타냅니다."
+                },
+                "show-only-GM": {
+                    "name": "GM에게만 숫자 표시",
+                    "hint": "마음에 드는 경우에만 게임의 피해량 수치를 표시하세요. 하지만 그다지 많지는 않습니다."
+                },
+                "animation-scale": {
+                    "name": "애니메이션 스케일",
+                    "hint": "손상 수치가 토큰에서 얼마나 멀리 이동해야 합니까?"
+                },
+                "show-total": {
+                    "name": "합계 표시",
+                    "hint": "토큰 중앙에 다른 피해 수치와 함께 총계를 숫자로 표시합니다."
+                }
+            },
+            "check-animations": {
+                "enabled": {
+                    "name": "RPG 검사 및 공격 활성화",
+                    "hint": "체크 및 공격 시도 시 숫자 팝업 표시"
+                },
+                "duration": {
+                    "name": "기간 확인",
+                    "hint": "수표번호 팝업이 표시되는 시간"
+                },
+                "font-size": {
+                    "name": "글꼴 크기 확인",
+                    "hint": "체크 글꼴 크기"
+                },
+                "outcome-result": {
+                    "name": "d20 수표 롤에 표시할 항목을 선택하세요.",
+                    "hint": "숫자는 d20 + 모드 결과를 보여주고, 결과는 치명타 성공, 성공 등을 보여주며, 전투 치명타가 없는 결과는 pf2e 애니메이션과의 호환성을 의미하는 전투 치명타 미스 및 적중이 없는 결과를 보여줍니다.",
+                    "choices": {
+                        "numbers": "숫자",
+                        "outcome-except-combat-crits": "전투 치명타가 없는 결과",
+                        "outcome": "결과"
+                    }
+                },
+                "color-scheme": {
+                    "name": "체크테마 선택",
+                    "hint": "(체크 색상 변경) 현재 기본 테마가 있고 어두운 모드 테마가 있으며 나중에 더 많은 가시성을 추가할 예정입니다.",
+                    "choices": {
+                        "default": "기본",
+                        "dark": "어두운 테마"
+                    }
+                },
+                "sfx": {
+                    "enabled": {
+                        "name": "SFX 확인",
+                        "hint": "결과 확인 시 SFX 재생 여부 선택"
+                    },
+                    "check-or-attack": {
+                        "name": "공격 롤에 대한 SFX 확인",
+                        "hint": "Attack Rolls에 대해 SFX를 재생할 것인지, 확인만 할 것인지, 아니면 둘 다를 재생할 것인지 선택하세요.",
+                        "choices": {
+                            "both": "둘 다",
+                            "attacks": "공격만",
+                            "checks": "수표만"
+                        }
+                    },
+                    "options": {
+                        "name": "SFX 옵션 확인",
+                        "hint": "재생할 SFX와 시기를 선택하세요.  ",
+                        "choices": {
+                            "none": "없음",
+                            "all": "모두",
+                            "success-or-fail": "성공 또는 실패",
+                            "crits-only": "치명타만"
+                        }
+                    },
+                    "volume": {
+                        "name": "SFX 볼륨 확인",
+                        "hint": "SFX가 얼마나 시끄러운가요?"
+                    },
+                    "file": {
+                        "criticalSuccess": {
+                            "name": "SFX 확인: 치명타. ",
+                            "hint": "SFX를 선택합니다('성공 또는 실패' 설정에서는 아무 작업도 수행하지 않음)."
+                        },
+                        "success": {
+                            "name": "SFX 확인: 성공",
+                            "hint": "SFX 선택('성공 또는 실패' 설정에서 성공으로 사용됨)"
+                        },
+                        "failure": {
+                            "name": "SFX 확인: 실패",
+                            "hint": "SFX 선택('성공 또는 실패' 설정에서 실패로 사용됨)"
+                        },
+                        "criticalFailure": {
+                            "name": "SFX 확인: 치명타. ",
+                            "hint": "SFX를 선택합니다('성공 또는 실패' 설정에서는 아무 작업도 수행하지 않음)."
+                        }
+                    }
+                }
+            },
+            "shake-on-attack": {
+                "enabled": {
+                    "name": "공격 시 흔들기 활성화",
+                    "hint": "공격할 때 화면이 흔들리고, 크리티컬할 때 더 흔들린다."
+                },
+                "type": {
+                    "name": "공격 시 흔들기 활성화 여부",
+                    "hint": "공격 시 흔들림을 활성화할 대상을 선택하세요.",
+                    "choices": {
+                        "both": "둘 다",
+                        "gm": "GM 전용",
+                        "players": "플레이어 전용"
+                    }
+                }
+            },
+            "screen-shake": {
+                "enabled": {
+                    "name": "데미지 쉐이크 활성화",
+                    "hint": "pf2e의 피해 적용 버튼을 사용하여 피해를 가할 때 화면이 흔들립니다."
+                },
+                "duration": {
+                    "name": "지속",
+                    "hint": "MS에서 화면을 흔드는 데 걸리는 시간"
+                },
+                "intensity-max": {
+                    "name": "강함",
+                    "hint": "화면을 흔들기가 얼마나 어려운지"
+                },
+                "intensity-type": {
+                    "name": "강도 조정",
+                    "hint": "화면 흔들림 강도를 어떻게 조정해야 할까요? ",
+                    "choices": {
+                        "max": "없음",
+                        "%-current-hp": "% 현재 HP",
+                        "%-max-hp": "% 최대 HP"
+                    }
+                },
+                "intensity-include-temp-hp": {
+                    "name": "스케일링에 임시 HP가 포함되어야 하나요?",
+                    "hint": "HP에 영향을 미치는 강도를 선택한 경우 이를 켜면 임시 HP가 포함됩니다."
+                },
+                "gm-enabled": {
+                    "name": "GM에 대한 흔들기 활성화",
+                    "hint": "GM이 플레이어 소유자가 없는 모든 액터와 해당 토큰에 대해 화면 흔들림을 경험하게 합니다."
+                }
+            },
+            "token-dmg-shake": {
+                "enabled": {
+                    "name": "손상 시 토큰 흔들림 활성화",
+                    "hint": "토큰에 피해를 가하면 토큰이 흔들립니다."
+                },
+                "distance": {
+                    "name": "토큰 흔들림 거리",
+                    "hint": "토큰 너비의 %로 나타낸 거리"
+                },
+                "shakes": {
+                    "name": "토큰이 흔들리는 횟수",
+                    "hint": "타임 토큰 셰이크 횟수"
+                },
+                "duration": {
+                    "name": "흔들림 지속 시간",
+                    "hint": "토큰이 흔들리는 시간(ms)"
+                },
+                "only-temp-hp-disable-shake": {
+                    "name": "임시 HP가 흔들림을 흡수합니까?",
+                    "hint": "모든 피해가 임시 HP에만 해당되는 경우 토큰이 흔들리지 않도록 하려면 이 옵션을 켜세요."
+                },
+                "scaling": {
+                    "type": {
+                        "name": "토큰 쉐이킹 스케일링",
+                        "hint": "흔들림을 확장하려면 무엇을 해야 할까요?",
+                        "choices": {
+                            "no": "아무것도 아님",
+                            "%-current-hp": "% 현재 HP",
+                            "%-max-hp": "% 최대 HP"
+                        }
+                    },
+                    "distance": {
+                        "name": "흔들림의 거리 측정",
+                        "hint": "흔들림 거리의 크기를 조정합니다(no = 크기 조정 없음, max = 이에 대한 설정을 최대값으로 처리, mid = 이에 대한 설정을 중간 값으로 처리)",
+                        "choices": {
+                            "no": "아니요",
+                            "max": "맥스",
+                            "mid": "가운데"
+                        }
+                    },
+                    "shakes": {
+                        "name": "흔들림의 규모 수",
+                        "hint": "흔들리는 횟수의 크기를 조정합니다(no = 크기 조정 없음, max = 설정을 최대값으로 처리, mid = 설정을 중간 값으로 처리)",
+                        "choices": {
+                            "no": "아니요",
+                            "max": "맥스",
+                            "mid": "가운데"
+                        }
+                    },
+                    "duration": {
+                        "name": "확장 기간",
+                        "hint": "흔들림의 크기 조정 지속 시간(no = 크기 조정 없음, max = 이에 대한 설정을 최대로 처리, mid = 이에 대한 설정을 중간 값으로 처리)",
+                        "choices": {
+                            "no": "아니요",
+                            "max": "맥스",
+                            "mid": "가운데"
+                        }
+                    }
+                }
+            },
+            "rotate-on-attack": {
+                "enabled": {
+                    "name": "공격 시 토큰 순환 활성화",
+                    "hint": "공격할 때 토큰은 공격하는 쪽을 향해 회전한 다음 원래 회전으로 돌아갑니다. "
+                },
+                "duration": {
+                    "name": "토큰 순환 기간",
+                    "hint": "토큰이 적을 향해 회전하는 데 걸리는 시간(초)(기본값은 0.5초, 회전하고 되돌아오는 데 걸리는 전체 시간은 여기 시간의 1.5배입니다)"
+                },
+                "scale-on-size": {
+                    "name": "토큰 교체 기간 크기 조정 활성화",
+                    "hint": "공격자의 크기에 따라 회전이 더 오래 걸릴 수 있도록 허용합니다(점유하는 사각형 수에 따라 조정됨)."
+                }
+            },
+            "critical": {
+                "enabled": {
+                    "name": "중요한 애니메이션 활성화",
+                    "hint": "치명타 발생 시 멋진 애니메이션을 표시할 수 있습니다. "
+                },
+                "player-enabled": {
+                    "name": "중요한 애니메이션 활성화 - 당신을 위해",
+                    "hint": "멋진 애니메이션을 활성화하여 치명타를 직접 보여주세요. "
+                },
+                "sound": {
+                    "name": "중요한 애니메이션 사운드",
+                    "hint": "중요한 애니메이션에 사용할 사운드"
+                },
+                "volume": {
+                    "name": "중요한 애니메이션 볼륨",
+                    "hint": "중요한 애니메이션의 사운드 볼륨 %"
+                },
+                "duration": {
+                    "name": "중요한 애니메이션 기간",
+                    "hint": "소리와 효과의 지속 시간"
+                },
+                "type": {
+                    "name": "중요한 애니메이션 유형",
+                    "hint": "중요한 애니메이션 유형 선택",
+                    "choices": {
+                        "persona": "페르소나",
+                        "fire-emblem": "파이어 엠블렘"
+                    }
+                },
+                "show-on": {
+                    "name": "중요한 애니메이션 표시 켜기",
+                    "hint": "공격, 확인 또는 둘 다에 중요한 애니메이션을 표시할지 선택합니다.",
+                    "choices": {
+                        "attacks": "공격",
+                        "checks": "체크 무늬",
+                        "both": "둘 다"
+                    }
+                },
+                "show-on-token-type": {
+                    "name": "다음에 대한 중요한 애니메이션 표시",
+                    "hint": "PC, NPCS 또는 둘 다에 대한 중요한 애니메이션을 표시하도록 선택하십시오.",
+                    "choices": {
+                        "pc": "PC",
+                        "npc": "NPC",
+                        "pc+npc": "PC 및 NPC"
+                    }
+                },
+                "default-img": {
+                    "name": "기본 이미지",
+                    "hint": "기본 이미지를 가질 항목을 선택하세요",
+                    "choices": {
+                        "pc-tok-npc-tok": "PC: 토큰 | ",
+                        "pc-act-npc-act": "PC: 배우 | ",
+                        "pc-tok-npc-act": "PC: 토큰 | ",
+                        "pc-act-npc-tok": "PC: 배우 | "
+                    }
+                },
+                "delay": {
+                    "name": "지연",
+                    "hint": "중요한 애니메이션이 나타날 때 지연되는 시간(초)"
+                }
+            },
+            "finishing-move": {
+                "enabled": {
+                    "name": "마무리 동작 활성화",
+                    "hint": "액션을 사용하고 HUD 요소를 켜면 액션에 대한 멋진 정보를 얻을 수 있습니다."
+                },
+                "enabled-players": {
+                    "name": "플레이어를 위한 마무리 동작 옵션 활성화",
+                    "hint": "플레이어가 마무리 동작 기능을 사용할 수 있도록 허용(Reloads Foundry)"
+                },
+                "keep-on": {
+                    "name": "마무리 작업을 계속하세요",
+                    "hint": "더 이상 마무리 이동 효과를 만든 후 마무리 이동을 끄지 않습니다."
+                },
+                "use-player-color": {
+                    "name": "플레이어 색상 사용",
+                    "hint": "글로우 주변 이동을 마무리하려면 플레이어 색상을 사용하세요."
+                },
+                "quality": {
+                    "name": "텍스트 품질",
+                    "hint": "마무리 이동 텍스트 품질 설정(1 - 최저, 5 - 최고)"
+                },
+                "mode": {
+                    "name": "동작을 표시해야 하는 경우",
+                    "hint": "HUD 토글이 필요하지 않습니다",
+                    "choices": {
+                        "toggled": "전환 시 항상 표시",
+                        "always": "항상 표시",
+                        "always-if-seen": "🙌 메시지",
+                        "if-seen-or-toggle": "🙌 메시지 또는 전환됨",
+                        "if-seen-and-toggle": "🙌 메시지 및 전환됨"
+                    }
+                },
+                "show-for": {
+                    "pcs": {
+                        "name": "PC용으로 표시",
+                        "hint": "마무리 동작을 PC에 시각적으로 표시"
+                    },
+                    "npcs": {
+                        "name": "NPC에게 표시",
+                        "hint": "NPC에게 마무리 동작 시각적 표시"
+                    }
+                },
+                "show-on": {
+                    "actions": {
+                        "name": "모든 유형의 작업에 대해",
+                        "hint": "모든 유형의 행동에 표시됩니다(주문이나 공격은 아님).",
+                        "one": {
+                            "name": "[작업] 작업 1개 표시",
+                            "hint": "작업 1개 표시"
+                        },
+                        "two": {
+                            "name": "[작업] 2 작업 표시",
+                            "hint": "두 가지 작업 표시"
+                        },
+                        "three": {
+                            "name": "[작업] 3개 작업 표시",
+                            "hint": "세 가지 작업 표시"
+                        },
+                        "reaction": {
+                            "name": "[작업] 반응 표시",
+                            "hint": "반응 표시"
+                        },
+                        "free": {
+                            "name": "[액션] 무료 액션 표시",
+                            "hint": "무료 활동 표시"
+                        }
+                    },
+                    "spells": {
+                        "name": "주문에",
+                        "hint": "주문에 표시",
+                        "ranked": {
+                            "name": "등급 주문에 대해",
+                            "hint": "주문 슬롯을 차지하는 주문에 표시"
+                        },
+                        "cantrips": {
+                            "name": "캔트립에서",
+                            "hint": "캔트립에 표시"
+                        }
+                    },
+                    "attacks": {
+                        "name": "공격 시",
+                        "hint": "공격 시 표시"
+                    }
+                },
+                "duration": {
+                    "end": {
+                        "name": "종료 기간",
+                        "hint": "화면 끝 부분에 모든 텍스트를 표시하는 기간(ms)"
+                    },
+                    "word": {
+                        "name": "단어 지속 시간",
+                        "hint": "ms 단위로 다음 단어를 표시하기 전에 기다려야 하는 시간"
+                    }
+                },
+                "sound-effect": {
+                    "name": "마무리 동작 SFX",
+                    "hint": "나타나는 각 단어에 대해 재생되는 음향 효과",
+                    "volume": {
+                        "name": "이동 SFX 볼륨 마무리",
+                        "hint": "나타나는 각 단어에 대해 재생할 음향 효과 볼륨"
+                    }
+                }
+            },
+            "from-software": {
+                "noun-verbed": {
+                    "enabled": {
+                        "name": "만남이 끝나면 표시하시겠습니까?",
+                        "hint": "조우가 끝나면 'Enemy Felled' 또는 추가한 텍스트를 표시하세요."
+                    },
+                    "xp-threshold": {
+                        "name": "만남 종료 XP 임계값",
+                        "hint": "조우의 끝 텍스트를 표시하기 위한 조우의 XP 임계값입니다(항상 표시하려면 0으로 설정). "
+                    },
+                    "font-size": {
+                        "name": "명사 동사 글꼴 크기",
+                        "hint": "팝업의 글꼴 크기"
+                    },
+                    "sound-effect": {
+                        "name": "명사 동사 SFX",
+                        "hint": "'명사 동사'에 대해 재생할 음향 효과",
+                        "volume": {
+                            "name": "명사 동사 SFX 볼륨",
+                            "hint": "'명사 동사'의 음향 효과를 재생하는 볼륨"
+                        }
+                    },
+                    "duration": {
+                        "name": "명사 동사 기간",
+                        "hint": "팝업을 표시하는 시간(초)"
+                    },
+                    "text": {
+                        "name": "명사 동사 텍스트",
+                        "hint": "명사 동사에 대해 표시할 텍스트",
+                        "default": "적 쓰러짐"
+                    }
+                },
+                "death": {
+                    "enabled": {
+                        "name": "소유한 캐릭터가 사망할 때 표시",
+                        "hint": "사용자에게 할당된 캐릭터가 사망하면 PC에 이 메시지를 표시합니다."
+                    },
+                    "font-size": {
+                        "name": "당신은 죽었다 글꼴 크기",
+                        "hint": "팝업의 글꼴 크기"
+                    },
+                    "sound-effect": {
+                        "name": "당신은 죽었다 SFX",
+                        "hint": "'You Died'에 사용할 음향 효과",
+                        "volume": {
+                            "name": "당신은 죽었다 SFX 볼륨",
+                            "hint": "'You Died' 사운드 효과를 재생하는 볼륨"
+                        }
+                    },
+                    "duration": {
+                        "name": "당신은 사망했습니다.",
+                        "hint": "팝업을 표시하는 시간(초)"
+                    },
+                    "text": {
+                        "name": "당신은 죽었어 텍스트",
+                        "hint": "'You Died'에 표시할 텍스트",
+                        "default": "당신은 죽었습니다"
+                    }
+                }
+            },
+            "plus-one": {
+                "enabled": {
+                    "name": "+1 문제가 발생할 때마다 활성화됨",
+                    "hint": "수정자 문제와 관련된 기능을 추가합니다. "
+                }
+            },
+            "debug-mode": {
+                "name": "디버그 모드",
+                "hint": "콘솔이 다양한 내용에 대한 메시지를 받도록 합니다."
+            }
+        },
+        "display-text": {
+            "outcomes": {
+                "criticalFailure": "중대한 실패",
+                "failure": "실패",
+                "success": "성공",
+                "criticalSuccess": "중요한 성공"
+            }
+        },
+        "token-options": {
+            "tab-label": "PF2e RPG #",
+            "rotation-offset": {
+                "name": "공격 켜기 - 회전 오프셋",
+                "hint": "공격 회전 켜기를 상쇄할 정도를 설정합니다. "
+            },
+            "fire-emblem-img": {
+                "name": "파이어 엠블렘 크리티컬 픽",
+                "hint": "'Fire Emblem' 선택 시 토큰의 치명타에 대해 표시되는 이미지"
+            },
+            "persona-img": {
+                "name": "페르소나 크리티컬 픽",
+                "hint": "'페르소나'를 선택한 경우 토큰의 치명타에 대해 표시되는 이미지"
+            },
+            "crit": {
+                "offset-x": {
+                    "name": "치명타 X 오프셋",
+                    "hint": "이것은 %이므로 100이면 전체 이미지 길이만큼 오른쪽으로 이동합니다."
+                },
+                "offset-y": {
+                    "name": "치명타 Y 오프셋",
+                    "hint": "이는 %이므로 100이면 전체 이미지 길이를 한 단계 아래로 이동합니다."
+                },
+                "scale": {
+                    "name": "치명타 규모",
+                    "hint": "% 단위로 확대할 치명타 이미지 크기"
+                },
+                "rotation": {
+                    "name": "치명타 로테이션",
+                    "hint": "치명타 효과를 얼마나 회전시킬 것인가"
+                },
+                "sfx": {
+                    "name": "치명타 SFX",
+                    "hint": "기본 치명타 사운드를 사용자 정의 사운드로 재정의하려면 이를 설정하세요."
+                }
+            }
+        },
+        "keybinds": {
+            "activate-finishing-move": {
+                "name": "마무리 동작 활성화",
+                "hint": "활성화한 경우 마무리 동작을 활성화합니다."
+            }
+        }
+    }
+}

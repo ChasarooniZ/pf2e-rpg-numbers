@@ -29,8 +29,8 @@
                 "type": "module",
                 "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
                 "compatibility": {
-                    "minimum": "3.0.0",
-                    "verified": "3.2.0"
+                    "minimum": "3.2.0",
+                    "verified": "3.2.17"
                 }
             }
         ],
@@ -50,7 +50,54 @@
             "lang": "en",
             "name": "English",
             "path": "languages/en.json"
+        },
+        {
+          "lang": "es",
+          "name": "Español",
+          "path": "languages/es.json"
+        },
+        {
+          "lang": "fr",
+          "name": "Français",
+          "path": "languages/fr.json"
+        },
+        {
+          "lang": "de",
+          "name": "Deutsch",
+          "path": "languages/de.json"
+        },
+        {
+          "lang": "pl",
+          "name": "Polish",
+          "path": "languages/pl.json"
+        },
+        {
+          "lang": "ja",
+          "name": "日本語 (Japanese)",
+          "path": "languages/ja.json"
+        },
+        {
+          "lang": "ko",
+          "name": "한국어 (Korean)",
+          "path": "languages/ko.json"
+        },
+        {
+          "lang": "ru",
+          "name": "Russian",
+          "path": "languages/ru.json"
         }
+    ],
+    "packs": [
+      {
+        "name": "pf2e-rpg-numbers-macros",
+        "label": "PF2e RPG Numbers Macros",
+        "path": "packs/pf2e-rpg-numbers-macros",
+        "type": "Macro",
+        "ownership": {
+          "PLAYER": "OBSERVER",
+          "ASSISTANT": "OWNER"
+        }
+      }
     ],
     "url": "#{URL}#",
     "manifest": "#{MANIFEST}#",

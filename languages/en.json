@@ -36,6 +36,13 @@
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "Elden Ring Pop Ups",
+                        "noun-verbed": "Noun Verbed",
+                        "death": "You Died"
+                    }
+                },
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -466,6 +473,66 @@
                     "volume": {
                         "name": "Finishing Move SFX Volume",
                         "hint": "Sound Effect Volume to play for each Word that appears"
+                    }
+                }
+            },
+            "from-software": {
+                "noun-verbed": {
+                    "enabled": {
+                        "name": "Show on End of Encounter?",
+                        "hint": "Show 'Enemy Felled' or whatever text you've added at end of encounter"
+                    },
+                    "xp-threshold": {
+                        "name": "End of Encounter XP Threshold",
+                        "hint": "XP Threshold of the encounter to have the End of Encounter text to show (set to 0 to always show). [Trivial: <= 40, Low: 60, Moderate: 80, Severe: 120, Extreme: 160]"
+                    },
+                    "font-size": {
+                        "name": "Noun Verbed Font Size",
+                        "hint": "Font size of the pop-up"
+                    },
+                    "sound-effect": {
+                        "name": "Noun Verbed SFX",
+                        "hint": "Sound effect to play for 'Noun Verbed'",
+                        "volume": {
+                            "name": "Noun Verbed SFX Volume",
+                            "hint": "Volume to play sound effect for 'Noun Verbed'"
+                        }
+                    },
+                    "duration": {
+                        "name": "Noun Verbed Duration",
+                        "hint": "How long to display the pop up in seconds"
+                    },
+                    "text": {
+                        "name": "Noun Verbed Text",
+                        "hint": "Text to display for Noun Verbed",
+                        "default": "Enemy Felled"
+                    }
+                },
+                "death": {
+                    "enabled": {
+                        "name": "Show when owned character Dies",
+                        "hint": "Show this message to a PC when their character assigned to their user died."
+                    },
+                    "font-size": {
+                        "name": "You Died Font Size",
+                        "hint": "Font size of the pop-up"
+                    },
+                    "sound-effect": {
+                        "name": "You Died SFX",
+                        "hint": "Sound effect to play for 'You Died'",
+                        "volume": {
+                            "name": "You Died SFX Volume",
+                            "hint": "Volume to play sound effect for 'You Died'"
+                        }
+                    },
+                    "duration": {
+                        "name": "You Died Duration",
+                        "hint": "How long to display the pop up in seconds"
+                    },
+                    "text": {
+                        "name": "You Died Text",
+                        "hint": "Text to display for 'You Died'",
+                        "default": "You Died"
                     }
                 }
             },

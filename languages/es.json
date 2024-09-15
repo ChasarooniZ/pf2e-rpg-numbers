@@ -1,0 +1,602 @@
+{
+    "I18N.LANGUAGE": "Inglés",
+    "pf2e-rpg-numbers": {
+        "controls": {
+            "finishing-move": {
+                "name": "Mostrar movimientos finales",
+                "toolclip": {
+                    "heading": "Movimiento final",
+                    "items": {
+                        "description": {
+                            "paragraph": "Actívalo para que aparezca el texto de movimiento final cuando envías una acción o ataque al chat."
+                        }
+                    }
+                }
+            }
+        },
+        "module-settings": {
+            "enabled": {
+                "name": "Habilitar módulo",
+                "hint": "Habilita la funcionalidad del módulo."
+            },
+            "headers": {
+                "dmg-numbers": "Números de daños",
+                "check-animations": "Controles y animaciones de ataque",
+                "screen-shake": "Temblor de pantalla",
+                "token-dmg-shake": {
+                    "title": "Batido de daño simbólico",
+                    "scaling": "Batido de daño simbólico: escalado"
+                },
+                "shake-on-attack": "Agitar al atacar",
+                "rotate-on-attack": "Girar al atacar",
+                "finishing-move": {
+                    "title": "Movimientos finales",
+                    "pcs": "Movimientos finales: configuración de PC",
+                    "npcs": "Movimientos finales: configuración de NPC"
+                },
+                "plus-one": "Cada +1 importa",
+                "critical": "Golpe crítico",
+                "fromSoftware": {
+                    "elden-ring": {
+                        "title": "Ventanas emergentes del anillo de Elden",
+                        "noun-verbed": "Sustantivo verbal",
+                        "death": "tu moriste"
+                    }
+                },
+                "debug": "Depurar"
+            },
+            "dmg-numbers": {
+                "enabled": {
+                    "name": "Habilitar números de daños",
+                    "hint": "Mostrar números de daños"
+                },
+                "on-apply-or-roll": {
+                    "name": "Cuándo mostrar los números de daños",
+                    "hint": "[NOTA] Si configuras Aplicar, este módulo revelará la cantidad de resistencia/debilidad a medida que los jugadores vean el número final, y solo te permitirá ver 1 número para tu tirada de daño.",
+                    "choices": {
+                        "apply": "Al aplicar",
+                        "roll": "En rollo"
+                    }
+                },
+                "font-size": {
+                    "name": "Tamaño de fuente",
+                    "hint": "Tamaño predeterminado de la fuente dañada"
+                },
+                "max-font-scale": {
+                    "name": "Escala de fuente máxima",
+                    "hint": "Tamaño máximo para escalar la fuente dañada"
+                },
+                "top-offset": {
+                    "name": "% de compensación desde la parte superior del token",
+                    "hint": "Porcentaje de compensación desde la parte superior del token por el daño, ingresado como número entero (es decir, 70 es 70%)"
+                },
+                "jitter": {
+                    "name": "Estar nervioso",
+                    "hint": "Cuánto se moverá el texto de daño alrededor de su punto de generación (0 = no se mueve, 1 significa que podría aparecer en los bordes de la ficha)"
+                },
+                "number-scale-type": {
+                    "name": "Tipo de escala numérica",
+                    "hint": "Tipo de escala para el tamaño del daño Números RPG",
+                    "choices": {
+                        "percentRemainingHealth": "% de HP restantes",
+                        "percentMaxHealth": "% de HP máximo",
+                        "none": "Ninguno"
+                    }
+                },
+                "damage-split": {
+                    "name": "División de daños",
+                    "hint": "Cómo dividir los números de daño de la tirada (Ninguno: solo total, Por tipo: Por tipo de daño, Todos: Divide todos los términos)",
+                    "choices": {
+                        "none": "Ninguno",
+                        "by-damage-type": "Por tipo de daño",
+                        "all": "Todo"
+                    }
+                },
+                "duration": {
+                    "name": "Duración del texto",
+                    "hint": "¿Cuánto tiempo hasta que el texto de daño desaparezca en segundos?"
+                },
+                "wait-time-between-numbers": {
+                    "name": "Tiempo de espera entre números (ms)",
+                    "hint": "¿Cuánto tiempo debe esperar el juego entre cada número de daño antes de generar el siguiente, en milisegundos?"
+                },
+                "show-only-GM": {
+                    "name": "Mostrar números solo para GM",
+                    "hint": "Muestra los números de daño solo para el juego si te gustan, pero no tanto."
+                },
+                "animation-scale": {
+                    "name": "Escala de animación",
+                    "hint": "¿A qué distancia de la ficha deberían moverse los números de daño?"
+                },
+                "show-total": {
+                    "name": "Mostrar total",
+                    "hint": "Mostrar el total como un número en el centro de la ficha además de otros números de daño"
+                }
+            },
+            "check-animations": {
+                "enabled": {
+                    "name": "Habilitar comprobaciones y ataques de RPG",
+                    "hint": "Mostrar números emergentes al intentar realizar controles y ataques"
+                },
+                "duration": {
+                    "name": "Verificar duración",
+                    "hint": "Hora de que aparezca el número de cheque para mostrar"
+                },
+                "font-size": {
+                    "name": "Comprobar tamaño de fuente",
+                    "hint": "Tamaño de la fuente del cheque"
+                },
+                "outcome-result": {
+                    "name": "Elija qué mostrar para las tiradas de verificación d20",
+                    "hint": "Los números muestran el resultado de las modificaciones d20 +, el resultado muestra el éxito crítico, el éxito, etc., y el resultado sin críticos de combate muestra el resultado sin errores ni aciertos críticos de combate, lo que significa compatibilidad con las animaciones de pf2e.",
+                    "choices": {
+                        "numbers": "Números",
+                        "outcome-except-combat-crits": "Resultado sin críticos de combate",
+                        "outcome": "Resultado"
+                    }
+                },
+                "color-scheme": {
+                    "name": "Seleccione el tema de verificación",
+                    "hint": "(Cambia la coloración de los controles) Actualmente tiene un tema predeterminado y un tema de modo oscuro, agregará más visibilidad, etc., más adelante.",
+                    "choices": {
+                        "default": "Por defecto",
+                        "dark": "Tema oscuro"
+                    }
+                },
+                "sfx": {
+                    "enabled": {
+                        "name": "Comprobar efectos de sonido",
+                        "hint": "Seleccione si reproducir sfx al verificar los resultados"
+                    },
+                    "check-or-attack": {
+                        "name": "Verifique SFX para ver las tiradas de ataque",
+                        "hint": "Seleccione si desea reproducir sfx para tiradas de ataque, solo controles o ambos",
+                        "choices": {
+                            "both": "Ambos",
+                            "attacks": "Sólo ataques",
+                            "checks": "Sólo cheques"
+                        }
+                    },
+                    "options": {
+                        "name": "Verifique la opción SFX",
+                        "hint": "Seleccione qué SFX reproducir y cuándo.  ",
+                        "choices": {
+                            "none": "Ninguno",
+                            "all": "Todo",
+                            "success-or-fail": "Éxito o fracaso",
+                            "crits-only": "Sólo críticos"
+                        }
+                    },
+                    "volume": {
+                        "name": "Comprobar volumen SFX",
+                        "hint": "¿Qué tan fuertes son los efectos especiales?"
+                    },
+                    "file": {
+                        "criticalSuccess": {
+                            "name": "Verificar SFX: crítico. ",
+                            "hint": "Seleccione SFX (esto no hace nada en la configuración 'Éxito o fracaso')"
+                        },
+                        "success": {
+                            "name": "Verificar SFX: Éxito",
+                            "hint": "Seleccione SFX (usado como Éxito en la configuración 'Éxito o Fracaso')"
+                        },
+                        "failure": {
+                            "name": "Verificar SFX: Fallo",
+                            "hint": "Seleccione SFX (usado como Fallo en la configuración 'Éxito o Fracaso')"
+                        },
+                        "criticalFailure": {
+                            "name": "Verificar SFX: crítico. ",
+                            "hint": "Seleccione SFX (esto no hace nada en la configuración 'Éxito o fracaso')"
+                        }
+                    }
+                }
+            },
+            "shake-on-attack": {
+                "enabled": {
+                    "name": "Habilitar agitación al atacar",
+                    "hint": "Sacude la pantalla cuando atacas, tiembla más cuando haces un crítico"
+                },
+                "type": {
+                    "name": "¿Agitación al atacar habilitada?",
+                    "hint": "Elige para quién está habilitado el movimiento en ataque",
+                    "choices": {
+                        "both": "Ambos",
+                        "gm": "Sólo GM",
+                        "players": "Sólo jugadores"
+                    }
+                }
+            },
+            "screen-shake": {
+                "enabled": {
+                    "name": "Habilitar vibración de daño",
+                    "hint": "Sacude la pantalla cuando aplicas daño usando el botón de aplicar daño de pf2e"
+                },
+                "duration": {
+                    "name": "Duración",
+                    "hint": "¿Cuánto tiempo falta para agitar la pantalla en MS?"
+                },
+                "intensity-max": {
+                    "name": "Intensidad",
+                    "hint": "Que difícil sacudir la pantalla"
+                },
+                "intensity-type": {
+                    "name": "Escala de intensidad",
+                    "hint": "¿Cómo debería escalarse la intensidad del movimiento de la pantalla? ",
+                    "choices": {
+                        "max": "Ninguno",
+                        "%-current-hp": "% de caballos de fuerza actuales",
+                        "%-max-hp": "% de HP máx."
+                    }
+                },
+                "intensity-include-temp-hp": {
+                    "name": "¿Debería el escalado incluir Temp HP?",
+                    "hint": "Si escogiste una intensidad que reduce los hp, al activarla se incluirán los hp temporales."
+                },
+                "gm-enabled": {
+                    "name": "Habilitar agitación para GM",
+                    "hint": "Hace que el GM experimente vibración en la pantalla de cualquier actor y sus fichas que no tengan un propietario de jugador."
+                }
+            },
+            "token-dmg-shake": {
+                "enabled": {
+                    "name": "Habilitar la sacudida de tokens en caso de daño",
+                    "hint": "Cuando aplicas daño a una ficha, haz que tiemble."
+                },
+                "distance": {
+                    "name": "Distancia de sacudida de fichas",
+                    "hint": "Distancia como % del ancho del Token"
+                },
+                "shakes": {
+                    "name": "Número de veces que el token se sacude",
+                    "hint": "Número de sacudidas del token de tiempo"
+                },
+                "duration": {
+                    "name": "Duración del batido",
+                    "hint": "Cantidad de tiempo (ms) que el token se agita"
+                },
+                "only-temp-hp-disable-shake": {
+                    "name": "¿HP temporal absorbe batidos?",
+                    "hint": "Active esta opción si desea que la ficha no tiemble si todo el daño infligido es solo a HP temporal."
+                },
+                "scaling": {
+                    "type": {
+                        "name": "Escalado de vibración de tokens",
+                        "hint": "De qué escalar la sacudida",
+                        "choices": {
+                            "no": "Nada",
+                            "%-current-hp": "% de caballos de fuerza actuales",
+                            "%-max-hp": "% de HP máx."
+                        }
+                    },
+                    "distance": {
+                        "name": "Distancia de escala de sacudidas.",
+                        "hint": "Escala la distancia de las sacudidas (no = sin escala, max = trata la configuración para esto como máxima, mid = trata la configuración para esto como el valor medio)",
+                        "choices": {
+                            "no": "No",
+                            "max": "máx.",
+                            "mid": "Medio"
+                        }
+                    },
+                    "shakes": {
+                        "name": "Número de escala de batidos.",
+                        "hint": "Escale cuántas veces se agitan (no = sin escala, máximo = trate la configuración para esto como máxima, media = trate la configuración para esto como el valor medio)",
+                        "choices": {
+                            "no": "No",
+                            "max": "máx.",
+                            "mid": "Medio"
+                        }
+                    },
+                    "duration": {
+                        "name": "Duración de la escala",
+                        "hint": "Escalar la duración de los batidos (no = sin escalar, max = tratar la configuración para esto como máxima, mid = tratar la configuración para esto como el valor medio)",
+                        "choices": {
+                            "no": "No",
+                            "max": "máx.",
+                            "mid": "Medio"
+                        }
+                    }
+                }
+            },
+            "rotate-on-attack": {
+                "enabled": {
+                    "name": "Habilitar la rotación de tokens al atacar",
+                    "hint": "Cuando atacas, la ficha gira hacia quien ataca y luego vuelve a su rotación original. "
+                },
+                "duration": {
+                    "name": "Duración de la rotación del token",
+                    "hint": "Cuánto tiempo le toma a la ficha girar hacia el enemigo en segundos (el valor predeterminado es 0,5 s, el tiempo total para girar y retroceder es 1,5 veces el tiempo aquí)"
+                },
+                "scale-on-size": {
+                    "name": "Habilitar escala de tamaño de duración de rotación de token",
+                    "hint": "Permitir que la rotación demore más según el tamaño del atacante (se escala según la cantidad de cuadrados que ocupa)"
+                }
+            },
+            "critical": {
+                "enabled": {
+                    "name": "Habilitar animaciones críticas",
+                    "hint": "Habilite animaciones geniales para mostrar los golpes críticos. "
+                },
+                "player-enabled": {
+                    "name": "Habilite animaciones críticas: para usted",
+                    "hint": "Habilite animaciones geniales para mostrarle los golpes críticos. "
+                },
+                "sound": {
+                    "name": "Sonido de animación crítica",
+                    "hint": "Sonido para usar en animaciones críticas."
+                },
+                "volume": {
+                    "name": "Volumen de animación crítico",
+                    "hint": "% del volumen del sonido para animación crítica"
+                },
+                "duration": {
+                    "name": "Duración crítica de la animación",
+                    "hint": "Duración del sonido y efecto."
+                },
+                "type": {
+                    "name": "Tipo de animación crítica",
+                    "hint": "Elija el tipo de animación crítica",
+                    "choices": {
+                        "persona": "Persona",
+                        "fire-emblem": "Emblema de fuego"
+                    }
+                },
+                "show-on": {
+                    "name": "Mostrar animación crítica activada",
+                    "hint": "Elija si desea mostrar animación crítica en ataques, controles o ambos.",
+                    "choices": {
+                        "attacks": "Ataques",
+                        "checks": "cheques",
+                        "both": "Ambos"
+                    }
+                },
+                "show-on-token-type": {
+                    "name": "Mostrar animación crítica para",
+                    "hint": "Elija mostrar animaciones críticas para PC, NPCS o ambos",
+                    "choices": {
+                        "pc": "PC",
+                        "npc": "PNJ",
+                        "pc+npc": "PJ y NPC"
+                    }
+                },
+                "default-img": {
+                    "name": "Imagen predeterminada",
+                    "hint": "Elige cuál desea tener la imagen predeterminada",
+                    "choices": {
+                        "pc-tok-npc-tok": "PC: Ficha | ",
+                        "pc-act-npc-act": "PC: Actor | ",
+                        "pc-tok-npc-act": "PC: Ficha | ",
+                        "pc-act-npc-tok": "PC: Actor | "
+                    }
+                },
+                "delay": {
+                    "name": "Demora",
+                    "hint": "¿Cuánto tiempo demorar cuando aparece la animación crítica en segundos?"
+                }
+            },
+            "finishing-move": {
+                "enabled": {
+                    "name": "Habilitar movimientos finales",
+                    "hint": "Cuando usas una acción y tienes el elemento HUD activado, obtienes una lectura interesante de la acción."
+                },
+                "enabled-players": {
+                    "name": "Habilitar la opción de movimientos finales para los jugadores",
+                    "hint": "Permitir a los jugadores usar la función de movimiento final (Reloads Foundry)"
+                },
+                "keep-on": {
+                    "name": "Continúe con los movimientos finales",
+                    "hint": "Ya no desactiva el movimiento final después de realizar un efecto de movimiento final."
+                },
+                "use-player-color": {
+                    "name": "Usar color del reproductor",
+                    "hint": "Utilice el color del jugador para finalizar el movimiento que rodea el brillo."
+                },
+                "quality": {
+                    "name": "Calidad del texto",
+                    "hint": "Establecer calidad de acabado Mover texto (1 - más bajo, 5 - más alto)"
+                },
+                "mode": {
+                    "name": "Cuando mostrar movimientos",
+                    "hint": "No requiere alternar HUD",
+                    "choices": {
+                        "toggled": "Mostrar siempre al alternar",
+                        "always": "Mostrar siempre",
+                        "always-if-seen": "👀 Mensaje",
+                        "if-seen-or-toggle": "👀 Mensaje O Alternado",
+                        "if-seen-and-toggle": "👀 Mensaje Y alternado"
+                    }
+                },
+                "show-for": {
+                    "pcs": {
+                        "name": "Mostrar para PC",
+                        "hint": "Mostrar visual del movimiento final para PC"
+                    },
+                    "npcs": {
+                        "name": "Espectáculo para NPC",
+                        "hint": "Mostrar visual del movimiento final para los NPC"
+                    }
+                },
+                "show-on": {
+                    "actions": {
+                        "name": "Sobre cualquier tipo de acción",
+                        "hint": "Mostrar en cualquier tipo de acciones (AKa no hechizos ni ataques)",
+                        "one": {
+                            "name": "[Acciones] Mostrar 1 acción",
+                            "hint": "Mostrar una acción"
+                        },
+                        "two": {
+                            "name": "[Acciones] Mostrar 2 acciones",
+                            "hint": "Mostrar dos acciones"
+                        },
+                        "three": {
+                            "name": "[Acciones] Mostrar 3 acciones",
+                            "hint": "Mostrar tres acciones"
+                        },
+                        "reaction": {
+                            "name": "[Acciones] Mostrar reacciones",
+                            "hint": "Mostrar reacciones"
+                        },
+                        "free": {
+                            "name": "[Acciones] Mostrar acción libre",
+                            "hint": "Mostrar acción libre"
+                        }
+                    },
+                    "spells": {
+                        "name": "Sobre hechizos",
+                        "hint": "Mostrar en hechizos",
+                        "ranked": {
+                            "name": "En hechizos clasificados",
+                            "hint": "Mostrar en hechizos que ocupan espacios de hechizo"
+                        },
+                        "cantrips": {
+                            "name": "Sobre trucos",
+                            "hint": "Mostrar en trucos"
+                        }
+                    },
+                    "attacks": {
+                        "name": "Sobre los ataques",
+                        "hint": "Mostrar sobre ataques"
+                    }
+                },
+                "duration": {
+                    "end": {
+                        "name": "Duración final",
+                        "hint": "Duración para mostrar todo el texto en pantalla al final en ms"
+                    },
+                    "word": {
+                        "name": "Duración de la palabra",
+                        "hint": "¿Cuánto tiempo esperar antes de mostrar la siguiente palabra en ms?"
+                    }
+                },
+                "sound-effect": {
+                    "name": "Finalizando movimiento SFX",
+                    "hint": "Efecto de sonido para reproducir para cada palabra que aparece.",
+                    "volume": {
+                        "name": "Finalizar el movimiento del volumen SFX",
+                        "hint": "Volumen de efectos de sonido para reproducir para cada palabra que aparece"
+                    }
+                }
+            },
+            "from-software": {
+                "noun-verbed": {
+                    "enabled": {
+                        "name": "¿Mostrar al final del encuentro?",
+                        "hint": "Muestra 'Enemy Felled' o cualquier texto que hayas agregado al final del encuentro."
+                    },
+                    "xp-threshold": {
+                        "name": "Umbral de XP de fin de encuentro",
+                        "hint": "Umbral de XP del encuentro para que se muestre el texto de Fin del encuentro (establecido en 0 para mostrar siempre). "
+                    },
+                    "font-size": {
+                        "name": "Tamaño de fuente verbal del sustantivo",
+                        "hint": "Tamaño de fuente de la ventana emergente"
+                    },
+                    "sound-effect": {
+                        "name": "Sustantivo Verbal SFX",
+                        "hint": "Efecto de sonido para 'Noun Verbed'",
+                        "volume": {
+                            "name": "Volumen SFX verbal sustantivo",
+                            "hint": "Volumen para reproducir el efecto de sonido de 'Noun Verbed'"
+                        }
+                    },
+                    "duration": {
+                        "name": "Duración verbal del sustantivo",
+                        "hint": "Cuánto tiempo mostrar la ventana emergente en segundos"
+                    },
+                    "text": {
+                        "name": "Texto verbal sustantivo",
+                        "hint": "Texto que se mostrará para el sustantivo Verbed",
+                        "default": "Enemigo derribado"
+                    }
+                },
+                "death": {
+                    "enabled": {
+                        "name": "Mostrar cuando muere el personaje de tu propiedad",
+                        "hint": "Muestre este mensaje a una PC cuando el personaje asignado a su usuario muera."
+                    },
+                    "font-size": {
+                        "name": "Moriste Tamaño de fuente",
+                        "hint": "Tamaño de fuente de la ventana emergente"
+                    },
+                    "sound-effect": {
+                        "name": "Moriste SFX",
+                        "hint": "Efecto de sonido que se reproducirá en 'You Died'",
+                        "volume": {
+                            "name": "Moriste Volumen SFX",
+                            "hint": "Volumen para reproducir el efecto de sonido de 'You Died'"
+                        }
+                    },
+                    "duration": {
+                        "name": "Moriste Duración",
+                        "hint": "Cuánto tiempo mostrar la ventana emergente en segundos"
+                    },
+                    "text": {
+                        "name": "Moriste texto",
+                        "hint": "Texto que se mostrará en \"Moriste\"",
+                        "default": "tu moriste"
+                    }
+                }
+            },
+            "plus-one": {
+                "enabled": {
+                    "name": "Habilitado Cada +1 importa funciones",
+                    "hint": "Agrega características relacionadas con asuntos de modificadores. "
+                }
+            },
+            "debug-mode": {
+                "name": "Modo de depuración",
+                "hint": "Hacer que la consola reciba mensajes para diferentes cosas."
+            }
+        },
+        "display-text": {
+            "outcomes": {
+                "criticalFailure": "Fallo crítico",
+                "failure": "Falla",
+                "success": "Éxito",
+                "criticalSuccess": "Éxito crítico"
+            }
+        },
+        "token-options": {
+            "tab-label": "Números de RPG de PF2e",
+            "rotation-offset": {
+                "name": "Activar ataque: compensación de rotación",
+                "hint": "Establece cuánto compensar la rotación de ataque. "
+            },
+            "fire-emblem-img": {
+                "name": "Imagen crítica de Fire Emblem",
+                "hint": "Imagen que se muestra para los golpes críticos del token cuando se selecciona \"Fire Emblem\""
+            },
+            "persona-img": {
+                "name": "Imagen crítica de la persona",
+                "hint": "Imagen para mostrar los golpes críticos del token cuando se selecciona 'Persona'"
+            },
+            "crit": {
+                "offset-x": {
+                    "name": "Compensación crítica X",
+                    "hint": "Esto es como %, por lo que 100, lo movería hacia la derecha una longitud completa de la imagen."
+                },
+                "offset-y": {
+                    "name": "Compensación crítica Y",
+                    "hint": "Esto es como porcentaje, por lo que 100 lo movería hacia abajo una longitud completa de la imagen."
+                },
+                "scale": {
+                    "name": "Escala crítica",
+                    "hint": "Tamaño de la imagen del impacto crítico a escala en %"
+                },
+                "rotation": {
+                    "name": "Rotación de críticos",
+                    "hint": "¿Cuánto rotar el efecto de golpe crítico?"
+                },
+                "sfx": {
+                    "name": "Efectos críticos",
+                    "hint": "Configúrelo para anular el sonido crítico predeterminado por uno personalizado."
+                }
+            }
+        },
+        "keybinds": {
+            "activate-finishing-move": {
+                "name": "Activar movimiento final",
+                "hint": "Activa el movimiento final si lo tienes habilitado."
+            }
+        }
+    }
+}

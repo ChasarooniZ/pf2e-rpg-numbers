@@ -654,6 +654,83 @@ Hooks.on("init", () => {
         type: Number,
     });
 
+    //From Software Text
+    const fromSoftOptions = ["noun-verbed", "death"];
+    // Noun Verbed
+    fromSoftOptions.forEach(option => {
+        registerSetting(`from-software.${option}`, `from-software.${option}.enabled`, {
+            desc: "enabled",
+            scope: "world",
+            config: true,
+            default: false,
+            type: Boolean,
+        });
+        if (option === 'noun-verbed') {
+            registerSetting(`from-software.noun-verbed`, `from-software.noun-verbed.xp-threshold`, {
+                desc: "xp-threshold",
+                scope: "world",
+                config: true,
+                default: 120,
+                type: Number,
+            });
+        }
+        registerSetting(`from-software.${option}`, `from-software.${option}.font-size`, {
+            desc: "font-size",
+            scope: "world",
+            config: true,
+            default: 52,
+            range: {
+                min: 1,
+                max: 150,
+                step: 1,
+            },
+            type: Number,
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect`, {
+            desc: "sound-effect",
+            scope: "world",
+            config: true,
+            type: String,
+            default: option === 'death' ? "modules/pf2e-rpg-numbers/resources/sounds/eldenRingDeath.ogg" : "modules/pf2e-rpg-numbers/resources/sounds/eldenRingVictoryReverb.ogg",
+            filePicker: "audio",
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect.volume`, {
+            desc: "sound-effect.volume",
+            scope: "world",
+            config: true,
+            default: 40,
+            range: {
+                min: 1,
+                max: 100,
+                step: 1,
+            },
+            type: Number,
+        });
+
+        registerSetting(`from-software.${option}`, `from-software.${option}.duration`, {
+            desc: "duration",
+            scope: "world",
+            config: true,
+            default: 6.5,
+            range: {
+                min: 0,
+                max: 12,
+                step: 0.1,
+            },
+            type: Number,
+        });
+        registerSetting(`from-software.${option}`, `from-software.${option}.text`, {
+            desc: "text",
+            scope: "world",
+            config: true,
+            default: option === 'death' ? 'You Died' : 'Enemy Felled',
+            type: String,
+        });
+    })
+
+
     registerSetting("", "debug-mode", {
         desc: "debug-mode",
         scope: "world",
@@ -689,7 +766,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -725,6 +802,9 @@ export function renderSettingsConfig(_, html) {
     addSettingsGroup("token-dmg-shake.scaling", "tok-shake-scaling-type", "h4");
     addSettingsGroup("rotate-on-attack", "rotate-on-attack");
     addSettingsGroup("critical", "critical.enabled");
+    addSettingsGroup("fromSoftware.elden-ring.title", 'from-software.noun-verbed.enabled');
+    addSettingsGroup("fromSoftware.elden-ring.noun-verbed", 'from-software.noun-verbed.enabled', 'h4');
+    addSettingsGroup("fromSoftware.elden-ring.death", 'from-software.death.enabled', 'h4')
 
     // Adding settings group for debug mode
     addSettingsGroup("debug", "debug-mode");

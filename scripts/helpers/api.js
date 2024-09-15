@@ -3,12 +3,14 @@ import { createFinishingMoveAnimation } from "./animation/text/finishingMove.js"
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
 import { getDamageList } from "./rollTerms.js";
+import { eldenRingDeath, eldenRingNounVerbed } from "./animation/text/fromSoftwareText.js";
+import { turnTokenOnAttack } from "./animation/turnTokenOnAttack.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
         damageNumbers: {
             generate: async function (dmgList, targetIDs) {
-                return generateDamageScroll(dmgList, targetIDs);
+                return generateDamageScroll(dmgList, targetIDs, { whisper: game.users.map(u => u.id) });
             },
             getDamageList: function (msg) {
                 return getDamageList(msg.rolls);
@@ -26,13 +28,19 @@ export function createAPI() {
         },
         critAnimation: {
             generate: function (token, critType = "persona") {
-                createCritAnimation({ type: "custom", whisper: [], token }, critType);
+                createCritAnimation({ type: "custom", whisper: [], token: token.document }, critType);
             },
         },
         turnTokenAttack: {
             generate: function (tokenObject, targetTokenObject) {
-                turnTokenAttack(tokenObject, targetTokenObject);
+                turnTokenOnAttack(tokenObject, targetTokenObject);
             },
         },
+        fromSoftware: {
+            eldenRing: {
+                nounVerbed: eldenRingNounVerbed,
+                death: eldenRingDeath
+            }
+        }
     };
 }
