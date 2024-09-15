@@ -1,3 +1,19 @@
+# [12.5.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.10...12.5.0) - Enemy Felled
+- `From Soft Text`
+  - Added two new features
+    - **Noun Verbed**
+      - Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
+      - Can be triggered:
+        - **Manually** - via the API/Macro
+        - **Automatically** - at the end of an encounter worth a certain amount of XP or more (per player) depending on your module settings
+          - (Set this option to 0 to trigger at the end of all encounters)
+    - **You Died**
+      - Is styled after Elden Ring's 'You Died'
+      - Can be triggered:
+        - **Manually** - via the API/Macro
+        - **Automatically** - When a player gets the `Dead` condition added to their owned character
+- `API Macros`
+  - Added API macros Compendium under `PF2e RPG Numbers Macros` to trigger some of the module's functions manually
 # [12.4.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.9...12.4.10) - Fire Emblem Clear
 
 - Fixed transparency on the fire emblem crit background (@Nittles)
