@@ -23,7 +23,7 @@ export async function eldenRingNounVerbed(options = {}) {
     const fadein = 500;
 
     return new Sequence()
-        .sound().file(sound).delay(Math.max(fadein / 2, duration / 6)).forUsers(users)
+        .sound().file(sound).delay(fadein / 2).forUsers(users)
         .effect().syncGroup("eldenRing.nounVerbed")
         .screenSpaceAboveUI().duration(duration - 100)
         .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
@@ -81,7 +81,7 @@ export async function eldenRingDeath(options = {}) {
     const fadein = 500;
 
     return new Sequence()
-        .sound().file(sound).delay(Math.max(fadein / 2, duration / 6)).forUsers(users)
+        .sound().file(sound).delay(fadein / 2).forUsers(users)
         .effect().syncGroup("eldenRing.death")
         .screenSpaceAboveUI().duration(duration)
         .fadeIn(fadein).fadeOut(Math.max(fadein / 2, duration / 6))
