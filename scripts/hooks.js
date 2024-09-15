@@ -37,12 +37,14 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     const xp = game.pf2e.gm.calculateXP(partyCombatLevel, partyCombatMembers.length, enemyLevels, hazardLevels, {});
 
     // Trigger animation if conditions are met
-    if (getSetting('from-software.noun-verbed.enable') && xp >= xpNeeded) {
+    if (getSetting('from-software.noun-verbed.enabled') && xp >= xpNeeded) {
         await eldenRingNounVerbed();
     }
 }
 export async function applyTokenStatusEffect(token, status, isAdd) {
-    if (status == 'dead' && isAdded && getSetting('from-software.death.enable')) {
+    // Only proceed if the user is a GM
+    if (!game.user.isGM) return;
+    if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
         const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
         if (userId) {
             await eldenRingDeath({ users: [userId] })
