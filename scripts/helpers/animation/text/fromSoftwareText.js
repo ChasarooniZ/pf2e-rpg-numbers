@@ -10,14 +10,14 @@ import { getSetting } from "../../misc.js";
  * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
  */
 export async function eldenRingNounVerbed(options = {}) {
-    const text = options.text ?? getSetting(`from-software.noun-verbed.text`);
+    const text = (options.text ?? getSetting(`from-software.noun-verbed.text`)).toUpperCase();
     const sound = options.sound ?? getSetting(`from-software.noun-verbed.sound-effect`);
     const fontSize = options.fontSize ?? getSetting(`from-software.noun-verbed.font-size`);
     const duration = (options.duration ?? getSetting(`from-software.noun-verbed.duration`)) * 1000;
     const users = options?.users ?? game.users.map(u => u.id);
 
     const [partOne, partTwo] = [text.slice(0, text.length / 2), text.slice(text.length / 2)];
-    const [partOneOffset, partTwoOffset] = [(partOne.length + 0.5) * fontSize / 3, (partTwo.length + 0.5) * fontSize / 3];
+    const [partOneOffset, partTwoOffset] = [(getTextWidth(partOne, `${fontSize}pt Lusitana-Regular`)) / 2, (getTextWidth(partTwo, `${fontSize}pt Lusitana-Regular`)) / 2];
 
     const rect = { height: fontSize * 3, width: 4000 };
     const fadein = 500;
@@ -71,7 +71,7 @@ export async function eldenRingNounVerbed(options = {}) {
  * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
  */
 export async function eldenRingDeath(options = {}) {
-    const text = options.text ?? getSetting(`from-software.death.text`);
+    const text = (options.text ?? getSetting(`from-software.death.text`)).toUpperCase();
     const sound = options.sound ?? getSetting(`from-software.death.sound-effect`);
     const fontSize = options.fontSize ?? getSetting(`from-software.death.font-size`);
     const duration = (options.duration ?? getSetting(`from-software.death.duration`)) * 1000;
@@ -106,3 +106,13 @@ export async function eldenRingDeath(options = {}) {
         }).forUsers(users)
         .play();
 }
+
+function getTextWidth(text, font) {
+    // if given, use cached canvas for better performance
+    // else, create new canvas
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
+    context.font = font;
+    var metrics = context.measureText(text + "||"); // The '||' adds a little bit of separation
+    return metrics.width;
+};

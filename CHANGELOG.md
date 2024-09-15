@@ -1,3 +1,12 @@
+# [12.5.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.2...12.5.3) - Fix for Styling
+
+-  `From Software - Noun Verbed`
+   -  Fixed styling for Custom Text (@RavenRaconteur)
+   -  Automatically Capitalize text passed in to `Noun Verbed` and `You Died` text
+# [12.5.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.1...12.5.2) - Shaking and Polish
+
+-   Update Polish Translation (@LioHeart)
+-   Fixed issue with Sequencer based shake on damage not checking flipped or rotated (@spen)
 # [12.5.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.1...12.5.2) - Shaking and Polish
 
 -   Update Polish Translation (@LioHeart)
