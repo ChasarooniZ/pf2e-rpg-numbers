@@ -52,6 +52,35 @@ export async function applyTokenStatusEffect(token, status, isAdd) {
     }
 }
 
+export function getSceneControlButtons(controls, _b, _c) {
+    if (!game.user.isGM && !getSetting("finishing-move.enabled-players")) return;
+    let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
+    controls
+        .find((con) => con.name == "token")
+        .tools.push({
+            name: MODULE_ID,
+            title: localize("controls.finishing-move.name"),
+            icon: "fas fa-message-captions",
+            toggle: true,
+            visible: getSetting("finishing-move.enabled"),
+            active: isFinishingMove,
+            onClick: async (toggle) => {
+                game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
+            },
+            toolclip: {
+                src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
+                heading: localize("controls.finishing-move.toolclip.heading"),
+                items: [
+                    {
+                        paragraph: game.i18n.localize(
+                            "pf2e-rpg-numbers.controls.finishing-move.toolclip.items.description.paragraph"
+                        ),
+                    },
+                ],
+            },
+        });
+}
+
 /**
  * Extracts actor levels based on a filter condition.
  * @param {Array} combatants - Array of combatants.
