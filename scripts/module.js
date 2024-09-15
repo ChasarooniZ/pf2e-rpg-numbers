@@ -18,7 +18,7 @@ import {
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
-import { preDeleteCombat } from "./hooks.js";
+import { applyTokenStatusEffect, preDeleteCombat } from "./hooks.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
