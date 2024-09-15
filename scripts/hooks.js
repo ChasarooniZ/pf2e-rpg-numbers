@@ -41,7 +41,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
         await eldenRingNounVerbed();
     }
 }
-export async function applyTokenStatusEffect(token, status, isAdd) {
+export async function applyTokenStatusEffect(token, status, isAdded) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
     if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
