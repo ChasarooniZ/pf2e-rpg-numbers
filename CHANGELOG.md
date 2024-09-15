@@ -1,4 +1,4 @@
-# [12.5.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.0...12.5.1) - Not Always Enemy Felled
+# [12.5.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.1...12.5.2) - Shaking and Polish
 
 -   Update Polish Translation (@LioHeart)
 -   Fixed issue with Sequencer based shake on damage not checking flipped or rotated (@spen)
