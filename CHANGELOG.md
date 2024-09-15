@@ -1,10 +1,14 @@
 # [12.5.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.0...12.5.1) - Not Always Enemy Felled
+
 - Fixed issue with non calculating XP properly
+
 # [12.5.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.10...12.5.0) - Enemy Felled
 
 - `From Soft Text`
+  
   - Added two new features
     - **Noun Verbed**
+      
       - Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
       - Can be triggered:
         - **Manually** - via the API/Macro
@@ -14,6 +18,7 @@
         
       
     - **You Died**
+      
       - Is styled after Elden Ring's 'You Died'
       - Can be triggered:
         - **Manually** - via the API/Macro
@@ -23,13 +28,15 @@
     
   
 - `API Macros`
+  
   - Added API macros Compendium under `PF2e RPG Numbers Macros` to trigger some of the module's functions manually
   
 - `Languages`
+  
   - Added machine translated upport for the following languages using [locize](https://translate.i18next.com/)
     - Spanish, French, German, Japanese, Korean, Russian
-  - Polish (@LioHart)
     
+  - Polish (@LioHart)
   
 
 # [12.4.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.9...12.4.10) - Fire Emblem Clear
@@ -662,11 +669,17 @@
 
 # <<<<<<< HEAD
 
+## 12.5.1 - 2024-09-15
+
+- Fixed issue with non calculating XP properly
+
 ## 12.5.0 - 2024-09-15
 
 - `From Soft Text`
+  
   - Added two new features
     - **Noun Verbed**
+      
       - Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
       - Can be triggered:
         - **Manually** - via the API/Macro
@@ -676,6 +689,7 @@
         
       
     - **You Died**
+      
       - Is styled after Elden Ring's 'You Died'
       - Can be triggered:
         - **Manually** - via the API/Macro
@@ -685,9 +699,11 @@
     
   
 - `API Macros`
+  
   - Added API macros Compendium under `PF2e RPG Numbers Macros` to trigger some of the module's functions manually
   
 - `Languages`
+  
   - Added machine translated support for the following languages using [locize](https://translate.i18next.com/)
     - Spanish, French, German, Japanese, Korean, Russian
     - Polish (@LioHart)
