@@ -47,8 +47,10 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
             //.opacity(0)
             .effect()
             .atLocation(token)
+            .spriteRotation(token.document.texture.rotation)
             .file(token.document.texture.src)
-            .scaleToObject(token.document.texture.scaleX)
+            .scaleToObject()
+            .scale({ x: token.document.texture.scaleX, y: token.document.texture.scaleY })
             .loopProperty("spriteContainer", "position.x", {
                 values,
                 duration: it_dur,
