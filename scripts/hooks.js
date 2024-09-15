@@ -1,5 +1,5 @@
 import { eldenRingDeath, eldenRingNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
-import { getSetting, MODULE_ID } from "./helpers/misc.js";
+import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
 /**
  * Handles pre-deletion actions for combat encounters.
@@ -72,8 +72,7 @@ export function getSceneControlButtons(controls, _b, _c) {
                 heading: localize("controls.finishing-move.toolclip.heading"),
                 items: [
                     {
-                        paragraph: game.i18n.localize(
-                            "pf2e-rpg-numbers.controls.finishing-move.toolclip.items.description.paragraph"
+                        paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"
                         ),
                     },
                 ],
