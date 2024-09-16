@@ -13,7 +13,7 @@ export class SettingsConfigForm extends FormApplication {
             template: `modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.hbs`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
-            width: 500,
+            width: 800,
             height: 'auto'
         });
     }
@@ -38,31 +38,31 @@ export class SettingsConfigForm extends FormApplication {
                 },
                 {
                     id: "rolls",
-                    label: "rolls",
+                    label: "Rolls",
                     icon: "fa-dice-d20",
                     rolls: true
                 },
                 {
                     id: "token",
-                    label: "token",
-                    icon: "fa-projector",
+                    label: "Token",
+                    icon: "fa-circle-user",
                     token: true
                 },
                 {
                     id: "critical",
-                    label: "critical",
+                    label: "Critical",
                     icon: "fa-explosion",
                     critical: true
                 },
                 {
                     id: "text",
-                    label: "text",
+                    label: "Text",
                     icon: "fa-message-captions",
                     text: true
                 },
                 {
                     id: "misc",
-                    label: "misc",
+                    label: "Misc",
                     icon: "fa-gear",
                     misc: true
                 },
