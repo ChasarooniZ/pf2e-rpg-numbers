@@ -428,6 +428,7 @@ Hooks.on("init", () => {
         choices: ["no", "max", "mid"],
     });
 
+    //Shake Screen on attack
     registerSetting("shake-on-attack", "shake-on-attack.enabled", {
         desc: "enabled",
         scope: "world",
@@ -445,6 +446,7 @@ Hooks.on("init", () => {
         choices: ["both", "gm", "players"],
     });
 
+    //Rotate on Attack
     registerSetting("rotate-on-attack", "rotate-on-attack", {
         desc: "enabled",
         scope: "world",

@@ -1,3 +1,5 @@
+import { getSetting } from "./misc";
+
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
@@ -28,7 +30,74 @@ export class SettingsConfigForm extends FormApplication {
             placeholder: true
         };*/
         return foundry.utils.mergeObject(super.getData(), {
-            settings: {},
+            settings: {
+                enabled: getSetting("enabled"),
+                dmgNumbers: {
+                    enabled: getSetting("dmg-enabled"),
+                    whenTo: getSetting("dmg-on-apply-or-roll"),
+                    fontSize: getSetting("font-size"),
+                    maxFontScale: getSetting("max-font-scale"),
+                    fontSize: getSetting("font-size"),
+                    topOffset: getSetting("top-offset"),
+                    showTotal: getSetting("show-total"),
+                    scaleType: getSetting("number-scale-type"),
+                    split: getSetting("damage-split"),
+                    duration: getSetting("duration"),
+                    waitTime: getSetting("wait-time-between-numbers"),
+                    onlyGM: getSetting("show-only-GM"),
+                    scale: getSetting("animation-scale"),
+                    jitter: getSetting("jitter"),
+                },
+                checkNumbers: {
+                    enabled: getSetting("check-enabled"),
+                    colorScheme: getSetting("check-color-scheme"),
+                    showOutCome: getSetting("check-outcome-result"),
+                    fontSize: getSetting("check-font-size"),
+                    duration: getSetting("check-duration"),
+                    sfx: {
+                        enabled: getSetting("check-animations.sfx.enabled"),
+                        checkOrAttack: getSetting("check-animations.sfx.check-or-attack"),
+                        options: getSetting("check-animations.sfx.options"),
+                        volume: getSetting("check-animations.sfx.volume"),
+                        criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
+                        success: getSetting("check-animations.sfx.file.success"),
+                        failure: getSetting("check-animations.sfx.file.failure"),
+                        criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
+                    },
+                },
+                screenShake: {
+                    onDamaged: {
+                        enabled: getSetting("shake-enabled"),
+                        duration: getSetting("shake-duration"),
+                        maxIntensity: getSetting("shake-intensity-max"),
+                        intensityScaling: getSetting("shake-intensity-type"),
+                        intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
+                        shakeGM: getSetting("shake-gm-enabled"),
+                    },
+                    onAttack: {
+                        enabled: getSetting("shake-on-attack.enabled"),
+                        showFor: getSetting("shake-on-attack.type"),
+                    }
+                },
+                tokenShake: {
+                    enabled: getSetting("dmg-shake-directional-enabled"),
+                    distance: getSetting("tok-shake-distance"),
+                    shakes: getSetting("tok-shake-shakes"),
+                    duration: getSetting("tok-shake-duration"),
+                    scaling: {
+                        type: getSetting("tok-shake-scaling-type"),
+                        distance: getSetting("tok-shake-scaling-distance"),
+                        shakes: getSetting("tok-shake-scaling-shakes"),
+                        duration: getSetting("tok-shake-scaling-duration"),
+                    }
+                },
+                rotateOnAttack: {
+                    fontSize: getSetting(""),
+                    fontSize: getSetting(""),
+                    fontSize: getSetting(""),
+                    fontSize: getSetting(""),
+                }
+            },
             tabs: [
                 {
                     id: "home",
