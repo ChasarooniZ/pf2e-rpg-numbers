@@ -2,7 +2,7 @@ import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 import { SettingsConfigForm } from "./helpers/settingsConfigForm.js";
 
 Hooks.on("init", () => {
-    loadTemplates([`modules/pf2e-rpg-numbers/templates/config.html`])
+    loadTemplates([`modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.hbs`])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
     //TODO finalize this
     // game.settings.registerMenu(mod, 'settingsMenu', {
