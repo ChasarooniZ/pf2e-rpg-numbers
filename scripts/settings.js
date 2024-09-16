@@ -1,6 +1,8 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
+import { SettingsConfigForm } from "./helpers/settingsConfigForm.js";
 
 Hooks.on("init", () => {
+    loadTemplates([`modules/pf2e-rpg-numbers/templates/config.html`])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
     //TODO finalize this
     // game.settings.registerMenu(mod, 'settingsMenu', {
@@ -10,6 +12,14 @@ Hooks.on("init", () => {
     //     type: SettingsForm,
     //     restricted: false
     // });
+    game.settings.registerMenu(MODULE_ID, "mySettingsMenu", {
+        name: "PF2e RPG Settings",
+        label: "PF2e RPG Settings",      // The text label used in the button
+        hint: "Settings for the PF2e RPG settings",
+        icon: "fas fa-dragon",               // A Font Awesome icon used in the submenu button
+        type: SettingsConfigForm,   // A FormApplication subclass
+        restricted: true                   // Restrict this submenu to gamemaster only?
+      });
 
     registerSetting("", "enabled", {
         desc: "enabled",
