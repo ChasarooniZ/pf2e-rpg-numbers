@@ -14,18 +14,7 @@ export class SettingsConfigForm extends FormApplication {
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 500,
-            height: 'auto',
-            tabs: [
-                {
-                    label: "default",
-                    title: "Default", content: "<em>Fancy tab1 content.</em>"
-                },
-                {
-                    label: "2nd",
-                    title: "SECOND",
-                    content: "<em>Fancy tab2 content.</em>"
-                }
-            ]
+            height: 'auto'
         });
     }
 
@@ -39,7 +28,18 @@ export class SettingsConfigForm extends FormApplication {
             placeholder: true
         };*/
         return foundry.utils.mergeObject(super.getData(), {
-            settings: {}
+            settings: {},
+            tabs: [
+                {
+                    label: "default",
+                    title: "Default", content: "<em>Fancy tab1 content.</em>"
+                },
+                {
+                    label: "2nd",
+                    title: "SECOND",
+                    content: "<em>Fancy tab2 content.</em>"
+                }
+            ]
         })
     }
 

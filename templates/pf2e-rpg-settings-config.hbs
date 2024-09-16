@@ -1,7 +1,7 @@
 <form>
     <nav class="tabs" data-group="primary-tabs">
-        {{#each tabs}}
-        <a class="item" data-tab="{{label}}"><i class="fas fa-dice-d20"></i> {{title}}</a>
+        {{#each tabs as |tab|}}
+        <a class="item" data-tab="{{tab.label}}"><i class="fas fa-dice-d20"></i> {{tab.title}}</a>
         {{/each}}
     </nav>
 
@@ -10,10 +10,10 @@
     <hr>
 
     <section class="content">
-        {{#each tabs}}
-        <div class="tab" data-tab="{{label}}" data-group="primary-tabs">
-            Fixed content for tab {{title}}<br>
-            {{{content}}}
+        {{#each tabs as |tab|}}
+        <div class="tab" data-tab="{{tab.label}}" data-group="primary-tabs">
+            Fixed content for tab {{tab.title}}<br>
+            {{{tab.content}}}
         </div>
         {{/each}}
     </section>
