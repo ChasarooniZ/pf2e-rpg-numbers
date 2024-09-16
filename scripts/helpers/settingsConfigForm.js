@@ -31,14 +31,41 @@ export class SettingsConfigForm extends FormApplication {
             settings: {},
             tabs: [
                 {
-                    label: "default",
-                    title: "Default", content: "<em>Fancy tab1 content.</em>"
+                    id: "home",
+                    label: "Home",
+                    icon: "fa-dragon",
+                    home: true
                 },
                 {
-                    label: "2nd",
-                    title: "SECOND",
-                    content: "<em>Fancy tab2 content.</em>"
-                }
+                    id: "rolls",
+                    label: "rolls",
+                    icon: "fa-dice-d20",
+                    rolls: true
+                },
+                {
+                    id: "token",
+                    label: "token",
+                    icon: "fa-projector",
+                    token: true
+                },
+                {
+                    id: "critical",
+                    label: "critical",
+                    icon: "fa-explosion",
+                    critical: true
+                },
+                {
+                    id: "text",
+                    label: "text",
+                    icon: "fa-message-captions",
+                    text: true
+                },
+                {
+                    id: "misc",
+                    label: "misc",
+                    icon: "fa-gear",
+                    misc: true
+                },
             ]
         })
     }

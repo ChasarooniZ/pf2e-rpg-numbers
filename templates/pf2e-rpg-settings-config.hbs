@@ -1,23 +1,10 @@
 <form>
     <nav class="tabs" data-group="primary-tabs">
-        <a class="item" data-tab="main"><i class="fas fa-dragon"></i>
-            Main
+        {{#each tabs}}
+        <a class="item" data-tab="{{id}}"><i class="fas {{icon}}"></i>
+            {{label}}
         </a>
-        <a class="item" data-tab="rolls"><i class="fas fa-dice-d20"></i>
-            Rolls
-        </a>
-        <a class="item" data-tab="token"><i class="fas fa-projector"></i>
-            Token
-        </a>
-        <a class="item" data-tab="critical"><i class="fas fa-explosion"></i>
-            Critical
-        </a>
-        <a class="item" data-tab="text"><i class="fas fa-message-captions"></i>
-            Text
-        </a>
-        <a class="item" data-tab="misc"><i class="fas fa-gear"></i>
-            Misc
-        </a>
+        {{/each}}
     </nav>
 
     <b>Fixed header</b><br>
