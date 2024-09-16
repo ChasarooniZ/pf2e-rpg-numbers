@@ -35,9 +35,10 @@ export class SettingsConfigForm extends FormApplication {
 
     getData() {
         //game.settings.get('myModuleName', 'myComplexSettingName')
-        return {
+        /*return {
             placeholder: true
-        };
+        };*/
+        return super.getData().object
     }
 
     async _updateObject(event, formData) {
