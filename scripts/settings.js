@@ -12,7 +12,7 @@ Hooks.on("init", () => {
     //     type: SettingsForm,
     //     restricted: false
     // });
-    game.settings.registerMenu(MODULE_ID, "mySettingsMenu", {
+    game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
         name: "PF2e RPG Settings",
         label: "PF2e RPG Settings",      // The text label used in the button
         hint: "Settings for the PF2e RPG settings",

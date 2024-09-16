@@ -1,8 +1,8 @@
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
-        super();
-        this.options = options;
+        super(options);
+        this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
     
 
@@ -13,6 +13,8 @@ export class SettingsConfigForm extends FormApplication {
             template: `modules/pf2e-rpg-numbers/templates/config.html`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
+            width: 500,
+            height: 'auto'
         });
     }
 
