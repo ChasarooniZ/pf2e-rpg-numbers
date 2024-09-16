@@ -38,7 +38,9 @@ export class SettingsConfigForm extends FormApplication {
         /*return {
             placeholder: true
         };*/
-        return super.getData().object
+        return foundry.utils.mergeObject(super.getData(), {
+            settings: {}
+        })
     }
 
     async _updateObject(event, formData) {
