@@ -486,6 +486,7 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+    //TODO keep in normal settings
     registerSetting("critical", "critical.player-enabled", {
         desc: "player-enabled",
         scope: "client",
