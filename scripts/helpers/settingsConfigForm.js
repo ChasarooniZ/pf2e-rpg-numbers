@@ -10,7 +10,7 @@ export class SettingsConfigForm extends FormApplication {
         return mergeObject(super.defaultOptions, {
             classes: ['form'],
             popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/config.html`,
+            template: `modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.html`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 500,
