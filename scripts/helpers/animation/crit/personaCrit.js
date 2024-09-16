@@ -1,4 +1,4 @@
-import { getSetting} from "../../misc.js";
+import { getSetting } from "../../misc.js";
 /**
  *  Conversion method from css clip path
  * r = """0% 55%, 2% 52%, 9% 51%, 15% 44%, 23% 40%, 32% 38%, 34% 36%, 35% 35%, 41% 28%, 43% 30%, 50% 26%, 53% 27%, 58% 26%, 59% 26%, 62% 24%, 65% 25%, 71% 23%, 78% 15%, 85% 14%, 89% 14%, 95% 11%, 97% 12%, 100% 9%, 100% 55%, 97% 53%, 96% 55%, 92% 55%, 80% 56%, 72% 57%, 69% 58%, 64% 63%, 62% 63%, 61% 65%, 59% 63%, 57% 62%, 55% 64%, 53% 65%, 49% 63%, 43% 63%, 39% 64%, 37% 65%, 36% 65%, 34% 68%, 32% 67%, 29% 72%, 27% 71%, 27% 73%, 24% 72%, 22% 73%, 20% 70%, 16% 73%, 14% 71%, 13% 72%, 10% 71%, 5% 72%, 6% 70%, 0% 73%"""
@@ -116,7 +116,7 @@ export function personaCrit(token, users, imgData, config) {
             const videoHeight = video.videoHeight;
             const videoPercent = (videoHeight * imageScaler) / 100;
 
-            const scale = (critScale / 100) * (screenHeight / videoHeight) * imageScaler;
+            const scale = (critScale / 100) * imageScaler;
             const offsetX = critOffsetX * videoPercent * scale;
             const offsetY = (personaImg ? 0 : videoPercent * 20) + critOffsetY * videoPercent * scale;
 
@@ -140,12 +140,13 @@ export function personaCrit(token, users, imgData, config) {
                 .file(imageUrl)
                 .zIndex(0)
                 .shape("polygon", { isMask: true, points: centeredPoints })
-                .scale(typeof scale === "number" ? scale : 1)
                 .spriteOffset({ x: offsetX, y: offsetY }, { gridUnits: false })
                 .spriteRotation(critRotation)
                 .screenSpace()
                 .screenSpacePosition({ x: 0, y: 0 })
                 .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+                .screenSpaceScale({ fitY: true, ratioX: true })
+                .scale(typeof scale === "number" ? scale : 1)
                 .screenSpaceAboveUI()
                 .duration(duration)
                 .forUsers(users)

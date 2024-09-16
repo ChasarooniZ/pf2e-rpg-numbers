@@ -1,12 +1,22 @@
+# [12.5.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.3...12.5.4) - Actually use Screenscale for Crits
+
+- `Critical Animations`
+    - Actually use screen scale for crits so it is consistent across different monitors (@cuyeet)
+    - **WARNING** - May adjust how your critical hit animations appear (as always revert to a previous version if new features aren't to your liking)
+    
+
 # [12.5.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.2...12.5.3) - Fix for Styling
 
--  `From Software - Noun Verbed`
-   -  Fixed styling for Custom Text (@RavenRaconteur)
-   -  Automatically Capitalize text passed in to `Noun Verbed` and `You Died` text
+- `From Software - Noun Verbed`
+    - Fixed styling for Custom Text (@RavenRaconteur)
+    - Automatically Capitalize text passed in to `Noun Verbed` and `You Died` text
+    
+
 # [12.5.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.1...12.5.2) - Shaking and Polish
 
--   Update Polish Translation (@LioHeart)
--   Fixed issue with Sequencer based shake on damage not checking flipped or rotated (@spen)
+- Update Polish Translation (@LioHeart)
+- Fixed issue with Sequencer based shake on damage not checking flipped or rotated (@spen)
+
 # [12.5.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.1...12.5.2) - Shaking and Polish
 
 - Update Polish Translation (@LioHeart)
@@ -49,9 +59,11 @@
 - `Languages`
     
     - Added machine translated upport for the following languages using [locize](https://translate.i18next.com/)
+        
         - Spanish, French, German, Japanese, Korean, Russian
         
     - Polish (@LioHeart)
+        
     
 
 # [12.4.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.4.9...12.4.10) - Fire Emblem Clear
@@ -683,6 +695,20 @@
     
 
 # <<<<<<< HEAD
+
+## 12.5.4 - 2024-09-16
+
+- `Critical Animations`
+    - Actually use screen scale for crits so it is consistent across different monitors (@cuyeet)
+    - **WARNING** - May adjust how your critical hit animations appear (as always revert to a previous version if new features aren't to your liking)
+    
+
+## 12.5.3 - 2024-09-15
+
+- `From Software - Noun Verbed`
+    - Fixed styling for Custom Text (@RavenRaconteur)
+    - Automatically Capitalize text passed in to `Noun Verbed` and `You Died` text
+    
 
 ## 12.5.2 - 2024-09-15
 
