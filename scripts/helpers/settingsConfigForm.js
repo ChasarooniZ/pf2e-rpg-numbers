@@ -4,23 +4,34 @@ export class SettingsConfigForm extends FormApplication {
         super(options);
         this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
-    
+
 
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             classes: ['form'],
             popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.html`,
+            template: `modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.hbs`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 500,
-            height: 'auto'
+            height: 'auto',
+            tabs: [
+                {
+                    label: "default",
+                    title: "Default", content: "<em>Fancy tab1 content.</em>"
+                },
+                {
+                    label: "2nd",
+                    title: "SECOND",
+                    content: "<em>Fancy tab2 content.</em>"
+                }
+            ]
         });
     }
 
     activateListeners(html) {
         super.activateListeners(html);
-      }
+    }
 
     getData() {
         //game.settings.get('myModuleName', 'myComplexSettingName')

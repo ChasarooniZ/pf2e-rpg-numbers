@@ -1,0 +1,31 @@
+<form>
+    <nav class="tabs" data-group="primary-tabs">
+        {{#each tabs}}
+        <a class="item" data-tab="{{label}}"><i class="fas fa-dice-d20"></i> {{title}}</a>
+        {{/each}}
+    </nav>
+
+    <b>Fixed header</b><br>
+    {{header}}
+    <hr>
+
+    <section class="content">
+        {{#each tabs}}
+        <div class="tab" data-tab="{{label}}" data-group="primary-tabs">
+            Fixed content for tab {{title}}<br>
+            {{{content}}}
+        </div>
+        {{/each}}
+    </section>
+
+    <hr>
+    <b>Fixed header</b><br>
+    {{header}}
+    <hr>
+    {{localize "pf2e-rpg-numbers.module-settings.enabled"}}
+    Fixed content<br>
+    {{{content}}}
+    <hr>
+    Fixed <em>footer</em><br>
+    {{footer}}
+</form>
