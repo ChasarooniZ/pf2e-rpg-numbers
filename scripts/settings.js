@@ -19,7 +19,7 @@ Hooks.on("init", () => {
         icon: "fas fa-dragon",               // A Font Awesome icon used in the submenu button
         type: SettingsConfigForm,   // A FormApplication subclass
         restricted: true                   // Restrict this submenu to gamemaster only?
-      });
+    });
 
     registerSetting("", "enabled", {
         desc: "enabled",
