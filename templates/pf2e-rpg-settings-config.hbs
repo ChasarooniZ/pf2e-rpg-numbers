@@ -1,8 +1,23 @@
 <form>
     <nav class="tabs" data-group="primary-tabs">
-        {{#each tabs as |tab|}}
-        <a class="item" data-tab="{{tab.label}}"><i class="fas fa-dice-d20"></i> {{tab.title}}</a>
-        {{/each}}
+        <a class="item" data-tab="main"><i class="fas fa-dragon"></i>
+            Main
+        </a>
+        <a class="item" data-tab="rolls"><i class="fas fa-dice-d20"></i>
+            Rolls
+        </a>
+        <a class="item" data-tab="token"><i class="fas fa-projector"></i>
+            Token
+        </a>
+        <a class="item" data-tab="critical"><i class="fas fa-explosion"></i>
+            Critical
+        </a>
+        <a class="item" data-tab="text"><i class="fas fa-message-captions"></i>
+            Text
+        </a>
+        <a class="item" data-tab="misc"><i class="fas fa-gear"></i>
+            Misc
+        </a>
     </nav>
 
     <b>Fixed header</b><br>
@@ -29,4 +44,7 @@
     <hr>
     Fixed <em>footer</em><br>
     {{footer}}
+    <button>Save</button>
+    <button>Submit</button>
+    <button>Cancel</button>
 </form>
