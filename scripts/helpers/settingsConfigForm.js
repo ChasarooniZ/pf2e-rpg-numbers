@@ -1,4 +1,4 @@
-import { getSetting } from "./misc";
+import { getSetting } from "./misc.js";
 
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
@@ -38,7 +38,6 @@ export class SettingsConfigForm extends FormApplication {
                     whenTo: getSetting("dmg-on-apply-or-roll"),
                     fontSize: getSetting("font-size"),
                     maxFontScale: getSetting("max-font-scale"),
-                    fontSize: getSetting("font-size"),
                     topOffset: getSetting("top-offset"),
                     showTotal: getSetting("show-total"),
                     scaleType: getSetting("number-scale-type"),
