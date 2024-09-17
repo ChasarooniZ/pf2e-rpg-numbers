@@ -17,7 +17,7 @@ export class SettingsConfigForm extends FormApplication {
             title: 'Pf2e RPG #s Config Menu',
             width: 800,
             height: 'auto',
-            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "tab1"}]
+            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
         });
     }
 
@@ -123,12 +123,12 @@ export class SettingsConfigForm extends FormApplication {
                 fromSoftware: {
                     eldenRing: {
                         nounVerbed: {
-                            enabled: getSetting("from-software.nounVerbed.enabled"),
-                            fontSize: getSetting("from-software.nounVerbed.font-size"),
-                            sound: getSetting("from-software.nounVerbed.sound-effect"),
-                            volume: getSetting("from-software.nounVerbed.sound-effect.volume"),
-                            duration: getSetting("from-software.nounVerbed.duration"),
-                            text: getSetting("text"),
+                            enabled: getSetting("from-software.noun-verbed.enabled"),
+                            fontSize: getSetting("from-software.noun-verbed.font-size"),
+                            sound: getSetting("from-software.noun-verbed.sound-effect"),
+                            volume: getSetting("from-software.noun-verbed.sound-effect.volume"),
+                            duration: getSetting("from-software.noun-verbed.duration"),
+                            text: getSetting("from-software.noun-verbed.text"),
                         },
                         death: {
                             enabled: getSetting("from-software.death.enabled"),
