@@ -16,7 +16,8 @@ export class SettingsConfigForm extends FormApplication {
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 800,
-            height: 'auto'
+            height: 'auto',
+            tabs: [{navSelector: ".tabs", contentSelector: ".content", initial: "tab1"}]
         });
     }
 

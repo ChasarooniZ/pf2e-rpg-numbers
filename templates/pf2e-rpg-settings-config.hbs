@@ -13,9 +13,11 @@
 
     <section class="content">
         {{#each tabs as |tab|}}
-        <div class="tab" data-tab="{{tab.label}}" data-group="primary-tabs">
+        <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
             Fixed content for tab {{tab.title}}<br>
-            {{{tab.content}}}
+            {{#if home}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings-tabs/main-tab.hbs' this}}
+            {{/if}}
         </div>
         {{/each}}
     </section>
@@ -24,8 +26,6 @@
     <b>Fixed header</b><br>
     {{header}}
     <hr>
-    {{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}
-    {{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}
     Fixed content<br>
     {{{content}}}
     <hr>
