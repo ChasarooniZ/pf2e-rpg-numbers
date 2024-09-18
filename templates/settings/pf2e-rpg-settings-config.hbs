@@ -16,7 +16,22 @@
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
             Fixed content for tab {{tab.title}}<br>
             {{#if home}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings-tabs/main-tab.hbs' this}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
+            {{/if}}
+            {{#if rolls}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
+            {{/if}}
+            {{#if token}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' this}}
+            {{/if}}
+            {{#if critical}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' this}}
+            {{/if}}
+            {{#if text}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' this}}
+            {{/if}}
+            {{#if misc}}
+                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs' this}}
             {{/if}}
         </div>
         {{/each}}

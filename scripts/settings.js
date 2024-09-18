@@ -2,7 +2,15 @@ import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 import { SettingsConfigForm } from "./helpers/settingsConfigForm.js";
 
 Hooks.on("init", () => {
-    loadTemplates([`modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.hbs`, 'modules/pf2e-rpg-numbers/templates/settings-tabs/main-tab.hbs'])
+    loadTemplates([
+        `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs',
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs',
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs',
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs',
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs',
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs'
+    ])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
     //TODO finalize this
     // game.settings.registerMenu(mod, 'settingsMenu', {
