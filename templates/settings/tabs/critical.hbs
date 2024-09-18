@@ -1,14 +1,17 @@
 <form>
     <h2>{{localize "pf2e-rpg-numbers.module-settings.headers.critical"}}</h2>
     {{!-- Enabled --}}
-    <div class="form-group" data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}">
-        <label for="settings.critical.enabled">{{localize
+    {{settings}}
+    <p>enabled: {{settings.enabled}}</p>
+    <p>enabled2: {{settings.critical.enabled}}</p>
+    <div class="form-group">
+        <label for="settings.critical.enabled"  data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}</label>
         <input type="checkbox" id="settings.critical.enabled" name="settings.critical.enabled" {{#if settings.critical.enabled}} checked {{/if}} />
-        {{localize "pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}
     </div>
     {{!-- Style --}}
-    <div class="form-group" data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.type.hint"}}">
+    {{settings.critical.style}}
+    <div class="form-group" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.type.hint"}}">
         <label for="settings.critical.style">{{localize
             "pf2e-rpg-numbers.module-settings.critical.type.name"}}</label>
         <select type="checkbox" id="settings.critical.style" name="settings.critical.style">
@@ -17,22 +20,20 @@
             </option>
             {{/each}}
         </select>
-        {{localize "pf2e-rpg-numbers.module-settings.critical.type.hint"}}
     </div>
     {{!-- Checks or Attacks --}}
-    <div class="form-group" data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.show-on.hint"}}">
+    <div class="form-group" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on.hint"}}">
         <label for="settings.critical.show-on">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on.name"}}</label>
-        <select type="checkbox" id="settings.critical.show-on" name="settings.critical.show-on">
+          <select type="checkbox" id="settings.critical.show-on" name="settings.critical.show-on">
             {{#each settings.critical.checksOrAttacks as |option|}}
             <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize "{{option.value}}"}}
             </option>
             {{/each}}
         </select>
-        {{localize "pf2e-rpg-numbers.module-settings.critical.show-on.hint"}}
     </div>
     {{!-- PC or NPC --}}
-    <div class="form-group" data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}">
+    <div class="form-group" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}">
         <label for="settings.critical.show-on-token-type">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}</label>
         <select type="checkbox" id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
@@ -41,6 +42,5 @@
             </option>
             {{/each}}
         </select>
-        {{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}
     </div>
 </form>

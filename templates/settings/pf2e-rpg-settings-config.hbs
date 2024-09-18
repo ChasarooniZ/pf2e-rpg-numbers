@@ -1,35 +1,37 @@
 <form>
     <nav class="tabs" data-group="primary-tabs">
         {{#each tabs}}
-        <a class="item" data-tab="{{id}}"><i class="fas {{icon}}"></i>
-            {{label}}
-        </a>
+        <a class="item" data-tab="{{id}}"><i class="fas {{icon}}"></i> {{label}}</a>
         {{/each}}
     </nav>
+
     <section class="content">
+        enabled: {{settings.enabled}}
+
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
-            {{#if home}}
+            {{#if tab.home}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
             {{/if}}
-            {{#if rolls}}
+            {{#if tab.rolls}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
             {{/if}}
-            {{#if token}}
+            {{#if tab.token}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' this}}
             {{/if}}
-            {{#if critical}}
+            {{#if tab.critical}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' this}}
             {{/if}}
-            {{#if text}}
+            {{#if tab.text}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' this}}
             {{/if}}
-            {{#if misc}}
+            {{#if tab.misc}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs' this}}
             {{/if}}
         </div>
         {{/each}}
     </section>
+
     <footer>
         <button>Save</button>
         <button>Submit</button>

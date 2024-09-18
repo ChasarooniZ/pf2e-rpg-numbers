@@ -167,7 +167,20 @@ export class SettingsConfigForm extends FormApplication {
                     id: "critical",
                     label: "Critical",
                     icon: "fa-explosion",
-                    critical: true
+                    critical: true,
+                    settings: {
+                        critical: {
+                            enabled: getSetting("critical.enabled"),
+                            style: convertChoicesGivenSetting("critical.type"),
+                            checksOrAttacks: convertChoicesGivenSetting("critical.show-on"),
+                            pcOrNPC: convertChoicesGivenSetting("critical.show-on-token-type"),
+                            defImage: getSetting("critical.default-img"),
+                            duration: getSetting("critical.duration"),
+                            sound: getSetting("critical.sound"),
+                            volume: getSetting("critical.volume"),
+                            delay: getSetting("critical.delay"),
+                        },
+                    }
                 },
                 {
                     id: "text",
