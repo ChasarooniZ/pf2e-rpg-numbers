@@ -6,47 +6,33 @@
         </a>
         {{/each}}
     </nav>
-
-    <b>Fixed header</b><br>
-    {{header}}
-    <hr>
-
     <section class="content">
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
-            Fixed content for tab {{tab.title}}<br>
             {{#if home}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
             {{/if}}
             {{#if rolls}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
             {{/if}}
             {{#if token}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' this}}
             {{/if}}
             {{#if critical}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' this}}
             {{/if}}
             {{#if text}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' this}}
             {{/if}}
             {{#if misc}}
-                {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs' this}}
             {{/if}}
         </div>
         {{/each}}
     </section>
-
-    <hr>
-    <b>Fixed header</b><br>
-    {{header}}
-    <hr>
-    Fixed content<br>
-    {{{content}}}
-    <hr>
-    Fixed <em>footer</em><br>
-    {{footer}}
-    <button>Save</button>
-    <button>Submit</button>
-    <button>Cancel</button>
+    <footer>
+        <button>Save</button>
+        <button>Submit</button>
+        <button>Cancel</button>
+    </footer>
 </form>

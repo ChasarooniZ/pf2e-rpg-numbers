@@ -1,4 +1,4 @@
-import { getSetting } from "./misc.js";
+import { getSetting, MODULE_ID } from "./misc.js";
 
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
@@ -12,7 +12,7 @@ export class SettingsConfigForm extends FormApplication {
         return mergeObject(super.defaultOptions, {
             classes: ['form'],
             popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/pf2e-rpg-settings-config.hbs`,
+            template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 800,
@@ -97,10 +97,10 @@ export class SettingsConfigForm extends FormApplication {
                     scaleOnSize: getSetting("rotate-on-attack.scale-on-size"),
                 },
                 critical: {
-                    critical: getSetting("critical.enabled"),
-                    style: getSetting("critical.type"),
-                    checksOrAttacks: getSetting("critical.show-on"),
-                    pcOrNPC: getSetting("critical.show-on-token-type"),
+                    enabled: getSetting("critical.enabled"),
+                    style: convertChoicesGivenSetting("critical.type"),
+                    checksOrAttacks: convertChoicesGivenSetting("critical.show-on"),
+                    pcOrNPC: convertChoicesGivenSetting("critical.show-on-token-type"),
                     defImage: getSetting("critical.default-img"),
                     duration: getSetting("critical.duration"),
                     sound: getSetting("critical.sound"),
@@ -189,4 +189,10 @@ export class SettingsConfigForm extends FormApplication {
         const data = expandObject(formData);
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
+}
+
+function convertChoicesGivenSetting(settingPath) {
+    const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
+    const value = getSetting(settingPath);
+    return Object.entries(choices).map(([id, label]) => ({ id, label, selected: id === value }))
 }
