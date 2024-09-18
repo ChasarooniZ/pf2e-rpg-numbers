@@ -31,137 +31,94 @@ export class SettingsConfigForm extends FormApplication {
             placeholder: true
         };*/
         return foundry.utils.mergeObject(super.getData(), {
-            settings: {
-                enabled: getSetting("enabled"),
-                dmgNumbers: {
-                    enabled: getSetting("dmg-enabled"),
-                    whenTo: getSetting("dmg-on-apply-or-roll"),
-                    fontSize: getSetting("font-size"),
-                    maxFontScale: getSetting("max-font-scale"),
-                    topOffset: getSetting("top-offset"),
-                    showTotal: getSetting("show-total"),
-                    scaleType: getSetting("number-scale-type"),
-                    split: getSetting("damage-split"),
-                    duration: getSetting("duration"),
-                    waitTime: getSetting("wait-time-between-numbers"),
-                    onlyGM: getSetting("show-only-GM"),
-                    scale: getSetting("animation-scale"),
-                    jitter: getSetting("jitter"),
-                },
-                checkNumbers: {
-                    enabled: getSetting("check-enabled"),
-                    colorScheme: getSetting("check-color-scheme"),
-                    showOutCome: getSetting("check-outcome-result"),
-                    fontSize: getSetting("check-font-size"),
-                    duration: getSetting("check-duration"),
-                    sfx: {
-                        enabled: getSetting("check-animations.sfx.enabled"),
-                        checkOrAttack: getSetting("check-animations.sfx.check-or-attack"),
-                        options: getSetting("check-animations.sfx.options"),
-                        volume: getSetting("check-animations.sfx.volume"),
-                        criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
-                        success: getSetting("check-animations.sfx.file.success"),
-                        failure: getSetting("check-animations.sfx.file.failure"),
-                        criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
-                    },
-                },
-                screenShake: {
-                    onDamaged: {
-                        enabled: getSetting("shake-enabled"),
-                        duration: getSetting("shake-duration"),
-                        maxIntensity: getSetting("shake-intensity-max"),
-                        intensityScaling: getSetting("shake-intensity-type"),
-                        intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
-                        shakeGM: getSetting("shake-gm-enabled"),
-                    },
-                    onAttack: {
-                        enabled: getSetting("shake-on-attack.enabled"),
-                        showFor: getSetting("shake-on-attack.type"),
-                    }
-                },
-                tokenShake: {
-                    enabled: getSetting("dmg-shake-directional-enabled"),
-                    distance: getSetting("tok-shake-distance"),
-                    shakes: getSetting("tok-shake-shakes"),
-                    duration: getSetting("tok-shake-duration"),
-                    scaling: {
-                        type: getSetting("tok-shake-scaling-type"),
-                        distance: getSetting("tok-shake-scaling-distance"),
-                        shakes: getSetting("tok-shake-scaling-shakes"),
-                        duration: getSetting("tok-shake-scaling-duration"),
-                    }
-                },
-                rotateOnAttack: {
-                    enabled: getSetting("rotate-on-attack"),
-                    duration: getSetting("rotate-on-attack.duration"),
-                    scaleOnSize: getSetting("rotate-on-attack.scale-on-size"),
-                },
-                critical: {
-                    enabled: getSetting("critical.enabled"),
-                    style: convertChoicesGivenSetting("critical.type"),
-                    checksOrAttacks: convertChoicesGivenSetting("critical.show-on"),
-                    pcOrNPC: convertChoicesGivenSetting("critical.show-on-token-type"),
-                    defImage: getSetting("critical.default-img"),
-                    duration: getSetting("critical.duration"),
-                    sound: getSetting("critical.sound"),
-                    volume: getSetting("critical.volume"),
-                    delay: getSetting("critical.delay"),
-                },
-                finishingMove: {
-                    enabled: getSetting("finishing-move.enabled"),
-                    enabledPlayers: getSetting("finishing-move.enabled-players"),
-                    keepOn: getSetting("finishing-move.keep-on"),
-                    usePlayerColor: getSetting("finishing-move.use-player-color"),
-                    quality: getSetting("finishing-move.quality"),
-                    sound: getSetting("finishing-move.sound-effect"),
-                    volume: getSetting("finishing-move.sound-effect.volume"),
-                    duration: {
-                        word: getSetting("finishing-move.duration.word"),
-                        end: getSetting("finishing-move.duration.end"),
-                    },
-                },
-                fromSoftware: {
-                    eldenRing: {
-                        nounVerbed: {
-                            enabled: getSetting("from-software.noun-verbed.enabled"),
-                            fontSize: getSetting("from-software.noun-verbed.font-size"),
-                            sound: getSetting("from-software.noun-verbed.sound-effect"),
-                            volume: getSetting("from-software.noun-verbed.sound-effect.volume"),
-                            duration: getSetting("from-software.noun-verbed.duration"),
-                            text: getSetting("from-software.noun-verbed.text"),
-                        },
-                        death: {
-                            enabled: getSetting("from-software.death.enabled"),
-                            fontSize: getSetting("from-software.death.font-size"),
-                            sound: getSetting("from-software.death.sound-effect"),
-                            volume: getSetting("from-software.death.sound-effect.volume"),
-                            duration: getSetting("from-software.death.duration"),
-                            text: getSetting("from-software.death.text"),
-                        }
-                    }
-                },
-                debug: {
-                    enabled: getSetting("debug-mode"),
-                }
-            },
             tabs: [
                 {
                     id: "home",
                     label: "Home",
                     icon: "fa-dragon",
-                    home: true
+                    home: true,
+                    settings: {
+                        enabled: getSetting("enabled")
+                    }
                 },
                 {
                     id: "rolls",
                     label: "Rolls",
                     icon: "fa-dice-d20",
-                    rolls: true
+                    rolls: true,
+                    settings: {
+                        dmgNumbers: {
+                            enabled: getSetting("dmg-enabled"),
+                            whenTo: getSetting("dmg-on-apply-or-roll"),
+                            fontSize: getSetting("font-size"),
+                            maxFontScale: getSetting("max-font-scale"),
+                            topOffset: getSetting("top-offset"),
+                            showTotal: getSetting("show-total"),
+                            scaleType: getSetting("number-scale-type"),
+                            split: getSetting("damage-split"),
+                            duration: getSetting("duration"),
+                            waitTime: getSetting("wait-time-between-numbers"),
+                            onlyGM: getSetting("show-only-GM"),
+                            scale: getSetting("animation-scale"),
+                            jitter: getSetting("jitter"),
+                        },
+                        checkNumbers: {
+                            enabled: getSetting("check-enabled"),
+                            colorScheme: getSetting("check-color-scheme"),
+                            showOutCome: getSetting("check-outcome-result"),
+                            fontSize: getSetting("check-font-size"),
+                            duration: getSetting("check-duration"),
+                            sfx: {
+                                enabled: getSetting("check-animations.sfx.enabled"),
+                                checkOrAttack: getSetting("check-animations.sfx.check-or-attack"),
+                                options: getSetting("check-animations.sfx.options"),
+                                volume: getSetting("check-animations.sfx.volume"),
+                                criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
+                                success: getSetting("check-animations.sfx.file.success"),
+                                failure: getSetting("check-animations.sfx.file.failure"),
+                                criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
+                            },
+                        },
+                    }
                 },
                 {
                     id: "token",
                     label: "Token",
                     icon: "fa-circle-user",
-                    token: true
+                    token: true,
+                    settings: {
+                        tokenShake: {
+                            enabled: getSetting("dmg-shake-directional-enabled"),
+                            distance: getSetting("tok-shake-distance"),
+                            shakes: getSetting("tok-shake-shakes"),
+                            duration: getSetting("tok-shake-duration"),
+                            scaling: {
+                                type: getSetting("tok-shake-scaling-type"),
+                                distance: getSetting("tok-shake-scaling-distance"),
+                                shakes: getSetting("tok-shake-scaling-shakes"),
+                                duration: getSetting("tok-shake-scaling-duration"),
+                            }
+                        },
+                        rotateOnAttack: {
+                            enabled: getSetting("rotate-on-attack"),
+                            duration: getSetting("rotate-on-attack.duration"),
+                            scaleOnSize: getSetting("rotate-on-attack.scale-on-size"),
+                        },
+                        screenShake: {
+                            onDamaged: {
+                                enabled: getSetting("shake-enabled"),
+                                duration: getSetting("shake-duration"),
+                                maxIntensity: getSetting("shake-intensity-max"),
+                                intensityScaling: getSetting("shake-intensity-type"),
+                                intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
+                                shakeGM: getSetting("shake-gm-enabled"),
+                            },
+                            onAttack: {
+                                enabled: getSetting("shake-on-attack.enabled"),
+                                showFor: getSetting("shake-on-attack.type"),
+                            }
+                        },
+                    }
                 },
                 {
                     id: "critical",
@@ -186,13 +143,53 @@ export class SettingsConfigForm extends FormApplication {
                     id: "text",
                     label: "Text",
                     icon: "fa-message-captions",
-                    text: true
+                    text: true,
+                    settings: {
+                        finishingMove: {
+                            enabled: getSetting("finishing-move.enabled"),
+                            enabledPlayers: getSetting("finishing-move.enabled-players"),
+                            keepOn: getSetting("finishing-move.keep-on"),
+                            usePlayerColor: getSetting("finishing-move.use-player-color"),
+                            quality: getSetting("finishing-move.quality"),
+                            sound: getSetting("finishing-move.sound-effect"),
+                            volume: getSetting("finishing-move.sound-effect.volume"),
+                            duration: {
+                                word: getSetting("finishing-move.duration.word"),
+                                end: getSetting("finishing-move.duration.end"),
+                            },
+                        },
+                        fromSoftware: {
+                            eldenRing: {
+                                nounVerbed: {
+                                    enabled: getSetting("from-software.noun-verbed.enabled"),
+                                    fontSize: getSetting("from-software.noun-verbed.font-size"),
+                                    sound: getSetting("from-software.noun-verbed.sound-effect"),
+                                    volume: getSetting("from-software.noun-verbed.sound-effect.volume"),
+                                    duration: getSetting("from-software.noun-verbed.duration"),
+                                    text: getSetting("from-software.noun-verbed.text"),
+                                },
+                                death: {
+                                    enabled: getSetting("from-software.death.enabled"),
+                                    fontSize: getSetting("from-software.death.font-size"),
+                                    sound: getSetting("from-software.death.sound-effect"),
+                                    volume: getSetting("from-software.death.sound-effect.volume"),
+                                    duration: getSetting("from-software.death.duration"),
+                                    text: getSetting("from-software.death.text"),
+                                }
+                            }
+                        },
+                    }
                 },
                 {
                     id: "misc",
                     label: "Misc",
                     icon: "fa-gear",
-                    misc: true
+                    misc: true,
+                    settings: {
+                        debug: {
+                            enabled: getSetting("debug-mode"),
+                        }
+                    },
                 },
             ]
         })

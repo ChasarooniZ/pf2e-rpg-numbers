@@ -1,9 +1,6 @@
 <form>
     <h2>{{localize "pf2e-rpg-numbers.module-settings.headers.critical"}}</h2>
     {{!-- Enabled --}}
-    {{settings}}
-    <p>enabled: {{settings.enabled}}</p>
-    <p>enabled2: {{settings.critical.enabled}}</p>
     <div class="form-group">
         <label for="settings.critical.enabled"  data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}</label>
@@ -16,7 +13,7 @@
             "pf2e-rpg-numbers.module-settings.critical.type.name"}}</label>
         <select type="checkbox" id="settings.critical.style" name="settings.critical.style">
             {{#each settings.critical.style as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize "{{option.value}}"}}
+            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
             </option>
             {{/each}}
         </select>
@@ -27,7 +24,7 @@
             "pf2e-rpg-numbers.module-settings.critical.show-on.name"}}</label>
           <select type="checkbox" id="settings.critical.show-on" name="settings.critical.show-on">
             {{#each settings.critical.checksOrAttacks as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize "{{option.value}}"}}
+            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
             </option>
             {{/each}}
         </select>
@@ -38,7 +35,7 @@
             "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}</label>
         <select type="checkbox" id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
             {{#each settings.critical.pcOrNPC as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize "{{option.value}}"}}
+            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
             </option>
             {{/each}}
         </select>
