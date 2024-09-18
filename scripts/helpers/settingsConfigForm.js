@@ -204,5 +204,5 @@ export class SettingsConfigForm extends FormApplication {
 function convertChoicesGivenSetting(settingPath) {
     const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
     const value = getSetting(settingPath);
-    return Object.entries(choices).map(([id, label]) => ({ id, label, selected: id === value }))
+    return {choices,value}
 }

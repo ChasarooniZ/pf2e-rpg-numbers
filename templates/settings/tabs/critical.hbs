@@ -12,10 +12,7 @@
         <label for="settings.critical.style">{{localize
             "pf2e-rpg-numbers.module-settings.critical.type.name"}}</label>
         <select type="checkbox" id="settings.critical.style" name="settings.critical.style">
-            {{#each settings.critical.style as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
-            </option>
-            {{/each}}
+              {{selectOptions settings.critical.style.choices selected=settings.critical.style.value localize=true}}
         </select>
     </div>
     {{!-- Checks or Attacks --}}
@@ -23,10 +20,7 @@
         <label for="settings.critical.show-on">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on.name"}}</label>
           <select type="checkbox" id="settings.critical.show-on" name="settings.critical.show-on">
-            {{#each settings.critical.checksOrAttacks as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
-            </option>
-            {{/each}}
+              {{selectOptions settings.critical.checksOrAttacks.choices selected=settings.critical.checksOrAttacks.value localize=true}}
         </select>
     </div>
     {{!-- PC or NPC --}}
@@ -34,10 +28,7 @@
         <label for="settings.critical.show-on-token-type">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}</label>
         <select type="checkbox" id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
-            {{#each settings.critical.pcOrNPC as |option|}}
-            <option value="{{option.id}}" {{#if option.selected}}selected{{/if}}>{{localize option.value}}
-            </option>
-            {{/each}}
+              {{selectOptions settings.critical.pcOrNPC.choices selected=settings.critical.pcOrNPC.value localize=true}}
         </select>
     </div>
 </form>
