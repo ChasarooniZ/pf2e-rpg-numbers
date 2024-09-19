@@ -52,27 +52,55 @@ export class SettingsConfigForm extends FormApplication {
                             whenTo: getSetting("dmg-on-apply-or-roll"),
                             fontSize: getSetting("font-size"),
                             maxFontScale: getSetting("max-font-scale"),
-                            topOffset: getSetting("top-offset"),
+                            topOffset: getNumberSetting("top-offset", {
+                                min: -100,
+                                max: 100,
+                                step: 5,
+                            }),
                             showTotal: getSetting("show-total"),
                             scaleType: getSetting("number-scale-type"),
                             split: getSetting("damage-split"),
-                            duration: getSetting("duration"),
-                            waitTime: getSetting("wait-time-between-numbers"),
+                            duration: getNumberSetting("duration", {
+                                min: 0,
+                                max: 10,
+                                step: 0.1,
+                            }),
+                            waitTime: getNumberSetting("wait-time-between-numbers", {
+                                min: 0,
+                                max: 1000,
+                                step: 1,
+                            }),
                             onlyGM: getSetting("show-only-GM"),
-                            scale: getSetting("animation-scale"),
-                            jitter: getSetting("jitter"),
+                            scale: getNumberSetting("animation-scale", {
+                                min: 0,
+                                max: 2,
+                                step: 0.05,
+                            }),
+                            jitter: getNumberSetting("jitter", {
+                                min: 0,
+                                max: 1,
+                                step: 0.05,
+                            }),
                         },
                         checkNumbers: {
                             enabled: getSetting("check-enabled"),
                             colorScheme: getSetting("check-color-scheme"),
                             showOutCome: getSetting("check-outcome-result"),
                             fontSize: getSetting("check-font-size"),
-                            duration: getSetting("check-duration"),
+                            duration: getNumberSetting("check-duration", {
+                                min: 0,
+                                max: 10,
+                                step: 0.1,
+                            }),
                             sfx: {
                                 enabled: getSetting("check-animations.sfx.enabled"),
                                 checkOrAttack: getSetting("check-animations.sfx.check-or-attack"),
                                 options: getSetting("check-animations.sfx.options"),
-                                volume: getSetting("check-animations.sfx.volume"),
+                                volume: getNumberSetting("check-animations.sfx.volume", {
+                                    min: 0,
+                                    max: 100,
+                                    step: 1,
+                                }),
                                 criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
                                 success: getSetting("check-animations.sfx.file.success"),
                                 failure: getSetting("check-animations.sfx.file.failure"),
@@ -89,9 +117,21 @@ export class SettingsConfigForm extends FormApplication {
                     settings: {
                         tokenShake: {
                             enabled: getSetting("dmg-shake-directional-enabled"),
-                            distance: getSetting("tok-shake-distance"),
-                            shakes: getSetting("tok-shake-shakes"),
-                            duration: getSetting("tok-shake-duration"),
+                            distance: getNumberSetting("tok-shake-distance", {
+                                min: 1,
+                                max: 100,
+                                step: 1,
+                            }),
+                            shakes: getNumberSetting("tok-shake-shakes", {
+                                min: 1,
+                                max: 20,
+                                step: 1,
+                            }),
+                            duration: getNumberSetting("tok-shake-duration", {
+                                min: 0,
+                                max: 2000,
+                                step: 10,
+                            }),
                             scaling: {
                                 type: getSetting("tok-shake-scaling-type"),
                                 distance: getSetting("tok-shake-scaling-distance"),
@@ -101,14 +141,26 @@ export class SettingsConfigForm extends FormApplication {
                         },
                         rotateOnAttack: {
                             enabled: getSetting("rotate-on-attack"),
-                            duration: getSetting("rotate-on-attack.duration"),
+                            duration: getNumberSetting("rotate-on-attack.duration", {
+                                min: 0,
+                                max: 2,
+                                step: 0.1,
+                            }),
                             scaleOnSize: getSetting("rotate-on-attack.scale-on-size"),
                         },
                         screenShake: {
                             onDamaged: {
                                 enabled: getSetting("shake-enabled"),
-                                duration: getSetting("shake-duration"),
-                                maxIntensity: getSetting("shake-intensity-max"),
+                                duration: getNumberSetting("shake-duration", {
+                                    min: 0,
+                                    max: 2000,
+                                    step: 10,
+                                }),
+                                maxIntensity: getNumberSetting("shake-intensity-max", {
+                                    min: 1,
+                                    max: 100,
+                                    step: 1,
+                                }),
                                 intensityScaling: getSetting("shake-intensity-type"),
                                 intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
                                 shakeGM: getSetting("shake-gm-enabled"),
@@ -128,13 +180,22 @@ export class SettingsConfigForm extends FormApplication {
                     settings: {
                         critical: {
                             enabled: getSetting("critical.enabled"),
-                            style: convertChoicesGivenSetting("critical.type"),
-                            checksOrAttacks: convertChoicesGivenSetting("critical.show-on"),
-                            pcOrNPC: convertChoicesGivenSetting("critical.show-on-token-type"),
-                            defImage: getSetting("critical.default-img"),
-                            duration: getSetting("critical.duration"),
+                            style: getChoicesSetting("critical.type"),
+                            checksOrAttacks: getChoicesSetting("critical.show-on"),
+                            pcOrNPC: getChoicesSetting("critical.show-on-token-type"),
+                            defaultImageType: getChoiceSetting("critical.default-img"),
+                            duration: getNumberSetting("critical.duration",
+                                {
+                                    min: 0,
+                                    max: 10,
+                                    step: 0.1,
+                                }),
                             sound: getSetting("critical.sound"),
-                            volume: getSetting("critical.volume"),
+                            volume: getNumberSetting("critical.volume", {
+                                min: 1,
+                                max: 100,
+                                step: 1,
+                            }),
                             delay: getSetting("critical.delay"),
                         },
                     }
@@ -150,30 +211,70 @@ export class SettingsConfigForm extends FormApplication {
                             enabledPlayers: getSetting("finishing-move.enabled-players"),
                             keepOn: getSetting("finishing-move.keep-on"),
                             usePlayerColor: getSetting("finishing-move.use-player-color"),
-                            quality: getSetting("finishing-move.quality"),
+                            quality: getNumberSetting("finishing-move.quality", {
+                                min: 1,
+                                max: 5,
+                                step: 1,
+                            }),
                             sound: getSetting("finishing-move.sound-effect"),
-                            volume: getSetting("finishing-move.sound-effect.volume"),
+                            volume: getNumberSetting("finishing-move.sound-effect.volume", {
+                                min: 1,
+                                max: 100,
+                                step: 1,
+                            }),
                             duration: {
-                                word: getSetting("finishing-move.duration.word"),
-                                end: getSetting("finishing-move.duration.end"),
+                                word: getNumberSetting("finishing-move.duration.word", {
+                                    min: 0,
+                                    max: 2000,
+                                    step: 25,
+                                }),
+                                end: getNumberSetting("finishing-move.duration.end", {
+                                    min: 0,
+                                    max: 5000,
+                                    step: 25,
+                                }),
                             },
                         },
                         fromSoftware: {
                             eldenRing: {
                                 nounVerbed: {
                                     enabled: getSetting("from-software.noun-verbed.enabled"),
-                                    fontSize: getSetting("from-software.noun-verbed.font-size"),
+                                    fontSize: getNumberSetting("from-software.noun-verbed.font-size", {
+                                        min: 1,
+                                        max: 150,
+                                        step: 1,
+                                    }),
                                     sound: getSetting("from-software.noun-verbed.sound-effect"),
-                                    volume: getSetting("from-software.noun-verbed.sound-effect.volume"),
-                                    duration: getSetting("from-software.noun-verbed.duration"),
+                                    volume: getNumberSetting("from-software.noun-verbed.sound-effect.volume", {
+                                        min: 1,
+                                        max: 100,
+                                        step: 1,
+                                    }),
+                                    duration: getNumberSetting("from-software.noun-verbed.duration", {
+                                        min: 0,
+                                        max: 12,
+                                        step: 0.1,
+                                    }),
                                     text: getSetting("from-software.noun-verbed.text"),
                                 },
                                 death: {
                                     enabled: getSetting("from-software.death.enabled"),
-                                    fontSize: getSetting("from-software.death.font-size"),
+                                    fontSize: getNumberSetting("from-software.death.font-size", {
+                                        min: 1,
+                                        max: 150,
+                                        step: 1,
+                                    }),
                                     sound: getSetting("from-software.death.sound-effect"),
-                                    volume: getSetting("from-software.death.sound-effect.volume"),
-                                    duration: getSetting("from-software.death.duration"),
+                                    volume: getNumberSetting("from-software.death.sound-effect.volume", {
+                                        min: 1,
+                                        max: 100,
+                                        step: 1,
+                                    }),
+                                    duration: getNumberSetting("from-software.death.duration", {
+                                        min: 0,
+                                        max: 12,
+                                        step: 0.1,
+                                    }),
                                     text: getSetting("from-software.death.text"),
                                 }
                             }
@@ -201,8 +302,14 @@ export class SettingsConfigForm extends FormApplication {
     }
 }
 
-function convertChoicesGivenSetting(settingPath) {
+function getChoicesSetting(settingPath) {
     const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
     const value = getSetting(settingPath);
-    return {choices,value}
+    return { choices, value }
+}
+
+function getNumberSetting(settingPath, range) {
+    const ret = { value: getSetting(settingPath) };
+    if (range) ret.range = range;
+    return ret;
 }
