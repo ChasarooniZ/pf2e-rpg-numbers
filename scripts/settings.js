@@ -570,7 +570,7 @@ Hooks.on("init", () => {
         config: true,
         default: 50,
         range: {
-            min: 1,
+            min: 0,
             max: 100,
             step: 1,
         },
@@ -647,7 +647,7 @@ Hooks.on("init", () => {
         config: true,
         default: 40,
         range: {
-            min: 1,
+            min: 0,
             max: 100,
             step: 1,
         },
@@ -728,7 +728,7 @@ Hooks.on("init", () => {
             config: true,
             default: 40,
             range: {
-                min: 1,
+                min: 0,
                 max: 100,
                 step: 1,
             },
