@@ -84,6 +84,7 @@ function processArithmeticExpression(term, result, flavor) {
         return result.concat(first, second);
     }
     if (term.operator === "*") {
+        // This works on the assumption of times 2
         const [first, second] = operands;
         return result.concat(first, first);
     }
