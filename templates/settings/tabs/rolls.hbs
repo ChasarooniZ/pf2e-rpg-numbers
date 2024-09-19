@@ -224,15 +224,15 @@
         {{! Color Scheme }}
         <div class="form-group">
             <label
-                for="settings.dmg-numbers.colorScheme"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.color-scheme.hint"}}"
+                for="settings.check-animations.colorScheme"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.color-scheme.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.color-scheme.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.color-scheme.name"}}
             </label>
-            <select id="settings.dmg-numbers.colorScheme" name="settings.dmg-numbers.colorScheme">
+            <select id="settings.check-animations.colorScheme" name="settings.check-animations.colorScheme">
                 {{selectOptions
-                    settings.dmg-numbers.colorScheme.choices
-                    selected=settings.dmg-numbers.colorScheme.value
+                    settings.check-animations.colorScheme.choices
+                    selected=settings.check-animations.colorScheme.value
                     localize=true
                 }}
             </select>
@@ -240,15 +240,15 @@
         {{! Show Outcome Result }}
         <div class="form-group">
             <label
-                for="settings.dmg-numbers.showOutcome"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.outcome-result.hint"}}"
+                for="settings.check-animations.showOutcome"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.outcome-result.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.outcome-result.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.outcome-result.name"}}
             </label>
-            <select id="settings.dmg-numbers.showOutcome" name="settings.dmg-numbers.showOutcome">
+            <select id="settings.check-animations.showOutcome" name="settings.check-animations.showOutcome">
                 {{selectOptions
-                    settings.dmg-numbers.showOutcome.choices
-                    selected=settings.dmg-numbers.showOutcome.value
+                    settings.check-animations.showOutcome.choices
+                    selected=settings.check-animations.showOutcome.value
                     localize=true
                 }}
             </select>
@@ -256,27 +256,27 @@
         {{! Font Size }}
         <div class="form-group">
             <label
-                for="settings.dmg-numbers.fontSize"
+                for="settings.check-animations.fontSize"
                 data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.font-size.hint"}}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.font-size.name"}}
             </label>
-            {{numberInput settings.dmg-numbers.fontSize.value name="settings.dmg-numbers.fontSize"}}
+            {{numberInput settings.check-animations.fontSize.value name="settings.check-animations.fontSize"}}
         </div>
         {{! Duration }}
         <div class="form-group">
             <label
-                for="settings.dmg-numbers.duration"
+                for="settings.check-animations.duration"
                 data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.duration.hint"}}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.duration.name"}}
             </label>
             {{numberInput
-                settings.dmg-numbers.duration.value
-                name="settings.dmg-numbers.duration"
-                step=settings.dmg-numbers.duration.range.step
-                min=settings.dmg-numbers.duration.range.min
-                max=settings.dmg-numbers.duration.range.max
+                settings.check-animations.duration.value
+                name="settings.check-animations.duration"
+                step=settings.check-animations.duration.range.step
+                min=settings.check-animations.duration.range.min
+                max=settings.check-animations.duration.range.max
             }}
         </div>
         {{! SFX Enabled }}
