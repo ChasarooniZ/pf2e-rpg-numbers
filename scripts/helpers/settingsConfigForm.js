@@ -58,8 +58,8 @@ export class SettingsConfigForm extends FormApplication {
                                 step: 5,
                             }),
                             showTotal: getSetting("show-total"),
-                            scaleType: getSetting("number-scale-type"),
-                            split: getSetting("damage-split"),
+                            scaleType: getChoicesSetting("number-scale-type"),
+                            split: getChoicesSetting("damage-split"),
                             duration: getNumberSetting("duration", {
                                 min: 0,
                                 max: 10,

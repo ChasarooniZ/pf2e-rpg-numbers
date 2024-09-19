@@ -42,21 +42,21 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.fontSize"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.font-scale.hint"}}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.name"}}
             </label>
-            {{numberInput settings.dmg-numbers.fontSize.value name="settings.dmg-numbers.fontSize"}}
+            {{numberInput settings.dmg-numbers.fontSize.value name="settings.dmg-numbers.fontSize" step=1}}
         </div>
-        {{! Max Font Size }}
+        {{! Max Font Scale }}
         <div class="form-group">
             <label
-                for="settings.dmg-numbers.maxFontSize"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-size.hint"}}"
+                for="settings.dmg-numbers.maxFontScale"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-scale.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-size.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-scale.name"}}
             </label>
-            {{numberInput settings.dmg-numbers.maxFontSize.value name="settings.dmg-numbers.maxFontSize"}}
+            {{numberInput settings.dmg-numbers.maxFontScale.value name="settings.dmg-numbers.maxFontScale" step=0.1}}
         </div>
         {{! Top Offset }}
         <div class="form-group">
@@ -125,9 +125,9 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.duration"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.duration.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.duration.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.duration.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.duration.name"}}
             </label>
             {{numberInput
                 settings.dmg-numbers.duration.value
@@ -141,9 +141,9 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.waitTime"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.wait-time-between-numbers.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.wait-time-between-numbers.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.wait-time-between-numbers.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.wait-time-between-numbers.name"}}
             </label>
             {{numberInput
                 settings.dmg-numbers.waitTime.value
@@ -172,9 +172,9 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.scale"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.animation-scale.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.animation-scale.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.animation-scale.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.animation-scale.name"}}
             </label>
             {{numberInput
                 settings.dmg-numbers.scale.value
@@ -188,9 +188,9 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.jitter"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.jitter.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.jitter.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.jitter.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.jitter.name"}}
             </label>
             {{numberInput
                 settings.dmg-numbers.jitter.value
@@ -257,26 +257,26 @@
         <div class="form-group">
             <label
                 for="settings.check-animations.fontSize"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.font-size.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.font-size.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.font-size.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.check-animation.font-size.name"}}
             </label>
             {{numberInput settings.check-animations.fontSize.value name="settings.check-animations.fontSize"}}
         </div>
         {{! Duration }}
         <div class="form-group">
             <label
-                for="settings.check-animations.duration"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.duration.hint"}}"
+                for="settings.dmg-numbers.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.duration.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.duration.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.duration.name"}}
             </label>
             {{numberInput
-                settings.check-animations.duration.value
-                name="settings.check-animations.duration"
-                step=settings.check-animations.duration.range.step
-                min=settings.check-animations.duration.range.min
-                max=settings.check-animations.duration.range.max
+                settings.dmg-numbers.duration.value
+                name="settings.dmg-numbers.duration"
+                step=settings.dmg-numbers.duration.range.step
+                min=settings.dmg-numbers.duration.range.min
+                max=settings.dmg-numbers.duration.range.max
             }}
         </div>
         {{! SFX Enabled }}
@@ -346,7 +346,9 @@
         <div class="form-group">
             <label
                 for="settings.check-animations.sfx.file.criticalSuccess"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.hint"}}"
+                data-tooltip="{{localize
+                        "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.hint"
+                    }}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.name"}}
             </label>
@@ -394,7 +396,9 @@
         <div class="form-group">
             <label
                 for="settings.check-animations.sfx.file.criticalFailure"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.hint"}}"
+                data-tooltip="{{localize
+                        "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.hint"
+                    }}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.name"}}
             </label>
