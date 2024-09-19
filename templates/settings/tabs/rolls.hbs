@@ -1,15 +1,410 @@
 <form>
-    <h2>Rolls</h2>
-    {{!-- Damage Numbers --}}
-    <h3>{{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}</h3>
-    {{!-- Enabled --}}
-    <div class="form-group">
-        <label for="settings.critical.enabled"  data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}">{{localize
-            "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}</label>
-        <input type="checkbox" id="settings.critical.enabled" name="settings.critical.enabled" {{checked settings.critical.enabled}}/>
-    </div>
-    
-    {{!-- Check Numbers --}}
-    <h3>{{localize "pf2e-rpg-numbers.module-settings.headers.check-animations"}}</h3>
-
+    <h2>
+        Rolls
+    </h2>
+    <span>
+        {{! Damage Numbers }}
+        <h3>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}
+        </h3>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.dmg-numbers.enabled"
+                name="settings.dmg-numbers.enabled"
+                {{checked settings.dmg-numbers.enabled}}
+            />
+        </div>
+        {{! When To Show }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.whenTo"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.name"}}
+            </label>
+            <select id="settings.dmg-numbers.whenTo" name="settings.dmg-numbers.whenTo">
+                {{selectOptions
+                    settings.dmg-numbers.whenTo.choices
+                    selected=settings.dmg-numbers.whenTo.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Font Size }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.fontSize"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.font-size.name"}}
+            </label>
+            {{numberInput settings.dmg-numbers.fontSize.value name="settings.dmg-numbers.fontSize"}}
+        </div>
+        {{! Max Font Size }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.maxFontSize"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-size.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.max-font-size.name"}}
+            </label>
+            {{numberInput settings.dmg-numbers.maxFontSize.value name="settings.dmg-numbers.maxFontSize"}}
+        </div>
+        {{! Top Offset }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.topOffset"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.top-offset.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.top-offset.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.topOffset.value
+                name="settings.dmg-numbers.topOffset"
+                step=settings.dmg-numbers.topOffset.range.step
+                min=settings.dmg-numbers.topOffset.range.min
+                max=settings.dmg-numbers.topOffset.range.max
+            }}
+        </div>
+        {{! Show Total }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.showTotal"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.show-total.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.show-total.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.dmg-numbers.showTotal"
+                name="settings.dmg-numbers.showTotal"
+                {{checked settings.dmg-numbers.showTotal}}
+            />
+        </div>
+        {{! Scale Type }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.scaleType"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.number-scale-type.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.number-scale-type.name"}}
+            </label>
+            <select id="settings.dmg-numbers.scaleType" name="settings.dmg-numbers.scaleType">
+                {{selectOptions
+                    settings.dmg-numbers.scaleType.choices
+                    selected=settings.dmg-numbers.scaleType.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Damage Split Type }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.split"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.damage-split.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.damage-split.name"}}
+            </label>
+            <select id="settings.dmg-numbers.split" name="settings.dmg-numbers.split">
+                {{selectOptions
+                    settings.dmg-numbers.split.choices
+                    selected=settings.dmg-numbers.split.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.duration.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.duration.value
+                name="settings.dmg-numbers.duration"
+                step=settings.dmg-numbers.duration.range.step
+                min=settings.dmg-numbers.duration.range.min
+                max=settings.dmg-numbers.duration.range.max
+            }}
+        </div>
+        {{! Wait Time }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.waitTime"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.wait-time-between-numbers.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.wait-time-between-numbers.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.waitTime.value
+                name="settings.dmg-numbers.waitTime"
+                step=settings.dmg-numbers.waitTime.range.step
+                min=settings.dmg-numbers.waitTime.range.min
+                max=settings.dmg-numbers.waitTime.range.max
+            }}
+        </div>
+        {{! Only GM }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.onlyGM"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.show-only-GM.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.show-only-GM.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.dmg-numbers.onlyGM"
+                name="settings.dmg-numbers.onlyGM"
+                {{checked settings.dmg-numbers.onlyGM}}
+            />
+        </div>
+        {{! Scale }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.scale"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.animation-scale.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.animation-scale.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.scale.value
+                name="settings.dmg-numbers.scale"
+                step=settings.dmg-numbers.scale.range.step
+                min=settings.dmg-numbers.scale.range.min
+                max=settings.dmg-numbers.scale.range.max
+            }}
+        </div>
+        {{! Jitter }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.jitter"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.jitter.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.jitter.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.jitter.value
+                name="settings.dmg-numbers.jitter"
+                step=settings.dmg-numbers.jitter.range.step
+                min=settings.dmg-numbers.jitter.range.min
+                max=settings.dmg-numbers.jitter.range.max
+            }}
+        </div>
+    </span>
+    <span>
+        {{! Check Numbers }}
+        <h3>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.check-animations"}}
+        </h3>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.check-animations.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.check-animations.enabled"
+                name="settings.check-animations.enabled"
+                {{checked settings.check-animations.enabled}}
+            />
+        </div>
+        {{! Color Scheme }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.colorScheme"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.color-scheme.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.color-scheme.name"}}
+            </label>
+            <select id="settings.dmg-numbers.colorScheme" name="settings.dmg-numbers.colorScheme">
+                {{selectOptions
+                    settings.dmg-numbers.colorScheme.choices
+                    selected=settings.dmg-numbers.colorScheme.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Show Outcome Result }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.showOutcome"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.outcome-result.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.outcome-result.name"}}
+            </label>
+            <select id="settings.dmg-numbers.showOutcome" name="settings.dmg-numbers.showOutcome">
+                {{selectOptions
+                    settings.dmg-numbers.showOutcome.choices
+                    selected=settings.dmg-numbers.showOutcome.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Font Size }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.fontSize"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.font-size.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.font-size.name"}}
+            </label>
+            {{numberInput settings.dmg-numbers.fontSize.value name="settings.dmg-numbers.fontSize"}}
+        </div>
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.dmg-numbers.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.duration.name"}}
+            </label>
+            {{numberInput
+                settings.dmg-numbers.duration.value
+                name="settings.dmg-numbers.duration"
+                step=settings.dmg-numbers.duration.range.step
+                min=settings.dmg-numbers.duration.range.min
+                max=settings.dmg-numbers.duration.range.max
+            }}
+        </div>
+        {{! SFX Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.check-animations.sfx.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.check-animations.sfx.enabled"
+                name="settings.check-animations.sfx.enabled"
+                {{checked settings.check-animations.sfx.enabled}}
+            />
+        </div>
+        {{! SFX Check or Attack }}
+        <div class="form-group">
+            <label
+                for="settings.check-animations.sfx.checkOrAttack"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.check-or-attack.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.check-or-attack.name"}}
+            </label>
+            <select id="settings.check-animations.sfx.checkOrAttack" name="settings.check-animations.sfx.checkOrAttack">
+                {{selectOptions
+                    settings.check-animations.sfx.checkOrAttack.choices
+                    selected=settings.check-animations.sfx.checkOrAttack.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! SFX Options }}
+        <div class="form-group">
+            <label
+                for="settings.check-animations.sfx.options"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.options.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.options.name"}}
+            </label>
+            <select id="settings.check-animations.sfx.options" name="settings.check-animations.sfx.options">
+                {{selectOptions
+                    settings.check-animations.sfx.options.choices
+                    selected=settings.check-animations.sfx.options.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! SFX Volume }}
+        <div class="form-group">
+            <label
+                for="settings.check-animations.sfx.volume"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.volume.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.volume.name"}}
+            </label>
+            {{numberInput
+                settings.check-animations.sfx.volume.value
+                name="settings.check-animations.sfx.volume"
+                step=settings.check-animations.sfx.volume.range.step
+                min=settings.check-animations.sfx.volume.range.min
+                max=settings.check-animations.sfx.volume.range.max
+            }}
+        </div>
+        {{! Sound Effect - Critical Success }}
+        <div class="form-group">
+            <label
+                for="settings.critical.sfx.file.criticalSuccess"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.criticalSuccess.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.criticalSuccess.name"}}
+            </label>
+            <input
+                type="text"
+                id="settings.critical.sfx.file.criticalSuccess"
+                name="settings.critical.sfx.file.criticalSuccess"
+                value="{{settings.critical.sfx.file.criticalSuccess}}"
+            />
+            {{filePicker target="settings.critical.sfx.file.criticalSuccess" type="audio"}}
+        </div>
+        {{! Sound Effect - Success }}
+        <div class="form-group">
+            <label
+                for="settings.critical.sfx.file.success"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.success.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.success.name"}}
+            </label>
+            <input
+                type="text"
+                id="settings.critical.sfx.file.success"
+                name="settings.critical.sfx.file.success"
+                value="{{settings.critical.sfx.file.success}}"
+            />
+            {{filePicker target="settings.critical.sfx.file.success" type="audio"}}
+        </div>
+        {{! Sound Effect - Failure }}
+        <div class="form-group">
+            <label
+                for="settings.critical.sfx.file.failure"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.failure.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.failure.name"}}
+            </label>
+            <input
+                type="text"
+                id="settings.critical.sfx.file.failure"
+                name="settings.critical.sfx.file.failure"
+                value="{{settings.critical.sfx.file.failure}}"
+            />
+            {{filePicker target="settings.critical.sfx.file.failure" type="audio"}}
+        </div>
+        {{! Sound Effect - Critical Failure }}
+        <div class="form-group">
+            <label
+                for="settings.critical.sfx.file.criticalFailure"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.criticalFailure.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.critical.sfx.file.criticalFailure.name"}}
+            </label>
+            <input
+                type="text"
+                id="settings.critical.sfx.file.criticalFailure"
+                name="settings.critical.sfx.file.criticalFailure"
+                value="{{settings.critical.sfx.file.criticalFailure}}"
+            />
+            {{filePicker target="settings.critical.sfx.file.criticalFailure" type="audio"}}
+        </div>
+    </span>
 </form>

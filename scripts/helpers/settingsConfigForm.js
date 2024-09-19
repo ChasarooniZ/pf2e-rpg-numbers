@@ -47,9 +47,9 @@ export class SettingsConfigForm extends FormApplication {
                     icon: "fa-dice-d20",
                     rolls: true,
                     settings: {
-                        dmgNumbers: {
+                        'dmg-numbers': {
                             enabled: getSetting("dmg-enabled"),
-                            whenTo: getSetting("dmg-on-apply-or-roll"),
+                            whenTo: getChoicesSetting("dmg-on-apply-or-roll"),
                             fontSize: getSetting("font-size"),
                             maxFontScale: getSetting("max-font-scale"),
                             topOffset: getNumberSetting("top-offset", {
@@ -82,7 +82,7 @@ export class SettingsConfigForm extends FormApplication {
                                 step: 0.05,
                             }),
                         },
-                        checkNumbers: {
+                        'check-animations': {
                             enabled: getSetting("check-enabled"),
                             colorScheme: getSetting("check-color-scheme"),
                             showOutCome: getSetting("check-outcome-result"),
@@ -94,8 +94,8 @@ export class SettingsConfigForm extends FormApplication {
                             }),
                             sfx: {
                                 enabled: getSetting("check-animations.sfx.enabled"),
-                                checkOrAttack: getSetting("check-animations.sfx.check-or-attack"),
-                                options: getSetting("check-animations.sfx.options"),
+                                checkOrAttack: getChoicesSetting("check-animations.sfx.check-or-attack"),
+                                options: getChoicesSetting("check-animations.sfx.options"),
                                 volume: getNumberSetting("check-animations.sfx.volume", {
                                     min: 0,
                                     max: 100,
