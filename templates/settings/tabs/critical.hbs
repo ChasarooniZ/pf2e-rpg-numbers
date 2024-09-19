@@ -10,7 +10,7 @@
     <div class="form-group">
         <label for="settings.critical.style" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.type.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.type.name"}}</label>
-        <select type="checkbox" id="settings.critical.style" name="settings.critical.style">
+        <select id="settings.critical.style" name="settings.critical.style">
               {{selectOptions settings.critical.style.choices selected=settings.critical.style.value localize=true}}
         </select>
     </div>
@@ -18,7 +18,7 @@
     <div class="form-group">
         <label for="settings.critical.show-on" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on.name"}}</label>
-          <select type="checkbox" id="settings.critical.show-on" name="settings.critical.show-on">
+          <select id="settings.critical.show-on" name="settings.critical.show-on">
               {{selectOptions settings.critical.checksOrAttacks.choices selected=settings.critical.checksOrAttacks.value localize=true}}
         </select>
     </div>
@@ -26,7 +26,7 @@
     <div class="form-group">
         <label for="settings.critical.show-on-token-type" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}</label>
-        <select type="checkbox" id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
+        <select id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
               {{selectOptions settings.critical.pcOrNPC.choices selected=settings.critical.pcOrNPC.value localize=true}}
         </select>
     </div>
@@ -34,10 +34,9 @@
     <div class="form-group">
         <label for="settings.critical.default-img" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.default-img.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.default-img.name"}}</label>
-        <select type="checkbox" id="settings.critical.default-img" name="settings.critical.default-img">
+        <select id="settings.critical.default-img" name="settings.critical.default-img">
               {{selectOptions settings.critical.defaultImageType.choices selected=settings.critical.defaultImageType.value localize=true}}
         </select>
-    </div>t>
     </div>
     {{!-- Duration --}}
     <div class="form-group">
@@ -48,9 +47,26 @@
     
     {{!-- Sound Effect --}}
     <div class="form-group">
-        <label for="settings.critical.sound"  data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.sound.hint"}}">{{localize
+        <label for="settings.critical.sound"  data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sound.hint"}}">{{localize
             "pf2e-rpg-numbers.module-settings.critical.sound.name"}}</label>
-        {{filePicker target="settings.critical.duration" type="audio"}}
+        <input type="text" id="settings.critical.sound" name="settings.critical.sound" value="{{settings.critical.sound}}" />
+        {{filePicker target="settings.critical.sound" type="audio"}}
+    </div>
+
+    
+    {{!-- Volume --}}
+    <div class="form-group">
+        <label for="settings.critical.volume" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.volume.hint"}}">{{localize
+            "pf2e-rpg-numbers.module-settings.critical.volume.name"}}</label>
+        {{numberInput settings.critical.volume.value name="settings.critical.volume" step=1 min=0 max=100}}
+    </div>
+
+    
+    {{!-- Delay --}}
+    <div class="form-group">
+        <label for="settings.critical.delay" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.delay.hint"}}">{{localize
+            "pf2e-rpg-numbers.module-settings.critical.delay.name"}}</label>
+        {{numberInput settings.critical.delay name="settings.critical.delay"}}
     </div>
     
     {{!-- {{filePicker type="image" target="flags.moduleid.flagname"}} --}}

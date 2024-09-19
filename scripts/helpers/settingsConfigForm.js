@@ -183,7 +183,7 @@ export class SettingsConfigForm extends FormApplication {
                             style: getChoicesSetting("critical.type"),
                             checksOrAttacks: getChoicesSetting("critical.show-on"),
                             pcOrNPC: getChoicesSetting("critical.show-on-token-type"),
-                            defaultImageType: getChoiceSetting("critical.default-img"),
+                            defaultImageType: getChoicesSetting("critical.default-img"),
                             duration: getNumberSetting("critical.duration",
                                 {
                                     min: 0,
@@ -192,7 +192,7 @@ export class SettingsConfigForm extends FormApplication {
                                 }),
                             sound: getSetting("critical.sound"),
                             volume: getNumberSetting("critical.volume", {
-                                min: 1,
+                                min: 0,
                                 max: 100,
                                 step: 1,
                             }),
