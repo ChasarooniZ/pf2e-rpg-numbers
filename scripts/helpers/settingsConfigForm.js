@@ -15,8 +15,8 @@ export class SettingsConfigForm extends FormApplication {
             template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
-            width: 800,
-            height: 'auto',
+            width: 600,
+            height: 800,
             tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
         });
     }
@@ -101,10 +101,12 @@ export class SettingsConfigForm extends FormApplication {
                                     max: 100,
                                     step: 1,
                                 }),
-                                criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
-                                success: getSetting("check-animations.sfx.file.success"),
-                                failure: getSetting("check-animations.sfx.file.failure"),
-                                criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
+                                file: {
+                                    criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
+                                    success: getSetting("check-animations.sfx.file.success"),
+                                    failure: getSetting("check-animations.sfx.file.failure"),
+                                    criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
+                                }
                             },
                         },
                     }

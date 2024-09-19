@@ -1,12 +1,12 @@
 <form>
-    <h2>
+    <h1>
         Rolls
-    </h2>
+    </h1>
     <span>
         {{! Damage Numbers }}
-        <h3>
+        <h2>
             {{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}
-        </h3>
+        </h2>
         {{! Enabled }}
         <div class="form-group">
             <label
@@ -141,7 +141,8 @@
         <div class="form-group">
             <label
                 for="settings.dmg-numbers.waitTime"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.wait-time-between-numbers.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.wait-time-between-numbers.hint"
+                    }}"
             >
                 {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.wait-time-between-numbers.name"}}
             </label>
@@ -203,9 +204,9 @@
     </span>
     <span>
         {{! Check Numbers }}
-        <h3>
+        <h2>
             {{localize "pf2e-rpg-numbers.module-settings.headers.check-animations"}}
-        </h3>
+        </h2>
         {{! Enabled }}
         <div class="form-group">
             <label
@@ -247,8 +248,8 @@
             </label>
             <select id="settings.check-animations.showOutCome" name="settings.check-animations.showOutCome">
                 {{selectOptions
-                    settings.check-animations.showOutCome.choices
-                    selected=settings.check-animations.showOutCome.value
+                    settings.check-animations.showOutcome.choices
+                    selected=settings.check-animations.showOutcome.value
                     localize=true
                 }}
             </select>
@@ -259,9 +260,9 @@
                 for="settings.check-animations.fontSize"
                 data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.font-size.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.check-animation.font-size.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.check-animations.font-size.name"}}
             </label>
-            {{numberInput settings.check-animations.fontSize.value name="settings.check-animations.fontSize"}}
+            {{numberInput settings.check-animations.fontSize name="settings.check-animations.fontSize" step=1}}
         </div>
         {{! Duration }}
         <div class="form-group">
@@ -279,6 +280,7 @@
                 max=settings.dmg-numbers.duration.range.max
             }}
         </div>
+        <h3>Check SFX</h3>
         {{! SFX Enabled }}
         <div class="form-group">
             <label
