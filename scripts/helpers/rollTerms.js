@@ -14,8 +14,8 @@ export function getDamageList(rolls) {
 }
 
 export function extractDamageInfoCombined(rolls) {
-    return rolls.flatMap(inp => 
-        inp?.terms?.flatMap(term => 
+    return rolls.flatMap(inp =>
+        inp?.terms?.flatMap(term =>
             term?.rolls?.map(roll => ({
                 type: roll.type,
                 value: roll.total,
@@ -25,7 +25,7 @@ export function extractDamageInfoCombined(rolls) {
 }
 
 export function extractDamageInfoAll(rolls) {
-    return rolls.flatMap(inp => 
+    return rolls.flatMap(inp =>
         inp?.terms?.flatMap(term => extractTerm(term)) || []
     );
 }
@@ -70,7 +70,7 @@ function processDamageInstance(term, result, flavor) {
     result = term.terms.flatMap(item => extractTerm(item, term.types || flavor));
     const keepPersistent = !!term.options.evaluatePersistent;
     return result.filter(res => (res?.type?.startsWith("persistent,") ? keepPersistent : true))
-                 .map(r => ({ value: r.value, type: r.type.replace(/persistent,/g, "") }));
+        .map(r => ({ value: r.value, type: r.type.replace(/persistent,/g, "") }));
 }
 
 function processArithmeticExpression(term, result, flavor) {
@@ -94,7 +94,7 @@ function processDie(term, result, flavor) {
     return result.concat(term.results.map(dice => ({ value: dice.result, type: term.flavor || flavor })));
 }
 
-function processNumericTerm(result, term, flavor) {
+function processNumericTerm(term, result, flavor) {
     result.push({ value: term.number, type: term.flavor || flavor });
     return result;
 }

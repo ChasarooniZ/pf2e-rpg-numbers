@@ -1,3 +1,6 @@
+# [12.5.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.4...12.5.5) - Damage Roll Fix
+- Fixed bug where damage rolls weren't actually showing
+
 # [12.5.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.3...12.5.4) - Actually use Screenscale for Crits
 
 - `Critical Animations`
