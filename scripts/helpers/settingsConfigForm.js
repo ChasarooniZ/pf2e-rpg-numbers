@@ -84,8 +84,8 @@ export class SettingsConfigForm extends FormApplication {
                         },
                         'check-animations': {
                             enabled: getSetting("check-enabled"),
-                            colorScheme: getSetting("check-color-scheme"),
-                            showOutCome: getSetting("check-outcome-result"),
+                            colorScheme: getChoicesSetting("check-color-scheme"),
+                            showOutcome: getChoicesSetting("check-outcome-result"),
                             fontSize: getSetting("check-font-size"),
                             duration: getNumberSetting("check-duration", {
                                 min: 0,
