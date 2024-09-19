@@ -85,7 +85,7 @@ function processArithmeticExpression(term, result, flavor) {
     }
     if (term.operator === "*") {
         const [first, second] = operands;
-        return result.concat(first, first);
+        return result.concat(first, second);
     }
     return result;
 }
