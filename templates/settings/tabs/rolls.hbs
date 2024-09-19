@@ -1,5 +1,15 @@
 <form>
     <h2>Rolls</h2>
-    <h3>{{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}</h3>
-    {{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}
+    {{!-- Damage Numbers --}}
+    <h3>{{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}</h3>
+    {{!-- Enabled --}}
+    <div class="form-group">
+        <label for="settings.critical.enabled"  data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}">{{localize
+            "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}</label>
+        <input type="checkbox" id="settings.critical.enabled" name="settings.critical.enabled" {{checked settings.critical.enabled}}/>
+    </div>
+    
+    {{!-- Check Numbers --}}
+    <h3>{{localize "pf2e-rpg-numbers.module-settings.headers.check-animations"}}</h3>
+
 </form>
