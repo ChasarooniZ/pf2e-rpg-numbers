@@ -169,7 +169,7 @@ export class SettingsConfigForm extends FormApplication {
                             },
                             onAttack: {
                                 enabled: getSetting("shake-on-attack.enabled"),
-                                showFor: getSetting("shake-on-attack.type"),
+                                showFor: getChoicesSetting("shake-on-attack.type"),
                             }
                         },
                     }

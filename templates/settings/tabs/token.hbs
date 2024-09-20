@@ -230,22 +230,6 @@
         {{! Max Intensity }}
         <div class="form-group">
             <label
-                for="settings.screenShake.onDamaged.duration"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.screen-shake.duration.hint"}}"
-            >
-                {{localize "pf2e-rpg-numbers.module-settings.screen-shake.duration.name"}}
-            </label>
-            {{numberInput
-                settings.screenShake.onDamaged.duration.value
-                name="settings.screenShake.onDamaged.duration"
-                step=settings.screenShake.onDamaged.duration.range.step
-                min=settings.screenShake.onDamaged.duration.range.min
-                max=settings.screenShake.onDamaged.duration.range.max
-            }}
-        </div>
-        {{! Max Intensity }}
-        <div class="form-group">
-            <label
                 for="settings.screenShake.onDamaged.maxIntensity"
                 data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.screen-shake.intensity-max.hint"}}"
             >
@@ -308,6 +292,43 @@
                 name="settings.screenShake.onDamaged.shakeGM"
                 {{checked settings.screenShake.onDamaged.shakeGM}}
             />
+        </div>
+    </span>
+    <span>
+        {{! Shake on Attack }}
+        <h2>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.shake-on-attack"}}
+        </h2>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.screenShake.onAttack.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.shake-on-attack.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.shake-on-attack.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.screenShake.onAttack.enabled"
+                name="settings.screenShake.onAttack.enabled"
+                {{checked settings.screenShake.onAttack.enabled}}
+            />
+        </div>
+        {{! Show For }}
+        <div class="form-group">
+            <label
+                for="settings.screenShake.onAttack.showFor"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.shake-on-attack.type.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.shake-on-attack.type.name"}}
+            </label>
+            <select id="settings.screenShake.onAttack.showFor" name="settings.screenShake.onAttack.showFor">
+                {{selectOptions
+                    settings.screenShake.onAttack.showFor.choices
+                    selected=settings.screenShake.onAttack.showFor.value
+                    localize=true
+                }}
+            </select>
         </div>
     </span>
 </form>
