@@ -138,7 +138,7 @@ export class SettingsConfigForm extends FormApplication {
                                 type: getChoicesSetting("tok-shake-scaling-type"),
                                 distance: getChoicesSetting("tok-shake-scaling-distance"),
                                 shakes: getChoicesSetting("tok-shake-scaling-shakes"),
-                                duration: getSetting("tok-shake-scaling-duration"),
+                                duration: getChoicesSetting("tok-shake-scaling-duration"),
                             }
                         },
                         rotateOnAttack: {

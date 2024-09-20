@@ -70,7 +70,7 @@
                 max=settings.tokenShake.duration.range.max
             }}
         </div>
-        {{!-- Scaling --}}
+        {{! Scaling }}
         <h3>
             {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.scaling"}}
         </h3>
@@ -93,15 +93,15 @@
         {{! Scaling Distance }}
         <div class="form-group">
             <label
-                for="settings.tokenShake.scaling.duration"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"}}"
+                for="settings.tokenShake.scaling.distance"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.name"}}
             </label>
-            <select id="settings.tokenShake.scaling.duration" name="settings.tokenShake.scaling.duration">
+            <select id="settings.tokenShake.scaling.distance" name="settings.tokenShake.scaling.distance">
                 {{selectOptions
-                    settings.tokenShake.scaling.duration.choices
-                    selected=settings.tokenShake.scaling.duration.value
+                    settings.tokenShake.scaling.distance.choices
+                    selected=settings.tokenShake.scaling.distance.value
                     localize=true
                 }}
             </select>
@@ -137,6 +137,58 @@
                     localize=true
                 }}
             </select>
+        </div>
+    </span>
+    <span>
+        {{! Rotate on Attack }}
+        <h2>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-attack"}}
+        </h2>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnAttack.enabled"
+                name="settings.rotateOnAttack.enabled"
+                {{checked settings.rotateOnAttack.enabled}}
+            />
+        </div>
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.distance"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.name"}}
+            </label>
+            {{numberInput
+                settings.rotateOnAttack.distance.value
+                name="settings.rotateOnAttack.distance"
+                step=settings.rotateOnAttack.distance.range.step
+                min=settings.rotateOnAttack.distance.range.min
+                max=settings.rotateOnAttack.distance.range.max
+            }}
+        </div>
+        {{! Scale on Size }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.scaleOnSize"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnAttack.scaleOnSize"
+                name="settings.rotateOnAttack.scaleOnSize"
+                {{checked settings.rotateOnAttack.scaleOnSize}}
+            />
         </div>
     </span>
 </form>
