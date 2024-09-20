@@ -22,7 +22,7 @@
             "headers": {
                 "dmg-numbers": "Damage Numbers",
                 "check-animations": "Checks & Attack Animations",
-                "screen-shake": "Screen Shake",
+                "screen-shake": "Shake on Damaged",
                 "token-dmg-shake": {
                     "title": "Token Damage Shake",
                     "scaling": "Token Damage Shake - Scaling"

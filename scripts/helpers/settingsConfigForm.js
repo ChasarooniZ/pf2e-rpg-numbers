@@ -163,7 +163,7 @@ export class SettingsConfigForm extends FormApplication {
                                     max: 100,
                                     step: 1,
                                 }),
-                                intensityScaling: getSetting("shake-intensity-type"),
+                                intensityScaling: getChoicesSetting("shake-intensity-type"),
                                 intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
                                 shakeGM: getSetting("shake-gm-enabled"),
                             },
