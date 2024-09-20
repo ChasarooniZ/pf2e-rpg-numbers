@@ -40,34 +40,32 @@
 <style type="text/css">
   /* Make the nav fixed at the top */
 nav.tabs {
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
+    bottom: 0;
     width: 100%;
-    background-color: white;
     z-index: 1000; /* Ensure it stays on top */
     display: flex;
     justify-content: space-around;
-    border-bottom: 1px solid #ccc;
 }
 
 /* Add padding to the content section to account for the fixed nav */
 section.content {
-    margin-top: 60px; /* Adjust based on the height of your nav */
+    margin-top: 10px; /* Adjust based on the height of your nav */
+   padding-bottom: 30px;
 }
 
 /* Make the footer fixed at the bottom */
 footer {
-    position: fixed;
+    position: sticky;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: white;
     z-index: 1000; /* Ensure it stays on top */
     display: flex;
     justify-content: space-between; /* Spread the buttons out */
     padding: 10px;
-    border-top: 1px solid #ccc;
 }
 
 /* Ensure buttons take up 1/3 of the footer width */
@@ -75,6 +73,7 @@ footer button {
     flex: 1;
     margin: 0 5px;
     text-align: center;
+    height: 30px;
 }
 
 </style>
