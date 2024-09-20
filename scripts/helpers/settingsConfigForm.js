@@ -16,7 +16,7 @@ export class SettingsConfigForm extends FormApplication {
             id: 'pf2e-rpg-numbers-settings-form',
             title: 'Pf2e RPG #s Config Menu',
             width: 600,
-            height: 800,
+            height: 600,
             tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
         });
     }
@@ -135,9 +135,9 @@ export class SettingsConfigForm extends FormApplication {
                                 step: 10,
                             }),
                             scaling: {
-                                type: getSetting("tok-shake-scaling-type"),
-                                distance: getSetting("tok-shake-scaling-distance"),
-                                shakes: getSetting("tok-shake-scaling-shakes"),
+                                type: getChoicesSetting("tok-shake-scaling-type"),
+                                distance: getChoicesSetting("tok-shake-scaling-distance"),
+                                shakes: getChoicesSetting("tok-shake-scaling-shakes"),
                                 duration: getSetting("tok-shake-scaling-duration"),
                             }
                         },

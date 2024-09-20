@@ -6,7 +6,7 @@
     <div class="form-group">
         <label
             for="settings.critical.enabled"
-            data-tooltip="{{localize " pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}
         </label>
@@ -48,12 +48,12 @@
     {{! PC or NPC }}
     <div class="form-group">
         <label
-            for="settings.critical.show-on-token-type"
+            for="settings.critical.pcOrNPC"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}
         </label>
-        <select id="settings.critical.show-on-token-type" name="settings.critical.show-on-token-type">
+        <select id="settings.critical.pcOrNPC" name="settings.critical.pcOrNPC">
             {{selectOptions settings.critical.pcOrNPC.choices selected=settings.critical.pcOrNPC.value localize=true}}
         </select>
     </div>

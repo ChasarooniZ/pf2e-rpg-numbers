@@ -1,5 +1,142 @@
 <form>
-    <h2>Token</h2>
-    <h3>{{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}</h3>
-    {{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}
+    <h1>
+        Token
+    </h1>
+    <span>
+        {{! Token Shake }}
+        <h2>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.title"}}
+        </h2>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.enabled"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.tokenShake.enabled"
+                name="settings.tokenShake.enabled"
+                {{checked settings.tokenShake.enabled}}
+            />
+        </div>
+        {{! Distance }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.distance"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.name"}}
+            </label>
+            {{numberInput
+                settings.tokenShake.distance.value
+                name="settings.tokenShake.distance"
+                step=settings.tokenShake.distance.range.step
+                min=settings.tokenShake.distance.range.min
+                max=settings.tokenShake.distance.range.max
+            }}
+        </div>
+        {{! Shakes }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.shakes"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.name"}}
+            </label>
+            {{numberInput
+                settings.tokenShake.shakes.value
+                name="settings.tokenShake.shakes"
+                step=settings.tokenShake.shakes.range.step
+                min=settings.tokenShake.shakes.range.min
+                max=settings.tokenShake.shakes.range.max
+            }}
+        </div>
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"}}
+            </label>
+            {{numberInput
+                settings.tokenShake.duration.value
+                name="settings.tokenShake.duration"
+                step=settings.tokenShake.duration.range.step
+                min=settings.tokenShake.duration.range.min
+                max=settings.tokenShake.duration.range.max
+            }}
+        </div>
+        {{!-- Scaling --}}
+        <h3>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.scaling"}}
+        </h3>
+        {{! Scaling Type }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.scaling.type"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.type.name"}}
+            </label>
+            <select id="settings.tokenShake.scaling.type" name="settings.tokenShake.scaling.type">
+                {{selectOptions
+                    settings.tokenShake.scaling.type.choices
+                    selected=settings.tokenShake.scaling.type.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Scaling Distance }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.scaling.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"}}
+            </label>
+            <select id="settings.tokenShake.scaling.duration" name="settings.tokenShake.scaling.duration">
+                {{selectOptions
+                    settings.tokenShake.scaling.duration.choices
+                    selected=settings.tokenShake.scaling.duration.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Scaling Shakes }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.scaling.shakes"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.name"}}
+            </label>
+            <select id="settings.tokenShake.scaling.shakes" name="settings.tokenShake.scaling.shakes">
+                {{selectOptions
+                    settings.tokenShake.scaling.shakes.choices
+                    selected=settings.tokenShake.scaling.shakes.value
+                    localize=true
+                }}
+            </select>
+        </div>
+        {{! Scaling Duration }}
+        <div class="form-group">
+            <label
+                for="settings.tokenShake.scaling.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"}}
+            </label>
+            <select id="settings.tokenShake.scaling.duration" name="settings.tokenShake.scaling.duration">
+                {{selectOptions
+                    settings.tokenShake.scaling.duration.choices
+                    selected=settings.tokenShake.scaling.duration.value
+                    localize=true
+                }}
+            </select>
+        </div>
+    </span>
 </form>
