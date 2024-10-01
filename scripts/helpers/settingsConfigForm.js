@@ -23,6 +23,13 @@ export class SettingsConfigForm extends FormApplication {
 
     activateListeners(html) {
         super.activateListeners(html);
+        // Add event listener for the Save button
+        html.find('pf2e-rpg-save').on('click', (event) => {
+            handleSettings(event)
+        });
+        html.find('pf2e-rpg-submit').on('click', (event) => {
+            handleSettings(event)
+        });
     }
 
     getData() {
@@ -301,6 +308,7 @@ export class SettingsConfigForm extends FormApplication {
 
     async _updateObject(event, formData) {
         const data = expandObject(formData);
+        console.warn({data, event, name: "Pf2e RPG"})
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 }
@@ -315,4 +323,20 @@ function getNumberSetting(settingPath, range) {
     const ret = { value: getSetting(settingPath) };
     if (range) ret.range = range;
     return ret;
+}
+
+function handleSettings(event) {
+    event.preventDefault(); // Prevent the default form submission
+
+    // Collect all form data
+    const formData = new FormData(event.currentTarget.closest("form"));
+    const dataObject = {};
+
+    // Iterate over the form data and gather it into an object
+    for (let [key, value] of formData.entries()) {
+        dataObject[key] = value;
+    }
+
+    // Log the data object to the console
+    console.log("Form data on Save:", dataObject);
 }
