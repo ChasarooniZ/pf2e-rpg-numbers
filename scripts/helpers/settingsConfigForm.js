@@ -210,7 +210,7 @@ export class SettingsConfigForm extends FormApplication {
                     settings: {
                         finishingMove: {
                             enabled: getSetting("finishing-move.enabled"),
-                            enabledPlayers: getSetting("finishing-move.enabled-players"),
+                            //enabledPlayers: getSetting("finishing-move.enabled-players"),
                             keepOn: getSetting("finishing-move.keep-on"),
                             usePlayerColor: getSetting("finishing-move.use-player-color"),
                             quality: getNumberSetting("finishing-move.quality", {
@@ -241,6 +241,7 @@ export class SettingsConfigForm extends FormApplication {
                             eldenRing: {
                                 nounVerbed: {
                                     enabled: getSetting("from-software.noun-verbed.enabled"),
+                                    xpThreshold: getSetting("from-software.noun-verbed.xp-threshold"),
                                     fontSize: getNumberSetting("from-software.noun-verbed.font-size", {
                                         min: 1,
                                         max: 150,

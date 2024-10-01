@@ -30,9 +30,7 @@
                 "shake-on-attack": "Shake on Attack",
                 "rotate-on-attack": "Rotate on Attack",
                 "finishing-move": {
-                    "title": "Finishing Moves",
-                    "pcs": "Finishing Moves: PC Settings",
-                    "npcs": "Finishing Moves: NPC Settings"
+                    "title": "Finishing Moves"
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",

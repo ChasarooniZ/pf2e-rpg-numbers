@@ -1,5 +1,9 @@
 <form>
-    <h2>Misc</h2>
-    <h3>{{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}</h3>
-    {{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}
+    {{! Debug }}
+    <div class="form-group">
+        <label for="settings.enabled" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.debug-mode.hint"}}">
+            {{localize "pf2e-rpg-numbers.module-settings.debug-mode.name"}}
+        </label>
+        <input type="checkbox" id="settings.debug.enabled" name="settings.debug.enabled" {{checked settings.debug.enabled}} />
+    </div>
 </form>

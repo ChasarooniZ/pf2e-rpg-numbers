@@ -1,8 +1,9 @@
 <form>
-    <h2>RPG #s</h2>
-    {{!-- Enabled --}}
+    {{! Enabled }}
     <div class="form-group" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}">
-        <label for="settings.enabled">{{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}</label>
+        <label for="settings.enabled">
+            {{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}
+        </label>
         <input type="checkbox" id="settings.enabled" name="settings.enabled" {{checked settings.enabled}} />
     </div>
 </form>
