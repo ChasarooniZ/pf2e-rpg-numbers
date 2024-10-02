@@ -9,6 +9,10 @@ export function getSetting(settingID) {
     return game.settings.get(MODULE_ID, settingID);
 }
 
+export function setSetting(settingID, value) {
+    return game.settings.set(MODULE_ID, settingID, value);
+}
+
 export function doSomethingOnDamageApply() {
     return (
         getSetting("shake-enabled") ||

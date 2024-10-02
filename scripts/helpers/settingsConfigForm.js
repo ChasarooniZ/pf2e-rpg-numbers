@@ -1,4 +1,4 @@
-import { getSetting, MODULE_ID } from "./misc.js";
+import { getSetting, MODULE_ID, setSetting } from "./misc.js";
 
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
@@ -317,7 +317,7 @@ export class SettingsConfigForm extends FormApplication {
         const expandedData = expandObject(formData);
 
         // Debug log for inspecting the expanded form data
-        console.log("Expanded Form Data:", {expandedData, formData});
+        console.log("Expanded Form Data:", { expandedData, formData });
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 
@@ -342,15 +342,124 @@ export class SettingsConfigForm extends FormApplication {
         // Handle saving or submitting
         if (submit) {
             // If submitting, call _updateObject to store the data
-            this._updateObject(null, dataObject);
+            this.saveSettings(dataObject);
             ui.notifications.info("Form submitted successfully!");
         } else {
             // If saving, call _updateObject to store the data
-            this._updateObject(null, dataObject);
+            this.saveSettings(dataObject);
             ui.notifications.info("Form saved successfully!");
         }
     }
+    async saveSettings(data) {
+        const settings = data.settings;
 
+        // Home settings
+        updateIfChanged("enabled", settings.enabled);
+
+        // Rolls: dmg-numbers settings
+        const dmgNumbers = settings['dmg-numbers'];
+        updateIfChanged("dmg-enabled", dmgNumbers.enabled);
+        updateIfChanged("dmg-on-apply-or-roll", dmgNumbers.whenTo);
+        updateIfChanged("font-size", dmgNumbers.fontSize);
+        updateIfChanged("max-font-scale", dmgNumbers.maxFontScale);
+        updateIfChanged("top-offset", dmgNumbers.topOffset);
+        updateIfChanged("show-total", dmgNumbers.showTotal);
+        updateIfChanged("number-scale-type", dmgNumbers.scaleType);
+        updateIfChanged("damage-split", dmgNumbers.split);
+        updateIfChanged("duration", dmgNumbers.duration);
+        updateIfChanged("wait-time-between-numbers", dmgNumbers.waitTime);
+        updateIfChanged("show-only-GM", dmgNumbers.onlyGM);
+        updateIfChanged("animation-scale", dmgNumbers.scale);
+        updateIfChanged("jitter", dmgNumbers.jitter);
+
+        // Rolls: check-animations settings
+        const checkAnimations = settings['check-animations'];
+        updateIfChanged("check-enabled", checkAnimations.enabled);
+        updateIfChanged("check-color-scheme", checkAnimations.colorScheme);
+        updateIfChanged("check-outcome-result", checkAnimations.showOutcome);
+        updateIfChanged("check-font-size", checkAnimations.fontSize);
+        updateIfChanged("check-duration", checkAnimations.duration);
+        updateIfChanged("check-animations.sfx.enabled", checkAnimations.sfx.enabled);
+        updateIfChanged("check-animations.sfx.check-or-attack", checkAnimations.sfx.checkOrAttack);
+        updateIfChanged("check-animations.sfx.options", checkAnimations.sfx.options);
+        updateIfChanged("check-animations.sfx.volume", checkAnimations.sfx.volume);
+        updateIfChanged("check-animations.sfx.file.criticalSuccess", checkAnimations.sfx.file.criticalSuccess);
+        updateIfChanged("check-animations.sfx.file.success", checkAnimations.sfx.file.success);
+        updateIfChanged("check-animations.sfx.file.failure", checkAnimations.sfx.file.failure);
+        updateIfChanged("check-animations.sfx.file.criticalFailure", checkAnimations.sfx.file.criticalFailure);
+
+        // Token: tokenShake settings
+        const tokenShake = settings.tokenShake;
+        updateIfChanged("dmg-shake-directional-enabled", tokenShake.enabled);
+        updateIfChanged("tok-shake-distance", tokenShake.distance);
+        updateIfChanged("tok-shake-shakes", tokenShake.shakes);
+        updateIfChanged("tok-shake-duration", tokenShake.duration);
+        updateIfChanged("tok-shake-scaling-type", tokenShake.scaling.type);
+        updateIfChanged("tok-shake-scaling-distance", tokenShake.scaling.distance);
+        updateIfChanged("tok-shake-scaling-shakes", tokenShake.scaling.shakes);
+        updateIfChanged("tok-shake-scaling-duration", tokenShake.scaling.duration);
+
+        // Token: rotateOnAttack settings
+        const rotateOnAttack = settings.rotateOnAttack;
+        updateIfChanged("rotate-on-attack", rotateOnAttack.enabled);
+        updateIfChanged("rotate-on-attack.duration", rotateOnAttack.duration);
+        updateIfChanged("rotate-on-attack.scale-on-size", rotateOnAttack.scaleOnSize);
+
+        // Token: screenShake settings
+        const screenShake = settings.screenShake;
+        updateIfChanged("shake-enabled", screenShake.onDamaged.enabled);
+        updateIfChanged("shake-duration", screenShake.onDamaged.duration);
+        updateIfChanged("shake-intensity-max", screenShake.onDamaged.maxIntensity);
+        updateIfChanged("shake-intensity-type", screenShake.onDamaged.intensityScaling);
+        updateIfChanged("shake-intensity-include-temp-hp", screenShake.onDamaged.intensityScalingIncludeTempHP);
+        updateIfChanged("shake-gm-enabled", screenShake.onDamaged.shakeGM);
+        updateIfChanged("shake-on-attack.enabled", screenShake.onAttack.enabled);
+        updateIfChanged("shake-on-attack.type", screenShake.onAttack.showFor);
+
+        // Critical settings
+        const critical = settings.critical;
+        updateIfChanged("critical.enabled", critical.enabled);
+        updateIfChanged("critical.type", critical.style);
+        updateIfChanged("critical.show-on", critical.checksOrAttacks);
+        updateIfChanged("critical.show-on-token-type", critical.pcOrNPC);
+        updateIfChanged("critical.default-img", critical.defaultImageType);
+        updateIfChanged("critical.duration", critical.duration);
+        updateIfChanged("critical.sound", critical.sound);
+        updateIfChanged("critical.volume", critical.volume);
+        updateIfChanged("critical.delay", critical.delay);
+
+        // Text: finishingMove settings
+        const finishingMove = settings.finishingMove;
+        updateIfChanged("finishing-move.enabled", finishingMove.enabled);
+        updateIfChanged("finishing-move.keep-on", finishingMove.keepOn);
+        updateIfChanged("finishing-move.use-player-color", finishingMove.usePlayerColor);
+        updateIfChanged("finishing-move.quality", finishingMove.quality);
+        updateIfChanged("finishing-move.sound-effect", finishingMove.sound);
+        updateIfChanged("finishing-move.sound-effect.volume", finishingMove.volume);
+        updateIfChanged("finishing-move.duration.word", finishingMove.duration.word);
+        updateIfChanged("finishing-move.duration.end", finishingMove.duration.end);
+
+        // Text: fromSoftware settings
+        const fromSoftware = settings.fromSoftware;
+        const eldenRing = fromSoftware.eldenRing;
+        updateIfChanged("from-software.noun-verbed.enabled", eldenRing.nounVerbed.enabled);
+        updateIfChanged("from-software.noun-verbed.xp-threshold", eldenRing.nounVerbed.xpThreshold);
+        updateIfChanged("from-software.noun-verbed.font-size", eldenRing.nounVerbed.fontSize);
+        updateIfChanged("from-software.noun-verbed.sound-effect", eldenRing.nounVerbed.sound);
+        updateIfChanged("from-software.noun-verbed.sound-effect.volume", eldenRing.nounVerbed.volume);
+        updateIfChanged("from-software.noun-verbed.duration", eldenRing.nounVerbed.duration);
+        updateIfChanged("from-software.noun-verbed.text", eldenRing.nounVerbed.text);
+        updateIfChanged("from-software.death.enabled", eldenRing.death.enabled);
+        updateIfChanged("from-software.death.font-size", eldenRing.death.fontSize);
+        updateIfChanged("from-software.death.sound-effect", eldenRing.death.sound);
+        updateIfChanged("from-software.death.sound-effect.volume", eldenRing.death.volume);
+        updateIfChanged("from-software.death.duration", eldenRing.death.duration);
+        updateIfChanged("from-software.death.text", eldenRing.death.text);
+
+        // Misc: debug settings
+        const debug = settings.debug;
+        updateIfChanged("debug-mode", debug.enabled);
+    }
 
 }
 
@@ -364,4 +473,11 @@ function getNumberSetting(settingPath, range) {
     const ret = { value: getSetting(settingPath) };
     if (range) ret.range = range;
     return ret;
+}
+
+function updateIfChanged(settingID, newValue) {
+    const currentValue = getSetting(settingID);
+    if (currentValue !== newValue) {
+        setSetting(settingID, newValue);
+    }
 }
