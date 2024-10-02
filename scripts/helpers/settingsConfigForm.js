@@ -24,11 +24,17 @@ export class SettingsConfigForm extends FormApplication {
     activateListeners(html) {
         super.activateListeners(html);
         // Add event listener for the Save button
-        html.find('pf2e-rpg-save').on('click', (event) => {
-            handleSettings(event)
+        html.find('#pf2e-rpg-save').on('click', (event) => {
+            event.preventDefault();
+            this._processForm(html, false); // Pass 'false' to not submit the form, only save
         });
-        html.find('pf2e-rpg-submit').on('click', (event) => {
-            handleSettings(event)
+        html.find('#pf2e-rpg-submit').on('click', (event) => {
+            event.preventDefault();
+            this._processForm(html, true); // Pass 'true' to indicate form submission
+        });
+        html.find('#pf2e-rpg-cancel').on('click', (event) => {
+            event.preventDefault();
+            this.close(); // Close the form without saving
         });
     }
 
@@ -307,10 +313,45 @@ export class SettingsConfigForm extends FormApplication {
     }
 
     async _updateObject(event, formData) {
-        const data = expandObject(formData);
-        console.warn({data, event, name: "Pf2e RPG"})
+        // Expand the flat form data into a nested object structure
+        const expandedData = expandObject(formData);
+
+        // Debug log for inspecting the expanded form data
+        console.log("Expanded Form Data:", {expandedData, formData});
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
+
+    _processForm(html, submit = false) {
+        // Collect the form data from all inputs in the form
+        const formData = new FormData(html[0].closest("form"));
+        const dataObject = {};
+
+        // Iterate over the form data and convert it to an object
+        formData.forEach((value, key) => {
+            // Handle checkboxes separately to store booleans
+            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
+                dataObject[key] = html.find(`[name="${key}"]`).is(":checked");
+            } else {
+                dataObject[key] = value;
+            }
+        });
+
+        // Log the gathered form data for debugging purposes
+        console.log("Form Data:", dataObject);
+
+        // Handle saving or submitting
+        if (submit) {
+            // If submitting, call _updateObject to store the data
+            this._updateObject(null, dataObject);
+            ui.notifications.info("Form submitted successfully!");
+        } else {
+            // If saving, call _updateObject to store the data
+            this._updateObject(null, dataObject);
+            ui.notifications.info("Form saved successfully!");
+        }
+    }
+
+
 }
 
 function getChoicesSetting(settingPath) {
@@ -323,20 +364,4 @@ function getNumberSetting(settingPath, range) {
     const ret = { value: getSetting(settingPath) };
     if (range) ret.range = range;
     return ret;
-}
-
-function handleSettings(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Collect all form data
-    const formData = new FormData(event.currentTarget.closest("form"));
-    const dataObject = {};
-
-    // Iterate over the form data and gather it into an object
-    for (let [key, value] of formData.entries()) {
-        dataObject[key] = value;
-    }
-
-    // Log the data object to the console
-    console.log("Form data on Save:", dataObject);
 }
