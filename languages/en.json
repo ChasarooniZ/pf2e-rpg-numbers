@@ -22,7 +22,7 @@
             "headers": {
                 "dmg-numbers": "Damage Numbers",
                 "check-animations": "Checks & Attack Animations",
-                "screen-shake": "Screen Shake",
+                "screen-shake": "Shake on Damaged",
                 "token-dmg-shake": {
                     "title": "Token Damage Shake",
                     "scaling": "Token Damage Shake - Scaling"
@@ -30,9 +30,7 @@
                 "shake-on-attack": "Shake on Attack",
                 "rotate-on-attack": "Rotate on Attack",
                 "finishing-move": {
-                    "title": "Finishing Moves",
-                    "pcs": "Finishing Moves: PC Settings",
-                    "npcs": "Finishing Moves: NPC Settings"
+                    "title": "Finishing Moves"
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",
@@ -217,7 +215,7 @@
                 },
                 "intensity-max": {
                     "name": "Intensity",
-                    "hint": "How hard to shake the screen"
+                    "hint": "How hard to shake the screen in pixels (recommended between 10 and 35)"
                 },
                 "intensity-type": {
                     "name": "Intensity Scaling",
@@ -545,6 +543,45 @@
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
+            }
+        },
+        "menu": {
+            "settings": {
+                "title": "Pf2e RPG #s Config Menu",
+                "buttons": {
+                    "export": "Export Settings",
+                    "import": "Import Settings",
+                    "footer": {
+                        "save": "Save",
+                        "submit": "Submit",
+                        "cancel": "Cancel"
+                    }
+                },
+                "notification": {
+                    "save": "Settings saved successfully!",
+                    "submit": "Settings submitted successfully!",
+                    "cancel": "Settings menu closed without saving"
+                },
+                "tabs": {
+                    "home": "Home",
+                    "rolls": "Rolls",
+                    "token": "Token",
+                    "critical": "Critical",
+                    "text": "Text",
+                    "misc": "Misc"
+                }
+            },
+            "import": {
+                "title": "PF2e RPG Settings Import",
+                "content": "Upload Settings JSON",
+                "buttons": {
+                    "import": "Import",
+                    "cancel": "Cancel"
+                },
+                "notification": {
+                    "success": "Pf2e RPG Settings Imported!",
+                    "failure": "PF2e RPG Settings failed to import :("
+                }
             }
         },
         "display-text": {

@@ -1,0 +1,17 @@
+<span>
+    {{! Enabled }}
+    <div class="form-group">
+        <label for="settings.enabled" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}">
+            {{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}
+        </label>
+        <input type="checkbox" id="settings.enabled" name="settings.enabled" {{checked settings.enabled}} />
+    </div>
+    <button id="pf2e-rpg-export">
+        <i class="fas fa-file-export"></i>
+        {{localize "pf2e-rpg-numbers.menu.settings.buttons.export"}}
+    </button>
+    <button id="pf2e-rpg-import">
+        <i class="fas fa-file-import"></i>
+        {{localize "pf2e-rpg-numbers.menu.settings.buttons.import"}}
+    </button>
+</span>

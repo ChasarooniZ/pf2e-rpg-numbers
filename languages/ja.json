@@ -547,6 +547,45 @@
                 "hint": "コンソールにさまざまなメッセージを受信させる"
             }
         },
+        "menu": {
+            "settings": {
+                "title": "PF2e RPG #s 設定メニュー",
+                "buttons": {
+                    "export": "設定のエクスポート",
+                    "import": "設定のインポート",
+                    "footer": {
+                        "save": "保存",
+                        "submit": "送信",
+                        "cancel": "キャンセル"
+                    }
+                },
+                "notification": {
+                    "save": "設定が正常に保存されました！",
+                    "submit": "設定が正常に送信されました！",
+                    "cancel": "設定メニューは保存せずに閉じられました"
+                },
+                "tabs": {
+                    "home": "ホーム",
+                    "rolls": "ロール",
+                    "token": "トークン",
+                    "critical": "クリティカル",
+                    "text": "テキスト",
+                    "misc": "その他"
+                }
+            },
+            "import": {
+                "title": "PF2e RPG 設定のインポート",
+                "content": "設定JSONをアップロード",
+                "buttons": {
+                    "import": "インポート",
+                    "cancel": "キャンセル"
+                },
+                "notification": {
+                    "success": "PF2e RPG 設定がインポートされました！",
+                    "failure": "PF2e RPG 設定のインポートに失敗しました :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "重大な障害",

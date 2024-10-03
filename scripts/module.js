@@ -13,7 +13,6 @@ import {
     //FinisherDialog,
     getSetting,
     handleDiceSoNice,
-    localize,
     MODULE_ID
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
@@ -273,7 +272,8 @@ export function getTargetList(msg) {
     }
 
     // No pf2e target damage module
-    return [msg?.target?.token?.id ?? msg.token.id];
+    const tok = msg?.target?.token?.id ?? msg?.token?.id;
+    return tok ? [tok] : [];
 }
 
 export function createUpdateMessage() {

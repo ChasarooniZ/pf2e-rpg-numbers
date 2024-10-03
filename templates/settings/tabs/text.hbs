@@ -1,0 +1,350 @@
+<span>
+    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />">
+        {{localize "pf2e-rpg-numbers.module-settings.headers.finishing-move.title"}}
+    </h2>
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.finishingMove.enabled"
+            name="settings.finishingMove.enabled"
+            {{checked settings.finishingMove.enabled}}
+        />
+    </div>
+    {{! Keep On }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.keepOn"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.keep-on.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.keep-on.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.finishingMove.keepOn"
+            name="settings.finishingMove.keepOn"
+            {{checked settings.finishingMove.keepOn}}
+        />
+    </div>
+    {{! Use Player Color }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.usePlayerColor"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.use-player-color.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.use-player-color.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.finishingMove.usePlayerColor"
+            name="settings.finishingMove.usePlayerColor"
+            {{checked settings.finishingMove.usePlayerColor}}
+        />
+    </div>
+    {{! Quality }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.quality"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.quality.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.quality.name"}}
+        </label>
+        {{numberInput
+            settings.finishingMove.quality.value
+            name="settings.finishingMove.quality"
+            step=settings.finishingMove.quality.range.step
+            min=settings.finishingMove.quality.range.min
+            max=settings.finishingMove.quality.range.max
+        }}
+    </div>
+    {{! Sound Effect }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.sound"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.name"}}
+        </label>
+        <input
+            type="text"
+            id="settings.finishingMove.sound"
+            name="settings.finishingMove.sound"
+            value="{{settings.finishingMove.sound}}"
+        />
+        {{filePicker target="settings.finishingMove.sound" type="audio"}}
+    </div>
+    {{! Volume }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.volume"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.volume.name"}}
+        </label>
+        {{numberInput
+            settings.finishingMove.volume.value
+            name="settings.finishingMove.volume"
+            step=settings.finishingMove.volume.range.step
+            min=settings.finishingMove.volume.range.min
+            max=settings.finishingMove.volume.range.max
+        }}
+    </div>
+    {{! Duration Word }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.duration.word"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.duration.word.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.duration.word.name"}}
+        </label>
+        {{numberInput
+            settings.finishingMove.duration.word.value
+            name="settings.finishingMove.duration.word"
+            step=settings.finishingMove.duration.word.range.step
+            min=settings.finishingMove.duration.word.range.min
+            max=settings.finishingMove.duration.word.range.max
+        }}
+    </div>
+    {{! Duration End }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.duration.end"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.duration.end.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.duration.end.name"}}
+        </label>
+        {{numberInput
+            settings.finishingMove.duration.end.value
+            name="settings.finishingMove.duration.end"
+            step=settings.finishingMove.duration.end.range.step
+            min=settings.finishingMove.duration.end.range.min
+            max=settings.finishingMove.duration.end.range.max
+        }}
+    </div>
+</span>
+<span>
+    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-noun-verbed.gif' />">
+        {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.title"}}
+        -
+        {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.noun-verbed"}}
+    </h2>
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.fromSoftware.eldenRing.nounVerbed.enabled"
+            name="settings.fromSoftware.eldenRing.nounVerbed.enabled"
+            {{checked settings.fromSoftware.eldenRing.nounVerbed.enabled}}
+        />
+    </div>
+    {{! XP Threshold }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.xpThreshold"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.xp-threshold.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.xp-threshold.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.nounVerbed.xpThreshold
+            name="settings.fromSoftware.eldenRing.nounVerbed.xpThreshold"
+            step=5
+            min=0
+            max=999
+        }}
+    </div>
+    {{! Font Size }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.fontSize"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.font-size.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.font-size.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.nounVerbed.fontSize.value
+            name="settings.fromSoftware.eldenRing.nounVerbed.fontSize"
+            step=settings.fromSoftware.eldenRing.nounVerbed.fontSize.range.step
+            min=settings.fromSoftware.eldenRing.nounVerbed.fontSize.range.min
+            max=settings.fromSoftware.eldenRing.nounVerbed.fontSize.range.max
+        }}
+    </div>
+    {{! Sound Effect }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.sound"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.name"}}
+        </label>
+        <input
+            type="text"
+            id="settings.fromSoftware.eldenRing.nounVerbed.sound"
+            name="settings.fromSoftware.eldenRing.nounVerbed.sound"
+            value="{{settings.fromSoftware.eldenRing.nounVerbed.sound}}"
+        />
+        {{filePicker target="settings.fromSoftware.eldenRing.nounVerbed.sound" type="audio"}}
+    </div>
+    {{! Volume }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.volume"
+            data-tooltip="{{localize
+                    "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.volume.hint"
+                }}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.volume.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.nounVerbed.volume.value
+            name="settings.fromSoftware.eldenRing.nounVerbed.volume"
+            step=settings.fromSoftware.eldenRing.nounVerbed.volume.range.step
+            min=settings.fromSoftware.eldenRing.nounVerbed.volume.range.min
+            max=settings.fromSoftware.eldenRing.nounVerbed.volume.range.max
+        }}
+    </div>
+    {{! Duration}}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.duration"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.duration.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.duration.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.nounVerbed.duration.value
+            name="settings.fromSoftware.eldenRing.nounVerbed.duration"
+            step=settings.fromSoftware.eldenRing.nounVerbed.duration.range.step
+            min=settings.fromSoftware.eldenRing.nounVerbed.duration.range.min
+            max=settings.fromSoftware.eldenRing.nounVerbed.duration.range.max
+        }}
+    </div>
+    {{! Text }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.nounVerbed.text"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.text.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.text.name"}}
+        </label>
+        <input
+            type="text"
+            id="settings.fromSoftware.eldenRing.nounVerbed.text"
+            name="settings.fromSoftware.eldenRing.nounVerbed.text"
+            value="{{settings.fromSoftware.eldenRing.nounVerbed.text}}"
+        />
+    </div>
+</span>
+<span>
+    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-death.gif' />">
+        {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.title"}}
+        -
+        {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.death"}}
+    </h2>
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.fromSoftware.eldenRing.death.enabled"
+            name="settings.fromSoftware.eldenRing.death.enabled"
+            {{checked settings.fromSoftware.eldenRing.death.enabled}}
+        />
+    </div>
+    {{! Font Size }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.fontSize"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.death.fontSize.value
+            name="settings.fromSoftware.eldenRing.death.fontSize"
+            step=settings.fromSoftware.eldenRing.death.fontSize.range.step
+            min=settings.fromSoftware.eldenRing.death.fontSize.range.min
+            max=settings.fromSoftware.eldenRing.death.fontSize.range.max
+        }}
+    </div>
+    {{! Sound Effect }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.sound"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.sound-effect.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.sound-effect.name"}}
+        </label>
+        <input
+            type="text"
+            id="settings.fromSoftware.eldenRing.death.sound"
+            name="settings.fromSoftware.eldenRing.death.sound"
+            value="{{settings.fromSoftware.eldenRing.death.sound}}"
+        />
+        {{filePicker target="settings.fromSoftware.eldenRing.death.sound" type="audio"}}
+    </div>
+    {{! Volume }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.volume"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.sound-effect.volume.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.sound-effect.volume.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.death.volume.value
+            name="settings.fromSoftware.eldenRing.death.volume"
+            step=settings.fromSoftware.eldenRing.death.volume.range.step
+            min=settings.fromSoftware.eldenRing.death.volume.range.min
+            max=settings.fromSoftware.eldenRing.death.volume.range.max
+        }}
+    </div>
+    {{! Duration}}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.duration"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.duration.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.duration.name"}}
+        </label>
+        {{numberInput
+            settings.fromSoftware.eldenRing.death.duration.value
+            name="settings.fromSoftware.eldenRing.death.duration"
+            step=settings.fromSoftware.eldenRing.death.duration.range.step
+            min=settings.fromSoftware.eldenRing.death.duration.range.min
+            max=settings.fromSoftware.eldenRing.death.duration.range.max
+        }}
+    </div>
+    {{! Text }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.text"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.text.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.text.name"}}
+        </label>
+        <input
+            type="text"
+            id="settings.fromSoftware.eldenRing.death.text"
+            name="settings.fromSoftware.eldenRing.death.text"
+            value="{{settings.fromSoftware.eldenRing.death.text}}"
+        />
+    </div>
+</span>

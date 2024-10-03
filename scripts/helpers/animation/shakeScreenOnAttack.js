@@ -1,5 +1,5 @@
 export async function shakeOnAttack(token, outcome) {
-    let strength = 5;
+    let strength = 10;
     if (["success", "criticalSuccess"].includes(outcome)) {
         if (outcome === "criticalSuccess") {
             strength *= 2;

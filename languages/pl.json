@@ -547,6 +547,45 @@
                 "hint": "Niech konsola odbiera komunikaty dla różnych rzeczy"
             }
         },
+        "menu": {
+            "settings": {
+                "title": "Menu Konfiguracji PF2e RPG #s",
+                "buttons": {
+                    "export": "Eksportuj Ustawienia",
+                    "import": "Importuj Ustawienia",
+                    "footer": {
+                        "save": "Zapisz",
+                        "submit": "Zatwierdź",
+                        "cancel": "Anuluj"
+                    }
+                },
+                "notification": {
+                    "save": "Ustawienia zostały pomyślnie zapisane!",
+                    "submit": "Ustawienia zostały pomyślnie zatwierdzone!",
+                    "cancel": "Menu ustawień zamknięto bez zapisywania"
+                },
+                "tabs": {
+                    "home": "Główna",
+                    "rolls": "Rzuty",
+                    "token": "Żeton",
+                    "critical": "Krytyczny",
+                    "text": "Tekst",
+                    "misc": "Różne"
+                }
+            },
+            "import": {
+                "title": "Import Ustawień PF2e RPG",
+                "content": "Prześlij JSON Ustawień",
+                "buttons": {
+                    "import": "Importuj",
+                    "cancel": "Anuluj"
+                },
+                "notification": {
+                    "success": "Ustawienia PF2e RPG zaimportowane!",
+                    "failure": "Import Ustawień PF2e RPG nie powiódł się :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Krytyczna Porażka",

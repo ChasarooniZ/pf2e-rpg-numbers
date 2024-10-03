@@ -547,6 +547,45 @@
                 "hint": "Lassen Sie die Konsole Nachrichten für verschiedene Dinge empfangen"
             }
         },
+        "menu": {
+            "settings": {
+                "title": "Konfigurationsmenü PF2e RPG #s",
+                "buttons": {
+                    "export": "Einstellungen Exportieren",
+                    "import": "Einstellungen Importieren",
+                    "footer": {
+                        "save": "Speichern",
+                        "submit": "Einreichen",
+                        "cancel": "Abbrechen"
+                    }
+                },
+                "notification": {
+                    "save": "Einstellungen erfolgreich gespeichert!",
+                    "submit": "Einstellungen erfolgreich eingereicht!",
+                    "cancel": "Konfigurationsmenü geschlossen ohne zu speichern"
+                },
+                "tabs": {
+                    "home": "Startseite",
+                    "rolls": "Würfe",
+                    "token": "Token",
+                    "critical": "Kritisch",
+                    "text": "Text",
+                    "misc": "Verschiedenes"
+                }
+            },
+            "import": {
+                "title": "PF2e RPG Einstellungen Importieren",
+                "content": "Einstellungen JSON Hochladen",
+                "buttons": {
+                    "import": "Importieren",
+                    "cancel": "Abbrechen"
+                },
+                "notification": {
+                    "success": "PF2e RPG Einstellungen Importiert!",
+                    "failure": "PF2e RPG Einstellungen Import fehlgeschlagen :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Kritischer Fehler",

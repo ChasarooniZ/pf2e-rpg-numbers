@@ -547,6 +547,45 @@
                 "hint": "Faire en sorte que la console reçoive des messages pour différentes choses"
             }
         },
+        "menu": {
+            "settings": {
+                "title": "Menu de Configuration PF2e RPG #s",
+                "buttons": {
+                    "export": "Exporter Paramètres",
+                    "import": "Importer Paramètres",
+                    "footer": {
+                        "save": "Enregistrer",
+                        "submit": "Soumettre",
+                        "cancel": "Annuler"
+                    }
+                },
+                "notification": {
+                    "save": "Paramètres enregistrés avec succès!",
+                    "submit": "Paramètres soumis avec succès!",
+                    "cancel": "Menu de paramètres fermé sans enregistrement"
+                },
+                "tabs": {
+                    "home": "Accueil",
+                    "rolls": "Jets",
+                    "token": "Jeton",
+                    "critical": "Critique",
+                    "text": "Texte",
+                    "misc": "Divers"
+                }
+            },
+            "import": {
+                "title": "Importation des Paramètres PF2e RPG",
+                "content": "Télécharger le JSON des Paramètres",
+                "buttons": {
+                    "import": "Importer",
+                    "cancel": "Annuler"
+                },
+                "notification": {
+                    "success": "Paramètres PF2e RPG Importés!",
+                    "failure": "Échec de l'importation des Paramètres PF2e RPG :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Échec critique",

@@ -119,7 +119,7 @@ jobs:
             module.json                          \
             README.md                            \
             LICENSE                              \
-            templates                            \
+            templates/                           \
             scripts/                             \
             styles/                              \
             packs/                               \

@@ -1,0 +1,12 @@
+{{! Debug }}
+<div class="form-group">
+    <label for="settings.debug.enabled" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.debug-mode.hint"}}">
+        {{localize "pf2e-rpg-numbers.module-settings.debug-mode.name"}}
+    </label>
+    <input
+        type="checkbox"
+        id="settings.debug.enabled"
+        name="settings.debug.enabled"
+        {{checked settings.debug.enabled}}
+    />
+</div>

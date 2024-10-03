@@ -1,3 +1,17 @@
+# [12.6.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - Our Menu - First Course
+- `Settings Menu`
+  - Redid many settings to be in their own menu
+  - Added hover over images to preview each setting
+  - Added option to Import and Export setting
+- `Shake on Attack`
+  - Increased the base strength of this shake to meet recommended parameters
+- `API`
+  - Added import and export settings to api
+    - `game.pf2eRPGNumbers.settings.export` & `game.pf2eRPGNumbers.settings.import`
+- `Damage Numbers`
+  - Added support for multiply dice for more than `2 * <Xdx>`
+  - Removed error when damage roll has no target
+
 # [12.5.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.4...12.5.5) - Damage Roll Fix
 
 - Fixed bug where damage rolls weren't actually showing
