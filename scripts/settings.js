@@ -773,7 +773,7 @@ Hooks.on("init", () => {
     });
 
     game.settings.register("pf2e-rpg-numbers", "last-version", {
-        scope: "world"
+        scope: "world",
         config: false,
         default: "0.0.0",
         type: String,
