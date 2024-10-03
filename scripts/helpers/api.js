@@ -5,6 +5,8 @@ import { generateRollScroll } from "./animation/generateRollScroll.js";
 import { getDamageList } from "./rollTerms.js";
 import { eldenRingDeath, eldenRingNounVerbed } from "./animation/text/fromSoftwareText.js";
 import { turnTokenOnAttack } from "./animation/turnTokenOnAttack.js";
+import { exportSettings } from "./forms/exportSettings.js";
+import { importSettings } from "./forms/importSettings.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -41,6 +43,10 @@ export function createAPI() {
                 nounVerbed: eldenRingNounVerbed,
                 death: eldenRingDeath
             }
+        },
+        settings: {
+            export: exportSettings,
+            import: importSettings
         }
     };
 }
