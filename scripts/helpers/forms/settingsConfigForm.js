@@ -1,4 +1,4 @@
-import { getSetting, MODULE_ID, setSetting } from "./misc.js";
+import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...

@@ -1,5 +1,5 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
-import { SettingsConfigForm } from "./helpers/settingsConfigForm.js";
+import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
 
 Hooks.on("init", () => {
     loadTemplates([
