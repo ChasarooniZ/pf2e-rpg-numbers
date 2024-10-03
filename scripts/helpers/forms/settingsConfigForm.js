@@ -337,7 +337,7 @@ export class SettingsConfigForm extends FormApplication {
         formData.forEach((value, key) => {
             // Handle checkboxes separately to store booleans
             if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-                dataObject[key] = html.find(`[name="${key}"]`).is(":checked");
+                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
             } else {
                 dataObject[key] = value;
             }
@@ -486,6 +486,9 @@ function getNumberSetting(settingPath, range) {
 
 function updateIfChanged(settingID, newValue) {
     const currentValue = getSetting(settingID);
+    if (typeof currentValue == "boolean") {
+        newValue = !!newValue;
+    }
     if (currentValue !== newValue) {
         setSetting(settingID, newValue);
     }
