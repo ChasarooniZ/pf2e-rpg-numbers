@@ -9,7 +9,7 @@ export class SettingsConfigForm extends FormApplication {
 
 
     static get defaultOptions() {
-        return mergeObject(super.defaultOptions, {
+        return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ['form'],
             popOut: true,
             template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
@@ -34,6 +34,7 @@ export class SettingsConfigForm extends FormApplication {
         });
         html.find('#pf2e-rpg-cancel').on('click', (event) => {
             event.preventDefault();
+            ui.notifications.warn("Settings menu closed without saving");
             this.close(); // Close the form without saving
         });
     }
@@ -297,31 +298,30 @@ export class SettingsConfigForm extends FormApplication {
                         },
                     }
                 },
-                {
-                    id: "misc",
-                    label: "Misc",
-                    icon: "fa-gear",
-                    misc: true,
-                    settings: {
-                        debug: {
-                            enabled: getSetting("debug-mode"),
-                        }
-                    },
-                },
+                // {
+                //     id: "misc",
+                //     label: "Misc",
+                //     icon: "fa-gear",
+                //     misc: true,
+                //     settings: {
+                //         debug: {
+                //             enabled: getSetting("debug-mode"),
+                //         }
+                //     },
+                // },
             ]
         })
     }
 
     async _updateObject(event, formData) {
         // Expand the flat form data into a nested object structure
-        const expandedData = expandObject(formData);
 
         // Debug log for inspecting the expanded form data
         console.log("Expanded Form Data:", { expandedData, formData });
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 
-    _processForm(html, submit = false) {
+    async _processForm(html, submit = false) {
         // Collect the form data from all inputs in the form
         const formData = new FormData(html[0].closest("form"));
         const dataObject = {};
@@ -342,16 +342,18 @@ export class SettingsConfigForm extends FormApplication {
         // Handle saving or submitting
         if (submit) {
             // If submitting, call _updateObject to store the data
-            this.saveSettings(dataObject);
-            ui.notifications.info("Form submitted successfully!");
+            await this.saveSettings(dataObject);
+            ui.notifications.info("Settings submitted successfully!");
+            this.close();
         } else {
             // If saving, call _updateObject to store the data
-            this.saveSettings(dataObject);
-            ui.notifications.info("Form saved successfully!");
+            await this.saveSettings(dataObject);
+            ui.notifications.info("Settings saved successfully!");
         }
     }
     async saveSettings(data) {
-        const settings = data.settings;
+        const expandedData = expandObject(data);
+        const settings = expandedData.settings;
 
         // Home settings
         updateIfChanged("enabled", settings.enabled);
@@ -457,8 +459,8 @@ export class SettingsConfigForm extends FormApplication {
         updateIfChanged("from-software.death.text", eldenRing.death.text);
 
         // Misc: debug settings
-        const debug = settings.debug;
-        updateIfChanged("debug-mode", debug.enabled);
+        // const debug = settings.debug;
+        // updateIfChanged("debug-mode", debug.enabled);
     }
 
 }
