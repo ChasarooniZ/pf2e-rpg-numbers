@@ -37,6 +37,13 @@ export class SettingsConfigForm extends FormApplication {
             ui.notifications.warn("Settings menu closed without saving");
             this.close(); // Close the form without saving
         });
+        html.find('#pf2e-rpg-import').on('click', (event) => {
+            game.pf2eRPGNumbers.settings.import();
+            this.close(); // Close the form without saving
+        });
+        html.find('#pf2e-rpg-export').on('click', (event) => {
+            game.pf2eRPGNumbers.settings.export();
+        });
     }
 
     getData() {

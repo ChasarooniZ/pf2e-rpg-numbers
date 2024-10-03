@@ -547,6 +547,39 @@
                 "hint": "Пусть консоль будет получать сообщения о разных вещах"
             }
         },
+        "menu": {
+            "settings": {
+                "buttons": {
+                    "export": "Экспорт настроек",
+                    "import": "Импорт настроек",
+                    "footer": {
+                        "save": "Сохранить",
+                        "submit": "Отправить",
+                        "cancel": "Отмена"
+                    }
+                },
+                "tabs": {
+                    "home": "Главная",
+                    "rolls": "Броски",
+                    "token": "Токен",
+                    "critical": "Критический",
+                    "text": "Текст",
+                    "misc": "Прочее"
+                }
+            },
+            "import": {
+                "title": "Импорт настроек PF2e RPG",
+                "content": "Загрузить JSON настроек",
+                "buttons": {
+                    "import": "Импорт",
+                    "cancel": "Отмена"
+                },
+                "notification": {
+                    "success": "Настройки PF2e RPG успешно импортированы!",
+                    "failure": "Ошибка импорта настроек PF2e RPG :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Критический отказ",

@@ -549,7 +549,20 @@
             "settings": {
                 "buttons": {
                     "export": "Export Settings",
-                    "import": "Import Settings"
+                    "import": "Import Settings",
+                    "footer": {
+                        "save": "Save",
+                        "submit": "Submit",
+                        "cancel": "Cancel"
+                    }
+                },
+                "tabs": {
+                    "home": "Home",
+                    "rolls": "Rolls",
+                    "token": "Token",
+                    "critical": "Critical",
+                    "text": "Text",
+                    "misc": "Misc"
                 }
             },
             "import": {
@@ -561,7 +574,7 @@
                 },
                 "notification": {
                     "success": "Pf2e RPG Settings Imported!",
-                    "failure": "PF2e RPG Settings failed to import"
+                    "failure": "PF2e RPG Settings failed to import :("
                 }
             }
         },

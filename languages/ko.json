@@ -547,6 +547,39 @@
                 "hint": "콘솔이 다양한 내용에 대한 메시지를 받도록 합니다."
             }
         },
+        "menu": {
+            "settings": {
+                "buttons": {
+                    "export": "설정 내보내기",
+                    "import": "설정 가져오기",
+                    "footer": {
+                        "save": "저장",
+                        "submit": "제출",
+                        "cancel": "취소"
+                    }
+                },
+                "tabs": {
+                    "home": "홈",
+                    "rolls": "굴림",
+                    "token": "토큰",
+                    "critical": "치명타",
+                    "text": "텍스트",
+                    "misc": "기타"
+                }
+            },
+            "import": {
+                "title": "PF2e RPG 설정 가져오기",
+                "content": "설정 JSON 업로드",
+                "buttons": {
+                    "import": "가져오기",
+                    "cancel": "취소"
+                },
+                "notification": {
+                    "success": "PF2e RPG 설정이 가져오기되었습니다!",
+                    "failure": "PF2e RPG 설정 가져오기에 실패했습니다 :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "중대한 실패",

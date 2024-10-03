@@ -547,6 +547,39 @@
                 "hint": "Hacer que la consola reciba mensajes para diferentes cosas."
             }
         },
+        "menu": {
+            "settings": {
+                "buttons": {
+                    "export": "Exportar Configuraciones",
+                    "import": "Importar Configuraciones",
+                    "footer": {
+                        "save": "Guardar",
+                        "submit": "Enviar",
+                        "cancel": "Cancelar"
+                    }
+                },
+                "tabs": {
+                    "home": "Inicio",
+                    "rolls": "Tiradas",
+                    "token": "Ficha",
+                    "critical": "Crítico",
+                    "text": "Texto",
+                    "misc": "Varios"
+                }
+            },
+            "import": {
+                "title": "Importación de Configuraciones de PF2e RPG",
+                "content": "Subir JSON de Configuraciones",
+                "buttons": {
+                    "import": "Importar",
+                    "cancel": "Cancelar"
+                },
+                "notification": {
+                    "success": "¡Configuraciones de PF2e RPG Importadas!",
+                    "failure": "Falló la importación de Configuraciones de PF2e RPG :("
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Fallo crítico",
