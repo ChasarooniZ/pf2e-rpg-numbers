@@ -13,7 +13,6 @@ import {
     //FinisherDialog,
     getSetting,
     handleDiceSoNice,
-    localize,
     MODULE_ID
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";

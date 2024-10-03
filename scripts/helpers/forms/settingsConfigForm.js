@@ -324,7 +324,7 @@ export class SettingsConfigForm extends FormApplication {
         // Expand the flat form data into a nested object structure
 
         // Debug log for inspecting the expanded form data
-        console.log("Expanded Form Data:", { expandedData, formData });
+        //console.log("Expanded Form Data:", { expandedData, formData });
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 

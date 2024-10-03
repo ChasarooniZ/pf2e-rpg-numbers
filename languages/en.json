@@ -547,6 +547,7 @@
         },
         "menu": {
             "settings": {
+                "title": "Pf2e RPG #s Config Menu",
                 "buttons": {
                     "export": "Export Settings",
                     "import": "Import Settings",
@@ -555,6 +556,11 @@
                         "submit": "Submit",
                         "cancel": "Cancel"
                     }
+                },
+                "notification": {
+                    "save": "Settings saved successfully!",
+                    "submit": "Settings submitted successfully!",
+                    "cancel": "Settings menu closed without saving"
                 },
                 "tabs": {
                     "home": "Home",
