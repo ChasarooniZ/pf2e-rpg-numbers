@@ -545,6 +545,26 @@
                 "hint": "Have the console receive messages for different stuff"
             }
         },
+        "menu": {
+            "settings": {
+                "buttons": {
+                    "export": "Export Settings",
+                    "import": "Import Settings"
+                }
+            },
+            "import": {
+                "title": "PF2e RPG Settings Import",
+                "content": "Upload Settings JSON",
+                "buttons": {
+                    "import": "Import",
+                    "cancel": "Cancel"
+                },
+                "notification": {
+                    "success": "Pf2e RPG Settings Imported!",
+                    "failure": "PF2e RPG Settings failed to import"
+                }
+            }
+        },
         "display-text": {
             "outcomes": {
                 "criticalFailure": "Critical Failure",
