@@ -26,7 +26,7 @@ export class SettingsConfigForm extends FormApplication {
         // Add event listener for the Save button
         html.find('#pf2e-rpg-save').on('click', (event) => {
             event.preventDefault();
-            this._processForm(html, false); // Pass 'false' to not submit the form, only save
+            this._processForm(html, false); // Pass 'false' Fto not submit the form, only save
         });
         html.find('#pf2e-rpg-submit').on('click', (event) => {
             event.preventDefault();
@@ -34,7 +34,7 @@ export class SettingsConfigForm extends FormApplication {
         });
         html.find('#pf2e-rpg-cancel').on('click', (event) => {
             event.preventDefault();
-            ui.notifications.warn("Settings menu closed without saving");
+            ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
             this.close(); // Close the form without saving
         });
         html.find('#pf2e-rpg-import').on('click', (event) => {
@@ -55,7 +55,7 @@ export class SettingsConfigForm extends FormApplication {
             tabs: [
                 {
                     id: "home",
-                    label: "Home",
+                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.home`),
                     icon: "fa-dragon",
                     home: true,
                     settings: {
@@ -64,7 +64,7 @@ export class SettingsConfigForm extends FormApplication {
                 },
                 {
                     id: "rolls",
-                    label: "Rolls",
+                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.rolls`),
                     icon: "fa-dice-d20",
                     rolls: true,
                     settings: {
@@ -134,7 +134,7 @@ export class SettingsConfigForm extends FormApplication {
                 },
                 {
                     id: "token",
-                    label: "Token",
+                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.token`),
                     icon: "fa-circle-user",
                     token: true,
                     settings: {
@@ -197,7 +197,7 @@ export class SettingsConfigForm extends FormApplication {
                 },
                 {
                     id: "critical",
-                    label: "Critical",
+                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.critical`),
                     icon: "fa-explosion",
                     critical: true,
                     settings: {
@@ -225,7 +225,7 @@ export class SettingsConfigForm extends FormApplication {
                 },
                 {
                     id: "text",
-                    label: "Text",
+                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.text`),
                     icon: "fa-message-captions",
                     text: true,
                     settings: {
@@ -350,12 +350,12 @@ export class SettingsConfigForm extends FormApplication {
         if (submit) {
             // If submitting, call _updateObject to store the data
             await this.saveSettings(dataObject);
-            ui.notifications.info("Settings submitted successfully!");
+            ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
             this.close();
         } else {
             // If saving, call _updateObject to store the data
             await this.saveSettings(dataObject);
-            ui.notifications.info("Settings saved successfully!");
+            ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
     }
     async saveSettings(data) {

@@ -549,6 +549,7 @@
         },
         "menu": {
             "settings": {
+                "title": "Menu Konfiguracji PF2e RPG #s",
                 "buttons": {
                     "export": "Eksportuj Ustawienia",
                     "import": "Importuj Ustawienia",
@@ -557,6 +558,11 @@
                         "submit": "Zatwierdź",
                         "cancel": "Anuluj"
                     }
+                },
+                "notification": {
+                    "save": "Ustawienia zostały pomyślnie zapisane!",
+                    "submit": "Ustawienia zostały pomyślnie zatwierdzone!",
+                    "cancel": "Menu ustawień zamknięto bez zapisywania"
                 },
                 "tabs": {
                     "home": "Główna",

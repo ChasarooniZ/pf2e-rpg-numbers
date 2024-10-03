@@ -549,6 +549,7 @@
         },
         "menu": {
             "settings": {
+                "title": "PF2e RPG #s 설정 메뉴",
                 "buttons": {
                     "export": "설정 내보내기",
                     "import": "설정 가져오기",
@@ -557,6 +558,11 @@
                         "submit": "제출",
                         "cancel": "취소"
                     }
+                },
+                "notification": {
+                    "save": "설정이 성공적으로 저장되었습니다!",
+                    "submit": "설정이 성공적으로 제출되었습니다!",
+                    "cancel": "설정 메뉴가 저장되지 않고 닫혔습니다"
                 },
                 "tabs": {
                     "home": "홈",

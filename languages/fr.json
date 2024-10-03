@@ -549,6 +549,7 @@
         },
         "menu": {
             "settings": {
+                "title": "Menu de Configuration PF2e RPG #s",
                 "buttons": {
                     "export": "Exporter Paramètres",
                     "import": "Importer Paramètres",
@@ -557,6 +558,11 @@
                         "submit": "Soumettre",
                         "cancel": "Annuler"
                     }
+                },
+                "notification": {
+                    "save": "Paramètres enregistrés avec succès!",
+                    "submit": "Paramètres soumis avec succès!",
+                    "cancel": "Menu de paramètres fermé sans enregistrement"
                 },
                 "tabs": {
                     "home": "Accueil",

@@ -549,6 +549,7 @@
         },
         "menu": {
             "settings": {
+                "title": "PF2e RPG #s 設定メニュー",
                 "buttons": {
                     "export": "設定のエクスポート",
                     "import": "設定のインポート",
@@ -557,6 +558,11 @@
                         "submit": "送信",
                         "cancel": "キャンセル"
                     }
+                },
+                "notification": {
+                    "save": "設定が正常に保存されました！",
+                    "submit": "設定が正常に送信されました！",
+                    "cancel": "設定メニューは保存せずに閉じられました"
                 },
                 "tabs": {
                     "home": "ホーム",
