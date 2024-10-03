@@ -32,7 +32,7 @@ Hooks.on("init", () => {
     registerSetting("", "enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -40,7 +40,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "dmg-enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -48,7 +48,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "dmg-on-apply-or-roll", {
         desc: "on-apply-or-roll",
         scope: "world",
-        config: true,
+        config: false,
         default: "roll",
         type: String,
         choices: ["apply", "roll"],
@@ -57,7 +57,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "font-size", {
         desc: "font-size",
         scope: "world",
-        config: true,
+        config: false,
         default: 20,
         type: Number,
     });
@@ -65,7 +65,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "max-font-scale", {
         desc: "max-font-scale",
         scope: "world",
-        config: true,
+        config: false,
         default: 3,
         type: Number,
     });
@@ -73,7 +73,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "top-offset", {
         desc: "top-offset",
         scope: "world",
-        config: true,
+        config: false,
         default: -25,
         range: {
             min: -100,
@@ -86,7 +86,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "show-total", {
         desc: "show-total",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -94,7 +94,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "number-scale-type", {
         desc: "number-scale-type",
         scope: "world",
-        config: true,
+        config: false,
         default: "percentMaxHealth",
         type: String,
         choices: ["percentRemainingHealth", "percentMaxHealth", "none"],
@@ -103,7 +103,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "damage-split", {
         desc: "damage-split",
         scope: "world",
-        config: true,
+        config: false,
         default: "by-damage-type",
         type: String,
         choices: ["none", "by-damage-type", "all"],
@@ -112,7 +112,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 2,
         range: {
             min: 0,
@@ -124,7 +124,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "wait-time-between-numbers", {
         desc: "wait-time-between-numbers",
         scope: "world",
-        config: true,
+        config: false,
         default: 100,
         range: {
             min: 0,
@@ -137,7 +137,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "show-only-GM", {
         desc: "show-only-GM",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -145,7 +145,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "animation-scale", {
         desc: "animation-scale",
         scope: "world",
-        config: true,
+        config: false,
         default: 1,
         range: {
             min: 0,
@@ -158,7 +158,7 @@ Hooks.on("init", () => {
     registerSetting("dmg-numbers", "jitter", {
         desc: "jitter",
         scope: "world",
-        config: true,
+        config: false,
         default: 0,
         range: {
             min: 0,
@@ -172,7 +172,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -180,7 +180,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-color-scheme", {
         desc: "color-scheme",
         scope: "world",
-        config: true,
+        config: false,
         default: "default",
         type: String,
         choices: ["default", "dark"],
@@ -189,7 +189,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-outcome-result", {
         desc: "outcome-result",
         scope: "world",
-        config: true,
+        config: false,
         default: "outcome-except-combat-crits",
         type: String,
         choices: ["numbers", "outcome-except-combat-crits", "outcome"],
@@ -198,7 +198,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-font-size", {
         desc: "font-size",
         scope: "world",
-        config: true,
+        config: false,
         default: 30,
         type: Number,
     });
@@ -206,7 +206,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 2,
         range: {
             min: 0,
@@ -220,7 +220,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.enabled", {
         desc: "sfx.enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -228,7 +228,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.check-or-attack", {
         desc: "sfx.check-or-attack",
         scope: "world",
-        config: true,
+        config: false,
         default: !game?.modules?.get("pf2e-jb2a-macros")?.active ? "both" : "checks",
         type: String,
         choices: ["both", "attacks", "checks"],
@@ -237,7 +237,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.options", {
         desc: "sfx.options",
         scope: "world",
-        config: true,
+        config: false,
         default: "all",
         type: String,
         choices: ["none", "all", "success-or-fail", "crits-only"],
@@ -246,7 +246,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.volume", {
         desc: "sfx.volume",
         scope: "world",
-        config: true,
+        config: false,
         default: 50,
         range: {
             min: 0,
@@ -259,7 +259,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.file.criticalSuccess", {
         desc: "sfx.file.criticalSuccess",
         scope: "world",
-        config: true,
+        config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/success_1.mp3",
         type: String,
         filePicker: "audio",
@@ -268,7 +268,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.file.success", {
         desc: "sfx.file.success",
         scope: "world",
-        config: true,
+        config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/correct-answer-tone.ogg",
         type: String,
         filePicker: "audio",
@@ -277,7 +277,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.file.failure", {
         desc: "sfx.file.failure",
         scope: "world",
-        config: true,
+        config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/Jpn_L_drum1.mp3",
         type: String,
         filePicker: "audio",
@@ -286,7 +286,7 @@ Hooks.on("init", () => {
     registerSetting("check-animations", "check-animations.sfx.file.criticalFailure", {
         desc: "sfx.file.criticalFailure",
         scope: "world",
-        config: true,
+        config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/negative-answer-lose.ogg",
         type: String,
         filePicker: "audio",
@@ -296,7 +296,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -304,7 +304,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 250,
         range: {
             min: 0,
@@ -317,7 +317,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-intensity-max", {
         desc: "intensity-max",
         scope: "world",
-        config: true,
+        config: false,
         default: 35,
         range: {
             min: 1,
@@ -330,7 +330,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-intensity-type", {
         desc: "intensity-type",
         scope: "world",
-        config: true,
+        config: false,
         default: "%-current-hp",
         type: String,
         choices: ["max", "%-current-hp", "%-max-hp"],
@@ -339,7 +339,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-intensity-include-temp-hp", {
         desc: "intensity-include-temp-hp",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -347,7 +347,7 @@ Hooks.on("init", () => {
     registerSetting("screen-shake", "shake-gm-enabled", {
         desc: "gm-enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -356,7 +356,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "dmg-shake-directional-enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -364,7 +364,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-distance", {
         desc: "distance",
         scope: "world",
-        config: true,
+        config: false,
         default: 20,
         range: {
             min: 1,
@@ -377,7 +377,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-shakes", {
         desc: "shakes",
         scope: "world",
-        config: true,
+        config: false,
         default: 7,
         range: {
             min: 1,
@@ -390,7 +390,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 500,
         range: {
             min: 0,
@@ -403,7 +403,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-scaling-type", {
         desc: "scaling.type",
         scope: "world",
-        config: true,
+        config: false,
         default: "no",
         type: String,
         choices: ["no", "%-current-hp", "%-max-hp"],
@@ -412,7 +412,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-scaling-distance", {
         desc: "scaling.distance",
         scope: "world",
-        config: true,
+        config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
@@ -421,7 +421,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-scaling-shakes", {
         desc: "scaling.shakes",
         scope: "world",
-        config: true,
+        config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
@@ -430,7 +430,7 @@ Hooks.on("init", () => {
     registerSetting("token-dmg-shake", "tok-shake-scaling-duration", {
         desc: "scaling.duration",
         scope: "world",
-        config: true,
+        config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
@@ -440,7 +440,7 @@ Hooks.on("init", () => {
     registerSetting("shake-on-attack", "shake-on-attack.enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -448,7 +448,7 @@ Hooks.on("init", () => {
     registerSetting("shake-on-attack", "shake-on-attack.type", {
         desc: "type",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: String,
         choices: ["both", "gm", "players"],
@@ -458,7 +458,7 @@ Hooks.on("init", () => {
     registerSetting("rotate-on-attack", "rotate-on-attack", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
         requiresReload: true,
@@ -467,7 +467,7 @@ Hooks.on("init", () => {
     registerSetting("rotate-on-attack", "rotate-on-attack.duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 0.5,
         range: {
             min: 0,
@@ -480,7 +480,7 @@ Hooks.on("init", () => {
     registerSetting("rotate-on-attack", "rotate-on-attack.scale-on-size", {
         desc: "scale-on-size",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -489,7 +489,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -509,7 +509,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.type", {
         desc: "type",
         scope: "world",
-        config: true,
+        config: false,
         default: "persona",
         type: String,
         choices: ["persona", "fire-emblem"],
@@ -518,7 +518,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.show-on", {
         desc: "show-on",
         scope: "world",
-        config: true,
+        config: false,
         default: "attacks",
         type: String,
         choices: ["attacks", "checks", "both"],
@@ -527,7 +527,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.show-on-token-type", {
         desc: "show-on-token-type",
         scope: "world",
-        config: true,
+        config: false,
         default: "pc+npc",
         type: String,
         choices: ["pc", "npc", "pc+npc"],
@@ -536,7 +536,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.default-img", {
         desc: "default-img",
         scope: "world",
-        config: true,
+        config: false,
         default: "pc-tok-npc-tok",
         type: String,
         choices: ["pc-tok-npc-tok", "pc-act-npc-act", "pc-tok-npc-act", "pc-act-npc-tok"],
@@ -545,7 +545,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.duration", {
         desc: "duration",
         scope: "world",
-        config: true,
+        config: false,
         default: 1.5,
         range: {
             min: 0,
@@ -558,7 +558,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.sound", {
         desc: "sound",
         scope: "world",
-        config: true,
+        config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/swoosh-universfield.mp3",
         type: String,
         filePicker: "audio",
@@ -567,7 +567,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.volume", {
         desc: "volume",
         scope: "world",
-        config: true,
+        config: false,
         default: 50,
         range: {
             min: 0,
@@ -580,7 +580,7 @@ Hooks.on("init", () => {
     registerSetting("critical", "critical.delay", {
         desc: "delay",
         scope: "world",
-        config: true,
+        config: false,
         default: 0,
         type: Number,
     });
@@ -589,7 +589,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.enabled", {
         desc: "enabled",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -597,7 +597,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.enabled-players", {
         desc: "enabled-players",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
         requiresReload: true,
@@ -606,7 +606,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.keep-on", {
         desc: "keep-on",
         scope: "world",
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -614,7 +614,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.use-player-color", {
         desc: "use-player-color",
         scope: "world",
-        config: true,
+        config: false,
         default: true,
         type: Boolean,
     });
@@ -622,7 +622,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.quality", {
         desc: "quality",
         scope: "world",
-        config: true,
+        config: false,
         default: 2,
         range: {
             min: 1,
@@ -635,7 +635,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.sound-effect", {
         desc: "sound-effect",
         scope: "world",
-        config: true,
+        config: false,
         type: String,
         default: "modules/pf2e-rpg-numbers/resources/sounds/Deep_Impact_(Speedenza).ogg",
         filePicker: "audio",
@@ -644,7 +644,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.sound-effect.volume", {
         desc: "sound-effect.volume",
         scope: "world",
-        config: true,
+        config: false,
         default: 40,
         range: {
             min: 0,
@@ -657,7 +657,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.duration.word", {
         desc: "duration.word",
         scope: "world",
-        config: true,
+        config: false,
         default: 200,
         range: {
             min: 0,
@@ -670,7 +670,7 @@ Hooks.on("init", () => {
     registerSetting("finishing-move", "finishing-move.duration.end", {
         desc: "duration.end",
         scope: "world",
-        config: true,
+        config: false,
         default: 1000,
         range: {
             min: 0,
@@ -687,7 +687,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.enabled`, {
             desc: "enabled",
             scope: "world",
-            config: true,
+
+            config: false,
             default: false,
             type: Boolean,
         });
@@ -695,7 +696,8 @@ Hooks.on("init", () => {
             registerSetting(`from-software.noun-verbed`, `from-software.noun-verbed.xp-threshold`, {
                 desc: "xp-threshold",
                 scope: "world",
-                config: true,
+
+                config: false,
                 default: 120,
                 type: Number,
             });
@@ -703,7 +705,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.font-size`, {
             desc: "font-size",
             scope: "world",
-            config: true,
+
+            config: false,
             default: 52,
             range: {
                 min: 1,
@@ -716,7 +719,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect`, {
             desc: "sound-effect",
             scope: "world",
-            config: true,
+
+            config: false,
             type: String,
             default: option === 'death' ? "modules/pf2e-rpg-numbers/resources/sounds/eldenRingDeath.ogg" : "modules/pf2e-rpg-numbers/resources/sounds/eldenRingVictoryReverb.ogg",
             filePicker: "audio",
@@ -725,7 +729,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect.volume`, {
             desc: "sound-effect.volume",
             scope: "world",
-            config: true,
+
+            config: false,
             default: 40,
             range: {
                 min: 0,
@@ -738,7 +743,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.duration`, {
             desc: "duration",
             scope: "world",
-            config: true,
+
+            config: false,
             default: 6.5,
             range: {
                 min: 0,
@@ -750,7 +756,8 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.text`, {
             desc: "text",
             scope: "world",
-            config: true,
+
+            config: false,
             default: option === 'death' ? 'You Died' : 'Enemy Felled',
             type: String,
         });
@@ -766,7 +773,7 @@ Hooks.on("init", () => {
     });
 
     game.settings.register("pf2e-rpg-numbers", "last-version", {
-        scope: "world",
+        scope: "world"
         config: false,
         default: "0.0.0",
         type: String,
