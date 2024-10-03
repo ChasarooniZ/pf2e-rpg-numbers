@@ -215,7 +215,7 @@
                 },
                 "intensity-max": {
                     "name": "Intensity",
-                    "hint": "How hard to shake the screen"
+                    "hint": "How hard to shake the screen in pixels (recommended between 10 and 35)"
                 },
                 "intensity-type": {
                     "name": "Intensity Scaling",
