@@ -1,5 +1,134 @@
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
+const settingsConfig = {
+    home: {
+        icon: "fa-dragon",
+        enabled: "enabled"
+    },
+    rolls: {
+        icon: "fa-dice-d20",
+        'dmg-numbers': {
+            enabled: "dmg-enabled",
+            whenTo: "dmg-on-apply-or-roll",
+            fontSize: "font-size",
+            maxFontScale: "max-font-scale",
+            topOffset: { path: "top-offset", type: "number", range: { min: -100, max: 100, step: 5 } },
+            showTotal: "show-total",
+            scaleType: "number-scale-type",
+            split: "damage-split",
+            duration: { path: "duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
+            waitTime: { path: "wait-time-between-numbers", type: "number", range: { min: 0, max: 1000, step: 1 } },
+            onlyGM: "show-only-GM",
+            scale: { path: "animation-scale", type: "number", range: { min: 0, max: 2, step: 0.05 } },
+            jitter: { path: "jitter", type: "number", range: { min: 0, max: 1, step: 0.05 } }
+        },
+        'check-animations': {
+            enabled: "check-enabled",
+            colorScheme: "check-color-scheme",
+            showOutcome: "check-outcome-result",
+            fontSize: "check-font-size",
+            duration: { path: "check-duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
+            sfx: {
+                enabled: "check-animations.sfx.enabled",
+                checkOrAttack: "check-animations.sfx.check-or-attack",
+                options: "check-animations.sfx.options",
+                volume: { path: "check-animations.sfx.volume", type: "number", range: { min: 0, max: 100, step: 1 } },
+                file: {
+                    criticalSuccess: "check-animations.sfx.file.criticalSuccess",
+                    success: "check-animations.sfx.file.success",
+                    failure: "check-animations.sfx.file.failure",
+                    criticalFailure: "check-animations.sfx.file.criticalFailure"
+                }
+            }
+        }
+    },
+    token: {
+        icon: "fa-circle-user",
+        tokenShake: {
+            enabled: "dmg-shake-directional-enabled",
+            distance: { path: "tok-shake-distance", type: "number", range: { min: 1, max: 100, step: 1 } },
+            shakes: { path: "tok-shake-shakes", type: "number", range: { min: 1, max: 20, step: 1 } },
+            duration: { path: "tok-shake-duration", type: "number", range: { min: 0, max: 2000, step: 10 } },
+            scaling: {
+                type: "tok-shake-scaling-type",
+                distance: "tok-shake-scaling-distance",
+                shakes: "tok-shake-scaling-shakes",
+                duration: "tok-shake-scaling-duration"
+            }
+        },
+        rotateOnAttack: {
+            enabled: "rotate-on-attack",
+            duration: { path: "rotate-on-attack.duration", type: "number", range: { min: 0, max: 2, step: 0.1 } },
+            scaleOnSize: "rotate-on-attack.scale-on-size"
+        },
+        screenShake: {
+            onDamaged: {
+                enabled: "shake-enabled",
+                duration: { path: "shake-duration", type: "number", range: { min: 0, max: 2000, step: 10 } },
+                maxIntensity: { path: "shake-intensity-max", type: "number", range: { min: 1, max: 100, step: 1 } },
+                intensityScaling: "shake-intensity-type",
+                intensityScalingIncludeTempHP: "shake-intensity-include-temp-hp",
+                shakeGM: "shake-gm-enabled"
+            },
+            onAttack: {
+                enabled: "shake-on-attack.enabled",
+                showFor: "shake-on-attack.type"
+            }
+        }
+    },
+    critical: {
+        icon: "fa-explosion",
+        critical: {
+            enabled: "critical.enabled",
+            style: "critical.type",
+            checksOrAttacks: "critical.show-on",
+            pcOrNPC: "critical.show-on-token-type",
+            defaultImageType: "critical.default-img",
+            duration: { path: "critical.duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
+            sound: "critical.sound",
+            volume: { path: "critical.volume", type: "number", range: { min: 0, max: 100, step: 1 } },
+            delay: "critical.delay"
+        }
+    },
+    text: {
+        icon: "fa-message-captions",
+        finishingMove: {
+            enabled: "finishing-move.enabled",
+            keepOn: "finishing-move.keep-on",
+            usePlayerColor: "finishing-move.use-player-color",
+            quality: { path: "finishing-move.quality", type: "number", range: { min: 1, max: 5, step: 1 } },
+            sound: "finishing-move.sound-effect",
+            volume: { path: "finishing-move.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
+            duration: {
+                word: { path: "finishing-move.duration.word", type: "number", range: { min: 0, max: 2000, step: 25 } },
+                end: { path: "finishing-move.duration.end", type: "number", range: { min: 0, max: 5000, step: 25 } }
+            }
+        },
+        fromSoftware: {
+            eldenRing: {
+                nounVerbed: {
+                    enabled: "from-software.noun-verbed.enabled",
+                    xpThreshold: "from-software.noun-verbed.xp-threshold",
+                    fontSize: { path: "from-software.noun-verbed.font-size", type: "number", range: { min: 1, max: 150, step: 1 } },
+                    sound: "from-software.noun-verbed.sound-effect",
+                    volume: { path: "from-software.noun-verbed.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
+                    duration: { path: "from-software.noun-verbed.duration", type: "number", range: { min: 0, max: 12, step: 0.1 } },
+                    text: "from-software.noun-verbed.text"
+                },
+                death: {
+                    enabled: "from-software.death.enabled",
+                    fontSize: { path: "from-software.death.font-size", type: "number", range: { min: 1, max: 150, step: 1 } },
+                    sound: "from-software.death.sound-effect",
+                    volume: { path: "from-software.death.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
+                    duration: { path: "from-software.death.duration", type: "number", range: { min: 0, max: 12, step: 0.1 } },
+                    text: "from-software.death.text"
+                }
+            }
+        }
+    }
+};
+
+
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
@@ -47,277 +176,42 @@ export class SettingsConfigForm extends FormApplication {
     }
 
     getData() {
-        //game.settings.get('myModuleName', 'myComplexSettingName')
-        /*return {
-            placeholder: true
-        };*/
-        return foundry.utils.mergeObject(super.getData(), {
-            tabs: [
-                {
-                    id: "home",
-                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.home`),
-                    icon: "fa-dragon",
-                    home: true,
-                    settings: {
-                        enabled: getSetting("enabled")
-                    }
-                },
-                {
-                    id: "rolls",
-                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.rolls`),
-                    icon: "fa-dice-d20",
-                    rolls: true,
-                    settings: {
-                        'dmg-numbers': {
-                            enabled: getSetting("dmg-enabled"),
-                            whenTo: getChoicesSetting("dmg-on-apply-or-roll"),
-                            fontSize: getSetting("font-size"),
-                            maxFontScale: getSetting("max-font-scale"),
-                            topOffset: getNumberSetting("top-offset", {
-                                min: -100,
-                                max: 100,
-                                step: 5,
-                            }),
-                            showTotal: getSetting("show-total"),
-                            scaleType: getChoicesSetting("number-scale-type"),
-                            split: getChoicesSetting("damage-split"),
-                            duration: getNumberSetting("duration", {
-                                min: 0,
-                                max: 10,
-                                step: 0.1,
-                            }),
-                            waitTime: getNumberSetting("wait-time-between-numbers", {
-                                min: 0,
-                                max: 1000,
-                                step: 1,
-                            }),
-                            onlyGM: getSetting("show-only-GM"),
-                            scale: getNumberSetting("animation-scale", {
-                                min: 0,
-                                max: 2,
-                                step: 0.05,
-                            }),
-                            jitter: getNumberSetting("jitter", {
-                                min: 0,
-                                max: 1,
-                                step: 0.05,
-                            }),
-                        },
-                        'check-animations': {
-                            enabled: getSetting("check-enabled"),
-                            colorScheme: getChoicesSetting("check-color-scheme"),
-                            showOutcome: getChoicesSetting("check-outcome-result"),
-                            fontSize: getSetting("check-font-size"),
-                            duration: getNumberSetting("check-duration", {
-                                min: 0,
-                                max: 10,
-                                step: 0.1,
-                            }),
-                            sfx: {
-                                enabled: getSetting("check-animations.sfx.enabled"),
-                                checkOrAttack: getChoicesSetting("check-animations.sfx.check-or-attack"),
-                                options: getChoicesSetting("check-animations.sfx.options"),
-                                volume: getNumberSetting("check-animations.sfx.volume", {
-                                    min: 0,
-                                    max: 100,
-                                    step: 1,
-                                }),
-                                file: {
-                                    criticalSuccess: getSetting("check-animations.sfx.file.criticalSuccess"),
-                                    success: getSetting("check-animations.sfx.file.success"),
-                                    failure: getSetting("check-animations.sfx.file.failure"),
-                                    criticalFailure: getSetting("check-animations.sfx.file.criticalFailure"),
-                                }
-                            },
-                        },
-                    }
-                },
-                {
-                    id: "token",
-                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.token`),
-                    icon: "fa-circle-user",
-                    token: true,
-                    settings: {
-                        tokenShake: {
-                            enabled: getSetting("dmg-shake-directional-enabled"),
-                            distance: getNumberSetting("tok-shake-distance", {
-                                min: 1,
-                                max: 100,
-                                step: 1,
-                            }),
-                            shakes: getNumberSetting("tok-shake-shakes", {
-                                min: 1,
-                                max: 20,
-                                step: 1,
-                            }),
-                            duration: getNumberSetting("tok-shake-duration", {
-                                min: 0,
-                                max: 2000,
-                                step: 10,
-                            }),
-                            scaling: {
-                                type: getChoicesSetting("tok-shake-scaling-type"),
-                                distance: getChoicesSetting("tok-shake-scaling-distance"),
-                                shakes: getChoicesSetting("tok-shake-scaling-shakes"),
-                                duration: getChoicesSetting("tok-shake-scaling-duration"),
-                            }
-                        },
-                        rotateOnAttack: {
-                            enabled: getSetting("rotate-on-attack"),
-                            duration: getNumberSetting("rotate-on-attack.duration", {
-                                min: 0,
-                                max: 2,
-                                step: 0.1,
-                            }),
-                            scaleOnSize: getSetting("rotate-on-attack.scale-on-size"),
-                        },
-                        screenShake: {
-                            onDamaged: {
-                                enabled: getSetting("shake-enabled"),
-                                duration: getNumberSetting("shake-duration", {
-                                    min: 0,
-                                    max: 2000,
-                                    step: 10,
-                                }),
-                                maxIntensity: getNumberSetting("shake-intensity-max", {
-                                    min: 1,
-                                    max: 100,
-                                    step: 1,
-                                }),
-                                intensityScaling: getChoicesSetting("shake-intensity-type"),
-                                intensityScalingIncludeTempHP: getSetting("shake-intensity-include-temp-hp"),
-                                shakeGM: getSetting("shake-gm-enabled"),
-                            },
-                            onAttack: {
-                                enabled: getSetting("shake-on-attack.enabled"),
-                                showFor: getChoicesSetting("shake-on-attack.type"),
-                            }
-                        },
-                    }
-                },
-                {
-                    id: "critical",
-                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.critical`),
-                    icon: "fa-explosion",
-                    critical: true,
-                    settings: {
-                        critical: {
-                            enabled: getSetting("critical.enabled"),
-                            style: getChoicesSetting("critical.type"),
-                            checksOrAttacks: getChoicesSetting("critical.show-on"),
-                            pcOrNPC: getChoicesSetting("critical.show-on-token-type"),
-                            defaultImageType: getChoicesSetting("critical.default-img"),
-                            duration: getNumberSetting("critical.duration",
-                                {
-                                    min: 0,
-                                    max: 10,
-                                    step: 0.1,
-                                }),
-                            sound: getSetting("critical.sound"),
-                            volume: getNumberSetting("critical.volume", {
-                                min: 0,
-                                max: 100,
-                                step: 1,
-                            }),
-                            delay: getSetting("critical.delay"),
-                        },
-                    }
-                },
-                {
-                    id: "text",
-                    label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.text`),
-                    icon: "fa-message-captions",
-                    text: true,
-                    settings: {
-                        finishingMove: {
-                            enabled: getSetting("finishing-move.enabled"),
-                            //enabledPlayers: getSetting("finishing-move.enabled-players"),
-                            keepOn: getSetting("finishing-move.keep-on"),
-                            usePlayerColor: getSetting("finishing-move.use-player-color"),
-                            quality: getNumberSetting("finishing-move.quality", {
-                                min: 1,
-                                max: 5,
-                                step: 1,
-                            }),
-                            sound: getSetting("finishing-move.sound-effect"),
-                            volume: getNumberSetting("finishing-move.sound-effect.volume", {
-                                min: 1,
-                                max: 100,
-                                step: 1,
-                            }),
-                            duration: {
-                                word: getNumberSetting("finishing-move.duration.word", {
-                                    min: 0,
-                                    max: 2000,
-                                    step: 25,
-                                }),
-                                end: getNumberSetting("finishing-move.duration.end", {
-                                    min: 0,
-                                    max: 5000,
-                                    step: 25,
-                                }),
-                            },
-                        },
-                        fromSoftware: {
-                            eldenRing: {
-                                nounVerbed: {
-                                    enabled: getSetting("from-software.noun-verbed.enabled"),
-                                    xpThreshold: getSetting("from-software.noun-verbed.xp-threshold"),
-                                    fontSize: getNumberSetting("from-software.noun-verbed.font-size", {
-                                        min: 1,
-                                        max: 150,
-                                        step: 1,
-                                    }),
-                                    sound: getSetting("from-software.noun-verbed.sound-effect"),
-                                    volume: getNumberSetting("from-software.noun-verbed.sound-effect.volume", {
-                                        min: 1,
-                                        max: 100,
-                                        step: 1,
-                                    }),
-                                    duration: getNumberSetting("from-software.noun-verbed.duration", {
-                                        min: 0,
-                                        max: 12,
-                                        step: 0.1,
-                                    }),
-                                    text: getSetting("from-software.noun-verbed.text"),
-                                },
-                                death: {
-                                    enabled: getSetting("from-software.death.enabled"),
-                                    fontSize: getNumberSetting("from-software.death.font-size", {
-                                        min: 1,
-                                        max: 150,
-                                        step: 1,
-                                    }),
-                                    sound: getSetting("from-software.death.sound-effect"),
-                                    volume: getNumberSetting("from-software.death.sound-effect.volume", {
-                                        min: 1,
-                                        max: 100,
-                                        step: 1,
-                                    }),
-                                    duration: getNumberSetting("from-software.death.duration", {
-                                        min: 0,
-                                        max: 12,
-                                        step: 0.1,
-                                    }),
-                                    text: getSetting("from-software.death.text"),
-                                }
-                            }
-                        },
-                    }
-                },
-                // {
-                //     id: "misc",
-                //     label: "Misc",
-                //     icon: "fa-gear",
-                //     misc: true,
-                //     settings: {
-                //         debug: {
-                //             enabled: getSetting("debug-mode"),
-                //         }
-                //     },
-                // },
-            ]
-        })
+        const tabs = Object.keys(settingsConfig).map(tab => {
+            const settings = settingsConfig[tab];
+            const tabSettings = {};
+            for (const [key, value] of Object.entries(settings)) {
+                if (typeof value === "string") {
+                    tabSettings[key] = getSetting(value);
+                } else if (value.type === "number") {
+                    tabSettings[key] = getNumberSetting(value.path, value.range);
+                } else if (typeof value === "object") {
+                    tabSettings[key] = this._retrieveNestedSettings(value);
+                }
+            }
+            return {
+                id: tab,
+                label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
+                icon: settingsConfig[tab].icon,
+                [tab]: true,
+                settings: tabSettings
+            };
+        });
+
+        return foundry.utils.mergeObject(super.getData(), { tabs });
+    }
+
+    _retrieveNestedSettings(settingGroup) {
+        const result = {};
+        for (const [key, value] of Object.entries(settingGroup)) {
+            if (typeof value === "string") {
+                result[key] = getSetting(value);
+            } else if (value.type === "number") {
+                result[key] = getNumberSetting(value.path, value.range);
+            } else if (typeof value === "object") {
+                result[key] = this._retrieveNestedSettings(value);
+            }
+        }
+        return result;
     }
 
     async _updateObject(event, formData) {
@@ -358,117 +252,37 @@ export class SettingsConfigForm extends FormApplication {
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
     }
+
     async saveSettings(data) {
-        const expandedData = expandObject(data);
-        const settings = expandedData.settings;
+        const settings = data.settings;
 
-        // Home settings
-        updateIfChanged("enabled", settings.enabled);
+        const updateSetting = (settingKey, settingValue) => {
+            const currentValue = getSetting(settingKey);
+            if (typeof currentValue === "boolean") {
+                settingValue = !!settingValue;
+            }
+            if (currentValue !== settingValue) {
+                setSetting(settingKey, settingValue);
+            }
+        };
 
-        // Rolls: dmg-numbers settings
-        const dmgNumbers = settings['dmg-numbers'];
-        updateIfChanged("dmg-enabled", dmgNumbers.enabled);
-        updateIfChanged("dmg-on-apply-or-roll", dmgNumbers.whenTo);
-        updateIfChanged("font-size", dmgNumbers.fontSize);
-        updateIfChanged("max-font-scale", dmgNumbers.maxFontScale);
-        updateIfChanged("top-offset", dmgNumbers.topOffset);
-        updateIfChanged("show-total", dmgNumbers.showTotal);
-        updateIfChanged("number-scale-type", dmgNumbers.scaleType);
-        updateIfChanged("damage-split", dmgNumbers.split);
-        updateIfChanged("duration", dmgNumbers.duration);
-        updateIfChanged("wait-time-between-numbers", dmgNumbers.waitTime);
-        updateIfChanged("show-only-GM", dmgNumbers.onlyGM);
-        updateIfChanged("animation-scale", dmgNumbers.scale);
-        updateIfChanged("jitter", dmgNumbers.jitter);
+        const processSettings = (settingGroup, dataGroup) => {
+            for (const [key, settingPathOrGroup] of Object.entries(settingGroup)) {
+                if (typeof settingPathOrGroup === "string") {
+                    updateSetting(settingPathOrGroup, dataGroup[key]);
+                } else if (settingPathOrGroup.type === "number") {
+                    updateSetting(settingPathOrGroup.path, dataGroup[key]);
+                } else if (typeof settingPathOrGroup === "object") {
+                    processSettings(settingPathOrGroup, dataGroup[key]);
+                }
+            }
+        };
 
-        // Rolls: check-animations settings
-        const checkAnimations = settings['check-animations'];
-        updateIfChanged("check-enabled", checkAnimations.enabled);
-        updateIfChanged("check-color-scheme", checkAnimations.colorScheme);
-        updateIfChanged("check-outcome-result", checkAnimations.showOutcome);
-        updateIfChanged("check-font-size", checkAnimations.fontSize);
-        updateIfChanged("check-duration", checkAnimations.duration);
-        updateIfChanged("check-animations.sfx.enabled", checkAnimations.sfx.enabled);
-        updateIfChanged("check-animations.sfx.check-or-attack", checkAnimations.sfx.checkOrAttack);
-        updateIfChanged("check-animations.sfx.options", checkAnimations.sfx.options);
-        updateIfChanged("check-animations.sfx.volume", checkAnimations.sfx.volume);
-        updateIfChanged("check-animations.sfx.file.criticalSuccess", checkAnimations.sfx.file.criticalSuccess);
-        updateIfChanged("check-animations.sfx.file.success", checkAnimations.sfx.file.success);
-        updateIfChanged("check-animations.sfx.file.failure", checkAnimations.sfx.file.failure);
-        updateIfChanged("check-animations.sfx.file.criticalFailure", checkAnimations.sfx.file.criticalFailure);
-
-        // Token: tokenShake settings
-        const tokenShake = settings.tokenShake;
-        updateIfChanged("dmg-shake-directional-enabled", tokenShake.enabled);
-        updateIfChanged("tok-shake-distance", tokenShake.distance);
-        updateIfChanged("tok-shake-shakes", tokenShake.shakes);
-        updateIfChanged("tok-shake-duration", tokenShake.duration);
-        updateIfChanged("tok-shake-scaling-type", tokenShake.scaling.type);
-        updateIfChanged("tok-shake-scaling-distance", tokenShake.scaling.distance);
-        updateIfChanged("tok-shake-scaling-shakes", tokenShake.scaling.shakes);
-        updateIfChanged("tok-shake-scaling-duration", tokenShake.scaling.duration);
-
-        // Token: rotateOnAttack settings
-        const rotateOnAttack = settings.rotateOnAttack;
-        updateIfChanged("rotate-on-attack", rotateOnAttack.enabled);
-        updateIfChanged("rotate-on-attack.duration", rotateOnAttack.duration);
-        updateIfChanged("rotate-on-attack.scale-on-size", rotateOnAttack.scaleOnSize);
-
-        // Token: screenShake settings
-        const screenShake = settings.screenShake;
-        updateIfChanged("shake-enabled", screenShake.onDamaged.enabled);
-        updateIfChanged("shake-duration", screenShake.onDamaged.duration);
-        updateIfChanged("shake-intensity-max", screenShake.onDamaged.maxIntensity);
-        updateIfChanged("shake-intensity-type", screenShake.onDamaged.intensityScaling);
-        updateIfChanged("shake-intensity-include-temp-hp", screenShake.onDamaged.intensityScalingIncludeTempHP);
-        updateIfChanged("shake-gm-enabled", screenShake.onDamaged.shakeGM);
-        updateIfChanged("shake-on-attack.enabled", screenShake.onAttack.enabled);
-        updateIfChanged("shake-on-attack.type", screenShake.onAttack.showFor);
-
-        // Critical settings
-        const critical = settings.critical;
-        updateIfChanged("critical.enabled", critical.enabled);
-        updateIfChanged("critical.type", critical.style);
-        updateIfChanged("critical.show-on", critical.checksOrAttacks);
-        updateIfChanged("critical.show-on-token-type", critical.pcOrNPC);
-        updateIfChanged("critical.default-img", critical.defaultImageType);
-        updateIfChanged("critical.duration", critical.duration);
-        updateIfChanged("critical.sound", critical.sound);
-        updateIfChanged("critical.volume", critical.volume);
-        updateIfChanged("critical.delay", critical.delay);
-
-        // Text: finishingMove settings
-        const finishingMove = settings.finishingMove;
-        updateIfChanged("finishing-move.enabled", finishingMove.enabled);
-        updateIfChanged("finishing-move.keep-on", finishingMove.keepOn);
-        updateIfChanged("finishing-move.use-player-color", finishingMove.usePlayerColor);
-        updateIfChanged("finishing-move.quality", finishingMove.quality);
-        updateIfChanged("finishing-move.sound-effect", finishingMove.sound);
-        updateIfChanged("finishing-move.sound-effect.volume", finishingMove.volume);
-        updateIfChanged("finishing-move.duration.word", finishingMove.duration.word);
-        updateIfChanged("finishing-move.duration.end", finishingMove.duration.end);
-
-        // Text: fromSoftware settings
-        const fromSoftware = settings.fromSoftware;
-        const eldenRing = fromSoftware.eldenRing;
-        updateIfChanged("from-software.noun-verbed.enabled", eldenRing.nounVerbed.enabled);
-        updateIfChanged("from-software.noun-verbed.xp-threshold", eldenRing.nounVerbed.xpThreshold);
-        updateIfChanged("from-software.noun-verbed.font-size", eldenRing.nounVerbed.fontSize);
-        updateIfChanged("from-software.noun-verbed.sound-effect", eldenRing.nounVerbed.sound);
-        updateIfChanged("from-software.noun-verbed.sound-effect.volume", eldenRing.nounVerbed.volume);
-        updateIfChanged("from-software.noun-verbed.duration", eldenRing.nounVerbed.duration);
-        updateIfChanged("from-software.noun-verbed.text", eldenRing.nounVerbed.text);
-        updateIfChanged("from-software.death.enabled", eldenRing.death.enabled);
-        updateIfChanged("from-software.death.font-size", eldenRing.death.fontSize);
-        updateIfChanged("from-software.death.sound-effect", eldenRing.death.sound);
-        updateIfChanged("from-software.death.sound-effect.volume", eldenRing.death.volume);
-        updateIfChanged("from-software.death.duration", eldenRing.death.duration);
-        updateIfChanged("from-software.death.text", eldenRing.death.text);
-
-        // Misc: debug settings
-        // const debug = settings.debug;
-        // updateIfChanged("debug-mode", debug.enabled);
+        for (const [tabKey, tabSettings] of Object.entries(settingsConfig)) {
+            processSettings(tabSettings, settings[tabKey]);
+        }
     }
+
 
 }
 
