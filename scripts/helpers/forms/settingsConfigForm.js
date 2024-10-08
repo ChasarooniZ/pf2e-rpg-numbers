@@ -180,12 +180,14 @@ export class SettingsConfigForm extends FormApplication {
             const settings = settingsConfig[tab];
             const tabSettings = {};
             for (const [key, value] of Object.entries(settings)) {
-                if (typeof value === "string") {
-                    tabSettings[key] = getSetting(value);
-                } else if (value.type === "number") {
-                    tabSettings[key] = getNumberSetting(value.path, value.range);
-                } else if (typeof value === "object") {
-                    tabSettings[key] = this._retrieveNestedSettings(value);
+                if (key !== 'icon') {
+                    if (typeof value === "string") {
+                        tabSettings[key] = getSetting(value);
+                    } else if (value.type === "number") {
+                        tabSettings[key] = getNumberSetting(value?.path, value?.range);
+                    } else if (typeof value === "object") {
+                        tabSettings[key] = this._retrieveNestedSettings(value);
+                    }
                 }
             }
             return {
@@ -204,7 +206,7 @@ export class SettingsConfigForm extends FormApplication {
         const result = {};
         for (const [key, value] of Object.entries(settingGroup)) {
             if (typeof value === "string") {
-                result[key] = getSetting(value);
+                result[key] = handleChoicesSetting(settingPath);
             } else if (value.type === "number") {
                 result[key] = getNumberSetting(value.path, value.range);
             } else if (typeof value === "object") {
@@ -286,10 +288,14 @@ export class SettingsConfigForm extends FormApplication {
 
 }
 
-function getChoicesSetting(settingPath) {
+function handleChoicesSetting(settingPath) {
     const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
     const value = getSetting(settingPath);
-    return { choices, value }
+    if (choices) {
+
+        return { choices, value }
+    }
+    return value
 }
 
 function getNumberSetting(settingPath, range) {
