@@ -206,7 +206,7 @@ export class SettingsConfigForm extends FormApplication {
         const result = {};
         for (const [key, value] of Object.entries(settingGroup)) {
             if (typeof value === "string") {
-                result[key] = handleChoicesSetting(settingPath);
+                result[key] = handleChoicesSetting(value);
             } else if (value.type === "number") {
                 result[key] = getNumberSetting(value.path, value.range);
             } else if (typeof value === "object") {
