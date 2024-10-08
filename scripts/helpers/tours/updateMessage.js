@@ -8,7 +8,7 @@ export function sendUpdateMessage() {
     try {
         pastVersion = game.settings.get(MODULE_ID, "last-version");
     } catch (e) { }
-    const toursToRun = getNewTourList(splitVersions(version), splitVersions(pastVersion));
+    const toursToRun = getNewTourList(pastVersion, version);
     game.settings.set(MODULE_ID, "last-version", version);
     if (toursToRun.length === 0) return;
     runTour(toursToRun);
@@ -16,11 +16,6 @@ export function sendUpdateMessage() {
 
 function getNewTourList(pastVersion, version) {
     return TOUR_LIST.filter((tour) => foundry.utils.isNewerVersion(version, tour) && foundry.utils.isNewerVersion(tour, pastVersion))
-}
-
-function splitVersions(version) {
-    let items = version.split(".");
-    return [items[0], items[1], ...items[2].split("-")];
 }
 
 async function runTour(tourStepsArray) {
