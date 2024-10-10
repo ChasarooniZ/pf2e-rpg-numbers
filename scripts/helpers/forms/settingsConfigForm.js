@@ -274,7 +274,7 @@ export class SettingsConfigForm extends FormApplication {
                 if (key !== 'icon') {
                     if (typeof settingPathOrGroup === "string") {
                         updateSetting(settingPathOrGroup, dataGroup[key]);
-                    } else if (settingPathOrGroup.type === "number") {
+                    } else if (settingPathOrGroup?.type === "number") {
                         updateSetting(settingPathOrGroup.path, dataGroup[key]);
                     } else if (typeof settingPathOrGroup === "object") {
                         processSettings(settingPathOrGroup, dataGroup[key]);
@@ -284,7 +284,7 @@ export class SettingsConfigForm extends FormApplication {
         };
 
         for (const [tabKey, tabSettings] of Object.entries(settingsConfig)) {
-            processSettings(tabSettings, settings[tabKey]);
+            processSettings(tabSettings, settings);
         }
     }
 
