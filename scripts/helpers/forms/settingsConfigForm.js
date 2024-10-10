@@ -246,12 +246,12 @@ export class SettingsConfigForm extends FormApplication {
         // Handle saving or submitting
         if (submit) {
             // If submitting, call _updateObject to store the data
-            await this.saveSettings(dataObject);
+            await this.saveSettings(foundry.utils.expandObject(dataObject));
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
             this.close();
         } else {
             // If saving, call _updateObject to store the data
-            await this.saveSettings(dataObject);
+            await this.saveSettings(foundry.utils.expandObject(dataObject));
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
     }
