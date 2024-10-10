@@ -271,12 +271,14 @@ export class SettingsConfigForm extends FormApplication {
 
         const processSettings = (settingGroup, dataGroup) => {
             for (const [key, settingPathOrGroup] of Object.entries(settingGroup)) {
-                if (typeof settingPathOrGroup === "string") {
-                    updateSetting(settingPathOrGroup, dataGroup[key]);
-                } else if (settingPathOrGroup.type === "number") {
-                    updateSetting(settingPathOrGroup.path, dataGroup[key]);
-                } else if (typeof settingPathOrGroup === "object") {
-                    processSettings(settingPathOrGroup, dataGroup[key]);
+                if (key !== 'icon') {
+                    if (typeof settingPathOrGroup === "string") {
+                        updateSetting(settingPathOrGroup, dataGroup[key]);
+                    } else if (settingPathOrGroup.type === "number") {
+                        updateSetting(settingPathOrGroup.path, dataGroup[key]);
+                    } else if (typeof settingPathOrGroup === "object") {
+                        processSettings(settingPathOrGroup, dataGroup[key]);
+                    }
                 }
             }
         };
