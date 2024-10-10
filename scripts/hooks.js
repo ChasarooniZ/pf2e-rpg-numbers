@@ -1,4 +1,4 @@
-import { eldenRingDeath, eldenRingNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
+import { eldenRingNounVerbed, fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
 /**
@@ -47,7 +47,7 @@ export async function applyTokenStatusEffect(token, status, isAdded) {
     if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
         const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
         if (userId) {
-            await eldenRingDeath({ users: [userId] })
+            await fromSoftwareDeath({ users: [userId] })
         }
     }
 }

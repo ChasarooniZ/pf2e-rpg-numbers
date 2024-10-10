@@ -687,16 +687,25 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.enabled`, {
             desc: "enabled",
             scope: "world",
-
             config: false,
             default: false,
             type: Boolean,
         });
+        if (option === 'death') {
+            registerSetting(`from-software.${option}`, `from-software.${option}.type`, {
+                desc: "type",
+                scope: "world",
+                config: false,
+                default: 'elden-ring',
+                type: String,
+                choices: ["elden-ring", 'sekiro']
+            });
+        }
+
         if (option === 'noun-verbed') {
             registerSetting(`from-software.noun-verbed`, `from-software.noun-verbed.xp-threshold`, {
                 desc: "xp-threshold",
                 scope: "world",
-
                 config: false,
                 default: 120,
                 type: Number,
@@ -705,7 +714,6 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.font-size`, {
             desc: "font-size",
             scope: "world",
-
             config: false,
             default: 52,
             range: {
@@ -719,7 +727,6 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect`, {
             desc: "sound-effect",
             scope: "world",
-
             config: false,
             type: String,
             default: option === 'death' ? "modules/pf2e-rpg-numbers/resources/sounds/eldenRingDeath.ogg" : "modules/pf2e-rpg-numbers/resources/sounds/eldenRingVictoryReverb.ogg",
@@ -729,7 +736,6 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect.volume`, {
             desc: "sound-effect.volume",
             scope: "world",
-
             config: false,
             default: 40,
             range: {
@@ -743,7 +749,6 @@ Hooks.on("init", () => {
         registerSetting(`from-software.${option}`, `from-software.${option}.duration`, {
             desc: "duration",
             scope: "world",
-
             config: false,
             default: 6.5,
             range: {
@@ -753,10 +758,10 @@ Hooks.on("init", () => {
             },
             type: Number,
         });
+
         registerSetting(`from-software.${option}`, `from-software.${option}.text`, {
             desc: "text",
             scope: "world",
-
             config: false,
             default: option === 'death' ? 'You Died' : 'Enemy Felled',
             type: String,

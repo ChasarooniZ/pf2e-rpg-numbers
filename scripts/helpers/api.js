@@ -3,7 +3,7 @@ import { createFinishingMoveAnimation } from "./animation/text/finishingMove.js"
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
 import { getDamageList } from "./rollTerms.js";
-import { eldenRingDeath, eldenRingNounVerbed } from "./animation/text/fromSoftwareText.js";
+import { eldenRingDeath, eldenRingNounVerbed, sekiroDeath } from "./animation/text/fromSoftwareText.js";
 import { turnTokenOnAttack } from "./animation/turnTokenOnAttack.js";
 import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
@@ -42,6 +42,9 @@ export function createAPI() {
             eldenRing: {
                 nounVerbed: eldenRingNounVerbed,
                 death: eldenRingDeath
+            },
+            sekiro: {
+                death: sekiroDeath
             }
         },
         settings: {

@@ -62,6 +62,31 @@ export async function eldenRingNounVerbed(options = {}) {
 }
 
 /**
+ * Creates an From Software-style "Death" sequence.
+ * @param {Object} options - Configuration options.
+ * @param {string} [options.type] - The type of death text to display
+ * @param {string} [options.text] - The text to display.
+ * @param {string} [options.sound] - The sound effect file path.
+ * @param {number} [options.fontSize] - The font size for the text.
+ * @param {number} [options.duration] - The duration of the sequence in seconds.
+ * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
+ */
+export async function fromSoftwareDeath(options = {}) {
+    const type = options?.type ? options.type : getSetting(`from-software.death.type`);
+
+    switch (type) {
+        case 'elden-ring':
+            eldenRingDeath(options)
+            break;
+        case 'sekiro':
+
+            break;
+        default:
+            console.error(`Invalid From Software death ${type}`)
+    }
+}
+
+/**
  * Creates an Elden Ring-style "Death" sequence.
  * @param {Object} options - Configuration options.
  * @param {string} [options.text] - The text to display.
@@ -107,6 +132,83 @@ export async function eldenRingDeath(options = {}) {
         .play();
 }
 
+/**
+ * Creates a Sekiro style "Death" sequence.
+ * @param {Object} options - Configuration options.
+ * @param {string} [options.text] - The text to display.
+ * @param {string} [options.sound] - The sound effect file path.
+ * @param {number} [options.fontSize] - The font size for the text.
+ * @param {number} [options.duration] - The duration of the sequence in seconds.
+ * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.
+ */
+export async function sekiroDeath(options = {}) {
+    const text = (options.text ?? getSetting(`from-software.death.text`)).toUpperCase();
+    const sound = options.sound ?? getSetting(`from-software.death.sound-effect`);
+    const fontSize = options.fontSize ?? getSetting(`from-software.death.font-size`);
+    const duration = (options.duration ?? getSetting(`from-software.death.duration`)) * 1000;
+    const users = options?.users ?? game.users.map(u => u.id);
+
+    const fadein = 500;
+
+    new Sequence()
+        //Sound
+        .sound()
+        .file(sound)
+        .delay(fadein / 2).forUsers(users)
+        //Text part 1
+        .effect()
+        .syncGroup("sekiro.death")
+        .screenSpaceAboveUI()
+        .duration(duration + 100)
+        .fadeIn(fadein)
+        .fadeOut(fadein / 2)
+        .screenSpace()
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpacePosition({ x: 0, y: getTextHeight("死", fontSize * 6 / 2) })
+        .text(text.split("").join(" "), {
+            "fill": "#82101d",
+            "fontFamily": "Lusitana-Regular",
+            "fontSize": font,
+            "padding": 10
+        }).forUsers(users)
+        //Japanese Text
+        .effect()
+        .syncGroup("sekiro.death")
+        .screenSpaceAboveUI()
+        .duration(duration + 100)
+        .fadeIn(fadein)
+        .fadeOut(fadein / 2)
+        .screenSpace()
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpacePosition({ x: 0, y: -getTextHeight("死", fontSize * 6 / 2) })
+        .text("死", {
+            "fill": "#82101d",
+            "fontFamily": "Lusitana-Regular",
+            "fontSize": fontSize * 6,
+            "padding": 10
+        })
+        //Japanese Text Scalein
+        .effect()
+        .syncGroup("sekiro.death")
+        .screenSpaceAboveUI()
+        .delay(fadein / 2)
+        .duration(fadein * 2)
+        .fadeOut(fadein)
+        .scaleIn(1.1, fadein, { ease: "easeOutCubic" })
+        //.fadeIn(fadein/2)
+        .screenSpace()
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .opacity(.8)
+        .screenSpacePosition({ x: 0, y: -getTextHeight("死", fontSize * 6 / 2) })
+        .text("死", {
+            "fill": "#e87d7d",
+            "fontFamily": "Lusitana-Regular",
+            "fontSize": fontSize * 6,
+            "padding": 10
+        }).forUsers(users)
+        .play();
+}
+
 function getTextWidth(text, font) {
     // if given, use cached canvas for better performance
     // else, create new canvas
@@ -116,3 +218,12 @@ function getTextWidth(text, font) {
     var metrics = context.measureText(text + "||"); // The '||' adds a little bit of separation
     return metrics.width;
 };
+
+function getTextHeight(text, font) {
+    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    const context = canvas.getContext("2d");
+    context.font = font;
+
+    const metrics = context.measureText(text);
+    return metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+}

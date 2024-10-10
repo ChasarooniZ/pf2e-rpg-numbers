@@ -3,6 +3,8 @@
   - `SFX`
     - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
 - `Settings`
+  - Fixed settings appearance (Specifically fixed for non Dorako UI users)
+  - Added background to buttons for better visibility
   - Updated how settings are defined on the back end to allow better maintainability
 - `From Software`
   - Added Death animation from Sekiro

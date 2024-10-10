@@ -480,6 +480,14 @@
                         "name": "Show on End of Encounter?",
                         "hint": "Show 'Enemy Felled' or whatever text you've added at end of encounter"
                     },
+                    "type": {
+                        "name": "Type of Effect",
+                        "hint": "Choose type of the effect to play",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
+                    },
                     "xp-threshold": {
                         "name": "End of Encounter XP Threshold",
                         "hint": "XP Threshold of the encounter to have the End of Encounter text to show (set to 0 to always show). [Trivial: <= 40, Low: 60, Moderate: 80, Severe: 120, Extreme: 160]"
@@ -510,6 +518,14 @@
                     "enabled": {
                         "name": "Show when owned character Dies",
                         "hint": "Show this message to a PC when their character assigned to their user died."
+                    },
+                    "type": {
+                        "name": "Type of Effect",
+                        "hint": "Choose type of the effect to play",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
                     },
                     "font-size": {
                         "name": "You Died Font Size",
