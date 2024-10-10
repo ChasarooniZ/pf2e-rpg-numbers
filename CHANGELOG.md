@@ -1,3 +1,11 @@
+# [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - A Glass of Water
+- `Check Animations`
+  - `SFX`
+    - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
+- `Settings`
+  - Updated how settings are defined on the back end to allow better maintainability
+- `From Software`
+  - Added Death animation from Sekiro
 # [12.6.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - Our Menu - First Course
 
 - `Settings Menu`

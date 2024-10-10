@@ -98,7 +98,11 @@ async function handleSFX(outcome, type, seq, usersToPlayFor) {
                     break;
             }
             if (!ignoreSFX) {
-                const sfx = getSetting(`check-animations.sfx.file.${outcome}`)
+                let sfx = getSetting(`check-animations.sfx.file.${outcome}`)
+                if (sfx.startsWith("[")) {
+                    const sfxOptions = sfx.slice(1, -1).split(",").map(it => it.replace(/"/g, ""));
+                    sfx = Sequencer.Helpers.random_array_element(sfxOptions);
+                }
                 await Sequencer.Preloader.preloadForClients(sfx);
                 seq.sound()
                     .file(sfx)
