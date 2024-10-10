@@ -268,6 +268,23 @@
             {{checked settings.fromSoftware.eldenRing.death.enabled}}
         />
     </div>
+    {{! Type }}
+    <div class="form-group">
+        <label
+            for="settings.fromSoftware.eldenRing.death.type"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.type.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.type.name"}}
+        </label>
+        
+        <select id="settings.fromSoftware.eldenRing.death.type" name="settings.fromSoftware.eldenRing.death.type">
+            {{selectOptions
+                settings.fromSoftware.eldenRing.death.type.choices
+                selected=settings.fromSoftware.eldenRing.death.type.value
+                localize=true
+            }}
+        </select>
+    </div>
     {{! Font Size }}
     <div class="form-group">
         <label

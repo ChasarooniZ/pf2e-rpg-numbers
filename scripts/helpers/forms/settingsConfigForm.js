@@ -121,7 +121,8 @@ const settingsConfig = {
                     sound: "from-software.death.sound-effect",
                     volume: { path: "from-software.death.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
                     duration: { path: "from-software.death.duration", type: "number", range: { min: 0, max: 12, step: 0.1 } },
-                    text: "from-software.death.text"
+                    text: "from-software.death.text",
+                    type: "from-software.death.type",
                 }
             }
         }
