@@ -22,7 +22,7 @@
             "headers": {
                 "dmg-numbers": "Liczby obrażeń",
                 "check-animations": "Testy i animacje ataków",
-                "screen-shake": "Drgania ekranu",
+                "screen-shake": "Potrząsanie podczas obrażeń",
                 "token-dmg-shake": {
                     "title": "Potrząsanie tokenami podczas zadawania obrażeń",
                     "scaling": "Potrząsanie tokenami podczas zadawania obrażeń - skalowanie"
@@ -30,13 +30,12 @@
                 "shake-on-attack": "Potrząsanie podczas ataku",
                 "rotate-on-attack": "Obrót podczas ataku",
                 "finishing-move": {
-                    "title": "Ciosy kończące",
-                    "pcs": "Ciosy kończące: Ustawienia graczy",
-                    "npcs": "Ciosy kończące: Ustawienia BNów"
+                    "title": "Ciosy kończące"
                 },
                 "plus-one": "Każde +1 ma znaczenie",
                 "critical": "Trafienie krytyczne",
                 "fromSoftware": {
+                    "title": "From Software",
                     "elden-ring": {
                         "title": "Wyskakujące okienka Elden Ring",
                         "noun-verbed": "Rzeczownik odmieniony",
@@ -217,7 +216,7 @@
                 },
                 "intensity-max": {
                     "name": "Intensywność",
-                    "hint": "Jak mocno potrząsnąć ekranem"
+                    "hint": "Jak mocno potrząsnąć ekranem w pikselach (zalecane od 10 do 35)"
                 },
                 "intensity-type": {
                     "name": "Skalowanie intensywności",
@@ -482,6 +481,14 @@
                         "name": "Pokazać na koniec spotkania?",
                         "hint": "Pokaż „Wróg wyeliminowany” lub jakikolwiek inny tekst dodany na koniec spotkania."
                     },
+                    "type": {
+                        "name": "Typ efektu",
+                        "hint": "Wybierz typ odtwarzanego efektu",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
+                    },
                     "xp-threshold": {
                         "name": "Próg PD na koniec spotkania",
                         "hint": "Próg PD spotkania, aby wyświetlić tekst zakończenia spotkania (ustaw na 0, aby zawsze wyświetlać). [Trywialny: <= 40, Niski: 60, Umiarkowany: 80, Poważny: 120, Ekstremalny: 160]."
@@ -512,6 +519,14 @@
                     "enabled": {
                         "name": "Pokaż, kiedy postać umiera",
                         "hint": "Pokazuje tę wiadomość graczowi, gdy jego postać przypisana do gracza umrze."
+                    },
+                    "type": {
+                        "name": "Typ efektu",
+                        "hint": "Wybierz typ odtwarzanego efektu",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
                     },
                     "font-size": {
                         "name": "Rozmiar czcionki \"Umarłeś\"",
@@ -549,10 +564,10 @@
         },
         "menu": {
             "settings": {
-                "title": "Menu Konfiguracji PF2e RPG #s",
+                "title": "Menu konfiguracji Pf2e RPG #s",
                 "buttons": {
-                    "export": "Eksportuj Ustawienia",
-                    "import": "Importuj Ustawienia",
+                    "export": "Eksportuj ustawienia",
+                    "import": "Importuj ustawienia",
                     "footer": {
                         "save": "Zapisz",
                         "submit": "Zatwierdź",
@@ -562,27 +577,27 @@
                 "notification": {
                     "save": "Ustawienia zostały pomyślnie zapisane!",
                     "submit": "Ustawienia zostały pomyślnie zatwierdzone!",
-                    "cancel": "Menu ustawień zamknięto bez zapisywania"
+                    "cancel": "Menu ustawień zamknięte bez zapisania"
                 },
                 "tabs": {
                     "home": "Główna",
                     "rolls": "Rzuty",
-                    "token": "Żeton",
+                    "token": "Token",
                     "critical": "Krytyczny",
                     "text": "Tekst",
                     "misc": "Różne"
                 }
             },
             "import": {
-                "title": "Import Ustawień PF2e RPG",
-                "content": "Prześlij JSON Ustawień",
+                "title": "Import ustawień PF2e RPG",
+                "content": "Prześlij ustawienia JSON",
                 "buttons": {
                     "import": "Importuj",
                     "cancel": "Anuluj"
                 },
                 "notification": {
-                    "success": "Ustawienia PF2e RPG zaimportowane!",
-                    "failure": "Import Ustawień PF2e RPG nie powiódł się :("
+                    "success": "Ustawienia Pf2e RPG zaimportowane!",
+                    "failure": "Import ustawień PF2e RPG nie powiódł się :("
                 }
             }
         },
