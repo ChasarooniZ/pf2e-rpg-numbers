@@ -1,29 +1,39 @@
 # [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - A Glass of Water
+
 - `Check Animations`
   - `SFX`
     - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
+    
+  
 - `Settings`
   - Fixed settings appearance (Specifically fixed for non Dorako UI users)
   - Added background to buttons for better visibility
   - Updated how settings are defined on the back end to allow better maintainability
+  
 - `From Software`
   - Added Death animation from Sekiro
+  
+
 # [12.6.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - Our Menu - First Course
 
 - `Settings Menu`
+  
   - Redid many settings to be in their own menu
   - Added hover over images to preview each setting
   - Added option to Import and Export setting
   
 - `Shake on Attack`
+  
   - Increased the base strength of this shake to meet recommended parameters
   
 - `API`
+  
   - Added import and export settings to api
     - `game.pf2eRPGNumbers.settings.export` & `game.pf2eRPGNumbers.settings.import`
     
   
 - `Damage Numbers`
+  
   - Added support for multiply dice for more than `2 * <Xdx>`
   - Removed error when damage roll has no target
   
@@ -730,22 +740,44 @@
 
 # <<<<<<< HEAD
 
+## 12.6.1 - 2024-10-11
+
+### [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0)
+
+- `From Software`
+  - Added Death animation from Sekiro
+  
+- `Check Animations`
+  - `SFX`
+    - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
+    
+  
+- `Settings`
+  - Fixed settings appearance (Specifically fixed for non Dorako UI users)
+  - Added background to buttons for better visibility
+  - Updated how settings are defined on the back end to allow better maintainability
+  
+
 ## 12.6.0 - 2024-10-03
 
 - `Settings Menu`
+  
   - Redid many settings to be in their own menu
   - Added hover over images to preview each setting
   - Added option to Import and Export setting
   
 - `Shake on Attack`
+  
   - Increased the base strength of this shake to meet recommended parameters
   
 - `API`
+  
   - Added import and export settings to api
     - `game.pf2eRPGNumbers.settings.export` & `game.pf2eRPGNumbers.settings.import`
     
   
 - `Damage Numbers`
+  
   - Added support for multiply dice for more than `2 * <Xdx>`
   - Removed error when damage roll has no target
     ![image](https://github.com/user-attachments/assets/a66f5914-56d8-4086-a009-9f9a434702eb)
