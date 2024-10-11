@@ -144,10 +144,12 @@ export async function eldenRingDeath(options = {}) {
 export async function sekiroDeath(options = {}) {
     const text = (options.text ?? getSetting(`from-software.death.text`)).toUpperCase();
     const sound = options.sound ?? getSetting(`from-software.death.sound-effect`);
-    const fontSize = options.fontSize ?? getSetting(`from-software.death.font-size`);
+    const fontSize = options.fontSize ?? getSetting(`from-software.death.font-size`) / 2;
     const duration = (options.duration ?? getSetting(`from-software.death.duration`)) * 1000;
     const users = options?.users ?? game.users.map(u => u.id);
 
+    const bigFontSize = fontSize * 6;
+    const separationHeight = (bigFontSize / 2) * 0.85;
     const fadein = 500;
 
     new Sequence()
@@ -164,11 +166,11 @@ export async function sekiroDeath(options = {}) {
         .fadeOut(fadein / 2)
         .screenSpace()
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpacePosition({ x: 0, y: getTextHeight("死", fontSize * 6 / 2) })
+        .screenSpacePosition({ x: 0, y: separationHeight })
         .text(text.split("").join(" "), {
             "fill": "#82101d",
             "fontFamily": "Lusitana-Regular",
-            "fontSize": font,
+            "fontSize": fontSize,
             "padding": 10
         }).forUsers(users)
         //Japanese Text
@@ -180,11 +182,11 @@ export async function sekiroDeath(options = {}) {
         .fadeOut(fadein / 2)
         .screenSpace()
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpacePosition({ x: 0, y: -getTextHeight("死", fontSize * 6 / 2) })
+        .screenSpacePosition({ x: 0, y: -separationHeight })
         .text("死", {
             "fill": "#82101d",
             "fontFamily": "Lusitana-Regular",
-            "fontSize": fontSize * 6,
+            "fontSize": bigFontSize,
             "padding": 10
         })
         //Japanese Text Scalein
@@ -199,11 +201,11 @@ export async function sekiroDeath(options = {}) {
         .screenSpace()
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .opacity(.8)
-        .screenSpacePosition({ x: 0, y: -getTextHeight("死", fontSize * 6 / 2) })
+        .screenSpacePosition({ x: 0, y: -separationHeight })
         .text("死", {
             "fill": "#e87d7d",
             "fontFamily": "Lusitana-Regular",
-            "fontSize": fontSize * 6,
+            "fontSize": bigFontSize,
             "padding": 10
         }).forUsers(users)
         .play();
@@ -218,12 +220,3 @@ function getTextWidth(text, font) {
     var metrics = context.measureText(text + "||"); // The '||' adds a little bit of separation
     return metrics.width;
 };
-
-function getTextHeight(text, font) {
-    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-    const context = canvas.getContext("2d");
-    context.font = font;
-
-    const metrics = context.measureText(text);
-    return metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
-}
