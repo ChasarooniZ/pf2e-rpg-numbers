@@ -1,4 +1,8 @@
-# [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0) - A Glass of Water
+# [12.6.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.1...12.6.2) - Screen Quest
+- Sequencer minimum version updated to `3.3.8`
+- Uses `screenSpace` boolean for `Fire Emblem Crits` now for more consistent fire emblem crit
+
+# [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.0..12.6.1) - A Glass of Water
 
 - `Check Animations`
   - `SFX`
