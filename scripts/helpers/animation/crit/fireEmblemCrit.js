@@ -15,9 +15,6 @@ import { getSetting } from "../../misc.js";
  */
 
 export async function fireEmblemCrit(token, users, imgData, config) {
-    const screenWidth = window.screen.availWidth;
-    const scaleFactor = 0.35;
-    const distance = scaleFactor * screenWidth;
     const windowHeight = screen.height / 10;
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
@@ -68,8 +65,9 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .syncGroup(`fe-crit-${token.uuid}`)
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
-            from: -distance * 1.5 / (scaleFactorHalf),
-            to: distance * 2,
+            from: -2.5,
+            to: 4,
+            screenSpace: true,
             duration: duration,
             ease: "easeInBack",
         })
