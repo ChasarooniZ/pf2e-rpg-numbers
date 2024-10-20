@@ -1,20 +1,24 @@
 # [12.6.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.1...12.6.2) - Screen Quest
+
 - Sequencer minimum version updated to `3.3.8`
 - Uses `screenSpace` boolean for `Fire Emblem Crits` now for more consistent fire emblem crit
 
 # [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.0..12.6.1) - A Glass of Water
 
 - `Check Animations`
+  
   - `SFX`
     - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
     
   
 - `Settings`
+  
   - Fixed settings appearance (Specifically fixed for non Dorako UI users)
   - Added background to buttons for better visibility
   - Updated how settings are defined on the back end to allow better maintainability
   
 - `From Software`
+  
   - Added Death animation from Sekiro
   
 
@@ -744,19 +748,27 @@
 
 # <<<<<<< HEAD
 
+## 12.6.2 - 2024-10-20
+
+- Sequencer minimum version updated to `3.3.8`
+- Uses `screenSpace` boolean for `Fire Emblem Crits` now for more consistent fire emblem crit
+
 ## 12.6.1 - 2024-10-11
 
 ### [12.6.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.5.5...12.6.0)
 
 - `From Software`
+  
   - Added Death animation from Sekiro
   
 - `Check Animations`
+  
   - `SFX`
     - Added option to insert an array for check animation SFX as so `["sfx-1", "sfx-2"]` etc.
     
   
 - `Settings`
+  
   - Fixed settings appearance (Specifically fixed for non Dorako UI users)
   - Added background to buttons for better visibility
   - Updated how settings are defined on the back end to allow better maintainability
