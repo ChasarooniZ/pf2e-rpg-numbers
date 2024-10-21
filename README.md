@@ -19,7 +19,7 @@ A module that started to just show damage numbers when you attack but now does o
 ## Features
 ### Damage Numbers
 - Numbers that pop up based on the damage dealt (when it is rolled)
-- ![attack](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/132d3509-d3a0-4a20-af1b-4f8c89a49c72)
+- ![attack](https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-numbers.gif)
 ### Check Numbers
 - Number or outcome pop ups for attacks & checks
 - ![check](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/773b5b4d-cd00-4007-9eda-85ca4059f8de)
