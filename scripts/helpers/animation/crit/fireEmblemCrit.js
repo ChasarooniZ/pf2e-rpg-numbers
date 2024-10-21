@@ -65,8 +65,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .syncGroup(`fe-crit-${token.uuid}`)
         .file(imageUrl)
         .animateProperty("sprite", "position.x", {
-            from: -2.5,
-            to: 4,
+            from: -0.9,
+            to: 1.5,
             screenSpace: true,
             duration: duration,
             ease: "easeInBack",

@@ -7,6 +7,7 @@ import { eldenRingDeath, eldenRingNounVerbed, sekiroDeath } from "./animation/te
 import { turnTokenOnAttack } from "./animation/turnTokenOnAttack.js";
 import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
+import { getSetting } from "./misc.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -29,7 +30,7 @@ export function createAPI() {
             },
         },
         critAnimation: {
-            generate: function (token, critType = "persona") {
+            generate: function (token, critType = getSetting("critical.type")) {
                 createCritAnimation({ type: "custom", whisper: [], token: token.document }, critType);
             },
         },
