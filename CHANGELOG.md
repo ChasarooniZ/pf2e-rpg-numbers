@@ -2,8 +2,11 @@
 
 - `api`
   - Made it so crit animation uses the one set in settings by default
+  
 - `Fire Emblem Crit`
   - Fixed crit animation that I broke last time
+  
+
 # [12.6.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.1...12.6.2) - Screen Quest
 
 - Sequencer minimum version updated to `3.3.8`
@@ -753,6 +756,15 @@
   
 
 # <<<<<<< HEAD
+
+## 12.6.3 - 2024-10-21
+
+- `api`
+  - Made it so crit animation uses the one set in settings by default
+  
+- `Fire Emblem Crit`
+  - Fixed crit animation that I broke last time
+  
 
 ## 12.6.2 - 2024-10-20
 
