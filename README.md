@@ -27,8 +27,10 @@ A module that started to just show damage numbers when you attack but now does o
 - Cause screen to shake when taking damage
 - ![screen shake example](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/04b51492-81c5-4027-b7cb-f8524ec94927)
 ### On Damage Token Shake
+![dmg shake](https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif)
 - Cause tokens to shake when they take damage
 ### Token Rotate on Attack
+![rotate example](https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif)
 - Allow you have the tokens rotate towards who they are attacking upon attacking
 - They will rotate back after a delay
 
