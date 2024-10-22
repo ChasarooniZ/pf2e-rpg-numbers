@@ -1,11 +1,15 @@
 # [12.6.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.3...12.6.4) - A Little Birdie
+
 - Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
+
 # [12.6.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.2...12.6.3) - Fixes
 
 - `api`
+  
   - Made it so crit animation uses the one set in settings by default
   
 - `Fire Emblem Crit`
+  
   - Fixed crit animation that I broke last time
   
 
@@ -759,12 +763,18 @@
 
 # <<<<<<< HEAD
 
+## 12.6.4 - 2024-10-22
+
+- Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
+
 ## 12.6.3 - 2024-10-21
 
 - `api`
+  
   - Made it so crit animation uses the one set in settings by default
   
 - `Fire Emblem Crit`
+  
   - Fixed crit animation that I broke last time
   
 
