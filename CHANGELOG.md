@@ -1,3 +1,5 @@
+# [12.6.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.3...12.6.4) - A Little Birdie
+- Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
 # [12.6.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.2...12.6.3) - Fixes
 
 - `api`
