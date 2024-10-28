@@ -31,7 +31,7 @@ Hooks.on("ready", () => {
     Hooks.on("preDeleteCombat", preDeleteCombat);
     // You died Elden Ring
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
-    Hooks.on("preCreateChatMessage", async function (msg, _status, _data, userid) {
+    Hooks.on("createChatMessage", async function (msg, _status, userid) {
         if (game.user.id === userid) {
             if (!getSetting("enabled")) return;
             debugLog({
