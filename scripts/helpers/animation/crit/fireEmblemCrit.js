@@ -28,10 +28,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         imgData.xScale = 1;
         imgData.yScale = 1;
     }
-
-    const scaleFactorHalf = (imgData.yScale + imgData.xScale) / 2;
     await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
-    await new Sequence()
+    new Sequence()
         //background
         .effect()
         .zIndex(-1)
