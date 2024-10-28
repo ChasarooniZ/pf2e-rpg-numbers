@@ -215,7 +215,7 @@ function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
 
-function checkRollNumbers(dat, msg) {
+async function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
     const doCrits = getSetting("critical.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
@@ -238,7 +238,7 @@ function checkRollNumbers(dat, msg) {
     }
 }
 
-function damageRollNumbers(dat, msg) {
+async function damageRollNumbers(dat, msg) {
     if (dat.isDamageRoll && getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "roll") {
         const dmg_list = getDamageList(msg.rolls);
         const targets = getTargetList(msg);
