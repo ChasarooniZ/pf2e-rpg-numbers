@@ -23,7 +23,7 @@ export function doSomethingOnDamageApply() {
 
 export async function handleDiceSoNice(msg = null) {
     if (msg === null) return false;
-    return game.dice3d.waitFor3DAnimationByMessageID(message?.id);
+    return game.dice3d.waitFor3DAnimationByMessageID(msg?.id);
 }
 
 export function localize(str) {
