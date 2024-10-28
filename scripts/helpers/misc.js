@@ -21,24 +21,8 @@ export function doSomethingOnDamageApply() {
     );
 }
 
-export function handleDiceSoNice(func, params, msg = null) {
-    if (
-        game.modules.get("dice-so-nice")?.active &&
-        !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages") &&
-        msg?.rolls?.find((roll) => roll.dice.length > 0)
-    ) {
-        const hookId = Hooks.on("diceSoNiceRollComplete", (id) => {
-            if (id === msg.id || msg === null) {
-                func(...params);
-                disableHook();
-            }
-        });
-        function disableHook() {
-            Hooks.off("diceSoNiceRollComplete", hookId);
-        }
-    } else {
-        func(...params);
-    }
+export async function handleDiceSoNice(msg = null) {
+    return game.dice3d.waitFor3DAnimationByMessageID(message?.id);
 }
 
 export function localize(str) {
