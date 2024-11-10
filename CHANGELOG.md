@@ -767,6 +767,12 @@
 
 # <<<<<<< HEAD
 
+## 12.6.5 - 2024-11-10
+
+- Fix issue where token `Critical SFX` wasn't activating (@TheTenk for the catch on this)
+  (Done so that this may thrive)
+  https://github.com/user-attachments/assets/2f6245e5-7cd3-4e5f-8cec-9145ebff1f4b
+
 ## 12.6.4 - 2024-10-22
 
 - Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
