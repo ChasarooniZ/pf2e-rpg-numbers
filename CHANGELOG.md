@@ -1,3 +1,7 @@
+# [12.6.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.4...12.6.5) - Nyan Nyan Nyan
+
+- Fix issue where token `Critical SFX` wasn't activating (@TheTenk for the catch on this)
+
 # [12.6.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.3...12.6.4) - A Little Birdie
 
 - Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
