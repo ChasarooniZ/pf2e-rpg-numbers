@@ -1,4 +1,4 @@
-# [12.6.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.4...12.6.5) - Dynamism
+# [12.6.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.5...12.6.6) - Dynamism
  - `Token Damage Shake`
    - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
      - Note: will fallback to token image when the subject texture is blank
