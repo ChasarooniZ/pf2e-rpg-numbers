@@ -15,7 +15,7 @@ export function createCritAnimation(rollDeets, critType = getSetting("critical.t
     const imgData = getImageData(rollDeets);
     if (!imgData) return;
 
-    const config = getAnimationConfig();
+    const config = getAnimationConfig({token: rollDeets.token});
     const users = getEligibleUsers(rollDeets);
 
     displayCritAnimation(critType, rollDeets.token, users, imgData, config);
@@ -96,10 +96,10 @@ function shouldUseTokenImage(actorType, defaultImgType) {
  * Retrieves the animation configuration.
  * @returns {object} The animation configuration object.
  */
-function getAnimationConfig() {
+function getAnimationConfig(config) {
     return {
         delay: getSetting("critical.delay") * 1000,
-        sfx: getSetting("critical.sound"),
+        sfx: config?.token?.getFlag(MODULE_ID, 'critSFX') ?? getSetting("critical.sound"),
         volume: getSetting("critical.volume") / 100,
     };
 }

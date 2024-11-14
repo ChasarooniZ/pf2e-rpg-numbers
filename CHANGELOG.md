@@ -3,6 +3,10 @@
    - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
      - Note: will fallback to token image when the subject texture is blank
    - Rewrote code for future maintainability
+# [12.6.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.4...12.6.5) - Nyan Nyan Nyan
+
+- Fix issue where token `Critical SFX` wasn't activating (@TheTenk for the catch on this)
+
 # [12.6.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.3...12.6.4) - A Little Birdie
 
 - Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
@@ -767,6 +771,12 @@
   
 
 # <<<<<<< HEAD
+
+## 12.6.5 - 2024-11-10
+
+- Fix issue where token `Critical SFX` wasn't activating (@TheTenk for the catch on this)
+  (Done so that this may thrive)
+  https://github.com/user-attachments/assets/2f6245e5-7cd3-4e5f-8cec-9145ebff1f4b
 
 ## 12.6.4 - 2024-10-22
 
