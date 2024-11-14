@@ -1,8 +1,12 @@
 # [12.6.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.5...12.6.6) - Dynamism
- - `Token Damage Shake`
-   - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
-     - Note: will fallback to token image when the subject texture is blank
-   - Rewrote code for future maintainability
+
+- `Token Damage Shake`
+  - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
+    - Note: will fallback to token image when the subject texture is blank
+    
+  - Rewrote code for future maintainability
+  
+
 # [12.6.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.4...12.6.5) - Nyan Nyan Nyan
 
 - Fix issue where token `Critical SFX` wasn't activating (@TheTenk for the catch on this)
@@ -771,6 +775,15 @@
   
 
 # <<<<<<< HEAD
+
+## 12.6.6 - 2024-11-14
+
+- `Token Damage Shake`
+  - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
+    - Note: will fallback to token image when the subject texture is blank
+    
+  - Rewrote code for future maintainability
+  
 
 ## 12.6.5 - 2024-11-10
 
