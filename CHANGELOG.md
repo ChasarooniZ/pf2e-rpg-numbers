@@ -1,3 +1,8 @@
+# [12.6.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.4...12.6.5) - Dynamism
+ - `Token Damage Shake`
+   - Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
+     - Note: will fallback to token image when the subject texture is blank
+   - Rewrote code for future maintainability
 # [12.6.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.3...12.6.4) - A Little Birdie
 
 - Fixed setting for `critical` `Default Image Type` setting not properly saving/updating (@ShinyChariot375)
