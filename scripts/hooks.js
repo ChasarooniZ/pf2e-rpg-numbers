@@ -11,7 +11,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
 
-    const xpNeeded = getSetting('from-software.noun-verbed.text');
+    const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
