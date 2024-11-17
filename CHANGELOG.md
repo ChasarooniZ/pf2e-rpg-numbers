@@ -1,3 +1,7 @@
+# [12.6.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.7...12.6.8) - Proper Threshold
+
+- Fixed issue where From Software Noun-Verbed wouldn't play automatically after combat due to checking the wrong variable (@Fumu)
+
 # [12.6.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.6...12.6.7) - Simple Fixes
 
 - Fixed issue where the default `Crit SFX` wouldn't play if the token had any flags (@Deatrathias)
