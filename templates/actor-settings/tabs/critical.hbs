@@ -1,0 +1,127 @@
+<h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-fire-emblem-awakening.gif' /><img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-persona-5.gif' />">
+    {{localize "pf2e-rpg-numbers.module-settings.headers.critical"}}
+</h2>
+{{! Enabled }}
+<div class="form-group">
+    <label
+        for="settings.critical.enabled"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}
+    </label>
+    <input
+        type="checkbox"
+        id="settings.critical.enabled"
+        name="settings.critical.enabled"
+        {{checked settings.critical.enabled}}
+    />
+</div>
+{{! Style }}
+<div class="form-group">
+    <label
+        for="settings.critical.style"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.type.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.type.name"}}
+    </label>
+    <select id="settings.critical.style" name="settings.critical.style">
+        {{selectOptions settings.critical.style.choices selected=settings.critical.style.value localize=true}}
+    </select>
+</div>
+{{! Checks or Attacks }}
+<div class="form-group">
+    <label
+        for="settings.critical.show-on"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.show-on.name"}}
+    </label>
+    <select id="settings.critical.show-on" name="settings.critical.show-on">
+        {{selectOptions
+            settings.critical.checksOrAttacks.choices
+            selected=settings.critical.checksOrAttacks.value
+            localize=true
+        }}
+    </select>
+</div>
+{{! PC or NPC }}
+<div class="form-group">
+    <label
+        for="settings.critical.pcOrNPC"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.show-on-token-type.name"}}
+    </label>
+    <select id="settings.critical.pcOrNPC" name="settings.critical.pcOrNPC">
+        {{selectOptions settings.critical.pcOrNPC.choices selected=settings.critical.pcOrNPC.value localize=true}}
+    </select>
+</div>
+{{! Default Image Type }}
+<div class="form-group">
+    <label
+        for="settings.critical.defaultImageType"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.default-img.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.default-img.name"}}
+    </label>
+    <select id="settings.critical.defaultImageType" name="settings.critical.defaultImageType">
+        {{selectOptions
+            settings.critical.defaultImageType.choices
+            selected=settings.critical.defaultImageType.value
+            localize=true
+        }}
+    </select>
+</div>
+{{! Duration }}
+<div class="form-group">
+    <label
+        for="settings.critical.duration"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.duration.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.duration.name"}}
+    </label>
+    {{numberInput
+        settings.critical.duration.value
+        name="settings.critical.duration"
+        step=settings.critical.duration.range.step
+        min=settings.critical.duration.range.min
+        max=settings.critical.duration.range.max
+    }}
+</div>
+{{! Sound Effect }}
+<div class="form-group">
+    <label
+        for="settings.critical.sound"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sound.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.sound.name"}}
+    </label>
+    <input
+        type="text"
+        id="settings.critical.sound"
+        name="settings.critical.sound"
+        value="{{settings.critical.sound}}"
+    />
+    {{filePicker target="settings.critical.sound" type="audio"}}
+</div>
+{{! Volume }}
+<div class="form-group">
+    <label
+        for="settings.critical.volume"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.volume.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.volume.name"}}
+    </label>
+    {{numberInput settings.critical.volume.value name="settings.critical.volume" step=1 min=0 max=100}}
+</div>
+{{! Delay }}
+<div class="form-group">
+    <label
+        for="settings.critical.delay"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.delay.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.delay.name"}}
+    </label>
+    {{numberInput settings.critical.delay name="settings.critical.delay"}}
+</div>
+{{!-- {{filePicker type="image" target="flags.moduleid.flagname"}} --}}
