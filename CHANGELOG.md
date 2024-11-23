@@ -790,6 +790,10 @@
 
 # <<<<<<< HEAD
 
+## 12.6.9 - 2024-11-23
+
+- Fixed issue where From Software Noun-Verbed would always play (@serbandr)
+
 ## 12.6.8 - 2024-11-17
 
 - Fixed issue where From Software Noun-Verbed wouldn't play automatically after combat due to checking the wrong variable (@Fumu)
