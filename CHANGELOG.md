@@ -1,6 +1,6 @@
 # [12.6.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.8...12.6.9) - Disableable
 
-- Fixed issue where From Software Noun-Verbed would always play (@Fumu)
+- Fixed issue where From Software Noun-Verbed would always play (@serbandr)
 
 # [12.6.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.7...12.6.8) - Proper Threshold
 
