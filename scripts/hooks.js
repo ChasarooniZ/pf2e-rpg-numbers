@@ -10,7 +10,7 @@ import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 export async function preDeleteCombat(encounter, _changed, _userid) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
-    if (getSetting('from-software.noun-verbed.enabled')) return;
+    if (!getSetting('from-software.noun-verbed.enabled')) return;
 
     
     const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');

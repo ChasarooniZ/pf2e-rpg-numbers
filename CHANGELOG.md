@@ -1,3 +1,7 @@
+# [12.6.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.9...12.6.10) - Flip Flop
+
+- Fixed issue where From Software Noun-Verbed Enabled setting was flipped 🐬
+
 # [12.6.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.8...12.6.9) - Disableable
 
 - Fixed issue where From Software Noun-Verbed would always play (@serbandr)
