@@ -794,6 +794,10 @@
 
 # <<<<<<< HEAD
 
+## 12.6.10 - 2024-11-24
+
+- Fixed issue where From Software Noun-Verbed Enabled setting was flipped 🐬
+
 ## 12.6.9 - 2024-11-23
 
 - Fixed issue where From Software Noun-Verbed would always play (@serbandr)
