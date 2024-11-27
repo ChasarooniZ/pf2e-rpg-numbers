@@ -50,9 +50,15 @@ Hooks.on("ready", () => {
             //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg], msg);
-                if (isShakeOnAttack(msg.token.actor))
-                    handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
+                if (isRotateOnAttack()) {
+                    await handleDiceSoNice(msg);
+                    rotateOnAttack(msg);
+                }
+
+                if (isShakeOnAttack(msg.token.actor)) {
+                    await handleDiceSoNice(msg);
+                    shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
+                }
             }
 
             //On Damage Application
@@ -209,7 +215,7 @@ function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
 
-function checkRollNumbers(dat, msg) {
+async function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
     const doCrits = getSetting("critical.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
@@ -220,13 +226,19 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg);
-        if (doCrits && roll_deets.outcome === "criticalSuccess")
-            handleDiceSoNice(createCritAnimation, [roll_deets], msg);
+        if (doChecks) {
+            await handleDiceSoNice(msg);
+            generateRollScroll(roll_deets);
+        }
+        if (doCrits && roll_deets.outcome === "criticalSuccess") {
+            await handleDiceSoNice(msg);
+            createCritAnimation(roll_deets);
+        }
+
     }
 }
 
-function damageRollNumbers(dat, msg) {
+async function damageRollNumbers(dat, msg) {
     if (dat.isDamageRoll && getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "roll") {
         const dmg_list = getDamageList(msg.rolls);
         const targets = getTargetList(msg);
@@ -238,7 +250,8 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg);
+        await handleDiceSoNice(msg);
+        generateDamageScroll(dmg_list, targets, msg);
     }
 }
 
