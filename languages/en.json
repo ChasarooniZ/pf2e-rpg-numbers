@@ -609,12 +609,8 @@
                 "criticalSuccess": "Critical Success"
             }
         },
-        "token-options": {
-            "tab-label": "PF2e RPG #s",
-            "rotation-offset": {
-                "name": "Turn On Attack - Rotation Offset",
-                "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
-            },
+        "actor-settings": {
+            "label": "PF2e RPG #s",
             "fire-emblem-img": {
                 "name": "Fire Emblem Critical Pic",
                 "hint": "Image to show for critical hits for token when 'Fire Emblem' is selected"
@@ -623,7 +619,17 @@
                 "name": "Persona Critical Pic",
                 "hint": "Image to show for critical hits for token when 'Persona' is selected"
             },
+            "token": {
+                "rotation-offset": {
+                    "name": "Turn On Attack - Rotation Offset",
+                    "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+                }
+            },
             "crit": {
+                "art": {
+                    "name": "Critical",
+                    "hint":"Image to show for critical"
+                },
                 "offset-x": {
                     "name": "Crit X Offset",
                     "hint": "This is as a %, so 100, would move it to the right one full image length"
@@ -648,8 +654,18 @@
         },
         "keybinds": {
             "activate-finishing-move": {
-                "name": "Activate Finishing Move",
-                "hint": "Activates finishing move if you have it enabled"
+                "name": "Toggle Finishing Move",
+                "hint": "Toggles finishing move if you have it enabled in settings"
+            },
+            "activate-critical": {
+                "success": {
+                    "name": "Activate Critical Success Animation",
+                    "hint": "Activates the critical success animation for selected token"
+                },
+                "failure": {
+                    "name": "Activate Critical Failure Animation",
+                    "hint": "Activates the critical failure animation for selected token"
+                }
             }
         }
     }

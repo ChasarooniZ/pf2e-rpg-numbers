@@ -808,6 +808,26 @@ Hooks.on("init", () => {
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
+    game.keybindings.register(MODULE_ID, "activateCriticalAnimation", {
+        name: localize("keybinds.activate-critical.success.name"),
+        hint: localize("keybinds.activate-critical.success.hint"),
+        editable: [
+            {
+                key: "",
+            },
+        ],
+        onDown: () => {
+            const token = canvas.tokens.controlled[0];
+            if (token) {
+            game.pf2eRPGNumbers.critAnimation.generate(token)
+            } else {
+                ui.notifications.error("You must have a token selected")
+            }
+        },
+        onUp: () => { },
+        restricted: false,
+        precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
+    });
 });
 
 
