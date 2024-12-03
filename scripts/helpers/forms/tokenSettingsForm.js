@@ -26,7 +26,7 @@ export class TokenSettingsConfigForm extends FormApplication {
             popOut: true,
             template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
             id: 'pf2e-rpg-numbers-actor-settings-form',
-            title: 'Pf2e RPG #s Actor Config Men0u',
+            title: 'Pf2e RPG #s Actor Config Menu',
             width: 600,
             height: 600,
             tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
