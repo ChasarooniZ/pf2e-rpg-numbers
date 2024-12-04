@@ -10,8 +10,10 @@ import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 export async function preDeleteCombat(encounter, _changed, _userid) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
+    if (!getSetting('from-software.noun-verbed.enabled')) return;
 
-    const xpNeeded = getSetting('from-software.noun-verbed.text');
+    
+    const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
@@ -37,7 +39,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     const xp = game.pf2e.gm.calculateXP(partyCombatLevel, partyCombatMembers.length, enemyLevels, hazardLevels, {});
 
     // Trigger animation if conditions are met
-    if (getSetting('from-software.noun-verbed.enabled') && (xp?.xpPerPlayer ?? 0) >= xpNeeded) {
+    if ((xp?.xpPerPlayer ?? 0) >= xpNeeded) {
         await eldenRingNounVerbed();
     }
 }
