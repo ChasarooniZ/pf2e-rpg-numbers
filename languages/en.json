@@ -599,6 +599,67 @@
                     "success": "Pf2e RPG Settings Imported!",
                     "failure": "PF2e RPG Settings failed to import :("
                 }
+            },
+
+            "actor-settings": {
+                "label": "PF2e RPG #s",
+                "critical": {
+                    "headers": {
+                        "success": "Critical Success",
+                        "failure": "Critical Fail",
+                        "base": "Base",
+                        "strike": "Strikes",
+                        "check": "Checks",
+                        "save": "Save"
+                    },
+                    "buttons": {
+                        "cancel": "Cancel",
+                        "save": "Save",
+                        "submit": "Submit"
+                    },
+                    "art": {
+                        "name": "Art",
+                        "hint": "Image/Video to show for critical"
+                    },
+                    "offset-x": {
+                        "name": "Crit X Offset",
+                        "hint": "This is as a %, so 100, would move it to the right one full image length"
+                    },
+                    "offset-y": {
+                        "name": "Crit Y Offset",
+                        "hint": "This is as a %, so 100, would move it down one full image length"
+                    },
+                    "scale": {
+                        "name": "Crit Scale",
+                        "hint": "Size of critical hit image to scale in %"
+                    },
+                    "rotation": {
+                        "name": "Crit Rotation",
+                        "hint": "How much to rotate the critical hit effect"
+                    },
+                    "sfx": {
+                        "name": "Crit SFX",
+                        "hint": "Set this to override the default crit sound with custom one."
+                    },
+                    "volume": {
+                        "name": "",
+                        "hint": ""
+                    },
+                    "type": {
+                        "name": "Volume",
+                        "hint": "Set this to override the default crit sound volume"
+                    },
+                    "color": {
+                        "name": "Color",
+                        "hint": "Set this to override the default crit color"
+                    }
+                },
+                "token": {
+                    "rotation-offset": {
+                        "name": "Turn On Attack - Rotation Offset",
+                        "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+                    }
+                }
             }
         },
         "display-text": {
@@ -607,49 +668,6 @@
                 "failure": "Failure",
                 "success": "Success",
                 "criticalSuccess": "Critical Success"
-            }
-        },
-        "actor-settings": {
-            "label": "PF2e RPG #s",
-            "fire-emblem-img": {
-                "name": "Fire Emblem Critical Pic",
-                "hint": "Image to show for critical hits for token when 'Fire Emblem' is selected"
-            },
-            "persona-img": {
-                "name": "Persona Critical Pic",
-                "hint": "Image to show for critical hits for token when 'Persona' is selected"
-            },
-            "token": {
-                "rotation-offset": {
-                    "name": "Turn On Attack - Rotation Offset",
-                    "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
-                }
-            },
-            "crit": {
-                "art": {
-                    "name": "Critical",
-                    "hint":"Image to show for critical"
-                },
-                "offset-x": {
-                    "name": "Crit X Offset",
-                    "hint": "This is as a %, so 100, would move it to the right one full image length"
-                },
-                "offset-y": {
-                    "name": "Crit Y Offset",
-                    "hint": "This is as a %, so 100, would move it down one full image length"
-                },
-                "scale": {
-                    "name": "Crit Scale",
-                    "hint": "Size of critical hit image to scale in %"
-                },
-                "rotation": {
-                    "name": "Crit Rotation",
-                    "hint": "How much to rotate the critical hit effect"
-                },
-                "sfx": {
-                    "name": "Crit SFX",
-                    "hint": "Set this to override the default crit sound with custom one."
-                }
             }
         },
         "keybinds": {
