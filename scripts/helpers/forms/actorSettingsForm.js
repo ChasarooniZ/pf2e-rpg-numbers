@@ -1,6 +1,9 @@
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
+    home: {
+        icon: "fa-dragon"
+    },
     critical: {
         icon: "fa-explosion",
         critical: {
@@ -9,6 +12,12 @@ const settingsConfig = {
             }
         }
     },
+    token: {
+        icon: "fa-circle-user",
+        rotateOnAttack: {
+            rotation: 
+        }
+    }
 };
 
 
@@ -24,7 +33,7 @@ export class TokenSettingsConfigForm extends FormApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             classes: ['form'],
             popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
+            template: `modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs`,
             id: 'pf2e-rpg-numbers-actor-settings-form',
             title: 'Pf2e RPG #s Actor Config Menu',
             width: 600,
@@ -36,24 +45,24 @@ export class TokenSettingsConfigForm extends FormApplication {
     activateListeners(html) {
         super.activateListeners(html);
         // Add event listener for the Save button
-        html.find('#pf2e-rpg-save').on('click', (event) => {
+        html.find('#pf2e-rpg-save-actor').on('click', (event) => {
             event.preventDefault();
             this._processForm(html, false); // Pass 'false' Fto not submit the form, only save
         });
-        html.find('#pf2e-rpg-submit').on('click', (event) => {
+        html.find('#pf2e-rpg-submit-actor').on('click', (event) => {
             event.preventDefault();
             this._processForm(html, true); // Pass 'true' to indicate form submission
         });
-        html.find('#pf2e-rpg-cancel').on('click', (event) => {
+        html.find('#pf2e-rpg-cancel-actor').on('click', (event) => {
             event.preventDefault();
             ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
             this.close(); // Close the form without saving
         });
-        html.find('#pf2e-rpg-import').on('click', (event) => {
+        html.find('#pf2e-rpg-import-actor').on('click', (event) => {
             game.pf2eRPGNumbers.settings.import();
             this.close(); // Close the form without saving
         });
-        html.find('#pf2e-rpg-export').on('click', (event) => {
+        html.find('#pf2e-rpg-export-actor').on('click', (event) => {
             game.pf2eRPGNumbers.settings.export();
         });
     }

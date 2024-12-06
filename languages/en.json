@@ -335,8 +335,8 @@
                     "name": "Critical Animation Type",
                     "hint": "Choose type for critical animation",
                     "choices": {
-                        "persona": "Persona",
-                        "fire-emblem": "Fire Emblem"
+                        "persona": "Persona 5",
+                        "fire-emblem": "Fire Emblem: Awakening"
                     }
                 },
                 "show-on": {
@@ -600,7 +600,6 @@
                     "failure": "PF2e RPG Settings failed to import :("
                 }
             },
-
             "actor-settings": {
                 "label": "PF2e RPG #s",
                 "critical": {
@@ -611,11 +610,6 @@
                         "strike": "Strikes",
                         "check": "Checks",
                         "save": "Save"
-                    },
-                    "buttons": {
-                        "cancel": "Cancel",
-                        "save": "Save",
-                        "submit": "Submit"
                     },
                     "art": {
                         "name": "Art",
@@ -642,12 +636,17 @@
                         "hint": "Set this to override the default crit sound with custom one."
                     },
                     "volume": {
-                        "name": "",
-                        "hint": ""
-                    },
-                    "type": {
                         "name": "Volume",
                         "hint": "Set this to override the default crit sound volume"
+                    },
+                    "type": {
+                        "name": "Critical Animation Type",
+                        "hint": "Choose type for critical animation",
+                        "choices": {
+                            "default": "Default",
+                            "persona": "Persona 5",
+                            "fire-emblem": "Fire Emblem: Awakening"
+                        }
                     },
                     "color": {
                         "name": "Color",
