@@ -36,20 +36,6 @@ body:
     validations:
       required: false
 
-  - type: dropdown
-    id: os
-    attributes:
-      label: Operating System
-      options:
-        - Windows
-        - macOS
-        - Linux
-        - iOS
-        - Android
-        - Other
-    validations:
-      required: true
-
   - type: input
     attributes:
       label: Browser
