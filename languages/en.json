@@ -625,23 +625,23 @@
                         "hint": "Image/Video to show for critical"
                     },
                     "offset-x": {
-                        "name": "Crit X Offset",
+                        "name": "X Offset",
                         "hint": "This is as a %, so 100, would move it to the right one full image length"
                     },
                     "offset-y": {
-                        "name": "Crit Y Offset",
+                        "name": "Y Offset",
                         "hint": "This is as a %, so 100, would move it down one full image length"
                     },
                     "scale": {
-                        "name": "Crit Scale",
+                        "name": "Scale",
                         "hint": "Size of critical hit image to scale in %"
                     },
                     "rotation": {
-                        "name": "Crit Rotation",
+                        "name": "Rotation",
                         "hint": "How much to rotate the critical hit effect"
                     },
                     "sfx": {
-                        "name": "Crit SFX",
+                        "name": "SFX",
                         "hint": "Set this to override the default crit sound with custom one."
                     },
                     "volume": {
@@ -649,7 +649,7 @@
                         "hint": "Set this to override the default crit sound volume"
                     },
                     "type": {
-                        "name": "Critical Animation Type",
+                        "name": "Override Crit Type",
                         "hint": "Choose type for critical animation (if left on default, uses the world setting)",
                         "choices": {
                             "default": "—",

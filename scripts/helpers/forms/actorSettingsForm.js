@@ -161,7 +161,7 @@ export class ActorSettingsConfigForm extends FormApplication {
             template: `modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs`,
             id: 'pf2e-rpg-numbers-actor-settings-form',
             title: 'Pf2e RPG #s Actor Config Menu',
-            width: 600,
+            width: 800,
             height: 600,
             tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
         });

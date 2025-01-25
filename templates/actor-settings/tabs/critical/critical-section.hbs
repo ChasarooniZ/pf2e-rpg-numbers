@@ -20,12 +20,12 @@
 {{! Enabled }}
 <div class="form-group">
     <label
-        for="settings.critical.{{section}}.enabled"
+        for="settings.critical.{{type}}.{{section}}.enabled"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.hint"}}"
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
     </label>
-    <select name="settings.critical.{{section}}.enabled">
+    <select name="settings.critical.{{type}}.{{section}}.enabled">
         {{selectOptions settings.choices.enabled select="default"}}
     </select>
 </div>
@@ -33,12 +33,12 @@
 {{! Type }}
 <div class="form-group">
     <label
-        for="settings.critical.{{section}}.type"
+        for="settings.critical.{{type}}.{{section}}.type"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.hint"}}"
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
     </label>
-    <select name="settings.critical.{{section}}.type">
+    <select name="settings.critical.{{type}}.{{section}}.type">
         {{selectOptions settings.choices.type select="default"}}
     </select>
 </div>
@@ -46,35 +46,125 @@
 {{! Art }}
 <div class="form-group">
     <label
-        for="settings.critical.{{section}}.art"
+        for="settings.critical.{{type}}.{{section}}.art"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.hint"}}"
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.name"}}
     </label>
     <input
         type="text"
-        id="settings.critical.{{section}}.art"
-        name="settings.critical.{{section}}.art"
+        id="settings.critical.{{type}}.{{section}}.art"
+        name="settings.critical.{{type}}.{{section}}.art"
         value="{{settings.critical.sound}}"
     />
-    {{filePicker target="settings.critical.{{section}}.art" type="image"}}
+    {{filePicker target=(concat "settings.critical." type "." section ".art") type="image"}}
+</div>
+{{! Offset}}
+<div class="row">
+    <div class="column">
+        <div class="form-group">
+            <label
+                for="settings.critical.{{type}}.{{section}}.offset.x"
+                data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-x.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-x.name"}}
+            </label>
+            {{rangePicker
+                value=(lookup settings.critical (concat type "." section ".offset.x"))
+                name=(concat "settings.critical." type "." section ".offset.x")
+                step=1
+                min=-100
+                max=100
+            }}
+        </div>
+    </div>
+    <div class="column">
+        <div class="form-group">
+            <label
+                for="settings.critical.{{type}}.{{section}}.offset.y"
+                data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-y.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-y.name"}}
+            </label>
+            {{rangePicker
+                value=(lookup settings.critical (concat type "." section ".offset.y"))
+                name=(concat "settings.critical." type "." section ".offset.y")
+                step=1
+                min=-100
+                max=100
+            }}
+        </div>
+    </div>
 </div>
 
-{{! Enabled }}
+{{! Rotation }}
 <div class="form-group">
     <label
-        for="settings.critical.enabled"
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}"
+        for="settings.critical.{{type}}.{{section}}.rotation"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.name"}}
+    </label>
+    {{rangePicker
+        value=(lookup settings.critical (concat type "." section ".rotation"))
+        name=(concat "settings.critical." type "." section ".rotation")
+        step=1
+        min=0
+        max=360
+    }}
+</div>
+
+{{! Scale }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{type}}.{{section}}.scale"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
+    </label>
+    {{rangePicker
+        value=(lookup settings.critical (concat type "." section ".scale"))
+        name=(concat "settings.critical." type "." section ".scale")
+        step=1
+        min=0
+        max=200
+    }}
+</div>
+
+{{! SFX }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{type}}.{{section}}.sfx"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.name"}}
     </label>
     <input
-        type="checkbox"
-        id="settings.critical.enabled"
-        name="settings.critical.enabled"
-        {{checked settings.critical.enabled}}
+        type="text"
+        id="settings.critical.{{type}}.{{section}}.sfx"
+        name="settings.critical.{{type}}.{{section}}.sfx"
+        value="{{settings.critical.sound}}"
     />
+    {{filePicker target=(concat "settings.critical." type "." section ".sfx") type="audio"}}
 </div>
+
+{{! Volume }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{type}}.{{section}}.volume"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.name"}}
+    </label>
+    {{rangePicker
+        value=(lookup settings.tabs (concat type ".settings." section ".volume"))
+        name=(concat "settings.critical." type "." section ".volume")
+        step=1
+        min=0
+        max=200
+    }}
+</div>
+
 {{! Sound Effect }}
 <div class="form-group">
     <label

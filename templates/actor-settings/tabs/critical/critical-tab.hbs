@@ -5,14 +5,17 @@
     <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.failure"}}</h2>
 {{/if}}
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="base" base=true}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="base" base=true type=type}}
 </div>
+<hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="strike" strike=true}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="strike" strike=true type=type}}
 </div>
+<hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="check" check=true}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="check" check=true type=type}}
 </div>
+<hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="save" save=true}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="save" save=true type=type}}
 </div>
