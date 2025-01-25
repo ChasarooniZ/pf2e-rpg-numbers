@@ -9,14 +9,14 @@
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
             {{#if tab.home}}
-            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs' tab}}
             {{/if}}
             {{#if tab.critical}}
-            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs' tab}}
             {{/if}}
-            {{#if tab.token}}
-            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' this}}
-            {{/if}}
+            {{!-- {{#if tab.token}} --}}
+            {{!-- {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' this}} --}}
+            {{!-- {{/if}} --}}
         </div>
         {{/each}}
     </section>
@@ -66,6 +66,28 @@ footer.pf2e-rpg-actor-config-form button {
     margin: 0 5px;
     text-align: center;
     height: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+    flex: 0 0 48%; /* Adjust the percentage to control column width */
+}
+
+.column.success {
+    background-image: linear-gradient(to right, rgb(107, 255, 0 / 10%), rgb(107, 255, 0 / 10%), #ffff0000);
+}
+.column.failure {
+    linear-gradient(to left, rgb(255 0 0 / 10%), rgb(255 0 0 / 10%), #ffff0000)
+}
+
+.separator {
+  width: 1px;
+  background-color: var(--color-text-trait); /* Adjust color as needed */
+  margin: 0 10px; /* Adjust spacing as needed */
 }
 
 </style>

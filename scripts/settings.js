@@ -1,15 +1,23 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 import {SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
+import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 
 Hooks.on("init", () => {
     loadTemplates([
+        //Module
         `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
         'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs',
-        'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs'
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs',
+        //Actor
+        'modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs',
     ])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
     //TODO finalize this
@@ -20,6 +28,15 @@ Hooks.on("init", () => {
     //     type: SettingsForm,
     //     restricted: false
     // });
+    game.settings.registerMenu(MODULE_ID, "pf2eRPGActorSettingsMenu", {
+        name: "PF2e RPG Actor Settings",
+        label: "PF2e RPG Actor Settings",      // The text label used in the button
+        hint: "Settings for the PF2e RPG Actor settings",
+        icon: "fas fa-dragon",               // A Font Awesome icon used in the submenu button
+        type: ActorSettingsConfigForm,   // A FormApplication subclass
+        restricted: true                   // Restrict this submenu to gamemaster only?
+    });
+
     game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
         name: "PF2e RPG Settings",
         label: "PF2e RPG Settings",      // The text label used in the button
@@ -813,7 +830,8 @@ Hooks.on("init", () => {
         hint: localize("keybinds.activate-critical.success.hint"),
         editable: [
             {
-                key: "",
+                key: "Z",
+                modifiers: ["Shift", "Alt"],
             },
         ],
         onDown: () => {

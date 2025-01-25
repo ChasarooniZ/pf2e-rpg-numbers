@@ -1,6 +1,65 @@
-<h2 data-tooltip="">
-    {{localize {{header}}}}}}
-</h2>
+<h3 data-tooltip="">
+    {{#if base}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.base"}}
+        <i class="fa-solid fa-explosion"></i>
+    {{/if}}
+    {{#if strike}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.strike"}}
+        <i class="fa-solid fa-sword"></i>
+    {{/if}}
+    {{#if check}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.check"}}
+        <i class="fa-solid fa-hand"></i>
+    {{/if}}
+    {{#if save}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.save"}}
+        <i class="fa-solid fa-heart-pulse"></i>
+    {{/if}}
+</h3>
+
+{{! Enabled }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{section}}.enabled"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
+    </label>
+    <select name="settings.critical.{{section}}.enabled">
+        {{selectOptions settings.choices.enabled select="default"}}
+    </select>
+</div>
+
+{{! Type }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{section}}.type"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
+    </label>
+    <select name="settings.critical.{{section}}.type">
+        {{selectOptions settings.choices.type select="default"}}
+    </select>
+</div>
+
+{{! Art }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{section}}.art"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.name"}}
+    </label>
+    <input
+        type="text"
+        id="settings.critical.{{section}}.art"
+        name="settings.critical.{{section}}.art"
+        value="{{settings.critical.sound}}"
+    />
+    {{filePicker target="settings.critical.{{section}}.art" type="image"}}
+</div>
+
 {{! Enabled }}
 <div class="form-group">
     <label
@@ -16,18 +75,6 @@
         {{checked settings.critical.enabled}}
     />
 </div>
-{{! Style }}
-<div class="form-group">
-    <label
-        for="settings.critical.style"
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.type.hint"}}"
-    >
-        {{localize "pf2e-rpg-numbers.module-settings.critical.type.name"}}
-    </label>
-    <select id="settings.critical.style" name="settings.critical.style">
-        {{selectOptions settings.critical.style.choices selected=settings.critical.style.value localize=true}}
-    </select>
-</div>
 {{! Sound Effect }}
 <div class="form-group">
     <label
@@ -36,13 +83,13 @@
     >
         {{localize "pf2e-rpg-numbers.module-settings.critical.sound.name"}}
     </label>
-    <input
+    {{!-- <input
         type="text"
         id="settings.critical.sound"
         name="settings.critical.sound"
         value="{{settings.critical.sound}}"
-    />
-    {{filePicker target="settings.critical.sound" type="audio"}}
+    {{!-- /> --}}
+    {{!-- {{filePicker target="settings.critical.sound" type="audio"}}
 </div>
 {{! Volume }}
 <div class="form-group">
@@ -52,7 +99,7 @@
     >
         {{localize "pf2e-rpg-numbers.module-settings.critical.volume.name"}}
     </label>
-    {{numberInput settings.critical.volume.value name="settings.critical.volume" step=1 min=0 max=100}}
+    {{!-- {{numberInput settings.critical.volume.value name="settings.critical.volume" step=1 min=0 max=100}} --}}
 </div>
 {{! Delay }}
 <div class="form-group">
@@ -62,6 +109,6 @@
     >
         {{localize "pf2e-rpg-numbers.module-settings.critical.delay.name"}}
     </label>
-    {{numberInput settings.critical.delay name="settings.critical.delay"}}
+    {{!-- {{numberInput settings.critical.delay name="settings.critical.delay"}} --}}
 </div>
 {{!-- {{filePicker type="image" target="flags.moduleid.flagname"}} --}}

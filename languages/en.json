@@ -604,12 +604,21 @@
                 "label": "PF2e RPG #s",
                 "critical": {
                     "headers": {
-                        "success": "Critical Success",
-                        "failure": "Critical Fail",
                         "base": "Base",
                         "strike": "Strikes",
                         "check": "Checks",
-                        "save": "Save"
+                        "save": "Saves",
+                        "failure": "Critical Failure",
+                        "success": "Critical Success"
+                    },
+                    "enabled": {
+                        "name": "Override Enabled?",
+                        "hint": "Overrides whether not this crit animation is enabled",
+                        "choices": {
+                            "default": "—",
+                            "on": "On",
+                            "off": "Off"
+                        }
                     },
                     "art": {
                         "name": "Art",
@@ -641,9 +650,9 @@
                     },
                     "type": {
                         "name": "Critical Animation Type",
-                        "hint": "Choose type for critical animation",
+                        "hint": "Choose type for critical animation (if left on default, uses the world setting)",
                         "choices": {
-                            "default": "Default",
+                            "default": "—",
                             "persona": "Persona 5",
                             "fire-emblem": "Fire Emblem: Awakening"
                         }

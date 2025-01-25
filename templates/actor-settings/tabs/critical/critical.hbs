@@ -1,13 +1,11 @@
 <span>
-    <section class="content pf2e-rpg-config-form form">
-        {{#each tabs as |tab|}}
-        <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
-            {{#if tab.success}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
-            {{/if}}
-            {{#if tab.failure}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
-            {{/if}}
+    <div class="row">
+        <div class="column success" data-type="success">
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs' this success=true}}
         </div>
-        {{/each}}
+        <div class="separator"></div>
+        <div class="column failure" data-type="failure">
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs' this failure=true}}
+        </div>
+    </div>
 </span>
