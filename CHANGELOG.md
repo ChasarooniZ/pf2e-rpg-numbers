@@ -798,6 +798,10 @@
 
 # <<<<<<< HEAD
 
+## 12.6.11 - 2025-01-25
+
+Fixed bug with dynamic tokens not shaking properly on token damage shake (@nythz)
+
 ## 12.6.10 - 2024-11-24
 
 - Fixed issue where From Software Noun-Verbed Enabled setting was flipped 🐬
