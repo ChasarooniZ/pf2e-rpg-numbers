@@ -1,3 +1,7 @@
+# [12.6.11](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.10...12.6.11) - Fixed Shaking
+
+- Fixed bug with dynamic tokens not shaking properly on `token damage shake` (@nythz)
+
 # [12.6.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.9...12.6.10) - Flip Flop
 
 - Fixed issue where From Software Noun-Verbed Enabled setting was flipped 🐬
