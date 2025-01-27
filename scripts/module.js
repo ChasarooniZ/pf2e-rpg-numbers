@@ -17,7 +17,7 @@ import {
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
-import { applyTokenStatusEffect, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { applyTokenStatusEffect, getActorSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -60,6 +60,8 @@ Hooks.on("ready", () => {
 
         }
     });
+
+    Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
 
     /**
      * TODO Add visual pop ups over characters who's modifiers to rolls mattered (IDK how feasible this is)

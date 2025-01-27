@@ -1,19 +1,56 @@
 <h3 data-tooltip="">
-    {{#if base}}
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.base"}}
-        <i class="fa-solid fa-explosion"></i>
+    {{#if default}}
+        <div class="row">
+            <div class="column">
+                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.default"}}
+                <i class="fa-solid fa-explosion"></i>
+            </div>
+            <div class="column">
+                <button id="critical.test" data-type="{{type}}" data-section="{{section}}">
+                    <i class="fa-solid fa-vial"></i>
+                    {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.buttons.test"}}
+                </button>
+            </div>
+        </div>
     {{/if}}
     {{#if strike}}
+        <div class="row">
+            <div class="column">
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.strike"}}
         <i class="fa-solid fa-sword"></i>
+            </div>
+            <div class="column">
+                <button id="critical.test" data-type="{{type}}" data-section="{{section}}">
+                    <i class="fa-solid fa-vial"></i>
+                    {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.buttons.test"}}
+                </button>
+            </div>
     {{/if}}
     {{#if check}}
+        <div class="row">
+            <div class="column">
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.check"}}
         <i class="fa-solid fa-hand"></i>
+            </div>
+            <div class="column">
+                <button id="critical.test" data-type="{{type}}" data-section="{{section}}">
+                    <i class="fa-solid fa-vial"></i>
+                    {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.buttons.test"}}
+                </button>
+            </div>
     {{/if}}
     {{#if save}}
+        <div class="row">
+            <div class="column">
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.save"}}
         <i class="fa-solid fa-heart-pulse"></i>
+            </div>
+            <div class="column">
+                <button id="critical.test" data-type="{{type}}" data-section="{{section}}">
+                    <i class="fa-solid fa-vial"></i>
+                    {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.buttons.test"}}
+                </button>
+            </div>
     {{/if}}
 </h3>
 
@@ -26,7 +63,7 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.enabled">
-        {{selectOptions settings.choices.enabled select="default"}}
+        {{selectOptions settings.choices.enabled select=data.enabled}}
     </select>
 </div>
 
@@ -39,7 +76,7 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.type">
-        {{selectOptions settings.choices.type select="default"}}
+        {{selectOptions settings.choices.type select=data.type}}
     </select>
 </div>
 
@@ -55,10 +92,30 @@
         type="text"
         id="settings.critical.{{type}}.{{section}}.art"
         name="settings.critical.{{type}}.{{section}}.art"
-        value="{{settings.critical.sound}}"
+        value="{{data.art}}"
     />
-    {{filePicker target=(concat "settings.critical." type "." section ".art") type="image"}}
+    <button type="button" class="file-picker" data-type="imagevideo" data-target="settings.critical.{{type}}.{{section}}.art" title="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.name"}}" tabindex="-1">
+        <i class="fas fa-file-import fa-fw"></i>
+    </button>`
 </div>
+
+{{! Color }}
+<div class="form-group">
+    <label
+        for="settings.critical.{{type}}.{{section}}.color"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.color.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.color.name"}}
+    </label>
+    <input
+        type="text"
+        id="settings.critical.{{type}}.{{section}}.color"
+        name="settings.critical.{{type}}.{{section}}.color"
+        value="{{data.color}}"
+    />
+    <color-picker name="settings.critical.{{type}}.{{section}}.color" value="{{data.color}}"></color-picker>`
+</div>
+
 {{! Offset}}
 <div class="row">
     <div class="column">
@@ -70,7 +127,7 @@
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-x.name"}}
             </label>
             {{rangePicker
-                value=(lookup settings.critical (concat type "." section ".offset.x"))
+                value=data.offset.x
                 name=(concat "settings.critical." type "." section ".offset.x")
                 step=1
                 min=-100
@@ -87,7 +144,7 @@
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-y.name"}}
             </label>
             {{rangePicker
-                value=(lookup settings.critical (concat type "." section ".offset.y"))
+                value=data.offset.y
                 name=(concat "settings.critical." type "." section ".offset.y")
                 step=1
                 min=-100
@@ -106,7 +163,7 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.name"}}
     </label>
     {{rangePicker
-        value=(lookup settings.critical (concat type "." section ".rotation"))
+        value=data.rotation
         name=(concat "settings.critical." type "." section ".rotation")
         step=1
         min=0
@@ -123,11 +180,11 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
     </label>
     {{rangePicker
-        value=(lookup settings.critical (concat type "." section ".scale"))
+        value=data.scale
         name=(concat "settings.critical." type "." section ".scale")
-        step=1
+        step=0.05
         min=0
-        max=200
+        max=2
     }}
 </div>
 
@@ -143,9 +200,11 @@
         type="text"
         id="settings.critical.{{type}}.{{section}}.sfx"
         name="settings.critical.{{type}}.{{section}}.sfx"
-        value="{{settings.critical.sound}}"
+        value="{{data.sfx}}"
     />
-    {{filePicker target=(concat "settings.critical." type "." section ".sfx") type="audio"}}
+    <button type="button" class="file-picker" data-type="audio" data-target="settings.critical.{{type}}.{{section}}.sfx" title="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.name"}}" tabindex="-1">
+        <i class="fas fa-file-import fa-fw"></i>
+    </button>`
 </div>
 
 {{! Volume }}
@@ -157,48 +216,10 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.name"}}
     </label>
     {{rangePicker
-        value=(lookup settings.tabs (concat type ".settings." section ".volume"))
+        value=data.volume
         name=(concat "settings.critical." type "." section ".volume")
         step=1
         min=0
         max=200
     }}
 </div>
-
-{{! Sound Effect }}
-<div class="form-group">
-    <label
-        for="settings.critical.sound"
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.sound.hint"}}"
-    >
-        {{localize "pf2e-rpg-numbers.module-settings.critical.sound.name"}}
-    </label>
-    {{!-- <input
-        type="text"
-        id="settings.critical.sound"
-        name="settings.critical.sound"
-        value="{{settings.critical.sound}}"
-    {{!-- /> --}}
-    {{!-- {{filePicker target="settings.critical.sound" type="audio"}}
-</div>
-{{! Volume }}
-<div class="form-group">
-    <label
-        for="settings.critical.volume"
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.volume.hint"}}"
-    >
-        {{localize "pf2e-rpg-numbers.module-settings.critical.volume.name"}}
-    </label>
-    {{!-- {{numberInput settings.critical.volume.value name="settings.critical.volume" step=1 min=0 max=100}} --}}
-</div>
-{{! Delay }}
-<div class="form-group">
-    <label
-        for="settings.critical.delay"
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.delay.hint"}}"
-    >
-        {{localize "pf2e-rpg-numbers.module-settings.critical.delay.name"}}
-    </label>
-    {{!-- {{numberInput settings.critical.delay name="settings.critical.delay"}} --}}
-</div>
-{{!-- {{filePicker type="image" target="flags.moduleid.flagname"}} --}}

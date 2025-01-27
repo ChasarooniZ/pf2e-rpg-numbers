@@ -1,21 +1,24 @@
 {{#if success}}
-    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.success"}}</h2>
+    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.success"}}
+        <i class="fa-solid fa-check"></i></h2>
 {{/if}}
 {{#if failure}}
-    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.failure"}}</h2>
+    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.failure"}}
+    <i class="fa-solid fa-xmark"></i>
+    </h2>
 {{/if}}
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="base" base=true type=type}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="default" default=true type=type data=data.default}}
 </div>
 <hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="strike" strike=true type=type}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="strike" strike=true type=type data=data.strike}}
 </div>
 <hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="check" check=true type=type}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="check" check=true type=type data=data.check}}
 </div>
 <hr />
 <div>
-    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="save" save=true type=type}}
+    {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="save" save=true type=type data=data.save}}
 </div>

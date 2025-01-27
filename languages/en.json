@@ -604,12 +604,15 @@
                 "label": "PF2e RPG #s",
                 "critical": {
                     "headers": {
-                        "base": "Base",
+                        "default": "Default",
                         "strike": "Strikes",
                         "check": "Checks",
                         "save": "Saves",
                         "failure": "Critical Failure",
                         "success": "Critical Success"
+                    },
+                    "buttons": {
+                        "test": "Test"
                     },
                     "enabled": {
                         "name": "Override Enabled?",

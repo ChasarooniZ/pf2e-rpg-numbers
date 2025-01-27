@@ -1,4 +1,5 @@
 import { eldenRingNounVerbed, fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
+import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
 /**
@@ -12,7 +13,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     if (!game.user.isGM) return;
     if (!getSetting('from-software.noun-verbed.enabled')) return;
 
-    
+
     const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');
 
     // If xpNeeded is 0, trigger the animation and exit
@@ -100,4 +101,15 @@ function getActorLevels(combatants, filterCondition) {
 function calculateAverageLevel(partyMembers) {
     const totalLevel = partyMembers.reduce((sum, p) => sum + (p?.actor?.level ?? 0), 0);
     return Math.round(totalLevel / partyMembers.length);
+}
+
+export async function getActorSheetHeaderButtons(sheet, buttons) {
+    buttons.unshift({
+        class: "rpg-numbers-actor-menu",
+        icon: "fa-solid fa-dragon",
+        label: "RPG #s",
+        onclick: () => {
+            new ActorSettingsConfigForm({ actor: sheet.actor }).render(true)
+        }
+    })
 }

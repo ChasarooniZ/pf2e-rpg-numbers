@@ -1,3 +1,4 @@
+import { DEFAULT_CRIT } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -8,119 +9,119 @@ const settingsConfig = {
         icon: "fa-explosion",
         tabs: {
             success: {
-                base: {
-                    enabled: "critical.success.base.enabled",
-                    type: "critical.success.base.type",
-                    art: "critical.success.base.art",
+                default: {
+                    enabled: "critical.default.success.enabled",
+                    type: "critical.default.success.type",
+                    art: "critical.default.success.art",
                     offset: {
-                        x: "critical.success.base.offset.x",
-                        y: "critical.success.base.offset.y",
+                        x: "critical.default.success.offset.x",
+                        y: "critical.default.success.offset.y",
                     },
-                    color: "critical.success.base.color",
-                    scale: "critical.success.base.scale",
-                    rotation: "critical.success.base.rotation",
-                    sfx: "critical.success.base.sfx",
-                    volume: "critical.success.base.volume",
+                    color: "critical.default.success.color",
+                    scale: "critical.default.success.scale",
+                    rotation: "critical.default.success.rotation",
+                    sfx: "critical.default.success.sfx",
+                    volume: "critical.default.success.volume",
                 },
                 strike: {
-                    enabled: "critical.success.strike.enabled",
-                    type: "critical.success.strike.type",
-                    art: "critical.success.strike.art",
+                    enabled: "critical.strikes.success.enabled",
+                    type: "critical.strikes.success.type",
+                    art: "critical.strikes.success.art",
                     offset: {
-                        x: "critical.success.strike.offset.x",
-                        y: "critical.success.strike.offset.y",
+                        x: "critical.strikes.success.offset.x",
+                        y: "critical.strikes.success.offset.y",
                     },
-                    color: "critical.success.strike.color",
-                    scale: "critical.success.strike.scale",
-                    rotation: "critical.success.strike.rotation",
-                    sfx: "critical.success.strike.sfx",
-                    volume: "critical.success.strike.volume",
+                    color: "critical.strikes.success.color",
+                    scale: "critical.strikes.success.scale",
+                    rotation: "critical.strikes.success.rotation",
+                    sfx: "critical.strikes.success.sfx",
+                    volume: "critical.strikes.success.volume",
                 },
                 check: {
-                    enabled: "critical.success.check.enabled",
-                    type: "critical.success.check.type",
-                    art: "critical.success.check.art",
+                    enabled: "critical.checks.success.enabled",
+                    type: "critical.checks.success.type",
+                    art: "critical.checks.success.art",
                     offset: {
-                        x: "critical.success.check.offset.x",
-                        y: "critical.success.check.offset.y",
+                        x: "critical.checks.success.offset.x",
+                        y: "critical.checks.success.offset.y",
                     },
-                    color: "critical.success.check.color",
-                    scale: "critical.success.check.scale",
-                    rotation: "critical.success.check.rotation",
-                    sfx: "critical.success.check.sfx",
-                    volume: "critical.success.check.volume",
+                    color: "critical.checks.success.color",
+                    scale: "critical.checks.success.scale",
+                    rotation: "critical.checks.success.rotation",
+                    sfx: "critical.checks.success.sfx",
+                    volume: "critical.checks.success.volume",
                 },
                 save: {
-                    enabled: "critical.success.save.enabled",
-                    type: "critical.success.save.type",
-                    art: "critical.success.save.art",
+                    enabled: "critical.saves.success.enabled",
+                    type: "critical.saves.success.type",
+                    art: "critical.saves.success.art",
                     offset: {
-                        x: "critical.success.save.offset.x",
-                        y: "critical.success.save.offset.y",
+                        x: "critical.saves.success.offset.x",
+                        y: "critical.saves.success.offset.y",
                     },
-                    color: "critical.success.save.color",
-                    scale: "critical.success.save.scale",
-                    rotation: "critical.success.save.rotation",
-                    sfx: "critical.success.save.sfx",
-                    volume: "critical.success.save.volume",
+                    color: "critical.saves.success.color",
+                    scale: "critical.saves.success.scale",
+                    rotation: "critical.saves.success.rotation",
+                    sfx: "critical.saves.success.sfx",
+                    volume: "critical.saves.success.volume",
                 }
             },
             failure: {
-                base: {
-                    enabled: "critical.failure.base.enabled",
-                    type: "critical.failure.base.type",
-                    art: "critical.failure.base.art",
+                default: {
+                    enabled: "critical.default.failure.enabled",
+                    type: "critical.default.failure.type",
+                    art: "critical.default.failure.art",
                     offset: {
-                        x: "critical.failure.base.offset.x",
-                        y: "critical.failure.base.offset.y",
+                        x: "critical.default.failure.offset.x",
+                        y: "critical.default.failure.offset.y",
                     },
-                    color: "critical.failure.base.color",
-                    scale: "critical.failure.base.scale",
-                    rotation: "critical.failure.base.rotation",
-                    sfx: "critical.failure.base.sfx",
-                    volume: "critical.failure.base.volume",
+                    color: "critical.default.failure.color",
+                    scale: "critical.default.failure.scale",
+                    rotation: "critical.default.failure.rotation",
+                    sfx: "critical.default.failure.sfx",
+                    volume: "critical.default.failure.volume",
                 },
                 strike: {
-                    enabled: "critical.failure.strike.enabled",
-                    type: "critical.failure.strike.type",
-                    art: "critical.failure.strike.art",
+                    enabled: "critical.strikes.failure.enabled",
+                    type: "critical.strikes.failure.type",
+                    art: "critical.strikes.failure.art",
                     offset: {
-                        x: "critical.failure.strike.offset.x",
-                        y: "critical.failure.strike.offset.y",
+                        x: "critical.strikes.failure.offset.x",
+                        y: "critical.strikes.failure.offset.y",
                     },
-                    color: "critical.failure.strike.color",
-                    scale: "critical.failure.strike.scale",
-                    rotation: "critical.failure.strike.rotation",
-                    sfx: "critical.failure.strike.sfx",
-                    volume: "critical.failure.strike.volume",
+                    color: "critical.strikes.failure.color",
+                    scale: "critical.strikes.failure.scale",
+                    rotation: "critical.strikes.failure.rotation",
+                    sfx: "critical.strikes.failure.sfx",
+                    volume: "critical.strikes.failure.volume",
                 },
                 check: {
-                    enabled: "critical.failure.check.enabled",
-                    type: "critical.failure.check.type",
-                    art: "critical.failure.check.art",
+                    enabled: "critical.checks.failure.enabled",
+                    type: "critical.checks.failure.type",
+                    art: "critical.checks.failure.art",
                     offset: {
-                        x: "critical.failure.check.offset.x",
-                        y: "critical.failure.check.offset.y",
+                        x: "critical.checks.failure.offset.x",
+                        y: "critical.checks.failure.offset.y",
                     },
-                    color: "critical.failure.check.color",
-                    scale: "critical.failure.check.scale",
-                    rotation: "critical.failure.check.rotation",
-                    sfx: "critical.failure.check.sfx",
-                    volume: "critical.failure.check.volume",
+                    color: "critical.checks.failure.color",
+                    scale: "critical.checks.failure.scale",
+                    rotation: "critical.checks.failure.rotation",
+                    sfx: "critical.checks.failure.sfx",
+                    volume: "critical.checks.failure.volume",
                 },
                 save: {
-                    enabled: "critical.failure.save.enabled",
-                    type: "critical.failure.save.type",
-                    art: "critical.failure.save.art",
+                    enabled: "critical.saves.failure.enabled",
+                    type: "critical.saves.failure.type",
+                    art: "critical.saves.failure.art",
                     offset: {
-                        x: "critical.failure.save.offset.x",
-                        y: "critical.failure.save.offset.y",
+                        x: "critical.saves.failure.offset.x",
+                        y: "critical.saves.failure.offset.y",
                     },
-                    color: "critical.failure.save.color",
-                    scale: "critical.failure.save.scale",
-                    rotation: "critical.failure.save.rotation",
-                    sfx: "critical.failure.save.sfx",
-                    volume: "critical.failure.save.volume",
+                    color: "critical.saves.failure.color",
+                    scale: "critical.saves.failure.scale",
+                    rotation: "critical.saves.failure.rotation",
+                    sfx: "critical.saves.failure.sfx",
+                    volume: "critical.saves.failure.volume",
                 }
             }
         },
@@ -140,16 +141,18 @@ const settingsConfig = {
     token: {
         icon: "fa-circle-user",
         rotateOnAttack: {
-            rotation: true
+            rotation: 'token.rotate-on-attack'
         }
     }
 };
+const tabList = Object.keys(settingsConfig);
 
 
 export class ActorSettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
         super(options);
+        checkAndSetDefaultActorFlagIfNotExist(options.actor)
         this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
 
@@ -198,9 +201,7 @@ export class ActorSettingsConfigForm extends FormApplication {
             const tabSettings = {};
             for (const [key, value] of Object.entries(settings)) {
                 if (key !== 'icon') {
-                    if (key === 'tabs') {
-                        tabSettings[key] = this._getTabData(value)
-                    } else if (typeof value === "object") {
+                    if (typeof value === "object") {
                         tabSettings[key] = this._retrieveNestedSettings(value);
                     } else {
                         tabSettings[key] = value;
@@ -216,9 +217,9 @@ export class ActorSettingsConfigForm extends FormApplication {
                 settings: tabSettings
             };
         });
-        console.log({ tabs })
+        console.log({ tabs, actor: this?.options?.actor })
 
-        return foundry.utils.mergeObject(super.getData(), { tabs });
+        return foundry.utils.mergeObject(super.getData(), { tabs, actor: this.options?.actor });
     }
 
     _retrieveNestedSettings(settingGroup) {
@@ -229,10 +230,10 @@ export class ActorSettingsConfigForm extends FormApplication {
             // } else if (value.type === "number") {
             //     result[key] = getNumberSetting(value.path, value.range);
             // } else 
-            if (key === 'tabs') {
-                result[key] = this._getTabData(value)
-            } else if (typeof value === "string" && value?.startsWith('pf2e-rpg-numbers.')) {
+            if (typeof value === "string" && value?.startsWith('pf2e-rpg-numbers.')) {
                 result[key] = game.i18n.localize(value)
+            } else if (typeof value === "string" && tabList.includes(value.match(/^([^.]*)/)?.[0] ?? '')) {
+                result[key] = this.getVariable(value)
             } else if (typeof value === "object") {
                 result[key] = this._retrieveNestedSettings(value);
             } else {
@@ -241,22 +242,6 @@ export class ActorSettingsConfigForm extends FormApplication {
         }
         return result;
     }
-
-    _getTabData(tabsData) {
-        const tabs = {};
-        for (const [key, value] of Object.entries(tabsData)) {
-            tabs[key] = {
-                id: key,
-                label: game.i18n.localize(`${MODULE_ID}.menu.actor-settings.headers.${key}`),
-                title: game.i18n.localize(`${MODULE_ID}.menu.actor-settings.headers.${key}`),
-                icon: value.icon,
-                [key]: true,
-                settings: this._retrieveNestedSettings(value)
-            };
-        }
-        return tabs
-    }
-
 
     async _updateObject(event, formData) {
         // Expand the flat form data into a nested object structure
@@ -268,21 +253,21 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async _processForm(html, submit = false) {
         // Collect the form data from all inputs in the form
-        // const formData = new FormData(html[0].closest("form"));
-        // const dataObject = {};
+        const formData = new FormData(html[0].closest("form"));
+        const dataObject = {};
 
         // // Iterate over the form data and convert it to an object
-        // formData.forEach((value, key) => {
-        //     // Handle checkboxes separately to store booleans
-        //     if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-        //         dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
-        //     } else {
-        //         dataObject[key] = value;
-        //     }
-        // });
+        formData.forEach((value, key) => {
+            // Handle checkboxes separately to store booleans
+            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
+                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
+            } else {
+                dataObject[key] = value;
+            }
+        });
 
         // // Log the gathered form data for debugging purposes
-        // console.log("Form Data:", dataObject);
+        console.log("Form Data:", dataObject);
 
         // // Handle saving or submitting
         // if (submit) {
@@ -328,9 +313,20 @@ export class ActorSettingsConfigForm extends FormApplication {
         //         processSettings(tabSettings, settings);
         //     }
     }
+    getVariable(path) {
+        const [flag, ...remaining] = path.split(".");
+        const remain = remaining.join(".")
+        const obj = this.options.actor.getFlag(MODULE_ID, flag); // TODO make actor defined here
+        return getNestedProperty(obj, remain)
+    }
 
 
 }
+
+function getNestedProperty(obj, path) {
+    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+}
+
 
 function handleChoicesSetting(settingPath) {
     const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
@@ -355,5 +351,18 @@ function updateIfChanged(settingID, newValue) {
     }
     if (currentValue !== newValue) {
         setSetting(settingID, newValue);
+    }
+}
+
+async function checkAndSetDefaultActorFlagIfNotExist(actor) {
+    const flags = actor?.flags?.[MODULE_ID];
+    const flagIDs = flags ? Object?.keys(flags) : [];
+    if (!flagIDs.includes('critical')) {
+        actor.setFlag(MODULE_ID, 'critical', {
+            default: DEFAULT_CRIT,
+            checks: DEFAULT_CRIT,
+            saves: DEFAULT_CRIT,
+            strikes: DEFAULT_CRIT
+        })
     }
 }
