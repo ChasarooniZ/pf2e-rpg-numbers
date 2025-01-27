@@ -12,6 +12,6 @@ export async function shakeOnAttack(token, outcome) {
                 .filter((perm) => perm[1] === 3 && perm[0] !== gmID)
                 .map((p) => p[0]);
         }
-        await new Sequence().canvasPan().shake({ duration: 250, strength }).forUsers(userToShake).play();
+        new Sequence().canvasPan().shake({ duration: 250, strength }).forUsers(userToShake).play();
     }
 }

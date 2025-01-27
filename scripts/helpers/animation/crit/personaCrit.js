@@ -120,8 +120,8 @@ export function personaCrit(token, users, imgData, config) {
             const offsetX = critOffsetX * videoPercent * scale;
             const offsetY = (personaImg ? 0 : videoPercent * 20) + critOffsetY * videoPercent * scale;
 
-            await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
-            await new Sequence()
+            //await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+            new Sequence()
                 // BG Color
                 .effect()
                 .syncGroup(`p5-crit-${token.uuid}`)
@@ -184,8 +184,8 @@ export function personaCrit(token, users, imgData, config) {
             const offsetX = critOffsetX * imagePercent * scale;
             const offsetY = (personaImg ? 0 : imagePercent * 20) + critOffsetY * imagePercent * scale;
 
-            await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
-            await new Sequence()
+            //await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+            new Sequence()
                 // BG Color
                 .effect()
                 .syncGroup(`p5-crit-${token.uuid}`)

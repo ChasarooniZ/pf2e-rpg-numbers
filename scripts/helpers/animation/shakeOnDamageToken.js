@@ -15,9 +15,9 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
     const usersToPlayFor = getVisibleUsers(token);
 
     if (game.modules.get("tokenmagic")?.active) {
-        await shakeWithTokenMagic(token, shakeDistancePercent, shakes, duration);
+        shakeWithTokenMagic(token, shakeDistancePercent, shakes, duration);
     } else {
-        await shakeWithSequencer(token, shakeDistancePercent, shakes, duration, usersToPlayFor);
+        shakeWithSequencer(token, shakeDistancePercent, shakes, duration, usersToPlayFor);
     }
 }
 
@@ -60,7 +60,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
     const iterationDuration = duration / values.length;
     const tokenImage = getTokenImage(token);
 
-    await new Sequence()
+    new Sequence()
         .animation()
         .on(token)
         .delay(duration / 10)

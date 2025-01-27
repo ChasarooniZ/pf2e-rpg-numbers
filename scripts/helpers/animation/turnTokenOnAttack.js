@@ -15,7 +15,7 @@ export async function turnTokenOnAttack(token, target) {
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
     const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((tokWxH - 1) / 2)) : baseTurnTime;
 
-    await new Sequence()
+    new Sequence()
         .animation()
         .on(token)
         .rotateTowards(target, { duration: turnTime, ease: "easeOutCubic", rotationOffset })

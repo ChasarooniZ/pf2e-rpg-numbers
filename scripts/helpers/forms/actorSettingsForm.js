@@ -267,7 +267,8 @@ export class ActorSettingsConfigForm extends FormApplication {
         });
 
         // // Log the gathered form data for debugging purposes
-        console.log("Form Data:", dataObject);
+        const formattedObject = foundry.utils.expandObject(dataObject);
+        console.log("Form Data:", formattedObject);
 
         // // Handle saving or submitting
         // if (submit) {

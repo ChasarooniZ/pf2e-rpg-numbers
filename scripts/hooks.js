@@ -18,7 +18,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
-        await eldenRingNounVerbed();
+        eldenRingNounVerbed();
         return;
     }
 
@@ -41,7 +41,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 
     // Trigger animation if conditions are met
     if ((xp?.xpPerPlayer ?? 0) >= xpNeeded) {
-        await eldenRingNounVerbed();
+        eldenRingNounVerbed();
     }
 }
 export async function applyTokenStatusEffect(token, status, isAdded) {
@@ -50,7 +50,7 @@ export async function applyTokenStatusEffect(token, status, isAdded) {
     if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
         const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
         if (userId) {
-            await fromSoftwareDeath({ users: [userId] })
+            fromSoftwareDeath({ users: [userId] })
         }
     }
 }

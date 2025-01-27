@@ -28,7 +28,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         imgData.xScale = 1;
         imgData.yScale = 1;
     }
-    await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+    //Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
     new Sequence()
         //background
         .effect()
