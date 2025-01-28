@@ -671,6 +671,11 @@
                         "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
                     }
                 }
+            },
+            "item": {
+                "finishing-move": {
+                    "name":"Finishing Move Name"
+                }
             }
         },
         "display-text": {
@@ -679,6 +684,16 @@
                 "failure": "Failure",
                 "success": "Success",
                 "criticalSuccess": "Critical Success"
+            },
+            "notifications": {
+                "migrate-token-settings-12-7": "Migrating {actorName}'s PF2e RPG # Flags",
+                "finishing-move": {
+                    "settings": {
+                        "item": {
+                            "update": "Finishing Move Name updated to: {newValue}"
+                        }
+                    }
+                }
             }
         },
         "keybinds": {

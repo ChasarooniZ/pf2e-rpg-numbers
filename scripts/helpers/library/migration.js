@@ -1,4 +1,4 @@
-import { getSetting, MODULE_ID } from "../misc.js";
+import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 const DEFAULT_VALUE = 'default';
 
 const DEFAULT_CRIT_DATA = {
@@ -20,19 +20,34 @@ export const DEFAULT_CRIT = {
     failure: DEFAULT_CRIT_DATA
 };
 
-function migrateTokenSettingsToActorSettings() {
+export async function handleUpdate(curVersion, prevVersion) {
+    //12.7.0
+    if (foundry.utils.isNewerVersion('12.7.0', prevVersion))
+        await migrateTokenSettingsToActorSettings;
+
+    //End of handling
+    setSetting('last-version', curVersion);
+}
+
+export async function migrateTokenSettingsToActorSettings() {
     //Get all actors
     const actors = game.actors.contents;
     //Update a HUD bar as you go through each actor
+    const actorCnt = actors.length;
+    let cnt = 0;
+    console.log("Started Migration for 12.7.0")
     for (const actor in actors) {
+        cnt++;
+        //Progress
+        console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),)
+        SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct: (cnt / actorCnt) * 100 })
+
         const token = actor?.prototypeToken;
         const flags = token?.flags?.['pf2e-rpg-numbers']
         if (token && flags) {
-            //Set Game version to ease futue migration attempt
-            setActorFlag(actor, 'version', game.modules.get('pf2e-rpg-numbers').version);
-            //Hand;e Crit stuff here
-            //NEw categories:
-            // TODO in the future consider support for triggering off specific Rule elements?
+            //Set Game version to ease future migration attempt
+            await setActorFlag(actor, 'version', game.modules.get('pf2e-rpg-numbers').version);
+
             const crit = {
                 default: {
                     success: {
@@ -54,35 +69,29 @@ function migrateTokenSettingsToActorSettings() {
                 saves: DEFAULT_CRIT,
                 strikes: DEFAULT_CRIT
             }
-            setActorFlag(actor, 'critical', crit)
+            await setActorFlag(actor, 'critical', crit)
+
+            const tok = {
+                rotation: {
+                    offset: flags?.rotationOffset ?? 0,
+                }
+            }
+            await setActorFlag(actor, 'token', tok)
 
         }
     }
-    /**
-     * Flag Structure
-     * {
-    "rotationOffset": 32,
-    "fireEmblemImg": "steve",
-    "personaImg": "Jobs",
-    "critOffsetX": 123,
-    "critOffsetY": 555,
-    "critScale": 100,
-    "critRotation": 20,
-    "critSFX": "sfx"
-}
-     */
-    //CHeck if they have prototype token, and transfer that to actor settings
+    console.log("Settings Migrated")
 }
 
 //sets actor flag
 async function setActorFlag(actor, key, value) {
-    await actor.setFlag(MODULE_ID, key, value)
+    return actor.setFlag(MODULE_ID, key, value)
 }
 
 function getCritImageLegacy(flags) {
     const fireEmblemImg = flags?.fireEmblemImg;
     const personaImg = flags?.personaImg;
-    if (fireEmblemImg & personaImg) {
+    if (fireEmblemImg && personaImg) {
         if (getSetting('critical.type') === 'persona') {
             return personaImg
         }

@@ -13,11 +13,13 @@ import {
     //FinisherDialog,
     getSetting,
     handleDiceSoNice,
+    localize,
     MODULE_ID
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
 import { applyTokenStatusEffect, getActorSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { handleUpdate } from "./helpers/library/migration.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -59,6 +61,11 @@ Hooks.on("ready", () => {
             onDamageApplication(dat, msg);
 
         }
+        if (game.user.isGM) {
+            const version = game.modules.get(MODULE_ID).version;
+            const lastVersion = getSetting("last-version");
+            await handleUpdate(version, lastVersion);
+        }
     });
 
     Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
@@ -77,21 +84,6 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    // Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
-    //     if (!getSetting("finishing-move.enabled")) return;
-    //     const actor = characterSheet.actor;
-    //     // add RPG number header
-    //     menu.unshift({
-    //         class: "pf2e-rpg-numbers",
-    //         icon: "fa-solid fa-dragon",
-    //         label: "RPG #s",
-    //         onclick: async (_ev, actorD = actor) => {
-    //             new FinisherDialog(actor).render(true);
-    //         },
-    //     });
-    //     return menu;
-    // });
-
     Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
         if (!getSetting("finishing-move.enabled")) return;
         const item = itemSheet.item;
@@ -102,22 +94,21 @@ Hooks.on("ready", () => {
             icon: "fa-solid fa-dragon",
             label: "RPG #s",
             onclick: async (_ev, itemD = item) => {
-                //console.log({ ev, itemD });
                 const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
                 // Create and display the dialog box
                 new Dialog({
-                    title: "Finishing Move Name",
+                    title: localize("menu.item.finishing-move.name"),
                     content: `
                     <form>
                         <div class="form-group">
-                        <label for="finishing-move-name">Finishing Move Name</label>
+                        <label for="finishing-move-name">${localize("menu.item.finishing-move.name")}</label>
                         <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
                         </div>
                     </form>
                     `,
                     buttons: {
                         save: {
-                            label: "Save Settings",
+                            label: localize("menu.settings.buttons.footer.save"),
                             callback: async (html) => {
                                 // Get the new value from the text input
                                 const newValue = html.find("#finishing-move-name").val().trim();
@@ -126,11 +117,11 @@ Hooks.on("ready", () => {
                                 await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
 
                                 // Optionally, show a message or perform additional actions here
-                                ui.notifications.info(`Finishing Move Name updated to: ${newValue}`);
+                                ui.notifications.info(localize("display-text.notifications.finishing-move.settings.item.update", { newValue }));
                             },
                         },
                         cancel: {
-                            label: "Cancel",
+                            label: localize("menu.settings.buttons.footer.cancel"),
                         },
                     },
                     default: "save",

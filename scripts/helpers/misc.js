@@ -41,8 +41,8 @@ export function handleDiceSoNice(func, params, msg = null) {
     }
 }
 
-export function localize(str) {
-    return game.i18n.localize(`${MODULE_ID}.${str}`);
+export function localize(str, options = {}) {
+    return game.i18n.localize(`${MODULE_ID}.${str}`, options);
 }
 
 /**

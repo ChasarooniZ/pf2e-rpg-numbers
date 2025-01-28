@@ -1,3 +1,4 @@
+
 import { DEFAULT_CRIT } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
@@ -140,8 +141,8 @@ const settingsConfig = {
     },
     token: {
         icon: "fa-circle-user",
-        rotateOnAttack: {
-            rotation: 'token.rotate-on-attack'
+        rotation: {
+            offset: 'token.rotation.offset'
         }
     }
 };
