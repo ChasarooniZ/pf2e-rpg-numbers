@@ -1,4 +1,4 @@
-import { getSetting, MODULE_ID, setSetting } from "../misc.js";
+import { getSetting, localize, MODULE_ID, setSetting } from "../misc.js";
 const DEFAULT_VALUE = 'default';
 
 const DEFAULT_CRIT_DATA = {

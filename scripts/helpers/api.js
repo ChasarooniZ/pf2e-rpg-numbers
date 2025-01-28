@@ -54,7 +54,7 @@ export function createAPI() {
             import: importSettings
         },
         migration: {
-            '12_7_0': migrateTokenSettingsToActorSettings
+            'tokenSettingsToActor': migrateTokenSettingsToActorSettings
         }
     };
 }
