@@ -166,23 +166,23 @@ function displayCritAnimation(critType, token, users, imgData, config) {
 
 
 function getCritActorSettings(result, successOrFail, type = 'default') {
-    result.art = flags?.[type]?.checks?.[successOrFail]?.art ?? flags?.[type]?.default?.[successOrFail]?.art;
+    const checks = flags?.[type]?.checks?.[successOrFail];
+    const defaultValues = flags?.[type]?.default?.[successOrFail];
 
-    result.enabled = flags?.[type]?.checks?.[successOrFail]?.enabled !== 'default' ? flags?.[type]?.checks?.[successOrFail]?.enabled : flags?.[type]?.default?.[successOrFail]?.enabled;
+    const getValueOrDefault = (key, defaultValue) =>
+        checks?.[key] !== undefined && checks[key] !== 'default' ? checks[key] : (defaultValues?.[key] ?? defaultValue);
 
-    result.offset.x = flags?.[type]?.checks?.[successOrFail]?.offset.x ?? flags?.[type]?.default?.[successOrFail]?.offset.x;
+    result.art = getValueOrDefault('art');
+    result.enabled = getValueOrDefault('enabled');
+    result.offset.x = getValueOrDefault('offset.x');
+    result.offset.y = getValueOrDefault('offset.y');
+    result.rotation = getValueOrDefault('rotation');
+    result.scale = getValueOrDefault('scale', 1);
+    result.sfx = getValueOrDefault('sfx');
+    result.type = getValueOrDefault('type');
 
-    result.offset.y = flags?.[type]?.checks?.[successOrFail]?.offset.y ?? flags?.[type]?.default?.[successOrFail]?.offset.y;
-
-    result.rotation = flags?.[type]?.checks?.[successOrFail]?.rotation ?? flags?.[type]?.default?.[successOrFail]?.rotation;
-
-    result.scale = flags?.[type]?.checks?.[successOrFail]?.scale !== 1 ? flags?.[type]?.checks?.[successOrFail]?.scale : flags?.[type]?.default?.[successOrFail]?.scale;
-
-    result.sfx = flags?.[type]?.checks?.[successOrFail]?.sfx ?? flags?.[type]?.default?.[successOrFail]?.sfx;
-
-    result.type = flags?.[type]?.checks?.[successOrFail]?.type !== 'default' ? flags?.[type]?.checks?.[successOrFail]?.type : flags?.[type]?.default?.[successOrFail]?.type;
-
-    result.volume = ((flags?.[type]?.checks?.[successOrFail]?.volume !== 100 ? flags?.[type]?.checks?.[successOrFail]?.volume : flags?.[type]?.default?.[successOrFail]?.volume) ?? 100) * result.volume / 100;
+    const volume = getValueOrDefault('volume', 100);
+    result.volume = (volume * result.volume) / 100;
 
     return result;
 }
