@@ -18,14 +18,10 @@ import { getSetting } from "../../misc.js";
  *
  * @param {Token} token - The token object around which the animation will be centered.
  * @param {User[]} users - An array of users who will see the animation.
- * @param {Object} imgData - An object containing image data, including image URL and scaling information.
- * @param {string} imgData.img - The URL of the image to be displayed in the animation.
- * @param {number} imgData.scaleX - The horizontal scaling factor of the image.
- * @param {number} imgData.yScale - The vertical scaling factor of the image.
  * @returns {void}
  */
 
-export function personaCrit(token, users, imgData, config) {
+export function personaCrit(token, users, config) {
     const screenWidth = window.screen.availWidth;
     const screenHeight = window.screen.availHeight;
     const polygonPoints = [
@@ -88,22 +84,10 @@ export function personaCrit(token, users, imgData, config) {
         [-0.1 * screenWidth, 0.73 * screenHeight],
     ];
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
-    const flags = token.flags?.["pf2e-rpg-numbers"];
-    const [personaImg, critScale, critOffsetX, critOffsetY, critRotation] = [
-        flags?.personaImg || "",
-        flags?.critScale || 100,
-        flags?.critOffsetX || 0,
-        flags?.critOffsetY || 0,
-        flags?.critRotation || 0,
-    ];
 
-    const imageUrl = personaImg || imgData.img;
+    const imageUrl = config.art;
     const isWebm = imageUrl.endsWith(".webm");
-    const tokenScaler = ImageData.isToken ? (imgData.scaleX + imgData.yScale) / 2 : 1;
-    const imageScaler = personaImg ? 1 : tokenScaler;
     const duration = getSetting("critical.duration") * 1000;
-    const soundUrl = config.sfx;
-    const volumeLevel = config.volume;
 
     if (isWebm) {
         const video = document.createElement("video");
@@ -113,14 +97,8 @@ export function personaCrit(token, users, imgData, config) {
         video.muted = true;
 
         video.onloadeddata = async () => {
-            const videoHeight = video.videoHeight;
-            const videoPercent = (videoHeight * imageScaler) / 100;
 
-            const scale = (critScale / 100) * imageScaler;
-            const offsetX = critOffsetX * videoPercent * scale;
-            const offsetY = (personaImg ? 0 : videoPercent * 20) + critOffsetY * videoPercent * scale;
-
-            //await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+            //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
             new Sequence()
                 // BG Color
                 .effect()
@@ -140,13 +118,13 @@ export function personaCrit(token, users, imgData, config) {
                 .file(imageUrl)
                 .zIndex(0)
                 .shape("polygon", { isMask: true, points: centeredPoints })
-                .spriteOffset({ x: offsetX, y: offsetY }, { gridUnits: false })
-                .spriteRotation(critRotation)
+                .spriteOffset(config.offset, { gridUnits: false })
+                .spriteRotation(config.rotation)
                 .screenSpace()
                 .screenSpacePosition({ x: 0, y: 0 })
                 .screenSpaceAnchor({ x: 0.5, y: 0.5 })
                 .screenSpaceScale({ fitY: true, ratioX: true })
-                .scale(typeof scale === "number" ? scale : 1)
+                .scale(config.scale)
                 .screenSpaceAboveUI()
                 .duration(duration)
                 .forUsers(users)
@@ -165,9 +143,9 @@ export function personaCrit(token, users, imgData, config) {
                 .delay(config.delay)
                 // Sound
                 .sound()
-                .file(soundUrl)
+                .file(config.sfx)
                 .fadeOutAudio(duration / 4)
-                .volume(volumeLevel)
+                .volume(config.volume)
                 .forUsers(users)
                 .delay(config.delay)
                 .play();
@@ -177,14 +155,7 @@ export function personaCrit(token, users, imgData, config) {
         image.src = imageUrl;
 
         image.onload = async ({ target }) => {
-            const imageHeight = target.height;
-            const imagePercent = (imageHeight * imageScaler) / 100;
-
-            const scale = (critScale / 100) * (screenHeight / imageHeight) * imageScaler;
-            const offsetX = critOffsetX * imagePercent * scale;
-            const offsetY = (personaImg ? 0 : imagePercent * 20) + critOffsetY * imagePercent * scale;
-
-            //await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+            //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
             new Sequence()
                 // BG Color
                 .effect()
@@ -204,9 +175,9 @@ export function personaCrit(token, users, imgData, config) {
                 .file(imageUrl)
                 .zIndex(0)
                 .shape("polygon", { isMask: true, points: centeredPoints })
-                .scale(typeof scale === "number" ? scale : 1)
-                .spriteOffset({ x: offsetX, y: offsetY }, { gridUnits: false })
-                .spriteRotation(critRotation)
+                .scale(config.scale)
+                .spriteOffset(config.offset, { gridUnits: false })
+                .spriteRotation(config.rotation)
                 .screenSpace()
                 .screenSpacePosition({ x: 0, y: 0 })
                 .screenSpaceAnchor({ x: 0.5, y: 0.5 })
@@ -228,9 +199,9 @@ export function personaCrit(token, users, imgData, config) {
                 .delay(config.delay)
                 // Sound
                 .sound()
-                .file(soundUrl)
+                .file(config.sfx)
                 .fadeOutAudio(duration / 4)
-                .volume(volumeLevel)
+                .volume(config.volume)
                 .forUsers(users)
                 .delay(config.delay)
                 .play();

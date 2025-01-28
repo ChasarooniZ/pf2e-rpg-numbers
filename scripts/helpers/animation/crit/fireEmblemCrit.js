@@ -7,27 +7,19 @@ import { getSetting } from "../../misc.js";
  *
  * @param {Token} token - The token object around which the animation will be centered.
  * @param {User[]} users - An array of users who will see the animation.
- * @param {Object} imgData - An object containing image data, including image URL and scaling information.
- * @param {string} imgData.img - The URL of the image to be displayed in the animation.
- * @param {number} imgData.xScale - The horizontal scaling factor of the image.
- * @param {number} imgData.yScale - The vertical scaling factor of the image.
  * @returns {void}
  */
 
-export async function fireEmblemCrit(token, users, imgData, config) {
+export async function fireEmblemCrit(token, users, config) {
     const windowHeight = screen.height / 10;
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
-    const imageUrl = token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
+    const imageUrl = config.art;
     const duration = getSetting("critical.duration") * 1000;
     const soundUrl = config.sfx;
     const volumeLevel = config.volume;
 
-    if (!!token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg && imgData.isToken) {
-        imgData.xScale = 1;
-        imgData.yScale = 1;
-    }
     //Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
     new Sequence()
         //background
@@ -62,6 +54,7 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         .zIndex(0)
         .syncGroup(`fe-crit-${token.uuid}`)
         .file(imageUrl)
+        .spriteRotation(config.rotation)
         .animateProperty("sprite", "position.x", {
             from: -0.9,
             to: 1.5,
@@ -71,8 +64,8 @@ export async function fireEmblemCrit(token, users, imgData, config) {
         })
         .screenSpace()
         .screenSpaceScale({
-            x: 0.134 * imgData.xScale,
-            y: 0.134 * imgData.yScale,
+            x: 0.134 * config.scale,
+            y: 0.134 * config.scale,
             fitX: false,
             fitY: true,
             ratioX: true,

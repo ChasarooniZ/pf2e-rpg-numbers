@@ -21,7 +21,14 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
 
     const type = critType ?? (config?.type !== 'default' ? config?.type : getSetting("critical.type"));
 
-    displayCritAnimation(type, rollDeets.token, users, imgData, config);
+    config.scale *=  imgData.scale;
+    config.art = config.art ?? imgData.art;
+
+    //Cancels animation based on config or imgData
+    if ((!imgData?.showForToken && config.enabled !== 'on') || config.enabled !== 'on') {
+        return;
+    }
+    displayCritAnimation(type, rollDeets.token, users, config);
 }
 
 /**
@@ -47,21 +54,15 @@ function getImageData(rollDeets) {
 
     const imgData = {
         img: "icons/svg/cowled.svg",
-        xScale: 1,
-        yScale: 1,
-        xOffset: 0,
-        yOffset: 0,
-        isToken: true,
+        scale: 1,
         showForToken: shouldDisplayForTokenType(rollDeets, enabledTokenType, actorType),
     };
 
     if (shouldUseTokenImage(actorType, defaultImgType)) {
         imgData.img = getTokenImage(config?.rollDeets?.token?.object);
-        imgData.xScale = rollDeets?.token?.texture?.scaleX ?? 1;
-        imgData.yScale = rollDeets?.token?.texture?.scaleY ?? 1;
+        imgData.scale = ((rollDeets?.token?.texture?.scaleX ?? 1) + (rollDeets?.token?.texture?.scaleY ?? 1)) / 2;
     } else {
         imgData.img = rollDeets?.token?.actor?.img;
-        imgData.isToken = false;
     }
 
     return imgData;
