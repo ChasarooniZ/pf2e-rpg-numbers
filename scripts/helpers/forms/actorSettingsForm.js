@@ -293,7 +293,7 @@ export class ActorSettingsConfigForm extends FormApplication {
             strikes: DEFAULT_CRIT
         };
         crit = critProcessHelper(settings.critical, crit)
-        await this.options?.actor?.setFlag(MODULE_ID, 'crit', crit)
+        await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
 
         const token = DEFAULT_TOKEN;
         token.rotation.offset = Number(settings.token.rotation.offset) ?? 0;
