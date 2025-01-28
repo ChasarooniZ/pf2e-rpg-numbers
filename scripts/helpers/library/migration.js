@@ -20,6 +20,12 @@ export const DEFAULT_CRIT = {
     failure: DEFAULT_CRIT_DATA
 };
 
+export const DEFAULT_TOKEN = {
+    rotation: {
+        offset: 0,
+    }
+}
+
 export async function handleUpdate(curVersion, prevVersion) {
     //12.7.0
     if (foundry.utils.isNewerVersion('12.7.0', prevVersion))

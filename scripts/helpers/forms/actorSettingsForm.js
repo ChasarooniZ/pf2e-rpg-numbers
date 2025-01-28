@@ -1,11 +1,11 @@
 
-import { DEFAULT_CRIT } from "../library/migration.js";
+import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
-    home: {
-        icon: "fa-dragon"
-    },
+    // home: {
+    //     icon: "fa-dragon"
+    // },
     critical: {
         icon: "fa-explosion",
         tabs: {
@@ -360,11 +360,14 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
     if (!flagIDs.includes('critical')) {
-        actor.setFlag(MODULE_ID, 'critical', {
+        await actor.setFlag(MODULE_ID, 'critical', {
             default: DEFAULT_CRIT,
             checks: DEFAULT_CRIT,
             saves: DEFAULT_CRIT,
             strikes: DEFAULT_CRIT
         })
+    }
+    if (!flagIDs.includes('token')) {
+        await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
     }
 }
