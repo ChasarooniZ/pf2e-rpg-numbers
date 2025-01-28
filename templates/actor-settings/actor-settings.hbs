@@ -8,15 +8,15 @@
     <section class="content pf2e-rpg-actor-config-form form">
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
-            {{#if tab.home}}
-            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs' tab}}
-            {{/if}}
+            <!-- {{#if tab.home}} -->
+            <!-- {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs' tab}} -->
+            <!-- {{/if}} -->
             {{#if tab.critical}}
             {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs' tab}}
             {{/if}}
-            {{!-- {{#if tab.token}} --}}
-            {{!-- {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' this}} --}}
-            {{!-- {{/if}} --}}
+            {{#if tab.token}}
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' this}}
+            {{/if}}
         </div>
         {{/each}}
     </section>

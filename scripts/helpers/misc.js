@@ -42,7 +42,7 @@ export function handleDiceSoNice(func, params, msg = null) {
 }
 
 export function localize(str, options = {}) {
-    return game.i18n.localize(`${MODULE_ID}.${str}`, options);
+    return game.i18n.format(`${MODULE_ID}.${str}`, options);
 }
 
 /**
