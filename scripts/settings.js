@@ -15,6 +15,7 @@ Hooks.on("init", () => {
         //Actor
         'modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs',
         'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs',
         'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs',
         'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs',
         'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs',
