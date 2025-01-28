@@ -102,7 +102,7 @@ function generateShakeValues(shakes, movAmount) {
  * @param {Token} token - The token
  * @returns {string} The image source
  */
-function getTokenImage(token) {
+export function getTokenImage(token) {
     return token.document?.ring?.enabled
         ? token.document?.ring?.subject?.texture ?? token.document.texture.src
         : token.document.texture.src;
