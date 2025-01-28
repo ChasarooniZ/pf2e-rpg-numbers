@@ -272,48 +272,33 @@ export class ActorSettingsConfigForm extends FormApplication {
         console.log("Form Data:", formattedObject);
 
         // // Handle saving or submitting
-        // if (submit) {
-        //     // If submitting, call _updateObject to store the data
-        //     await this.saveSettings(foundry.utils.expandObject(dataObject));
-        //     ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
-        //     this.close();
-        // } else {
-        //     // If saving, call _updateObject to store the data
-        //     await this.saveSettings(foundry.utils.expandObject(dataObject));
-        //     ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
-        // }
+        if (submit) {
+            // If submitting, call _updateObject to store the data
+            await this.saveSettings(formattedObject);
+            ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
+            this.close();
+        } else {
+            // If saving, call _updateObject to store the data
+            await this.saveSettings(formattedObject);
+            ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
+        }
     }
 
     async saveSettings(data) {
-        //     const settings = data.settings;
+        const settings = data.settings;
+        let crit = {
+            default: DEFAULT_CRIT,
+            checks: DEFAULT_CRIT,
+            saves: DEFAULT_CRIT,
+            strikes: DEFAULT_CRIT
+        };
+        crit = critProcessHelper(settings.critical, crit)
+        await this.options?.actor?.setFlag(MODULE_ID, 'crit', crit)
 
-        //     const updateSetting = (settingKey, settingValue) => {
-        //         const currentValue = getSetting(settingKey);
-        //         if (typeof currentValue === "boolean") {
-        //             settingValue = !!settingValue;
-        //         }
-        //         if (currentValue !== settingValue) {
-        //             setSetting(settingKey, settingValue);
-        //         }
-        //     };
+        const token = DEFAULT_TOKEN;
+        token.rotation.offset = Number(settings.token.rotation.offset) ?? 0;
 
-        //     const processSettings = (settingGroup, dataGroup) => {
-        //         for (const [key, settingPathOrGroup] of Object.entries(settingGroup)) {
-        //             if (key !== 'icon') {
-        //                 if (typeof settingPathOrGroup === "string") {
-        //                     updateSetting(settingPathOrGroup, dataGroup[key]);
-        //                 } else if (settingPathOrGroup?.type === "number") {
-        //                     updateSetting(settingPathOrGroup.path, dataGroup[key]);
-        //                 } else if (typeof settingPathOrGroup === "object") {
-        //                     processSettings(settingPathOrGroup, dataGroup[key]);
-        //                 }
-        //             }
-        //         }
-        //     };
-
-        //     for (const [tabKey, tabSettings] of Object.entries(settingsConfig)) {
-        //         processSettings(tabSettings, settings);
-        //     }
+        await this.options?.actor?.setFlag(MODULE_ID, 'token', token)
     }
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
@@ -370,4 +355,28 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
     }
+}
+
+function critProcessHelper(data, result) {
+    const types = [{ form: 'check', flag: 'checks' }, { form: 'default', flag: 'default' }, { form: 'save', flag: 'saves' }, { form: 'strike', flag: 'strikes' }]
+    const succFail = ['success', 'failure'];
+    for (const type of types) {
+        for (const state of succFail) {
+            const row = data[type.form][state];
+            result[type.flag][state] = {
+                art: row.art,
+                enabled: row.default,
+                offset: {
+                    x: Number(row.offset.x) ?? 0,
+                    y: Number(row.offset.y) ?? 0,
+                },
+                rotation: Number(row.rotation) ?? 0,
+                scale: Number(row.scale) ?? 1,
+                sfx: row.sfx,
+                type: row.type,
+                volume: Number(row.volume) ?? 100,
+            }
+        }
+    }
+    return result;
 }
