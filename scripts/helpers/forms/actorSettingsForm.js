@@ -362,7 +362,7 @@ function critProcessHelper(data, result) {
     const succFail = ['success', 'failure'];
     for (const type of types) {
         for (const state of succFail) {
-            const row = data[type.form][state];
+            const row = data[state][type.form];
             result[type.flag][state] = {
                 art: row.art,
                 enabled: row.default,
