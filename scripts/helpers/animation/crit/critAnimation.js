@@ -1,5 +1,6 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting, MODULE_ID } from "../../misc.js";
+import { getTokenImage } from "../shakeOnDamageToken.js";
 import { fireEmblemCrit } from "./fireEmblemCrit.js";
 import { personaCrit } from "./personaCrit.js";
 
@@ -9,16 +10,18 @@ import { personaCrit } from "./personaCrit.js";
  * @param {string} [critType=getSetting("critical.type")] - The type of critical animation to display.
  * @returns {void}
  */
-export function createCritAnimation(rollDeets, critType = getSetting("critical.type")) {
+export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     if (shouldCancelCriticalHit(rollDeets)) return;
 
     const imgData = getImageData(rollDeets);
     if (!imgData) return;
 
-    const config = getAnimationConfig({ token: rollDeets.token });
+    const config = getAnimationConfig({ actor: rollDeets.token?.actor, rollDeets, isSuccess });
     const users = getEligibleUsers(rollDeets);
 
-    displayCritAnimation(critType, rollDeets.token, users, imgData, config);
+    const type = critType ?? (config?.type !== 'default' ? config?.type : getSetting("critical.type"));
+
+    displayCritAnimation(type, rollDeets.token, users, imgData, config);
 }
 
 /**
@@ -42,10 +45,6 @@ function getImageData(rollDeets) {
     const defaultImgType = getSetting("critical.default-img");
     const actorType = rollDeets.token.actor.type;
 
-    if (!shouldDisplayForTokenType(rollDeets, enabledTokenType, actorType)) {
-        return null;
-    }
-
     const imgData = {
         img: "icons/svg/cowled.svg",
         xScale: 1,
@@ -53,10 +52,11 @@ function getImageData(rollDeets) {
         xOffset: 0,
         yOffset: 0,
         isToken: true,
+        showForToken: shouldDisplayForTokenType(rollDeets, enabledTokenType, actorType),
     };
 
     if (shouldUseTokenImage(actorType, defaultImgType)) {
-        imgData.img = rollDeets?.token?.texture?.src;
+        imgData.img = getTokenImage(config?.rollDeets?.token?.object);
         imgData.xScale = rollDeets?.token?.texture?.scaleX ?? 1;
         imgData.yScale = rollDeets?.token?.texture?.scaleY ?? 1;
     } else {
@@ -97,11 +97,38 @@ function shouldUseTokenImage(actorType, defaultImgType) {
  * @returns {object} The animation configuration object.
  */
 function getAnimationConfig(config) {
-    return {
+    const flags = {
+        critical: config.actor.getFlag('pf2e-rpg-numbers', 'critical'),
+        token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
+    }
+
+    //{ actor: rollDeets.token?.actor, rollDeets, isSuccess}
+    const successOrFail = config.isSuccess ? 'success' : 'failure';
+
+    const result = {
         delay: getSetting("critical.delay") * 1000,
-        sfx: !!config?.token?.getFlag(MODULE_ID, 'critSFX') ? config?.token?.getFlag(MODULE_ID, 'critSFX') : getSetting("critical.sound"),
+        offset: { x: 0, y: 0 },
+        sfx: getSetting("critical.sound"),
         volume: getSetting("critical.volume") / 100,
     };
+
+    switch (config?.rollDeets?.type) {
+        case 'perception-check':
+        case 'skill-check':
+            getCritActorSettings(result, successOrFail, 'checks')
+            break;
+        case 'attack-roll':
+            getCritActorSettings(result, successOrFail, 'strikes')
+            break;
+        case 'saving-throw':
+            getCritActorSettings(result, successOrFail, 'saves')
+            break;
+        default:
+            getCritActorSettings(result, successOrFail)
+            break;
+    }
+
+    return result;
 }
 
 /**
@@ -134,4 +161,28 @@ function displayCritAnimation(critType, token, users, imgData, config) {
         default:
             break;
     }
+}
+
+
+
+function getCritActorSettings(result, successOrFail, type = 'default') {
+    result.art = flags?.[type]?.checks?.[successOrFail]?.art ?? flags?.[type]?.default?.[successOrFail]?.art;
+
+    result.enabled = flags?.[type]?.checks?.[successOrFail]?.enabled !== 'default' ? flags?.[type]?.checks?.[successOrFail]?.enabled : flags?.[type]?.default?.[successOrFail]?.enabled;
+
+    result.offset.x = flags?.[type]?.checks?.[successOrFail]?.offset.x ?? flags?.[type]?.default?.[successOrFail]?.offset.x;
+
+    result.offset.y = flags?.[type]?.checks?.[successOrFail]?.offset.y ?? flags?.[type]?.default?.[successOrFail]?.offset.y;
+
+    result.rotation = flags?.[type]?.checks?.[successOrFail]?.rotation ?? flags?.[type]?.default?.[successOrFail]?.rotation;
+
+    result.scale = flags?.[type]?.checks?.[successOrFail]?.scale !== 1 ? flags?.[type]?.checks?.[successOrFail]?.scale : flags?.[type]?.default?.[successOrFail]?.scale;
+
+    result.sfx = flags?.[type]?.checks?.[successOrFail]?.sfx ?? flags?.[type]?.default?.[successOrFail]?.sfx;
+
+    result.type = flags?.[type]?.checks?.[successOrFail]?.type !== 'default' ? flags?.[type]?.checks?.[successOrFail]?.type : flags?.[type]?.default?.[successOrFail]?.type;
+
+    result.volume = ((flags?.[type]?.checks?.[successOrFail]?.volume !== 100 ? flags?.[type]?.checks?.[successOrFail]?.volume : flags?.[type]?.default?.[successOrFail]?.volume) ?? 100) * result.volume / 100;
+
+    return result;
 }
