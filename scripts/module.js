@@ -13,12 +13,10 @@ import {
     //FinisherDialog,
     getSetting,
     handleDiceSoNice,
-    localize,
     MODULE_ID
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
-import { applyTokenStatusEffect, getActorSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 
 // HOOKS STUFF
@@ -59,12 +57,6 @@ Hooks.on("ready", () => {
 
             //On Damage Application
             onDamageApplication(dat, msg);
-
-        }
-        if (game.user.isGM) {
-            const version = game.modules.get(MODULE_ID).version;
-            const lastVersion = getSetting("last-version");
-            await handleUpdate(version, lastVersion);
         }
     });
 
@@ -84,57 +76,14 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
-        if (!getSetting("finishing-move.enabled")) return;
-        const item = itemSheet.item;
+    Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
 
-        // add RPG number header
-        menu.unshift({
-            class: "pf2e-rpg-numbers",
-            icon: "fa-solid fa-dragon",
-            label: "RPG #s",
-            onclick: async (_ev, itemD = item) => {
-                const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
-                // Create and display the dialog box
-                new Dialog({
-                    title: localize("menu.item.finishing-move.name"),
-                    content: `
-                    <form>
-                        <div class="form-group">
-                        <label for="finishing-move-name">${localize("menu.item.finishing-move.name")}</label>
-                        <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
-                        </div>
-                    </form>
-                    `,
-                    buttons: {
-                        save: {
-                            label: localize("menu.settings.buttons.footer.save"),
-                            callback: async (html) => {
-                                // Get the new value from the text input
-                                const newValue = html.find("#finishing-move-name").val().trim();
 
-                                // Save the new value to the module flag
-                                await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
-
-                                // Optionally, show a message or perform additional actions here
-                                ui.notifications.info(localize("display-text.notifications.finishing-move.settings.item.update", { newValue }));
-                            },
-                        },
-                        cancel: {
-                            label: localize("menu.settings.buttons.footer.cancel"),
-                        },
-                    },
-                    default: "save",
-                }).render(true);
-            },
-        });
-        return menu;
-    });
-
-    setupTokenMenu();
 
     if (game.user.isGM) {
-        //sendUpdateMessage();
+        const version = game.modules.get(MODULE_ID).version;
+        const lastVersion = getSetting("last-version");
+        handleUpdate(version, lastVersion);
     }
 
     console.log("PF2e RPG Numbers is ready");
