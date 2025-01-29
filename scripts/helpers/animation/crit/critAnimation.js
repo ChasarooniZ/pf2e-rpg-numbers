@@ -162,6 +162,8 @@ function displayCritAnimation(critType, token, users, imgData, config) {
             fireEmblemCrit(token, users, imgData, config);
             break;
         default:
+            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit-type}`)
+            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit-type}`)
             break;
     }
 }
