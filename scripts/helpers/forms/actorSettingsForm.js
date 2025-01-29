@@ -286,13 +286,12 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async saveSettings(data) {
         const settings = data.settings;
-        let crit = {
+        const crit = critProcessHelper(settings.critical, {
             default: DEFAULT_CRIT,
             checks: DEFAULT_CRIT,
             saves: DEFAULT_CRIT,
             strikes: DEFAULT_CRIT
-        };
-        crit = critProcessHelper(settings.critical, crit)
+        })
         await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
 
         const token = DEFAULT_TOKEN;
@@ -355,28 +354,32 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
     }
+    return true;
 }
 
 function critProcessHelper(data, result) {
     const types = [{ form: 'check', flag: 'checks' }, { form: 'default', flag: 'default' }, { form: 'save', flag: 'saves' }, { form: 'strike', flag: 'strikes' }]
     const succFail = ['success', 'failure'];
+
+    // Create a deep copy of the result object
+    const res = JSON.parse(JSON.stringify(result));
+
     for (const type of types) {
         for (const state of succFail) {
-            const row = data[state][type.form];
-            result[type.flag][state] = {
-                art: row.art,
-                enabled: row.default,
+            res[type.flag][state] = {
+                art: data[state][type.form].art,
+                enabled: data[state][type.form].default,
                 offset: {
-                    x: Number(row.offset.x) ?? 0,
-                    y: Number(row.offset.y) ?? 0,
+                    x: isNaN(Number(data[state][type.form].offset.x)) ? 0 : Number(data[state][type.form].offset.x),
+                    y: isNaN(Number(data[state][type.form].offset.y)) ? 0 : Number(data[state][type.form].offset.y),
                 },
-                rotation: Number(row.rotation) ?? 0,
-                scale: Number(row.scale) ?? 1,
-                sfx: row.sfx,
-                type: row.type,
-                volume: Number(row.volume) ?? 100,
+                rotation: isNaN(Number(data[state][type.form].rotation)) ? 0 : Number(data[state][type.form].rotation),
+                scale: isNaN(Number(data[state][type.form].scale)) ? 1 : Number(data[state][type.form].scale),
+                sfx: data[state][type.form].sfx,
+                type: data[state][type.form].type,
+                volume: isNaN(Number(data[state][type.form].volume)) ? 100 : Number(data[state][type.form].volume),
             }
         }
     }
-    return result;
+    return res;
 }

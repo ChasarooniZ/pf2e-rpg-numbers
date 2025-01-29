@@ -154,6 +154,7 @@ function rotateOnAttack(msg) {
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
     const doCrits = getSetting("critical.enabled");
+    //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
@@ -164,7 +165,9 @@ function checkRollNumbers(dat, msg) {
         };
         if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg);
         if (doCrits && roll_deets.outcome === "criticalSuccess")
-            handleDiceSoNice(createCritAnimation, [roll_deets], msg);
+            handleDiceSoNice(createCritAnimation, [roll_deets, '', true], msg);
+        // if (doCritFailures && roll_deets.outcome === "criticalFailure")
+        //     handleDiceSoNice(createCritAnimation, [roll_deets, '', false], msg);
     }
 }
 
