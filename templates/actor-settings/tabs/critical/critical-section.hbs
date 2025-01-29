@@ -63,7 +63,7 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.enabled">
-        {{selectOptions settings.choices.enabled select=data.enabled}}
+        {{selectOptions settings.choices.enabled selected=data.enabled}}
     </select>
 </div>
 
@@ -76,7 +76,7 @@
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.type">
-        {{selectOptions settings.choices.type select=data.type}}
+        {{selectOptions settings.choices.type selected=data.type}}
     </select>
 </div>
 
