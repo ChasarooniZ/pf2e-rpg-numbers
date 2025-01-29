@@ -19,13 +19,14 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     const config = getAnimationConfig({ actor: rollDeets.token?.actor, rollDeets, isSuccess });
     const users = getEligibleUsers(rollDeets);
 
-    const type = critType ?? (config?.type !== 'default' ? config?.type : getSetting("critical.type"));
+    const type = critType || (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
 
-    config.scale *=  imgData.scale;
-    config.art = config.art ?? imgData.art;
+    config.scale *= imgData.scale;
+    config.art = config.art || imgData.img;
+    config.sfx = config.sfx || getSetting('critical.sound');
 
     //Cancels animation based on config or imgData
-    if ((!imgData?.showForToken && config.enabled !== 'on') || config.enabled !== 'on') {
+    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on')) {
         return;
     }
     displayCritAnimation(type, rollDeets.token, users, config);
@@ -106,26 +107,27 @@ function getAnimationConfig(config) {
     //{ actor: rollDeets.token?.actor, rollDeets, isSuccess}
     const successOrFail = config.isSuccess ? 'success' : 'failure';
 
-    const result = {
+    const data = {
         delay: getSetting("critical.delay") * 1000,
         offset: { x: 0, y: 0 },
         sfx: getSetting("critical.sound"),
         volume: getSetting("critical.volume") / 100,
     };
+    let result = {};
 
     switch (config?.rollDeets?.type) {
         case 'perception-check':
         case 'skill-check':
-            getCritActorSettings(result, successOrFail, 'checks')
+            result = getCritActorSettings(data, successOrFail, flags, 'checks')
             break;
         case 'attack-roll':
-            getCritActorSettings(result, successOrFail, 'strikes')
+            result = getCritActorSettings(data, successOrFail, flags, 'strikes')
             break;
         case 'saving-throw':
-            getCritActorSettings(result, successOrFail, 'saves')
+            result = getCritActorSettings(data, successOrFail, flags, 'saves')
             break;
         default:
-            getCritActorSettings(result, successOrFail)
+            result = getCritActorSettings(data, successOrFail, flags)
             break;
     }
 
@@ -166,23 +168,21 @@ function displayCritAnimation(critType, token, users, imgData, config) {
 
 
 
-function getCritActorSettings(result, successOrFail, type = 'default') {
-    const checks = flags?.[type]?.checks?.[successOrFail];
-    const defaultValues = flags?.[type]?.default?.[successOrFail];
+function getCritActorSettings(data, successOrFail, flags, type = 'default') {
+    const result = { ...data };
+    const checks = flags?.critical?.[type]?.[successOrFail];
+    const defaultValues = flags?.critical?.default?.[successOrFail];
 
-    const getValueOrDefault = (key, defaultValue) =>
-        checks?.[key] !== undefined && checks[key] !== 'default' ? checks[key] : (defaultValues?.[key] ?? defaultValue);
+    result.art = checks?.art || defaultValues?.art || '';
+    result.enabled = checks?.enabled === 'default' ? defaultValues?.enabled : checks?.enabled;
+    result.offset.x = checks?.offset?.x || (defaultValues?.offset?.x ?? 0);
+    result.offset.y = checks?.offset?.y || (defaultValues?.offset?.y ?? 0);
+    result.rotation = checks?.rotation || (defaultValues?.rotation ?? 0)
+    result.scale = checks?.scale === 1 ? defaultValues?.scale ?? 1 : checks?.scale;
+    result.sfx = checks?.sfx || defaultValues?.sfx || '';
+    result.type = checks?.type === 'default' || defaultValues?.type || checks?.type;
 
-    result.art = getValueOrDefault('art');
-    result.enabled = getValueOrDefault('enabled');
-    result.offset.x = getValueOrDefault('offset.x');
-    result.offset.y = getValueOrDefault('offset.y');
-    result.rotation = getValueOrDefault('rotation');
-    result.scale = getValueOrDefault('scale', 1);
-    result.sfx = getValueOrDefault('sfx');
-    result.type = getValueOrDefault('type');
-
-    const volume = getValueOrDefault('volume', 100);
+    const volume = checks?.volume === 100 ? defaultValues?.volume ?? 100 : checks?.volume;
     result.volume = (volume * result.volume) / 100;
 
     return result;
