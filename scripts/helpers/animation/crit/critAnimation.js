@@ -180,7 +180,7 @@ function getCritActorSettings(data, successOrFail, flags, type = 'default') {
     result.rotation = checks?.rotation || (defaultValues?.rotation ?? 0)
     result.scale = checks?.scale === 1 ? defaultValues?.scale ?? 1 : checks?.scale;
     result.sfx = checks?.sfx || defaultValues?.sfx || '';
-    result.type = checks?.type === 'default' || defaultValues?.type || checks?.type;
+    result.type = checks?.type === 'default' ? defaultValues?.type : checks?.type;
 
     const volume = checks?.volume === 100 ? defaultValues?.volume ?? 100 : checks?.volume;
     result.volume = (volume * result.volume) / 100;
