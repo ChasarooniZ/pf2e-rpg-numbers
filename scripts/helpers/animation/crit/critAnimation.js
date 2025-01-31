@@ -162,8 +162,8 @@ function displayCritAnimation(critType, token, users, imgData, config) {
             fireEmblemCrit(token, users, imgData, config);
             break;
         default:
-            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit-type}`)
-            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit-type}`)
+            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
+            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
             break;
     }
 }
@@ -177,8 +177,8 @@ function getCritActorSettings(data, successOrFail, flags, type = 'default') {
 
     result.art = checks?.art || defaultValues?.art || '';
     result.enabled = checks?.enabled === 'default' ? defaultValues?.enabled : checks?.enabled;
-    result.offset.x = checks?.offset?.x || (defaultValues?.offset?.x ?? 0);
-    result.offset.y = checks?.offset?.y || (defaultValues?.offset?.y ?? 0);
+    result.offset.x = (checks?.offset?.x || (defaultValues?.offset?.x ?? 0)) / 100;
+    result.offset.y = (checks?.offset?.y || (defaultValues?.offset?.y ?? 0)) / 100;
     result.rotation = checks?.rotation || (defaultValues?.rotation ?? 0)
     result.scale = checks?.scale === 1 ? defaultValues?.scale ?? 1 : checks?.scale;
     result.sfx = checks?.sfx || defaultValues?.sfx || '';
