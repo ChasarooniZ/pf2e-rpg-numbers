@@ -29,7 +29,7 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on')) {
         return;
     }
-    displayCritAnimation(type, rollDeets.token, users, config);
+    displayCritAnimation(type, rollDeets.token?.actor, users, config);
 }
 
 
@@ -51,7 +51,7 @@ export function createTestCritAnimation(data) {
     config.sfx = config.sfx || getSetting('critical.sound');
 
 
-    displayCritAnimation(type, rollDeets.token, [userID], config);
+    displayCritAnimation(type, actor, [userID], config);
 }
 
 /**
@@ -172,18 +172,18 @@ function getEligibleUsers(rollDeets) {
 /**
  * Displays the critical hit animation based on the specified type.
  * @param {string} critType - The type of critical animation to display.
- * @param {object} token - The token object.
+ * @param {object} actor - The actor object.
  * @param {string[]} users - The list of eligible user IDs.
  * @param {object} imgData - The image data for the animation.
  * @param {object} config - The animation configuration.
  */
-function displayCritAnimation(critType, token, users, imgData, config) {
+function displayCritAnimation(critType, actor, users, imgData, config) {
     switch (critType) {
         case "persona":
-            personaCrit(token, users, imgData, config);
+            personaCrit(actor, users, imgData, config);
             break;
         case "fire-emblem":
-            fireEmblemCrit(token, users, imgData, config);
+            fireEmblemCrit(actor, users, imgData, config);
             break;
         default:
             ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)

@@ -2,15 +2,15 @@ import { getSetting } from "../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
- * This function creates an animated effect around the provided token, displaying
+ * This function creates an animated effect around the provided actor, displaying
  * an image moving across the screen along with other visual effects and sounds.
  *
- * @param {Token} token - The token object around which the animation will be centered.
+ * @param {Actor} actor - The actor object around which the animation will be centered.
  * @param {User[]} users - An array of users who will see the animation.
  * @returns {void}
  */
 
-export async function fireEmblemCrit(token, users, config) {
+export async function fireEmblemCrit(actor, users, config) {
     const windowHeight = screen.height / 10;
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
@@ -25,7 +25,7 @@ export async function fireEmblemCrit(token, users, config) {
         //background
         .effect()
         .zIndex(-1)
-        .syncGroup(`fe-crit-${token.uuid}`)
+        .syncGroup(`fe-crit-${actor.uuid}`)
         .shape("rectangle", {
             lineSize: 0,
             width: windowWidth,
@@ -52,7 +52,7 @@ export async function fireEmblemCrit(token, users, config) {
         //Image
         .effect()
         .zIndex(0)
-        .syncGroup(`fe-crit-${token.uuid}`)
+        .syncGroup(`fe-crit-${actor.uuid}`)
         .file(imageUrl)
         .spriteRotation(config.rotation)
         .animateProperty("sprite", "position.x", {
