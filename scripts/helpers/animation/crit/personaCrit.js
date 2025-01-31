@@ -151,60 +151,59 @@ export function personaCrit(token, users, config) {
                 .play();
         };
     } else {
-        const image = new Image();
-        image.src = imageUrl;
-
-        image.onload = async ({ target }) => {
-            //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
-            new Sequence()
-                // BG Color
-                .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
-                .shape("polygon", { points: centeredPoints, fillColor: game.user.color.css, fillAlpha: 1 })
-                .screenSpace()
-                .screenSpacePosition({ x: 0, y: 0 })
-                .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-                .screenSpaceAboveUI()
-                .zIndex(-1)
-                .duration(duration)
-                .forUsers(users)
-                .delay(config.delay)
-                // Image
-                .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
-                .file(imageUrl)
-                .zIndex(0)
-                .shape("polygon", { isMask: true, points: centeredPoints })
-                .scale(config.scale)
-                .spriteOffset(config.offset, { gridUnits: false })
-                .spriteRotation(config.rotation)
-                .screenSpace()
-                .screenSpacePosition({ x: 0, y: 0 })
-                .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-                .screenSpaceAboveUI()
-                .duration(duration)
-                .forUsers(users)
-                .delay(config.delay)
-                // Outline
-                .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
-                .zIndex(1)
-                .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
-                .screenSpace()
-                .screenSpacePosition({ x: 0, y: 0 })
-                .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-                .screenSpaceAboveUI()
-                .duration(duration)
-                .forUsers(users)
-                .delay(config.delay)
-                // Sound
-                .sound()
-                .file(config.sfx)
-                .fadeOutAudio(duration / 4)
-                .volume(config.volume)
-                .forUsers(users)
-                .delay(config.delay)
-                .play();
-        };
+        //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
+        new Sequence()
+            // BG Color
+            .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
+            .shape("polygon", { points: centeredPoints, fillColor: game.user.color.css, fillAlpha: 1 })
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            .screenSpaceAboveUI()
+            .zIndex(-1)
+            .duration(duration)
+            .forUsers(users)
+            .delay(config.delay)
+            // Image
+            .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
+            .file(imageUrl)
+            .zIndex(0)
+            .shape("polygon", { isMask: true, points: centeredPoints })
+            .scale(config.scale)
+            .spriteOffset(config.offset, { gridUnits: false })
+            .spriteRotation(config.rotation)
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            // X Offset
+            .animateProperty("sprite", "position.x", { from: config?.offset?.x ?? 0, to: config?.offset?.x ?? 0, duration: duration, screenSpace: true })
+            // Y Offset
+            .animateProperty("sprite", "position.y", { from: config?.offset?.y ?? 0, to: config?.offset?.y ?? 0, duration: duration, screenSpace: true })
+            .screenSpaceAboveUI()
+            .duration(duration)
+            .forUsers(users)
+            .delay(config.delay)
+            // Outline
+            .effect()
+            .syncGroup(`p5-crit-${token.uuid}`)
+            .zIndex(1)
+            .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
+            .screenSpace()
+            .screenSpacePosition({ x: 0, y: 0 })
+            .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+            .screenSpaceAboveUI()
+            .duration(duration)
+            .forUsers(users)
+            .delay(config.delay)
+            // Sound
+            .sound()
+            .file(config.sfx)
+            .fadeOutAudio(duration / 4)
+            .volume(config.volume)
+            .forUsers(users)
+            .delay(config.delay)
+            .play();
     }
 }
