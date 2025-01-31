@@ -196,19 +196,19 @@ function displayCritAnimation(critType, token, users, imgData, config) {
 
 function getCritActorSettings(data, successOrFail, flags, type = 'default') {
     const result = { ...data };
-    const checks = flags?.critical?.[successOrFail]?.[type];
-    const defaultValues = flags?.critical?.[successOrFail]?.default;
+    const typeSpecificSettings = flags?.critical?.[successOrFail]?.[type];
+    const baseSettings = flags?.critical?.[successOrFail]?.default;
 
-    result.art = checks?.art || defaultValues?.art || '';
-    result.enabled = checks?.enabled === 'default' ? defaultValues?.enabled : checks?.enabled;
-    result.offset.x = (checks?.offset?.x || (defaultValues?.offset?.x ?? 0)) / 100;
-    result.offset.y = (checks?.offset?.y || (defaultValues?.offset?.y ?? 0)) / 100;
-    result.rotation = checks?.rotation || (defaultValues?.rotation ?? 0)
-    result.scale = checks?.scale === 1 ? defaultValues?.scale ?? 1 : checks?.scale;
-    result.sfx = checks?.sfx || defaultValues?.sfx || '';
-    result.type = checks?.type === 'default' ? defaultValues?.type : checks?.type;
+    result.art = typeSpecificSettings?.art || baseSettings?.art || '';
+    result.enabled = typeSpecificSettings?.enabled === 'default' ? baseSettings?.enabled : typeSpecificSettings?.enabled;
+    result.offset.x = (typeSpecificSettings?.offset?.x || (baseSettings?.offset?.x ?? 0)) / 100;
+    result.offset.y = (typeSpecificSettings?.offset?.y || (baseSettings?.offset?.y ?? 0)) / 100;
+    result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0)
+    result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale;
+    result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || '';
+    result.type = typeSpecificSettings?.type === 'default' ? baseSettings?.type : typeSpecificSettings?.type;
 
-    const volume = checks?.volume === 100 ? defaultValues?.volume ?? 100 : checks?.volume;
+    const volume = typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume;
     result.volume = (volume * result.volume) / 100;
 
     return result;
