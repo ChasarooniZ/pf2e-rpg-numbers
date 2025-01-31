@@ -629,11 +629,11 @@
                     },
                     "offset-x": {
                         "name": "X Offset",
-                        "hint": "This is as a %, so 100, would move it to the right one full image length"
+                        "hint": "This is % of the screen WIDTH, so 100 would move it to the RIGHT"
                     },
                     "offset-y": {
                         "name": "Y Offset",
-                        "hint": "This is as a %, so 100, would move it down one full image length"
+                        "hint": "This is % of the screen HEIGHT, so 100 would move it DOWN"
                     },
                     "scale": {
                         "name": "Scale",
@@ -649,7 +649,7 @@
                     },
                     "volume": {
                         "name": "Volume",
-                        "hint": "Set this to override the default crit sound volume"
+                        "hint": "Set this to multiply by the default crit sound volume (IE 50% * 200% = 100% etc.)"
                     },
                     "type": {
                         "name": "Override Crit Type",
