@@ -1,4 +1,5 @@
 
+import { migrateActorTokenSettings } from "../library/migration.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
@@ -9,124 +10,120 @@ const settingsConfig = {
     critical: {
         icon: "fa-explosion",
         tabs: {
-            default: {
-                success: {
-                    enabled: "critical.default.success.enabled",
-                    type: "critical.default.success.type",
-                    art: "critical.default.success.art",
+            success: {
+                default: {
+                    enabled: "critical.success.default.enabled",
+                    type: "critical.success.default.type",
+                    art: "critical.success.default.art",
                     offset: {
-                        x: "critical.default.success.offset.x",
-                        y: "critical.default.success.offset.y",
+                        x: "critical.success.default.offset.x",
+                        y: "critical.success.default.offset.y",
                     },
-                    color: "critical.default.success.color",
-                    scale: "critical.default.success.scale",
-                    rotation: "critical.default.success.rotation",
-                    sfx: "critical.default.success.sfx",
-                    volume: "critical.default.success.volume",
+                    color: "critical.success.default.color",
+                    scale: "critical.success.default.scale",
+                    rotation: "critical.success.default.rotation",
+                    sfx: "critical.success.default.sfx",
+                    volume: "critical.success.default.volume",
                 },
-                failure: {
-                    enabled: "critical.default.failure.enabled",
-                    type: "critical.default.failure.type",
-                    art: "critical.default.failure.art",
+                strikes: {
+                    enabled: "critical.success.strikes.enabled",
+                    type: "critical.success.strikes.type",
+                    art: "critical.success.strikes.art",
                     offset: {
-                        x: "critical.default.failure.offset.x",
-                        y: "critical.default.failure.offset.y",
+                        x: "critical.success.strikes.offset.x",
+                        y: "critical.success.strikes.offset.y",
                     },
-                    color: "critical.default.failure.color",
-                    scale: "critical.default.failure.scale",
-                    rotation: "critical.default.failure.rotation",
-                    sfx: "critical.default.failure.sfx",
-                    volume: "critical.default.failure.volume",
+                    color: "critical.success.strikes.color",
+                    scale: "critical.success.strikes.scale",
+                    rotation: "critical.success.strikes.rotation",
+                    sfx: "critical.success.strikes.sfx",
+                    volume: "critical.success.strikes.volume",
+                },
+                checks: {
+                    enabled: "critical.success.checks.enabled",
+                    type: "critical.success.checks.type",
+                    art: "critical.success.checks.art",
+                    offset: {
+                        x: "critical.success.checks.offset.x",
+                        y: "critical.success.checks.offset.y",
+                    },
+                    color: "critical.success.checks.color",
+                    scale: "critical.success.checks.scale",
+                    rotation: "critical.success.checks.rotation",
+                    sfx: "critical.success.checks.sfx",
+                    volume: "critical.success.checks.volume",
+                },
+                saves: {
+                    enabled: "critical.success.saves.enabled",
+                    type: "critical.success.saves.type",
+                    art: "critical.success.saves.art",
+                    offset: {
+                        x: "critical.success.saves.offset.x",
+                        y: "critical.success.saves.offset.y",
+                    },
+                    color: "critical.success.saves.color",
+                    scale: "critical.success.saves.scale",
+                    rotation: "critical.success.saves.rotation",
+                    sfx: "critical.success.saves.sfx",
+                    volume: "critical.success.saves.volume",
                 }
             },
-            strikes: {
-                success: {
-                    enabled: "critical.strikes.success.enabled",
-                    type: "critical.strikes.success.type",
-                    art: "critical.strikes.success.art",
+            failure: {
+                default: {
+                    enabled: "critical.failure.default.enabled",
+                    type: "critical.failure.default.type",
+                    art: "critical.failure.default.art",
                     offset: {
-                        x: "critical.strikes.success.offset.x",
-                        y: "critical.strikes.success.offset.y",
+                        x: "critical.failure.default.offset.x",
+                        y: "critical.failure.default.offset.y",
                     },
-                    color: "critical.strikes.success.color",
-                    scale: "critical.strikes.success.scale",
-                    rotation: "critical.strikes.success.rotation",
-                    sfx: "critical.strikes.success.sfx",
-                    volume: "critical.strikes.success.volume",
+                    color: "critical.failure.default.color",
+                    scale: "critical.failure.default.scale",
+                    rotation: "critical.failure.default.rotation",
+                    sfx: "critical.failure.default.sfx",
+                    volume: "critical.failure.default.volume",
                 },
-                failure: {
-                    enabled: "critical.strikes.failure.enabled",
-                    type: "critical.strikes.failure.type",
-                    art: "critical.strikes.failure.art",
+                strikes: {
+                    enabled: "critical.failure.strikes.enabled",
+                    type: "critical.failure.strikes.type",
+                    art: "critical.failure.strikes.art",
                     offset: {
-                        x: "critical.strikes.failure.offset.x",
-                        y: "critical.strikes.failure.offset.y",
+                        x: "critical.failure.strikes.offset.x",
+                        y: "critical.failure.strikes.offset.y",
                     },
-                    color: "critical.strikes.failure.color",
-                    scale: "critical.strikes.failure.scale",
-                    rotation: "critical.strikes.failure.rotation",
-                    sfx: "critical.strikes.failure.sfx",
-                    volume: "critical.strikes.failure.volume",
-                }
-            },
-            checks: {
-                success: {
-                    enabled: "critical.checks.success.enabled",
-                    type: "critical.checks.success.type",
-                    art: "critical.checks.success.art",
-                    offset: {
-                        x: "critical.checks.success.offset.x",
-                        y: "critical.checks.success.offset.y",
-                    },
-                    color: "critical.checks.success.color",
-                    scale: "critical.checks.success.scale",
-                    rotation: "critical.checks.success.rotation",
-                    sfx: "critical.checks.success.sfx",
-                    volume: "critical.checks.success.volume",
+                    color: "critical.failure.strikes.color",
+                    scale: "critical.failure.strikes.scale",
+                    rotation: "critical.failure.strikes.rotation",
+                    sfx: "critical.failure.strikes.sfx",
+                    volume: "critical.failure.strikes.volume",
                 },
-                failure: {
-                    enabled: "critical.checks.failure.enabled",
-                    type: "critical.checks.failure.type",
-                    art: "critical.checks.failure.art",
+                checks: {
+                    enabled: "critical.failure.checks.enabled",
+                    type: "critical.failure.checks.type",
+                    art: "critical.failure.checks.art",
                     offset: {
-                        x: "critical.checks.failure.offset.x",
-                        y: "critical.checks.failure.offset.y",
+                        x: "critical.failure.checks.offset.x",
+                        y: "critical.failure.checks.offset.y",
                     },
-                    color: "critical.checks.failure.color",
-                    scale: "critical.checks.failure.scale",
-                    rotation: "critical.checks.failure.rotation",
-                    sfx: "critical.checks.failure.sfx",
-                    volume: "critical.checks.failure.volume",
-                }
-            },
-            saves: {
-                success: {
-                    enabled: "critical.saves.success.enabled",
-                    type: "critical.saves.success.type",
-                    art: "critical.saves.success.art",
-                    offset: {
-                        x: "critical.saves.success.offset.x",
-                        y: "critical.saves.success.offset.y",
-                    },
-                    color: "critical.saves.success.color",
-                    scale: "critical.saves.success.scale",
-                    rotation: "critical.saves.success.rotation",
-                    sfx: "critical.saves.success.sfx",
-                    volume: "critical.saves.success.volume",
+                    color: "critical.failure.checks.color",
+                    scale: "critical.failure.checks.scale",
+                    rotation: "critical.failure.checks.rotation",
+                    sfx: "critical.failure.checks.sfx",
+                    volume: "critical.failure.checks.volume",
                 },
-                failure: {
-                    enabled: "critical.saves.failure.enabled",
-                    type: "critical.saves.failure.type",
-                    art: "critical.saves.failure.art",
+                saves: {
+                    enabled: "critical.failure.saves.enabled",
+                    type: "critical.failure.saves.type",
+                    art: "critical.failure.saves.art",
                     offset: {
-                        x: "critical.saves.failure.offset.x",
-                        y: "critical.saves.failure.offset.y",
+                        x: "critical.failure.saves.offset.x",
+                        y: "critical.failure.saves.offset.y",
                     },
-                    color: "critical.saves.failure.color",
-                    scale: "critical.saves.failure.scale",
-                    rotation: "critical.saves.failure.rotation",
-                    sfx: "critical.saves.failure.sfx",
-                    volume: "critical.saves.failure.volume",
+                    color: "critical.failure.saves.color",
+                    scale: "critical.failure.saves.scale",
+                    rotation: "critical.failure.saves.rotation",
+                    sfx: "critical.failure.saves.sfx",
+                    volume: "critical.failure.saves.volume",
                 }
             }
         },
@@ -348,12 +345,7 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
     if (!flagIDs.includes('critical')) {
-        await actor.setFlag(MODULE_ID, 'critical', {
-            default: DEFAULT_CRIT,
-            checks: DEFAULT_CRIT,
-            saves: DEFAULT_CRIT,
-            strikes: DEFAULT_CRIT
-        })
+        await migrateActorTokenSettings(actor)
     }
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
@@ -370,18 +362,18 @@ function critProcessHelper(data, result) {
 
     for (const type of types) {
         for (const state of succFail) {
-            res[type][state] = {
-                art: data[type][state].art,
-                enabled: data[type][state].default,
+            res[state][type] = {
+                art: data[state][type].art,
+                enabled: data[state][type].default,
                 offset: {
-                    x: isNaN(Number(data[type][state].offset.x)) ? 0 : Number(data[type][state].offset.x),
-                    y: isNaN(Number(data[type][state].offset.y)) ? 0 : Number(data[type][state].offset.y),
+                    x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
+                    y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
                 },
-                rotation: isNaN(Number(data[type][state].rotation)) ? 0 : Number(data[type][state].rotation),
-                scale: isNaN(Number(data[type][state].scale)) ? 1 : Number(data[type][state].scale),
-                sfx: data[type][state].sfx,
-                type: data[type][state].type,
-                volume: isNaN(Number(data[type][state].volume)) ? 100 : Number(data[type][state].volume),
+                rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
+                scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
+                sfx: data[state][type].sfx,
+                type: data[state][type].type,
+                volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
             }
         }
     }

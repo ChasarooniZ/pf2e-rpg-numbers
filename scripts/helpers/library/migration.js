@@ -16,8 +16,10 @@ const DEFAULT_CRIT_DATA = {
 }
 
 export const DEFAULT_CRIT = {
-    success: DEFAULT_CRIT_DATA,
-    failure: DEFAULT_CRIT_DATA
+    default: DEFAULT_CRIT_DATA,
+    checks: DEFAULT_CRIT_DATA,
+    saves: DEFAULT_CRIT_DATA,
+    strikes: DEFAULT_CRIT_DATA,
 };
 
 export const DEFAULT_TOKEN = {
@@ -48,45 +50,49 @@ export async function migrateTokenSettingsToActorSettings() {
         console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),)
         SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct: (cnt / actorCnt) * 100 })
 
-        const token = actor?.prototypeToken;
-        const flags = token?.flags?.['pf2e-rpg-numbers']
-        if (token && flags) {
-            //Set Game version to ease future migration attempt
-            await setActorFlag(actor, 'version', game.modules.get('pf2e-rpg-numbers').version);
-
-            const crit = {
-                default: {
-                    success: {
-                        enabled: DEFAULT_VALUE,
-                        offset: {
-                            x: flags?.critOffsetX ?? 0,
-                            y: flags?.critOffsetY ?? 0
-                        },
-                        rotation: flags?.critRotation ?? 0,
-                        sfx: flags?.critSFX ?? '', //Note should also accept JB2A * card
-                        volume: 100,
-                        scale: flags?.critScale ?? 0,
-                        art: getCritImageLegacy(flags),
-                        type: 'default'
-                    },
-                    failure: DEFAULT_CRIT.failure
-                },
-                checks: DEFAULT_CRIT,
-                saves: DEFAULT_CRIT,
-                strikes: DEFAULT_CRIT
-            }
-            await setActorFlag(actor, 'critical', crit)
-
-            const tok = {
-                rotation: {
-                    offset: flags?.rotationOffset ?? 0,
-                }
-            }
-            await setActorFlag(actor, 'token', tok)
-
-        }
+        await migrateActorTokenSettings(actor);
     }
     console.log("Settings Migrated")
+}
+
+export async function migrateActorTokenSettings(actor) {
+    const token = actor?.prototypeToken;
+    const flags = token?.flags?.['pf2e-rpg-numbers'];
+    if (token && flags) {
+        //Set Game version to ease future migration attempt
+        await setActorFlag(actor, 'version', game.modules.get('pf2e-rpg-numbers').version);
+
+        const crit = {
+            success: {
+                default: {
+                    enabled: DEFAULT_VALUE,
+                    offset: {
+                        x: flags?.critOffsetX ?? 0,
+                        y: flags?.critOffsetY ?? 0
+                    },
+                    rotation: flags?.critRotation ?? 0,
+                    sfx: flags?.critSFX ?? '', //Note should also accept JB2A * card
+                    volume: 100,
+                    scale: flags?.critScale ?? 0,
+                    art: getCritImageLegacy(flags),
+                    type: 'default'
+                },
+                checks: DEFAULT_CRIT_DATA,
+                saves: DEFAULT_CRIT_DATA,
+                strikes: DEFAULT_CRIT_DATA
+            },
+            failure: DEFAULT_CRIT
+        };
+        await setActorFlag(actor, 'critical', crit);
+
+        const tok = {
+            rotation: {
+                offset: flags?.rotationOffset ?? 0,
+            }
+        };
+        await setActorFlag(actor, 'token', tok);
+
+    }
 }
 
 //sets actor flag
