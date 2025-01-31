@@ -102,7 +102,7 @@ export function personaCrit(token, users, config) {
             new Sequence()
                 // BG Color
                 .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
+                .syncGroup(`p5-crit-${token?.uuid}`)
                 .shape("polygon", { points: centeredPoints, fillColor: game.user.color.css, fillAlpha: 1 })
                 .screenSpace()
                 .screenSpacePosition({ x: 0, y: 0 })
@@ -114,7 +114,7 @@ export function personaCrit(token, users, config) {
                 .delay(config.delay)
                 // Video
                 .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
+                .syncGroup(`p5-crit-${token?.uuid}`)
                 .file(imageUrl)
                 .zIndex(0)
                 .shape("polygon", { isMask: true, points: centeredPoints })
@@ -131,7 +131,7 @@ export function personaCrit(token, users, config) {
                 .delay(config.delay)
                 // Outline
                 .effect()
-                .syncGroup(`p5-crit-${token.uuid}`)
+                .syncGroup(`p5-crit-${token?.uuid}`)
                 .zIndex(1)
                 .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
                 .screenSpace()
@@ -155,7 +155,7 @@ export function personaCrit(token, users, config) {
         new Sequence()
             // BG Color
             .effect()
-            .syncGroup(`p5-crit-${token.uuid}`)
+            .syncGroup(`p5-crit-${token?.uuid}`)
             .shape("polygon", { points: centeredPoints, fillColor: game.user.color.css, fillAlpha: 1 })
             .screenSpace()
             .screenSpacePosition({ x: 0, y: 0 })
@@ -167,7 +167,7 @@ export function personaCrit(token, users, config) {
             .delay(config.delay)
             // Image
             .effect()
-            .syncGroup(`p5-crit-${token.uuid}`)
+            .syncGroup(`p5-crit-${token?.uuid}`)
             .file(imageUrl)
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
@@ -203,7 +203,7 @@ export function personaCrit(token, users, config) {
             .delay(config.delay)
             // Outline
             .effect()
-            .syncGroup(`p5-crit-${token.uuid}`)
+            .syncGroup(`p5-crit-${token?.uuid}`)
             .zIndex(1)
             .shape("polygon", { points: centeredPoints, fillAlpha: 0, lineSize: 10, lineColor: "white" })
             .screenSpace()

@@ -16,7 +16,7 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     const imgData = getImageData(rollDeets);
     if (!imgData) return;
 
-    const config = getAnimationConfig({ actor: rollDeets.token?.actor, rollDeets, isSuccess });
+    const config = getAnimationConfig({ actor: rollDeets.token?.actor, type: rollDeets?.type, isSuccess });
     const users = getEligibleUsers(rollDeets);
 
     const type = critType || (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
@@ -30,6 +30,28 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
         return;
     }
     displayCritAnimation(type, rollDeets.token, users, config);
+}
+
+
+export function createTestCritAnimation(data) {
+    const {
+        userID,
+        succFail,
+        section,
+        critSettings,
+        actor
+    } = data;
+
+    const config = getAnimationConfig({ flags: critSettings, type: section, isSuccess: succFail === 'success' });
+
+    const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
+
+    config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
+    config.art = config.art || shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
+    config.sfx = config.sfx || getSetting('critical.sound');
+
+
+    displayCritAnimation(type, rollDeets.token, [userID], config);
 }
 
 /**
@@ -99,10 +121,12 @@ function shouldUseTokenImage(actorType, defaultImgType) {
  * @returns {object} The animation configuration object.
  */
 function getAnimationConfig(config) {
-    const flags = {
-        critical: config.actor.getFlag('pf2e-rpg-numbers', 'critical'),
-        token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
-    }
+    const flags = config?.flags ?
+        config.flags :
+        {
+            critical: config.actor.getFlag('pf2e-rpg-numbers', 'critical'),
+            token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
+        }
 
     //{ actor: rollDeets.token?.actor, rollDeets, isSuccess}
     const successOrFail = config.isSuccess ? 'success' : 'failure';
@@ -115,7 +139,7 @@ function getAnimationConfig(config) {
     };
     let result = {};
 
-    switch (config?.rollDeets?.type) {
+    switch (config?.type) {
         case 'perception-check':
         case 'skill-check':
             result = getCritActorSettings(data, successOrFail, flags, 'checks')

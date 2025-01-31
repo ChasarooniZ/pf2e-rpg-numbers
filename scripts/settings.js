@@ -21,22 +21,6 @@ Hooks.on("init", () => {
         'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs',
     ])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
-    //TODO finalize this
-    // game.settings.registerMenu(mod, 'settingsMenu', {
-    //     name: game.i18n.localize("CCSS.settings.settingsMenu.name"),
-    //     label: game.i18n.localize("CCSS.settings.settingsMenu.label"),
-    //     icon: "fas fa-wrench",
-    //     type: SettingsForm,
-    //     restricted: false
-    // });
-    game.settings.registerMenu(MODULE_ID, "pf2eRPGActorSettingsMenu", {
-        name: "PF2e RPG Actor Settings",
-        label: "PF2e RPG Actor Settings",      // The text label used in the button
-        hint: "Settings for the PF2e RPG Actor settings",
-        icon: "fas fa-dragon",               // A Font Awesome icon used in the submenu button
-        type: ActorSettingsConfigForm,   // A FormApplication subclass
-        restricted: true                   // Restrict this submenu to gamemaster only?
-    });
 
     game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
         name: "PF2e RPG Settings",

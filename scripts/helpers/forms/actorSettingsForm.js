@@ -1,3 +1,4 @@
+import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
@@ -187,10 +188,22 @@ export class ActorSettingsConfigForm extends FormApplication {
         });
         html.find('#pf2e-rpg-import-actor').on('click', (event) => {
             game.pf2eRPGNumbers.settings.import();
-            this.close(); // Close the form without saving
+            this.close();
         });
         html.find('#pf2e-rpg-export-actor').on('click', (event) => {
             game.pf2eRPGNumbers.settings.export();
+        });
+        html.find('#critical-test').on('click', (event) => {
+            const {type, section} = event.target;
+            const formData = this.getFormData;
+            console.log({type,section})
+            createTestCritAnimation({
+                userID: game.user.id,
+                succFail: type,
+                section,
+                critSettings: formData.settings.critical,
+                actor: this.options.actor
+            });
         });
     }
 
@@ -252,23 +265,7 @@ export class ActorSettingsConfigForm extends FormApplication {
     }
 
     async _processForm(html, submit = false) {
-        // Collect the form data from all inputs in the form
-        const formData = new FormData(html[0].closest("form"));
-        const dataObject = {};
-
-        // // Iterate over the form data and convert it to an object
-        formData.forEach((value, key) => {
-            // Handle checkboxes separately to store booleans
-            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
-            } else {
-                dataObject[key] = value;
-            }
-        });
-
-        // // Log the gathered form data for debugging purposes
-        const formattedObject = foundry.utils.expandObject(dataObject);
-        console.log("Form Data:", formattedObject);
+        const formattedObject = this.getFormData(html)
 
         // // Handle saving or submitting
         if (submit) {
@@ -293,6 +290,7 @@ export class ActorSettingsConfigForm extends FormApplication {
 
         await this.options?.actor?.setFlag(MODULE_ID, 'token', token)
     }
+
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
         const remain = remaining.join(".")
@@ -301,6 +299,26 @@ export class ActorSettingsConfigForm extends FormApplication {
         return getNestedProperty(obj, remain)
     }
 
+    getFormData(html) {
+         // Collect the form data from all inputs in the form
+         const formData = new FormData(html[0].closest("form"));
+         const dataObject = {};
+ 
+         // // Iterate over the form data and convert it to an object
+         formData.forEach((value, key) => {
+             // Handle checkboxes separately to store booleans
+             if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
+                 dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
+             } else {
+                 dataObject[key] = value;
+             }
+         });
+ 
+         // // Log the gathered form data for debugging purposes
+         const formattedObject = foundry.utils.expandObject(dataObject);
+         console.log("Form Data RPG#s:", formattedObject);
+         return formattedObject;
+    }
 
 }
 
