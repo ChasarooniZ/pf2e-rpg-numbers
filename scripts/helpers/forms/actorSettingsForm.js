@@ -1,6 +1,3 @@
-
-import { migrateActorTokenSettings } from "../library/migration.js";
-import { DEFAULT_CRIT_DATA } from "../library/migration.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
