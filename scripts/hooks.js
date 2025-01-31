@@ -107,11 +107,12 @@ export async function getActorSheetHeaderButtons(sheet, buttons) {
     buttons.unshift({
         class: "rpg-numbers-actor-menu",
         icon: "fa-solid fa-dragon",
-        label: "RPG #s",
+        label: localize('menu.actor-settings.label'),
         onclick: () => {
             new ActorSettingsConfigForm({ actor: sheet.actor }).render(true)
         }
     })
+    return buttons;
 }
 
 export function getItemSheetHeaderButtons(itemSheet, menu) {
@@ -122,7 +123,7 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
     menu.unshift({
         class: "pf2e-rpg-numbers",
         icon: "fa-solid fa-dragon",
-        label: "RPG #s",
+        label: localize('menu.actor-settings.label'),
         onclick: async (_ev, itemD = item) => {
             const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
             // Create and display the dialog box
