@@ -194,8 +194,9 @@ export class ActorSettingsConfigForm extends FormApplication {
             game.pf2eRPGNumbers.settings.export();
         });
         html.find('#critical-test').on('click', (event) => {
+            event.preventDefault();
             const {type, section} = event.target;
-            const formData = this.getFormData;
+            const formData = this.getFormData(html);
             console.log({type,section})
             createTestCritAnimation({
                 userID: game.user.id,
