@@ -178,9 +178,25 @@ export function personaCrit(token, users, config) {
             .screenSpacePosition({ x: 0, y: 0 })
             .screenSpaceAnchor({ x: 0.5, y: 0.5 })
             // X Offset
-            .animateProperty("sprite", "position.x", { from: config?.offset?.x ?? 0, to: config?.offset?.x ?? 0, duration: duration, screenSpace: true })
+            .animateProperty(
+                "sprite",
+                "position.x",
+                {
+                    from: config?.offset?.x ?? 0,
+                    to: config?.offset?.x ?? 0,
+                    duration: duration,
+                    screenSpace: true
+                })
             // Y Offset
-            .animateProperty("sprite", "position.y", { from: config?.offset?.y ?? 0, to: config?.offset?.y ?? 0, duration: duration, screenSpace: true })
+            .animateProperty(
+                "sprite",
+                "position.y",
+                {
+                    from: config?.offset?.y ?? 0,
+                    to: config?.offset?.y ?? 0,
+                    duration: duration,
+                    screenSpace: true
+                })
             .screenSpaceAboveUI()
             .duration(duration)
             .forUsers(users)

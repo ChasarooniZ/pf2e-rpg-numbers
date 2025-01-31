@@ -71,6 +71,16 @@ export async function fireEmblemCrit(token, users, config) {
             ratioX: true,
             ratioY: false,
         })
+        // Y Offset
+        .animateProperty(
+            "sprite",
+            "position.y",
+            {
+                from: config?.offset?.y ?? 0,
+                to: config?.offset?.y ?? 0,
+                duration: duration,
+                screenSpace: true
+            })
         .duration(duration)
         .forUsers(users)
         .delay(config.delay)
