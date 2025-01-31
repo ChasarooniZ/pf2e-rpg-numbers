@@ -355,7 +355,7 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
     if (!flagIDs.includes('critical')) {
-        await actor.setFlag(MODULE_ID, 'critical', { success: DEFAULT_CRIT, failure: DEFAULT_CRIT });
+        await actor.setFlag(MODULE_ID, 'critical', DEFAULT_CRIT);
     }
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
