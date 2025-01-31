@@ -372,18 +372,18 @@ function critProcessHelper(data, result) {
 
     for (const type of types) {
         for (const state of succFail) {
-            res[state][type] = {
-                art: data[state][type].art,
-                enabled: data[state][type].default,
+            res[type][state] = {
+                art: data[type][state].art,
+                enabled: data[type][state].default,
                 offset: {
-                    x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
-                    y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
+                    x: isNaN(Number(data[type][state].offset.x)) ? 0 : Number(data[type][state].offset.x),
+                    y: isNaN(Number(data[type][state].offset.y)) ? 0 : Number(data[type][state].offset.y),
                 },
-                rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
-                scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
-                sfx: data[state][type].sfx,
-                type: data[state][type].type,
-                volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
+                rotation: isNaN(Number(data[type][state].rotation)) ? 0 : Number(data[type][state].rotation),
+                scale: isNaN(Number(data[type][state].scale)) ? 1 : Number(data[type][state].scale),
+                sfx: data[type][state].sfx,
+                type: data[type][state].type,
+                volume: isNaN(Number(data[type][state].volume)) ? 100 : Number(data[type][state].volume),
             }
         }
     }
