@@ -82,7 +82,7 @@ function getImageData(rollDeets) {
     };
 
     if (shouldUseTokenImage(actorType, defaultImgType)) {
-        imgData.img = getTokenImage(rollDeets?.token?.object);
+        imgData.img = getTokenImage(rollDeets?.token);
         imgData.scale = ((rollDeets?.token?.texture?.scaleX ?? 1) + (rollDeets?.token?.texture?.scaleY ?? 1)) / 2;
     } else {
         imgData.img = rollDeets?.token?.actor?.img;
