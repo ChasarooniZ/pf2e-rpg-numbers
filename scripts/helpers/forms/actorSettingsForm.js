@@ -1,5 +1,6 @@
 
 import { migrateActorTokenSettings } from "../library/migration.js";
+import { DEFAULT_CRIT_DATA } from "../library/migration.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
@@ -154,7 +155,6 @@ export class ActorSettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
         super(options);
-        checkAndSetDefaultActorFlagIfNotExist(options.actor)
         this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
 
@@ -198,6 +198,7 @@ export class ActorSettingsConfigForm extends FormApplication {
     }
 
     getData() {
+        checkAndSetDefaultActorFlagIfNotExist(this?.options?.actor)
         const tabs = Object.keys(settingsConfig).map(tab => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
@@ -303,7 +304,7 @@ export class ActorSettingsConfigForm extends FormApplication {
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
         const remain = remaining.join(".")
-        const obj = this.options.actor.getFlag(MODULE_ID, flag) ?? getDefaultVariable(flag, remaining);
+        const obj = this.options.actor.getFlag(MODULE_ID, flag) ?? getDefaultVariable(flag);
 
         return getNestedProperty(obj, remain)
     }
@@ -315,12 +316,12 @@ function getNestedProperty(obj, path) {
     return path.split('.').reduce((acc, part) => acc && acc[part], obj);
 }
 
-function getDefaultVariable(flag, remaining) {
+function getDefaultVariable(flag) {
     switch (flag) {
         case 'critical':
-            return DEFAULT_CRIT_DATA[remaining?.at(-1)];
+            return DEFAULT_CRIT;
         case 'token':
-            return 0; //TODO update me
+            return DEFAULT_TOKEN;
         default:
             return null;
     }
@@ -357,10 +358,7 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
     if (!flagIDs.includes('critical')) {
-        const needsDefault = !(await migrateActorTokenSettings(actor))
-        if (needsDefault) {
-            await actor.setFlag(MODULE_ID, 'critical', { success: DEFAULT_CRIT, failure: DEFAULT_CRIT })
-        }
+        await actor.setFlag(MODULE_ID, 'critical', { success: DEFAULT_CRIT, failure: DEFAULT_CRIT });
     }
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)

@@ -1,7 +1,7 @@
 import { getSetting, localize, MODULE_ID, setSetting } from "../misc.js";
 const DEFAULT_VALUE = 'default';
 
-export const DEFAULT_CRIT_DATA = {
+export const DEFAULT_CRIT_SECTION = {
     enabled: DEFAULT_VALUE,
     type: DEFAULT_VALUE,
     art: '',
@@ -15,12 +15,17 @@ export const DEFAULT_CRIT_DATA = {
     scale: 1,
 }
 
-export const DEFAULT_CRIT = {
-    default: DEFAULT_CRIT_DATA,
-    checks: DEFAULT_CRIT_DATA,
-    saves: DEFAULT_CRIT_DATA,
-    strikes: DEFAULT_CRIT_DATA,
+export const DEFAULT_CRIT_TYPE = {
+    default: DEFAULT_CRIT_SECTION,
+    checks: DEFAULT_CRIT_SECTION,
+    saves: DEFAULT_CRIT_SECTION,
+    strikes: DEFAULT_CRIT_SECTION,
 };
+
+export const DEFAULT_CRIT = {
+    success: DEFAULT_CRIT_TYPE,
+    failure: DEFAULT_CRIT_TYPE
+}
 
 export const DEFAULT_TOKEN = {
     rotation: {
@@ -77,11 +82,11 @@ export async function migrateActorTokenSettings(actor) {
                     art: getCritImageLegacy(flags),
                     type: 'default'
                 },
-                checks: DEFAULT_CRIT_DATA,
-                saves: DEFAULT_CRIT_DATA,
-                strikes: DEFAULT_CRIT_DATA
+                checks: DEFAULT_CRIT_SECTION,
+                saves: DEFAULT_CRIT_SECTION,
+                strikes: DEFAULT_CRIT_SECTION
             },
-            failure: DEFAULT_CRIT
+            failure: DEFAULT_CRIT_TYPE
         };
         await setActorFlag(actor, 'critical', crit);
 
