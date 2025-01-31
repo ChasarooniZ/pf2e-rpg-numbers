@@ -285,12 +285,7 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async saveSettings(data) {
         const settings = data.settings;
-        const crit = critProcessHelper(settings.critical, {
-            default: DEFAULT_CRIT,
-            checks: DEFAULT_CRIT,
-            saves: DEFAULT_CRIT,
-            strikes: DEFAULT_CRIT
-        })
+        const crit = critProcessHelper(settings.critical, DEFAULT_CRIT)
         await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
 
         const token = DEFAULT_TOKEN;
@@ -370,20 +365,20 @@ function critProcessHelper(data, result) {
     // Create a deep copy of the result object
     const res = JSON.parse(JSON.stringify(result));
 
-    for (const type of types) {
-        for (const state of succFail) {
-            res[type][state] = {
-                art: data[type][state].art,
-                enabled: data[type][state].default,
+    for (const state of succFail) {
+        for (const type of types) {
+            res[state][type] = {
+                art: data[state][type].art,
+                enabled: data[state][type].default,
                 offset: {
-                    x: isNaN(Number(data[type][state].offset.x)) ? 0 : Number(data[type][state].offset.x),
-                    y: isNaN(Number(data[type][state].offset.y)) ? 0 : Number(data[type][state].offset.y),
+                    x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
+                    y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
                 },
-                rotation: isNaN(Number(data[type][state].rotation)) ? 0 : Number(data[type][state].rotation),
-                scale: isNaN(Number(data[type][state].scale)) ? 1 : Number(data[type][state].scale),
-                sfx: data[type][state].sfx,
-                type: data[type][state].type,
-                volume: isNaN(Number(data[type][state].volume)) ? 100 : Number(data[type][state].volume),
+                rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
+                scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
+                sfx: data[state][type].sfx,
+                type: data[state][type].type,
+                volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
             }
         }
     }
