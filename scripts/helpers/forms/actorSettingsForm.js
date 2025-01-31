@@ -303,7 +303,8 @@ export class ActorSettingsConfigForm extends FormApplication {
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
         const remain = remaining.join(".")
-        const obj = this.options.actor.getFlag(MODULE_ID, flag); // TODO make actor defined here
+        const obj = this.options.actor.getFlag(MODULE_ID, flag) ?? getDefaultVariable(flag, remaining);
+
         return getNestedProperty(obj, remain)
     }
 
@@ -312,6 +313,17 @@ export class ActorSettingsConfigForm extends FormApplication {
 
 function getNestedProperty(obj, path) {
     return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+}
+
+function getDefaultVariable(flag, remaining) {
+    switch (flag) {
+        case 'critical':
+            return DEFAULT_CRIT_DATA[remaining?.at(-1)];
+        case 'token':
+            return 0; //TODO update me
+        default:
+            return null;
+    }
 }
 
 
@@ -345,7 +357,10 @@ async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
     if (!flagIDs.includes('critical')) {
-        await migrateActorTokenSettings(actor)
+        const needsDefault = !(await migrateActorTokenSettings(actor))
+        if (needsDefault) {
+            await actor.setFlag(MODULE_ID, 'critical', { success: DEFAULT_CRIT, failure: DEFAULT_CRIT })
+        }
     }
     if (!flagIDs.includes('token')) {
         await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)

@@ -1,7 +1,7 @@
 import { getSetting, localize, MODULE_ID, setSetting } from "../misc.js";
 const DEFAULT_VALUE = 'default';
 
-const DEFAULT_CRIT_DATA = {
+export const DEFAULT_CRIT_DATA = {
     enabled: DEFAULT_VALUE,
     type: DEFAULT_VALUE,
     art: '',
@@ -92,7 +92,10 @@ export async function migrateActorTokenSettings(actor) {
         };
         await setActorFlag(actor, 'token', tok);
 
+    } else {
+        return false;
     }
+    return true;
 }
 
 //sets actor flag
