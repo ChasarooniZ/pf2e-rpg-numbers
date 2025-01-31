@@ -38,11 +38,11 @@ export function createTestCritAnimation(data) {
         userID,
         succFail,
         section,
-        critSettings,
+        settings,
         actor
     } = data;
 
-    const config = getAnimationConfig({ flags: critSettings, type: section, isSuccess: succFail === 'success' });
+    const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === 'success' });
 
     const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
 
@@ -139,20 +139,24 @@ function getAnimationConfig(config) {
     };
     let result = {};
 
-    switch (config?.type) {
-        case 'perception-check':
-        case 'skill-check':
-            result = getCritActorSettings(data, successOrFail, flags, 'checks')
-            break;
-        case 'attack-roll':
-            result = getCritActorSettings(data, successOrFail, flags, 'strikes')
-            break;
-        case 'saving-throw':
-            result = getCritActorSettings(data, successOrFail, flags, 'saves')
-            break;
-        default:
-            result = getCritActorSettings(data, successOrFail, flags)
-            break;
+    if (config?.flags) {
+        result = getCritActorSettings(data, successOrFail, flags, config?.type)
+    } else {
+        switch (config?.type) {
+            case 'perception-check':
+            case 'skill-check':
+                result = getCritActorSettings(data, successOrFail, flags, 'checks')
+                break;
+            case 'attack-roll':
+                result = getCritActorSettings(data, successOrFail, flags, 'strikes')
+                break;
+            case 'saving-throw':
+                result = getCritActorSettings(data, successOrFail, flags, 'saves')
+                break;
+            default:
+                result = getCritActorSettings(data, successOrFail, flags)
+                break;
+        }
     }
 
     return result;

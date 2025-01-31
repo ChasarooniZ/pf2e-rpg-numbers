@@ -193,19 +193,25 @@ export class ActorSettingsConfigForm extends FormApplication {
         html.find('#pf2e-rpg-export-actor').on('click', (event) => {
             game.pf2eRPGNumbers.settings.export();
         });
-        html.find('#critical-test').on('click', (event) => {
-            event.preventDefault();
-            const {type, section} = event.target;
-            const formData = this.getFormData(html);
-            console.log({type,section})
-            createTestCritAnimation({
-                userID: game.user.id,
-                succFail: type,
-                section,
-                critSettings: formData.settings.critical,
-                actor: this.options.actor
-            });
-        });
+
+        for (const state of ['success', 'failure']) {
+            for (const type of ['checks', 'default', 'saves', 'strikes']) {
+                html.find(`#critical-test-${state}-${type}`).on('click', (event) => {
+                    event.preventDefault();
+                    const { type, section } = event.target.dataset;
+                    const formData = this.getFormData(html).settings;
+                    formData.critical = critProcessHelper(formData.critical, DEFAULT_CRIT)
+                    console.log({ type, section })
+                    createTestCritAnimation({
+                        userID: game.user.id,
+                        succFail: type,
+                        section,
+                        settings: formData,
+                        actor: this.options.actor
+                    });
+                });
+            }
+        }
     }
 
     getData() {
@@ -301,24 +307,24 @@ export class ActorSettingsConfigForm extends FormApplication {
     }
 
     getFormData(html) {
-         // Collect the form data from all inputs in the form
-         const formData = new FormData(html[0].closest("form"));
-         const dataObject = {};
- 
-         // // Iterate over the form data and convert it to an object
-         formData.forEach((value, key) => {
-             // Handle checkboxes separately to store booleans
-             if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-                 dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
-             } else {
-                 dataObject[key] = value;
-             }
-         });
- 
-         // // Log the gathered form data for debugging purposes
-         const formattedObject = foundry.utils.expandObject(dataObject);
-         console.log("Form Data RPG#s:", formattedObject);
-         return formattedObject;
+        // Collect the form data from all inputs in the form
+        const formData = new FormData(html[0].closest("form"));
+        const dataObject = {};
+
+        // // Iterate over the form data and convert it to an object
+        formData.forEach((value, key) => {
+            // Handle checkboxes separately to store booleans
+            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
+                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
+            } else {
+                dataObject[key] = value;
+            }
+        });
+
+        // // Log the gathered form data for debugging purposes
+        const formattedObject = foundry.utils.expandObject(dataObject);
+        console.log("Form Data RPG#s:", formattedObject);
+        return formattedObject;
     }
 
 }
@@ -386,20 +392,24 @@ function critProcessHelper(data, result) {
 
     for (const state of succFail) {
         for (const type of types) {
-            res[state][type] = {
-                art: data[state][type].art,
-                enabled: data[state][type].default,
-                offset: {
-                    x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
-                    y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
-                },
-                rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
-                scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
-                sfx: data[state][type].sfx,
-                type: data[state][type].type,
-                volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
-            }
+            res[state][type] = critSettingsFormatted(data, state, type)
         }
     }
     return res;
 }
+function critSettingsFormatted(data, state, type) {
+    return {
+        art: data[state][type].art,
+        enabled: data[state][type].default,
+        offset: {
+            x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
+            y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
+        },
+        rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
+        scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
+        sfx: data[state][type].sfx,
+        type: data[state][type].type,
+        volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
+    };
+}
+
