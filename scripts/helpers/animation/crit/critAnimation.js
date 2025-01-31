@@ -172,8 +172,8 @@ function displayCritAnimation(critType, token, users, imgData, config) {
 
 function getCritActorSettings(data, successOrFail, flags, type = 'default') {
     const result = { ...data };
-    const checks = flags?.critical?.[type]?.[successOrFail];
-    const defaultValues = flags?.critical?.default?.[successOrFail];
+    const checks = flags?.critical?.[successOrFail]?.[type];
+    const defaultValues = flags?.critical?.[successOrFail]?.default;
 
     result.art = checks?.art || defaultValues?.art || '';
     result.enabled = checks?.enabled === 'default' ? defaultValues?.enabled : checks?.enabled;
