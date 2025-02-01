@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting } from "../../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
@@ -15,12 +15,9 @@ export async function fireEmblemCrit(actor, users, config) {
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
-    const imageUrl = config.art;
     const duration = getSetting("critical.duration") * 1000;
-    const soundUrl = config.sfx;
-    const volumeLevel = config.volume;
 
-    //Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
+    //Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
     new Sequence()
         //background
         .effect()
@@ -53,7 +50,7 @@ export async function fireEmblemCrit(actor, users, config) {
         .effect()
         .zIndex(0)
         .syncGroup(`fe-crit-${actor.uuid}`)
-        .file(imageUrl)
+        .file(config.art)
         .spriteRotation(config.rotation)
         .animateProperty("sprite", "position.x", {
             from: -0.9,
@@ -87,9 +84,9 @@ export async function fireEmblemCrit(actor, users, config) {
         .screenSpaceAboveUI()
         //Sound
         .sound()
-        .file(soundUrl)
+        .file(config.sfx)
         .fadeOutAudio(duration / 4)
-        .volume(volumeLevel)
+        .volume(config.volume)
         .forUsers(users)
         .delay(config.delay)
         .play();

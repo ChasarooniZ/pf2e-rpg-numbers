@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting } from "../../../misc.js";
 /**
  *  Conversion method from css clip path
  * r = """0% 55%, 2% 52%, 9% 51%, 15% 44%, 23% 40%, 32% 38%, 34% 36%, 35% 35%, 41% 28%, 43% 30%, 50% 26%, 53% 27%, 58% 26%, 59% 26%, 62% 24%, 65% 25%, 71% 23%, 78% 15%, 85% 14%, 89% 14%, 95% 11%, 97% 12%, 100% 9%, 100% 55%, 97% 53%, 96% 55%, 92% 55%, 80% 56%, 72% 57%, 69% 58%, 64% 63%, 62% 63%, 61% 65%, 59% 63%, 57% 62%, 55% 64%, 53% 65%, 49% 63%, 43% 63%, 39% 64%, 37% 65%, 36% 65%, 34% 68%, 32% 67%, 29% 72%, 27% 71%, 27% 73%, 24% 72%, 22% 73%, 20% 70%, 16% 73%, 14% 71%, 13% 72%, 10% 71%, 5% 72%, 6% 70%, 0% 73%"""
@@ -84,21 +84,18 @@ export function personaCrit(actor, users, config) {
         [-0.1 * screenWidth, 0.73 * screenHeight],
     ];
     const centeredPoints = polygonPoints.map(([x, y]) => [x - screenWidth / 2, y - screenHeight / 2]);
-
-    const imageUrl = config.art;
-    const isWebm = imageUrl.endsWith(".webm");
     const duration = getSetting("critical.duration") * 1000;
 
-    if (isWebm) {
+    if (config.art.endsWith(".webm")) {
         const video = document.createElement("video");
-        video.src = imageUrl;
+        video.src = config.art;
         video.autoplay = true;
         video.loop = true;
         video.muted = true;
 
         video.onloadeddata = async () => {
 
-            //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
+            //await Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
             new Sequence()
                 // BG Color
                 .effect()
@@ -115,7 +112,7 @@ export function personaCrit(actor, users, config) {
                 // Video
                 .effect()
                 .syncGroup(`p5-crit-${actor?.uuid}`)
-                .file(imageUrl)
+                .file(config.art)
                 .zIndex(0)
                 .shape("polygon", { isMask: true, points: centeredPoints })
                 .spriteOffset(config.offset, { gridUnits: false })
@@ -151,7 +148,7 @@ export function personaCrit(actor, users, config) {
                 .play();
         };
     } else {
-        //await Sequencer.Preloader.preloadForClients([imageUrl, config.sfx]);
+        //await Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
         new Sequence()
             // BG Color
             .effect()
@@ -168,7 +165,7 @@ export function personaCrit(actor, users, config) {
             // Image
             .effect()
             .syncGroup(`p5-crit-${actor?.uuid}`)
-            .file(imageUrl)
+            .file(config.art)
             .zIndex(0)
             .shape("polygon", { isMask: true, points: centeredPoints })
             .scale(config.scale)

@@ -1,3 +1,4 @@
+import { CRIT_OPTIONS } from "../animation/crit/const.js";
 import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
@@ -132,11 +133,7 @@ const settingsConfig = {
                 on: "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.choices.on",
                 off: "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.choices.off",
             },
-            type: {
-                default: "pf2e-rpg-numbers.menu.actor-settings.critical.type.choices.default",
-                "fire-emblem": "pf2e-rpg-numbers.menu.actor-settings.critical.type.choices.fire-emblem",
-                persona: "pf2e-rpg-numbers.menu.actor-settings.critical.type.choices.persona",
-            }
+            type: CRIT_OPTIONS
         }
     },
     token: {

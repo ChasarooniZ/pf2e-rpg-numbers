@@ -1,6 +1,6 @@
-<h3 data-tooltip="">
+<h3>
     <div class="row">
-        <div class="column">
+        <div class="column" data-tooltip="">
             {{#if default}}
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.default"}}
                 <i class="fa-solid fa-explosion"></i>
@@ -18,7 +18,10 @@
                 <i class="fa-solid fa-heart-pulse"></i>
             {{/if}}
         </div>
-        <div class="column crit-test">
+        <div
+            class="column crit-test"
+            data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.tooltip.test"}}"
+        >
             <button id="critical-test-{{type}}-{{section}}" data-type="{{type}}" data-section="{{section}}">
                 <i class="fa-solid fa-vial"></i>
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.buttons.test"}}

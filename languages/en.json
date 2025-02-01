@@ -335,8 +335,10 @@
                     "name": "Critical Animation Type",
                     "hint": "Choose type for critical animation",
                     "choices": {
-                        "persona": "Persona 5",
-                        "fire-emblem": "Fire Emblem: Awakening"
+                        "disgaea-7": "Disgaea 7",
+                        "fire-emblem": "Fire Emblem: Awakening",
+                        "fullscreen": "Fullscreen",
+                        "persona": "Persona 5"
                     }
                 },
                 "show-on": {
@@ -611,6 +613,9 @@
                         "failure": "Critical Failure",
                         "success": "Critical Success"
                     },
+                    "tooltip": {
+                        "test": "Test Critical Animation with Current Settings"
+                    },
                     "buttons": {
                         "test": "Test"
                     },
@@ -653,12 +658,7 @@
                     },
                     "type": {
                         "name": "Override Crit Type",
-                        "hint": "Choose type for critical animation (if left on default, uses the world setting)",
-                        "choices": {
-                            "default": "—",
-                            "persona": "Persona 5",
-                            "fire-emblem": "Fire Emblem: Awakening"
-                        }
+                        "hint": "Choose type for critical animation (if left on default, uses the world setting)"
                     },
                     "color": {
                         "name": "Color",
@@ -674,7 +674,7 @@
             },
             "item": {
                 "finishing-move": {
-                    "name":"Finishing Move Name"
+                    "name": "Finishing Move Name"
                 }
             }
         },

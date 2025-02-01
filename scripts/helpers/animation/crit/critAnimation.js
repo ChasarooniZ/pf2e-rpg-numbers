@@ -1,8 +1,8 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "../shakeOnDamageToken.js";
-import { fireEmblemCrit } from "./fireEmblemCrit.js";
-import { personaCrit } from "./personaCrit.js";
+import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
+import { personaCrit } from "./styles/personaCrit.js";
 
 /**
  * Creates a critical animation based on the provided roll details.
