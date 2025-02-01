@@ -28,6 +28,7 @@ export async function disgaea7Crit(actor, users, config) {
         new Sequence()
             //BG start
             .effect()
+            .syncGroup(`disgaea-7-crit-${actor.uuid}`)
             .shape("rectangle", {
                 //isMask: true,
                 width: width * widthPercent,
@@ -47,10 +48,12 @@ export async function disgaea7Crit(actor, users, config) {
             .fadeIn(250)
             .animateProperty("spriteContainer", "position.y", { from: -1, to: 0, screenSpace: true, duration: 500, ease: "easeOutBack" })
             .duration(500)
+            .forUsers(users)
             .screenSpaceAboveUI()
             .zIndex(-2)
             //BG end
             .effect()
+            .syncGroup(`disgaea-7-crit-${actor.uuid}`)
             .shape("rectangle", {
                 //isMask: true,
                 width: width * widthPercent,
@@ -74,9 +77,11 @@ export async function disgaea7Crit(actor, users, config) {
             .screenSpaceAboveUI()
             .zIndex(-1)
             .delay(450)
+            .forUsers(users)
             .duration(duration - 450)
             //Mask + image
             .effect()
+            .syncGroup(`disgaea-7-crit-${actor.uuid}`)
             .file(config.art, {
                 antialiasing: 1
             })
@@ -114,6 +119,7 @@ export async function disgaea7Crit(actor, users, config) {
                 y: 0.5
             })
             .screenSpaceAboveUI()
+            .forUsers(users)
             .duration(duration)
             //Sound
             .sound()

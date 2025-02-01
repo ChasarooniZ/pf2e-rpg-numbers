@@ -1,6 +1,7 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "../shakeOnDamageToken.js";
+import { disgaea7Crit } from "./styles/disgaea7Crit.js";
 import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
 import { personaCrit } from "./styles/personaCrit.js";
 
@@ -183,11 +184,14 @@ function getEligibleUsers(rollDeets) {
  */
 function displayCritAnimation(critType, actor, users, imgData, config) {
     switch (critType) {
-        case "persona":
-            personaCrit(actor, users, imgData, config);
+        case "disgaea-7":
+            disgaea7Crit(actor, users, imgData, config);
             break;
         case "fire-emblem":
             fireEmblemCrit(actor, users, imgData, config);
+            break;
+        case "persona":
+            personaCrit(actor, users, imgData, config);
             break;
         default:
             ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
