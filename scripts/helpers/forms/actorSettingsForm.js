@@ -197,7 +197,7 @@ export class ActorSettingsConfigForm extends FormApplication {
                     event.preventDefault();
                     const { type, section } = event.target.dataset;
                     const formData = this.getFormData(html).settings;
-                    formData.critical = critProcessHelper(formData.critical, DEFAULT_CRIT)
+                    formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
                     console.log({ type, section })
                     createTestCritAnimation({
                         userID: game.user.id,
@@ -286,7 +286,7 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async saveSettings(data) {
         const settings = data.settings;
-        const crit = critProcessHelper(settings.critical, DEFAULT_CRIT)
+        const crit = critProcessHelper(settings.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
         await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
 
         const token = DEFAULT_TOKEN;
