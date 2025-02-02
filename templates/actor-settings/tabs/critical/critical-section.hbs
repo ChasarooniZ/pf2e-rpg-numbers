@@ -104,8 +104,8 @@
             >
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-x.name"}}
             </label>
-            {{rangePicker
-                value=data.offset.x
+            {{numberInput
+                data.offset.x
                 name=(concat "settings.critical." type "." section ".offset.x")
                 step=1
                 min=-100
@@ -121,8 +121,8 @@
             >
                 {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.offset-y.name"}}
             </label>
-            {{rangePicker
-                value=data.offset.y
+            {{numberInput
+                data.offset.y
                 name=(concat "settings.critical." type "." section ".offset.y")
                 step=1
                 min=-100

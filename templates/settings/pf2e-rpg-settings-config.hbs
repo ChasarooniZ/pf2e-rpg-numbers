@@ -9,7 +9,7 @@
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
             {{#if tab.home}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this version=version}}
             {{/if}}
             {{#if tab.rolls}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
@@ -75,6 +75,20 @@ footer.pf2e-rpg-config-form button {
     margin: 0 5px;
     text-align: center;
     height: 30px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column {
+    flex: 0 0 48%; 
+}
+
+
+.align-right {
+    text-align: right;
 }
 
 </style>
