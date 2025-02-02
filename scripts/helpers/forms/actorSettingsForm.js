@@ -195,10 +195,11 @@ export class ActorSettingsConfigForm extends FormApplication {
             for (const type of ['checks', 'default', 'saves', 'strikes']) {
                 html.find(`#critical-test-${state}-${type}`).on('click', (event) => {
                     event.preventDefault();
-                    const { type, section } = event.target.dataset;
+                    const type = $(event.target).data('type');
+                    const section = $(event.target).data('section');
                     const formData = this.getFormData(html).settings;
                     formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
-                    console.log({ type, section })
+                    console.log({ type, section, event })
                     createTestCritAnimation({
                         userID: game.user.id,
                         succFail: type,
