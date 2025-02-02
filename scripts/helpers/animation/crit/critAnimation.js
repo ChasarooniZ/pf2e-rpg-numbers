@@ -3,6 +3,7 @@ import { getSetting, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "../shakeOnDamageToken.js";
 import { disgaea7Crit } from "./styles/disgaea7Crit.js";
 import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
+import { fullscreenCrit } from "./styles/fullscreenCrit.js";
 import { personaCrit } from "./styles/personaCrit.js";
 
 /**
@@ -189,6 +190,9 @@ function displayCritAnimation(critType, actor, users, imgData, config) {
             break;
         case "fire-emblem":
             fireEmblemCrit(actor, users, imgData, config);
+            break;
+        case "fullscreen":
+            fullscreenCrit(actor, users, imgData, config);
             break;
         case "persona":
             personaCrit(actor, users, imgData, config);
