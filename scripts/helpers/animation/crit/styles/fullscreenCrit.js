@@ -19,7 +19,7 @@ export async function fullscreenCrit(actor, users, config) {
             antialiasing: 1
         })
         .screenSpace()
-        .spriteRotation(0)
+        .spriteRotation(config.rotation)
         .screenSpaceScale({
             x: 1,
             y: config.scale,
@@ -31,8 +31,8 @@ export async function fullscreenCrit(actor, users, config) {
             y: 0
         })
         .screenSpaceAnchor({
-            x: 0.5 + (config?.offset?.x / 100),
-            y: 0.5 + (config?.offset?.y / 100)
+            x: 0.5 + config?.offset?.x,
+            y: 0.5 + config?.offset?.y
         })
         .screenSpaceAboveUI()
 
