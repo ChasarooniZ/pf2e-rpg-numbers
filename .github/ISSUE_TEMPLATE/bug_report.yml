@@ -38,10 +38,18 @@ body:
 
   - type: input
     attributes:
-      label: Browser
-      description: e.g. chrome 21.7, safari 11
+      label: PF2e RPG Numbers ModuleVersion
+      description: 12.6.11 etc.
     validations:
       required: true
+
+  - type: input
+    attributes:
+      label: Sequencer Version
+      description: 3.4.8 etc.
+    validations:
+      required: true
+
 
   - type: textarea
     attributes:
