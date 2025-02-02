@@ -98,6 +98,15 @@ export async function disgaea7Crit(actor, users, config) {
                 height: height * 2,
                 offset: { x: 0, y: -height },
             })
+            .animateProperty(
+                "sprite",
+                "position.x",
+                {
+                    from: config?.offset?.x ?? 0,
+                    to: config?.offset?.x ?? 0,
+                    duration: duration,
+                    screenSpace: true
+                })
             .animateProperty("sprite", "position.y", { from: -1, to: 0, screenSpace: true, duration: 500, ease: "easeOutBack" })
             .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: 500, fromEnd: true })
             .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, duration: 500, fromEnd: true })
