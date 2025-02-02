@@ -12,7 +12,7 @@ import { getSetting } from "../../../misc.js";
 
 export async function fullscreenCrit(actor, users, config) {
     const duration = getSetting("critical.duration") * 1000;
-    new Sequence()
+    const seq = new Sequence()
         //Mask + image
         .effect()
         .file(config.art, {
@@ -35,9 +35,12 @@ export async function fullscreenCrit(actor, users, config) {
             y: 0.5 + (config?.offset?.y / 100)
         })
         .screenSpaceAboveUI()
-        .duration(duration)
-        //Sound
-        .sound()
+
+    if (!config.art.endsWith(".webm"))
+        seq.duration(duration)
+
+    //Sound
+    seq.sound()
         .file(config.sfx)
         .fadeOutAudio(duration / 4)
         .volume(config.volume)
