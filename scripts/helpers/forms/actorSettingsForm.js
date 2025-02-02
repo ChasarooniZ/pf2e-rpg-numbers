@@ -195,7 +195,7 @@ export class ActorSettingsConfigForm extends FormApplication {
             for (const type of ['checks', 'default', 'saves', 'strikes']) {
                 html.find(`#critical-test-${state}-${type}`).on('click', (event) => {
                     event.preventDefault();
-                    const type = $(event.target).data('type');
+                    const type = $(event.currentTarget).data('type');
                     const section = $(event.target).data('section');
                     const formData = this.getFormData(html).settings;
                     formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
@@ -339,33 +339,6 @@ function getDefaultVariable(flag) {
             return DEFAULT_TOKEN;
         default:
             return null;
-    }
-}
-
-
-function handleChoicesSetting(settingPath) {
-    const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
-    const value = getSetting(settingPath);
-    if (choices) {
-
-        return { choices, value }
-    }
-    return value
-}
-
-function getNumberSetting(settingPath, range) {
-    const ret = { value: getSetting(settingPath) };
-    if (range) ret.range = range;
-    return ret;
-}
-
-function updateIfChanged(settingID, newValue) {
-    const currentValue = getSetting(settingID);
-    if (typeof currentValue == "boolean") {
-        newValue = !!newValue;
-    }
-    if (currentValue !== newValue) {
-        setSetting(settingID, newValue);
     }
 }
 
