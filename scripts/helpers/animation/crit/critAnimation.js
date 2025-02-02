@@ -49,8 +49,10 @@ export function createTestCritAnimation(data) {
     const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
 
     config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
-    config.art = config.art || shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
-    config.sfx = config.sfx || getSetting('critical.sound');
+    if (!config.art) {
+        config.art = shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
+    }
+    config.sfx = config.sfx ? config.sfx : getSetting('critical.sound');
 
 
     displayCritAnimation(type, actor, [userID], config);
