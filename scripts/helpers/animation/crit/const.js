@@ -8,4 +8,4 @@ export const CRIT_OPTIONS = {
     "fullscreen": CRIT_TRANSLATION_PATH + "fullscreen",
 };
 
-export const CRIT_OPTIONS_LABELS = object.keys(CRIT_OPTIONS).filter(key => key !== 'default');
+export const CRIT_OPTIONS_LABELS = Object.keys(CRIT_OPTIONS).filter(key => key !== 'default');
