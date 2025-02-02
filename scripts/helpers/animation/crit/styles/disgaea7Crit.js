@@ -46,8 +46,8 @@ export async function disgaea7Crit(actor, users, config) {
                 y: 0
             })
             .fadeIn(250)
-            .animateProperty("spriteContainer", "position.y", { from: -1, to: 0, screenSpace: true, duration: 500, ease: "easeOutBack" })
-            .duration(500)
+            .animateProperty("spriteContainer", "position.y", { from: -1, to: 0, screenSpace: true, duration: duration / 4, ease: "easeOutBack" })
+            .duration(duration / 4)
             .forUsers(users)
             .screenSpaceAboveUI()
             .zIndex(-2)
@@ -71,14 +71,14 @@ export async function disgaea7Crit(actor, users, config) {
                 y: 0
             })
             .opacity(0.5)
-            .fadeIn(500, { ease: "easeOutQuint" })
-            .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: 500, fromEnd: true })
-            .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, screenSpace: true, duration: 500, fromEnd: true })
+            .fadeIn(duration / 4, { ease: "easeOutQuint" })
+            .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: duration / 4, fromEnd: true })
+            .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, screenSpace: true, duration: duration / 4, fromEnd: true })
             .screenSpaceAboveUI()
             .zIndex(-1)
-            .delay(450)
+            .delay(((duration * 0.9) / 4))
             .forUsers(users)
-            .duration(duration - 450)
+            .duration(duration - ((duration * 0.9) / 4))
             //Mask + image
             .effect()
             .syncGroup(`disgaea-7-crit-${actor.uuid}`)
@@ -107,9 +107,9 @@ export async function disgaea7Crit(actor, users, config) {
                     duration: duration,
                     screenSpace: true
                 })
-            .animateProperty("sprite", "position.y", { from: -1, to: 0, screenSpace: true, duration: 500, ease: "easeOutBack" })
-            .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: 500, fromEnd: true })
-            .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, duration: 500, fromEnd: true })
+            .animateProperty("sprite", "position.y", { from: -1, to: 0, screenSpace: true, duration: duration / 4, ease: "easeOutBack" })
+            .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: duration / 4, fromEnd: true })
+            .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, duration: duration / 4, fromEnd: true })
             .screenSpace()
             /*.screenSpaceScale({
         x: 1.0,         // Scale on the effect's X scale
