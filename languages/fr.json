@@ -41,7 +41,8 @@
                         "title": "Pop-ups Elden Ring",
                         "noun-verbed": "Nom Verbé",
                         "death": "Tu es mort"
-                    }
+                    },
+                    "title": "From Software"
                 },
                 "debug": "Déboguer"
             },
@@ -337,7 +338,10 @@
                     "hint": "Choisissez le type d'animation critique",
                     "choices": {
                         "persona": "Personnage",
-                        "fire-emblem": "Emblème du Feu"
+                        "fire-emblem": "Emblème de feu: L'Éveil",
+                        "default": "—",
+                        "disgaea-7": "Disgaea 7",
+                        "fullscreen": "Plein écran"
                     }
                 },
                 "show-on": {
@@ -506,6 +510,14 @@
                         "name": "Nom Verbe Texte",
                         "hint": "Texte à afficher pour le nom verbe",
                         "default": "Ennemi abattu"
+                    },
+                    "type": {
+                        "name": "Type d'effet",
+                        "hint": "Choisissez le type d'effet à jouer",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
                     }
                 },
                 "death": {
@@ -533,6 +545,14 @@
                         "name": "Texte Tu es mort",
                         "hint": "Texte à afficher pour « Vous êtes mort »",
                         "default": "Tu es mort"
+                    },
+                    "type": {
+                        "name": "Type d'effet",
+                        "hint": "Choisissez le type d'effet à jouer",
+                        "choices": {
+                            "elden-ring": "Elden Ring",
+                            "sekiro": "Sekiro"
+                        }
                     }
                 }
             },
@@ -584,6 +604,81 @@
                     "success": "Paramètres PF2e RPG Importés!",
                     "failure": "Échec de l'importation des Paramètres PF2e RPG :("
                 }
+            },
+            "actor-settings": {
+                "label": "PF2e RPG #s",
+                "critical": {
+                    "headers": {
+                        "default": "Par défaut",
+                        "strikes": "Frappes",
+                        "checks": "Tests",
+                        "saves": "Jets de sauvegarde",
+                        "failure": "Échec critique",
+                        "success": "Succès critique"
+                    },
+                    "tooltip": {
+                        "test": "Tester l'animation critique avec les paramètres actuels"
+                    },
+                    "buttons": {
+                        "test": "Tester"
+                    },
+                    "enabled": {
+                        "name": "Remplacer l'activation ?",
+                        "hint": "Remplace l'activation ou non de cette animation critique",
+                        "choices": {
+                            "default": "—",
+                            "on": "Activé",
+                            "off": "Désactivé"
+                        }
+                    },
+                    "art": {
+                        "name": "Art",
+                        "hint": "Image/Vidéo à afficher pour le critique"
+                    },
+                    "offset-x": {
+                        "name": "Décalage X",
+                        "hint": "Ceci est un % de la LARGEUR de l'écran, donc 100 le déplacerait vers la DROITE"
+                    },
+                    "offset-y": {
+                        "name": "Décalage Y",
+                        "hint": "Ceci est un % de la HAUTEUR de l'écran, donc 100 le déplacerait vers le BAS"
+                    },
+                    "scale": {
+                        "name": "Échelle",
+                        "hint": "Taille de l'image de coup critique à mettre à l'échelle en %"
+                    },
+                    "rotation": {
+                        "name": "Rotation",
+                        "hint": "Combien faire pivoter l'effet de coup critique"
+                    },
+                    "sfx": {
+                        "name": "SFX",
+                        "hint": "Définissez ceci pour remplacer le son critique par défaut par un son personnalisé."
+                    },
+                    "volume": {
+                        "name": "Volume",
+                        "hint": "Définissez ceci pour multiplier par le volume sonore critique par défaut (par exemple 50% * 200% = 100% etc.)"
+                    },
+                    "type": {
+                        "name": "Remplacer le type de critique",
+                        "hint": "Choisissez le type d'animation critique (si laissé par défaut, utilise le paramètre du monde)"
+                    },
+                    "color": {
+                        "name": "Couleur",
+                        "hint": "Définissez ceci pour remplacer la couleur critique par défaut"
+                    }
+                },
+                "token": {
+                    "rotation-offset": {
+                        "name": "Tourner lors de l'attaque - Décalage de rotation",
+                        "hint": "Définit le décalage de rotation lors de l'attaque. Bas ⬇ 0, Droite ➡ 90, Haut ⬆ 180, Gauche ⬅ 270"
+                    }
+                }
+            },
+            "item": {
+                "finishing-move": {
+                    "name": "Nom du coup final"
+                }
             }
         },
         "display-text": {
@@ -592,6 +687,21 @@
                 "failure": "Échec",
                 "success": "Succès",
                 "criticalSuccess": "Succès critique"
+            },
+            "notifications": {
+                "migrate-token-settings-12-7": "Migration des paramètres PF2e RPG # pour {actorName}",
+                "finishing-move": {
+                    "settings": {
+                        "item": {
+                            "update": "Nom du coup final mis à jour : {newValue}"
+                        }
+                    }
+                },
+                "critical": {
+                    "failure": {
+                        "error": "Erreur : Configuration invalide. Définissez le type d'échec critique pour cet acteur"
+                    }
+                }
             }
         },
         "token-options": {
@@ -635,6 +745,16 @@
             "activate-finishing-move": {
                 "name": "Activer le coup de grâce",
                 "hint": "Active le coup de finition si vous l'avez activé"
+            },
+            "activate-critical": {
+                "success": {
+                    "name": "Activer l'animation de succès critique",
+                    "hint": "Active l'animation de succès critique pour le jeton sélectionné"
+                },
+                "failure": {
+                    "name": "Activer l'animation d'échec critique",
+                    "hint": "Active l'animation d'échec critique pour le jeton sélectionné"
+                }
             }
         }
     }

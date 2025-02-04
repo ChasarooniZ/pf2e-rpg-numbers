@@ -1,4 +1,5 @@
 import { eldenRingNounVerbed, fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
+import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
 /**
@@ -12,12 +13,12 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     if (!game.user.isGM) return;
     if (!getSetting('from-software.noun-verbed.enabled')) return;
 
-    
+
     const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
-        await eldenRingNounVerbed();
+        eldenRingNounVerbed();
         return;
     }
 
@@ -40,7 +41,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 
     // Trigger animation if conditions are met
     if ((xp?.xpPerPlayer ?? 0) >= xpNeeded) {
-        await eldenRingNounVerbed();
+        eldenRingNounVerbed();
     }
 }
 export async function applyTokenStatusEffect(token, status, isAdded) {
@@ -49,7 +50,7 @@ export async function applyTokenStatusEffect(token, status, isAdded) {
     if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
         const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
         if (userId) {
-            await fromSoftwareDeath({ users: [userId] })
+            fromSoftwareDeath({ users: [userId] })
         }
     }
 }
@@ -100,4 +101,63 @@ function getActorLevels(combatants, filterCondition) {
 function calculateAverageLevel(partyMembers) {
     const totalLevel = partyMembers.reduce((sum, p) => sum + (p?.actor?.level ?? 0), 0);
     return Math.round(totalLevel / partyMembers.length);
+}
+
+export async function getActorSheetHeaderButtons(sheet, buttons) {
+    buttons.unshift({
+        class: "rpg-numbers-actor-menu",
+        icon: "fa-solid fa-dragon",
+        label: localize('menu.actor-settings.label'),
+        onclick: () => {
+            new ActorSettingsConfigForm({ actor: sheet.actor }).render(true)
+        }
+    })
+    return buttons;
+}
+
+export function getItemSheetHeaderButtons(itemSheet, menu) {
+    if (!getSetting("finishing-move.enabled")) return;
+    const item = itemSheet.item;
+
+    // add RPG number header
+    menu.unshift({
+        class: "pf2e-rpg-numbers",
+        icon: "fa-solid fa-dragon",
+        label: localize('menu.actor-settings.label'),
+        onclick: async (_ev, itemD = item) => {
+            const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
+            // Create and display the dialog box
+            new Dialog({
+                title: localize("menu.item.finishing-move.name"),
+                content: `
+                <form>
+                    <div class="form-group">
+                    <label for="finishing-move-name">${localize("menu.item.finishing-move.name")}</label>
+                    <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
+                    </div>
+                </form>
+                `,
+                buttons: {
+                    save: {
+                        label: localize("menu.settings.buttons.footer.save"),
+                        callback: async (html) => {
+                            // Get the new value from the text input
+                            const newValue = html.find("#finishing-move-name").val().trim();
+
+                            // Save the new value to the module flag
+                            await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
+
+                            // Optionally, show a message or perform additional actions here
+                            ui.notifications.info(localize("display-text.notifications.finishing-move.settings.item.update", { newValue }));
+                        },
+                    },
+                    cancel: {
+                        label: localize("menu.settings.buttons.footer.cancel"),
+                    },
+                },
+                default: "save",
+            }).render(true);
+        },
+    });
+    return menu;
 }

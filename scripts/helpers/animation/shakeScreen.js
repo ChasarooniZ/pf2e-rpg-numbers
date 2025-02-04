@@ -35,5 +35,5 @@ export async function shakeScreen(uuid, damage) {
     } else {
         userToShake = [gmID];
     }
-    await new Sequence().canvasPan().shake({ duration: 250, strength: shake_amt }).forUsers(userToShake).play();
+    new Sequence().canvasPan().shake({ duration: 250, strength: shake_amt }).forUsers(userToShake).play();
 }

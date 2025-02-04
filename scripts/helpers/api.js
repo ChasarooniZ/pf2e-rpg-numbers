@@ -8,6 +8,7 @@ import { turnTokenOnAttack } from "./animation/turnTokenOnAttack.js";
 import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
 import { getSetting } from "./misc.js";
+import { migrateTokenSettingsToActorSettings } from "./library/migration.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -51,6 +52,9 @@ export function createAPI() {
         settings: {
             export: exportSettings,
             import: importSettings
+        },
+        migration: {
+            'tokenSettingsToActor': migrateTokenSettingsToActorSettings
         }
     };
 }
