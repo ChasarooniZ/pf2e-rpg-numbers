@@ -12,12 +12,12 @@ import {
     doSomethingOnDamageApply,
     //FinisherDialog,
     getSetting,
-    handleDiceSoNice,
-    MODULE_ID
+    MODULE_ID,
+    waitForMessage
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { setupTokenMenu } from "./helpers/UI/tokenUI.js";
-import { applyTokenStatusEffect, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { handleUpdate } from "./helpers/library/migration.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -50,16 +50,20 @@ Hooks.on("ready", () => {
             //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg], msg);
-                if (isShakeOnAttack(msg.token.actor))
-                    handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
+                if (isRotateOnAttack()) {
+                    waitForMessage(msg.id).then(() => rotateOnAttack(msg));
+                }
+                if (isShakeOnAttack(msg.token.actor)) {
+                    waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
+                }
             }
 
             //On Damage Application
             onDamageApplication(dat, msg);
-
         }
     });
+
+    Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
 
     /**
      * TODO Add visual pop ups over characters who's modifiers to rolls mattered (IDK how feasible this is)
@@ -75,73 +79,14 @@ Hooks.on("ready", () => {
         });
     });*/
 
-    // Hooks.on("getActorSheetHeaderButtons", function (characterSheet, menu) {
-    //     if (!getSetting("finishing-move.enabled")) return;
-    //     const actor = characterSheet.actor;
-    //     // add RPG number header
-    //     menu.unshift({
-    //         class: "pf2e-rpg-numbers",
-    //         icon: "fa-solid fa-dragon",
-    //         label: "RPG #s",
-    //         onclick: async (_ev, actorD = actor) => {
-    //             new FinisherDialog(actor).render(true);
-    //         },
-    //     });
-    //     return menu;
-    // });
+    Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
 
-    Hooks.on("getItemSheetHeaderButtons", function (itemSheet, menu) {
-        if (!getSetting("finishing-move.enabled")) return;
-        const item = itemSheet.item;
 
-        // add RPG number header
-        menu.unshift({
-            class: "pf2e-rpg-numbers",
-            icon: "fa-solid fa-dragon",
-            label: "RPG #s",
-            onclick: async (_ev, itemD = item) => {
-                //console.log({ ev, itemD });
-                const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
-                // Create and display the dialog box
-                new Dialog({
-                    title: "Finishing Move Name",
-                    content: `
-                    <form>
-                        <div class="form-group">
-                        <label for="finishing-move-name">Finishing Move Name</label>
-                        <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
-                        </div>
-                    </form>
-                    `,
-                    buttons: {
-                        save: {
-                            label: "Save Settings",
-                            callback: async (html) => {
-                                // Get the new value from the text input
-                                const newValue = html.find("#finishing-move-name").val().trim();
-
-                                // Save the new value to the module flag
-                                await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
-
-                                // Optionally, show a message or perform additional actions here
-                                ui.notifications.info(`Finishing Move Name updated to: ${newValue}`);
-                            },
-                        },
-                        cancel: {
-                            label: "Cancel",
-                        },
-                    },
-                    default: "save",
-                }).render(true);
-            },
-        });
-        return menu;
-    });
-
-    setupTokenMenu();
 
     if (game.user.isGM) {
-        //sendUpdateMessage();
+        const version = game.modules.get(MODULE_ID).version;
+        const lastVersion = getSetting("last-version");
+        handleUpdate(version, lastVersion);
     }
 
     console.log("PF2e RPG Numbers is ready");
@@ -211,7 +156,8 @@ function rotateOnAttack(msg) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = getSetting("critical.enabled");
+    const doCrits = shouldDoCrits(msg.token.actor.getFlag('pf2e-rpg-numbers', 'critical'), msg.flags.pf2e.context.outcome ?? "none");
+    //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
             outcome: msg.flags.pf2e.context.outcome ?? "none",
@@ -220,9 +166,15 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg);
-        if (doCrits && roll_deets.outcome === "criticalSuccess")
-            handleDiceSoNice(createCritAnimation, [roll_deets], msg);
+        if (doChecks) {
+            waitForMessage(msg.id).then(() => generateRollScroll(roll_deets));
+        }
+        if (doCrits && roll_deets.outcome === "criticalSuccess") {
+            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', true));
+        }
+        if (roll_deets.outcome === "criticalFailure") {
+            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', false));
+        }
     }
 }
 
@@ -238,7 +190,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg);
+        waitForMessage(msg.id).then(() => generateDamageScroll(dmg_list, targets, msg));
     }
 }
 
@@ -281,4 +233,15 @@ export function createUpdateMessage() {
         content: chatContent,
         whisper: ChatMessage.getWhisperRecipients("GM"),
     });
+}
+
+function shouldDoCrits(flags, outcome) {
+    const succFail = (outcome === 'criticalSuccess' && 'success')
+        || (outcome === 'criticalFailure' && 'failure')
+        || 'none';
+    if (succFail === 'none') return false;
+    return (
+        flags?.[succFail]
+        && Object.values(flags?.[succFail])?.find(i => i.enabled === 'on')
+    ) || getSetting("critical.enabled")
 }

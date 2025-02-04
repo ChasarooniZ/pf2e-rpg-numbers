@@ -200,7 +200,7 @@ export class SettingsConfigForm extends FormApplication {
             };
         });
 
-        return foundry.utils.mergeObject(super.getData(), { tabs });
+        return foundry.utils.mergeObject(super.getData(), { tabs, version: game?.modules?.get(MODULE_ID)?.version });
     }
 
     _retrieveNestedSettings(settingGroup) {

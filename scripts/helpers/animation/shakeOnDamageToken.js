@@ -15,9 +15,9 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
     const usersToPlayFor = getVisibleUsers(token);
 
     if (game.modules.get("tokenmagic")?.active) {
-        await shakeWithTokenMagic(token, shakeDistancePercent, shakes, duration);
+        shakeWithTokenMagic(token, shakeDistancePercent, shakes, duration);
     } else {
-        await shakeWithSequencer(token, shakeDistancePercent, shakes, duration, usersToPlayFor);
+        shakeWithSequencer(token, shakeDistancePercent, shakes, duration, usersToPlayFor);
     }
 }
 
@@ -58,9 +58,9 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
     const movAmount = shakeDistancePercent * token.w;
     const values = generateShakeValues(shakes, movAmount);
     const iterationDuration = duration / values.length;
-    const tokenImage = getTokenImage(token);
+    const tokenImage = getTokenImage(token?.document);
 
-    await new Sequence()
+    new Sequence()
         .animation()
         .on(token)
         .delay(duration / 10)
@@ -102,8 +102,8 @@ function generateShakeValues(shakes, movAmount) {
  * @param {Token} token - The token
  * @returns {string} The image source
  */
-function getTokenImage(token) {
-    return token.document?.ring?.enabled
-        ? token.document?.ring?.subject?.texture ?? token.document.texture.src
-        : token.document.texture.src;
+export function getTokenImage(token) {
+    return token?.ring?.enabled
+        ? token?.ring?.subject?.texture ?? token?.texture?.src
+        : (token?.texture?.src || 'icons/svg/cowled.svg');
 }

@@ -1,25 +1,27 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
-import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
+import {SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
+import { CRIT_OPTIONS_LABELS } from "./helpers/animation/crit/const.js";
 
 Hooks.on("init", () => {
     loadTemplates([
+        //Module
         `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
         'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs',
         'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs',
-        'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs'
+        'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs',
+        //Actor
+        'modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs',
+        'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-tab.hbs',
     ])
     Hooks.on("renderSettingsConfig", renderSettingsConfig);
-    //TODO finalize this
-    // game.settings.registerMenu(mod, 'settingsMenu', {
-    //     name: game.i18n.localize("CCSS.settings.settingsMenu.name"),
-    //     label: game.i18n.localize("CCSS.settings.settingsMenu.label"),
-    //     icon: "fas fa-wrench",
-    //     type: SettingsForm,
-    //     restricted: false
-    // });
+
     game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
         name: "PF2e RPG Settings",
         label: "PF2e RPG Settings",      // The text label used in the button
@@ -512,7 +514,7 @@ Hooks.on("init", () => {
         config: false,
         default: "persona",
         type: String,
-        choices: ["persona", "fire-emblem"],
+        choices: CRIT_OPTIONS_LABELS,
     });
 
     registerSetting("critical", "critical.show-on", {
@@ -802,6 +804,27 @@ Hooks.on("init", () => {
                         )}"]`
                     )
                     .click();
+            }
+        },
+        onUp: () => { },
+        restricted: false,
+        precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
+    });
+    game.keybindings.register(MODULE_ID, "activateCriticalAnimation", {
+        name: localize("keybinds.activate-critical.success.name"),
+        hint: localize("keybinds.activate-critical.success.hint"),
+        editable: [
+            {
+                key: "Z",
+                modifiers: ["Shift", "Alt"],
+            },
+        ],
+        onDown: () => {
+            const token = canvas.tokens.controlled[0];
+            if (token) {
+            game.pf2eRPGNumbers.critAnimation.generate(token)
+            } else {
+                ui.notifications.error("You must have a token selected")
             }
         },
         onUp: () => { },

@@ -116,5 +116,5 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
         });
     }
 
-    await seq.play();
+    seq.play();
 }

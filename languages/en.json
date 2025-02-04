@@ -335,8 +335,11 @@
                     "name": "Critical Animation Type",
                     "hint": "Choose type for critical animation",
                     "choices": {
-                        "persona": "Persona",
-                        "fire-emblem": "Fire Emblem"
+                        "default": "—",
+                        "disgaea-7": "Disgaea 7",
+                        "fire-emblem": "Fire Emblem: Awakening",
+                        "fullscreen": "Fullscreen",
+                        "persona": "Persona 5"
                     }
                 },
                 "show-on": {
@@ -599,6 +602,81 @@
                     "success": "Pf2e RPG Settings Imported!",
                     "failure": "PF2e RPG Settings failed to import :("
                 }
+            },
+            "actor-settings": {
+                "label": "PF2e RPG #s",
+                "critical": {
+                    "headers": {
+                        "default": "Default",
+                        "strikes": "Strikes",
+                        "checks": "Checks",
+                        "saves": "Saves",
+                        "failure": "Critical Failure",
+                        "success": "Critical Success"
+                    },
+                    "tooltip": {
+                        "test": "Test Critical Animation with Current Settings"
+                    },
+                    "buttons": {
+                        "test": "Test"
+                    },
+                    "enabled": {
+                        "name": "Override Enabled?",
+                        "hint": "Overrides whether not this crit animation is enabled",
+                        "choices": {
+                            "default": "—",
+                            "on": "On",
+                            "off": "Off"
+                        }
+                    },
+                    "art": {
+                        "name": "Art",
+                        "hint": "Image/Video to show for critical"
+                    },
+                    "offset-x": {
+                        "name": "X Offset",
+                        "hint": "This is % of the screen WIDTH, so 100 would move it to the RIGHT"
+                    },
+                    "offset-y": {
+                        "name": "Y Offset",
+                        "hint": "This is % of the screen HEIGHT, so 100 would move it DOWN"
+                    },
+                    "scale": {
+                        "name": "Scale",
+                        "hint": "Size of critical hit image to scale in %"
+                    },
+                    "rotation": {
+                        "name": "Rotation",
+                        "hint": "How much to rotate the critical hit effect"
+                    },
+                    "sfx": {
+                        "name": "SFX",
+                        "hint": "Set this to override the default crit sound with custom one."
+                    },
+                    "volume": {
+                        "name": "Volume",
+                        "hint": "Set this to multiply by the default crit sound volume (IE 50% * 200% = 100% etc.)"
+                    },
+                    "type": {
+                        "name": "Override Crit Type",
+                        "hint": "Choose type for critical animation (if left on default, uses the world setting)"
+                    },
+                    "color": {
+                        "name": "Color",
+                        "hint": "Set this to override the default crit color"
+                    }
+                },
+                "token": {
+                    "rotation-offset": {
+                        "name": "Turn On Attack - Rotation Offset",
+                        "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+                    }
+                }
+            },
+            "item": {
+                "finishing-move": {
+                    "name": "Finishing Move Name"
+                }
             }
         },
         "display-text": {
@@ -607,49 +685,37 @@
                 "failure": "Failure",
                 "success": "Success",
                 "criticalSuccess": "Critical Success"
-            }
-        },
-        "token-options": {
-            "tab-label": "PF2e RPG #s",
-            "rotation-offset": {
-                "name": "Turn On Attack - Rotation Offset",
-                "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
             },
-            "fire-emblem-img": {
-                "name": "Fire Emblem Critical Pic",
-                "hint": "Image to show for critical hits for token when 'Fire Emblem' is selected"
-            },
-            "persona-img": {
-                "name": "Persona Critical Pic",
-                "hint": "Image to show for critical hits for token when 'Persona' is selected"
-            },
-            "crit": {
-                "offset-x": {
-                    "name": "Crit X Offset",
-                    "hint": "This is as a %, so 100, would move it to the right one full image length"
+            "notifications": {
+                "migrate-token-settings-12-7": "Migrating {actorName}'s PF2e RPG # Flags",
+                "finishing-move": {
+                    "settings": {
+                        "item": {
+                            "update": "Finishing Move Name updated to: {newValue}"
+                        }
+                    }
                 },
-                "offset-y": {
-                    "name": "Crit Y Offset",
-                    "hint": "This is as a %, so 100, would move it down one full image length"
-                },
-                "scale": {
-                    "name": "Crit Scale",
-                    "hint": "Size of critical hit image to scale in %"
-                },
-                "rotation": {
-                    "name": "Crit Rotation",
-                    "hint": "How much to rotate the critical hit effect"
-                },
-                "sfx": {
-                    "name": "Crit SFX",
-                    "hint": "Set this to override the default crit sound with custom one."
+                "critical": {
+                    "failure": {
+                        "error": "Error: Invalid configuration. Set Critical Failure crit Type for this actor"
+                    }
                 }
             }
         },
         "keybinds": {
             "activate-finishing-move": {
-                "name": "Activate Finishing Move",
-                "hint": "Activates finishing move if you have it enabled"
+                "name": "Toggle Finishing Move",
+                "hint": "Toggles finishing move if you have it enabled in settings"
+            },
+            "activate-critical": {
+                "success": {
+                    "name": "Activate Critical Success Animation",
+                    "hint": "Activates the critical success animation for selected token"
+                },
+                "failure": {
+                    "name": "Activate Critical Failure Animation",
+                    "hint": "Activates the critical failure animation for selected token"
+                }
             }
         }
     }
