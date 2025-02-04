@@ -1,6 +1,6 @@
 # [12.7.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.0...12.7.1) - Early Fixes
 
--   Fixed Error where`Critical Animation` setting `Override Enabled` was not being saved
+-   Fixed Error where `Critical Animation` setting `Override Enabled` was not being saved
 -   Fixed bug where `Critical Animation` macro wasn't properly grabbing actor settings
 
 # [12.7.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.11...12.7.0) - Critical Upgrade
