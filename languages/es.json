@@ -41,8 +41,7 @@
                         "title": "Ventanas emergentes del anillo de Elden",
                         "noun-verbed": "Sustantivo verbal",
                         "death": "tu moriste"
-                    },
-                    "title": "From Software"
+                    }
                 },
                 "debug": "Depurar"
             },
@@ -338,10 +337,7 @@
                     "hint": "Elija el tipo de animación crítica",
                     "choices": {
                         "persona": "Persona",
-                        "fire-emblem": "Emblema de fuego: el despertar",
-                        "default": "—",
-                        "disgaea-7": "Disgaea 7",
-                        "fullscreen": "Fullscreen"
+                        "fire-emblem": "Emblema de fuego"
                     }
                 },
                 "show-on": {
@@ -510,14 +506,6 @@
                         "name": "Texto verbal sustantivo",
                         "hint": "Texto que se mostrará para el sustantivo Verbed",
                         "default": "Enemigo derribado"
-                    },
-                    "type": {
-                        "name": "Tipo de Efecto",
-                        "hint": "Elige el tipo de efecto a reproducir",
-                        "choices": {
-                            "elden-ring": "Elden Ring",
-                            "sekiro": "Sekiro"
-                        }
                     }
                 },
                 "death": {
@@ -545,14 +533,6 @@
                         "name": "Moriste texto",
                         "hint": "Texto que se mostrará en \"Moriste\"",
                         "default": "tu moriste"
-                    },
-                    "type": {
-                        "name": "Tipo de Efecto",
-                        "hint": "Elige el tipo de efecto a reproducir",
-                        "choices": {
-                            "elden-ring": "Elden Ring",
-                            "sekiro": "Sekiro"
-                        }
                     }
                 }
             },
@@ -604,81 +584,6 @@
                     "success": "¡Configuraciones de PF2e RPG Importadas!",
                     "failure": "Falló la importación de Configuraciones de PF2e RPG :("
                 }
-            },
-            "actor-settings": {
-                "label": "PF2e RPG #s",
-                "critical": {
-                    "headers": {
-                        "default": "Por defecto",
-                        "strikes": "Golpes",
-                        "checks": "Pruebas",
-                        "saves": "Salvaciones",
-                        "failure": "Fallo Crítico",
-                        "success": "Éxito Crítico"
-                    },
-                    "tooltip": {
-                        "test": "Probar Animación Crítica con Configuración Actual"
-                    },
-                    "buttons": {
-                        "test": "Probar"
-                    },
-                    "enabled": {
-                        "name": "¿Anular Habilitado?",
-                        "hint": "Anula si esta animación crítica está habilitada o no",
-                        "choices": {
-                            "default": "—",
-                            "on": "Activado",
-                            "off": "Desactivado"
-                        }
-                    },
-                    "art": {
-                        "name": "Arte",
-                        "hint": "Imagen/Video para mostrar en crítico"
-                    },
-                    "offset-x": {
-                        "name": "Desplazamiento X",
-                        "hint": "Esto es % del ANCHO de la pantalla, así que 100 lo movería a la DERECHA"
-                    },
-                    "offset-y": {
-                        "name": "Desplazamiento Y",
-                        "hint": "Esto es % de la ALTURA de la pantalla, así que 100 lo movería ABAJO"
-                    },
-                    "scale": {
-                        "name": "Escala",
-                        "hint": "Tamaño de la imagen de golpe crítico para escalar en %"
-                    },
-                    "rotation": {
-                        "name": "Rotación",
-                        "hint": "Cuánto rotar el efecto de golpe crítico"
-                    },
-                    "sfx": {
-                        "name": "SFX",
-                        "hint": "Establece esto para anular el sonido crítico predeterminado con uno personalizado."
-                    },
-                    "volume": {
-                        "name": "Volumen",
-                        "hint": "Establece esto para multiplicar por el volumen de sonido crítico predeterminado (Ej. 50% * 200% = 100% etc.)"
-                    },
-                    "type": {
-                        "name": "Anular Tipo de Crítico",
-                        "hint": "Elige el tipo de animación crítica (si se deja en predeterminado, usa la configuración del mundo)"
-                    },
-                    "color": {
-                        "name": "Color",
-                        "hint": "Establece esto para anular el color crítico predeterminado"
-                    }
-                },
-                "token": {
-                    "rotation-offset": {
-                        "name": "Girar en Ataque - Desplazamiento de Rotación",
-                        "hint": "Establece cuánto desplazar la rotación de giro en ataque. Abajo ⬇ 0, Derecha ➡ 90, Arriba ⬆ 180, Izquierda ⬅ 270"
-                    }
-                }
-            },
-            "item": {
-                "finishing-move": {
-                    "name": "Nombre del Movimiento Final"
-                }
             }
         },
         "display-text": {
@@ -687,21 +592,6 @@
                 "failure": "Falla",
                 "success": "Éxito",
                 "criticalSuccess": "Éxito crítico"
-            },
-            "notifications": {
-                "migrate-token-settings-12-7": "Migrating {actorName}'s PF2e RPG # Flags",
-                "finishing-move": {
-                    "settings": {
-                        "item": {
-                            "update": "Finishing Move Name updated to: {newValue}"
-                        }
-                    }
-                },
-                "critical": {
-                    "failure": {
-                        "error": "Error: Invalid configuration. Set Critical Failure crit Type for this actor"
-                    }
-                }
             }
         },
         "token-options": {
@@ -745,16 +635,6 @@
             "activate-finishing-move": {
                 "name": "Activar movimiento final",
                 "hint": "Activa el movimiento final si lo tienes habilitado."
-            },
-            "activate-critical": {
-                "success": {
-                    "name": "Activar Animación de Éxito Crítico",
-                    "hint": "Activa la animación de éxito crítico para el token seleccionado"
-                },
-                "failure": {
-                    "name": "Activar Animación de Fallo Crítico",
-                    "hint": "Activa la animación de fallo crítico para el token seleccionado"
-                }
             }
         }
     }

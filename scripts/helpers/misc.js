@@ -21,21 +21,28 @@ export function doSomethingOnDamageApply() {
     );
 }
 
-export function waitForMessage(id, ms = 250, attempts = 120) {
-    return new Promise(function (resolve, reject) {
-        (function wait(count = 0) {
-            if (count > attempts) return reject();
-
-            if (count != 0 && ui.chat.element.find(`.message[data-message-id="${id}"]:visible`).length !== 0)
-                return resolve();
-
-            setTimeout(wait, ms, count + 1);
-        })();
-    });
+export function handleDiceSoNice(func, params, msg = null) {
+    if (
+        game.modules.get("dice-so-nice")?.active &&
+        !game.settings.get("dice-so-nice", "immediatelyDisplayChatMessages") &&
+        msg?.rolls?.find((roll) => roll.dice.length > 0)
+    ) {
+        const hookId = Hooks.on("diceSoNiceRollComplete", (id) => {
+            if (id === msg.id || msg === null) {
+                func(...params);
+                disableHook();
+            }
+        });
+        function disableHook() {
+            Hooks.off("diceSoNiceRollComplete", hookId);
+        }
+    } else {
+        func(...params);
+    }
 }
 
-export function localize(str, options = {}) {
-    return game.i18n.format(`${MODULE_ID}.${str}`, options);
+export function localize(str) {
+    return game.i18n.localize(`${MODULE_ID}.${str}`);
 }
 
 /**

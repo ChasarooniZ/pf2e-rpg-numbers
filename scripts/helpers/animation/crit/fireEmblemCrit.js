@@ -1,28 +1,39 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting } from "../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
- * This function creates an animated effect around the provided actor, displaying
+ * This function creates an animated effect around the provided token, displaying
  * an image moving across the screen along with other visual effects and sounds.
  *
- * @param {Actor} actor - The actor object around which the animation will be centered.
+ * @param {Token} token - The token object around which the animation will be centered.
  * @param {User[]} users - An array of users who will see the animation.
+ * @param {Object} imgData - An object containing image data, including image URL and scaling information.
+ * @param {string} imgData.img - The URL of the image to be displayed in the animation.
+ * @param {number} imgData.xScale - The horizontal scaling factor of the image.
+ * @param {number} imgData.yScale - The vertical scaling factor of the image.
  * @returns {void}
  */
 
-export async function fireEmblemCrit(actor, users, config) {
+export async function fireEmblemCrit(token, users, imgData, config) {
     const windowHeight = screen.height / 10;
     const padding = windowHeight / 10;
     const rectangleHeight = windowHeight + padding * 2;
     const windowWidth = screen.width;
+    const imageUrl = token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg || imgData.img;
     const duration = getSetting("critical.duration") * 1000;
+    const soundUrl = config.sfx;
+    const volumeLevel = config.volume;
 
-    //Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
+    if (!!token.flags?.["pf2e-rpg-numbers"]?.fireEmblemImg && imgData.isToken) {
+        imgData.xScale = 1;
+        imgData.yScale = 1;
+    }
+    await Sequencer.Preloader.preloadForClients([imageUrl, soundUrl]);
     new Sequence()
         //background
         .effect()
         .zIndex(-1)
-        .syncGroup(`fe-crit-${actor.uuid}`)
+        .syncGroup(`fe-crit-${token.uuid}`)
         .shape("rectangle", {
             lineSize: 0,
             width: windowWidth,
@@ -49,9 +60,8 @@ export async function fireEmblemCrit(actor, users, config) {
         //Image
         .effect()
         .zIndex(0)
-        .syncGroup(`fe-crit-${actor.uuid}`)
-        .file(config.art)
-        .spriteRotation(config.rotation)
+        .syncGroup(`fe-crit-${token.uuid}`)
+        .file(imageUrl)
         .animateProperty("sprite", "position.x", {
             from: -0.9,
             to: 1.5,
@@ -61,32 +71,22 @@ export async function fireEmblemCrit(actor, users, config) {
         })
         .screenSpace()
         .screenSpaceScale({
-            x: 0.134 * config.scale,
-            y: 0.134 * config.scale,
+            x: 0.134 * imgData.xScale,
+            y: 0.134 * imgData.yScale,
             fitX: false,
             fitY: true,
             ratioX: true,
             ratioY: false,
         })
-        // Y Offset
-        .animateProperty(
-            "sprite",
-            "position.y",
-            {
-                from: config?.offset?.y ?? 0,
-                to: config?.offset?.y ?? 0,
-                duration: duration,
-                screenSpace: true
-            })
         .duration(duration)
         .forUsers(users)
         .delay(config.delay)
         .screenSpaceAboveUI()
         //Sound
         .sound()
-        .file(config.sfx)
+        .file(soundUrl)
         .fadeOutAudio(duration / 4)
-        .volume(config.volume)
+        .volume(volumeLevel)
         .forUsers(users)
         .delay(config.delay)
         .play();

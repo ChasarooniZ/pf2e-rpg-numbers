@@ -335,11 +335,8 @@
                     "name": "Typ animacji krytycznej",
                     "hint": "Wybierz typ animacji krytycznej",
                     "choices": {
-                        "default": "—",
-                        "disgaea-7": "Disgaea 7",
-                        "fire-emblem": "Emblematy ognia: Przebudzenie",
-                        "fullscreen": "Fullscreen",
-                        "persona": "Persona 5"
+                        "persona": "Persona",
+                        "fire-emblem": "Emblematy ognia"
                     }
                 },
                 "show-on": {

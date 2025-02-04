@@ -1,10 +1,7 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
-import { getSetting, localize, MODULE_ID } from "../../misc.js";
-import { getTokenImage } from "../shakeOnDamageToken.js";
-import { disgaea7Crit } from "./styles/disgaea7Crit.js";
-import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
-import { fullscreenCrit } from "./styles/fullscreenCrit.js";
-import { personaCrit } from "./styles/personaCrit.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
+import { fireEmblemCrit } from "./fireEmblemCrit.js";
+import { personaCrit } from "./personaCrit.js";
 
 /**
  * Creates a critical animation based on the provided roll details.
@@ -12,64 +9,16 @@ import { personaCrit } from "./styles/personaCrit.js";
  * @param {string} [critType=getSetting("critical.type")] - The type of critical animation to display.
  * @returns {void}
  */
-export function createCritAnimation(rollDeets, critType, isSuccess = true) {
+export function createCritAnimation(rollDeets, critType = getSetting("critical.type")) {
     if (shouldCancelCriticalHit(rollDeets)) return;
 
     const imgData = getImageData(rollDeets);
     if (!imgData) return;
 
-    const config = getAnimationConfig({ actor: rollDeets.token?.actor, type: rollDeets?.type, isSuccess });
+    const config = getAnimationConfig({ token: rollDeets.token });
     const users = getEligibleUsers(rollDeets);
 
-    let type;
-
-    if (critType) {
-        type = critType;
-    } else if (config?.type !== 'default') {
-        type = config?.type ?? getSetting("critical.type");
-    } else {
-        type = isSuccess ? getSetting("critical.type") : null;
-    }
-
-
-    config.scale *= imgData.scale;
-    config.art = config.art || imgData.img;
-    config.sfx = config.sfx || (isSuccess ? getSetting('critical.sound') : '');
-
-    //Cancels animation based on config or imgData
-    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on') || type === null) {
-        return;
-    }
-    displayCritAnimation(type, rollDeets.token?.actor, users, config);
-}
-
-
-export function createTestCritAnimation(data) {
-    const {
-        userID,
-        succFail,
-        section,
-        settings,
-        actor
-    } = data;
-
-    const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === 'success' });
-
-    const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
-
-    if (config.type === 'default' && succFail === 'failure') {
-        ui.notifications.error(localize('display-text.notifications.critical.failure.error'));
-        return;
-    }
-
-    config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
-    if (!config.art) {
-        config.art = shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
-    }
-    config.sfx = config.sfx || (succFail === 'success' ? getSetting("critical.sound") : '')
-
-
-    displayCritAnimation(type, actor, [userID], config);
+    displayCritAnimation(critType, rollDeets.token, users, imgData, config);
 }
 
 /**
@@ -93,17 +42,26 @@ function getImageData(rollDeets) {
     const defaultImgType = getSetting("critical.default-img");
     const actorType = rollDeets.token.actor.type;
 
+    if (!shouldDisplayForTokenType(rollDeets, enabledTokenType, actorType)) {
+        return null;
+    }
+
     const imgData = {
         img: "icons/svg/cowled.svg",
-        scale: 1,
-        showForToken: shouldDisplayForTokenType(rollDeets, enabledTokenType, actorType),
+        xScale: 1,
+        yScale: 1,
+        xOffset: 0,
+        yOffset: 0,
+        isToken: true,
     };
 
     if (shouldUseTokenImage(actorType, defaultImgType)) {
-        imgData.img = getTokenImage(rollDeets?.token);
-        imgData.scale = ((rollDeets?.token?.texture?.scaleX ?? 1) + (rollDeets?.token?.texture?.scaleY ?? 1)) / 2;
+        imgData.img = rollDeets?.token?.texture?.src;
+        imgData.xScale = rollDeets?.token?.texture?.scaleX ?? 1;
+        imgData.yScale = rollDeets?.token?.texture?.scaleY ?? 1;
     } else {
         imgData.img = rollDeets?.token?.actor?.img;
+        imgData.isToken = false;
     }
 
     return imgData;
@@ -139,44 +97,11 @@ function shouldUseTokenImage(actorType, defaultImgType) {
  * @returns {object} The animation configuration object.
  */
 function getAnimationConfig(config) {
-    const flags = config?.flags ?
-        config.flags :
-        {
-            critical: config.actor.getFlag('pf2e-rpg-numbers', 'critical'),
-            token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
-        }
-
-    const successOrFail = config.isSuccess ? 'success' : 'failure';
-
-    const data = {
+    return {
         delay: getSetting("critical.delay") * 1000,
-        offset: { x: 0, y: 0 },
-        sfx: config.isSuccess ? getSetting("critical.sound") : '',
+        sfx: !!config?.token?.getFlag(MODULE_ID, 'critSFX') ? config?.token?.getFlag(MODULE_ID, 'critSFX') : getSetting("critical.sound"),
         volume: getSetting("critical.volume") / 100,
     };
-    let result = {};
-
-    if (config?.flags) {
-        result = getCritActorSettings(data, successOrFail, flags, config?.type)
-    } else {
-        switch (config?.type) {
-            case 'perception-check':
-            case 'skill-check':
-                result = getCritActorSettings(data, successOrFail, flags, 'checks')
-                break;
-            case 'attack-roll':
-                result = getCritActorSettings(data, successOrFail, flags, 'strikes')
-                break;
-            case 'saving-throw':
-                result = getCritActorSettings(data, successOrFail, flags, 'saves')
-                break;
-            default:
-                result = getCritActorSettings(data, successOrFail, flags)
-                break;
-        }
-    }
-
-    return result;
 }
 
 /**
@@ -193,50 +118,20 @@ function getEligibleUsers(rollDeets) {
 /**
  * Displays the critical hit animation based on the specified type.
  * @param {string} critType - The type of critical animation to display.
- * @param {object} actor - The actor object.
+ * @param {object} token - The token object.
  * @param {string[]} users - The list of eligible user IDs.
  * @param {object} imgData - The image data for the animation.
  * @param {object} config - The animation configuration.
  */
-function displayCritAnimation(critType, actor, users, imgData, config) {
+function displayCritAnimation(critType, token, users, imgData, config) {
     switch (critType) {
-        case "disgaea-7":
-            disgaea7Crit(actor, users, imgData, config);
+        case "persona":
+            personaCrit(token, users, imgData, config);
             break;
         case "fire-emblem":
-            fireEmblemCrit(actor, users, imgData, config);
-            break;
-        case "fullscreen":
-            fullscreenCrit(actor, users, imgData, config);
-            break;
-        case "persona":
-            personaCrit(actor, users, imgData, config);
+            fireEmblemCrit(token, users, imgData, config);
             break;
         default:
-            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
-            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
             break;
     }
-}
-
-
-
-function getCritActorSettings(data, successOrFail, flags, type = 'default') {
-    const result = { ...data };
-    const typeSpecificSettings = flags?.critical?.[successOrFail]?.[type];
-    const baseSettings = flags?.critical?.[successOrFail]?.default;
-
-    result.art = typeSpecificSettings?.art || baseSettings?.art || '';
-    result.enabled = typeSpecificSettings?.enabled === 'default' ? baseSettings?.enabled : typeSpecificSettings?.enabled;
-    result.offset.x = (typeSpecificSettings?.offset?.x || (baseSettings?.offset?.x ?? 0)) / 100;
-    result.offset.y = (typeSpecificSettings?.offset?.y || (baseSettings?.offset?.y ?? 0)) / 100;
-    result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0)
-    result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale;
-    result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || '';
-    result.type = typeSpecificSettings?.type === 'default' ? baseSettings?.type : typeSpecificSettings?.type;
-
-    const volume = typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume;
-    result.volume = (volume * result.volume) / 100;
-
-    return result;
 }
