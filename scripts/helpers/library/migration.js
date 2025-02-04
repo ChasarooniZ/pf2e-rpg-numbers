@@ -52,8 +52,10 @@ export async function migrateTokenSettingsToActorSettings() {
     for (const actor of actors) {
         cnt++;
         //Progress
-        console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),)
-        SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct: (cnt / actorCnt) * 100 })
+
+        const pct = Math.round((cnt / actorCnt) * 100 * 10) / 10
+        console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),`- ${pct}%`)
+        SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct})
 
         await migrateActorTokenSettings(actor);
     }
