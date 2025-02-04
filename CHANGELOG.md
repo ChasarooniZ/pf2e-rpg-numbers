@@ -1,23 +1,33 @@
 # [12.7.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.11...12.7.0) - Critical Upgrade
+
 - **Added**
   - **Actor Settings Menu**
     - There is a new actor settings menu! (Currently primarily for Critical Animations)
     - All old Token settings that were set in the token prototype should be automatically migrated to the new settings when installing the current version
       - If this process fails for whatever reason you can use the following to run the migration again `game.pf2eRPGNumbers.migration.tokenSettingsToActor()`
+      
+    
   - **Critical Animations**
     - There are 2 new critical animation types:
-      -  `Disgaea 7`
-      -  `Fullscreen`
-   -  `Crit Types`
-      -  You can now set different critical types and images for different scenarios such as `Strikes`, `Saves`, and `Checks`
-      -  Also adds option to configure `Critical Failure` animations for __specific actors__
-      -  This can be configured in the `Actor Settings Menu`
-   -  `Crit Activate For Specific Actors`
-      -  You can now set a particular actor to bypass the current critical settings (IE allow a boss to show their crit image even if you have crits disabled for NPCs)
-      -  This can be configured in the `Actor Settings Menu`
+      - `Disgaea 7`
+      - `Fullscreen`
+      
+    
+  - `Crit Types`
+     - You can now set different critical types and images for different scenarios such as `Strikes`, `Saves`, and `Checks`
+     - Also adds option to configure `Critical Failure` animations for **specific actors**
+     - This can be configured in the `Actor Settings Menu`
+     
+  - `Crit Activate For Specific Actors`
+     - You can now set a particular actor to bypass the current critical settings (IE allow a boss to show their crit image even if you have crits disabled for NPCs)
+     - This can be configured in the `Actor Settings Menu`
+     
+  
 - **Fixes**
   - Dice So Nice support has been updated to use a better integration method (@7H3LaughingMan)
   - Removed unnecessary awaits to improve overall performance of the module (@7H3LaughingMan)
+  
+
 # [12.6.11](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.10...12.6.11) - Fixed Shaking
 
 - Fixed bug with dynamic tokens not shaking properly on `token damage shake` (@nythz)
@@ -817,6 +827,36 @@
   
 
 # <<<<<<< HEAD
+
+## 12.7.0 - 2025-02-04
+
+- **Added**
+  - `Actor Settings Menu`
+    - There is a new actor settings menu! (Currently primarily for Critical Animations)
+    - All old Token settings that were set in the token prototype should be automatically migrated to the new settings when installing the current version
+      - If this process fails for whatever reason you can use the following to run the migration again `game.pf2eRPGNumbers.migration.tokenSettingsToActor()`
+      
+    
+  - `Critical Animations`
+    - There are 2 new critical animation types:
+      - `Disgaea 7`
+      - `Fullscreen`
+      
+    
+  - `Crit Types`
+     - You can now set different critical types and images for different scenarios such as `Strikes`, `Saves`, and `Checks`
+     - Also adds option to configure `Critical Failure` animations for **specific actors**
+     - This can be configured in the `Actor Settings Menu`
+     
+  - `Crit Activate For Specific Actors`
+     - You can now set a particular actor to bypass the current critical settings (IE allow a boss to show their crit image even if you have crits disabled for NPCs)
+     - This can be configured in the `Actor Settings Menu`
+     
+  
+- **Fixes**
+  - Dice So Nice support has been updated to use a better integration method (@7H3LaughingMan)
+  - Removed unnecessary awaits to improve overall performance of the module (@7H3LaughingMan)
+  
 
 ## 12.6.11 - 2025-01-25
 
