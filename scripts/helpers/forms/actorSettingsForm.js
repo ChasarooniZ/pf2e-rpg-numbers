@@ -371,7 +371,7 @@ function critProcessHelper(data, result) {
 function critSettingsFormatted(data, state, type) {
     return {
         art: data[state][type].art,
-        enabled: data[state][type].default,
+        enabled: data[state][type].enabled,
         offset: {
             x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
             y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),

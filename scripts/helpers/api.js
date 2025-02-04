@@ -31,7 +31,7 @@ export function createAPI() {
             },
         },
         critAnimation: {
-            generate: function (token, critType = getSetting("critical.type")) {
+            generate: function (token, critType = '') {
                 createCritAnimation({ type: "custom", whisper: [], token: token.document }, critType);
             },
         },
