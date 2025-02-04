@@ -49,7 +49,7 @@ export async function migrateTokenSettingsToActorSettings() {
     const actorCnt = actors.length;
     let cnt = 0;
     console.log("Started Migration for 12.7.0")
-    for (const actor in actors) {
+    for (const actor of actors) {
         cnt++;
         //Progress
         console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),)
