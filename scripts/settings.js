@@ -1,6 +1,5 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
 import {SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
-import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { CRIT_OPTIONS_LABELS } from "./helpers/animation/crit/const.js";
 
 Hooks.on("init", () => {
