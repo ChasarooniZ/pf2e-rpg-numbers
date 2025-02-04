@@ -694,6 +694,11 @@
                             "update": "Finishing Move Name updated to: {newValue}"
                         }
                     }
+                },
+                "critical": {
+                    "failure": {
+                        "error": "Error: Invalid configuration. Set Critical Failure crit Type for this actor"
+                    }
                 }
             }
         },

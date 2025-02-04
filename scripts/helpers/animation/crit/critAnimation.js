@@ -1,5 +1,5 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
-import { getSetting, MODULE_ID } from "../../misc.js";
+import { getSetting, localize, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "../shakeOnDamageToken.js";
 import { disgaea7Crit } from "./styles/disgaea7Crit.js";
 import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
@@ -57,11 +57,16 @@ export function createTestCritAnimation(data) {
 
     const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
 
+    if (config.type === 'default' && succFail === 'failure') {
+        ui.notifications.error(localize('display-text.notifications.critical.failure.error'));
+        return;
+    }
+
     config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
     if (!config.art) {
         config.art = shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
-    config.sfx = config.sfx ? config.sfx : getSetting('critical.sound');
+    config.sfx = config.sfx || (succFail === 'success' ? getSetting("critical.sound") : '')
 
 
     displayCritAnimation(type, actor, [userID], config);

@@ -156,7 +156,7 @@ function rotateOnAttack(msg) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = getSetting("critical.enabled");
+    const doCrits = shouldDoCrits(msg.token.actor.getFlag('pf2e-rpg-numbers', 'critical'), msg.flags.pf2e.context.outcome ?? "none");
     //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
@@ -172,7 +172,7 @@ function checkRollNumbers(dat, msg) {
         if (doCrits && roll_deets.outcome === "criticalSuccess") {
             waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', true));
         }
-        if (doCritFailures && roll_deets.outcome === "criticalFailure") {
+        if (roll_deets.outcome === "criticalFailure") {
             waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', false));
         }
     }
@@ -233,4 +233,15 @@ export function createUpdateMessage() {
         content: chatContent,
         whisper: ChatMessage.getWhisperRecipients("GM"),
     });
+}
+
+function shouldDoCrits(flags, outcome) {
+    const succFail = (outcome === 'criticalSuccess' && 'success')
+        || (outcome === 'criticalFailure' && 'failure')
+        || 'none';
+    if (succFail === 'none') return false;
+    return (
+        flags?.[succFail]
+        && Object.values(flags?.[succFail])?.find(i => i.enabled === 'on')
+    ) || getSetting("critical.enabled")
 }
