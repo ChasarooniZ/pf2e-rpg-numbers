@@ -337,8 +337,8 @@
                     "choices": {
                         "default": "—",
                         "disgaea-7": "Disgaea 7",
-                        "fire-emblem": "Emblematy ognia: Przebudzenie",
-                        "fullscreen": "Fullscreen",
+                        "fire-emblem": "Ognisty emblemat: Przebudzenie",
+                        "fullscreen": "Pełnoekranowy",
                         "persona": "Persona 5"
                     }
                 },
@@ -602,6 +602,81 @@
                     "success": "Ustawienia Pf2e RPG zaimportowane!",
                     "failure": "Import ustawień PF2e RPG nie powiódł się :("
                 }
+            },
+            "actor-settings": {
+                "label": "PF2e RPG #s",
+                "critical": {
+                    "headers": {
+                        "default": "Domyślne",
+                        "strikes": "Ataki",
+                        "checks": "Testy",
+                        "saves": "Rzuty obronne",
+                        "failure": "Krytyczna Porażka",
+                        "success": "Krytyczny Sukces"
+                    },
+                    "tooltip": {
+                        "test": "Testowanie animacji krytyków z bieżącymi ustawieniami"
+                    },
+                    "buttons": {
+                        "test": "Test"
+                    },
+                    "enabled": {
+                        "name": "Nadpisanie włączone?",
+                        "hint": "Nadpisuje informację, czy animacja krytyków jest włączona.",
+                        "choices": {
+                            "default": "—",
+                            "on": "Włączone",
+                            "off": "Wyłączone"
+                        }
+                    },
+                    "art": {
+                        "name": "Art",
+                        "hint": "Obraz/wideo do pokazania dla krytyków"
+                    },
+                    "offset-x": {
+                        "name": "Przesunięcie w X",
+                        "hint": "Jest to % SZEROKOŚCI ekranu, więc 100 przesunie go w PRAWO."
+                    },
+                    "offset-y": {
+                        "name": "Przesunięcie w Y",
+                        "hint": "Jest to % WYSOKOŚCI ekranu, więc 100 przesunie go w DÓŁ."
+                    },
+                    "scale": {
+                        "name": "Skala",
+                        "hint": "Rozmiar obrazu trafienia krytycznego do skalowania w %"
+                    },
+                    "rotation": {
+                        "name": "Rotacja",
+                        "hint": "Jak bardzo obrócić efekt trafienia krytycznego"
+                    },
+                    "sfx": {
+                        "name": "SFX",
+                        "hint": "Ustawienie to zastępuje domyślny dźwięk krytyczny dźwiękiem niestandardowym."
+                    },
+                    "volume": {
+                        "name": "Głośność",
+                        "hint": "Ustaw to, aby pomnożyć przez domyślną głośność dźwięku krytyków (Np. 50% * 200% = 100% itd.)."
+                    },
+                    "type": {
+                        "name": "Nadpisanie typu krytyków",
+                        "hint": "Wybierz typ animacji krytycznej (jeśli pozostanie domyślny, użyje ustawienia świata)."
+                    },
+                    "color": {
+                        "name": "Kolor",
+                        "hint": "Ustaw to, aby zastąpić domyślny kolor krytyków"
+                    }
+                },
+                "token": {
+                    "rotation-offset": {
+                        "name": "Włącz podczas ataku - przesunięcie obrotu",
+                        "hint": "Ustawia, o ile ma być przesunięty obrót podczas ataku. W dół ⬇ 0, w prawo ➡ 90, w górę ⬆ 180, w lewo ⬅ 270"
+                    }
+                }
+            },
+            "item": {
+                "finishing-move": {
+                    "name": "Nazwa ciosu kończącego"
+                }
             }
         },
         "display-text": {
@@ -610,49 +685,37 @@
                 "failure": "Porażka",
                 "success": "Sukces",
                 "criticalSuccess": "Krytyczny Sukces"
-            }
-        },
-        "token-options": {
-            "tab-label": "PF2e RPG #s",
-            "rotation-offset": {
-                "name": "Włącz podczas ataku - przesunięcie obrotu",
-                "hint": "Ustawia, o ile ma być przesunięty obrót podczas ataku. W dół ⬇ 0, w prawo ➡ 90, w górę ⬆ 180, w lewo ⬅ 270"
             },
-            "fire-emblem-img": {
-                "name": "Obrazek krytyczny Ognistego emblematu",
-                "hint": "Obraz wyświetlany dla trafień krytycznych tokena po wybraniu opcji „Ognistego emblematu”"
-            },
-            "persona-img": {
-                "name": "Obrazek krytyczny Persony",
-                "hint": "Obraz wyświetlany dla trafień krytycznych tokena po wybraniu opcji „Persony”"
-            },
-            "crit": {
-                "offset-x": {
-                    "name": "Przesunięcie w X krytyków",
-                    "hint": "Jest to wartość procentowa, więc 100 spowoduje przesunięcie w prawo o jedną pełną długość obrazu"
+            "notifications": {
+                "migrate-token-settings-12-7": "Migracja {actorName} do PF2e RPG # Flagi",
+                "finishing-move": {
+                    "settings": {
+                        "item": {
+                            "update": "Zaktualizowano nazwę ciosu kończącego do: {newValue}"
+                        }
+                    }
                 },
-                "offset-y": {
-                    "name": "Przesunięcie w Y krytyków",
-                    "hint": "Jest to wartość procentowa, więc 100 oznacza przesunięcie w dół o jedną pełną długość obrazu"
-                },
-                "scale": {
-                    "name": "Skala krytyków",
-                    "hint": "Rozmiar obrazu trafienia krytycznego do skalowania w %"
-                },
-                "rotation": {
-                    "name": "Rotacja krytyków",
-                    "hint": "Jak bardzo obrócić efekt trafienia krytycznego"
-                },
-                "sfx": {
-                    "name": "Efekty dźwiękowe krytyków",
-                    "hint": "Ustawienie to zastępuje domyślny dźwięk krytyczny dźwiękiem niestandardowym."
+                "critical": {
+                    "failure": {
+                        "error": "Błąd: Nieprawidłowa konfiguracja. Ustaw Krytyczny Typ Niepowodzenia dla tego aktora"
+                    }
                 }
             }
         },
         "keybinds": {
             "activate-finishing-move": {
-                "name": "Aktywuj cios kończący",
-                "hint": "Aktywuje cios kończący, jeśli jest włączony"
+                "name": "Przełącz cios kończący",
+                "hint": "Przełącza cios kończący, jeśli został włączony w ustawieniach."
+            },
+            "activate-critical": {
+                "success": {
+                    "name": "Aktywuj animację Krytycznego Sukcesu",
+                    "hint": "Aktywuje animację krytycznego sukcesu dla wybranego tokena"
+                },
+                "failure": {
+                    "name": "Aktywuj animację Krytycznej Porażki",
+                    "hint": "Aktywuje animację krytycznej porażki dla wybranego tokena"
+                }
             }
         }
     }
