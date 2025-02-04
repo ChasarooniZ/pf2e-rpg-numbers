@@ -643,7 +643,7 @@
                     },
                     "scale": {
                         "name": "Scale",
-                        "hint": "Size of critical hit image to scale in %"
+                        "hint": "Multiplier to scale the size of the image by"
                     },
                     "rotation": {
                         "name": "Rotation",

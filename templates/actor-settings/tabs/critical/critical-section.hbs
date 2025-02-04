@@ -157,7 +157,7 @@
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
     </label>
-    {{rangePicker value=data.scale name=(concat "settings.critical." type "." section ".scale") step=0.05 min=0 max=2}}
+    {{numberInput data.scale name=(concat "settings.critical." type "." section ".scale") step=0.05 min=0 max=5}}
 </div>
 
 {{! SFX }}

@@ -61,10 +61,13 @@ export function createTestCritAnimation(data) {
         ui.notifications.error(localize('display-text.notifications.critical.failure.error'));
         return;
     }
+    const shouldUseToken = shouldUseTokenImage(actor.type, getSetting("critical.default-img"));
 
-    config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
+    if (shouldUseToken) {
+        config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
+    }
     if (!config.art) {
-        config.art = shouldUseTokenImage(actor.type, getSetting("critical.default-img")) ? getTokenImage(actor.prototypeToken) : actor?.img;
+        config.art = shouldUseToken ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
     config.sfx = config.sfx || (succFail === 'success' ? getSetting("critical.sound") : '')
 

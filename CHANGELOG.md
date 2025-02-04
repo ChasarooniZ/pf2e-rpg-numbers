@@ -1,3 +1,9 @@
+# [12.7.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.1...12.7.2) - Scaling FIx
+
+-   Fix scale issue where it uses the wrong scaling for critical animation test
+-   Changes scale to a number input (to allow for larger scales)
+-   Fix localization of the description of `Critical Scale` for actor settings
+
 # [12.7.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.0...12.7.1) - Early Fixes
 
 -   Fixed Error where `Critical Animation` setting `Override Enabled` was not being saved
@@ -48,6 +54,7 @@
 # [12.6.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.5...12.6.6) - Dynamism
 
 -   `Token Damage Shake`
+
     -   Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
 
         -   Note: will fallback to token image when the subject texture is blank
