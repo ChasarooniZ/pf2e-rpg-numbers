@@ -172,8 +172,9 @@ function checkRollNumbers(dat, msg) {
         if (doCrits && roll_deets.outcome === "criticalSuccess") {
             waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', true));
         }
-        // if (doCritFailures && roll_deets.outcome === "criticalFailure")
-        //     handleDiceSoNice(createCritAnimation, [roll_deets, '', false], msg);
+        if (doCritFailures && roll_deets.outcome === "criticalFailure") {
+            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', false));
+        }
     }
 }
 

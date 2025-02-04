@@ -21,14 +21,23 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     const config = getAnimationConfig({ actor: rollDeets.token?.actor, type: rollDeets?.type, isSuccess });
     const users = getEligibleUsers(rollDeets);
 
-    const type = critType || (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
+    let type;
+
+    if (critType) {
+        type = critType;
+    } else if (config?.type !== 'default') {
+        type = config?.type ?? getSetting("critical.type");
+    } else {
+        type = isSuccess ? getSetting("critical.type") : null;
+    }
+
 
     config.scale *= imgData.scale;
     config.art = config.art || imgData.img;
-    config.sfx = config.sfx || getSetting('critical.sound');
+    config.sfx = config.sfx || (isSuccess ? getSetting('critical.sound') : '');
 
     //Cancels animation based on config or imgData
-    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on')) {
+    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on') || type === null) {
         return;
     }
     displayCritAnimation(type, rollDeets.token?.actor, users, config);
@@ -132,13 +141,12 @@ function getAnimationConfig(config) {
             token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
         }
 
-    //{ actor: rollDeets.token?.actor, rollDeets, isSuccess}
     const successOrFail = config.isSuccess ? 'success' : 'failure';
 
     const data = {
         delay: getSetting("critical.delay") * 1000,
         offset: { x: 0, y: 0 },
-        sfx: getSetting("critical.sound"),
+        sfx: config.isSuccess ? getSetting("critical.sound") : '',
         volume: getSetting("critical.volume") / 100,
     };
     let result = {};
