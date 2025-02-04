@@ -12,8 +12,8 @@ import {
     doSomethingOnDamageApply,
     //FinisherDialog,
     getSetting,
-    handleDiceSoNice,
-    MODULE_ID
+    MODULE_ID,
+    waitForMessage
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
@@ -50,9 +50,12 @@ Hooks.on("ready", () => {
             //Attack Roll Stuff
             if (dat.isAttackRoll) {
                 // Rotate on Attack Roll
-                if (isRotateOnAttack()) handleDiceSoNice(rotateOnAttack, [msg], msg);
-                if (isShakeOnAttack(msg.token.actor))
-                    handleDiceSoNice(shakeOnAttack, [msg.token, msg.flags.pf2e.context.outcome], msg);
+                if (isRotateOnAttack()) {
+                    waitForMessage(msg.id).then(() => rotateOnAttack(msg));
+                }
+                if (isShakeOnAttack(msg.token.actor)) {
+                    waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
+                }
             }
 
             //On Damage Application
@@ -163,9 +166,12 @@ function checkRollNumbers(dat, msg) {
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
         };
-        if (doChecks) handleDiceSoNice(generateRollScroll, [roll_deets], msg);
-        if (doCrits && roll_deets.outcome === "criticalSuccess")
-            handleDiceSoNice(createCritAnimation, [roll_deets, '', true], msg);
+        if (doChecks) {
+            waitForMessage(msg.id).then(() => generateRollScroll(roll_deets));
+        }
+        if (doCrits && roll_deets.outcome === "criticalSuccess") {
+            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', true));
+        }
         // if (doCritFailures && roll_deets.outcome === "criticalFailure")
         //     handleDiceSoNice(createCritAnimation, [roll_deets, '', false], msg);
     }
@@ -183,7 +189,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        handleDiceSoNice(generateDamageScroll, [dmg_list, targets, msg], msg);
+        waitForMessage(msg.id).then(() => generateDamageScroll(dmg_list, targets, msg));
     }
 }
 
