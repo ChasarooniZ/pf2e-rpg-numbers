@@ -36,7 +36,7 @@ export const DEFAULT_TOKEN = {
 export async function handleUpdate(curVersion, prevVersion) {
     //12.7.0
     if (foundry.utils.isNewerVersion('12.7.0', prevVersion))
-        await migrateTokenSettingsToActorSettings;
+        await migrateTokenSettingsToActorSettings();
 
     //End of handling
     setSetting('last-version', curVersion);
