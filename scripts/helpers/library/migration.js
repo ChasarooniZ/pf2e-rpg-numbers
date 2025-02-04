@@ -54,8 +54,8 @@ export async function migrateTokenSettingsToActorSettings() {
         //Progress
 
         const pct = Math.round((cnt / actorCnt) * 100 * 10) / 10
-        console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }),`- ${pct}%`)
-        SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct})
+        console.log(localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), `- ${pct}%`)
+        SceneNavigation.displayProgressBar({ label: localize('display-text.notifications.migrate-token-settings-12-7', { actorName: actor.name }), pct })
 
         await migrateActorTokenSettings(actor);
     }
@@ -80,7 +80,7 @@ export async function migrateActorTokenSettings(actor) {
                     rotation: flags?.critRotation ?? 0,
                     sfx: flags?.critSFX ?? '', //Note should also accept JB2A * card
                     volume: 100,
-                    scale: flags?.critScale ?? 0,
+                    scale: !isNaN(flags?.critScale) ? (flags?.critScale / 100) : 0,
                     art: getCritImageLegacy(flags),
                     type: 'default'
                 },
