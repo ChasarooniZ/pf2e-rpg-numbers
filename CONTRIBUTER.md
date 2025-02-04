@@ -7,6 +7,7 @@ Note this isn't everyone as I am a bit slow/lazy but i'll do my best to add peop
   - Fire emblem crit squash bug
 - TheTenk
 - Deatrathias
+- nythz
 ## Ideas people
 - TheTenk - help with improving the finisher system
 ## Code
