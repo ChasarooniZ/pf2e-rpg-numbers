@@ -214,9 +214,9 @@ export async function sekiroDeath(options = {}) {
 function getTextWidth(text, font) {
     // if given, use cached canvas for better performance
     // else, create new canvas
-    const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
-    const context = canvas.getContext("2d");
+    var canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement("canvas"));
+    var context = canvas.getContext("2d");
     context.font = font;
-    const metrics = context.measureText(text + "||"); // The '||' adds a little bit of separation
+    var metrics = context.measureText(text + "||"); // The '||' adds a little bit of separation
     return metrics.width;
 };

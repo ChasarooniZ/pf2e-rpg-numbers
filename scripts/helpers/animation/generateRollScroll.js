@@ -74,10 +74,10 @@ export async function generateRollScroll(roll_deets) {
         .forUsers(usersToPlayFor);
 
     // Simplify sound effect handling
-    const seq_handled = handleSFX(outcome, type, seq, usersToPlayFor);
-    seq_handled.play();
+    const seq_handled = (await handleSFX(outcome, type, seq, usersToPlayFor))
+    await seq_handled.play();
 }
-function handleSFX(outcome, type, seq, usersToPlayFor) {
+async function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
         const isAttack = type === "attack-roll";
         const combatSetting = getSetting("check-animations.sfx.check-or-attack");
@@ -103,6 +103,7 @@ function handleSFX(outcome, type, seq, usersToPlayFor) {
                     const sfxOptions = sfx.slice(1, -1).split(",").map(it => it.replace(/"/g, ""));
                     sfx = Sequencer.Helpers.random_array_element(sfxOptions);
                 }
+                await Sequencer.Preloader.preloadForClients(sfx);
                 seq.sound()
                     .file(sfx)
                     .volume(getSetting("check-animations.sfx.volume") / 100)
