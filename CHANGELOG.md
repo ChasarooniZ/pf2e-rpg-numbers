@@ -1,3 +1,7 @@
+# [12.7.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.3...12.7.4) - Polish Update
+
+- Update polish translation (@Lioheart again <3)
+
 # [12.7.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.2...12.7.3) - Default Value Fix
 
 - Fix issue with tokens that have no actor specific crit settings erroring out
