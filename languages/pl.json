@@ -643,7 +643,7 @@
                     },
                     "scale": {
                         "name": "Skala",
-                        "hint": "Rozmiar obrazu trafienia krytycznego do skalowania w %"
+                        "hint": "Mnożnik do skalowania rozmiaru obrazu przez"
                     },
                     "rotation": {
                         "name": "Rotacja",
