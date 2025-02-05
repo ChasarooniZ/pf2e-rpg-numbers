@@ -853,6 +853,10 @@
 
 # <<<<<<< HEAD
 
+## 12.7.4 - 2025-02-05
+
+- Update polish translation (@Lioheart again <3)
+
 ## 12.7.3 - 2025-02-05
 
 - Fix issue with tokens that have no actor specific crit settings erroring out (found by @Nuumers)
