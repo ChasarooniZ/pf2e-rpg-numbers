@@ -39,6 +39,14 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+    registerSetting("actor-settings", "actor-settings.player-enabled", {
+        desc: "actor-settings.player-enabled",
+        scope: "world",
+        config: false,
+        default: false,
+        type: Boolean,
+    });
+
     registerSetting("dmg-numbers", "dmg-enabled", {
         desc: "enabled",
         scope: "world",

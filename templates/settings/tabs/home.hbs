@@ -6,6 +6,13 @@
         </label>
         <input type="checkbox" id="settings.enabled" name="settings.enabled" {{checked settings.enabled}} />
     </div>
+    {{! Actor Settings button Enabled for Players}}
+    <div class="form-group">
+        <label for="settings.actor-settings.player-enabled" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.actor-settings.player-enabled.hint"}}">
+            {{localize "pf2e-rpg-numbers.module-settings.actor-settings.player-enabled.name"}}
+        </label>
+        <input type="checkbox" id="settings.actor-settings.player-enabled" name="settings.actor-settings.player-enabled" {{checked settings.actor-settings.player-enabled}} />
+    </div>
     <div class="row">
         <div class="column">
             <button id="pf2e-rpg-import">

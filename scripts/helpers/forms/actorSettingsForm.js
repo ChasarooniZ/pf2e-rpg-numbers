@@ -1,5 +1,6 @@
 import { CRIT_OPTIONS } from "../animation/crit/const.js";
 import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
+import { getTokenImage } from "../animation/shakeOnDamageToken.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
@@ -210,6 +211,78 @@ export class ActorSettingsConfigForm extends FormApplication {
                 });
             }
         }
+
+        // Token Rotation Code
+
+        const img = html.find("#angle-image")[0];
+        const canvasEl = html.find("#angle-canvas")[0];
+        const container = html.find("angle-image-container")[0];
+        const input = html.find('input[name="settings.token.rotation.offset"]')[0];
+        const ctx = canvasEl.getContext("2d");
+
+        function drawIndicator(angle) {
+            ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+
+            const width = canvasEl.width;
+            const height = canvasEl.height;
+            const centerX = width / 2;
+            const centerY = height / 2;
+
+            // Convert angle (0 = down) to radians
+            const radians = ((360 - angle + 90) * Math.PI) / 180;
+
+            // Draw line from center outward
+            const edgeX = centerX + Math.cos(radians) * centerX;
+            const edgeY = centerY + Math.sin(radians) * centerY;
+
+            ctx.strokeStyle = "red";
+            ctx.lineWidth = 8;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(edgeX, edgeY);
+            ctx.stroke();
+        }
+
+
+        img.addEventListener("load", () => {
+
+            drawIndicator(parseInt(input.value) || 0);
+        });
+
+
+        img.addEventListener("click", (event) => {
+            const rect = canvasEl.getBoundingClientRect();
+            const width = rect.width;
+            const height = rect.height;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const clickX = event.offsetX;
+            const clickY = event.offsetY;
+
+            const dx = clickX - centerX;
+            const dy = clickY - centerY;
+            let angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+            // Convert to new system where 0° is down
+            angle = (360 - angle + 90) % 360;
+            angle = Math.round(angle / 5) * 5;
+
+            input.value = angle;
+            drawIndicator(angle);
+        });
+
+        input.addEventListener("change", () => {
+            let angle = parseInt(input.value, 10);
+            if (isNaN(angle)) {
+                angle = 0; // Default to 0 if invalid input
+            } else if (angle > 359) {
+                angle = angle % 360
+            } else if (angle < 0) {
+                angle = angle + (Math.ceil(Math.abs(angle / 360)) * 360)
+            }
+            input.value = angle;
+            drawIndicator(angle);
+        });
     }
 
     getData() {
@@ -235,9 +308,11 @@ export class ActorSettingsConfigForm extends FormApplication {
                 settings: tabSettings
             };
         });
-        console.log({ tabs, actor: this?.options?.actor })
 
-        return foundry.utils.mergeObject(super.getData(), { tabs, actor: this.options?.actor });
+        const data = { tabs, actor: this.options?.actor, tokenImg: getTokenImage(this.options?.actor?.prototypeToken) };
+        console.log(data)
+
+        return foundry.utils.mergeObject(super.getData(), data);
     }
 
     _retrieveNestedSettings(settingGroup) {
@@ -291,7 +366,7 @@ export class ActorSettingsConfigForm extends FormApplication {
         await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
 
         const token = DEFAULT_TOKEN;
-        token.rotation.offset = Number(settings.token.rotation.offset) ?? 0;
+        token.rotation.offset = Number(settings.token.rotation.offset) || 0;
 
         await this.options?.actor?.setFlag(MODULE_ID, 'token', token)
     }

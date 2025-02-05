@@ -15,7 +15,7 @@
             {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical.hbs' tab}}
             {{/if}}
             {{#if tab.token}}
-            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' this}}
+            {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/token.hbs' tab tokenImg=../tokenImg}}
             {{/if}}
         </div>
         {{/each}}

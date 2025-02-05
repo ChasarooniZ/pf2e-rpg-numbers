@@ -19,6 +19,12 @@
                 "name": "Enable Module",
                 "hint": "Enables functionality of module"
             },
+            "actor-settings": {
+                "player-enabled": {
+                    "name": "Enable Actor Settings Button for Players",
+                    "hint": "Allows players to see the actor setting button to customize things like crits"
+                }
+            },
             "headers": {
                 "dmg-numbers": "Damage Numbers",
                 "check-animations": "Checks & Attack Animations",

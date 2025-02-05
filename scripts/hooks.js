@@ -104,6 +104,7 @@ function calculateAverageLevel(partyMembers) {
 }
 
 export async function getActorSheetHeaderButtons(sheet, buttons) {
+    if (!getSetting("actor-settings.player-enabled") && !game.user.isGM) return;
     buttons.unshift({
         class: "rpg-numbers-actor-menu",
         icon: "fa-solid fa-dragon",

@@ -9,7 +9,7 @@ import { getSetting, MODULE_ID } from "../misc.js";
 export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
     const angle = token.angle;
-    const rotationOffset = _token?.actor?.getFlag(MODULE_ID, 'token')?.rotationOffset ?? 0;
+    const rotationOffset = token?.actor?.getFlag(MODULE_ID, 'token')?.rotation?.offset ?? 0;
     const tokWxH = (token.document.height + token.document.width) / 2;
     const baseTurnTime = getSetting("rotate-on-attack.duration") * 1000;
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");

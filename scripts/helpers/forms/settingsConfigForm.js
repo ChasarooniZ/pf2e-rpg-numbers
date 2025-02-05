@@ -3,7 +3,10 @@ import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 const settingsConfig = {
     home: {
         icon: "fa-dragon",
-        enabled: "enabled"
+        enabled: "enabled",
+        'actor-settings': {
+            'player-enabled': "actor-settings.player-enabled"
+        }
     },
     rolls: {
         icon: "fa-dice-d20",
