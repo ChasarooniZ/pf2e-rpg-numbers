@@ -234,11 +234,11 @@ function getCritActorSettings(data, successOrFail, flags, type = 'default') {
     result.offset.x = (typeSpecificSettings?.offset?.x || (baseSettings?.offset?.x ?? 0)) / 100;
     result.offset.y = (typeSpecificSettings?.offset?.y || (baseSettings?.offset?.y ?? 0)) / 100;
     result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0)
-    result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale;
+    result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale ?? 1;
     result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || '';
     result.type = typeSpecificSettings?.type === 'default' ? baseSettings?.type : typeSpecificSettings?.type;
 
-    const volume = typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume;
+    const volume = (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
     result.volume = (volume * result.volume) / 100;
 
     return result;
