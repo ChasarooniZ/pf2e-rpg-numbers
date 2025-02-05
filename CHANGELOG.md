@@ -1,10 +1,14 @@
-# [12.7.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.2...12.7.3) - Get Rotated
+# [12.7.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.4...12.7.5) - Get Rotated
 
 -   `Rotate On Attack`
     -   Fixed Bug where actor settings for rotation wasn't being taken into account (bugspotter @Nuumers)
     -   Added a fancy new rotation selection option!
 -   `Actor Settings`
     -   Added option to disable button for actor settings for players (by default players will have the PF2e RPG #s actor button disabled)
+
+# [12.7.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.3...12.7.4) - Polish Update
+
+-   Update polish translation (@Lioheart again <3)
 
 # [12.7.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.2...12.7.3) - Default Value Fix
 
@@ -787,6 +791,14 @@
     -   Crit Message idea
 
 # <<<<<<< HEAD
+
+## 12.7.4 - 2025-02-05
+
+-   Update polish translation (@Lioheart again <3)
+
+## 12.7.3 - 2025-02-05
+
+-   Fix issue with tokens that have no actor specific crit settings erroring out (found by @Nuumers)
 
 ## 12.7.2 - 2025-02-04
 
