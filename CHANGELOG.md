@@ -1,12 +1,12 @@
 # [12.7.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.2...12.7.3) - Default Value Fix
 
--   Fix issue with tokens that have no actor specific crit settings erroring out
+- Fix issue with tokens that have no actor specific crit settings erroring out
 
 # [12.7.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.1...12.7.2) - Scaling FIx
 
--   Fix scale issue where it uses the wrong scaling for critical animation test
--   Changes scale to a number input (to allow for larger scales)
--   Fix localization of the description of `Critical Scale` for actor settings
+- Fix scale issue where it uses the wrong scaling for critical animation test
+- Changes scale to a number input (to allow for larger scales)
+- Fix localization of the description of `Critical Scale` for actor settings
 
 # [12.7.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.0...12.7.1) - Early Fixes
 
@@ -848,6 +848,10 @@
   
 
 # <<<<<<< HEAD
+
+## 12.7.3 - 2025-02-05
+
+- Fix issue with tokens that have no actor specific crit settings erroring out (found by @Nuumers)
 
 ## 12.7.2 - 2025-02-04
 
