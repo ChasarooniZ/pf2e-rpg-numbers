@@ -5,6 +5,8 @@
     -   Added a fancy new rotation selection option!
 -   `Actor Settings`
     -   Added option to disable button for actor settings for players (by default players will have the PF2e RPG #s actor button disabled)
+-   `Translation`
+    -   Updated polish translation (@Liohart)
 
 # [12.7.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.3...12.7.4) - Polish Update
 
