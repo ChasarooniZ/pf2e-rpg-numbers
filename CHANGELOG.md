@@ -1,3 +1,9 @@
+# [12.7.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.5...12.7.6) - Actually Let me Disable it
+- Fixed bug where you couldn't save data without enabling for all players (bugcatcher @Novem)
+- Fixed bug where critical failures show up for every token even if they didn't have them manually enabled (bugcatcher @Simon Magnus)
+- Fixed fullscreen crit animation always showing for all users (bugcatcher @YoSoy-Ed)
+
+
 # [12.7.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.4...12.7.5) - Get Rotated
 
 - `Rotate On Attack`

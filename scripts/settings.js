@@ -1,5 +1,5 @@
 import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
-import {SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
+import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
 import { CRIT_OPTIONS_LABELS } from "./helpers/animation/crit/const.js";
 
 Hooks.on("init", () => {
@@ -40,7 +40,7 @@ Hooks.on("init", () => {
     });
 
     registerSetting("actor-settings", "actor-settings.player-enabled", {
-        desc: "actor-settings.player-enabled",
+        desc: "player-enabled",
         scope: "world",
         config: false,
         default: false,
@@ -830,7 +830,7 @@ Hooks.on("init", () => {
         onDown: () => {
             const token = canvas.tokens.controlled[0];
             if (token) {
-            game.pf2eRPGNumbers.critAnimation.generate(token)
+                game.pf2eRPGNumbers.critAnimation.generate(token)
             } else {
                 ui.notifications.error("You must have a token selected")
             }

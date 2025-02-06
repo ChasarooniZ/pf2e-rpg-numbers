@@ -37,7 +37,7 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     config.sfx = config.sfx || (isSuccess ? getSetting('critical.sound') : '');
 
     //Cancels animation based on config or imgData
-    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on') || type === null) {
+    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on') || type === null || (!isSuccess && config.enabled !== 'on')) {
         return;
     }
     displayCritAnimation(type, rollDeets.token?.actor, users, config);
