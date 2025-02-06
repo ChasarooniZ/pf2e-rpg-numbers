@@ -17,7 +17,7 @@
   
 - `Translation`
   
-  - Updated polish translation (@Liohart)
+  - Updated polish translation (@Lioheart)
   
 
 # [12.7.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.3...12.7.4) - Polish Update
