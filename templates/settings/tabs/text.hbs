@@ -1,5 +1,7 @@
 <span>
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.finishing-move.title"}}
     </h2>
     {{! Enabled }}
@@ -15,6 +17,21 @@
             id="settings.finishingMove.enabled"
             name="settings.finishingMove.enabled"
             {{checked settings.finishingMove.enabled}}
+        />
+    </div>
+    {{! Player Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.finishingMove.playerEnabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.finishing-move.enabled-players.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.finishing-move.enabled-players.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.finishingMove.playerEnabled"
+            name="settings.finishingMove.playerEnabled"
+            {{checked settings.finishingMove.playerEnabled}}
         />
     </div>
     {{! Keep On }}
@@ -129,7 +146,9 @@
     </div>
 </span>
 <span>
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-noun-verbed.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-noun-verbed.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.title"}}
         -
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.noun-verbed"}}
@@ -201,9 +220,9 @@
     <div class="form-group">
         <label
             for="settings.fromSoftware.eldenRing.nounVerbed.volume"
-            data-tooltip="{{localize
-                    "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.volume.hint"
-                }}"
+            data-tooltip="{{
+                localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.volume.hint"
+            }}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.volume.name"}}
         </label>
@@ -248,7 +267,9 @@
     </div>
 </span>
 <span>
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-death.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-death.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.title"}}
         -
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.death"}}
@@ -276,7 +297,7 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.from-software.death.type.name"}}
         </label>
-        
+
         <select id="settings.fromSoftware.eldenRing.death.type" name="settings.fromSoftware.eldenRing.death.type">
             {{selectOptions
                 settings.fromSoftware.eldenRing.death.type.choices

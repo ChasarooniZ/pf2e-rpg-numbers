@@ -97,6 +97,7 @@ const settingsConfig = {
         icon: "fa-message-captions",
         finishingMove: {
             enabled: "finishing-move.enabled",
+            playerEnabled: "finishing-move.enabled-players",
             keepOn: "finishing-move.keep-on",
             usePlayerColor: "finishing-move.use-player-color",
             quality: { path: "finishing-move.quality", type: "number", range: { min: 1, max: 5, step: 1 } },
