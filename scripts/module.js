@@ -18,6 +18,7 @@ import {
 import { getDamageList } from "./helpers/rollTerms.js";
 import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
+import { dodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -56,10 +57,15 @@ Hooks.on("ready", () => {
                 if (isShakeOnAttack(msg.token.actor)) {
                     waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
                 }
+
+                if (msg?.token && msg?.target?.token && isDodgeOnMiss(['failure', 'criticalFailure'].includes(msg.flags.pf2e.context.outcome ?? "none"))) {
+                    waitForMessage(msg.id).then(() => dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object));
+                }
             }
 
             //On Damage Application
             onDamageApplication(dat, msg);
+
         }
     });
 
@@ -152,6 +158,10 @@ function isRotateOnAttack() {
 }
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
+}
+
+function isDodgeOnMiss(outcome) {
+
 }
 
 function checkRollNumbers(dat, msg) {
