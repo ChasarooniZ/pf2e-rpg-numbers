@@ -1014,9 +1014,10 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    game.settings.register({
+    registerSetting({
         category: "",
         id: "last-version",
+        desc: "last-version",
         scope: "world",
         config: false,
         default: "0.0.0",
