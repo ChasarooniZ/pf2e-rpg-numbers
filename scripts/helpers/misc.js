@@ -63,7 +63,7 @@ export function registerSetting(data) {
             {}
         );
 
-    game.settings.register(MODULE_ID, category.id, settingData);
+    game.settings.register(MODULE_ID, data.id, settingData);
 }
 
 function transformData(dataArray) {
