@@ -607,6 +607,7 @@ Hooks.on("init", () => {
 
     });
 
+    //Dodge on Miss
     registerSetting({
         category: "dodge-on-miss",
         id: "dodge-on-miss.enabled",

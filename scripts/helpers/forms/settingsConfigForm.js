@@ -1,3 +1,4 @@
+import { dodgeOnMiss } from "../animation/token/tokenDodgeOnMiss.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -77,6 +78,11 @@ const settingsConfig = {
                 enabled: "shake-on-attack.enabled",
                 showFor: "shake-on-attack.type"
             }
+        },
+        dodgeOnMiss: {
+            enabled: "dodge-on-miss.enabled",
+            duration: "dodge-on-miss.duration",
+            distance: "dodge-on-miss.distance"
         }
     },
     critical: {
