@@ -99,7 +99,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 5,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "dmg-numbers",
@@ -148,7 +149,8 @@ Hooks.on("init", () => {
             max: 10,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "dmg-numbers",
@@ -162,7 +164,8 @@ Hooks.on("init", () => {
             max: 1000,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "dmg-numbers",
@@ -187,7 +190,8 @@ Hooks.on("init", () => {
             max: 2,
             step: 0.05,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "dmg-numbers",
@@ -201,7 +205,8 @@ Hooks.on("init", () => {
             max: 1,
             step: 0.05,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "check-animations",
@@ -261,7 +266,8 @@ Hooks.on("init", () => {
             max: 10,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "check-animations",
@@ -310,7 +316,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "check-animations",
@@ -383,7 +390,8 @@ Hooks.on("init", () => {
             max: 2000,
             step: 10,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "screen-shake",
@@ -397,7 +405,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "screen-shake",
@@ -456,7 +465,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "token-dmg-shake",
@@ -470,7 +480,8 @@ Hooks.on("init", () => {
             max: 20,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "token-dmg-shake",
@@ -484,7 +495,8 @@ Hooks.on("init", () => {
             max: 2000,
             step: 10,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "token-dmg-shake",
@@ -581,7 +593,8 @@ Hooks.on("init", () => {
             max: 2,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "rotate-on-attack",
@@ -617,7 +630,8 @@ Hooks.on("init", () => {
             max: 3,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "dodge-on-miss",
@@ -631,7 +645,8 @@ Hooks.on("init", () => {
             max: 3,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "critical",
@@ -655,7 +670,8 @@ Hooks.on("init", () => {
         onChange: (value) => {
             game.user.setFlag(MODULE_ID, "critEnabled", value);
 
-        });
+        }
+    });
 
     registerSetting({
         category: "critical",
@@ -717,7 +733,8 @@ Hooks.on("init", () => {
             max: 10,
             step: 0.1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "critical",
@@ -743,7 +760,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "critical",
@@ -813,7 +831,8 @@ Hooks.on("init", () => {
             max: 5,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "finishing-move",
@@ -839,7 +858,8 @@ Hooks.on("init", () => {
             max: 100,
             step: 1,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "finishing-move",
@@ -853,7 +873,8 @@ Hooks.on("init", () => {
             max: 2000,
             step: 25,
 
-        });
+        }
+    });
 
     registerSetting({
         category: "finishing-move",
@@ -867,7 +888,8 @@ Hooks.on("init", () => {
             max: 5000,
             step: 25,
 
-        });
+        }
+    });
 
     //From Software Text
     const fromSoftOptions = ["noun-verbed", "death"];
