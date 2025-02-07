@@ -4,7 +4,7 @@
 
 # [12.7.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.6...12.7.7) - Player Finishing Moves Again
 
--   Migrated over missing setting for `Finishing Moves` that allows players to toggle on finishing moves (Bug catcher @Argonaut13)
+- Migrated over missing setting for `Finishing Moves` that allows players to toggle on finishing moves (Bug catcher @Argonaut13)
 
 # [12.7.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.5...12.7.6) - Actually Let me Disable it
 
@@ -812,6 +812,10 @@
     -   Crit Message idea
 
 # <<<<<<< HEAD
+
+## 12.7.7 - 2025-02-06
+
+- Migrated over missing setting for `Finishing Moves` that allows players to toggle on finishing moves (Bug catcher @Argonaut13)
 
 ## 12.7.6 - 2025-02-06
 
