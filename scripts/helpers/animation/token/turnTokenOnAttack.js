@@ -4,7 +4,7 @@
  * @param {*} target Person they are attacking
  */
 
-import { getSetting, MODULE_ID } from "../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 
 export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;

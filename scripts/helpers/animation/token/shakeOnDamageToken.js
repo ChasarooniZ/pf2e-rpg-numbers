@@ -1,4 +1,4 @@
-import { getTokenShakeScale, getVisibleUsers } from "../anim.js";
+import { getTokenShakeScale, getVisibleUsers } from "../../anim.js";
 
 /**
  * Shakes a token to visualize damage

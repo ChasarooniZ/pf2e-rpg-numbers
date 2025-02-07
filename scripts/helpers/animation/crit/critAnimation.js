@@ -1,6 +1,6 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting, localize, MODULE_ID } from "../../misc.js";
-import { getTokenImage } from "../shakeOnDamageToken.js";
+import { getTokenImage } from "../token/shakeOnDamageToken.js";
 import { disgaea7Crit } from "./styles/disgaea7Crit.js";
 import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
 import { fullscreenCrit } from "./styles/fullscreenCrit.js";

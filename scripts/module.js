@@ -2,10 +2,10 @@ import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/text/finishingMove.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
-import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
+import { shakeOnDamageToken } from "./helpers/animation/token/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
 import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
-import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
+import { turnTokenOnAttack } from "./helpers/animation/token/turnTokenOnAttack.js";
 import { createAPI } from "./helpers/api.js";
 import {
     debugLog,
