@@ -1,4 +1,3 @@
-import { dodgeOnMiss } from "../animation/token/tokenDodgeOnMiss.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -83,6 +82,7 @@ const settingsConfig = {
             enabled: "dodge-on-miss.enabled",
             duration: { path: "dodge-on-miss.duration", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             distance: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
+            delay: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
         }
     },
     critical: {

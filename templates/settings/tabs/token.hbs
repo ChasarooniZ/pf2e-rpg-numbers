@@ -1,6 +1,8 @@
 <span>
     {{! Token Shake }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.title"}}
     </h2>
     {{! Enabled }}
@@ -137,7 +139,9 @@
 </span>
 <span>
     {{! Rotate on Attack }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-attack"}}
     </h2>
     {{! Enabled }}
@@ -189,7 +193,9 @@
 </span>
 <span>
     {{! Shake on Damaged }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-damaged.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-damaged.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.screen-shake"}}
     </h2>
     {{! Enabled }}
@@ -289,9 +295,83 @@
         />
     </div>
 </span>
+
+<span>
+    {{! Target Dodges }}
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/dodge-on-miss.gif' />"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.headers.dodge-on-miss"}}
+    </h2>
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.dodgeOnMiss.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.dodgeOnMiss.enabled"
+            name="settings.dodgeOnMiss.enabled"
+            {{checked settings.dodgeOnMiss.enabled}}
+        />
+    </div>
+    {{! Duration }}
+    <div class="form-group">
+        <label
+            for="settings.dodgeOnMiss.duration"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.duration.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.duration.name"}}
+        </label>
+        {{numberInput
+            settings.dodgeOnMiss.duration.value
+            name="settings.dodgeOnMiss.duration"
+            step=settings.dodgeOnMiss.duration.range.step
+            min=settings.dodgeOnMiss.duration.range.min
+            max=settings.dodgeOnMiss.duration.range.max
+        }}
+    </div>
+    {{! Distance }}
+    <div class="form-group">
+        <label
+            for="settings.dodgeOnMiss.distance"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.distance.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.distance.name"}}
+        </label>
+        {{numberInput
+            settings.dodgeOnMiss.distance.value
+            name="settings.dodgeOnMiss.distance"
+            step=settings.dodgeOnMiss.distance.range.step
+            min=settings.dodgeOnMiss.distance.range.min
+            max=settings.dodgeOnMiss.distance.range.max
+        }}
+    </div>
+    {{! Delay }}
+    <div class="form-group">
+        <label
+            for="settings.dodgeOnMiss.delay"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.delay.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.delay.name"}}
+        </label>
+        {{numberInput
+            settings.dodgeOnMiss.delay.value
+            name="settings.dodgeOnMiss.delay"
+            step=settings.dodgeOnMiss.delay.range.step
+            min=settings.dodgeOnMiss.delay.range.min
+            max=settings.dodgeOnMiss.delay.range.max
+        }}
+    </div>
+</span>
 <span>
     {{! Shake on Attack }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-attack.gif' />">
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-attack.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.shake-on-attack"}}
     </h2>
     {{! Enabled }}

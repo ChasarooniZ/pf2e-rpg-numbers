@@ -1,6 +1,6 @@
 # [12.8.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.7...12.8.0) - Dodging Attacks
 
--   `Dodging`
+-   `Target Dodges`
     -   Adds feature allowing you to have tokens dodge when attacks on them miss
 -   `Shake Token on Damage`
     -   Backend changes to use sequencer's `copySprite` for better styling

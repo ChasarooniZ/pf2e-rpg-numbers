@@ -5,11 +5,12 @@
  */
 
 import { getVisibleUsers } from "../../anim.js";
-import { getSetting, MODULE_ID } from "../../misc.js";
+import { getSetting } from "../../misc.js";
 
 export async function dodgeOnMiss(token, target) {
     const distance = getSetting("dodge-on-miss.distance");
     const duration = getSetting("dodge-on-miss.duration") * 1000;
+    const delay = getSetting("dodge-on-miss.delay") * 1000;
     const directionRay = new Ray(token.center, target.center);
     const { dx, dy } = Ray.fromAngle(0, 0, directionRay.angle + (Math.PI / 2), Sequencer.Helpers.random_array_element([1, -1]));
     const loopBody = { duration: duration / 2, gridUnits: true };
@@ -20,8 +21,9 @@ export async function dodgeOnMiss(token, target) {
 
 
     new Sequence()
-        .animation().on(target).forUsers(users).opacity(0)
+        .animation().delay(delay).on(target).forUsers(users).opacity(0)
         .effect()
+        .delay(delay)
         .copySprite(target)
         .scale({ x: scaleX, y: scaleY })
         .animateProperty("spriteContainer", "position.x", {

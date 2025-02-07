@@ -650,6 +650,22 @@ Hooks.on("init", () => {
     });
 
     registerSetting({
+        category: "dodge-on-miss",
+        id: "dodge-on-miss.delay",
+        desc: "delay",
+        scope: "world",
+        config: false,
+        default: 0,
+        range: {
+            min: 0,
+            max: 5,
+            step: 0.1,
+
+        }
+    });
+
+    //Critical
+    registerSetting({
         category: "critical",
         id: "critical.enabled",
         desc: "enabled",
