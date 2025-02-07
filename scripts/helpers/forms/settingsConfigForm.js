@@ -81,8 +81,8 @@ const settingsConfig = {
         },
         dodgeOnMiss: {
             enabled: "dodge-on-miss.enabled",
-            duration: "dodge-on-miss.duration",
-            distance: "dodge-on-miss.distance"
+            duration: { path: "dodge-on-miss.duration", type: "number", range: { min: 0, max: 3, step: 0.1 } },
+            distance: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
         }
     },
     critical: {
