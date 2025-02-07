@@ -31,56 +31,65 @@ Hooks.on("init", () => {
         restricted: true                   // Restrict this submenu to gamemaster only?
     });
 
-    registerSetting("", "enabled", {
-        desc: "enabled",
-        scope: "world",
-        config: false,
-        default: true,
-        type: Boolean,
-    });
-
-    registerSetting("actor-settings", "actor-settings.player-enabled", {
+    registerSetting({
+        category: "actor-settings",
+        id: "actor-settings.player-enabled",
         desc: "player-enabled",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    registerSetting("dmg-numbers", "dmg-enabled", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "dmg-enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("dmg-numbers", "dmg-on-apply-or-roll", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "dmg-on-apply-or-roll",
         desc: "on-apply-or-roll",
         scope: "world",
         config: false,
         default: "roll",
         type: String,
         choices: ["apply", "roll"],
+
     });
 
-    registerSetting("dmg-numbers", "font-size", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "font-size",
         desc: "font-size",
         scope: "world",
         config: false,
         default: 20,
         type: Number,
+
     });
 
-    registerSetting("dmg-numbers", "max-font-scale", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "max-font-scale",
         desc: "max-font-scale",
         scope: "world",
         config: false,
         default: 3,
         type: Number,
+
     });
 
-    registerSetting("dmg-numbers", "top-offset", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "top-offset",
         desc: "top-offset",
         scope: "world",
         config: false,
@@ -89,37 +98,47 @@ Hooks.on("init", () => {
             min: -100,
             max: 100,
             step: 5,
-        },
-        type: Number,
-    });
 
-    registerSetting("dmg-numbers", "show-total", {
+        });
+
+    registerSetting({
+        category: "dmg-numbers",
+        id: "show-total",
         desc: "show-total",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("dmg-numbers", "number-scale-type", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "number-scale-type",
         desc: "number-scale-type",
         scope: "world",
         config: false,
         default: "percentMaxHealth",
         type: String,
         choices: ["percentRemainingHealth", "percentMaxHealth", "none"],
+
     });
 
-    registerSetting("dmg-numbers", "damage-split", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "damage-split",
         desc: "damage-split",
         scope: "world",
         config: false,
         default: "by-damage-type",
         type: String,
         choices: ["none", "by-damage-type", "all"],
+
     });
 
-    registerSetting("dmg-numbers", "duration", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -128,10 +147,12 @@ Hooks.on("init", () => {
             min: 0,
             max: 10,
             step: 0.1,
-        },
-        type: Number,
-    });
-    registerSetting("dmg-numbers", "wait-time-between-numbers", {
+
+        });
+
+    registerSetting({
+        category: "dmg-numbers",
+        id: "wait-time-between-numbers",
         desc: "wait-time-between-numbers",
         scope: "world",
         config: false,
@@ -140,19 +161,23 @@ Hooks.on("init", () => {
             min: 0,
             max: 1000,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("dmg-numbers", "show-only-GM", {
+        });
+
+    registerSetting({
+        category: "dmg-numbers",
+        id: "show-only-GM",
         desc: "show-only-GM",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    registerSetting("dmg-numbers", "animation-scale", {
+    registerSetting({
+        category: "dmg-numbers",
+        id: "animation-scale",
         desc: "animation-scale",
         scope: "world",
         config: false,
@@ -161,11 +186,12 @@ Hooks.on("init", () => {
             min: 0,
             max: 2,
             step: 0.05,
-        },
-        type: Number,
-    });
 
-    registerSetting("dmg-numbers", "jitter", {
+        });
+
+    registerSetting({
+        category: "dmg-numbers",
+        id: "jitter",
         desc: "jitter",
         scope: "world",
         config: false,
@@ -174,46 +200,58 @@ Hooks.on("init", () => {
             min: 0,
             max: 1,
             step: 0.05,
-        },
-        type: Number,
-    });
 
-    //Check Animation Settings
-    registerSetting("check-animations", "check-enabled", {
+        });
+
+    registerSetting({
+        category: "check-animations",
+        id: "check-enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("check-animations", "check-color-scheme", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-color-scheme",
         desc: "color-scheme",
         scope: "world",
         config: false,
         default: "default",
         type: String,
         choices: ["default", "dark"],
+
     });
 
-    registerSetting("check-animations", "check-outcome-result", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-outcome-result",
         desc: "outcome-result",
         scope: "world",
         config: false,
         default: "outcome-except-combat-crits",
         type: String,
         choices: ["numbers", "outcome-except-combat-crits", "outcome"],
+
     });
 
-    registerSetting("check-animations", "check-font-size", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-font-size",
         desc: "font-size",
         scope: "world",
         config: false,
         default: 30,
         type: Number,
+
     });
 
-    registerSetting("check-animations", "check-duration", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -222,38 +260,47 @@ Hooks.on("init", () => {
             min: 0,
             max: 10,
             step: 0.1,
-        },
-        type: Number,
-    });
 
-    //Check SFX
-    registerSetting("check-animations", "check-animations.sfx.enabled", {
+        });
+
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.enabled",
         desc: "sfx.enabled",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.check-or-attack", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.check-or-attack",
         desc: "sfx.check-or-attack",
         scope: "world",
         config: false,
         default: !game?.modules?.get("pf2e-jb2a-macros")?.active ? "both" : "checks",
         type: String,
         choices: ["both", "attacks", "checks"],
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.options", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.options",
         desc: "sfx.options",
         scope: "world",
         config: false,
         default: "all",
         type: String,
         choices: ["none", "all", "success-or-fail", "crits-only"],
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.volume", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.volume",
         desc: "sfx.volume",
         scope: "world",
         config: false,
@@ -262,56 +309,71 @@ Hooks.on("init", () => {
             min: 0,
             max: 100,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("check-animations", "check-animations.sfx.file.criticalSuccess", {
+        });
+
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.file.criticalSuccess",
         desc: "sfx.file.criticalSuccess",
         scope: "world",
         config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/success_1.mp3",
         type: String,
         filePicker: "audio",
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.file.success", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.file.success",
         desc: "sfx.file.success",
         scope: "world",
         config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/correct-answer-tone.ogg",
         type: String,
         filePicker: "audio",
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.file.failure", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.file.failure",
         desc: "sfx.file.failure",
         scope: "world",
         config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/Jpn_L_drum1.mp3",
         type: String,
         filePicker: "audio",
+
     });
 
-    registerSetting("check-animations", "check-animations.sfx.file.criticalFailure", {
+    registerSetting({
+        category: "check-animations",
+        id: "check-animations.sfx.file.criticalFailure",
         desc: "sfx.file.criticalFailure",
         scope: "world",
         config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/checks/negative-answer-lose.ogg",
         type: String,
         filePicker: "audio",
+
     });
 
-    //Screen Shake Settings
-    registerSetting("screen-shake", "shake-enabled", {
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    registerSetting("screen-shake", "shake-duration", {
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -320,11 +382,12 @@ Hooks.on("init", () => {
             min: 0,
             max: 2000,
             step: 10,
-        },
-        type: Number,
-    });
 
-    registerSetting("screen-shake", "shake-intensity-max", {
+        });
+
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-intensity-max",
         desc: "intensity-max",
         scope: "world",
         config: false,
@@ -333,45 +396,57 @@ Hooks.on("init", () => {
             min: 1,
             max: 100,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("screen-shake", "shake-intensity-type", {
+        });
+
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-intensity-type",
         desc: "intensity-type",
         scope: "world",
         config: false,
         default: "%-current-hp",
         type: String,
         choices: ["max", "%-current-hp", "%-max-hp"],
+
     });
 
-    registerSetting("screen-shake", "shake-intensity-include-temp-hp", {
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-intensity-include-temp-hp",
         desc: "intensity-include-temp-hp",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("screen-shake", "shake-gm-enabled", {
+    registerSetting({
+        category: "screen-shake",
+        id: "shake-gm-enabled",
         desc: "gm-enabled",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    //Token Damage Shake
-    registerSetting("token-dmg-shake", "dmg-shake-directional-enabled", {
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "dmg-shake-directional-enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("token-dmg-shake", "tok-shake-distance", {
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-distance",
         desc: "distance",
         scope: "world",
         config: false,
@@ -380,11 +455,12 @@ Hooks.on("init", () => {
             min: 1,
             max: 100,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("token-dmg-shake", "tok-shake-shakes", {
+        });
+
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-shakes",
         desc: "shakes",
         scope: "world",
         config: false,
@@ -393,11 +469,12 @@ Hooks.on("init", () => {
             min: 1,
             max: 20,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("token-dmg-shake", "tok-shake-duration", {
+        });
+
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -406,75 +483,95 @@ Hooks.on("init", () => {
             min: 0,
             max: 2000,
             step: 10,
-        },
-        type: Number,
-    });
 
-    registerSetting("token-dmg-shake", "tok-shake-scaling-type", {
+        });
+
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-type",
         desc: "scaling.type",
         scope: "world",
         config: false,
         default: "no",
         type: String,
         choices: ["no", "%-current-hp", "%-max-hp"],
+
     });
 
-    registerSetting("token-dmg-shake", "tok-shake-scaling-distance", {
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-distance",
         desc: "scaling.distance",
         scope: "world",
         config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
+
     });
 
-    registerSetting("token-dmg-shake", "tok-shake-scaling-shakes", {
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-shakes",
         desc: "scaling.shakes",
         scope: "world",
         config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
+
     });
 
-    registerSetting("token-dmg-shake", "tok-shake-scaling-duration", {
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-duration",
         desc: "scaling.duration",
         scope: "world",
         config: false,
         default: "no",
         type: String,
         choices: ["no", "max", "mid"],
+
     });
 
-    //Shake Screen on attack
-    registerSetting("shake-on-attack", "shake-on-attack.enabled", {
+    registerSetting({
+        category: "shake-on-attack",
+        id: "shake-on-attack.enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("shake-on-attack", "shake-on-attack.type", {
+    registerSetting({
+        category: "shake-on-attack",
+        id: "shake-on-attack.type",
         desc: "type",
         scope: "world",
         config: false,
         default: false,
         type: String,
         choices: ["both", "gm", "players"],
+
     });
 
-    //Rotate on Attack
-    registerSetting("rotate-on-attack", "rotate-on-attack", {
+    registerSetting({
+        category: "rotate-on-attack",
+        id: "rotate-on-attack",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
         requiresReload: true,
+
     });
 
-    registerSetting("rotate-on-attack", "rotate-on-attack.duration", {
+    registerSetting({
+        category: "rotate-on-attack",
+        id: "rotate-on-attack.duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -483,29 +580,73 @@ Hooks.on("init", () => {
             min: 0,
             max: 2,
             step: 0.1,
-        },
-        type: Number,
-    });
 
-    registerSetting("rotate-on-attack", "rotate-on-attack.scale-on-size", {
+        });
+
+    registerSetting({
+        category: "rotate-on-attack",
+        id: "rotate-on-attack.scale-on-size",
         desc: "scale-on-size",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    //Critical Hit
-    registerSetting("critical", "critical.enabled", {
+    registerSetting({
+        category: "dodge-on-miss",
+        id: "dodge-on-miss.enabled",
+        desc: "enabled",
+        scope: "world",
+        config: false,
+        default: true,
+        type: Boolean
+
+    });
+
+    registerSetting({
+        category: "dodge-on-miss",
+        id: "dodge-on-miss.duration",
+        desc: "duration",
+        scope: "world",
+        config: false,
+        default: 1.5,
+        range: {
+            min: 0,
+            max: 3,
+            step: 0.1,
+
+        });
+
+    registerSetting({
+        category: "dodge-on-miss",
+        id: "dodge-on-miss.distance",
+        desc: "distance",
+        scope: "world",
+        config: false,
+        default: 1,
+        range: {
+            min: 0,
+            max: 3,
+            step: 0.1,
+
+        });
+
+    registerSetting({
+        category: "critical",
+        id: "critical.enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    //TODO keep in normal settings
-    registerSetting("critical", "critical.player-enabled", {
+    registerSetting({
+        category: "critical",
+        id: "critical.player-enabled",
         desc: "player-enabled",
         scope: "client",
         config: true,
@@ -513,46 +654,60 @@ Hooks.on("init", () => {
         type: Boolean,
         onChange: (value) => {
             game.user.setFlag(MODULE_ID, "critEnabled", value);
-        },
-    });
 
-    registerSetting("critical", "critical.type", {
+        });
+
+    registerSetting({
+        category: "critical",
+        id: "critical.type",
         desc: "type",
         scope: "world",
         config: false,
         default: "persona",
         type: String,
         choices: CRIT_OPTIONS_LABELS,
+
     });
 
-    registerSetting("critical", "critical.show-on", {
+    registerSetting({
+        category: "critical",
+        id: "critical.show-on",
         desc: "show-on",
         scope: "world",
         config: false,
         default: "attacks",
         type: String,
         choices: ["attacks", "checks", "both"],
+
     });
 
-    registerSetting("critical", "critical.show-on-token-type", {
+    registerSetting({
+        category: "critical",
+        id: "critical.show-on-token-type",
         desc: "show-on-token-type",
         scope: "world",
         config: false,
         default: "pc+npc",
         type: String,
         choices: ["pc", "npc", "pc+npc"],
+
     });
 
-    registerSetting("critical", "critical.default-img", {
+    registerSetting({
+        category: "critical",
+        id: "critical.default-img",
         desc: "default-img",
         scope: "world",
         config: false,
         default: "pc-tok-npc-tok",
         type: String,
         choices: ["pc-tok-npc-tok", "pc-act-npc-act", "pc-tok-npc-act", "pc-act-npc-tok"],
+
     });
 
-    registerSetting("critical", "critical.duration", {
+    registerSetting({
+        category: "critical",
+        id: "critical.duration",
         desc: "duration",
         scope: "world",
         config: false,
@@ -561,20 +716,24 @@ Hooks.on("init", () => {
             min: 0,
             max: 10,
             step: 0.1,
-        },
-        type: Number,
-    });
 
-    registerSetting("critical", "critical.sound", {
+        });
+
+    registerSetting({
+        category: "critical",
+        id: "critical.sound",
         desc: "sound",
         scope: "world",
         config: false,
         default: "modules/pf2e-rpg-numbers/resources/sounds/swoosh-universfield.mp3",
         type: String,
         filePicker: "audio",
+
     });
 
-    registerSetting("critical", "critical.volume", {
+    registerSetting({
+        category: "critical",
+        id: "critical.volume",
         desc: "volume",
         scope: "world",
         config: false,
@@ -583,53 +742,68 @@ Hooks.on("init", () => {
             min: 0,
             max: 100,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("critical", "critical.delay", {
+        });
+
+    registerSetting({
+        category: "critical",
+        id: "critical.delay",
         desc: "delay",
         scope: "world",
         config: false,
         default: 0,
         type: Number,
+
     });
 
-    //Finishing Move
-    registerSetting("finishing-move", "finishing-move.enabled", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.enabled",
         desc: "enabled",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("finishing-move", "finishing-move.enabled-players", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.enabled-players",
         desc: "enabled-players",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
         requiresReload: true,
+
     });
 
-    registerSetting("finishing-move", "finishing-move.keep-on", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.keep-on",
         desc: "keep-on",
         scope: "world",
         config: false,
         default: false,
         type: Boolean,
+
     });
 
-    registerSetting("finishing-move", "finishing-move.use-player-color", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.use-player-color",
         desc: "use-player-color",
         scope: "world",
         config: false,
         default: true,
         type: Boolean,
+
     });
 
-    registerSetting("finishing-move", "finishing-move.quality", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.quality",
         desc: "quality",
         scope: "world",
         config: false,
@@ -638,20 +812,24 @@ Hooks.on("init", () => {
             min: 1,
             max: 5,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("finishing-move", "finishing-move.sound-effect", {
+        });
+
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.sound-effect",
         desc: "sound-effect",
         scope: "world",
         config: false,
         type: String,
         default: "modules/pf2e-rpg-numbers/resources/sounds/Deep_Impact_(Speedenza).ogg",
         filePicker: "audio",
+
     });
 
-    registerSetting("finishing-move", "finishing-move.sound-effect.volume", {
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.sound-effect.volume",
         desc: "sound-effect.volume",
         scope: "world",
         config: false,
@@ -660,11 +838,12 @@ Hooks.on("init", () => {
             min: 0,
             max: 100,
             step: 1,
-        },
-        type: Number,
-    });
 
-    registerSetting("finishing-move", "finishing-move.duration.word", {
+        });
+
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.duration.word",
         desc: "duration.word",
         scope: "world",
         config: false,
@@ -673,11 +852,12 @@ Hooks.on("init", () => {
             min: 0,
             max: 2000,
             step: 25,
-        },
-        type: Number,
-    });
 
-    registerSetting("finishing-move", "finishing-move.duration.end", {
+        });
+
+    registerSetting({
+        category: "finishing-move",
+        id: "finishing-move.duration.end",
         desc: "duration.end",
         scope: "world",
         config: false,
@@ -686,15 +866,15 @@ Hooks.on("init", () => {
             min: 0,
             max: 5000,
             step: 25,
-        },
-        type: Number,
-    });
+
+        });
 
     //From Software Text
     const fromSoftOptions = ["noun-verbed", "death"];
     // Noun Verbed
     fromSoftOptions.forEach(option => {
-        registerSetting(`from-software.${option}`, `from-software.${option}.enabled`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.enabled`,
             desc: "enabled",
             scope: "world",
             config: false,
@@ -713,7 +893,8 @@ Hooks.on("init", () => {
         }
 
         if (option === 'noun-verbed') {
-            registerSetting(`from-software.noun-verbed`, `from-software.noun-verbed.xp-threshold`, {
+            registerSetting({
+                category: `from-software.noun-verbed`, id: `from-software.noun-verbed.xp-threshold`,
                 desc: "xp-threshold",
                 scope: "world",
                 config: false,
@@ -721,7 +902,8 @@ Hooks.on("init", () => {
                 type: Number,
             });
         }
-        registerSetting(`from-software.${option}`, `from-software.${option}.font-size`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.font-size`,
             desc: "font-size",
             scope: "world",
             config: false,
@@ -734,7 +916,8 @@ Hooks.on("init", () => {
             type: Number,
         });
 
-        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.sound-effect`,
             desc: "sound-effect",
             scope: "world",
             config: false,
@@ -743,7 +926,8 @@ Hooks.on("init", () => {
             filePicker: "audio",
         });
 
-        registerSetting(`from-software.${option}`, `from-software.${option}.sound-effect.volume`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.sound-effect.volume`,
             desc: "sound-effect.volume",
             scope: "world",
             config: false,
@@ -756,7 +940,8 @@ Hooks.on("init", () => {
             type: Number,
         });
 
-        registerSetting(`from-software.${option}`, `from-software.${option}.duration`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.duration`,
             desc: "duration",
             scope: "world",
             config: false,
@@ -769,7 +954,8 @@ Hooks.on("init", () => {
             type: Number,
         });
 
-        registerSetting(`from-software.${option}`, `from-software.${option}.text`, {
+        registerSetting({
+            category: `from-software.${option}`, id: `from-software.${option}.text`,
             desc: "text",
             scope: "world",
             config: false,
@@ -779,7 +965,8 @@ Hooks.on("init", () => {
     })
 
 
-    registerSetting("", "debug-mode", {
+    registerSetting({
+        category: "", id: "debug-mode",
         desc: "debug-mode",
         scope: "world",
         config: true,
@@ -787,7 +974,8 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-    game.settings.register("pf2e-rpg-numbers", "last-version", {
+    game.settings.register({
+        category: "pf2e-rpg-numbers", id: "last-version",
         scope: "world",
         config: false,
         default: "0.0.0",

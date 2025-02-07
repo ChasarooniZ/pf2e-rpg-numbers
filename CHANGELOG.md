@@ -4,6 +4,9 @@
     -   Adds feature allowing you to have tokens dodge when attacks on them miss
 -   `Shake Token on Damage`
     -   Backend changes to use sequencer's `copySprite` for better styling
+    -   Added check to see if user can see the token for whether or not to animate it for the user
+-   `Misc`
+    -   Updated how settings helper was written for ease of reading
 
 # [12.7.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.7.7...12.7.8) - Settings Form Fix
 
