@@ -1005,7 +1005,8 @@ Hooks.on("init", () => {
 
 
     registerSetting({
-        category: "", id: "debug-mode",
+        category: "",
+        id: "debug-mode",
         desc: "debug-mode",
         scope: "world",
         config: true,
@@ -1014,7 +1015,8 @@ Hooks.on("init", () => {
     });
 
     game.settings.register({
-        category: "pf2e-rpg-numbers", id: "last-version",
+        category: "",
+        id: "last-version",
         scope: "world",
         config: false,
         default: "0.0.0",
