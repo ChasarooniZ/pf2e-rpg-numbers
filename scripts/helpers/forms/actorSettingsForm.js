@@ -2,7 +2,7 @@ import { CRIT_OPTIONS } from "../animation/crit/const.js";
 import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
 import { getTokenImage } from "../animation/shakeOnDamageToken.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
-import { getSetting, MODULE_ID, setSetting } from "../misc.js";
+import { MODULE_ID } from "../misc.js";
 
 const settingsConfig = {
     // home: {
@@ -379,23 +379,12 @@ export class ActorSettingsConfigForm extends FormApplication {
         return getNestedProperty(obj, remain)
     }
 
-    getFormData(html) {
+    getFormData() {
         // Collect the form data from all inputs in the form
-        const formData = new FormData(html[0].closest("form"));
-        const dataObject = {};
-
-        // // Iterate over the form data and convert it to an object
-        formData.forEach((value, key) => {
-            // Handle checkboxes separately to store booleans
-            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
-            } else {
-                dataObject[key] = value;
-            }
-        });
+        const formData = new FormDataExtended(this.form).object;;
 
         // // Log the gathered form data for debugging purposes
-        const formattedObject = foundry.utils.expandObject(dataObject);
+        const formattedObject = foundry.utils.expandObject(formData);
         console.log("Form Data RPG#s:", formattedObject);
         return formattedObject;
     }
