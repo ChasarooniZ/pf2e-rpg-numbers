@@ -160,11 +160,11 @@ export class SettingsConfigForm extends FormApplication {
         // Add event listener for the Save button
         html.find('#pf2e-rpg-save').on('click', (event) => {
             event.preventDefault();
-            this._processForm(html, false); // Pass 'false' Fto not submit the form, only save
+            this._processForm(false); // Pass 'false' Fto not submit the form, only save
         });
         html.find('#pf2e-rpg-submit').on('click', (event) => {
             event.preventDefault();
-            this._processForm(html, true); // Pass 'true' to indicate form submission
+            this._processForm(true); // Pass 'true' to indicate form submission
         });
         html.find('#pf2e-rpg-cancel').on('click', (event) => {
             event.preventDefault();
@@ -223,39 +223,28 @@ export class SettingsConfigForm extends FormApplication {
 
     async _updateObject(event, formData) {
         // Expand the flat form data into a nested object structure
-
+        //console.log({ formData })
         // Debug log for inspecting the expanded form data
         //console.log("Expanded Form Data:", { expandedData, formData });
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 
-    async _processForm(html, submit = false) {
+    async _processForm(submit = false) {
         // Collect the form data from all inputs in the form
-        const formData = new FormData(html[0].closest("form"));
-        const dataObject = {};
-
-        // Iterate over the form data and convert it to an object
-        formData.forEach((value, key) => {
-            // Handle checkboxes separately to store booleans
-            if (html.find(`[name="${key}"]`).attr("type") === "checkbox") {
-                dataObject[key] = html.find(`[name="${key}"]`).prop("checked");
-            } else {
-                dataObject[key] = value;
-            }
-        });
+        const formData = new FormDataExtended(this.form).object;
 
         // Log the gathered form data for debugging purposes
-        console.log("Form Data:", dataObject);
+        console.log("Form Data:", foundry.utils.expandObject(formData));
 
         // Handle saving or submitting
         if (submit) {
             // If submitting, call _updateObject to store the data
-            await this.saveSettings(foundry.utils.expandObject(dataObject));
+            await this.saveSettings(foundry.utils.expandObject(formData));
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
             this.close();
         } else {
             // If saving, call _updateObject to store the data
-            await this.saveSettings(foundry.utils.expandObject(dataObject));
+            await this.saveSettings(foundry.utils.expandObject(formData));
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
     }
