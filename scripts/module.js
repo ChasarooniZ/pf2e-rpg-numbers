@@ -58,7 +58,7 @@ Hooks.on("ready", () => {
                     waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
                 }
 
-                if (msg?.token && msg?.target?.token && isDodgeOnMiss(['failure', 'criticalFailure'].includes(msg.flags.pf2e.context.outcome ?? "none"))) {
+                if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
                     waitForMessage(msg.id).then(() => dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object));
                 }
             }
@@ -161,7 +161,7 @@ function rotateOnAttack(msg) {
 }
 
 function isDodgeOnMiss(outcome) {
-
+    return ['failure', 'criticalFailure'].includes(outcome) && getSetting('dodge-on-miss.enabled')
 }
 
 function checkRollNumbers(dat, msg) {
