@@ -24,7 +24,7 @@ export async function dodgeOnMiss(token, target) {
         .effect()
         .delay(delay)
         .copySprite(target)
-        .scale({ x: scaleX, y: scaleY })
+        .scale({ x: target?.document?.texture?.scaleX ?? 0, y: target?.document?.texture?.scaleY ?? 0 })
         .animateProperty("spriteContainer", "position.x", {
             from: 0,
             to: position.x,
