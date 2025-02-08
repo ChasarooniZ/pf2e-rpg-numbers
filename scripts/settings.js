@@ -32,6 +32,17 @@ Hooks.on("init", () => {
     });
 
     registerSetting({
+        category: "",
+        id: "enabled",
+        desc: "enabled",
+        scope: "world",
+        config: false,
+        default: true,
+        type: Boolean,
+
+    });
+
+    registerSetting({
         category: "actor-settings",
         id: "actor-settings.player-enabled",
         desc: "player-enabled",
