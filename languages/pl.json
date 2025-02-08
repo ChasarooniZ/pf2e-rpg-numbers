@@ -19,6 +19,12 @@
                 "name": "Włącz moduł",
                 "hint": "Włącza funkcjonalność modułu"
             },
+            "actor-settings": {
+                "player-enabled": {
+                    "name": "Włączenie przycisku ustawień aktorów dla graczy",
+                    "hint": "Pozwala graczom zobaczyć przycisk ustawień aktora, aby dostosować takie rzeczy jak trafienia krytyczne."
+                }
+            },
             "headers": {
                 "dmg-numbers": "Liczby obrażeń",
                 "check-animations": "Testy i animacje ataków",
@@ -29,6 +35,7 @@
                 },
                 "shake-on-attack": "Potrząsanie podczas ataku",
                 "rotate-on-attack": "Obrót podczas ataku",
+                "dodge-on-miss": "Uniki celu",
                 "finishing-move": {
                     "title": "Ciosy kończące"
                 },
@@ -294,6 +301,24 @@
                             "mid": "Środek"
                         }
                     }
+                }
+            },
+            "dodge-on-miss": {
+                "enabled": {
+                    "name": "Włącz uniki celu",
+                    "hint": "Po włączeniu tej opcji cele będą unikać ataków, gdy chybią."
+                },
+                "duration": {
+                    "name": "Czas trwania uników",
+                    "hint": "Jak długo (w sekundach) powinna trwać animacja uniku?"
+                },
+                "distance": {
+                    "name": "Dystans uniku",
+                    "hint": "Jak daleko (w jednostkach siatki) powinien uchylić się token?"
+                },
+                "delay": {
+                    "name": "Opóźnienie uniku",
+                    "hint": "Jak długo (w sekundach) powinna być opóźniona animacja uniku po jej uruchomieniu?"
                 }
             },
             "rotate-on-attack": {
