@@ -32,7 +32,6 @@ Hooks.on('init', () => {
     })
 
     registerSetting({
-        category: '',
         id: 'enabled',
         desc: 'enabled',
         scope: 'world',

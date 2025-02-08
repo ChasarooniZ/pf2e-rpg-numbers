@@ -209,6 +209,7 @@ export class SettingsConfigForm extends FormApplication {
                 settings: tabSettings
             };
         });
+        console.log({ tabs })
 
         return foundry.utils.mergeObject(super.getData(), { tabs, version: game?.modules?.get(MODULE_ID)?.version });
     }
@@ -301,7 +302,7 @@ function handleChoicesSetting(settingPath) {
 }
 
 function getNumberSetting(settingPath, range) {
-    const ret = { value: getSetting(settingPath) };
+    const ret = { value: Number(getSetting(settingPath)) };
     if (range) ret.range = range;
     return ret;
 }

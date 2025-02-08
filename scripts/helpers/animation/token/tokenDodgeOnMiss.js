@@ -1,12 +1,11 @@
+import { getVisibleUsers } from "../../anim.js";
+import { getSetting } from "../../misc.js";
+
 /**
  * Turns token towards target when attacking
  * @param {*} token Attack token that will turn
  * @param {*} target Person they are attacking
  */
-
-import { getVisibleUsers } from "../../anim.js";
-import { getSetting } from "../../misc.js";
-
 export async function dodgeOnMiss(token, target) {
     const distance = getSetting("dodge-on-miss.distance");
     const duration = getSetting("dodge-on-miss.duration") * 1000;
@@ -21,7 +20,7 @@ export async function dodgeOnMiss(token, target) {
 
 
     new Sequence()
-        .animation().delay(delay).on(target).forUsers(users).opacity(0)
+        .animation().delay(delay).on(target).opacity(0)
         .effect()
         .delay(delay)
         .copySprite(target)
@@ -55,6 +54,6 @@ export async function dodgeOnMiss(token, target) {
         .waitUntilFinished(-200)
         .duration(duration)
         .forUsers(users)
-        .animation().on(target).waitUntilFinished().forUsers(users).opacity(1)
+        .animation().on(target).waitUntilFinished().opacity(1)
         .play()
 }
