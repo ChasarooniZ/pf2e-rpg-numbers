@@ -35,6 +35,7 @@
                 },
                 "shake-on-attack": "Shake on Attack",
                 "rotate-on-attack": "Rotate on Attack",
+                "dodge-on-miss": "Target Dodges",
                 "finishing-move": {
                     "title": "Finishing Moves"
                 },
@@ -300,6 +301,24 @@
                             "mid": "Middle"
                         }
                     }
+                }
+            },
+            "dodge-on-miss": {
+                "enabled": {
+                    "name": "Enable Target Dodges",
+                    "hint": "When enabled targets will dodge from attacks when they miss"
+                },
+                "duration": {
+                    "name": "Dodge Duration",
+                    "hint": "How long (in seconds) should the dodge animation last"
+                },
+                "distance": {
+                    "name": "Dodge Distance",
+                    "hint": "How far (in grid units) should the token dodge"
+                },
+                "delay": {
+                    "name": "Dodge Delay",
+                    "hint": "How long (in seconds) should the dodge animation be delayed after being triggered"
                 }
             },
             "rotate-on-attack": {

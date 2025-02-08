@@ -1,11 +1,10 @@
+import { getSetting, MODULE_ID } from "../../misc.js";
+
 /**
  * Turns token towards target when attacking
  * @param {*} token Attack token that will turn
  * @param {*} target Person they are attacking
  */
-
-import { getSetting, MODULE_ID } from "../misc.js";
-
 export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
     const angle = token.angle;
@@ -14,6 +13,7 @@ export async function turnTokenOnAttack(token, target) {
     const baseTurnTime = getSetting("rotate-on-attack.duration") * 1000;
     const scaleTurnTime = getSetting("rotate-on-attack.scale-on-size");
     const turnTime = scaleTurnTime ? baseTurnTime * (1 + ((tokWxH - 1) / 2)) : baseTurnTime;
+
 
     new Sequence()
         .animation()

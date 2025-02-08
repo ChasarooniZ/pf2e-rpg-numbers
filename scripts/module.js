@@ -2,10 +2,10 @@ import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
 import { createFinishingMoveAnimation } from "./helpers/animation/text/finishingMove.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
-import { shakeOnDamageToken } from "./helpers/animation/shakeOnDamageToken.js";
+import { shakeOnDamageToken } from "./helpers/animation/token/shakeOnDamageToken.js";
 import { shakeScreen } from "./helpers/animation/shakeScreen.js";
 import { shakeOnAttack } from "./helpers/animation/shakeScreenOnAttack.js";
-import { turnTokenOnAttack } from "./helpers/animation/turnTokenOnAttack.js";
+import { turnTokenOnAttack } from "./helpers/animation/token/turnTokenOnAttack.js";
 import { createAPI } from "./helpers/api.js";
 import {
     debugLog,
@@ -18,6 +18,7 @@ import {
 import { getDamageList } from "./helpers/rollTerms.js";
 import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
+import { dodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -56,10 +57,15 @@ Hooks.on("ready", () => {
                 if (isShakeOnAttack(msg.token.actor)) {
                     waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
                 }
+
+                if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
+                    waitForMessage(msg.id).then(() => dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object));
+                }
             }
 
             //On Damage Application
             onDamageApplication(dat, msg);
+
         }
     });
 
@@ -152,6 +158,10 @@ function isRotateOnAttack() {
 }
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
+}
+
+function isDodgeOnMiss(outcome) {
+    return ['failure', 'criticalFailure'].includes(outcome) && getSetting('dodge-on-miss.enabled')
 }
 
 function checkRollNumbers(dat, msg) {

@@ -1,4 +1,4 @@
-import { getTokenShakeScale, getVisibleUsers } from "../anim.js";
+import { getTokenShakeScale, getVisibleUsers } from "../../anim.js";
 
 /**
  * Shakes a token to visualize damage
@@ -58,17 +58,10 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
     const movAmount = shakeDistancePercent * token.w;
     const values = generateShakeValues(shakes, movAmount);
     const iterationDuration = duration / values.length;
-    const tokenImage = getTokenImage(token?.document);
 
     new Sequence()
-        .animation()
-        .on(token)
-        .delay(duration / 10)
         .effect()
-        .atLocation(token)
-        .spriteRotation(token.document.texture.rotation)
-        .file(tokenImage)
-        .scaleToObject()
+        .copySprite(token)
         .scale({ x: token.document.texture.scaleX, y: token.document.texture.scaleY })
         .loopProperty("spriteContainer", "position.x", {
             values,
@@ -107,3 +100,4 @@ export function getTokenImage(token) {
         ? token?.ring?.subject?.texture ?? token?.texture?.src
         : (token?.texture?.src || 'icons/svg/cowled.svg');
 }
+

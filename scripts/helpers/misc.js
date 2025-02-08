@@ -40,12 +40,10 @@ export function localize(str, options = {}) {
 
 /**
  *
- * @param {string} settingsCat Category of Setting
- * @param {string} settingID ID of the settings
  * @param {*} data {desc: "name + hint connection + choices"}
  */
-export function registerSetting(settingCat, settingID, data) {
-    const category = settingCat ? `${settingCat}.` : "";
+export function registerSetting(data) {
+    const category = data.category ? `${data.category}.` : "";
     const settingData = {
         name: data.desc ? localize(`module-settings.${category}${data.desc}.name`) : "",
         hint: data.desc ? localize(`module-settings.${category}${data.desc}.hint`) : "",
@@ -65,7 +63,7 @@ export function registerSetting(settingCat, settingID, data) {
             {}
         );
 
-    game.settings.register(MODULE_ID, settingID, settingData);
+    game.settings.register(MODULE_ID, data.id, settingData);
 }
 
 function transformData(dataArray) {
