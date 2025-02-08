@@ -921,7 +921,9 @@ Hooks.on("init", () => {
             type: Boolean,
         });
         if (option === 'death') {
-            registerSetting(`from-software.${option}`, `from-software.${option}.type`, {
+            registerSetting({
+                category: `from-software.${option}`,
+                id: `from-software.${option}.type`,
                 desc: "type",
                 scope: "world",
                 config: false,
@@ -933,7 +935,8 @@ Hooks.on("init", () => {
 
         if (option === 'noun-verbed') {
             registerSetting({
-                category: `from-software.noun-verbed`, id: `from-software.noun-verbed.xp-threshold`,
+                category: `from-software.noun-verbed`,
+                id: `from-software.noun-verbed.xp-threshold`,
                 desc: "xp-threshold",
                 scope: "world",
                 config: false,
@@ -942,7 +945,8 @@ Hooks.on("init", () => {
             });
         }
         registerSetting({
-            category: `from-software.${option}`, id: `from-software.${option}.font-size`,
+            category: `from-software.${option}`,
+            id: `from-software.${option}.font-size`,
             desc: "font-size",
             scope: "world",
             config: false,
@@ -956,7 +960,8 @@ Hooks.on("init", () => {
         });
 
         registerSetting({
-            category: `from-software.${option}`, id: `from-software.${option}.sound-effect`,
+            category: `from-software.${option}`,
+            id: `from-software.${option}.sound-effect`,
             desc: "sound-effect",
             scope: "world",
             config: false,
@@ -966,7 +971,8 @@ Hooks.on("init", () => {
         });
 
         registerSetting({
-            category: `from-software.${option}`, id: `from-software.${option}.sound-effect.volume`,
+            category: `from-software.${option}`,
+            id: `from-software.${option}.sound-effect.volume`,
             desc: "sound-effect.volume",
             scope: "world",
             config: false,
@@ -980,7 +986,8 @@ Hooks.on("init", () => {
         });
 
         registerSetting({
-            category: `from-software.${option}`, id: `from-software.${option}.duration`,
+            category: `from-software.${option}`,
+            id: `from-software.${option}.duration`,
             desc: "duration",
             scope: "world",
             config: false,
@@ -994,7 +1001,8 @@ Hooks.on("init", () => {
         });
 
         registerSetting({
-            category: `from-software.${option}`, id: `from-software.${option}.text`,
+            category: `from-software.${option}`,
+            id: `from-software.${option}.text`,
             desc: "text",
             scope: "world",
             config: false,
