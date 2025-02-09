@@ -94,7 +94,7 @@ function handleSFX(outcome, type, seq, usersToPlayFor) {
                     outcome = outcome.replace("success", "").toLowerCase();
                     break;
                 case "crits-only":
-                    ignoreSFX = outcome.startsWith("critical");
+                    ignoreSFX = !outcome.startsWith("critical");
                     break;
             }
             if (!ignoreSFX) {
