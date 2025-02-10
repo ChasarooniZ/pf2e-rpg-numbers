@@ -908,6 +908,20 @@
 
 # <<<<<<< HEAD
 
+## 12.9.0 - 2025-02-10
+
+- `Added`
+  - `Burrowing and Bursting`
+    - Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
+    - **Note.** requires `jb2a_patreon` for the animations
+    
+  
+- `Misc`
+  - Reworked how settings are stored for easier refactoring
+  
+
+https://github.com/user-attachments/assets/2c7f0aea-c429-4a7e-8d31-7144c995c8aa
+
 ## 12.8.2 - 2025-02-10
 
 - Only wait for message to display for `Dice so Nice` once
