@@ -415,7 +415,7 @@
                     "hint": "Make hole animation persistent, can be manually removed using the sequencer tab, but will stick around until you do that."
                 },
                 "size-multiplier": {
-                    "name": "Animation Size",
+                    "name": "Animation Size Multiplier",
                     "hint": "Multiplier for animation size (default is 1)"
                 }
             },

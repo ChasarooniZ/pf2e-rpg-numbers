@@ -1,10 +1,13 @@
 import { getSetting } from "../../misc.js";
 
 export function burstBurrow(data) {
-    if (crossesZero(data?.elevationA ?? 0, data?.elevationB ?? 0)) return;
+    if (!crossesZero(data?.elevationA, data?.elevationB)) return;
 
     const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some((spd) => spd.type === 'burrow');
     if (!hasBurrow)
+        return;
+
+    if (!data?.token)
         return;
 
     const duration = getSetting("burst-burrow.duration") * 1000 // In Seconds
@@ -13,7 +16,7 @@ export function burstBurrow(data) {
     //Animation
     new Sequence()
         .effect() //Ground FX
-        .atLocation(token)
+        .atLocation(data?.token)
         .file("jb2a.burrow.out.01.still_frame.0")
         .scaleToObject(3 * sizeMultiplier)
         .persist(persistent)
@@ -22,7 +25,7 @@ export function burstBurrow(data) {
         .fadeIn(600, { ease: "easeInExpo", delay: 200 })
         .fadeOut(1000)
         .effect() //Burst FX
-        .atLocation(token)
+        .atLocation(data?.token)
         .file("jb2a.burrow.out.01.brown.1")
         .scaleToObject(3 * sizeMultiplier)
         .belowTokens()
@@ -30,5 +33,6 @@ export function burstBurrow(data) {
 }
 
 function crossesZero(a, b) {
+    if (isNaN(a) || isNaN(b)) return false;
     return Math.min(a, b) < 0 && Math.max(a, b) >= 0;
 }
