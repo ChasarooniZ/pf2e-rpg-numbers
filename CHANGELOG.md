@@ -1,7 +1,7 @@
 # [12.9.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.0...12.9.1) - Jittering Fix
 - `Fix`
   - `Damage Numbers`
-    - Fixed issue where `jitter` was saved as `NaN`
+    - Fixed issue where `jitter` was saved as `NaN` (🐛 @Nuumers)
 - `Misc`
   - Refactored some backend code for `Check Animation` `sfx`
 
