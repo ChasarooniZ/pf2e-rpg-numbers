@@ -1,3 +1,11 @@
+# [12.9.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.2...12.9.0) - Bursting onto the Scene
+- `Added`
+  - `Burrowing and Bursting`
+    - Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
+    - **Note.** requires `jb2a_patreon` for the animations
+- `Misc`
+  - Reworked how settings are stored for easier refactoring
+
 # [12.8.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.1...12.8.2) - Waiting once
 
 - Only wait for message to display for `Dice so Nice` once
