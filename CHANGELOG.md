@@ -1,3 +1,10 @@
+# [12.9.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.0...12.9.1) - Jittering Fix
+- `Fix`
+  - `Damage Numbers`
+    - Fixed issue where `jitter` was saved as `NaN`
+- `Misc`
+  - Refactored some backend code for `Check Animation` `sfx`
+
 # [12.9.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.2...12.9.0) - Bursting onto the Scene
 - `Added`
   - `Burrowing and Bursting`

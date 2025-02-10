@@ -41,6 +41,9 @@ export async function handleUpdate(curVersion, prevVersion) {
     if (foundry.utils.isNewerVersion('12.8.2', prevVersion))
         await fixDamageDuration();
 
+    if (foundry.utils.isNewerVersion('12.9.1', prevVersion))
+        await fixDamageJitter();
+
     //End of handling
     setSetting('last-version', curVersion);
 }
@@ -132,4 +135,11 @@ async function fixDamageDuration() {
     const dmgDuration = getSetting('duration');
     if (isNaN(dmgDuration))
         await setSetting('duration', 2)
+}
+
+//12.8.2
+async function fixDamageJitter() {
+    const dmgJitter = getSetting('jitter');
+    if (isNaN(dmgJitter))
+        await setSetting('jitter', 0)
 }

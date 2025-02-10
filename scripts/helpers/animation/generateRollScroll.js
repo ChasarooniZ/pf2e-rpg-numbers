@@ -77,6 +77,7 @@ export async function generateRollScroll(roll_deets) {
     const seq_handled = handleSFX(outcome, type, seq, usersToPlayFor);
     seq_handled.play();
 }
+
 function handleSFX(outcome, type, seq, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
         const isAttack = type === "attack-roll";
@@ -98,17 +99,22 @@ function handleSFX(outcome, type, seq, usersToPlayFor) {
                     break;
             }
             if (!ignoreSFX) {
-                let sfx = getSetting(`check-animations.sfx.file.${outcome}`)
-                if (sfx.startsWith("[")) {
-                    const sfxOptions = sfx.slice(1, -1).split(",").map(it => it.replace(/"/g, ""));
-                    sfx = Sequencer.Helpers.random_array_element(sfxOptions);
-                }
-                seq.sound()
-                    .file(sfx)
-                    .volume(getSetting("check-animations.sfx.volume") / 100)
-                    .forUsers(usersToPlayFor);
+                addSFX(outcome, seq, usersToPlayFor);
             }
         }
     }
     return seq;
 }
+
+function addSFX(outcome, seq, usersToPlayFor) {
+    let sfx = getSetting(`check-animations.sfx.file.${outcome}`);
+    if (sfx.startsWith("[")) {
+        const sfxOptions = sfx.slice(1, -1).split(",").map(it => it.replace(/"/g, ""));
+        sfx = Sequencer.Helpers.random_array_element(sfxOptions);
+    }
+    seq.sound()
+        .file(sfx)
+        .volume(getSetting("check-animations.sfx.volume") / 100)
+        .forUsers(usersToPlayFor);
+}
+
