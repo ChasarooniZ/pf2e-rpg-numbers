@@ -41,6 +41,7 @@
                 },
                 "plus-one": "Every +1 Matters",
                 "critical": "Critical Hit",
+                "burst-burrow": "Burst Burrow",
                 "fromSoftware": {
                     "title": "From Software",
                     "elden-ring": {
@@ -398,6 +399,24 @@
                 "delay": {
                     "name": "Delay",
                     "hint": "How long to delay when the critical animation shows up in seconds"
+                }
+            },
+            "burst-burrow": {
+                "enabled": {
+                    "name": "Enable Burst/Burrow Animation",
+                    "hint": "When enabled if a token's actor has Burrow speed, and they either emerge from or enter the ground (height 0) create a burst forth/burrow animation. (Requires JB2a Premium to work)"
+                },
+                "duration": {
+                    "name": "Set Hole Duration",
+                    "hint": "Set how long the hole animation sticks around (in seconds)"
+                },
+                "persistent": {
+                    "name": "Make Hole Persistent",
+                    "hint": "Make hole animation persistent, can be manually removed using the sequencer tab, but will stick around until you do that."
+                },
+                "size-multiplier": {
+                    "name": "Animation Size",
+                    "hint": "Multiplier for animation size (default is 1)"
                 }
             },
             "finishing-move": {

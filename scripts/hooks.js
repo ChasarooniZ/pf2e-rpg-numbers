@@ -1,4 +1,5 @@
 import { eldenRingNounVerbed, fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
+import { burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
@@ -161,4 +162,9 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
         },
     });
     return menu;
+}
+
+export async function preUpdateToken(token, changes, _misc, _id) {
+    if (getSetting('burst-burrow.enabled'))
+        burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token })
 }

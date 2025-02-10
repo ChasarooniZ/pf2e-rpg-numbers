@@ -1,4 +1,75 @@
 <span>
+    {{! Burst/Burrow }}
+    <h2
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/burst-burrow.gif' />"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.headers.burst-burrow"}}
+    </h2>
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.burstBurrow.enabled"
+            name="settings.burstBurrow.enabled"
+            {{checked settings.burstBurrow.enabled}}
+        />
+    </div>
+    {{! Duration }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.duration"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.duration.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.duration.name"}}
+        </label>
+        {{numberInput
+            settings.burstBurrow.duration.value
+            name="settings.burstBurrow.duration"
+            step=settings.burstBurrow.duration.range.step
+            min=settings.burstBurrow.duration.range.min
+            max=settings.burstBurrow.duration.range.max
+        }}
+    </div>
+    {{! Persistent }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.persistent"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.persistent.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.persistent.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.burstBurrow.persistent"
+            name="settings.burstBurrow.persistent"
+            {{checked settings.burstBurrow.persistent}}
+        />
+    </div>
+    {{! Size Multiplier }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.sizeMultiplier"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.size-multiplier.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.size-multiplier.name"}}
+        </label>
+        {{numberInput
+            settings.burstBurrow.sizeMultiplier.value
+            name="settings.burstBurrow.sizeMultiplier"
+            step=settings.burstBurrow.sizeMultiplier.range.step
+            min=settings.burstBurrow.sizeMultiplier.range.min
+            max=settings.burstBurrow.sizeMultiplier.range.max
+        }}
+    </div>
+</span>
+
+<span>
     {{! Rotate on Attack }}
     <h2
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"

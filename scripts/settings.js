@@ -10,6 +10,7 @@ import { registerDodgeOnMissSettings } from './settings/registerDodgeOnMissSetti
 import { registerCriticalSettings } from './settings/registerCriticalSettings.js'
 import { registerFinishingMovesSettings } from './settings/registerFinishingMovesSettings.js'
 import { registerFromSoftwareTextSettings } from './settings/registerFromSoftwareTextSettings.js'
+import { registerBurstBurrowSettings } from './settings/registerBurstBurrowSettings.js'
 
 Hooks.on('init', () => {
     loadTemplates([
@@ -58,25 +59,27 @@ Hooks.on('init', () => {
         type: Boolean,
     })
 
-    registerDmgNumbersSettings()
+    registerBurstBurrowSettings()
 
     registerCheckAnimationSettings()
 
-    registerScreenShakeSettings()
-
-    registerTokenDamageShakeSettings()
-
-    registerShakeScreenOnAttackSettings()
-
-    registerRotateOnAttackSettings()
+    registerCriticalSettings()
 
     registerDodgeOnMissSettings()
 
-    registerCriticalSettings()
-
+    registerDmgNumbersSettings()
 
     registerFinishingMovesSettings()
+
     registerFromSoftwareTextSettings()
+
+    registerRotateOnAttackSettings()
+
+    registerScreenShakeSettings()
+
+    registerShakeScreenOnAttackSettings()
+
+    registerTokenDamageShakeSettings()
 
     registerSetting({
         category: '',
@@ -146,5 +149,3 @@ Hooks.on('init', () => {
 
 
 })
-
-

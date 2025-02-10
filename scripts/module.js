@@ -16,7 +16,7 @@ import {
     waitForMessage
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat } from "./hooks.js";
+import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat, preUpdateToken } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 import { dodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
@@ -41,7 +41,7 @@ Hooks.on("ready", () => {
             const dat = getData(msg);
             //Finishing Moves
             finishingMove(dat, msg);
-            
+
             waitForMessage(msg.id).then(() => {
 
                 // RPG Numbers on Damage Roll
@@ -72,7 +72,7 @@ Hooks.on("ready", () => {
 
         }
     });
-
+    Hooks.on("preUpdateToken", preUpdateToken)
     Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
 
     /**

@@ -1,3 +1,4 @@
+import { burstBurrow } from "../animation/token/burstBurrow.js";
 import { getSetting, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -47,6 +48,12 @@ const settingsConfig = {
     },
     token: {
         icon: "fa-circle-user",
+        burstBurrow: {
+            enabled: "burst-burrow.enabled",
+            duration: { path: "burst-burrow.duration", type: "number", range: { min: 0, max: 300, step: 0.1 } },
+            persistent: "burst-burrow.persistent",
+            sizeMultiplier: { path: "burst-burrow.size-multiplier", type: "number", range: { min: 0, max: 3, step: 0.1 } },
+        },
         tokenShake: {
             enabled: "dmg-shake-directional-enabled",
             distance: { path: "tok-shake-distance", type: "number", range: { min: 1, max: 100, step: 1 } },
@@ -190,6 +197,7 @@ export class SettingsConfigForm extends FormApplication {
         const tabs = Object.keys(settingsConfig).map(tab => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
+
             for (const [key, value] of Object.entries(settings)) {
                 if (key !== 'icon') {
                     if (typeof value === "string") {
@@ -211,7 +219,11 @@ export class SettingsConfigForm extends FormApplication {
         });
         console.log({ tabs })
 
-        return foundry.utils.mergeObject(super.getData(), { tabs, version: game?.modules?.get(MODULE_ID)?.version });
+        const disabled = {
+            burstBurrow: !Sequencer.Database.getPathsUnder('jb2a.burrow.out').length
+        }
+
+        return foundry.utils.mergeObject(super.getData(), { tabs, version: game?.modules?.get(MODULE_ID)?.version, disabled });
     }
 
     _retrieveNestedSettings(settingGroup) {
