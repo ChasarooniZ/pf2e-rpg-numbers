@@ -1,4 +1,4 @@
-import { registerSetting } from "../helpers/misc";
+import { registerSetting } from "../helpers/misc.js";
 
 export function registerTokenDamageShakeSettings() {
     registerSetting({
