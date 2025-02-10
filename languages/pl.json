@@ -41,6 +41,7 @@
                 },
                 "plus-one": "Każde +1 ma znaczenie",
                 "critical": "Trafienie krytyczne",
+                "burst-burrow": "Wybuchowy Przekop",
                 "fromSoftware": {
                     "title": "From Software",
                     "elden-ring": {
@@ -398,6 +399,24 @@
                 "delay": {
                     "name": "Opóźnienie",
                     "hint": "Czas opóźnienia wyświetlenia animacji krytycznej (w sekundach)"
+                }
+            },
+            "burst-burrow": {
+                "enabled": {
+                    "name": "Włącz animację wybuchu / przekopywania",
+                    "hint": "Po włączeniu, jeśli aktor tokena ma szybkość przekopywania i wyłania się z ziemi lub wchodzi na nią (wysokość 0), tworzy animację wybuchu/przekopywania. (Wymaga JB2a Premium do działania)"
+                },
+                "duration": {
+                    "name": "Ustaw czas trwania otworu",
+                    "hint": "Ustaw czas trwania animacji otworu (w sekundach)."
+                },
+                "persistent": {
+                    "name": "Utwórz trwały otwór",
+                    "hint": "Spraw, aby animacja otworu była trwała, można ją ręcznie usunąć za pomocą zakładki sequencer, ale pozostanie, dopóki tego nie zrobisz."
+                },
+                "size-multiplier": {
+                    "name": "Mnożnik rozmiaru animacji",
+                    "hint": "Mnożnik rozmiaru animacji (domyślnie 1)"
                 }
             },
             "finishing-move": {
