@@ -7,7 +7,7 @@ export function registerBurstBurrowSettings() {
         desc: 'enabled',
         scope: 'world',
         config: false,
-        default: true,
+        default: false,
         type: Boolean,
     });
 
