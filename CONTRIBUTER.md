@@ -14,3 +14,8 @@ Note this isn't everyone as I am a bit slow/lazy but i'll do my best to add peop
 - Bullesta - Added webm support for Persona Crits
 ## Supporters
 - Skrinch (First Supporter <3)
+## Translations
+- **French**
+  - rectulo
+- **German**
+  - Lioheart
