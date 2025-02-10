@@ -41,30 +41,34 @@ Hooks.on("ready", () => {
             const dat = getData(msg);
             //Finishing Moves
             finishingMove(dat, msg);
+            
+            waitForMessage(msg.id).then(() => {
 
-            // RPG Numbers on Damage Roll
-            damageRollNumbers(dat, msg);
+                // RPG Numbers on Damage Roll
+                damageRollNumbers(dat, msg);
 
-            // RPG Numbers on Check Roll
-            checkRollNumbers(dat, msg);
+                // RPG Numbers on Check Roll
+                checkRollNumbers(dat, msg);
 
-            //Attack Roll Stuff
-            if (dat.isAttackRoll) {
-                // Rotate on Attack Roll
-                if (isRotateOnAttack()) {
-                    waitForMessage(msg.id).then(() => rotateOnAttack(msg));
+                //Attack Roll Stuff
+                if (dat.isAttackRoll) {
+                    // Rotate on Attack Roll
+                    if (isRotateOnAttack()) {
+                        rotateOnAttack(msg)
+                    }
+                    if (isShakeOnAttack(msg.token.actor)) {
+                        shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome)
+                    }
+
+                    if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
+                        dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object)
+                    }
                 }
-                if (isShakeOnAttack(msg.token.actor)) {
-                    waitForMessage(msg.id).then(() => shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome));
-                }
 
-                if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
-                    waitForMessage(msg.id).then(() => dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object));
-                }
-            }
+                //On Damage Application
+                onDamageApplication(dat, msg);
 
-            //On Damage Application
-            onDamageApplication(dat, msg);
+            });
 
         }
     });
@@ -166,7 +170,7 @@ function isDodgeOnMiss(outcome) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = shouldDoCrits(msg.token.actor.getFlag('pf2e-rpg-numbers', 'critical'), msg.flags.pf2e.context.outcome ?? "none");
+    const doCrits = shouldDoCrits(msg.token.actor.getFlag('pf2e-rpg-numbers', 'critical'), msg?.flags?.pf2e?.context?.outcome ?? "none");
     //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
@@ -177,13 +181,13 @@ function checkRollNumbers(dat, msg) {
             type: msg.flags.pf2e.context.type,
         };
         if (doChecks) {
-            waitForMessage(msg.id).then(() => generateRollScroll(roll_deets));
+            generateRollScroll(roll_deets)
         }
         if (doCrits && roll_deets.outcome === "criticalSuccess") {
-            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', true));
+            createCritAnimation(roll_deets, '', true)
         }
         if (roll_deets.outcome === "criticalFailure") {
-            waitForMessage(msg.id).then(() => createCritAnimation(roll_deets, '', false));
+            createCritAnimation(roll_deets, '', false)
         }
     }
 }

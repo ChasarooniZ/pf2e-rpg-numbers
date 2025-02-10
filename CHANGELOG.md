@@ -1,3 +1,9 @@
+# [12.8.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.1...12.8.2) - Waiting once
+
+-   Only wait for message to display for `Dice so Nice` once
+-   Fixed issue where animations wouldn't play if you didn't have the chat window displayed
+-   Fixed issue where check duration and damage duration were written to the same value
+
 # [12.8.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.0...12.8.1) - Small Updates
 
 -   Update polish translation (@Lioheart)

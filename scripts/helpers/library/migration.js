@@ -38,10 +38,14 @@ export async function handleUpdate(curVersion, prevVersion) {
     if (foundry.utils.isNewerVersion('12.7.0', prevVersion))
         await migrateTokenSettingsToActorSettings();
 
+    if (foundry.utils.isNewerVersion('12.8.2', prevVersion))
+        await fixDamageDuration();
+
     //End of handling
     setSetting('last-version', curVersion);
 }
 
+// 12.7.0
 export async function migrateTokenSettingsToActorSettings() {
     //Get all actors
     const actors = game.actors.contents;
@@ -121,4 +125,11 @@ function getCritImageLegacy(flags) {
         return fireEmblemImg
     }
     return personaImg
+}
+
+//12.8.2
+async function fixDamageDuration() {
+    const dmgDuration = getSetting('duration');
+    if (isNaN(dmgDuration))
+        await setSetting('duration', 2)
 }
