@@ -1,3 +1,6 @@
+- `Translation`
+  - `Polish` translation updated (@Lioheart)
+
 # [12.9.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.0...12.9.1) - Jittering Fix
 - `Fix`
   - `Damage Numbers`
