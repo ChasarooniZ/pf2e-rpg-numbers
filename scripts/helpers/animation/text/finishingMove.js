@@ -41,15 +41,21 @@ export async function createFinishingMoveAnimation(text) {
  * @returns {Object} The style object.
  */
 function createTextStyle(settings) {
+    const hsl = Color.fromString(settings.textBorderColor).hsl;
+    console.log(hsl)
+    hsl[2] = Math.min(1, hsl[2] + 0.25);
     return {
         fill: settings.textColor,
         dropShadowColor: settings.textBorderColor,
-        dropShadowBlur: 10 * settings.quality,
+        dropShadowBlur: 10,
+        dropShadowAlpha: 1,
         dropShadowDistance: 0,
         dropShadow: true,
         fontFamily: "Impact, Charcoal, sans-serif",
         fontSize: 48 * settings.quality,
-        strokeThickness: 2,
+        fontVariant: "small-caps",
+        strokeThickness: 1,
+        stroke: Color.fromHSL(hsl).css,
     };
 }
 
