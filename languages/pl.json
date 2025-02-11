@@ -417,6 +417,10 @@
                 "size-multiplier": {
                     "name": "Mnożnik rozmiaru animacji",
                     "hint": "Mnożnik rozmiaru animacji (domyślnie 1)"
+                },
+                "ignore-speed": {
+                    "name": "Odtwarzaj nawet bez szybkości przekopywania",
+                    "hint": "Odtwórz animację, gdy token zakopuje się, nawet jeśli nie ma szybkości przekopywania."
                 }
             },
             "finishing-move": {
