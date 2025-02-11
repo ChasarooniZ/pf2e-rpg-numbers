@@ -1,0 +1,17 @@
+name: Feature request
+description: Suggest an idea for this module
+title: '[Feature] '
+labels: 'enhancement'
+assignees: 'ChasarooniZ'
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Describe the feature**
+        A clear and concise description of what the feature is
+  - type: textarea
+    attributes:
+      label: What is the feature/idea?
+      description: Describe the feature and possible ways to imagine the idea its making or the issue it is solving
+    validations:
+      required: true
