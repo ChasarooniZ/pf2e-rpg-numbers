@@ -89,7 +89,7 @@ export function registerFinishingMovesSettings() {
         desc: 'duration.word',
         scope: 'world',
         config: false,
-        default: 200,
+        default: 250,
         range: {
             min: 0,
             max: 2000,
@@ -104,7 +104,7 @@ export function registerFinishingMovesSettings() {
         desc: 'duration.end',
         scope: 'world',
         config: false,
-        default: 1000,
+        default: 1500,
         range: {
             min: 0,
             max: 5000,

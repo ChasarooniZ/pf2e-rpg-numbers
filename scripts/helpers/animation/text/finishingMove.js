@@ -22,9 +22,9 @@ export async function createFinishingMoveAnimation(text) {
     const lines = text.includes('|') ? text.split("|") : [text];
     const yPositions = calculateYPositions(lines.length);
     let wordsDone = 0;
-
+    const totalWords = text.split(/[ |]/).length
     lines.forEach((line, index) => {
-        createLine(line, seq, settings, style, yPositions[index], wordsDone);
+        createLine(line, seq, settings, style, yPositions[index], wordsDone, totalWords);
         wordsDone += line.split(" ").length;
     });
 
@@ -82,12 +82,12 @@ function calculateYPositions(lineCount) {
  * @param {number} yPosition - The vertical position for this line.
  * @param {number} wordsDone - The number of words already animated.
  */
-function createLine(text, seq, settings, style, yPosition, wordsDone) {
+function createLine(text, seq, settings, style, yPosition, wordsDone, totalWords) {
     const words = text.trim().split(" ");
     const sideBorderAmt = 0.15;
     const leftBorder = 1 - sideBorderAmt;
     const moveAmt = (leftBorder - sideBorderAmt) / words.length;
-    const totalDuration = words.length * settings.delayDiff + settings.endDuration;
+    const totalDuration = totalWords * settings.delayDiff + settings.endDuration;
 
     words.forEach((word, i) => {
         const delay = settings.delayDiff * (i + wordsDone);
