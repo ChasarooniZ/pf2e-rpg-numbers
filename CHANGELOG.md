@@ -1,25 +1,30 @@
 # [12.9.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.1...12.9.2) - Burrowing and Fixes
-- `Added`
-  - `Burst Burrow`
-    - Add option to display animation even if the token doesn't have burrow speed
-- `Fixes`
-  - `DMG Numbers`
-    - Added fallback for when jitter is undefined
+
+-   `Added`
+    -   `Burst Burrow`
+        -   Add option to display animation even if the token doesn't have burrow speed
+-   `Fixes`
+    -   `DMG Numbers`
+        -   Added fallback for when jitter is undefined
+    -   `Translation`
+        -   `Polish` translation updated (@Lioheart)
 
 # [12.9.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.0...12.9.1) - Jittering Fix
-- `Fix`
-  - `Damage Numbers`
-    - Fixed issue where `jitter` was saved as `NaN` (🐛 @Nuumers)
-- `Misc`
-  - Refactored some backend code for `Check Animation` `sfx`
+
+-   `Fix`
+    -   `Damage Numbers`
+        -   Fixed issue where `jitter` was saved as `NaN` (🐛 @Nuumers)
+-   `Misc`
+    -   Refactored some backend code for `Check Animation` `sfx`
 
 # [12.9.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.2...12.9.0) - Bursting onto the Scene
-- `Added`
-  - `Burrowing and Bursting`
-    - Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
-    - **Note.** requires `jb2a_patreon` for the animations
-- `Misc`
-  - Reworked how settings are stored for easier refactoring
+
+-   `Added`
+    -   `Burrowing and Bursting`
+        -   Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
+        -   **Note.** requires `jb2a_patreon` for the animations
+-   `Misc`
+    -   Reworked how settings are stored for easier refactoring
 
 # [12.8.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.8.1...12.8.2) - Waiting once
 
@@ -150,6 +155,7 @@
 # [12.6.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.5...12.6.6) - Dynamism
 
 -   `Token Damage Shake`
+
     -   Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
 
         -   Note: will fallback to token image when the subject texture is blank
@@ -253,6 +259,7 @@
 -   `From Soft Text`
 
     -   Added two new features
+
         -   **Noun Verbed**
 
             -   Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
@@ -431,6 +438,7 @@
 # 11.12.0 - Token Turning Updates
 
 -   Turn on Token Attack _new options_
+
     -   **_New Setting._** Scale based on token size (scales how long it takes to turn based on the number of squares the token takes up)
 
         -   _Must be enabled in the settings_
@@ -861,15 +869,12 @@
 
 ## 12.9.0 - 2025-02-10
 
-- `Added`
-  - `Burrowing and Bursting`
-    - Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
-    - **Note.** requires `jb2a_patreon` for the animations
-    
-  
-- `Misc`
-  - Reworked how settings are stored for easier refactoring
-  
+-   `Added`
+    -   `Burrowing and Bursting`
+        -   Adds a new animation option to burrow and burst from the ground (for creatures with a burrow speed)
+        -   **Note.** requires `jb2a_patreon` for the animations
+-   `Misc`
+    -   Reworked how settings are stored for easier refactoring
 
 https://github.com/user-attachments/assets/2c7f0aea-c429-4a7e-8d31-7144c995c8aa
 
@@ -1100,6 +1105,7 @@ Fixed bug with dynamic tokens not shaking properly on token damage shake (@nythz
 -   `From Soft Text`
 
     -   Added two new features
+
         -   **Noun Verbed**
 
             -   Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
