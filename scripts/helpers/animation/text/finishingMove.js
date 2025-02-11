@@ -1,63 +1,122 @@
-import { getSetting} from "../../misc.js";
+import { getSetting } from "../../misc.js";
 
+/**
+ * Creates a finishing move animation with text and sound effects.
+ * @param {string} text - The text to animate, can include '|' for multiple lines.
+ */
 export async function createFinishingMoveAnimation(text) {
-    let textColor = "black";
-    let textBorderColor = getSetting("finishing-move.use-player-color") ? game.user.color.css : "red";
-    let volume = getSetting("finishing-move.sound-effect.volume") / 100;
-    let sfx = getSetting("finishing-move.sound-effect");
-    const endDuration = getSetting("finishing-move.duration.end");
-    const delayDiff = getSetting("finishing-move.duration.word");
-    const sideBorderAmt = 0.15;
-    const leftBorder = 1 - sideBorderAmt;
-    const chatWidth = chat.offsetWidth;
-    const quality = getSetting("finishing-move.quality");
-    const style = {
-        fill: textColor,
-        dropShadowColor: textBorderColor,
-        dropShadowBlur: 10 * quality,
+    const settings = {
+        textColor: "black",
+        textBorderColor: getSetting("finishing-move.use-player-color") ? game.user.color.css : "red",
+        volume: getSetting("finishing-move.sound-effect.volume") / 100,
+        sfx: getSetting("finishing-move.sound-effect"),
+        endDuration: getSetting("finishing-move.duration.end"),
+        delayDiff: getSetting("finishing-move.duration.word"),
+        quality: getSetting("finishing-move.quality"),
+        keepOn: getSetting("finishing-move.keep-on")
+    };
+
+    const style = createTextStyle(settings);
+    const seq = new Sequence();
+
+    const lines = text.includes('|') ? text.split("|") : [text];
+    const yPositions = calculateYPositions(lines.length);
+    let wordsDone = 0;
+
+    lines.forEach((line, index) => {
+        createLine(line, seq, settings, style, yPositions[index], wordsDone);
+        wordsDone += line.split(" ").length;
+    });
+
+    seq.play();
+
+    if (!settings.keepOn) {
+        toggleFinishingMoveControl();
+    }
+}
+
+/**
+ * Creates the style object for the text animation.
+ * @param {Object} settings - The animation settings.
+ * @returns {Object} The style object.
+ */
+function createTextStyle(settings) {
+    return {
+        fill: settings.textColor,
+        dropShadowColor: settings.textBorderColor,
+        dropShadowBlur: 10 * settings.quality,
         dropShadowDistance: 0,
         dropShadow: true,
         fontFamily: "Impact, Charcoal, sans-serif",
-        fontSize: 48 * quality,
-        //fontWeight: "bold",
+        fontSize: 48 * settings.quality,
         strokeThickness: 2,
     };
-    const seq = new Sequence();
-    const words = text.split(" ");
+}
+
+/**
+ * Calculates Y positions for the lines based on the number of lines.
+ * @param {number} lineCount - The number of lines.
+ * @returns {number[]} An array of Y positions for each line.
+ */
+function calculateYPositions(lineCount) {
+    switch (lineCount) {
+        case 1:
+            return [0.4]; // Single line at y = 0.4
+        case 2:
+            return [0.4, 0.6]; // Two lines at y = 0.4 and y = 0.6
+        case 3:
+            return [0.3, 0.5, 0.7]; // Three lines at y = 0.3, 0.5, and 0.7
+        case 4:
+            return [0.2, 0.4, 0.6, 0.8]; // Four lines at y = 0.2, 0.4, 0.6, and 0.8
+        default:
+            throw new Error("Unsupported number of lines. Only supports up to 4 lines.");
+    }
+}
+
+/**
+ * Creates a line of animated text.
+ * @param {string} text - The text to animate.
+ * @param {Sequence} seq - The Sequence object.
+ * @param {Object} settings - The animation settings.
+ * @param {Object} style - The text style.
+ * @param {number} yPosition - The vertical position for this line.
+ * @param {number} wordsDone - The number of words already animated.
+ */
+function createLine(text, seq, settings, style, yPosition, wordsDone) {
+    const words = text.trim().split(" ");
+    const sideBorderAmt = 0.15;
+    const leftBorder = 1 - sideBorderAmt;
     const moveAmt = (leftBorder - sideBorderAmt) / words.length;
-    const totalDuration = words.length * delayDiff + endDuration;
-    //await Sequencer.Preloader.preloadForClients(sfx);
+    const totalDuration = words.length * settings.delayDiff + settings.endDuration;
+
     words.forEach((word, i) => {
-        word = ` ${word} `;
+        const delay = settings.delayDiff * (i + wordsDone);
+        const duration = totalDuration - delay;
+        const xPosition = sideBorderAmt + moveAmt * (i + 0.5);
+
         seq.effect()
             .zIndex(5)
             .syncGroup(`finishing-move-${text}`)
-            .text(word, style)
+            .text(` ${word} `, style)
             .screenSpace()
             .screenSpaceAboveUI()
-            .screenSpaceAnchor({ x: sideBorderAmt + moveAmt * i + moveAmt / 2, y: 0.4 })
-            .scale(1 / quality)
-            .scaleIn(3, delayDiff, { ease: "easeOutCubic" })
-            .screenSpaceScale({
-                x: 1.0, // Scale on the effect's X scale
-                y: 1.0, // Scale on the effect's Y scale
-            })
-            .delay(delayDiff * i)
-            .duration(totalDuration - delayDiff * i)
+            .screenSpaceAnchor({ x: xPosition, y: yPosition })
+            .scale(1 / settings.quality)
+            .scaleIn(3, settings.delayDiff, { ease: "easeOutCubic" })
+            .screenSpaceScale({ x: 1.0, y: 1.0 })
+            .delay(delay)
+            .duration(duration)
             .sound()
-            .file(sfx)
-            .volume(volume)
-            .delay(delayDiff * i);
+            .file(settings.sfx)
+            .volume(settings.volume)
+            .delay(delay);
     });
-    seq.play();
-    if (!getSetting("finishing-move.keep-on")) {
-        // Turns off after run
-        document
-            .querySelector(
-                `li.control-tool.toggle[aria-label="${game.i18n.localize(
-                    "pf2e-rpg-numbers.controls.finishing-move.name"
-                )}"]`
-            )
-            .click();
-    }
+}
+
+/**
+ * Toggles the finishing move control in the UI.
+ */
+function toggleFinishingMoveControl() {
+    const controlSelector = `li.control-tool.toggle[aria-label="${game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name")}"]`;
+    document.querySelector(controlSelector)?.click();
 }

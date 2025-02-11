@@ -1,3 +1,7 @@
+# [12.9.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.2...12.9.3) - Multi Line Finisher
+- Add ability for `Finishing Moves` to be up to **4 lines** uses `|` to indicate a line seperation
+- Updated `Polish` translation again (@Lioheart)
+
 # [12.9.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.1...12.9.2) - Burrowing and Fixes
 
 -   `Added`
