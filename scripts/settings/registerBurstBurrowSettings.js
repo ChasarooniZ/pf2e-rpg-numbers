@@ -51,6 +51,16 @@ export function registerBurstBurrowSettings() {
         type: Number,
     });
 
+    registerSetting({
+        category: 'burst-burrow',
+        id: 'burst-burrow.ignore-speed',
+        desc: 'ignore-speed',
+        scope: 'world',
+        config: false,
+        default: false,
+        type: Boolean,
+    });
+
     // registerSetting({
     //     category: 'burst-burrow',
     //     id: 'burst-burrow.sound',

@@ -417,6 +417,10 @@
                 "size-multiplier": {
                     "name": "Animation Size Multiplier",
                     "hint": "Multiplier for animation size (default is 1)"
+                },
+                "ignore-speed": {
+                    "name": "Play even w/o Burrow Speed",
+                    "hint": "Play the animation when the token burrows even if it doesn't have burrow speed"
                 }
             },
             "finishing-move": {

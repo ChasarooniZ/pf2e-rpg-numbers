@@ -67,6 +67,21 @@
             max=settings.burstBurrow.sizeMultiplier.range.max
         }}
     </div>
+    {{! Ignore Burrow Speed }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.ignoreSpeed"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.ignore-speed.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.ignore-speed.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.burstBurrow.ignoreSpeed"
+            name="settings.burstBurrow.ignoreSpeed"
+            {{checked settings.burstBurrow.ignoreSpeed}}
+        />
+    </div>
 </span>
 
 <span>

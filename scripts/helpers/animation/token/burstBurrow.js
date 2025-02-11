@@ -1,14 +1,14 @@
 import { getSetting } from "../../misc.js";
 
 export function burstBurrow(data) {
-    if (!crossesZero(data?.elevationA, data?.elevationB)) return;
-
-    const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some((spd) => spd.type === 'burrow');
-    if (!hasBurrow)
-        return;
-
     if (!data?.token)
         return;
+    if (!crossesZero(data?.elevationA, data?.elevationB)) return;
+    if (!getSetting('burst-burrow.ignore-speed')) {
+        const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some((spd) => spd.type === 'burrow');
+        if (!hasBurrow)
+            return;
+    }
 
     const duration = getSetting("burst-burrow.duration") * 1000 // In Seconds
     const persistent = getSetting("burst-burrow.persistent"); // Should the ground hole stay?

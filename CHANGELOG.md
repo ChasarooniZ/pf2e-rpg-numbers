@@ -1,3 +1,11 @@
+# [12.9.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.1...12.9.2) - Burrowing and Fixes
+- `Added`
+  - `Burst Burrow`
+    - Add option to display animation even if the token doesn't have burrow speed
+- `Fixes`
+  - `DMG Numbers`
+    - Added fallback for when jitter is undefined
+
 # [12.9.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.0...12.9.1) - Jittering Fix
 - `Fix`
   - `Damage Numbers`

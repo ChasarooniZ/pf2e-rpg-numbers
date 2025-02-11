@@ -102,8 +102,6 @@ Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is ready");
 });
 
-//createCritAnimation({ type: "custom", whisper: [game.user.id], token: token ?? game.user.character });
-
 function getData(msg) {
     return {
         isDamageRoll: msg.isDamageRoll,
