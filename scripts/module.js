@@ -168,7 +168,7 @@ function isDodgeOnMiss(outcome) {
 
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = shouldDoCrits(msg.token.actor.getFlag('pf2e-rpg-numbers', 'critical'), msg?.flags?.pf2e?.context?.outcome ?? "none");
+    const doCrits = shouldDoCrits(msg?.token?.actor?.getFlag('pf2e-rpg-numbers', 'critical'), msg?.flags?.pf2e?.context?.outcome ?? "none");
     //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
