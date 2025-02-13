@@ -9,6 +9,7 @@ import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
 import { getSetting } from "./misc.js";
 import { migrateTokenSettingsToActorSettings } from "./library/migration.js";
+import { EnhancedTour } from "./library/EnhancedTour.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -55,6 +56,11 @@ export function createAPI() {
         },
         migration: {
             'tokenSettingsToActor': migrateTokenSettingsToActorSettings
+        },
+        tour: {
+            new: function(tourData) {
+                return new EnhancedTour(tourData)
+            }
         }
     };
 }
