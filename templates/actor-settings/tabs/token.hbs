@@ -1,4 +1,5 @@
 <div>
+    {{! Token Rotation}}
     <div class="row">
         <div class="column angle-text">
             <div class="form-group flex">
@@ -17,6 +18,24 @@
                 <canvas id="angle-canvas"></canvas>
             </div>
         </div>
+    </div>
+
+    {{! Dodge Type }}
+    <div class="form-group">
+        <label
+            for="settings.token.dodgeOnMiss.type"
+            data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.name"}}
+            <sup data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.hint"}}">
+                <i>
+                {{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.name"}}
+                </i>
+            </sup>
+        </label>
+        <select name="settings.token.dodgeOnMiss.type">
+            {{selectOptions settings.dodgeOnMiss.choices.type selected=settings.dodgeOnMiss.type localize=true}}
+        </select>
     </div>
 </div>
 

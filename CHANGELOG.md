@@ -1,3 +1,12 @@
+# [12.9.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.3...12.9.4) - Glint + Styling
+- `Target Dodges`
+  - Add new option `Bounce Off` that causes the attack to "bounce off" creating sparks
+  - Can be toggled as the new default dodge animation, or automatically swapped to if the target meets one of the following conditions
+    - Has a `Shield Raised` or `Shield` Spell active
+    - Str > Dex
+- `Misc`
+  - Menus now have icons to represent their section
+
 # [12.9.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.2...12.9.3) - Multi Line Finisher
 
 -   Add ability for `Finishing Moves` to be up to **4 lines** uses `|` to indicate a line separation

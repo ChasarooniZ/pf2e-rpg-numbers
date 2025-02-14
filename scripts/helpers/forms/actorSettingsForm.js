@@ -141,6 +141,16 @@ const settingsConfig = {
         icon: "fa-circle-user",
         rotation: {
             offset: 'token.rotation.offset'
+        },
+        dodgeOnMiss: {
+            type: 'token.dodgeOnMiss.type',
+            choices: {
+                type: {
+                    default: 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.default',
+                    dodge: 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.dodge',
+                    'bounce-off': 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.bounce-off'
+                }
+            }
         }
     }
 };
@@ -292,7 +302,7 @@ export class ActorSettingsConfigForm extends FormApplication {
             const tabSettings = {};
             for (const [key, value] of Object.entries(settings)) {
                 if (key !== 'icon') {
-                    if (typeof value === "object") {
+                    if (typeof value === "object" && key !== 'choices') {
                         tabSettings[key] = this._retrieveNestedSettings(value);
                     } else {
                         tabSettings[key] = value;
@@ -374,9 +384,10 @@ export class ActorSettingsConfigForm extends FormApplication {
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
         const remain = remaining.join(".")
-        const obj = this.options.actor.getFlag(MODULE_ID, flag) ?? getDefaultVariable(flag);
+        const obj = this.options.actor.getFlag(MODULE_ID, flag);
+        const backupObj = getDefaultVariable(flag);
 
-        return getNestedProperty(obj, remain)
+        return getNestedProperty(obj, remain) ?? getNestedProperty(backupObj, remain)
     }
 
     getFormData() {

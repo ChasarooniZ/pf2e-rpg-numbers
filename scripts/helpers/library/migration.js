@@ -30,6 +30,9 @@ export const DEFAULT_CRIT = {
 export const DEFAULT_TOKEN = {
     rotation: {
         offset: 0,
+    },
+    dodgeOnMiss: {
+        type: 'default',
     }
 }
 

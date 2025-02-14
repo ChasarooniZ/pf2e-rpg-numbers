@@ -18,7 +18,7 @@ import {
 import { getDamageList } from "./helpers/rollTerms.js";
 import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat, preUpdateToken } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
-import { dodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
+import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -61,7 +61,7 @@ Hooks.on("ready", () => {
                     }
 
                     if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
-                        dodgeOnMiss(msg?.token?.object, msg?.target?.token?.object)
+                        handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object)
                     }
                 }
 

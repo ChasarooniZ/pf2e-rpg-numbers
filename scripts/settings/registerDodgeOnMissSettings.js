@@ -55,4 +55,15 @@ export function registerDodgeOnMissSettings() {
         },
         type: Number,
     });
+
+    registerSetting({
+        category: 'dodge-on-miss',
+        id: 'dodge-on-miss.type',
+        desc: 'type',
+        scope: 'world',
+        config: false,
+        default: game.modules.get("jb2a_patreon")?.active ? 'auto' : 'dodge',
+        type: String,
+        choices: ['auto', 'dodge', 'bounce-off'],
+    });
 }

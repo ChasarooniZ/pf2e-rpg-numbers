@@ -740,13 +740,15 @@
                         "name": "Turn On Attack - Rotation Offset",
                         "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
                     },
-                    "type": {
-                        "name": "Dodge Type",
-                        "hint": "Choose whether to override the dodge type for the token",
-                        "choices": {
-                            "default": "—",
-                            "dodge": "Dodge",
-                            "bounce-off": "Bounce Off"
+                    "dodge-on-miss": {
+                        "type": {
+                            "name": "Dodge Type",
+                            "hint": "Choose whether to override the dodge type for the token",
+                            "choices": {
+                                "default": "—",
+                                "dodge": "Dodge",
+                                "bounce-off": "Bounce Off"
+                            }
                         }
                     }
                 }
