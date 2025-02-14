@@ -87,8 +87,8 @@ export async function disgaea7Crit(actor, users, config) {
             })
             .scale(height / imgHeight * 0.75 * config.scale)
             .spriteOffset({
-                x: (width * widthPercent / 2) + config.offset.x,
-                y: (imgHeight / 4) + config.offset.y
+                x: (width * widthPercent / 2),
+                y: (imgHeight / 4)
             })
             .spriteRotation(config.rotation)
             .zIndex(0)
@@ -108,7 +108,7 @@ export async function disgaea7Crit(actor, users, config) {
                     screenSpace: true
                 })
             .animateProperty("sprite", "position.y", { from: -1, to: 0, screenSpace: true, duration: duration / 4, ease: "easeOutBack" })
-            .animateProperty("spriteContainer", "scale.x", { from: 1, to: 0, duration: duration / 4, fromEnd: true })
+            .animateProperty("spriteContainer", "scale.x", { from: 1 + (config?.offset?.y ?? 0), to: config?.offset?.y ?? 0, duration: duration / 4, fromEnd: true })
             .animateProperty("spriteContainer", "position.x", { from: 0, to: width * widthPercent / 2, duration: duration / 4, fromEnd: true })
             .screenSpace()
             /*.screenSpaceScale({

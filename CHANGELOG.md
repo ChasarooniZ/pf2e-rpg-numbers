@@ -1,3 +1,6 @@
+# [12.9.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.4...12.9.5) - Disgaea Offset
+- Fixed issue where `Disgaea 7` `Critical` offset wasn't set up properly (🐛 @ZinUwU)
+
 # [12.9.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.3...12.9.4) - Bounce Off + Styling
 - `Target Dodges`
   - Add new option `Bounce Off` that causes the attack to "bounce off" creating sparks
