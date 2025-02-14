@@ -27,7 +27,10 @@
             },
             "headers": {
                 "dmg-numbers": "Liczby obrażeń",
-                "check-animations": "Testy i animacje ataków",
+                "check-animations": {
+                    "title": "Testy i animacje ataków",
+                    "sfx": "Sprawdź SFX"
+                },
                 "screen-shake": "Potrząsanie podczas obrażeń",
                 "token-dmg-shake": {
                     "title": "Potrząsanie tokenami podczas zadawania obrażeń",

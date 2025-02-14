@@ -15,6 +15,15 @@
             }
         },
         "module-settings": {
+            "notes": {
+                "requires-jb2a-premium": {
+                    "name": "JB2A+",
+                    "hint": "Requires JB2A Premium for some or all parts of this feature"
+                },
+                "new-feature": {
+                    "hint": "New Feature!"
+                }
+            },
             "enabled": {
                 "name": "Enable Module",
                 "hint": "Enables functionality of module"
@@ -27,7 +36,10 @@
             },
             "headers": {
                 "dmg-numbers": "Damage Numbers",
-                "check-animations": "Checks & Attack Animations",
+                "check-animations": {
+                    "title": "Checks & Attack Animations",
+                    "sfx": "Check SFX"
+                },
                 "screen-shake": "Shake on Damaged",
                 "token-dmg-shake": {
                     "title": "Token Damage Shake",
@@ -320,6 +332,15 @@
                 "delay": {
                     "name": "Dodge Delay",
                     "hint": "How long (in seconds) should the dodge animation be delayed after being triggered"
+                },
+                "type": {
+                    "name": "Dodge Type",
+                    "hint": "Choose whether all tokens should dodge, or the attack should bounce off (requires JB2A Premium), or automatically choose based on str vs dex and whether token has a shield raised",
+                    "choices": {
+                        "auto": "Auto",
+                        "dodge": "Dodge",
+                        "bounce-off": "Bounce Off"
+                    }
                 }
             },
             "rotate-on-attack": {
@@ -718,6 +739,15 @@
                     "rotation-offset": {
                         "name": "Turn On Attack - Rotation Offset",
                         "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
+                    },
+                    "type": {
+                        "name": "Dodge Type",
+                        "hint": "Choose whether to override the dodge type for the token",
+                        "choices": {
+                            "default": "—",
+                            "dodge": "Dodge",
+                            "bounce-off": "Bounce Off"
+                        }
                     }
                 }
             },

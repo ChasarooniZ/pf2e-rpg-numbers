@@ -21,7 +21,10 @@
             },
             "headers": {
                 "dmg-numbers": "Schadenszahlen",
-                "check-animations": "Checks und Angriffsanimationen",
+                "check-animations": {
+                    "title": "Checks und Angriffsanimationen",
+                    "sfx": "SFX prüfen"
+                },
                 "screen-shake": "Bildschirmschütteln",
                 "token-dmg-shake": {
                     "title": "Token-Schadensshake",

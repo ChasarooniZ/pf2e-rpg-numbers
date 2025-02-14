@@ -21,7 +21,10 @@
             },
             "headers": {
                 "dmg-numbers": "피해량",
-                "check-animations": "점검 및 공격 애니메이션",
+                "check-animations": {
+                    "title": "체크 및 공격 애니메이션",
+                    "sfx": "SFX 확인"
+                },
                 "screen-shake": "화면 흔들림",
                 "token-dmg-shake": {
                     "title": "토큰 데미지 쉐이크",

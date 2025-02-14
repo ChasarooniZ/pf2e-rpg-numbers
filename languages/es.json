@@ -21,7 +21,10 @@
             },
             "headers": {
                 "dmg-numbers": "Números de daños",
-                "check-animations": "Controles y animaciones de ataque",
+                "check-animations": {
+                    "title": "Controles y animaciones de ataque",
+                    "sfx": "Comprobar SFX"
+                },
                 "screen-shake": "Temblor de pantalla",
                 "token-dmg-shake": {
                     "title": "Batido de daño simbólico",

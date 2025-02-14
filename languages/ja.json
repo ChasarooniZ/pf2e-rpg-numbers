@@ -21,7 +21,10 @@
             },
             "headers": {
                 "dmg-numbers": "ダメージ数値",
-                "check-animations": "チェックと攻撃のアニメーション",
+                "check-animations": {
+                    "title": "チェックと攻撃アニメーション",
+                    "sfx": "SFXをチェック"
+                },
                 "screen-shake": "画面の揺れ",
                 "token-dmg-shake": {
                     "title": "トークンダメージシェイク",

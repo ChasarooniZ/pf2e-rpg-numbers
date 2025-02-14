@@ -21,7 +21,10 @@
             },
             "headers": {
                 "dmg-numbers": "Цифры урона",
-                "check-animations": "Анимация проверок и атак",
+                "check-animations": {
+                    "title": "Анимация проверок и атак",
+                    "sfx": "Проверить SFX"
+                },
                 "screen-shake": "Дрожание экрана",
                 "token-dmg-shake": {
                     "title": "Встряска жетона урона",
