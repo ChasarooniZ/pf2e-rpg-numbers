@@ -1,9 +1,11 @@
 # [12.9.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.4...12.9.5) - Disgaea Offset
+
 - Fixed issue where `Disgaea 7` `Critical` offset wasn't set up properly (🐛 @ZinUwU)
 
 # [12.9.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.3...12.9.4) - Bounce Off + Styling
 
 - `Target Dodges`
+  
   - Add new option `Bounce Off` that causes the attack to "bounce off" creating sparks
   - Can be toggled as the new default dodge animation, or automatically swapped to if the target meets one of the following conditions
     - Has a `Shield Raised` or `Shield` Spell active
@@ -11,6 +13,7 @@
     
   
 - `Misc`
+  
   - Menus now have icons to represent their section
   
 
@@ -977,9 +980,14 @@
 
 # <<<<<<< HEAD
 
+## 12.9.5 - 2025-02-14
+
+- Fixed issue where `Disgaea 7` `Critical` offset wasn't set up properly (🐛 @ZinUwU)
+
 ## 12.9.4 - 2025-02-14
 
 - `Target Dodges`
+  
   - Add new option `Bounce Off` that causes the attack to "bounce off" creating sparks
   - Can be toggled as the new default dodge animation, or automatically swapped to if the target meets one of the following conditions
     - Has a `Shield Raised` or `Shield` Spell active
@@ -987,6 +995,7 @@
     
   
 - `Misc`
+  
   - Menus now have icons to represent their section
   
 
