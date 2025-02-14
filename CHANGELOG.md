@@ -1,4 +1,4 @@
-# [12.9.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.3...12.9.4) - Glint + Styling
+# [12.9.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.3...12.9.4) - Bounce Off + Styling
 - `Target Dodges`
   - Add new option `Bounce Off` that causes the attack to "bounce off" creating sparks
   - Can be toggled as the new default dodge animation, or automatically swapped to if the target meets one of the following conditions
