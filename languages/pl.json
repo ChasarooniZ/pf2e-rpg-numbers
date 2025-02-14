@@ -15,6 +15,15 @@
             }
         },
         "module-settings": {
+            "notes": {
+                "requires-jb2a-premium": {
+                    "name": "JB2A+",
+                    "hint": "Wymaga JB2A Premium dla niektórych lub wszystkich części tej funkcji."
+                },
+                "new-feature": {
+                    "hint": "Nowa funkcjonalność!"
+                }
+            },
             "enabled": {
                 "name": "Włącz moduł",
                 "hint": "Włącza funkcjonalność modułu"
@@ -29,7 +38,7 @@
                 "dmg-numbers": "Liczby obrażeń",
                 "check-animations": {
                     "title": "Testy i animacje ataków",
-                    "sfx": "Sprawdź SFX"
+                    "sfx": "SFX dla testów"
                 },
                 "screen-shake": "Potrząsanie podczas obrażeń",
                 "token-dmg-shake": {
@@ -323,6 +332,15 @@
                 "delay": {
                     "name": "Opóźnienie uniku",
                     "hint": "Jak długo (w sekundach) powinna być opóźniona animacja uniku po jej uruchomieniu?"
+                },
+                "type": {
+                    "name": "Typ uników",
+                    "hint": "Wybierz, czy wszystkie tokeny mają wykonać unik, czy atak ma się odbić (wymaga JB2A Premium), lub automatycznie wybierz na podstawie Sił kontra Zrę i tego, czy token ma podniesioną tarczę.",
+                    "choices": {
+                        "auto": "Auto",
+                        "dodge": "Unik",
+                        "bounce-off": "Odbijanie"
+                    }
                 }
             },
             "rotate-on-attack": {
@@ -721,6 +739,17 @@
                     "rotation-offset": {
                         "name": "Włącz podczas ataku - przesunięcie obrotu",
                         "hint": "Ustawia, o ile ma być przesunięty obrót podczas ataku. W dół ⬇ 0, w prawo ➡ 90, w górę ⬆ 180, w lewo ⬅ 270"
+                    },
+                    "dodge-on-miss": {
+                        "type": {
+                            "name": "Typ uników",
+                            "hint": "Wybierz, czy nadpisać typ uniku dla tokena",
+                            "choices": {
+                                "default": "—",
+                                "dodge": "Unik",
+                                "bounce-off": "Odbijanie"
+                            }
+                        }
                     }
                 }
             },
