@@ -1,7 +1,7 @@
 {
     "id": "pf2e-rpg-numbers",
-    "title": "PF2e RPG Numbers",
-    "description": "A module that gives damage pop up text when you roll damage in pf2e.",
+    "title": "PF2e RPG Numbers & More",
+    "description": "A module that adds a lot neat rpg and anime themed effects to pf2e.",
     "version": "#{VERSION}#",
     "compatibility": {
         "minimum": "11",

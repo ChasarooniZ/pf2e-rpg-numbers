@@ -1,3 +1,7 @@
+# [12.9.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.5...12.9.6) - Settings Menu Tabs
+- Fixed styling for settings menu (🐛 @weepingminotaur)
+- Updated `Polish` translation again (@Lioheart)
+
 # [12.9.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.4...12.9.5) - Disgaea Offset
 - Fixed issue where `Disgaea 7` `Critical` offset wasn't set up properly (🐛 @ZinUwU)
 
