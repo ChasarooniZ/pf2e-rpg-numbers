@@ -1,4 +1,5 @@
 # [12.9.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.5...12.9.6) - Settings Menu Tabs
+
 - Fixed styling for settings menu (🐛 @weepingminotaur)
 - Updated `Polish` translation again (@Lioheart)
 
@@ -983,6 +984,11 @@
   
 
 # <<<<<<< HEAD
+
+## 12.9.6 - 2025-02-14
+
+- Fixed styling for settings menu (🐛 @weepingminotaur)
+- Updated `Polish` translation again (@Lioheart)
 
 ## 12.9.5 - 2025-02-14
 
