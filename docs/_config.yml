@@ -28,7 +28,7 @@ twitter_username: jekyllrb
 github_username:  chasarooniZ
 
 # Build settings
-theme: jekyll-theme--architect
+theme: jekyll-theme-architect
 plugins:
   - jekyll-feed
 
