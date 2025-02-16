@@ -19,19 +19,41 @@
 # in the templates via {{ site.myvariable }}.
 
 title: PF2e RPG Numbers
-email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Home Place for Pf2e RPG Numbers Wiki
-baseurl: "" # the subpath of your site, e.g. /blog
+    Home Place for Pf2e RPG Numbers Wiki
+baseurl: "/about" # the subpath of your site, e.g. /blog
 url: "https://chasarooniz.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  chasarooniZ
+github_username: chasarooniZ
 
 # Build settings
-remote_theme: pages-themes/architect@v0.2.0
+remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 plugins:
-  - jekyll-feed
-  - jekyll-remote-theme 
+    - jekyll-feed
+auto_page_title: true
+sidebar:
+    - about
+    - label: Critical
+      children:
+        - critical
+    - label: Rolls
+      children:
+        - damage-numbers
+        - check-and-attack-numbers
+    - label: Token
+      children:
+        - burst-burrow
+        - rotate-on-attack
+        - shake-on-attack
+        - shake-on-damaged
+        - target-dodges
+        - token-damage-shake
+    - label: Text
+      children:
+        - finishing-moves
+        - from-software-noun-verb
+        - from-software-you-died
+    - api
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

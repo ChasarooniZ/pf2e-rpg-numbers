@@ -1,10 +1,10 @@
 ---
 layout: page
 title: Critical Animations
-permalink: /feature/critical
+id: critical
+permalink: /feature/critical/critical
 ---
 
-# Critical
 
 -   here we will go into the basics of criticals
 ## Setting
