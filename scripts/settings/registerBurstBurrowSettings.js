@@ -6,7 +6,7 @@ export function registerBurstBurrowSettings() {
         id: 'burst-burrow.enabled',
         desc: 'enabled',
         scope: 'world',
-        config: false,
+        config: true,
         default: false,
         type: Boolean,
     });
