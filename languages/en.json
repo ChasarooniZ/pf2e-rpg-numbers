@@ -428,8 +428,8 @@
                     "hint": "When enabled if a token's actor has Burrow speed, and they either emerge from or enter the ground (height 0) create a burst forth/burrow animation. (Requires JB2a Premium to work)"
                 },
                 "duration": {
-                    "name": "Set Hole Duration",
-                    "hint": "Set how long the hole animation sticks around (in seconds)"
+                    "name": "Hole Duration",
+                    "hint": "How long the hole animation sticks around (in seconds)"
                 },
                 "persistent": {
                     "name": "Make Hole Persistent",
@@ -440,7 +440,7 @@
                     "hint": "Multiplier for animation size (default is 1)"
                 },
                 "ignore-speed": {
-                    "name": "Play even w/o Burrow Speed",
+                    "name": "Ignore Burrow Speed",
                     "hint": "Play the animation when the token burrows even if it doesn't have burrow speed"
                 }
             },

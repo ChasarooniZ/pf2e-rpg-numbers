@@ -1,3 +1,8 @@
+# Unreleased
+- `Misc`
+  - Updated some localizations for english to better match
+  - Changed some settings to be on by default
+
 # [12.9.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.5...12.9.6) - Settings Menu Tabs
 
 - Fixed styling for settings menu (🐛 @weepingminotaur)
