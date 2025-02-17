@@ -29,17 +29,16 @@
                 "type": "module",
                 "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
                 "compatibility": {
-                    "minimum": "3.3.8",
-                    "verified": "3.3.8"
+                    "minimum": "3.4.0",
+                    "verified": "3.4.8"
                 }
             }
         ],
         "recommends": [
             {
-                "id": "tokenmagic",
+                "id": "jb2a_patreon",
                 "type": "module",
-                "reason": "This module allows for usage of the upgraded token shake animation.",
-                "manifest": "https://github.com/Feu-Secret/Tokenmagic/releases/latest/download/module.json",
+                "reason": "This module allows some of the features to work see the Wiki (https://chasarooniz.github.io/pf2e-rpg-numbers/) for more information",
                 "compatibility": {}
             }
         ]
@@ -52,52 +51,52 @@
             "path": "languages/en.json"
         },
         {
-          "lang": "es",
-          "name": "Español",
-          "path": "languages/es.json"
+            "lang": "es",
+            "name": "Español",
+            "path": "languages/es.json"
         },
         {
-          "lang": "fr",
-          "name": "Français",
-          "path": "languages/fr.json"
+            "lang": "fr",
+            "name": "Français",
+            "path": "languages/fr.json"
         },
         {
-          "lang": "de",
-          "name": "Deutsch",
-          "path": "languages/de.json"
+            "lang": "de",
+            "name": "Deutsch",
+            "path": "languages/de.json"
         },
         {
-          "lang": "pl",
-          "name": "Polish",
-          "path": "languages/pl.json"
+            "lang": "pl",
+            "name": "Polish",
+            "path": "languages/pl.json"
         },
         {
-          "lang": "ja",
-          "name": "日本語 (Japanese)",
-          "path": "languages/ja.json"
+            "lang": "ja",
+            "name": "日本語 (Japanese)",
+            "path": "languages/ja.json"
         },
         {
-          "lang": "ko",
-          "name": "한국어 (Korean)",
-          "path": "languages/ko.json"
+            "lang": "ko",
+            "name": "한국어 (Korean)",
+            "path": "languages/ko.json"
         },
         {
-          "lang": "ru",
-          "name": "Russian",
-          "path": "languages/ru.json"
+            "lang": "ru",
+            "name": "Russian",
+            "path": "languages/ru.json"
         }
     ],
     "packs": [
-      {
-        "name": "pf2e-rpg-numbers-macros",
-        "label": "PF2e RPG Numbers Macros",
-        "path": "packs/pf2e-rpg-numbers-macros",
-        "type": "Macro",
-        "ownership": {
-          "PLAYER": "OBSERVER",
-          "ASSISTANT": "OWNER"
+        {
+            "name": "pf2e-rpg-numbers-macros",
+            "label": "PF2e RPG Numbers Macros",
+            "path": "packs/pf2e-rpg-numbers-macros",
+            "type": "Macro",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         }
-      }
     ],
     "url": "#{URL}#",
     "manifest": "#{MANIFEST}#",
