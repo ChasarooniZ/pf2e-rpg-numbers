@@ -7,6 +7,13 @@ next_page: check-and-attack-numbers
 ---
 Displays damage numbers when you roll damage (or apply it) depending on the settings
 
+#### Preview
+
+<video controls>
+  <source src="../../videos/damage-number.mp4" type="video/mp4">
+</video>
+
+
 ## Settings
 ### Enable
 
