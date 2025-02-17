@@ -15,7 +15,7 @@ In general the toke needs to have burrowing speed, and the setting needs to be e
 The effect can be seen here:
 
 
-https://github.com/user-attachments/assets/089b4df5-0492-49db-8193-0de60f4510af
+![preview](https://github.com/user-attachments/assets/089b4df5-0492-49db-8193-0de60f4510af)
 
 
 
