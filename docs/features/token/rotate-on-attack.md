@@ -2,7 +2,7 @@
 layout: page
 title: Rotate on Attack
 id: rotate-on-attack
-permalink: /feature/token/rotate-on-attack
+permalink: pf2e-rpg-numbers/feature/token/rotate-on-attack
 previous_page: burst-burrow
 next_page: shake-on-attack
 ---
