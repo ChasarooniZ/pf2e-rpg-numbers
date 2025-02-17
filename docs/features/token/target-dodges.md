@@ -46,7 +46,7 @@ How long (in seconds) should the dodge animation be delayed
 
 -   **Auto** - _Automatically chooses an animation (see below for details)_
 -   **Dodge** - _The token moves to dodge the attack_
--   **Bounce Off** - _The attack bounces off creating sparks [^1]_
+-   **Bounce Off** - _The attack bounces off the token creating sparks [^1]_
 
 Choose the type of "dodge" animation to use
 
@@ -72,5 +72,23 @@ When enabled, the scaling factors in Temporary Hit Points
 ---
 
 When enabled, the GM to experiences screen shake for any actors and their tokens that don't have a player owner
+
+## Actor Settings
+
+## Type
+
+---
+
+**Options**
+
+-   **—** - _Use default target dodge type settings_
+-   **Dodge** - _The token moves to dodge the attack_
+-   **Bounce Off** - _The attack bounces off the token creating sparks [^1]_
+
+Choose the type of "dodge" animation to use for the actor overriding the world setting
+
+---
+
+## Notes
 
 [^1]: This feature requires the [JB2a Patreon Module](https://www.patreon.com/JB2A)
