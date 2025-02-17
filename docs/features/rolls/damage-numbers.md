@@ -2,7 +2,6 @@
 layout: page
 title: Damage Numbers
 id: damage-numbers
-permalink: pf2e-rpg-numbers/feature/numbers/damage-numbers
 previous_page: critical
 next_page: check-and-attack-numbers
 ---

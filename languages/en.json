@@ -40,12 +40,12 @@
                     "title": "Checks & Attack Animations",
                     "sfx": "Check SFX"
                 },
-                "screen-shake": "Shake on Damaged",
+                "screen-shake": "Shake Screen on Damaged",
                 "token-dmg-shake": {
                     "title": "Token Damage Shake",
                     "scaling": "Token Damage Shake - Scaling"
                 },
-                "shake-on-attack": "Shake on Attack",
+                "shake-on-attack": "Shake Screen on Attack",
                 "rotate-on-attack": "Rotate on Attack",
                 "dodge-on-miss": "Target Dodges",
                 "finishing-move": {
@@ -216,10 +216,10 @@
                     "hint": "Shakes the screen when you attack, shakes more when you crit"
                 },
                 "type": {
-                    "name": "Shake on Attack Enabled for?",
+                    "name": "Enable for",
                     "hint": "Choose who shake on attack is enabled for",
                     "choices": {
-                        "both": "Both",
+                        "both": "Everyone",
                         "gm": "GM Only",
                         "players": "Players Only"
                     }
@@ -248,11 +248,11 @@
                     }
                 },
                 "intensity-include-temp-hp": {
-                    "name": "Should scaling include Temp HP",
+                    "name": "Scaling includes Temp HP",
                     "hint": "If you picked an intensity that scales off hp, toggling this on causes it to include temp hp"
                 },
                 "gm-enabled": {
-                    "name": "Enable shaking for GM",
+                    "name": "Enable for GM",
                     "hint": "Causes GM to experience screen shake for any actors and their tokens that don't have a player owner"
                 }
             },

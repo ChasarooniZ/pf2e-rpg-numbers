@@ -2,7 +2,7 @@
 layout: page
 title: Critical Animations
 id: critical
-permalink: pf2e-rpg-numbers/feature/critical/critical
+permalink: feature/critical/critical
 ---
 
 
