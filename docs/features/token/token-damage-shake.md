@@ -46,9 +46,9 @@ How long (in ms) to shake the token for
 
 **Options**
 
--   **Nothing** - Just uses the base values of the token shaking
--   **% Current HP** - Scale by percentage current health
--   **% Max HP** - Scale by percentage max health
+-   **Nothing** - _Just uses the base values of the token shaking_
+-   **% Current HP** - _Scale by percentage current health_
+-   **% Max HP** - _Scale by percentage max health_
 
 What, if anything, to scale the shaking on
 
@@ -58,9 +58,9 @@ What, if anything, to scale the shaking on
 
 **Options**
 
--   **No Scaling** - Just use the base value
--   **Distance is Max** - Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake for the set distance)
--   **Distance is Middle**- Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake for the set distance)
+-   **No Scaling** - _Just use the base value_
+-   **Distance is Max** - _Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake for the set distance)_
+-   **Distance is Middle** - _Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake for the set distance)_
 
 What to scale distance on
 
@@ -70,9 +70,9 @@ What to scale distance on
 
 **Options**
 
--   **No Scaling** - Just use the base value
--   **Number of shakes is Max** - Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake the set Number of shakes)
--   **Number of shakes is Middle**- Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake the set Number of shakes)
+-   **No Scaling** - _Just use the base value_
+-   **Number of shakes is Max** - _Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake the set Number of shakes)_
+-   **Number of shakes is Middle**- _Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake the set Number of shakes)_
 
 What to scale number of shakes on on
 
@@ -82,8 +82,8 @@ What to scale number of shakes on on
 
 **Options**
 
--   **No Scaling** - Just use the base value
--   **Duration is Max** - Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake for the set duration)
--   **Duration is Middle**- Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake for the set duration)
+-   **No Scaling** - _Just use the base value_
+-   **Duration is Max** - _Have the base value be the maximum value it can be (IE if you take 100% of your health, you'll shake for the set duration)_
+-   **Duration is Middle** - _Have the base value be the medium value it can be (IE if you take 50% of your health, you'll shake for the set duration)_
 
 What to scale duration on

@@ -138,24 +138,24 @@
                     "hint": "Show number pop ups when attempting checks & attacks"
                 },
                 "duration": {
-                    "name": "Check Duration",
-                    "hint": "Time for check number pop up to show"
+                    "name": "Duration",
+                    "hint": "How long the check animation shows (in seconds)"
                 },
                 "font-size": {
-                    "name": "Check Font Size",
+                    "name": "Font Size",
                     "hint": "Size of Check Font"
                 },
                 "outcome-result": {
-                    "name": "Choose what to show for d20 check rolls",
+                    "name": "Display as...",
                     "hint": "Numbers shows the d20 + mods result, outcome shows crit success, success etc., and outcome w/o combat crits shows the outcome without combat critical misses and hits meant as compatibility with pf2e animations.",
                     "choices": {
-                        "numbers": "Numbers",
+                        "numbers": "Number Result",
                         "outcome-except-combat-crits": "Outcome w/o Combat crits",
                         "outcome": "Outcome"
                     }
                 },
                 "color-scheme": {
-                    "name": "Select check theme",
+                    "name": "Color Theme",
                     "hint": "(Changes coloration of checks) Currently have a default theme, and a dark mode theme, will add more visibility etc. for it later",
                     "choices": {
                         "default": "Default",
@@ -164,20 +164,20 @@
                 },
                 "sfx": {
                     "enabled": {
-                        "name": "Check SFX",
+                        "name": "Enable Check SFX",
                         "hint": "Select whether to play sfx on check results"
                     },
                     "check-or-attack": {
-                        "name": "Check SFX for Attack Rolls",
+                        "name": "SFX Play on these rolls...",
                         "hint": "Select whether to play sfx for Attack Rolls, checks only, or both",
                         "choices": {
-                            "both": "Both",
+                            "both": "Everything",
                             "attacks": "Attacks Only",
                             "checks": "Checks Only"
                         }
                     },
                     "options": {
-                        "name": "Check SFX Option",
+                        "name": "Play for outcomes...",
                         "hint": "Select what SFX to play and when. (none - no sfx, Success or Fail - Play success sound effect on any success and fail sfx on any fail, Crits Only - Play on critical Success or Fail only, ",
                         "choices": {
                             "none": "None",
@@ -187,25 +187,25 @@
                         }
                     },
                     "volume": {
-                        "name": "Check SFX Volume",
+                        "name": "SFX Volume",
                         "hint": "How Loud SFX are"
                     },
                     "file": {
                         "criticalSuccess": {
-                            "name": "Check SFX: Crit. Success",
-                            "hint": "Select SFX (not this does nothing on the 'Success or Failure' Setting)"
+                            "name": "Crit. Success SFX",
+                            "hint": "Select SFX (Note. this does nothing on the 'Success or Failure' Setting)"
                         },
                         "success": {
-                            "name": "Check SFX: Success",
-                            "hint": "Select SFX (used as Success in the 'Success or Failure' Setting)"
+                            "name": "Success SFX",
+                            "hint": "Select SFX (Note. used as Success in the 'Success or Failure' Setting)"
                         },
                         "failure": {
-                            "name": "Check SFX: Failure",
-                            "hint": "Select SFX (used as Failure in the 'Success or Failure' Setting)"
+                            "name": "Failure SFX",
+                            "hint": "Select SFX (Note. used as Failure in the 'Success or Failure' Setting)"
                         },
                         "criticalFailure": {
-                            "name": "Check SFX: Crit. Failure",
-                            "hint": "Select SFX (not this does nothing on the 'Success or Failure' Setting)"
+                            "name": "Crit. Failure SFX",
+                            "hint": "Select SFX (Note. this does nothing on the 'Success or Failure' Setting)"
                         }
                     }
                 }
@@ -360,11 +360,11 @@
             "critical": {
                 "enabled": {
                     "name": "Enable Critical Animations",
-                    "hint": "Enable cool animations to show for critical hits. (note tokens have options to have alternative image)"
+                    "hint": "Enable cool animations to show for critical hits. (Note. actors have options to have alternative images and more)"
                 },
                 "player-enabled": {
                     "name": "Enable Critical Animations - For You",
-                    "hint": "Enable cool animations to show for critical hits for yourself. (note tokens have options to have alternative image)"
+                    "hint": "Enable cool animations to show for critical hits for yourself. (Note. actors have options to have alternative image)"
                 },
                 "sound": {
                     "name": "Critical Animation Sound",
