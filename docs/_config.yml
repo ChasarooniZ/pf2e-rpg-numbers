@@ -30,6 +30,7 @@ remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 plugins:
     - jekyll-feed
 auto_page_title: true
+search_enabled: true
 sidebar:
     - about
     - label: Critical
