@@ -5,7 +5,7 @@
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-rpg-numbers&colorB=4aa94a)
 
 ![module_banner](https://github.com/ChasarooniZ/pf2e-usage-updater/assets/79132112/3b2a4f8c-7ba1-4647-b073-d8ecac9d93a6)
-# PF2e RPG Numbers
+# PF2e RPG Numbers & More
 A module that started to just show damage numbers when you attack but now does other cool things too
 
 ![attack](https://github.com/ChasarooniZ/pf2e-rpg-numbers/assets/79132112/132d3509-d3a0-4a20-af1b-4f8c89a49c72)
