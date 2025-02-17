@@ -5,6 +5,7 @@ id: damage-numbers
 previous_page: critical
 next_page: check-and-attack-numbers
 ---
+
 Displays damage numbers when you roll damage (or apply it) depending on the settings
 
 #### Preview
@@ -13,30 +14,33 @@ Displays damage numbers when you roll damage (or apply it) depending on the sett
   <source src="../../videos/damage-number.mp4" type="video/mp4">
 </video>
 
-
 ## Settings
+
 ### Enable
 
 ---
 
 Toggle to enable this feature
+
 ### Show on...
 
 ---
 
 **Options**
-- **Roll** *Show the Damage Numbers on roll*
-- **Apply Damage** *Show the Damage Numbers when it is applied (note this can only show the total)*
 
+-   **Roll** _Show the Damage Numbers on roll_
+-   **Apply Damage** _Show the Damage Numbers when it is applied (note this can only show the total)_
 
 Choose when to show the Damage Numbers
-###  Font Size
+
+### Font Size
 
 ---
 
 **Default:** `20`
 
 Base font size of the Damage Numbers
+
 ### Max Font Scale
 
 ---
@@ -44,6 +48,7 @@ Base font size of the Damage Numbers
 **Default:** `3`
 
 Max amount the font size will scale up from the based on how high the damage is
+
 ### Y Offset
 
 ---
@@ -51,13 +56,14 @@ Max amount the font size will scale up from the based on how high the damage is
 **Default:** `-25`
 
 How much in % of the token size to offset the damage numbers animation from the top
+
 ### Scale on...
 
 ---
 
--  **—** *No scaling*
-- **% Remaining HP** *Percent remaining health*
-- **% Max HP** *Percent maximum health*
+-   **—** _No scaling_
+-   **% Remaining HP** _Percent remaining health_
+-   **% Max HP** _Percent maximum health_
 
 ---
 

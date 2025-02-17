@@ -8,6 +8,12 @@ next_page: shake-on-damaged
 
 When enabled, the attacker's screen will shake when they attack. On a **Critical** Hit it will shake slightly more.
 
+#### Preview
+
+<video controls>
+  <source src="../../videos/shake-on-attack.mp4" type="video/mp4">
+</video>
+
 ## Settings
 
 ### Enable

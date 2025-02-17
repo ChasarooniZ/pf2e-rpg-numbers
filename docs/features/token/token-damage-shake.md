@@ -8,6 +8,12 @@ next_page: finishing-moves
 
 Shakes the token that takes damage when it takes damage
 
+#### Preview
+
+<video controls>
+  <source src="../../videos/token-damage-shake.mp4" type="video/mp4">
+</video>
+
 ## Settings
 
 ### Enable

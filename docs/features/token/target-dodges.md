@@ -8,6 +8,12 @@ next_page: token-damage-shake
 
 When enabled, causes the token to activate a "dodge" animation on any attack that misses it.
 
+#### Preview
+
+<video controls>
+  <source src="../../videos/target-dodges.mp4" type="video/mp4">
+</video>
+
 ## Settings
 
 ### Enable

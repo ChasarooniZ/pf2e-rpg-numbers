@@ -6,6 +6,14 @@ previous_page: burst-burrow
 next_page: shake-on-attack
 ---
 
+When you roll an attack the token turns towards the target of the attack
+
+#### Preview
+
+<video controls>
+  <source src="../../videos/rotate-on-attack.mp4" type="video/mp4">
+</video>
+
 ## Settings
 
 ### Enable

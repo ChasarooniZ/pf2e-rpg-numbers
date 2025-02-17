@@ -8,6 +8,12 @@ next_page: target-dodges
 
 When enabled, if a token who's actor you own is damaged your screen shakes.
 
+#### Preview
+
+<video controls>
+  <source src="../../videos/shake-on-damaged.mp4" type="video/mp4">
+</video>
+
 ## Settings
 
 ### Enable
