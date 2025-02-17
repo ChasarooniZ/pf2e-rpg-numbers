@@ -12,10 +12,9 @@ import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 export async function preDeleteCombat(encounter, _changed, _userid) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
-    if (!getSetting('from-software.noun-verbed.enabled')) return;
+    if (!getSetting("from-software.noun-verbed.enabled")) return;
 
-
-    const xpNeeded = getSetting('from-software.noun-verbed.xp-threshold');
+    const xpNeeded = getSetting("from-software.noun-verbed.xp-threshold");
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
@@ -24,15 +23,15 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
     }
 
     // Extract combatants from the encounter
-    const combatants = encounter.combatants.map(c => c?.token);
+    const combatants = encounter.combatants.map((c) => c?.token);
 
     // Calculate enemy and hazard levels
-    const enemyLevels = getActorLevels(combatants, t => t?.disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE);
-    const hazardLevels = getActorLevels(combatants, t => t?.actor?.type === 'hazard');
+    const enemyLevels = getActorLevels(combatants, (t) => t?.disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE);
+    const hazardLevels = getActorLevels(combatants, (t) => t?.actor?.type === "hazard");
 
     // Get party members involved in the combat
-    const partyMemberIDs = game.actors?.party?.members?.map(a => a.uuid) ?? [];
-    const partyCombatMembers = combatants.filter(t => partyMemberIDs.includes(t?.actor?.uuid));
+    const partyMemberIDs = game.actors?.party?.members?.map((a) => a.uuid) ?? [];
+    const partyCombatMembers = combatants.filter((t) => partyMemberIDs.includes(t?.actor?.uuid));
 
     // Calculate average party level
     const partyCombatLevel = calculateAverageLevel(partyCombatMembers);
@@ -48,10 +47,10 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 export async function applyTokenStatusEffect(token, status, isAdded) {
     // Only proceed if the user is a GM
     if (!game.user.isGM) return;
-    if (status == 'dead' && isAdded && getSetting('from-software.death.enabled')) {
-        const userId = game.users.find(c => c?.character?.uuid == token?.actor?.uuid)?.id
+    if (status == "dead" && isAdded && getSetting("from-software.death.enabled")) {
+        const userId = game.users.find((c) => c?.character?.uuid == token?.actor?.uuid)?.id;
         if (userId) {
-            fromSoftwareDeath({ users: [userId] })
+            fromSoftwareDeath({ users: [userId] });
         }
     }
 }
@@ -76,8 +75,7 @@ export function getSceneControlButtons(controls, _b, _c) {
                 heading: localize("controls.finishing-move.toolclip.heading"),
                 items: [
                     {
-                        paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"
-                        ),
+                        paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"),
                     },
                 ],
             },
@@ -91,7 +89,7 @@ export function getSceneControlButtons(controls, _b, _c) {
  * @returns {Array} Array of actor levels.
  */
 function getActorLevels(combatants, filterCondition) {
-    return combatants.filter(filterCondition).map(t => t?.actor?.level ?? 0);
+    return combatants.filter(filterCondition).map((t) => t?.actor?.level ?? 0);
 }
 
 /**
@@ -109,11 +107,11 @@ export async function getActorSheetHeaderButtons(sheet, buttons) {
     buttons.unshift({
         class: "rpg-numbers-actor-menu",
         icon: "fa-solid fa-dragon",
-        label: localize('menu.actor-settings.label'),
+        label: localize("menu.actor-settings.label"),
         onclick: () => {
-            new ActorSettingsConfigForm({ actor: sheet.actor }).render(true)
-        }
-    })
+            new ActorSettingsConfigForm({ actor: sheet.actor }).render(true);
+        },
+    });
     return buttons;
 }
 
@@ -125,7 +123,7 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
     menu.unshift({
         class: "pf2e-rpg-numbers",
         icon: "fa-solid fa-dragon",
-        label: localize('menu.actor-settings.label'),
+        label: localize("menu.actor-settings.label"),
         onclick: async (_ev, itemD = item) => {
             const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
             // Create and display the dialog box
@@ -150,7 +148,9 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
                             await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
 
                             // Optionally, show a message or perform additional actions here
-                            ui.notifications.info(localize("display-text.notifications.finishing-move.settings.item.update", { newValue }));
+                            ui.notifications.info(
+                                localize("display-text.notifications.finishing-move.settings.item.update", { newValue })
+                            );
                         },
                     },
                     cancel: {
@@ -165,6 +165,6 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
 }
 
 export async function preUpdateToken(token, changes, _misc, _id) {
-    if (getSetting('burst-burrow.enabled'))
-        burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token })
+    if (getSetting("burst-burrow.enabled"))
+        burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token });
 }

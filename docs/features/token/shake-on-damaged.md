@@ -2,6 +2,8 @@
 layout: page
 title: Shake Screen On Damaged
 id: shake-on-damaged
+previous_page: shake-on-attack
+next_page: target-dodges
 ---
 
 When enabled, if a token who's actor you own is damaged your screen shakes.

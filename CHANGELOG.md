@@ -4,6 +4,10 @@
     -   Updated some localizations for english to better match
     -   Changed some settings to be on by default
     -   Updated `Polish` translation again (@Lioheart)
+    -   Updated recommended modules and requirements
+        -   Requires Sequencer `3.4.0` or higher
+        -   Removed `Token Magic FX` as a recommended module, the token shaking functionality for it will be removed in `V13`
+        -   Added `JB2A Patreon` as a recommended module (as it is used for some functionality)
 
 # [12.9.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.5...12.9.6) - Settings Menu Tabs
 

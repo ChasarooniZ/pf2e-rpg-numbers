@@ -2,6 +2,8 @@
 layout: page
 title: Target Dodges
 id: target-dodges
+previous_page: shake-on-damaged
+next_page: token-damage-shake
 ---
 
 When enabled, causes the token to activate a "dodge" animation on any attack that misses it.

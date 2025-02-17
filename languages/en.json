@@ -258,19 +258,19 @@
             },
             "token-dmg-shake": {
                 "enabled": {
-                    "name": "Enable Token shaking on damage",
+                    "name": "Enable Token Shaking on Damage",
                     "hint": "When you apply damage to a token cause it to shake"
                 },
                 "distance": {
-                    "name": "Token shaking distance",
+                    "name": "Shake Distance",
                     "hint": "Distance as % of width of Token"
                 },
                 "shakes": {
-                    "name": "Number of times token shakes",
-                    "hint": "Number of time token shakes"
+                    "name": "Number of Shakes",
+                    "hint": "Number of times the token shakes when taking damage"
                 },
                 "duration": {
-                    "name": "Duration of Shake",
+                    "name": "Duration",
                     "hint": "Amt of time (ms) that token shakes"
                 },
                 "only-temp-hp-disable-shake": {
@@ -279,7 +279,7 @@
                 },
                 "scaling": {
                     "type": {
-                        "name": "Token Shaking Scaling",
+                        "name": "Scale on...",
                         "hint": "What to scale the shaking off of",
                         "choices": {
                             "no": "Nothing",
@@ -288,30 +288,30 @@
                         }
                     },
                     "distance": {
-                        "name": "Scale distance of shakes",
+                        "name": "Distance scaling type",
                         "hint": "Scales the distance of the shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
                         "choices": {
-                            "no": "No",
-                            "max": "Max",
-                            "mid": "Middle"
+                            "no": "No Scaling",
+                            "max": "Distance is the Max",
+                            "mid": "Distance is the Middle"
                         }
                     },
                     "shakes": {
-                        "name": "Scale number of shakes",
+                        "name": "Shake # scaling type",
                         "hint": "Scale how many times they shake (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
                         "choices": {
-                            "no": "No",
-                            "max": "Max",
-                            "mid": "Middle"
+                            "no": "No Scaling",
+                            "max": "Number of shakes is Max",
+                            "mid": "Number of shakes is Middle"
                         }
                     },
                     "duration": {
-                        "name": "Scale duration",
+                        "name": "Duration scaling type",
                         "hint": "Scale duration of shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
                         "choices": {
-                            "no": "No",
-                            "max": "Max",
-                            "mid": "Middle"
+                            "no": "No Scaling",
+                            "max": "Duration is the Max",
+                            "mid": "Duration is the Middle"
                         }
                     }
                 }

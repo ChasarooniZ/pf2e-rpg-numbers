@@ -1,5 +1,6 @@
 import { registerSetting } from "../helpers/misc.js";
 
+//TODO redo these settings
 export function registerTokenDamageShakeSettings() {
     registerSetting({
         category: 'token-dmg-shake',
@@ -73,7 +74,7 @@ export function registerTokenDamageShakeSettings() {
         desc: 'scaling.distance',
         scope: 'world',
         config: false,
-        default: 'no',
+        default: 'mid',
         type: String,
         choices: ['no', 'max', 'mid'],
     });

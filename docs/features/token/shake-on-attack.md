@@ -2,6 +2,8 @@
 layout: page
 title: Shake Screen On Attack
 id: shake-on-attack
+previous_page: rotate-on-attack
+next_page: shake-on-damaged
 ---
 
 When enabled, the attacker's screen will shake when they attack. On a **Critical** Hit it will shake slightly more.
