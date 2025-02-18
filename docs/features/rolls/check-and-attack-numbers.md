@@ -97,7 +97,10 @@ How loud should the SFX be by percentage
 
 **Default:** `modules/pf2e-rpg-numbers/resources/sounds/checks/success_1.mp3`
 
-Sound effect for Critical Success
+Sound effect for Critical Success, also will accept either of the following 2 formats
+
+-   **Wildcard Format** - `path/to/audio/abc*.ogg`
+-   **Array Format** - `["audio1.mp3","audio-2.ogg"]` etc.
 
 #### Success SFX
 
@@ -105,7 +108,10 @@ Sound effect for Critical Success
 
 **Default:** `modules/pf2e-rpg-numbers/resources/sounds/checks/correct-answer-tone.ogg`
 
-Sound effect for Success
+Sound effect for Success, also will accept either of the following 2 formats
+
+-   **Wildcard Format** - `path/to/audio/abc*.ogg`
+-   **Array Format** - `["audio1.mp3","audio-2.ogg"]` etc.
 
 #### Failure SFX
 
@@ -113,7 +119,10 @@ Sound effect for Success
 
 **Default:** `modules/pf2e-rpg-numbers/resources/sounds/checks/Jpn_L_drum1.mp3`
 
-Sound effect for Failure
+Sound effect for Failure, also will accept either of the following 2 formats
+
+-   **Wildcard Format** - `path/to/audio/abc*.ogg`
+-   **Array Format** - `["audio1.mp3","audio-2.ogg"]` etc.
 
 #### Critical Failure SFX
 
@@ -121,4 +130,7 @@ Sound effect for Failure
 
 **Default:** `modules/pf2e-rpg-numbers/resources/sounds/checks/negative-answer-lose.ogg`
 
-Sound effect for Critical Failure
+Sound effect for Critical Failure, also will accept either of the following 2 formats
+
+-   **Wildcard Format** - `path/to/audio/abc*.ogg`
+-   **Array Format** - `["audio1.mp3","audio-2.ogg"]` etc.
