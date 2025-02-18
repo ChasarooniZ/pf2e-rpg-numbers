@@ -11,7 +11,7 @@ When enabled, the attacker's screen will shake when they attack. On a **Critical
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/shake-on-attack.mp4" type="video/mp4">
+  <source src="../../videos/shake-on-attack.mp4" type="video/mp4">
 </video>
 
 ## Settings

@@ -11,7 +11,7 @@ Adds cool text to come on screen when you die in a game like Dark Souls that say
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/from-software-you-died-elden-ring.mp4" type="video/mp4">
+  <source src="../../videos/from-software-you-died-elden-ring.mp4" type="video/mp4">
 </video>
 
 ## Settings
@@ -31,13 +31,13 @@ If enabled will show this animation when a player's owned character dies
 <div class="video-container">
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/from-software-you-died-elden-ring.mp4" type="video/mp4">
+      <source src="../../videos/from-software-you-died-elden-ring.mp4" type="video/mp4">
     </video>
     <p class="caption">Elden Ring</p>
   </div>
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/from-software-you-died-sekiro.mp4" type="video/mp4">
+      <source src="../../videos/from-software-you-died-sekiro.mp4" type="video/mp4">
     </video>
     <p class="caption">Sekiro</p>
   </div>

@@ -11,7 +11,7 @@ When enabled, causes the token to activate a "dodge" animation on any attack tha
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/target-dodges.mp4" type="video/mp4">
+  <source src="../../videos/target-dodges.mp4" type="video/mp4">
 </video>
 
 ## Settings

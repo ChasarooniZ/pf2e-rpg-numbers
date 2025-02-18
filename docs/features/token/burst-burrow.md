@@ -15,7 +15,7 @@ In general the toke needs to have burrowing speed, and the setting needs to be e
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/burst-burrow.mp4" type="video/mp4">
+  <source src="../../videos/burst-burrow.mp4" type="video/mp4">
 </video>
 
 ## Settings

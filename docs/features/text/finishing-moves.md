@@ -11,7 +11,7 @@ Adds finishing moves, an anime style show the name of your ultimate attack drama
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/finishing-moves.mp4" type="video/mp4">
+  <source src="../../videos/finishing-moves.mp4" type="video/mp4">
 </video>
 
 ## Settings

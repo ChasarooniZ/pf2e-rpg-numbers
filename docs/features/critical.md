@@ -12,7 +12,7 @@ Cool animations to play on Critical Success (and some for failures).
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/critical-persona-5.mp4" type="video/mp4">
+  <source src="../../docs/videos/critical-persona-5.mp4" type="video/mp4">
 </video>
 
 ## Setting
@@ -32,19 +32,19 @@ Enables the feature
 <div class="video-container">
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/critical-persona-5.mp4" type="video/mp4">
+      <source src="../../docs/videos/critical-persona-5.mp4" type="video/mp4">
     </video>
     <p class="caption">Persona 5</p>
   </div>
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/critical-fire-emblem-awakening.mp4" type="video/mp4">
+      <source src="../../docs/videos/critical-fire-emblem-awakening.mp4" type="video/mp4">
     </video>
     <p class="caption">Fire Emblem: Awakening</p>
   </div>
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/critical-disgaea-7.mp4" type="video/mp4">
+      <source src="../../docs/videos/critical-disgaea-7.mp4" type="video/mp4">
     </video>
     <p class="caption">Disgaea 7</p>
   </div>
@@ -52,7 +52,7 @@ Enables the feature
 <div class="video-container">
   <div class="video-column">
     <video controls>
-      <source src="/docs/videos/critical-fullscreen.mp4" type="video/mp4">
+      <source src="../../docs/videos/critical-fullscreen.mp4" type="video/mp4">
     </video>
     <p class="caption">Fullscreen</p>
   </div>

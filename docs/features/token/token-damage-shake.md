@@ -11,7 +11,7 @@ Shakes the token that takes damage when it takes damage
 #### Preview
 
 <video controls>
-  <source src="/docs/videos/token-damage-shake.mp4" type="video/mp4">
+  <source src="../../videos/token-damage-shake.mp4" type="video/mp4">
 </video>
 
 ## Settings
