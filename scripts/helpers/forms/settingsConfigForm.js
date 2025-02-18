@@ -4,13 +4,13 @@ const settingsConfig = {
     home: {
         icon: "fa-dragon",
         enabled: "enabled",
-        'actor-settings': {
-            'player-enabled': "actor-settings.player-enabled"
-        }
+        "actor-settings": {
+            "player-enabled": "actor-settings.player-enabled",
+        },
     },
     rolls: {
         icon: "fa-dice-d20",
-        'dmg-numbers': {
+        "dmg-numbers": {
             enabled: "dmg-enabled",
             whenTo: "dmg-on-apply-or-roll",
             fontSize: "font-size",
@@ -23,9 +23,9 @@ const settingsConfig = {
             waitTime: { path: "wait-time-between-numbers", type: "number", range: { min: 0, max: 1000, step: 1 } },
             onlyGM: "show-only-GM",
             scale: { path: "animation-scale", type: "number", range: { min: 0, max: 2, step: 0.05 } },
-            jitter: { path: "jitter", type: "number", range: { min: 0, max: 1, step: 0.05 } }
+            jitter: { path: "jitter", type: "number", range: { min: 0, max: 1, step: 0.05 } },
         },
-        'check-animations': {
+        "check-animations": {
             enabled: "check-enabled",
             colorScheme: "check-color-scheme",
             showOutcome: "check-outcome-result",
@@ -40,10 +40,10 @@ const settingsConfig = {
                     criticalSuccess: "check-animations.sfx.file.criticalSuccess",
                     success: "check-animations.sfx.file.success",
                     failure: "check-animations.sfx.file.failure",
-                    criticalFailure: "check-animations.sfx.file.criticalFailure"
-                }
-            }
-        }
+                    criticalFailure: "check-animations.sfx.file.criticalFailure",
+                },
+            },
+        },
     },
     token: {
         icon: "fa-circle-user",
@@ -51,7 +51,11 @@ const settingsConfig = {
             enabled: "burst-burrow.enabled",
             duration: { path: "burst-burrow.duration", type: "number", range: { min: 0, max: 300, step: 0.1 } },
             persistent: "burst-burrow.persistent",
-            sizeMultiplier: { path: "burst-burrow.size-multiplier", type: "number", range: { min: 0, max: 3, step: 0.1 } },
+            sizeMultiplier: {
+                path: "burst-burrow.size-multiplier",
+                type: "number",
+                range: { min: 0, max: 3, step: 0.1 },
+            },
         },
         tokenShake: {
             enabled: "dmg-shake-directional-enabled",
@@ -62,13 +66,18 @@ const settingsConfig = {
                 type: "tok-shake-scaling-type",
                 distance: "tok-shake-scaling-distance",
                 shakes: "tok-shake-scaling-shakes",
-                duration: "tok-shake-scaling-duration"
-            }
+                duration: "tok-shake-scaling-duration",
+            },
         },
         rotateOnAttack: {
             enabled: "rotate-on-attack",
             duration: { path: "rotate-on-attack.duration", type: "number", range: { min: 0, max: 2, step: 0.1 } },
-            scaleOnSize: "rotate-on-attack.scale-on-size"
+            scaleOnSize: "rotate-on-attack.scale-on-size",
+            defaultRotation: {
+                path: "rotate-on-attack.default-rotation",
+                type: "number",
+                range: { min: -360, max: 360, step: 1 },
+            },
         },
         screenShake: {
             onDamaged: {
@@ -77,12 +86,12 @@ const settingsConfig = {
                 maxIntensity: { path: "shake-intensity-max", type: "number", range: { min: 1, max: 100, step: 1 } },
                 intensityScaling: "shake-intensity-type",
                 intensityScalingIncludeTempHP: "shake-intensity-include-temp-hp",
-                shakeGM: "shake-gm-enabled"
+                shakeGM: "shake-gm-enabled",
             },
             onAttack: {
                 enabled: "shake-on-attack.enabled",
-                showFor: "shake-on-attack.type"
-            }
+                showFor: "shake-on-attack.type",
+            },
         },
         dodgeOnMiss: {
             enabled: "dodge-on-miss.enabled",
@@ -90,7 +99,7 @@ const settingsConfig = {
             distance: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             delay: { path: "dodge-on-miss.delay", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             type: "dodge-on-miss.type",
-        }
+        },
     },
     critical: {
         icon: "fa-explosion",
@@ -103,8 +112,8 @@ const settingsConfig = {
             duration: { path: "critical.duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
             sound: "critical.sound",
             volume: { path: "critical.volume", type: "number", range: { min: 0, max: 100, step: 1 } },
-            delay: "critical.delay"
-        }
+            delay: "critical.delay",
+        },
     },
     text: {
         icon: "fa-message-captions",
@@ -115,37 +124,64 @@ const settingsConfig = {
             usePlayerColor: "finishing-move.use-player-color",
             quality: { path: "finishing-move.quality", type: "number", range: { min: 1, max: 5, step: 1 } },
             sound: "finishing-move.sound-effect",
-            volume: { path: "finishing-move.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
+            volume: {
+                path: "finishing-move.sound-effect.volume",
+                type: "number",
+                range: { min: 1, max: 100, step: 1 },
+            },
             duration: {
                 word: { path: "finishing-move.duration.word", type: "number", range: { min: 0, max: 2000, step: 25 } },
-                end: { path: "finishing-move.duration.end", type: "number", range: { min: 0, max: 5000, step: 25 } }
-            }
+                end: { path: "finishing-move.duration.end", type: "number", range: { min: 0, max: 5000, step: 25 } },
+            },
         },
         fromSoftware: {
             eldenRing: {
                 nounVerbed: {
                     enabled: "from-software.noun-verbed.enabled",
                     xpThreshold: "from-software.noun-verbed.xp-threshold",
-                    fontSize: { path: "from-software.noun-verbed.font-size", type: "number", range: { min: 1, max: 150, step: 1 } },
+                    fontSize: {
+                        path: "from-software.noun-verbed.font-size",
+                        type: "number",
+                        range: { min: 1, max: 150, step: 1 },
+                    },
                     sound: "from-software.noun-verbed.sound-effect",
-                    volume: { path: "from-software.noun-verbed.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
-                    duration: { path: "from-software.noun-verbed.duration", type: "number", range: { min: 0, max: 12, step: 0.1 } },
-                    text: "from-software.noun-verbed.text"
+                    volume: {
+                        path: "from-software.noun-verbed.sound-effect.volume",
+                        type: "number",
+                        range: { min: 1, max: 100, step: 1 },
+                    },
+                    duration: {
+                        path: "from-software.noun-verbed.duration",
+                        type: "number",
+                        range: { min: 0, max: 12, step: 0.1 },
+                    },
+                    text: "from-software.noun-verbed.text",
                 },
                 death: {
                     enabled: "from-software.death.enabled",
-                    fontSize: { path: "from-software.death.font-size", type: "number", range: { min: 1, max: 150, step: 1 } },
+                    fontSize: {
+                        path: "from-software.death.font-size",
+                        type: "number",
+                        range: { min: 1, max: 150, step: 1 },
+                    },
                     sound: "from-software.death.sound-effect",
-                    volume: { path: "from-software.death.sound-effect.volume", type: "number", range: { min: 1, max: 100, step: 1 } },
-                    duration: { path: "from-software.death.duration", type: "number", range: { min: 0, max: 12, step: 0.1 } },
+                    volume: {
+                        path: "from-software.death.sound-effect.volume",
+                        type: "number",
+                        range: { min: 1, max: 100, step: 1 },
+                    },
+                    duration: {
+                        path: "from-software.death.duration",
+                        type: "number",
+                        range: { min: 0, max: 12, step: 0.1 },
+                    },
                     text: "from-software.death.text",
                     type: "from-software.death.type",
-                }
-            }
-        }
-    }
+                },
+            },
+        },
+    },
 };
-
 
 export class SettingsConfigForm extends FormApplication {
     // lots of other things...
@@ -154,52 +190,51 @@ export class SettingsConfigForm extends FormApplication {
         this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
 
-
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['form'],
+            classes: ["form"],
             popOut: true,
             template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
-            id: 'pf2e-rpg-numbers-settings-form',
-            title: 'Pf2e RPG #s Config Menu',
+            id: "pf2e-rpg-numbers-settings-form",
+            title: "Pf2e RPG #s Config Menu",
             width: 600,
             height: 600,
-            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
+            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
         });
     }
 
     activateListeners(html) {
         super.activateListeners(html);
         // Add event listener for the Save button
-        html.find('#pf2e-rpg-save').on('click', (event) => {
+        html.find("#pf2e-rpg-save").on("click", (event) => {
             event.preventDefault();
             this._processForm(false); // Pass 'false' Fto not submit the form, only save
         });
-        html.find('#pf2e-rpg-submit').on('click', (event) => {
+        html.find("#pf2e-rpg-submit").on("click", (event) => {
             event.preventDefault();
             this._processForm(true); // Pass 'true' to indicate form submission
         });
-        html.find('#pf2e-rpg-cancel').on('click', (event) => {
+        html.find("#pf2e-rpg-cancel").on("click", (event) => {
             event.preventDefault();
             ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
             this.close(); // Close the form without saving
         });
-        html.find('#pf2e-rpg-import').on('click', (event) => {
+        html.find("#pf2e-rpg-import").on("click", (event) => {
             game.pf2eRPGNumbers.settings.import();
             this.close(); // Close the form without saving
         });
-        html.find('#pf2e-rpg-export').on('click', (event) => {
+        html.find("#pf2e-rpg-export").on("click", (event) => {
             game.pf2eRPGNumbers.settings.export();
         });
     }
 
     getData() {
-        const tabs = Object.keys(settingsConfig).map(tab => {
+        const tabs = Object.keys(settingsConfig).map((tab) => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
 
             for (const [key, value] of Object.entries(settings)) {
-                if (key !== 'icon') {
+                if (key !== "icon") {
                     if (typeof value === "string") {
                         tabSettings[key] = getSetting(value);
                     } else if (value.type === "number") {
@@ -214,16 +249,20 @@ export class SettingsConfigForm extends FormApplication {
                 label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
                 icon: settingsConfig[tab].icon,
                 [tab]: true,
-                settings: tabSettings
+                settings: tabSettings,
             };
         });
-        console.log({ tabs })
+        console.log({ tabs });
 
         const disabled = {
-            burstBurrow: !Sequencer.Database.getPathsUnder('jb2a.burrow.out').length
-        }
+            burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
+        };
 
-        return foundry.utils.mergeObject(super.getData(), { tabs, version: game?.modules?.get(MODULE_ID)?.version, disabled });
+        return foundry.utils.mergeObject(super.getData(), {
+            tabs,
+            version: game?.modules?.get(MODULE_ID)?.version,
+            disabled,
+        });
     }
 
     _retrieveNestedSettings(settingGroup) {
@@ -283,7 +322,7 @@ export class SettingsConfigForm extends FormApplication {
 
         const processSettings = (settingGroup, dataGroup) => {
             for (const [key, settingPathOrGroup] of Object.entries(settingGroup)) {
-                if (key !== 'icon') {
+                if (key !== "icon") {
                     if (typeof settingPathOrGroup === "string") {
                         updateSetting(settingPathOrGroup, dataGroup[key]);
                     } else if (settingPathOrGroup?.type === "number") {
@@ -299,18 +338,15 @@ export class SettingsConfigForm extends FormApplication {
             processSettings(tabSettings, settings);
         }
     }
-
-
 }
 
 function handleChoicesSetting(settingPath) {
     const choices = game.settings.settings.get(MODULE_ID + "." + settingPath)?.choices;
     const value = getSetting(settingPath);
     if (choices) {
-
-        return { choices, value }
+        return { choices, value };
     }
-    return value
+    return value;
 }
 
 function getNumberSetting(settingPath, range) {

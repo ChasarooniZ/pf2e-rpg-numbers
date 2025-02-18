@@ -2,7 +2,7 @@ import { CRIT_OPTIONS } from "../animation/crit/const.js";
 import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
 import { getTokenImage } from "../animation/token/shakeOnDamageToken.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
-import { MODULE_ID } from "../misc.js";
+import { getSetting, MODULE_ID } from "../misc.js";
 
 const settingsConfig = {
     // home: {
@@ -67,7 +67,7 @@ const settingsConfig = {
                     rotation: "critical.success.saves.rotation",
                     sfx: "critical.success.saves.sfx",
                     volume: "critical.success.saves.volume",
-                }
+                },
             },
             failure: {
                 default: {
@@ -125,8 +125,8 @@ const settingsConfig = {
                     rotation: "critical.failure.saves.rotation",
                     sfx: "critical.failure.saves.sfx",
                     volume: "critical.failure.saves.volume",
-                }
-            }
+                },
+            },
         },
         choices: {
             enabled: {
@@ -134,28 +134,27 @@ const settingsConfig = {
                 on: "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.choices.on",
                 off: "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.choices.off",
             },
-            type: CRIT_OPTIONS
-        }
+            type: CRIT_OPTIONS,
+        },
     },
     token: {
         icon: "fa-circle-user",
         rotation: {
-            offset: 'token.rotation.offset'
+            offset: "token.rotation.offset",
         },
         dodgeOnMiss: {
-            type: 'token.dodgeOnMiss.type',
+            type: "token.dodgeOnMiss.type",
             choices: {
                 type: {
-                    default: 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.default',
-                    dodge: 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.dodge',
-                    'bounce-off': 'pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.bounce-off'
-                }
-            }
-        }
-    }
+                    default: "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.default",
+                    dodge: "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.dodge",
+                    "bounce-off": "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.bounce-off",
+                },
+            },
+        },
+    },
 };
 const tabList = Object.keys(settingsConfig);
-
 
 export class ActorSettingsConfigForm extends FormApplication {
     // lots of other things...
@@ -164,59 +163,58 @@ export class ActorSettingsConfigForm extends FormApplication {
         this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
 
-
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ['form'],
+            classes: ["form"],
             popOut: true,
             template: `modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs`,
-            id: 'pf2e-rpg-numbers-actor-settings-form',
-            title: 'Pf2e RPG #s Actor Config Menu',
+            id: "pf2e-rpg-numbers-actor-settings-form",
+            title: "Pf2e RPG #s Actor Config Menu",
             width: 800,
             height: 600,
-            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }]
+            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
         });
     }
 
     activateListeners(html) {
         super.activateListeners(html);
         // Add event listener for the Save button
-        html.find('#pf2e-rpg-save-actor').on('click', (event) => {
+        html.find("#pf2e-rpg-save-actor").on("click", (event) => {
             event.preventDefault();
             this._processForm(html, false); // Pass 'false' Fto not submit the form, only save
         });
-        html.find('#pf2e-rpg-submit-actor').on('click', (event) => {
+        html.find("#pf2e-rpg-submit-actor").on("click", (event) => {
             event.preventDefault();
             this._processForm(html, true); // Pass 'true' to indicate form submission
         });
-        html.find('#pf2e-rpg-cancel-actor').on('click', (event) => {
+        html.find("#pf2e-rpg-cancel-actor").on("click", (event) => {
             event.preventDefault();
             ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
             this.close(); // Close the form without saving
         });
-        html.find('#pf2e-rpg-import-actor').on('click', (event) => {
+        html.find("#pf2e-rpg-import-actor").on("click", (event) => {
             game.pf2eRPGNumbers.settings.import();
             this.close();
         });
-        html.find('#pf2e-rpg-export-actor').on('click', (event) => {
+        html.find("#pf2e-rpg-export-actor").on("click", (event) => {
             game.pf2eRPGNumbers.settings.export();
         });
 
-        for (const state of ['success', 'failure']) {
-            for (const type of ['checks', 'default', 'saves', 'strikes']) {
-                html.find(`#critical-test-${state}-${type}`).on('click', (event) => {
+        for (const state of ["success", "failure"]) {
+            for (const type of ["checks", "default", "saves", "strikes"]) {
+                html.find(`#critical-test-${state}-${type}`).on("click", (event) => {
                     event.preventDefault();
-                    const type = $(event.currentTarget).data('type');
-                    const section = $(event.target).data('section');
+                    const type = $(event.currentTarget).data("type");
+                    const section = $(event.target).data("section");
                     const formData = this.getFormData(html).settings;
-                    formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
-                    console.log({ type, section, event })
+                    formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
+                    console.log({ type, section, event });
                     createTestCritAnimation({
                         userID: game.user.id,
                         succFail: type,
                         section,
                         settings: formData,
-                        actor: this.options.actor
+                        actor: this.options.actor,
                     });
                 });
             }
@@ -253,12 +251,9 @@ export class ActorSettingsConfigForm extends FormApplication {
             ctx.stroke();
         }
 
-
         img.addEventListener("load", () => {
-
             drawIndicator(parseInt(input.value) || 0);
         });
-
 
         img.addEventListener("click", (event) => {
             const rect = canvasEl.getBoundingClientRect();
@@ -286,9 +281,9 @@ export class ActorSettingsConfigForm extends FormApplication {
             if (isNaN(angle)) {
                 angle = 0; // Default to 0 if invalid input
             } else if (angle > 359) {
-                angle = angle % 360
+                angle = angle % 360;
             } else if (angle < 0) {
-                angle = angle + (Math.ceil(Math.abs(angle / 360)) * 360)
+                angle = angle + Math.ceil(Math.abs(angle / 360)) * 360;
             }
             input.value = angle;
             drawIndicator(angle);
@@ -296,13 +291,13 @@ export class ActorSettingsConfigForm extends FormApplication {
     }
 
     getData() {
-        checkAndSetDefaultActorFlagIfNotExist(this?.options?.actor)
-        const tabs = Object.keys(settingsConfig).map(tab => {
+        checkAndSetDefaultActorFlagIfNotExist(this?.options?.actor);
+        const tabs = Object.keys(settingsConfig).map((tab) => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
             for (const [key, value] of Object.entries(settings)) {
-                if (key !== 'icon') {
-                    if (typeof value === "object" && key !== 'choices') {
+                if (key !== "icon") {
+                    if (typeof value === "object" && key !== "choices") {
                         tabSettings[key] = this._retrieveNestedSettings(value);
                     } else {
                         tabSettings[key] = value;
@@ -315,12 +310,12 @@ export class ActorSettingsConfigForm extends FormApplication {
                 title: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
                 icon: settingsConfig[tab].icon,
                 [tab]: true,
-                settings: tabSettings
+                settings: tabSettings,
             };
         });
 
         const data = { tabs, actor: this.options?.actor, tokenImg: getTokenImage(this.options?.actor?.prototypeToken) };
-        console.log(data)
+        console.log(data);
 
         return foundry.utils.mergeObject(super.getData(), data);
     }
@@ -332,11 +327,11 @@ export class ActorSettingsConfigForm extends FormApplication {
             //     result[key] = handleChoicesSetting(value);
             // } else if (value.type === "number") {
             //     result[key] = getNumberSetting(value.path, value.range);
-            // } else 
-            if (typeof value === "string" && value?.startsWith('pf2e-rpg-numbers.')) {
-                result[key] = game.i18n.localize(value)
-            } else if (typeof value === "string" && tabList.includes(value.match(/^([^.]*)/)?.[0] ?? '')) {
-                result[key] = this.getVariable(value)
+            // } else
+            if (typeof value === "string" && value?.startsWith("pf2e-rpg-numbers.")) {
+                result[key] = game.i18n.localize(value);
+            } else if (typeof value === "string" && tabList.includes(value.match(/^([^.]*)/)?.[0] ?? "")) {
+                result[key] = this.getVariable(value);
             } else if (typeof value === "object") {
                 result[key] = this._retrieveNestedSettings(value);
             } else {
@@ -348,14 +343,13 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async _updateObject(event, formData) {
         // Expand the flat form data into a nested object structure
-
         // Debug log for inspecting the expanded form data
         //console.log("Expanded Form Data:", { expandedData, formData });
         //game.settings.set('myModuleName', 'myComplexSettingName', data);
     }
 
     async _processForm(html, submit = false) {
-        const formattedObject = this.getFormData(html)
+        const formattedObject = this.getFormData(html);
 
         // // Handle saving or submitting
         if (submit) {
@@ -372,46 +366,49 @@ export class ActorSettingsConfigForm extends FormApplication {
 
     async saveSettings(data) {
         const settings = data.settings;
-        const crit = critProcessHelper(settings.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)))
-        await this.options?.actor?.setFlag(MODULE_ID, 'critical', crit)
+        const crit = critProcessHelper(settings.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
+        await this.options?.actor?.setFlag(MODULE_ID, "critical", crit);
 
         const token = DEFAULT_TOKEN;
-        token.rotation.offset = Number(settings.token.rotation.offset) || 0;
+        token.rotation.offset =
+            Number(settings.token.rotation.offset) || getSetting("rotate-on-attack.default-rotation");
 
-        await this.options?.actor?.setFlag(MODULE_ID, 'token', token)
+        await this.options?.actor?.setFlag(MODULE_ID, "token", token);
     }
 
     getVariable(path) {
         const [flag, ...remaining] = path.split(".");
-        const remain = remaining.join(".")
+        const remain = remaining.join(".");
         const obj = this.options.actor.getFlag(MODULE_ID, flag);
         const backupObj = getDefaultVariable(flag);
 
-        return getNestedProperty(obj, remain) ?? getNestedProperty(backupObj, remain)
+        return getNestedProperty(obj, remain) ?? getNestedProperty(backupObj, remain);
     }
 
     getFormData() {
         // Collect the form data from all inputs in the form
-        const formData = new FormDataExtended(this.form).object;;
+        const formData = new FormDataExtended(this.form).object;
 
         // // Log the gathered form data for debugging purposes
         const formattedObject = foundry.utils.expandObject(formData);
         console.log("Form Data RPG#s:", formattedObject);
         return formattedObject;
     }
-
 }
 
 function getNestedProperty(obj, path) {
-    return path.split('.').reduce((acc, part) => acc && acc[part], obj);
+    return path.split(".").reduce((acc, part) => acc && acc[part], obj);
 }
 
 function getDefaultVariable(flag) {
     switch (flag) {
-        case 'critical':
+        case "critical":
             return DEFAULT_CRIT;
-        case 'token':
-            return DEFAULT_TOKEN;
+        case "token": {
+            let ret = DEFAULT_TOKEN;
+            ret.rotation.offset = getSetting("rotate-on-attack.default-rotation");
+            return ret;
+        }
         default:
             return null;
     }
@@ -420,25 +417,25 @@ function getDefaultVariable(flag) {
 async function checkAndSetDefaultActorFlagIfNotExist(actor) {
     const flags = actor?.flags?.[MODULE_ID];
     const flagIDs = flags ? Object?.keys(flags) : [];
-    if (!flagIDs.includes('critical')) {
-        await actor.setFlag(MODULE_ID, 'critical', DEFAULT_CRIT);
+    if (!flagIDs.includes("critical")) {
+        await actor.setFlag(MODULE_ID, "critical", DEFAULT_CRIT);
     }
-    if (!flagIDs.includes('token')) {
-        await actor.setFlag(MODULE_ID, 'token', DEFAULT_TOKEN)
+    if (!flagIDs.includes("token")) {
+        await actor.setFlag(MODULE_ID, "token", DEFAULT_TOKEN);
     }
     return true;
 }
 
 function critProcessHelper(data, result) {
-    const types = ['checks', 'default', 'saves', 'strikes']
-    const succFail = ['success', 'failure'];
+    const types = ["checks", "default", "saves", "strikes"];
+    const succFail = ["success", "failure"];
 
     // Create a deep copy of the result object
     const res = JSON.parse(JSON.stringify(result));
 
     for (const state of succFail) {
         for (const type of types) {
-            res[state][type] = critSettingsFormatted(data, state, type)
+            res[state][type] = critSettingsFormatted(data, state, type);
         }
     }
     return res;
@@ -458,4 +455,3 @@ function critSettingsFormatted(data, state, type) {
         volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
     };
 }
-

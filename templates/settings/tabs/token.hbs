@@ -146,6 +146,22 @@
             {{checked settings.rotateOnAttack.scaleOnSize}}
         />
     </div>
+    {{! Default Rotation }}
+    <div class="form-group">
+        <label
+            for="settings.rotateOnAttack.defaultRotation"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.name"}}
+        </label>
+        {{numberInput
+            settings.rotateOnAttack.defaultRotation.value
+            name="settings.rotateOnAttack.defaultRotation"
+            step=settings.rotateOnAttack.defaultRotation.range.step
+            min=settings.rotateOnAttack.defaultRotation.range.min
+            max=settings.rotateOnAttack.defaultRotation.range.max
+        }}
+    </div>
 </span>
 <span>
     {{! Shake on Attack }}

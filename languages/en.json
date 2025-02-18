@@ -355,6 +355,10 @@
                 "scale-on-size": {
                     "name": "Scale Duration on Size",
                     "hint": "Allow Rotation to take longer based on the size of the attacker (scales on the number of squares it takes up)"
+                },
+                "default-rotation": {
+                    "name": "Default Rotation",
+                    "hint": "The default rotation for tokens unless overrode"
                 }
             },
             "critical": {

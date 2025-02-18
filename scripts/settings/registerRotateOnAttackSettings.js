@@ -28,6 +28,21 @@ export function registerRotateOnAttackSettings() {
 
     registerSetting({
         category: "rotate-on-attack",
+        id: "rotate-on-attack.default-rotation",
+        desc: "default-rotation",
+        scope: "world",
+        config: false,
+        default: 90,
+        range: {
+            min: -360,
+            max: 360,
+            step: 1,
+        },
+        type: Number,
+    });
+
+    registerSetting({
+        category: "rotate-on-attack",
         id: "rotate-on-attack.scale-on-size",
         desc: "scale-on-size",
         scope: "world",

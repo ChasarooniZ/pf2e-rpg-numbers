@@ -1,5 +1,6 @@
 # Unreleased
-
+- `Rotate On Attack`
+  - Added `Default Rotation` this allows it so you can set a general rotation as the default
 -   `Misc`
     -   Updated some localizations for english to better match
     -   Changed some settings to be on by default
