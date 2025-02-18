@@ -566,23 +566,23 @@
                         "hint": "XP Threshold of the encounter to have the End of Encounter text to show (set to 0 to always show). [Trivial: <= 40, Low: 60, Moderate: 80, Severe: 120, Extreme: 160]"
                     },
                     "font-size": {
-                        "name": "Noun Verbed Font Size",
+                        "name": "Font Size",
                         "hint": "Font size of the pop-up"
                     },
                     "sound-effect": {
-                        "name": "Noun Verbed SFX",
+                        "name": "SFX",
                         "hint": "Sound effect to play for 'Noun Verbed'",
                         "volume": {
-                            "name": "Noun Verbed SFX Volume",
+                            "name": "SFX Volume",
                             "hint": "Volume to play sound effect for 'Noun Verbed'"
                         }
                     },
                     "duration": {
-                        "name": "Noun Verbed Duration",
+                        "name": "Duration",
                         "hint": "How long to display the pop up in seconds"
                     },
                     "text": {
-                        "name": "Noun Verbed Text",
+                        "name": "Text",
                         "hint": "Text to display for Noun Verbed",
                         "default": "Enemy Felled"
                     }
