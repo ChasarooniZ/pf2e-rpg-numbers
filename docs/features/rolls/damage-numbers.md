@@ -11,7 +11,7 @@ Displays damage numbers when you roll damage (or apply it) depending on the sett
 #### Preview
 
 <video controls>
-  <source src="../../videos/damage-numbers.mp4" type="video/mp4">
+  <source src="../../videos/damage-numbers.mp4" width="400" type="video/mp4">
 </video>
 
 ## Settings

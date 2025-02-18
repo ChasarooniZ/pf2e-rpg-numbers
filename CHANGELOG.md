@@ -1,6 +1,11 @@
-# Unreleased
-- `Rotate On Attack`
-  - Added `Default Rotation` this allows it so you can set a general rotation as the default
+# [12.9.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.6...12.9.7) - Docs
+
+-   `Critical`
+    -   Fixed `Fire Emblem: Awakening` not moving far enough
+-   `Rotate On Attack`
+    -   Added `Default Rotation` this allows it so you can set a general rotation as the default
+-   `Documentation`
+    -   Added docs to the module
 -   `Misc`
     -   Updated some localizations for english to better match
     -   Changed some settings to be on by default
@@ -207,6 +212,7 @@
 # [12.6.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.6.5...12.6.6) - Dynamism
 
 -   `Token Damage Shake`
+
     -   Added support to automatically use the **Subject Texture** if dynamic tokens are enabled
 
         -   Note: will fallback to token image when the subject texture is blank
@@ -310,6 +316,7 @@
 -   `From Soft Text`
 
     -   Added two new features
+
         -   **Noun Verbed**
 
             -   Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled
@@ -488,6 +495,7 @@
 # 11.12.0 - Token Turning Updates
 
 -   Turn on Token Attack _new options_
+
     -   **_New Setting._** Scale based on token size (scales how long it takes to turn based on the number of squares the token takes up)
 
         -   _Must be enabled in the settings_
@@ -1202,6 +1210,7 @@ Fixed bug with dynamic tokens not shaking properly on token damage shake (@nythz
 -   `From Soft Text`
 
     -   Added two new features
+
         -   **Noun Verbed**
 
             -   Is styled after Elden Ring's 'Noun Verbed' ie Enemy Felled

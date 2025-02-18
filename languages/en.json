@@ -371,19 +371,19 @@
                     "hint": "Enable cool animations to show for critical hits for yourself. (Note. actors have options to have alternative image)"
                 },
                 "sound": {
-                    "name": "Critical Animation Sound",
+                    "name": "Sound",
                     "hint": "Sound to use for critical animation"
                 },
                 "volume": {
-                    "name": "Critical Animation Volume",
+                    "name": "Volume",
                     "hint": "% of sound volume for critical animation"
                 },
                 "duration": {
-                    "name": "Critical Animation Duration",
+                    "name": "Duration",
                     "hint": "Duration of the sound and effect"
                 },
                 "type": {
-                    "name": "Critical Animation Type",
+                    "name": "Animation Type",
                     "hint": "Choose type for critical animation",
                     "choices": {
                         "default": "—",
@@ -394,16 +394,16 @@
                     }
                 },
                 "show-on": {
-                    "name": "Show Critical Animation On",
+                    "name": "Show On...",
                     "hint": "Choose whether to show critical animation on attacks, checks, or both",
                     "choices": {
                         "attacks": "Attacks",
                         "checks": "Checks",
-                        "both": "Both"
+                        "both": "Everything"
                     }
                 },
                 "show-on-token-type": {
-                    "name": "Show Critical Animation For",
+                    "name": "Show For these actors",
                     "hint": "Choose to show critical animations for PCs, NPCS, or Both",
                     "choices": {
                         "pc": "PCs",

@@ -2,6 +2,8 @@
 layout: page
 title: Finishing Moves
 id: finishing-moves
+previous_page: token-damage-shake
+next_page: from-software-noun-verb
 ---
 
 Adds finishing moves, an anime style show the name of your ultimate attack dramatically on the screen. When the control is toggled it will display the name of the item you use.

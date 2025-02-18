@@ -146,9 +146,9 @@ const settingsConfig = {
             type: "token.dodgeOnMiss.type",
             choices: {
                 type: {
-                    default: "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.default",
-                    dodge: "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.dodge",
-                    "bounce-off": "pf2e-rpg-numbers.menu.actor-settings.dodge-on-miss.type.choices.bounce-off",
+                    default: "pf2e-rpg-numbers.menu.actor-settings.token.dodge-on-miss.type.choices.default",
+                    dodge: "pf2e-rpg-numbers.menu.actor-settings.token.dodge-on-miss.type.choices.dodge",
+                    "bounce-off": "pf2e-rpg-numbers.menu.actor-settings.token.dodge-on-miss.type.choices.bounce-off",
                 },
             },
         },

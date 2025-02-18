@@ -53,8 +53,8 @@ export async function fireEmblemCrit(actor, users, config) {
         .file(config.art)
         .spriteRotation(config.rotation)
         .animateProperty("sprite", "position.x", {
-            from: -0.9,
-            to: 1.5,
+            from: -2,
+            to: 4.5,
             screenSpace: true,
             duration: duration,
             ease: "easeInBack",

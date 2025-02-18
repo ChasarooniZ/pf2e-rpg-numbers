@@ -2,6 +2,8 @@
 layout: page
 title: From Software - Noun Verb
 id: from-software-noun-verb
+previous_page: finishing-moves
+next_page: from-software-you-died
 ---
 
 Adds cool text to come on screen like in say Elden Ring where it would say something like `God Slain` etc. (IE why it is called `Noun Verb`)
