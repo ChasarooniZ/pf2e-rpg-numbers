@@ -605,23 +605,23 @@
                         }
                     },
                     "font-size": {
-                        "name": "You Died Font Size",
+                        "name": "Font Size",
                         "hint": "Font size of the pop-up"
                     },
                     "sound-effect": {
-                        "name": "You Died SFX",
+                        "name": "SFX",
                         "hint": "Sound effect to play for 'You Died'",
                         "volume": {
-                            "name": "You Died SFX Volume",
+                            "name": "SFX Volume",
                             "hint": "Volume to play sound effect for 'You Died'"
                         }
                     },
                     "duration": {
-                        "name": "You Died Duration",
+                        "name": "Duration",
                         "hint": "How long to display the pop up in seconds"
                     },
                     "text": {
-                        "name": "You Died Text",
+                        "name": "Text",
                         "hint": "Text to display for 'You Died'",
                         "default": "You Died"
                     }

@@ -37,15 +37,11 @@ Type of animation to play
   </div>
   <div class="video-column">
     <video controls>
-      <source src="../../videos/from-software-you-died-Sekiro.mp4" type="video/mp4">
+      <source src="../../videos/from-software-you-died-sekiro.mp4" type="video/mp4">
     </video>
     <p class="caption">Sekiro</p>
   </div>
   <div class="video-column">
-    <video controls>
-      <source src="../../videos/from-software-you-died-elden-ring.mp4" type="video/mp4">
-    </video>
-    <p class="caption">Test</p>
   </div>
 </div>
 
