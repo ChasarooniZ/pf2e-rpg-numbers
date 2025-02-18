@@ -11,7 +11,7 @@ When you roll an attack the token turns towards the target of the attack
 #### Preview
 
 <video controls>
-  <source src="../../videos/rotate-on-attack.mp4" type="video/mp4">
+  <source src="/docs/videos/rotate-on-attack.mp4" type="video/mp4">
 </video>
 
 ## Settings

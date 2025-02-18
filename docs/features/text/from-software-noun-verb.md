@@ -11,7 +11,7 @@ Adds cool text to come on screen like in say Elden Ring where it would say somet
 #### Preview
 
 <video controls>
-  <source src="../../videos/from-software-noun-verb.mp4" type="video/mp4">
+  <source src="/docs/videos/from-software-noun-verb.mp4" type="video/mp4">
 </video>
 
 ## Settings
