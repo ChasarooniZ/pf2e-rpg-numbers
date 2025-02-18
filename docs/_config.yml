@@ -29,6 +29,7 @@ github_username: chasarooniZ
 remote_theme: zendesk/jekyll-theme-zendesk-garden@main
 plugins:
     - jekyll-feed
+    - jekyll-remote-theme
 auto_page_title: true
 # search_enabled: true
 sidebar:

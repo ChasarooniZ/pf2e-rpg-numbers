@@ -24,8 +24,6 @@ If enabled will show this animation when a player's owned character dies
 
 ---
 
-Type of animation to play
-
 **Options**
 
 <div class="video-container">
@@ -44,6 +42,8 @@ Type of animation to play
   <div class="video-column">
   </div>
 </div>
+
+Type of animation to play
 
 ### Font Size
 
@@ -83,39 +83,3 @@ How long (in seconds) should the animation be
 **Default:** `You Died`
 
 What text to display in the animation
-
-<style>
-  .video-container {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-
-  .video-column {
-    flex: 0 0 33.33%;
-    padding: 0 10px;
-    text-align: center; /* Center align captions */
-  }
-
-  video {
-    width: 100%;
-    height: auto;
-  }
-
-  .caption {
-    font-size: 0.9em; /* Smaller text for captions */
-    color: #555; /* Gray color for captions */
-    margin-top: 5px; /* Space between video and caption */
-  }
-
-  @media (max-width: 768px) {
-    .video-container {
-      flex-direction: column;
-    }
-    
-    .video-column {
-      flex: 1 0 100%;
-      margin-bottom: 20px;
-    }
-  }
-</style>
