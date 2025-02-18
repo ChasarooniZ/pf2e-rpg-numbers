@@ -450,7 +450,7 @@
                     "hint": "When you use an action and have the HUD Element toggled on it gives you a cool readout of the action."
                 },
                 "enabled-players": {
-                    "name": "Enable Finishing Moves Option for Players",
+                    "name": "Enable for Players",
                     "hint": "Allow players to use finishing move feature (Reloads Foundry)"
                 },
                 "keep-on": {
@@ -542,7 +542,7 @@
                     "name": "Finishing Move SFX",
                     "hint": "Sound Effect to play for each Word that appears",
                     "volume": {
-                        "name": "Finishing Move SFX Volume",
+                        "name": "SFX Volume",
                         "hint": "Sound Effect Volume to play for each Word that appears"
                     }
                 }
