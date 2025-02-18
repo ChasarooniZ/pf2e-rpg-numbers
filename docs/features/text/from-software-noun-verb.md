@@ -41,6 +41,7 @@ How big should the text be
 ---
 
 **Default:** `modules/pf2e-rpg-numbers/resources/sounds/eldenRingVictoryReverb.ogg`
+
 Sound effect to play when `Noun Verb` animation plays
 
 ### SFX Volume

@@ -589,12 +589,12 @@
                 },
                 "death": {
                     "enabled": {
-                        "name": "Show when owned character Dies",
+                        "name": "Show on Death",
                         "hint": "Show this message to a PC when their character assigned to their user died."
                     },
                     "type": {
-                        "name": "Type of Effect",
-                        "hint": "Choose type of the effect to play",
+                        "name": "Type",
+                        "hint": "Choose type of the animation to play",
                         "choices": {
                             "elden-ring": "Elden Ring",
                             "sekiro": "Sekiro"
