@@ -1,9 +1,11 @@
 # [12.9.8](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.7...12.9.8) - Fix For Scaling
 
 - `Critical`
+  
   - Fixed issue where scaling of Disgaea Crit changes based on grid resolution (🐛 @Spen, @Fumu)
   
 - `Localization`
+  
   - Updated `Polish` translation again (@Lioheart)
   
 
@@ -1023,12 +1025,23 @@
 
 # <<<<<<< HEAD
 
-## 23.9.8 - 2025-02-19
+## 12.9.8 - 2025-02-19
 
 - `Critical`
   - Fixed issue where scaling of Disgaea Crit changes based on grid resolution (🐛 @Spen, @Fumu)
   
 - `Localization`
+  - Updated `Polish` translation again (@Lioheart)
+  
+
+## 23.9.8 - 2025-02-19
+
+- `Critical`
+  
+  - Fixed issue where scaling of Disgaea Crit changes based on grid resolution (🐛 @Spen, @Fumu)
+  
+- `Localization`
+  
   - Updated `Polish` translation again (@Lioheart)
   
 
