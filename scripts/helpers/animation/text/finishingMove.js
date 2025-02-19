@@ -109,7 +109,6 @@ function createLine(text, seq, settings, style, yPosition, wordsDone, totalWords
             .screenSpaceAnchor({ x: xPosition, y: yPosition })
             .scale(1 / settings.quality)
             .scaleIn(3, settings.delayDiff, { ease: "easeOutCubic" })
-            .screenSpaceScale({ x: 1.0, y: 1.0 })
             .delay(delay)
             .duration(duration)
             .sound()

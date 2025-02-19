@@ -22,8 +22,8 @@ import { getSetting } from "../../../misc.js";
  */
 
 export function personaCrit(actor, users, config) {
-    const screenWidth = window.screen.availWidth;
-    const screenHeight = window.screen.availHeight;
+    const screenWidth = screen.availWidth;
+    const screenHeight = screen.availHeight;
     const polygonPoints = [
         [-0.1 * screenWidth, 0.55 * screenHeight],
         [0.02 * screenWidth, 0.52 * screenHeight],

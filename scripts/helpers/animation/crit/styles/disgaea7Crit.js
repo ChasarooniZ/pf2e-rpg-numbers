@@ -13,8 +13,8 @@ import { getSetting } from "../../../misc.js";
 export async function disgaea7Crit(actor, users, config) {
     const duration = getSetting("critical.duration") * 1000;
 
-    const width = window.screen.availWidth;
-    const height = window.screen.availHeight;
+    const width = screen.availWidth;
+    const height = screen.availHeight;
 
     const widthPercent = 17.5 / 100;
 
@@ -23,8 +23,8 @@ export async function disgaea7Crit(actor, users, config) {
     imga.onload = ({
         target
     }) => {
-        const imgWidth = target.width;
-        const imgHeight = target.height;
+        const imgWidth = target.naturalWidth;
+        const imgHeight = target.naturalHeight;
         new Sequence()
             //BG start
             .effect()
