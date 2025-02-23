@@ -1,4 +1,5 @@
-import { eldenRingNounVerbed, fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
+import { fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
+import { eldenRingNounVerbed } from "./helpers/animation/text/fromSoftware/eldenRingNounVerbed.js";
 import { burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";

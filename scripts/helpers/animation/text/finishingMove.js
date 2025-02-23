@@ -52,7 +52,7 @@ function createTextStyle(settings) {
         dropShadowDistance: 0,
         dropShadow: true,
         fontFamily: "Impact, Charcoal, sans-serif",
-        fontSize: 48 * settings.quality,
+        fontSize: 100 * settings.quality,
         fontVariant: "small-caps",
         strokeThickness: 1,
         stroke: Color.fromHSL(hsl).css,

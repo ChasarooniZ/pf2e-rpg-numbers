@@ -3,13 +3,14 @@ import { createFinishingMoveAnimation } from "./animation/text/finishingMove.js"
 import { generateDamageScroll } from "./animation/generateDamageScroll.js";
 import { generateRollScroll } from "./animation/generateRollScroll.js";
 import { getDamageList } from "./rollTerms.js";
-import { eldenRingDeath, eldenRingNounVerbed, sekiroDeath } from "./animation/text/fromSoftwareText.js";
 import { turnTokenOnAttack } from "./animation/token/turnTokenOnAttack.js";
 import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
-import { getSetting } from "./misc.js";
 import { migrateTokenSettingsToActorSettings } from "./library/migration.js";
 import { EnhancedTour } from "./library/EnhancedTour.js";
+import { eldenRingNounVerbed } from "./animation/text/fromSoftware/eldenRingNounVerbed.js";
+import { eldenRingDeath } from "./animation/text/fromSoftware/eldenRingDeath.js";
+import { sekiroDeath } from "./animation/text/fromSoftware/sekiroDeath.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
