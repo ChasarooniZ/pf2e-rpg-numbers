@@ -1025,12 +1025,32 @@
 
 # <<<<<<< HEAD
 
+## 12.9.9 - 2025-02-23
+
+- `Actor Settings`
+    - Changes header to use hover over for the icon instead of actually text
+    
+- `Sequencer`
+    - Any animations that were screenspace had to be updated, as such the following animations if adjusted by you (for instance criticals, may need to be adjusted)
+        - **Criticals**
+            - `Disgaea 7`
+            - `Fire Emblem: Awakening`
+            - `Fullscreen`
+            - `Persona 5`
+            
+        - **From Software Text**
+        - **Finishing Moves**
+        
+    
+
 ## 12.9.8 - 2025-02-19
 
 - `Critical`
+  
   - Fixed issue where scaling of Disgaea Crit changes based on grid resolution (🐛 @Spen, @Fumu)
   
 - `Localization`
+  
   - Updated `Polish` translation again (@Lioheart)
   
 
