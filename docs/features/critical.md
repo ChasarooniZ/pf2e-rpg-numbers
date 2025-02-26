@@ -8,11 +8,17 @@ next_page: damage-numbers
 
 Cool animations to play on Critical Success (and some for failures).
 
+
 #### Preview
 
 <video controls>
   <source src="../videos/critical-persona-5.mp4" type="video/mp4">
 </video>
+
+#### Visibility
+Note the Crit animations are only visible to users that can see the message created for them.
+
+For any critical animations that are in the actual canvas and not above it, those animations will also require the token to be visible to display them.
 
 ## Setting
 
