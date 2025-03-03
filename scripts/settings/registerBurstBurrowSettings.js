@@ -60,6 +60,16 @@ export function registerBurstBurrowSettings() {
         default: false,
         type: Boolean,
     });
+    
+    registerSetting({
+        category: 'burst-burrow',
+        id: 'burst-burrow.burrow-anim.enabled',
+        desc: 'enabled',
+        scope: 'world',
+        config: true,
+        default: false,
+        type: Boolean,
+    });
 
     // registerSetting({
     //     category: 'burst-burrow',

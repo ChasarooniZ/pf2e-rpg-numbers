@@ -2,9 +2,12 @@
 
 -   `Fixes`
     -   Replaced `copySprite()` as it only copies the token sprite and not the subject art if used
-    -   This affects the following animations
-    -   `Damage Shake`
-    -   `Target Dodges`
+    -   This affects the following animations:
+        -   `Damage Shake`
+        -   `Target Dodges`
+-   `Burrow * Burst`
+    -   Added new burrow animation option
+    -   This will cause the token to turn invisible and play the **new** JB2a burrowing animation over the distance it moves
 
 # [12.9.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.8...12.9.9) - Free the bar + Changes to Scaling
 

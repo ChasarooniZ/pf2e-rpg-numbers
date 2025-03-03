@@ -1,5 +1,6 @@
 import { getVisibleUsers } from "../../anim.js";
 import { getSetting } from "../../misc.js";
+import { getTokenImage } from "./shakeOnDamageToken.js";
 
 const COLOR_FILTER = {
     YELLOW: {},

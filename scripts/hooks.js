@@ -1,6 +1,6 @@
 import { fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
 import { eldenRingNounVerbed } from "./helpers/animation/text/fromSoftware/eldenRingNounVerbed.js";
-import { burstBurrow } from "./helpers/animation/token/burstBurrow.js";
+import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
 
@@ -168,4 +168,14 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
 export async function preUpdateToken(token, changes, _misc, _id) {
     if (getSetting("burst-burrow.enabled"))
         burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token });
+    if (getSetting("burst-burrow.burrow-anim.enabled")) {
+        if ((changes?.x !== undefined || changes?.y !== undefined) && token.elevation < 0) {
+            const coord1 = { x: token.center.x, y: token.center.y };
+            const coord2 = {
+                x: changes?.x !== undefined ? changes?.x + token.object.width / 2 : token.center.x,
+                y: changes?.y !== undefined ? changes?.y + token.object.height / 2 : token.center.y,
+            };
+            burrow(coord1, coord2, { token });
+        }
+    }
 }
