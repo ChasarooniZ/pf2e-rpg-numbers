@@ -45,10 +45,11 @@ export async function burrow(coord1, coord2, data) {
         );
         if (!hasBurrow) return;
     }
+    const token = data.token.object;
     const file = "jb2a.burrow.ranged.01.brown";
     return new Sequence()
         .animation()
-        .on(data.token)
+        .on(token)
         .opacity(0)
         .waitUntilFinished()
         .effect()
@@ -57,7 +58,7 @@ export async function burrow(coord1, coord2, data) {
         .file(file)
         .waitUntilFinished()
         .animation()
-        .on(data.token)
+        .on(token)
         .opacity(1)
         .play();
 }
