@@ -6,7 +6,7 @@ export function registerBurstBurrowSettings() {
         id: 'burst-burrow.enabled',
         desc: 'enabled',
         scope: 'world',
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
@@ -64,9 +64,9 @@ export function registerBurstBurrowSettings() {
     registerSetting({
         category: 'burst-burrow',
         id: 'burst-burrow.burrow-anim.enabled',
-        desc: 'enabled',
+        desc: 'burrow-anim.enabled',
         scope: 'world',
-        config: true,
+        config: false,
         default: false,
         type: Boolean,
     });
