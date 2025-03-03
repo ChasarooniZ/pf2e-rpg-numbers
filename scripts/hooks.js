@@ -170,10 +170,10 @@ export async function preUpdateToken(token, changes, _misc, _id) {
         burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token });
     if (getSetting("burst-burrow.burrow-anim.enabled")) {
         if ((changes?.x !== undefined || changes?.y !== undefined) && token.elevation < 0) {
-            const coord1 = { x: token.x, y: token.y };
+            const coord1 = { x: token.center.x, y: token.center.y };
             const coord2 = {
-                x: changes?.x !== undefined ? changes?.x : token.x,
-                y: changes?.y !== undefined ? changes?.y : token.y,
+                x: changes?.x !== undefined ? changes?.x + token.object.width / 2 : token.center.x,
+                y: changes?.y !== undefined ? changes?.y + token.object.height / 2 : token.center.y,
             };
             burrow(coord1, coord2, { token });
         }

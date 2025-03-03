@@ -45,6 +45,7 @@ export async function burrow(coord1, coord2, data) {
         );
         if (!hasBurrow) return;
     }
+    if (coord1 === coord2) return;
     const token = data.token.object;
     const file = "jb2a.burrow.ranged.01.brown";
     return new Sequence()
@@ -53,7 +54,8 @@ export async function burrow(coord1, coord2, data) {
         .opacity(0)
         .waitUntilFinished()
         .effect()
-        .from(coord1)
+        .scale(Math.max((token.document.width + token.document.height) / 4, 1))
+        .atLocation(coord1)
         .stretchTo(coord2)
         .file(file)
         .waitUntilFinished()
