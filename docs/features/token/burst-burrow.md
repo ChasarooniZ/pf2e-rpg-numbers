@@ -10,7 +10,7 @@ This Feature adds burst and burrowing animations to tokens when they go above or
 
 In general the toke needs to have burrowing speed, and the setting needs to be enabled, and the token needs to either go below 0, or from a negative number to 0 or above.
 
-*Note: This feature requires JB2a Patreon to function*
+_Note: This feature requires JB2a Patreon to function_
 
 #### Preview
 
@@ -59,6 +59,16 @@ _Note: The animation size scales off the size of the token triggering the animat
 **Default:** `false`
 
 If enabled the token will create the animation even if it doesn't have burrow speed
+
+_Note: The token will still need to meet the elevation change prerequisites_
+
+### Burrow Movement Animation
+
+---
+
+**Default:** `false`
+
+If enabled when moved while burrowing will hide the token, then play a burrowing animation between the points before revealing the token again
 
 _Note: The token will still need to meet the elevation change prerequisites_
 

@@ -449,7 +449,7 @@
                 },
                 "burrow-anim": {
                     "enabled": {
-                        "name": "Enable Burrow Travelling Animation",
+                        "name": "Enable Burrow Movement Animation",
                         "hint": "When enabled uses the *new* JB2a burrowing animation when you move a burrowed token (hiding it in between burrows)"
                     }
                 }
