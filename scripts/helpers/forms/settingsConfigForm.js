@@ -56,6 +56,7 @@ const settingsConfig = {
                 type: "number",
                 range: { min: 0, max: 3, step: 0.1 },
             },
+            burrowAnimation: "burst-burrow.burrow-anim.enabled"
         },
         tokenShake: {
             enabled: "dmg-shake-directional-enabled",

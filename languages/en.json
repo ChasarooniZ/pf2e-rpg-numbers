@@ -446,6 +446,12 @@
                 "ignore-speed": {
                     "name": "Ignore Burrow Speed",
                     "hint": "Play the animation when the token burrows even if it doesn't have burrow speed"
+                },
+                "burrow-anim": {
+                    "enabled": {
+                        "name": "Enable Burrow Travelling Animation",
+                        "hint": "When enabled uses the *new* JB2a burrowing animation when you move a burrowed token (hiding it in between burrows)"
+                    }
                 }
             },
             "finishing-move": {

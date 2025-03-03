@@ -1,18 +1,18 @@
 import { getSetting } from "../../misc.js";
 
 export function burstBurrow(data) {
-    if (!data?.token)
-        return;
+    if (!data?.token) return;
     if (!crossesZero(data?.elevationA, data?.elevationB)) return;
-    if (!getSetting('burst-burrow.ignore-speed')) {
-        const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some((spd) => spd.type === 'burrow');
-        if (!hasBurrow)
-            return;
+    if (!getSetting("burst-burrow.ignore-speed")) {
+        const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some(
+            (spd) => spd.type === "burrow"
+        );
+        if (!hasBurrow) return;
     }
 
-    const duration = getSetting("burst-burrow.duration") * 1000 // In Seconds
+    const duration = getSetting("burst-burrow.duration") * 1000; // In Seconds
     const persistent = getSetting("burst-burrow.persistent"); // Should the ground hole stay?
-    const sizeMultiplier = getSetting('burst-burrow.size-multiplier'); //Size of the FXs
+    const sizeMultiplier = getSetting("burst-burrow.size-multiplier"); //Size of the FXs
     //Animation
     new Sequence()
         .effect() //Ground FX
@@ -29,10 +29,35 @@ export function burstBurrow(data) {
         .file("jb2a.burrow.out.01.brown.1")
         .scaleToObject(3 * sizeMultiplier)
         .belowTokens()
-        .play()
+        .play();
 }
 
 function crossesZero(a, b) {
     if (isNaN(a) || isNaN(b)) return false;
     return Math.min(a, b) < 0 && Math.max(a, b) >= 0;
+}
+
+export async function burrow(coord1, coord2, data) {
+    if (!data?.token) return;
+    if (!getSetting("burst-burrow.ignore-speed")) {
+        const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some(
+            (spd) => spd.type === "burrow"
+        );
+        if (!hasBurrow) return;
+    }
+    const file = "jb2a.burrow.ranged.01.brown";
+    return new Sequence()
+        .animation()
+        .on(data.token)
+        .opacity(0)
+        .waitUntilFinished()
+        .effect()
+        .from(coord1)
+        .stretchTo(coord2)
+        .file(file)
+        .waitUntilFinished()
+        .animation()
+        .on(data.token)
+        .opacity(1)
+        .play();
 }

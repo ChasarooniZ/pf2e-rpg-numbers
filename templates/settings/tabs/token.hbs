@@ -28,6 +28,21 @@
             {{checked settings.burstBurrow.enabled}}
         />
     </div>
+    {{! Enable Burrow Animation }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.enabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.burstBurrow.burrowAnimation.enabled"
+            name="settings.burstBurrow.burrowAnimation.enabled"
+            {{checked settings.burstBurrow.enabled}}
+        />
+    </div>
     {{! Duration }}
     <div class="form-group">
         <label
