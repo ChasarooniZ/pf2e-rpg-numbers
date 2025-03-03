@@ -1,3 +1,11 @@
+# [12.9.11](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.10...12.9.11) - Burrow Depth
+
+-   `Fixes`
+    -   Won't show burst or burrow if the token is hidden 
+-   `Burrow x Burst`
+    -   Added new burrow animation depth option
+        -   Will stop showing the burrow animation if the token is lower than the depth option
+
 # [12.9.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.9...12.9.10) - Burrowing around + Sprite Fix
 
 -   `Fixes`

@@ -166,10 +166,16 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
 }
 
 export async function preUpdateToken(token, changes, _misc, _id) {
+    if (!token.visible) return;
     if (getSetting("burst-burrow.enabled"))
         burstBurrow({ elevationA: token.elevation, elevationB: changes.elevation, token });
     if (getSetting("burst-burrow.burrow-anim.enabled")) {
-        if ((changes?.x !== undefined || changes?.y !== undefined) && token.elevation < 0) {
+        const elevationDepth = getSetting("burst-burrow.burrow-anim.depth");
+        if (
+            (changes?.x !== undefined || changes?.y !== undefined) &&
+            token.elevation < 0 &&
+            token.elevation >= elevationDepth
+        ) {
             const coord1 = { x: token.center.x, y: token.center.y };
             const coord2 = {
                 x: changes?.x !== undefined ? changes?.x + token.object.width / 2 : token.center.x,

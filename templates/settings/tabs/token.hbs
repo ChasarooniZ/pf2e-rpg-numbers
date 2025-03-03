@@ -31,7 +31,7 @@
     {{! Enable Burrow Animation }}
     <div class="form-group">
         <label
-            for="settings.burstBurrow.enabled"
+            for="settings.burstBurrow.burrowAnimation.enabled"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.enabled.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.enabled.name"}}
@@ -42,6 +42,22 @@
             name="settings.burstBurrow.burrowAnimation.enabled"
             {{checked settings.burstBurrow.enabled}}
         />
+    </div>
+    {{! Burrow Animation Depth }}
+    <div class="form-group">
+        <label
+            for="settings.burstBurrow.burrowAnimation.depth"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.depth.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.burst-burrow.burrow-anim.depth.name"}}
+        </label>
+        {{numberInput
+            settings.burstBurrow.burrowAnimation.depth.value
+            name="settings.burstBurrow.burrowAnimation.depth"
+            step=settings.burstBurrow.burrowAnimation.depth.range.step
+            min=settings.burstBurrow.burrowAnimation.depth.range.min
+            max=settings.burstBurrow.burrowAnimation.depth.range.max
+        }}
     </div>
     {{! Duration }}
     <div class="form-group">

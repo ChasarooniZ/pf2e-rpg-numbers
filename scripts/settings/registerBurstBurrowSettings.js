@@ -71,6 +71,22 @@ export function registerBurstBurrowSettings() {
         type: Boolean,
     });
 
+    
+    registerSetting({
+        category: 'burst-burrow',
+        id: 'burst-burrow.burrow-anim.depth',
+        desc: 'burrow-anim.depth',
+        scope: 'world',
+        config: false,
+        default: -10,
+        range: {
+            min: 0,
+            max: -100,
+            step: 1,
+        },
+        type: Number,
+    });
+
     // registerSetting({
     //     category: 'burst-burrow',
     //     id: 'burst-burrow.sound',

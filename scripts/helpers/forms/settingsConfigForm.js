@@ -58,6 +58,11 @@ const settingsConfig = {
             },
             burrowAnimation: {
                 enabled: "burst-burrow.burrow-anim.enabled",
+                depth: {
+                    path: "burst-burrow.burrow-anim.depth",
+                    type: "number",
+                    range: { min: 0, max: -100, step: 1 },
+                },
             },
         },
         tokenShake: {

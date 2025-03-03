@@ -451,6 +451,10 @@
                     "enabled": {
                         "name": "Enable Burrow Movement Animation",
                         "hint": "When enabled uses the *new* JB2a burrowing animation when you move a burrowed token (hiding it in between burrows)"
+                    },
+                    "depth": {
+                        "name": "Burrow Mvmt. Depth",
+                        "hint": "What is the lowest elevation the token can be set at before it stop showing the burrowing animation (-10 means elevation must be >= -10 to show the animation)"
                     }
                 }
             },
