@@ -29,20 +29,22 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
  * @param {number} duration - The total duration of the shake effect
  */
 async function shakeWithTokenMagic(token, shakeDistancePercent, shakes, duration) {
-    const params = [{
-        filterType: "transform",
-        filterId: "tokenShake",
-        autoDestroy: true,
-        animated: {
-            translationX: {
-                animType: "sinOscillation",
-                val1: -shakeDistancePercent,
-                val2: +shakeDistancePercent,
-                loopDuration: duration / shakes,
-                loops: shakes
-            }
-        }
-    }];
+    const params = [
+        {
+            filterType: "transform",
+            filterId: "tokenShake",
+            autoDestroy: true,
+            animated: {
+                translationX: {
+                    animType: "sinOscillation",
+                    val1: -shakeDistancePercent,
+                    val2: +shakeDistancePercent,
+                    loopDuration: duration / shakes,
+                    loops: shakes,
+                },
+            },
+        },
+    ];
     TokenMagic.addFilters(token, params);
 }
 
@@ -98,6 +100,5 @@ function generateShakeValues(shakes, movAmount) {
 export function getTokenImage(token) {
     return token?.ring?.enabled
         ? token?.ring?.subject?.texture ?? token?.texture?.src
-        : (token?.texture?.src || 'icons/svg/cowled.svg');
+        : token?.texture?.src || "icons/svg/cowled.svg";
 }
-

@@ -54,14 +54,15 @@ export async function burrow(coord1, coord2, data) {
         .opacity(0)
         .waitUntilFinished()
         .effect()
-        .belowTokens()
         .scale(Math.max((token.document.width + token.document.height) / 4, 1))
         .atLocation(coord1)
         .stretchTo(coord2)
+        .belowTokens()
         .file(file)
-        .waitUntilFinished(-2500)
+        .waitUntilFinished(-3000)
         .animation()
         .on(token)
+        .fadeIn(500, { ease: "easeInCubic" })
         .opacity(1)
         .play();
 }
