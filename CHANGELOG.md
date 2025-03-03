@@ -1,3 +1,11 @@
+# [12.9.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.9...12.9.10) - Sprite Fix
+
+-   `Fixes`
+    -   Replaced `copySprite()` as it only copies the token sprite and not the subject art if used
+    -   This affects the following animations
+    -   `Damage Shake`
+    -   `Target Dodges`
+
 # [12.9.9](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.8...12.9.9) - Free the bar + Changes to Scaling
 
 -   `Actor Settings`

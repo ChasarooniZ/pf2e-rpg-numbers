@@ -61,7 +61,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
 
     new Sequence()
         .effect()
-        .copySprite(token)
+        .file(getTokenImage(token?.document))
         .scale({ x: token.document.texture.scaleX, y: token.document.texture.scaleY })
         .loopProperty("spriteContainer", "position.x", {
             values,
