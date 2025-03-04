@@ -1,7 +1,7 @@
 # [12.9.13](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.12...12.9.13) - Fix to the Fix
 
 -   `Fixes Again`
-    -   fixed `Damage Shake` and `Dodge Animation` failing to run (🐛 @RoiLeaf)
+    -   fixed `Damage Shake` and `Dodge Animation` failing to run at the right size (🐛 @RoiLeaf)
 
 # [12.9.12](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.11...12.9.12) - Fix Tokens
 
