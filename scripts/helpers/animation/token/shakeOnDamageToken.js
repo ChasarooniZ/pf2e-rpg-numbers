@@ -66,6 +66,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
         .atLocation(token)
         .file(getTokenImage(token?.document))
         .scale({ x: token.document.texture.scaleX, y: token.document.texture.scaleY })
+        .scaleToObject(1)
         .loopProperty("spriteContainer", "position.x", {
             values,
             duration: iterationDuration,

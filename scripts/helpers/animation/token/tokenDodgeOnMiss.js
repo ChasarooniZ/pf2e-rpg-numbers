@@ -70,6 +70,7 @@ async function dodgeOnMiss(token, target) {
         .atLocation(target)
         .file(getTokenImage(target?.document))
         .scale({ x: target?.document?.texture?.scaleX ?? 0, y: target?.document?.texture?.scaleY ?? 0 })
+        .scaleToObject(1)
         .animateProperty("spriteContainer", "position.x", {
             from: 0,
             to: position.x,
