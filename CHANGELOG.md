@@ -1,3 +1,7 @@
+# [12.9.12](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.11...12.9.12) - Fix Tokens
+
+-   `Fixes`
+    - fixed `Damage Shake` and `Dodge Animation` failing to run
 # [12.9.11](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.10...12.9.11) - Burrow Depth
 
 -   `Fixes`
