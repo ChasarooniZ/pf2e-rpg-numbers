@@ -446,6 +446,12 @@
                 "ignore-speed": {
                     "name": "Ignoruj szybkość przekopywania",
                     "hint": "Odtwórz animację, gdy token zakopuje się, nawet jeśli nie ma szybkości przekopywania."
+                },
+                "burrow-anim": {
+                    "enabled": {
+                        "name": "Włącz animację ruchu podziemnego",
+                        "hint": "Po włączeniu używa *nowej* animacji zakopywania JB2a podczas przesuwania zakopanego tokena (ukrywając go pomiędzy przekopywaniem)."
+                    }
                 }
             },
             "finishing-move": {
