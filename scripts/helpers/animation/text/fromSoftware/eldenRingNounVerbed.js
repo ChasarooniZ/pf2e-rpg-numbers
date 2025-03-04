@@ -19,10 +19,7 @@ export async function eldenRingNounVerbed(options = {}) {
     const users = options?.users ?? game.users.map((u) => u.id);
 
     const [partOne, partTwo] = [text.slice(0, text.length / 2), text.slice(text.length / 2)];
-    const [partOneOffset, partTwoOffset] = [
-        getTextWidth(partOne, `${fontSize}pt Lusitana-Regular`) / 4,
-        getTextWidth(partTwo, `${fontSize}pt Lusitana-Regular`) / 4,
-    ];
+    const offset = getTextWidth(" ", `${fontSize}pt Lusitana-Regular`) * 0.4;
 
     const rect = { height: fontSize * 1.5, width: 4000 };
     const fadein = 500;
@@ -60,7 +57,7 @@ export async function eldenRingNounVerbed(options = {}) {
         .fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace()
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
-        .screenSpacePosition({ x: -partOneOffset, y: 0 })
+        .screenSpacePosition({ x: offset, y: 0 })
         .text(partOne, {
             align: "left",
             dropShadow: true,
@@ -73,6 +70,7 @@ export async function eldenRingNounVerbed(options = {}) {
             fontSize: fontSize,
             padding: 10,
             stroke: "#dcaf2d",
+            anchor: { x: 1, y: 0.5 },
         })
         .forUsers(users)
         .effect()
@@ -82,8 +80,8 @@ export async function eldenRingNounVerbed(options = {}) {
         .fadeIn(fadein)
         .fadeOut(Math.max(fadein / 2, duration / 6))
         .screenSpace()
-        .screenSpacePosition({ x: partTwoOffset, y: 0 })
         .screenSpaceAnchor({ x: 0.5, y: 0.5 })
+        .screenSpacePosition({ x: -offset, y: 0 })
         .text(partTwo, {
             align: "right",
             dropShadow: true,
@@ -96,6 +94,7 @@ export async function eldenRingNounVerbed(options = {}) {
             fontSize: fontSize,
             padding: 10,
             stroke: "#dcaf2d",
+            anchor: { x: 0, y: 0.5 },
         })
         .forUsers(users)
         .play();
