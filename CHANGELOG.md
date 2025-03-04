@@ -1,18 +1,23 @@
 # [12.9.12](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.11...12.9.12) - Fix Tokens
 
--   `Fixes`
+- `Fixes`
     - fixed `Damage Shake` and `Dodge Animation` failing to run (🐛 @RoiLeaf)
+    
+
 # [12.9.11](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.10...12.9.11) - Burrow Depth
 
 - `Fixes`
-    - Won't show burst or burrow if the token is hidden
-    
+  
+  - Won't show burst or burrow if the token is hidden
+  
 - `Burrow x Burst`
-    - Added new burrow animation depth option
-        - Will stop showing the burrow animation if the token is lower than the depth option
-        
+  
+  - Added new burrow animation depth option
+    - Will stop showing the burrow animation if the token is lower than the depth option
     
+  
 - Updated `Polish` translation again (@Lioheart)
+  
 
 # [12.9.10](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.9...12.9.10) - Burrowing around + Sprite Fix
 
@@ -1076,17 +1081,26 @@
   - Crit Message idea
   
 
+## 12.9.12 - 2025-03-04
+
+- `Fixes`
+    - fixed `Damage Shake` and `Dodge Animation` failing to run (🐛 @RoiLeaf)
+    
+
 ## 12.9.11 - 2025-03-03
 
 - `Fixes`
-    - Won't show burst or burrow if the token is hidden
-    
+  
+  - Won't show burst or burrow if the token is hidden
+  
 - `Burrow x Burst`
-    - Added new burrow animation depth option
-        - Will stop showing the burrow animation if the token is lower than the depth option
-        
+  
+  - Added new burrow animation depth option
+    - Will stop showing the burrow animation if the token is lower than the depth option
     
+  
 - Updated `Polish` translation again (@Lioheart)
+  
 
 ## 12.9.10 - 2025-03-03
 
