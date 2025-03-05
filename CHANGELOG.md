@@ -5,8 +5,8 @@
 # [12.9.14](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.13...12.9.14) - Elden Ring Fix
 
 - `Fixes`
-    - Fixed the spacing between the parts of the `Elden Ring - Noun Verbed` (🐛 @DirtyLaundry6)
-    
+  - Fixed the spacing between the parts of the `Elden Ring - Noun Verbed` (🐛 @DirtyLaundry6)
+  
 
 # [12.9.13](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.12...12.9.13) - Fix to the Fix
 
@@ -1102,11 +1102,15 @@
   - Crit Message idea
   
 
+## 12.9.15 - 2025-03-05
+
+- Updated `Polish` translation (@Lioheart)
+
 ## 12.9.14 - 2025-03-04
 
 - `Fixes`
-    - Fixed the spacing between the parts of the `Elden Ring - Noun Verbed` (🐛 @DirtyLaundry6)
-    
+  - Fixed the spacing between the parts of the `Elden Ring - Noun Verbed` (🐛 @DirtyLaundry6)
+  
 
 ## 12.9.13 - 2025-03-04
 
