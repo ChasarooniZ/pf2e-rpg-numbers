@@ -1,3 +1,7 @@
+# [12.9.15](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.14...12.9.15) - 🔴⚪
+
+- Updated `Polish` translation (@Lioheart)
+
 # [12.9.14](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.13...12.9.14) - Elden Ring Fix
 
 - `Fixes`
