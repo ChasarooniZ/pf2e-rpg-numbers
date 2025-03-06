@@ -451,6 +451,10 @@
                     "enabled": {
                         "name": "Włącz animację ruchu podziemnego",
                         "hint": "Po włączeniu używa *nowej* animacji zakopywania JB2a podczas przesuwania zakopanego tokena (ukrywając go pomiędzy przekopywaniem)."
+                    },
+                    "depth": {
+                        "name": "Głębokość ruchu podziemnego",
+                        "hint": "Najniższa wysokość, na jakiej można ustawić token, aby przestał wyświetlać animację kopania (-10 oznacza, że wysokość musi wynosić >= -10, aby wyświetlić animację)"
                     }
                 }
             },
