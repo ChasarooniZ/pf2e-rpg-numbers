@@ -107,7 +107,7 @@ Hooks.on('init', () => {
         hint: localize('keybinds.activate-finishing-move.hint'),
         editable: [
             {
-                key: 'Q',
+                key: 'KeyQ',
                 modifiers: ['Shift'],
             },
         ],
