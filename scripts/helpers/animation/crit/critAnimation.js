@@ -13,64 +13,62 @@ import { personaCrit } from "./styles/personaCrit.js";
  * @returns {void}
  */
 export function createCritAnimation(rollDeets, critType, isSuccess = true) {
-    if (shouldCancelCriticalHit(rollDeets)) return;
-
     const imgData = getImageData(rollDeets);
     if (!imgData) return;
 
     const config = getAnimationConfig({ actor: rollDeets.token?.actor, type: rollDeets?.type, isSuccess });
+
+    if (shouldCancelCriticalHit(rollDeets, config?.enabled)) return;
     const users = getEligibleUsers(rollDeets);
 
     let type;
 
     if (critType) {
         type = critType;
-    } else if (config?.type !== 'default') {
+    } else if (config?.type !== "default") {
         type = config?.type ?? getSetting("critical.type");
     } else {
         type = isSuccess ? getSetting("critical.type") : null;
     }
 
-
     config.scale *= imgData.scale;
     config.art = config.art || imgData.img;
-    config.sfx = config.sfx || (isSuccess ? getSetting('critical.sound') : '');
+    config.sfx = config.sfx || (isSuccess ? getSetting("critical.sound") : "");
 
     //Cancels animation based on config or imgData
-    if (!(imgData?.showForToken && config.enabled !== 'off' || config.enabled === 'on') || type === null || (!isSuccess && config.enabled !== 'on')) {
+    if (
+        !((imgData?.showForToken && config.enabled !== "off") || config.enabled === "on") ||
+        type === null ||
+        (!isSuccess && config.enabled !== "on")
+    ) {
         return;
     }
     displayCritAnimation(type, rollDeets.token?.actor, users, config);
 }
 
-
 export function createTestCritAnimation(data) {
-    const {
-        userID,
-        succFail,
-        section,
-        settings,
-        actor
-    } = data;
+    const { userID, succFail, section, settings, actor } = data;
 
-    const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === 'success' });
+    const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === "success" });
 
-    const type = (config?.type !== 'default' ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type"));
+    if (shouldCancelCriticalHit(rollDeets)) return;
 
-    if (config.type === 'default' && succFail === 'failure') {
-        ui.notifications.error(localize('display-text.notifications.critical.failure.error'));
+    const type = config?.type !== "default" ? config?.type ?? getSetting("critical.type") : getSetting("critical.type");
+
+    if (config.type === "default" && succFail === "failure") {
+        ui.notifications.error(localize("display-text.notifications.critical.failure.error"));
         return;
     }
     const shouldUseToken = shouldUseTokenImage(actor.type, getSetting("critical.default-img"));
 
     if (shouldUseToken) {
-        config.scale *= ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
+        config.scale *=
+            ((actor.prototypeToken?.texture?.scaleX ?? 1) + (actor.prototypeToken?.texture?.scaleY ?? 1)) / 2;
     }
     if (!config.art) {
         config.art = shouldUseToken ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
-    config.sfx = config.sfx || (succFail === 'success' ? getSetting("critical.sound") : '')
-
+    config.sfx = config.sfx || (succFail === "success" ? getSetting("critical.sound") : "");
 
     displayCritAnimation(type, actor, [userID], config);
 }
@@ -80,7 +78,8 @@ export function createTestCritAnimation(data) {
  * @param {object} rollDeets - The details of the roll.
  * @returns {boolean} True if the animation should be canceled, false otherwise.
  */
-function shouldCancelCriticalHit(rollDeets) {
+function shouldCancelCriticalHit(rollDeets, isEnabled) {
+    if (isEnabled) return false;
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");
     return rollDeets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack));
@@ -142,39 +141,39 @@ function shouldUseTokenImage(actorType, defaultImgType) {
  * @returns {object} The animation configuration object.
  */
 function getAnimationConfig(config) {
-    const flags = config?.flags ?
-        config.flags :
-        {
-            critical: config.actor.getFlag('pf2e-rpg-numbers', 'critical'),
-            token: config.actor.getFlag('pf2e-rpg-numbers', 'token'),
-        }
+    const flags = config?.flags
+        ? config.flags
+        : {
+              critical: config.actor.getFlag("pf2e-rpg-numbers", "critical"),
+              token: config.actor.getFlag("pf2e-rpg-numbers", "token"),
+          };
 
-    const successOrFail = config.isSuccess ? 'success' : 'failure';
+    const successOrFail = config.isSuccess ? "success" : "failure";
 
     const data = {
         delay: getSetting("critical.delay") * 1000,
         offset: { x: 0, y: 0 },
-        sfx: config.isSuccess ? getSetting("critical.sound") : '',
+        sfx: config.isSuccess ? getSetting("critical.sound") : "",
         volume: getSetting("critical.volume") / 100,
     };
     let result = {};
 
     if (config?.flags) {
-        result = getCritActorSettings(data, successOrFail, flags, config?.type)
+        result = getCritActorSettings(data, successOrFail, flags, config?.type);
     } else {
         switch (config?.type) {
-            case 'perception-check':
-            case 'skill-check':
-                result = getCritActorSettings(data, successOrFail, flags, 'checks')
+            case "perception-check":
+            case "skill-check":
+                result = getCritActorSettings(data, successOrFail, flags, "checks");
                 break;
-            case 'attack-roll':
-                result = getCritActorSettings(data, successOrFail, flags, 'strikes')
+            case "attack-roll":
+                result = getCritActorSettings(data, successOrFail, flags, "strikes");
                 break;
-            case 'saving-throw':
-                result = getCritActorSettings(data, successOrFail, flags, 'saves')
+            case "saving-throw":
+                result = getCritActorSettings(data, successOrFail, flags, "saves");
                 break;
             default:
-                result = getCritActorSettings(data, successOrFail, flags)
+                result = getCritActorSettings(data, successOrFail, flags);
                 break;
         }
     }
@@ -216,29 +215,29 @@ function displayCritAnimation(critType, actor, users, imgData, config) {
             personaCrit(actor, users, imgData, config);
             break;
         default:
-            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
-            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`)
+            ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`);
+            console.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`);
             break;
     }
 }
 
-
-
-function getCritActorSettings(data, successOrFail, flags, type = 'default') {
+function getCritActorSettings(data, successOrFail, flags, type = "default") {
     const result = { ...data };
     const typeSpecificSettings = flags?.critical?.[successOrFail]?.[type];
     const baseSettings = flags?.critical?.[successOrFail]?.default;
 
-    result.art = typeSpecificSettings?.art || baseSettings?.art || '';
-    result.enabled = typeSpecificSettings?.enabled === 'default' ? baseSettings?.enabled : typeSpecificSettings?.enabled;
+    result.art = typeSpecificSettings?.art || baseSettings?.art || "";
+    result.enabled =
+        typeSpecificSettings?.enabled === "default" ? baseSettings?.enabled : typeSpecificSettings?.enabled;
     result.offset.x = (typeSpecificSettings?.offset?.x || (baseSettings?.offset?.x ?? 0)) / 100;
     result.offset.y = (typeSpecificSettings?.offset?.y || (baseSettings?.offset?.y ?? 0)) / 100;
-    result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0)
+    result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0);
     result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale ?? 1;
-    result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || '';
-    result.type = typeSpecificSettings?.type === 'default' ? baseSettings?.type : typeSpecificSettings?.type;
+    result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || "";
+    result.type = typeSpecificSettings?.type === "default" ? baseSettings?.type : typeSpecificSettings?.type;
 
-    const volume = (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
+    const volume =
+        (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
     result.volume = (volume * result.volume) / 100;
 
     return result;
