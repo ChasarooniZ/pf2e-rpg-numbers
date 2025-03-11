@@ -1,0 +1,29 @@
+<h2
+    data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />"
+>
+    {{localize "pf2e-rpg-numbers.module-settings.headers.finishing-moves"}}
+    <i class="fa-regular fa-message"></i>
+</h2>
+<div>
+    {{#each rows as |row|}}
+        <div>
+            <div class="form-group">
+                <label
+                    for="settings.critical.enabled"
+                    data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.enabled.hint"}}"
+                >
+                    {{localize "pf2e-rpg-numbers.module-settings.critical.enabled.name"}}
+                </label>
+                <input
+                    type="checkbox"
+                    id="settings.critical.enabled"
+                    name="settings.critical.enabled"
+                    {{checked settings.critical.enabled}}
+                />
+                <button>
+                    
+                </button>
+            </div>
+        </div>
+    {{/each}}
+</div>
