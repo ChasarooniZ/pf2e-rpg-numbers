@@ -1,6 +1,9 @@
-# [12.9.16](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.15...12.9.16) - Fixes and Death
+# [12.9.16](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.15...12.9.16) - Fixes
 
--   Updated size of `From Software` `Noun Verbed` and `You Died` rectangles to better match
+-   `Fixes`
+    -   Updated size of `From Software` `Noun Verbed` and `You Died` rectangles to better match
+    -   Fixed settings mapping for `Critical` `Checks or Attacks`
+    -   Fixed actor settings for `Critical` override on for `skills`
 
 # [12.9.15](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.14...12.9.15) - 🔴⚪
 
