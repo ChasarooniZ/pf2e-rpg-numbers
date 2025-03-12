@@ -21,7 +21,7 @@ export async function eldenRingNounVerbed(options = {}) {
     const [partOne, partTwo] = [text.slice(0, text.length / 2), text.slice(text.length / 2)];
     const offset = getTextWidth(" ", `${fontSize}pt Lusitana-Regular`) * 0.4;
 
-    const rect = { height: fontSize * 1.5, width: 4000 };
+    const rect = { height: fontSize * 2, width: 4000 };
     const fadein = 500;
 
     return new Sequence()

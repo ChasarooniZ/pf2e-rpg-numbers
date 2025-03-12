@@ -17,7 +17,7 @@ export async function eldenRingDeath(options = {}) {
     const duration = (options.duration ?? getSetting(`from-software.death.duration`)) * 1000;
     const users = options?.users ?? game.users.map((u) => u.id);
 
-    const rect = { height: fontSize * 1.5, width: 4000 };
+    const rect = { height: fontSize * 2, width: 4000 };
     const fadein = 500;
 
     return (
