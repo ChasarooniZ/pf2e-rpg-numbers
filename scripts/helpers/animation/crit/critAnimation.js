@@ -51,8 +51,6 @@ export function createTestCritAnimation(data) {
 
     const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === "success" });
 
-    if (shouldCancelCriticalHit(rollDeets)) return;
-
     const type = config?.type !== "default" ? config?.type ?? getSetting("critical.type") : getSetting("critical.type");
 
     if (config.type === "default" && succFail === "failure") {

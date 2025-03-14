@@ -1,3 +1,7 @@
+# [12.9.17](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.16...12.9.17) - Fixed Crit Testing
+
+-   Fixed issue where testing a `Critical` in the actor menu fails every time
+
 # [12.9.16](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.15...12.9.16) - Fixes
 
 -   `Fixes`
