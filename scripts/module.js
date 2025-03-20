@@ -60,7 +60,7 @@ Hooks.on("ready", () => {
                         shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome)
                     }
 
-                    if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context.outcome ?? "none")) {
+                    if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
                         handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object)
                     }
                 }
@@ -172,7 +172,7 @@ function checkRollNumbers(dat, msg) {
     //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
-            outcome: msg.flags.pf2e.context.outcome ?? "none",
+            outcome: msg?.flags?.pf2e?.context?.outcome ?? "none",
             token: msg.token,
             whisper: msg.whisper,
             roll: msg.rolls[0]?.total ?? "",
