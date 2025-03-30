@@ -824,7 +824,6 @@
 
 -   Added fix for Module.json
 -   Created Changelog
--
 
 # 11.0.1 - First Stab at it
 
@@ -837,14 +836,3 @@
     -   performance optimization
     -   Text options
     -   Crit Message idea
-
-## 12.9.17 - 2025-03-14
-
--   Fixed issue where testing a `Critical` in the actor menu fails every time
-
-## 12.9.16 - 2025-03-12
-
--   `Fixes`
-    -   Updated size of `From Software` `Noun Verbed` and `You Died` rectangles to better match
-    -   Fixed settings mapping for `Critical` `Checks or Attacks`
-    -   Fixed actor settings for `Critical` override on for `skills`
