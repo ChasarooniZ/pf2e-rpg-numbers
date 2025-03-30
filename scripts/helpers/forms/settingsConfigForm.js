@@ -35,6 +35,7 @@ const settingsConfig = {
                 enabled: "check-animations.sfx.enabled",
                 checkOrAttack: "check-animations.sfx.check-or-attack",
                 options: "check-animations.sfx.options",
+                pcOrNPC: "critical.show-on-token-type",
                 volume: { path: "check-animations.sfx.volume", type: "number", range: { min: 0, max: 100, step: 1 } },
                 file: {
                     criticalSuccess: "check-animations.sfx.file.criticalSuccess",

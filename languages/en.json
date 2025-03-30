@@ -186,6 +186,15 @@
                             "crits-only": "Crits Only"
                         }
                     },
+                    "show-on-token-type": {
+                        "name": "Play for these actors...",
+                        "hint": "Choose to play sfx for PCs, NPCS, or Both",
+                        "choices": {
+                            "pc": "PCs",
+                            "npc": "NPCs",
+                            "pc+npc": "PCs & NPCs"
+                        }
+                    },
                     "volume": {
                         "name": "SFX Volume",
                         "hint": "How Loud SFX are"

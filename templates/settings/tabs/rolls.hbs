@@ -1,6 +1,9 @@
 <span>
     {{! Damage Numbers }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-numbers.gif' />">
+    <h2
+        data-tooltip-direction="LEFT"
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-numbers.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}
         <i class="fa-solid fa-swords"></i>
     </h2>
@@ -8,6 +11,7 @@
     <div class="form-group">
         <label
             for="settings.dmg-numbers.enabled"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.enabled.name"}}
@@ -23,6 +27,7 @@
     <div class="form-group">
         <label
             for="settings.dmg-numbers.whenTo"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.dmg-numbers.on-apply-or-roll.name"}}
@@ -193,7 +198,10 @@
 </span>
 <span>
     {{! Check Numbers }}
-    <h2 data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/check-text.gif' />">
+    <h2
+        data-tooltip-direction="LEFT"
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/check-text.gif' />"
+    >
         {{localize "pf2e-rpg-numbers.module-settings.headers.check-animations.title"}}
         <i class="fa-regular fa-dice-d20"></i>
     </h2>
@@ -201,6 +209,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.enabled"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.enabled.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.enabled.name"}}
@@ -216,6 +225,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.colorScheme"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.color-scheme.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.color-scheme.name"}}
@@ -232,6 +242,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.showOutCome"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.outcome-result.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.outcome-result.name"}}
@@ -248,6 +259,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.fontSize"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.font-size.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.font-size.name"}}
@@ -258,6 +270,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.duration"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.duration.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.duration.name"}}
@@ -278,6 +291,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.enabled"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.enabled.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.enabled.name"}}
@@ -293,6 +307,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.checkOrAttack"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.check-or-attack.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.check-or-attack.name"}}
@@ -309,6 +324,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.options"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.options.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.options.name"}}
@@ -325,6 +341,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.volume"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.volume.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.volume.name"}}
@@ -341,8 +358,10 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.file.criticalSuccess"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.hint"
-                }}"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{
+                localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.hint"
+            }}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.name"}}
         </label>
@@ -358,6 +377,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.file.success"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.success.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.success.name"}}
@@ -374,6 +394,7 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.file.failure"
+            data-tooltip-direction="LEFT"
             data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.failure.hint"}}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.failure.name"}}
@@ -390,8 +411,10 @@
     <div class="form-group">
         <label
             for="settings.check-animations.sfx.file.criticalFailure"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.hint"
-                }}"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{
+                localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.hint"
+            }}"
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.name"}}
         </label>
