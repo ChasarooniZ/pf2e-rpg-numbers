@@ -92,7 +92,7 @@ export function registerCheckAnimationSettings() {
 
     registerSetting({
         category: "check-animations",
-        id: "check-animations.show-on-token-type",
+        id: "check-animations.sfx.show-on-token-type",
         desc: "sfx.show-on-token-type",
         scope: "world",
         config: false,

@@ -337,6 +337,23 @@
             }}
         </select>
     </div>
+    {{! PC or NPC }}
+    <div class="form-group">
+        <label
+            for="settings.check-animations.sfx.pcOrNPC"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.show-on-token-type.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.show-on-token-type.name"}}
+        </label>
+        <select id="settings.check-animations.sfx.pcOrNPC" name="settings.check-animations.sfx.pcOrNPC">
+            {{selectOptions
+                settings.check-animations.sfx.pcOrNPC.choices
+                selected=settings.check-animations.sfx.pcOrNPC.value
+                localize=true
+            }}
+        </select>
+    </div>
     {{! SFX Volume }}
     <div class="form-group">
         <label

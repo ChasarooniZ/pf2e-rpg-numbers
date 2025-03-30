@@ -74,12 +74,15 @@ export async function generateRollScroll(roll_deets) {
         .forUsers(usersToPlayFor);
 
     // Simplify sound effect handling
-    const seq_handled = handleSFX(outcome, type, seq, usersToPlayFor);
+    const seq_handled = handleSFX(outcome, type, seq, token?.actor?.type, usersToPlayFor);
     seq_handled.play();
 }
 
-function handleSFX(outcome, type, seq, usersToPlayFor) {
+function handleSFX(outcome, type, seq, actorType, usersToPlayFor) {
     if (getSetting("check-animations.sfx.enabled") && outcome !== "none") {
+        //exit early if don't play sfx for actor type
+        if (!playSFXForActorType(actorType)) return seq;
+
         const isAttack = type === "attack-roll";
         const combatSetting = getSetting("check-animations.sfx.check-or-attack");
         if (combatSetting === "both" || combatSetting === (isAttack ? "attacks" : "checks")) {
@@ -109,7 +112,10 @@ function handleSFX(outcome, type, seq, usersToPlayFor) {
 function addSFX(outcome, seq, usersToPlayFor) {
     let sfx = getSetting(`check-animations.sfx.file.${outcome}`);
     if (sfx.startsWith("[")) {
-        const sfxOptions = sfx.slice(1, -1).split(",").map(it => it.replace(/"/g, ""));
+        const sfxOptions = sfx
+            .slice(1, -1)
+            .split(",")
+            .map((it) => it.replace(/"/g, ""));
         sfx = Sequencer.Helpers.random_array_element(sfxOptions);
     }
     seq.sound()
@@ -118,3 +124,10 @@ function addSFX(outcome, seq, usersToPlayFor) {
         .forUsers(usersToPlayFor);
 }
 
+function playSFXForActorType(actorType) {
+    const enabledTokenType = getSetting("check-animations.sfx.show-on-token-type");
+    return (
+        (actorType === "character" && enabledTokenType !== "npc") ||
+        (actorType !== "character" && enabledTokenType !== "pc")
+    );
+}
