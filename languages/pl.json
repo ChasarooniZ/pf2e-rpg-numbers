@@ -186,6 +186,15 @@
                             "crits-only": "Tylko krytyki"
                         }
                     },
+                    "show-on-token-type": {
+                        "name": "Odtwórz dla tych aktorów...",
+                        "hint": "Wybierz, czy chcesz grać sfx dla graczy, NPC lub obu",
+                        "choices": {
+                            "pc": "Gracze",
+                            "npc": "Bohaterowie Niezależni",
+                            "pc+npc": "Gracze i BNowie"
+                        }
+                    },
                     "volume": {
                         "name": "Głośność SFX",
                         "hint": "Jak głośne są efekty dźwiękowe"
