@@ -1,3 +1,4 @@
+- Updated `Polish` translation (@Lioheart)
 # [12.9.18](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.1...12.9.18) - A Little More Settings
 
 - Add setting to make sounds play on `PC`, `NPC`, or `Both`
