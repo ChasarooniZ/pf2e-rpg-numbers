@@ -1,12 +1,16 @@
-# [12.9.19](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.18...12.9.19) - Disableable Crits
+# [12.9.20](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.19...12.9.20) - Disableable Crits
 
 -   Updated `Polish` translation (@Lioheart)
 -   Fixed issue where `Critical Animation` setting for disabling animation for user setting wasn't working. (**Note** to update this, the criticals need to be toggle on, saved, then off again) (🐛 @GuitarGuyNick)
 
-# [12.9.18](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.17...12.9.18) - A Little More Settings
+# [12.9.19](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.17...12.9.18) - A Little More Settings
 
 -   Add setting to make sounds play on `PC`, `NPC`, or `Both`
 -   Changed tooltips to display on the left for easier settings navigation
+
+# [12.9.18](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.17...12.9.18) - Fixed No Outcome handling
+
+-   Added Better Handling for no outcome on roll
 
 # [12.9.17](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.16...12.9.17) - Fixed Crit Testing
 
