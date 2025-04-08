@@ -51,6 +51,7 @@ export function registerSetting(data) {
         config: data.config,
         default: data.default,
         type: data.type,
+        onChange: data?.onChange,
     };
     if (data.requiresReload) settingData.requiresReload = data.requiresReload;
     if (data.filePicker) settingData.filePicker = data.filePicker;
