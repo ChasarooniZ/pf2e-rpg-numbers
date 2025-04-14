@@ -50,8 +50,8 @@ export function getVisibleUsers(tok) {
         // check vision if pf2e perception active
         if (game.modules.get("pf2e-perception")?.active) {
             let cantSee = [];
-            for (const key in tok?.flags?.["pf2e-perception"]) {
-                if (["undetected", "unnoticed"].includes(tok?.flags?.["pf2e-perception"]?.[key]?.visibility)) {
+            for (const key in tok?.flags?.["pf2e-perception"]?.data) {
+                if (["undetected", "unnoticed"].includes(tok?.flags?.["pf2e-perception"]?.data?.[key]?.visibility)) {
                     cantSee.push(canvas.tokens.get(key)?.actor?.uuid);
                 }
             }
