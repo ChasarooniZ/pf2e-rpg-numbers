@@ -80,5 +80,5 @@ export async function sekiroDeath(options = {}) {
             padding: 10,
         })
         .forUsers(users)
-        .play();
+        .play({preload: true });
 }

@@ -161,6 +161,6 @@ export async function disgaea7Crit(actor, users, config) {
             .volume(config.volume)
             .forUsers(users)
             .delay(config.delay)
-            .play();
+            .play({preload: true });
     };
 }

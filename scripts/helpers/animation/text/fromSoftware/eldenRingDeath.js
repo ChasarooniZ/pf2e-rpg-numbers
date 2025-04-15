@@ -64,6 +64,6 @@ export async function eldenRingDeath(options = {}) {
                 padding: 10,
             })
             .forUsers(users)
-            .play()
+            .play({preload: true })
     );
 }

@@ -29,7 +29,7 @@ export function burstBurrow(data) {
         .file("jb2a.burrow.out.01.brown.1")
         .scaleToObject(3 * sizeMultiplier)
         .belowTokens()
-        .play();
+        .play({preload: true });
 }
 
 function crossesZero(a, b) {
@@ -64,5 +64,5 @@ export async function burrow(coord1, coord2, data) {
         .on(token)
         .fadeIn(500, { ease: "easeInCubic" })
         .opacity(1)
-        .play();
+        .play({preload: true });
 }

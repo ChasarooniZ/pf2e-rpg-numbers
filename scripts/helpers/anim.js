@@ -88,7 +88,7 @@ export function getVisibleUsers(tok) {
 //             .on(target)
 //             .moveSpeed(10)
 //             .moveTowards({ x: tok_x, y: tok_y, ease: "easeInOutSine" })
-//             .play();
+//             .play({preload: true });
 //     });
 // }
 

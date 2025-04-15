@@ -104,7 +104,7 @@ async function dodgeOnMiss(token, target) {
         .on(target)
         .waitUntilFinished()
         .opacity(1)
-        .play();
+        .play({preload: true });
 }
 
 async function bounceOffTarget(token, target, filter = {}) {
@@ -141,5 +141,5 @@ async function bounceOffTarget(token, target, filter = {}) {
         .scaleToObject(sizeMultiplier * 2)
         .spriteAnchor({ x: 0.9, y: 0.5 })
         .forUsers(users)
-        .play();
+        .play({preload: true });
 }

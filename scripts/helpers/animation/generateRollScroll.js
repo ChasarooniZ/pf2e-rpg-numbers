@@ -75,7 +75,7 @@ export async function generateRollScroll(roll_deets) {
 
     // Simplify sound effect handling
     const seq_handled = handleSFX(outcome, type, seq, token?.actor?.type, usersToPlayFor);
-    seq_handled.play();
+    seq_handled.play({preload: true });
 }
 
 function handleSFX(outcome, type, seq, actorType, usersToPlayFor) {

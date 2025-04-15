@@ -76,7 +76,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
         .duration(duration)
         .waitUntilFinished()
         .forUsers(usersToPlayFor)
-        .play();
+        .play({preload: true });
 }
 
 /**

@@ -97,5 +97,5 @@ export async function eldenRingNounVerbed(options = {}) {
             anchor: { x: 0, y: 0.5 },
         })
         .forUsers(users)
-        .play();
+        .play({preload: true });
 }

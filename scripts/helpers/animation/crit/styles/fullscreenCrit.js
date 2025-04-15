@@ -47,5 +47,5 @@ export async function fullscreenCrit(actor, users, config) {
         .volume(config.volume)
         .forUsers(users)
         .delay(config.delay)
-        .play();
+        .play({preload: true });
 }

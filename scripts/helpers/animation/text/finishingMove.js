@@ -28,7 +28,7 @@ export async function createFinishingMoveAnimation(text) {
         wordsDone += line.split(" ").length;
     });
 
-    seq.play();
+    seq.play({preload: true });
 
     if (!settings.keepOn) {
         toggleFinishingMoveControl();

@@ -23,5 +23,5 @@ export async function turnTokenOnAttack(token, target) {
         .animation()
         .on(token)
         .rotateIn(angle, turnTime, { ease: "easeInCubic" })
-        .play();
+        .play({preload: true });
 }
