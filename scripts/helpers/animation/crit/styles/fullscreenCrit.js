@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Disgaea 7
@@ -12,7 +12,7 @@ import { getSetting } from "../../../misc.js";
 
 export async function fullscreenCrit(actor, users, config) {
     const duration = getSetting("critical.duration") * 1000;
-    const seq = new Sequence()
+    const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         //Mask + image
         .effect()
         .file(config.art, {

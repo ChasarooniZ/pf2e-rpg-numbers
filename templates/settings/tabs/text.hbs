@@ -420,18 +420,17 @@
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/versus.gif' />"
     >
-        {{localize "pf2e-rpg-numbers.module-settings.headers.versus"}} 
-        <i class="fa-solid fa-square-v"></i>
-        <i class="fa-solid fa-square-s"></i>
+        {{localize "pf2e-rpg-numbers.module-settings.headers.versus"}}
+        <i class="fa-regular fa-swords"></i>
     </h2>
     {{! Enabled on Combat Start }}
     <div class="form-group">
         <label
             for="settings.vs.combatStart"
             data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.hint"}}"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.versus.combat-start.hint"}}"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.name"}}
+            {{localize "pf2e-rpg-numbers.module-settings.versus.combat-start.name"}}
         </label>
         <input
             type="checkbox"
@@ -445,25 +444,20 @@
         <label
             for="settings.vs.showName"
             data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.hint"}}"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.versus.show-name.hint"}}"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.name"}}
+            {{localize "pf2e-rpg-numbers.module-settings.versus.show-name.name"}}
         </label>
-        <input
-            type="checkbox"
-            id="settings.vs.showName"
-            name="settings.vs.showName"
-            {{checked settings.vs.showName}}
-        />
+        <input type="checkbox" id="settings.vs.showName" name="settings.vs.showName" {{checked settings.vs.showName}} />
     </div>
     {{! Duration }}
     <div class="form-group">
         <label
             for="settings.vs.duration"
             data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.hint"}}"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.versus.show-name.hint"}}"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.name"}}
+            {{localize "pf2e-rpg-numbers.module-settings.versus.show-name.name"}}
         </label>
         {{numberInput
             settings.vs.duration.value

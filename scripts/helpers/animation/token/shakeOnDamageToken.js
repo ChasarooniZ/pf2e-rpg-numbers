@@ -1,4 +1,5 @@
 import { getTokenShakeScale, getVisibleUsers } from "../../anim.js";
+import { MODULE_ID } from "../../misc.js";
 
 /**
  * Shakes a token to visualize damage
@@ -61,7 +62,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
     const values = generateShakeValues(shakes, movAmount);
     const iterationDuration = duration / values.length;
 
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .effect()
         .atLocation(token)
         .file(getTokenImage(token?.document))

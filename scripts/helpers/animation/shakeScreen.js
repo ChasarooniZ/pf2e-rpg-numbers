@@ -1,4 +1,4 @@
-import { getSetting } from "../misc.js";
+import { getSetting, MODULE_ID } from "../misc.js";
 
 /**
  * Shakes the screen based on damage taken and settings
@@ -35,5 +35,9 @@ export async function shakeScreen(uuid, damage) {
     } else {
         userToShake = [gmID];
     }
-    new Sequence().canvasPan().shake({ duration: 250, strength: shake_amt }).forUsers(userToShake).play({preload: true });
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+        .canvasPan()
+        .shake({ duration: 250, strength: shake_amt })
+        .forUsers(userToShake)
+        .play({ preload: true });
 }

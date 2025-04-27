@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 import { getTextWidth } from "../fromSoftwareText.js";
 
 /**
@@ -24,7 +24,7 @@ export async function eldenRingNounVerbed(options = {}) {
     const rect = { height: fontSize * 2, width: 4000 };
     const fadein = 500;
 
-    return new Sequence()
+    return new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .sound()
         .file(sound)
         .delay(fadein / 2)

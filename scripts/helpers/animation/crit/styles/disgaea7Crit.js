@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Disgaea 7
@@ -23,7 +23,7 @@ export async function disgaea7Crit(actor, users, config) {
     imga.onload = ({ target }) => {
         const imgWidth = target.naturalWidth;
         const imgHeight = target.naturalHeight;
-        new Sequence()
+        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
             //BG start
             .effect()
             .syncGroup(`disgaea-7-crit-${actor.uuid}`)
@@ -161,6 +161,6 @@ export async function disgaea7Crit(actor, users, config) {
             .volume(config.volume)
             .forUsers(users)
             .delay(config.delay)
-            .play({preload: true });
+            .play({ preload: true });
     };
 }

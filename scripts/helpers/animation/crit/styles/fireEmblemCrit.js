@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 
 /**
  * Perform a critical hit animation resembling the style of Fire Emblem.
@@ -18,7 +18,7 @@ export async function fireEmblemCrit(actor, users, config) {
     const duration = getSetting("critical.duration") * 1000;
 
     //Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
-    new Sequence()
+    new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         //background
         .effect()
         .zIndex(-1)
@@ -69,15 +69,12 @@ export async function fireEmblemCrit(actor, users, config) {
             ratioY: false,
         })
         // Y Offset
-        .animateProperty(
-            "sprite",
-            "position.y",
-            {
-                from: config?.offset?.y ?? 0,
-                to: config?.offset?.y ?? 0,
-                duration: duration,
-                screenSpace: true
-            })
+        .animateProperty("sprite", "position.y", {
+            from: config?.offset?.y ?? 0,
+            to: config?.offset?.y ?? 0,
+            duration: duration,
+            screenSpace: true,
+        })
         .duration(duration)
         .forUsers(users)
         .delay(config.delay)
@@ -89,5 +86,5 @@ export async function fireEmblemCrit(actor, users, config) {
         .volume(config.volume)
         .forUsers(users)
         .delay(config.delay)
-        .play({preload: true });
+        .play({ preload: true });
 }

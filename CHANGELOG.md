@@ -5,6 +5,7 @@
     - Also option to input a team name for the players and a team name for enemies (if omitted the team name will not be displayed)
 - `Updates`
   - All animations now have __**preloading**__ (i don't know how i didn't realize this was just an option for `play()`)
+  - Added the `moduleName` to all animations as well
   - `Target Dodges`
     - Fixed setting localization breaking
   - `Manifest`

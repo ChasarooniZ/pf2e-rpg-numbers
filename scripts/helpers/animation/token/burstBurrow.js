@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 
 export function burstBurrow(data) {
     if (!data?.token) return;
@@ -14,7 +14,7 @@ export function burstBurrow(data) {
     const persistent = getSetting("burst-burrow.persistent"); // Should the ground hole stay?
     const sizeMultiplier = getSetting("burst-burrow.size-multiplier"); //Size of the FXs
     //Animation
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .effect() //Ground FX
         .atLocation(data?.token)
         .file("jb2a.burrow.out.01.still_frame.0")
@@ -48,7 +48,7 @@ export async function burrow(coord1, coord2, data) {
     if (coord1 === coord2) return;
     const token = data.token.object;
     const file = "jb2a.burrow.ranged.01.brown";
-    return new Sequence()
+    return new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .animation()
         .on(token)
         .opacity(0)

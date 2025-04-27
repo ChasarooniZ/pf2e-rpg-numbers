@@ -3,7 +3,7 @@ import { registerSetting } from "../helpers/misc.js";
 export function registerVersusSettings() {
     registerSetting({
         category: "vs",
-        id: "combat-start",
+        id: "vs.combat-start",
         desc: "combat-start",
         scope: "world",
         config: false,
@@ -13,7 +13,7 @@ export function registerVersusSettings() {
 
     registerSetting({
         category: "vs",
-        id: "show-name",
+        id: "vs.show-name",
         desc: "show-name",
         scope: "world",
         config: false,
@@ -23,7 +23,7 @@ export function registerVersusSettings() {
 
     registerSetting({
         category: "vs",
-        id: "duration",
+        id: "vs.duration",
         desc: "duration",
         scope: "world",
         config: false,

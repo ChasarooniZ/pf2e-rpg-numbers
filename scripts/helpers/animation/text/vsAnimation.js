@@ -1,4 +1,4 @@
-import { getSetting, localize } from "../../misc.js";
+import { getSetting, localize, MODULE_ID } from "../../misc.js";
 
 export async function vsAnimation() {
     const CONFIG = {
@@ -88,7 +88,7 @@ export async function vsAnimation() {
                         : token?.document?.ring?.colors?.ring?.css || "#FFA500"),
             })),
     };
-    let seq = new Sequence();
+    let seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
     let cnt = 1;
     for (const p of art.party) {
         seq = createActorAnim(seq, {
@@ -131,7 +131,7 @@ export async function vsAnimation() {
         seq = teamName(seq, { name: teamNames.opposition, side: "right" });
     }
 
-    seq.play({ preload: true });
+    seq.play({preload: true });
     //})
 
     function createActorAnim(seq, { art, number, total, side = "left", visible, color }) {

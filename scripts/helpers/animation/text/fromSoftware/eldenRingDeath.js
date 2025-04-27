@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 
 /**
  * Creates an Elden Ring-style "Death" sequence.
@@ -21,7 +21,7 @@ export async function eldenRingDeath(options = {}) {
     const fadein = 500;
 
     return (
-        new Sequence()
+        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
             // Sound Effect
             .sound()
             .file(sound)

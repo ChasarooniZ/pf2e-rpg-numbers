@@ -1,5 +1,5 @@
 import { getVisibleUsers } from "../../anim.js";
-import { getSetting } from "../../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "./shakeOnDamageToken.js";
 
 const COLOR_FILTER = {
@@ -60,7 +60,7 @@ async function dodgeOnMiss(token, target) {
     const position = { x: dx * rayDistance, y: dy * rayDistance };
     const users = getVisibleUsers(target);
 
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .animation()
         .delay(delay)
         .on(target)
@@ -112,7 +112,7 @@ async function bounceOffTarget(token, target, filter = {}) {
     const users = getVisibleUsers(target);
     const sizeMultiplier = 1.2;
 
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .effect() //Burst FX
         .delay(delay)
         .atLocation(target)

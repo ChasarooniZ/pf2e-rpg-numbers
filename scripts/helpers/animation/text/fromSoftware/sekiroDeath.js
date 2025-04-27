@@ -1,4 +1,4 @@
-import { getSetting } from "../../../misc.js";
+import { getSetting, MODULE_ID } from "../../../misc.js";
 
 /**
  * Creates a Sekiro style "Death" sequence.
@@ -21,7 +21,7 @@ export async function sekiroDeath(options = {}) {
     const separationHeight = (bigFontSize / 2) * 0.85;
     const fadein = 500;
 
-    new Sequence()
+    new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         //Sound
         .sound()
         .file(sound)
@@ -80,5 +80,5 @@ export async function sekiroDeath(options = {}) {
             padding: 10,
         })
         .forUsers(users)
-        .play({preload: true });
+        .play({ preload: true });
 }

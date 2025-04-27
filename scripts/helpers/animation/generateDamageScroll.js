@@ -1,5 +1,5 @@
 import { getFontScale, findTypeWithLargestTotal, getVisibleAndMsgVisibleUsers } from "../anim.js";
-import { getSetting } from "../misc.js";
+import { getSetting, MODULE_ID } from "../misc.js";
 
 /**
  * Generates damage scrolling text for a passed in list of damage values
@@ -51,7 +51,7 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
         strokeThickness: 5,
     };
 
-    const seq = new Sequence();
+    const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
