@@ -7,6 +7,8 @@
   - All animations now have __**preloading**__ (i don't know how i didn't realize this was just an option for `play()`)
   - `Target Dodges`
     - Fixed setting localization breaking
+  - `Manifest`
+    - Fixed link to sequencer's `module.json`
 
 
 # [12.9.20](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.19...12.9.20) - Disableable Crits

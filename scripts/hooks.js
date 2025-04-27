@@ -3,6 +3,7 @@ import { eldenRingNounVerbed } from "./helpers/animation/text/fromSoftware/elden
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
+import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
 
 /**
  * Handles pre-deletion actions for combat encounters.
@@ -183,5 +184,11 @@ export async function preUpdateToken(token, changes, _misc, _id) {
             };
             burrow(coord1, coord2, { token });
         }
+    }
+}
+
+export function combatStart(encounter, _turn) {
+    if (getSetting("vs.combat-start") && game.user.isGM) {
+        vsAnimation();
     }
 }

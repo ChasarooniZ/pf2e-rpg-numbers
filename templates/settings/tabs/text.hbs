@@ -415,3 +415,62 @@
         />
     </div>
 </span>
+<span>
+    <h2
+        data-tooltip-direction="LEFT"
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/versus.gif' />"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.headers.versus"}} 
+        <i class="fa-solid fa-square-v"></i>
+        <i class="fa-solid fa-square-s"></i>
+    </h2>
+    {{! Enabled on Combat Start }}
+    <div class="form-group">
+        <label
+            for="settings.vs.combatStart"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.vs.combatStart"
+            name="settings.vs.combatStart"
+            {{checked settings.vs.combatStart}}
+        />
+    </div>
+    {{! Enabled Show Name Dialog }}
+    <div class="form-group">
+        <label
+            for="settings.vs.showName"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.vs.showName"
+            name="settings.vs.showName"
+            {{checked settings.vs.showName}}
+        />
+    </div>
+    {{! Duration }}
+    <div class="form-group">
+        <label
+            for="settings.vs.duration"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.from-software.death.font-size.name"}}
+        </label>
+        {{numberInput
+            settings.vs.duration.value
+            name="settings.vs.duration"
+            step=settings.vs.duration.range.step
+            min=settings.vs.duration.range.min
+            max=settings.vs.duration.range.max
+        }}
+    </div>
+</span>
