@@ -1,7 +1,7 @@
 # [12.10.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.1...12.10.2) - Localization
 
 -   Fixed wrong text being used for `VS Animation`'s `Duration` setting
--   Updated `Polish` translation (@rectulo)
+-   Updated `French` translation (@rectulo)
 
 # [12.10.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.0...12.10.1) - Sneak Attack
 
