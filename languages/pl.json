@@ -62,6 +62,7 @@
                         "death": "Umarłeś"
                     }
                 },
+                "versus": "Animacja VS",
                 "debug": "Debugowanie"
             },
             "dmg-numbers": {
@@ -652,6 +653,20 @@
                     "hint": "Dodaje funkcje związane z modyfikatorami. Wymaga zainstalowania modifiers matters, a także PF2e Animations."
                 }
             },
+            "versus": {
+                "combat-start": {
+                    "name": "Pokaż przy rozpoczęciu walki?",
+                    "hint": "Pokaż animację Versus na początku walki. Jeśli opcja jest wyłączona, musisz ją uruchomić ręcznie za pomocą klawisza akcji, gdy walka jest otwarta."
+                },
+                "show-name": {
+                    "name": "Pokaż nazwy drużyn?",
+                    "hint": "Po włączeniu spowoduje wyświetlenie okna dialogowego z prośbą o wprowadzenie nazw drużyn przed ich wyświetleniem. (Domyślna nazwa drużyny jest taka sama jak nazwa aktywnej drużyny)."
+                },
+                "duration": {
+                    "name": "Czas trwania",
+                    "hint": "Jak długo (w sekundach) powinna trwać animacja vs?"
+                }
+            },
             "debug-mode": {
                 "name": "Tryb debugowania",
                 "hint": "Niech konsola odbiera komunikaty dla różnych rzeczy"
@@ -779,6 +794,13 @@
             "item": {
                 "finishing-move": {
                     "name": "Nazwa ciosu kończącego"
+                }
+            },
+            "versus": {
+                "name": {
+                    "party": "Nazwa drużyny bohaterów",
+                    "opponent": "Nazwa drużyny przeciwnika",
+                    "title": "Wprowadź nazwy drużyn"
                 }
             }
         },
