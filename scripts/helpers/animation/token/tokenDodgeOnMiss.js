@@ -1,5 +1,5 @@
 import { getVisibleUsers } from "../../anim.js";
-import { getSetting } from "../../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "./shakeOnDamageToken.js";
 
 const COLOR_FILTER = {
@@ -60,7 +60,7 @@ async function dodgeOnMiss(token, target) {
     const position = { x: dx * rayDistance, y: dy * rayDistance };
     const users = getVisibleUsers(target);
 
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .animation()
         .delay(delay)
         .on(target)
@@ -104,7 +104,7 @@ async function dodgeOnMiss(token, target) {
         .on(target)
         .waitUntilFinished()
         .opacity(1)
-        .play();
+        .play({preload: true });
 }
 
 async function bounceOffTarget(token, target, filter = {}) {
@@ -112,7 +112,7 @@ async function bounceOffTarget(token, target, filter = {}) {
     const users = getVisibleUsers(target);
     const sizeMultiplier = 1.2;
 
-    new Sequence()
+    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
         .effect() //Burst FX
         .delay(delay)
         .atLocation(target)
@@ -141,5 +141,5 @@ async function bounceOffTarget(token, target, filter = {}) {
         .scaleToObject(sizeMultiplier * 2)
         .spriteAnchor({ x: 0.9, y: 0.5 })
         .forUsers(users)
-        .play();
+        .play({preload: true });
 }

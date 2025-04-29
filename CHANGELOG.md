@@ -1,3 +1,17 @@
+# [12.10.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.20...12.10.0) - VS Everything
+- `New`
+  - `VS Animation`
+    - New option to display a Versus animation at the start of combat with all actors
+    - Also option to input a team name for the players and a team name for enemies (if omitted the team name will not be displayed)
+- `Updates`
+  - All animations now have __**preloading**__ (i don't know how i didn't realize this was just an option for `play()`)
+  - Added the `moduleName` to all animations as well
+  - `Target Dodges`
+    - Fixed setting localization breaking
+  - `Manifest`
+    - Fixed link to sequencer's `module.json`
+
+
 # [12.9.20](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.19...12.9.20) - Disableable Crits
 
 - Updated `Polish` translation (@Lioheart)

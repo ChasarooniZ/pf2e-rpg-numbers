@@ -74,7 +74,7 @@ export function getVisibleUsers(tok) {
 //         const shake_distance = 0.2;
 //         let ray_projection_amt = (tok_width / ray.distance) * shake_distance;
 //         const shakes = 7;
-//         const seq = new Sequence();
+//         const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
 //         for (let i = 0; i < shakes; i++) {
 //             const sign = i % 2 === 0 ? 1 : -1;
 //             let details = ray.project(1 + sign * ray_projection_amt);
@@ -88,7 +88,7 @@ export function getVisibleUsers(tok) {
 //             .on(target)
 //             .moveSpeed(10)
 //             .moveTowards({ x: tok_x, y: tok_y, ease: "easeInOutSine" })
-//             .play();
+//             .play({preload: true });
 //     });
 // }
 

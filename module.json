@@ -27,19 +27,11 @@
             {
                 "id": "sequencer",
                 "type": "module",
-                "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/manifest.json",
+                "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
                 "compatibility": {
                     "minimum": "3.4.9",
                     "verified": "3.4.9"
                 }
-            }
-        ],
-        "recommends": [
-            {
-                "id": "jb2a_patreon",
-                "type": "module",
-                "reason": "This module allows some of the features to work see the Wiki (https://chasarooniz.github.io/pf2e-rpg-numbers/) for more information",
-                "compatibility": {}
             }
         ]
     },

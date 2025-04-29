@@ -16,7 +16,7 @@ import {
     waitForMessage
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { applyTokenStatusEffect, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat, preUpdateToken } from "./hooks.js";
+import { applyTokenStatusEffect, combatStart, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat, preUpdateToken } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
@@ -90,6 +90,7 @@ Hooks.on("ready", () => {
     });*/
 
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
+    Hooks.on("combatStart", combatStart)
 
 
 

@@ -1,3 +1,5 @@
+import { MODULE_ID } from "../misc.js";
+
 export async function shakeOnAttack(token, outcome) {
     let strength = 10;
     if (["success", "criticalSuccess"].includes(outcome)) {
@@ -12,6 +14,10 @@ export async function shakeOnAttack(token, outcome) {
                 .filter((perm) => perm[1] === 3 && perm[0] !== gmID)
                 .map((p) => p[0]);
         }
-        new Sequence().canvasPan().shake({ duration: 250, strength }).forUsers(userToShake).play();
+        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+            .canvasPan()
+            .shake({ duration: 250, strength })
+            .forUsers(userToShake)
+            .play({ preload: true });
     }
 }

@@ -189,6 +189,11 @@ const settingsConfig = {
                 },
             },
         },
+        vs: {
+            combatStart: "vs.combat-start",
+            showName: "vs.show-name",
+            duration: { path: "vs.duration", type: "number", range: { min: 0, max: 20, step: 0.25 } },
+        },
     },
 };
 

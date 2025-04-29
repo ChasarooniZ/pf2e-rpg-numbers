@@ -62,6 +62,7 @@
                         "death": "You Died"
                     }
                 },
+                "versus": "VS Animation",
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -652,6 +653,20 @@
                     "hint": "Adds features related to modifiers matters. Requires modifiers matters to be installed, as well as PF2e Animations IIRC."
                 }
             },
+            "versus": {
+                "combat-start": {
+                    "name": "Show on Combat Start?",
+                    "hint": "Show the Versus animation on combat start, if this is disabled then you need to trigger it manually using am acor while you have a combat open"
+                },
+                "show-name": {
+                    "name": "Show Team Names?",
+                    "hint": "When enabled, will cause a dialog prompting you to input team names before then displaying. (The default for the party team name is the same as the active party's name)"
+                },
+                "duration": {
+                    "name": "Duration",
+                    "hint": "How long (in seconds) should the vs animation be?"
+                }
+            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
@@ -779,6 +794,13 @@
             "item": {
                 "finishing-move": {
                     "name": "Finishing Move Name"
+                }
+            },
+            "versus": {
+                "name": {
+                    "party": "Party Team Name",
+                    "opponent": "Opponent Team Name",
+                    "title": "Enter Team Names"
                 }
             }
         },

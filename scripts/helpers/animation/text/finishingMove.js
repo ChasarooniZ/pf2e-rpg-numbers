@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { getSetting, MODULE_ID } from "../../misc.js";
 
 /**
  * Creates a finishing move animation with text and sound effects.
@@ -17,7 +17,7 @@ export async function createFinishingMoveAnimation(text) {
     };
 
     const style = createTextStyle(settings);
-    const seq = new Sequence();
+    const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
 
     const lines = text.includes('|') ? text.split("|") : [text];
     const yPositions = calculateYPositions(lines.length);
@@ -28,7 +28,7 @@ export async function createFinishingMoveAnimation(text) {
         wordsDone += line.split(" ").length;
     });
 
-    seq.play();
+    seq.play({preload: true });
 
     if (!settings.keepOn) {
         toggleFinishingMoveControl();

@@ -1,5 +1,5 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
-import { getSetting } from "../misc.js";
+import { getSetting, MODULE_ID } from "../misc.js";
 
 // Define constant colors outside the function to avoid recreating them on every call
 const colors = {
@@ -62,7 +62,7 @@ export async function generateRollScroll(roll_deets) {
             : undefined;
 
     // Simplify sequence creation and animation
-    const seq = new Sequence();
+    const seq = new Sequence({ moduleName: game.modules.get(MODULE_ID).title });
     seq.effect()
         .atLocation(token, { offset: { y: -0.4 * token.texture.scaleY * token.width }, gridUnits: true })
         .text(`${text}`, style)
@@ -75,7 +75,7 @@ export async function generateRollScroll(roll_deets) {
 
     // Simplify sound effect handling
     const seq_handled = handleSFX(outcome, type, seq, token?.actor?.type, usersToPlayFor);
-    seq_handled.play();
+    seq_handled.play({ preload: true });
 }
 
 function handleSFX(outcome, type, seq, actorType, usersToPlayFor) {
