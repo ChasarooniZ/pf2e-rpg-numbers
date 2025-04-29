@@ -18,7 +18,7 @@
             "notes": {
                 "requires-jb2a-premium": {
                     "name": "JB2A+",
-                    "hint": "Requires JB2A Premium for some or all parts of this feature"
+                    "hint": "Requires JB2A Patreon for some or all parts of this feature"
                 },
                 "new-feature": {
                     "hint": "New Feature!"
@@ -801,6 +801,9 @@
                     "party": "Party Team Name",
                     "opponent": "Opponent Team Name",
                     "title": "Enter Team Names"
+                },
+                "tooltip": {
+                    "party": "This defaults to whatever the name of your currently active party actor is"
                 }
             }
         },
