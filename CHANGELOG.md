@@ -1,3 +1,7 @@
+# [12.10.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.1...12.10.2) - Localization
+
+-   Fixed wrong text being used for `VS Animation`'s `Duration` setting
+
 # [12.10.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.0...12.10.1) - Sneak Attack
 
 -   **Updates**
@@ -8,7 +12,7 @@
         -   Creatures that are `hidden` or `concealed` will be displayed in Silhouette
         -   Note: The `pf2e perception` handling atm is very basic as it will only check for the 'Presence of the condition' and not specifically whether it is against to a relevant token
     -   `Languages`
-      - Updated `Polish` translation (@Lioheart)
+    -   Updated `Polish` translation (@Lioheart)
 
 # [12.10.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.20...12.10.0) - VS Everything
 
