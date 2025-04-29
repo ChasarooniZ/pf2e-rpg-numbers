@@ -68,28 +68,36 @@ export async function vsAnimation() {
     const startUpEach = 100;
     const art = {
         enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
-            .filter((c) => c?.actor?.alliance === "opposition")
+            .filter(
+                (c) =>
+                    c?.actor?.alliance === "opposition" &&
+                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+            )
             .map((c) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !c?.hidden && isVisible(c.token) : isVisible(token),
+                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
                     (encounter
                         ? c?.token?.document?.ring?.colors?.ring?.css || "#FFA500"
-                        : token?.document?.ring?.colors?.ring?.css || "#FFA500"),
+                        : c?.document?.ring?.colors?.ring?.css || "#FFA500"),
             })),
         party: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
-            .filter((c) => c?.actor?.alliance === "party")
+            .filter(
+                (c) =>
+                    c?.actor?.alliance === "party" &&
+                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+            )
             .map((c) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !c?.hidden && isVisible(c.token) : isVisible(token),
+                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
                     (encounter
                         ? c?.token?.document?.ring?.colors?.ring?.css || "#FFA500"
-                        : token?.document?.ring?.colors?.ring?.css || "#FFA500"),
+                        : c?.document?.ring?.colors?.ring?.css || "#FFA500"),
             })),
     };
     let seq = new Sequence({ moduleName: game.modules.get(MODULE_ID).title });
@@ -201,7 +209,23 @@ export async function vsAnimation() {
         return seq;
     }
 
-    function isVisible(token) {
-        return token?.visible && token?.flags?.["pf2e-perception"]?.data;
+    function isVisible(tokenDoc) {
+        return (
+            tokenDoc?.visible &&
+            !Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
+                ["undetected", "unnoticed"].includes(item?.visibility)
+            ) &&
+            !tokenDoc.actor.conditions.bySlug("undetected")?.length
+        );
+    }
+
+    function isHidden(tokenDoc) {
+        return (
+            !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
+            !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
+            Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
+                ["hidden", "concealed"].includes(item?.visibility)
+            )
+        );
     }
 }
