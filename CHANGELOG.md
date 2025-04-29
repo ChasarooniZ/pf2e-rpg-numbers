@@ -1,17 +1,19 @@
+# [12.10.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.1...12.10.2) - Localization
+
+-   Fixed wrong text being used for `VS Animation`'s `Duration` setting
+-   Updated `French` translation (@rectulo)
+
 # [12.10.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.0...12.10.1) - Sneak Attack
 
-- **Updates**
-    - `VS Animation`
-        - Added better handling for visibility and outlines (🐛 @RoiLeaf)
-        - Creatures that are `undetected`, `unnoticed`, or marked as `hidden` in the combat tracker will not be shown in the animation
-            - Note: This will check if the creature also has these conditions from **any** creature
-            
-        - Creatures that are `hidden` or `concealed` will be displayed in Silhouette
-        - Note: The `pf2e perception` handling atm is very basic as it will only check for the 'Presence of the condition' and not specifically whether it is against to a relevant token
-        
-    - `Languages`
-    - Updated `Polish` translation (@Lioheart)
-    
+-   **Updates**
+    -   `VS Animation`
+        -   Added better handling for visibility and outlines (🐛 @RoiLeaf)
+        -   Creatures that are `undetected`, `unnoticed`, or marked as `hidden` in the combat tracker will not be shown in the animation
+            -   Note: This will check if the creature also has these conditions from **any** creature
+        -   Creatures that are `hidden` or `concealed` will be displayed in Silhouette
+        -   Note: The `pf2e perception` handling atm is very basic as it will only check for the 'Presence of the condition' and not specifically whether it is against to a relevant token
+    -   `Languages`
+    -   Updated `Polish` translation (@Lioheart)
 
 # [12.10.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.20...12.10.0) - VS Everything
 
