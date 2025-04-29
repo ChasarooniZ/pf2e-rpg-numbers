@@ -7,7 +7,7 @@ export function registerVersusSettings() {
         desc: "combat-start",
         scope: "world",
         config: false,
-        default: true,
+        default: false,
         type: Boolean,
     });
 
