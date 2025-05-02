@@ -23,7 +23,9 @@ export async function vsAnimation() {
               <form>
                 <div style="display: flex; align-items: center; gap: 20px; padding-bottom: 1.5em;">
                   <div>
-                    <label for="partyName" style="text-align: center;">${localize("menu.versus.name.party")}</label><br>
+                    <label for="partyName" style="text-align: center;" data-tooltip="${localize(
+                        "menu.versus.tooltip.party"
+                    )}">${localize("menu.versus.name.party")}</label><br>
                     <input type="text" id="partyName" name="partyName" style="width: 250px;" value="${defNames.party}">
                   </div>
                   <div>
@@ -56,49 +58,15 @@ export async function vsAnimation() {
             }).render(true, { width: 550 });
         });
     }
-    const colorMap = game.users.players
-        .filter((p) => p.character)
-        .reduce((res, p) => {
-            res[p.character.id] = p.color.css;
-            return res;
-        }, {});
+    const colorMap = Object.fromEntries(
+        game.users.players.filter((p) => p.character).map((p) => [p.character.id, p.color.css])
+    );
 
     const encounter = game.combat;
-    const maxDur = CONFIG.duration * 1000;
-    const startUpEach = 100;
+    const actors = encounter ? encounter.combatants.contents : canvas.tokens.controlled;
     const art = {
-        enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
-            .filter(
-                (c) =>
-                    c?.actor?.alliance === "opposition" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
-            )
-            .map((c) => ({
-                img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
-                id: c.actor.id,
-                color:
-                    colorMap[c.actor.id] ||
-                    (encounter
-                        ? c?.token?.document?.ring?.colors?.ring?.css || "#FFA500"
-                        : c?.document?.ring?.colors?.ring?.css || "#FFA500"),
-            })),
-        party: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
-            .filter(
-                (c) =>
-                    c?.actor?.alliance === "party" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
-            )
-            .map((c) => ({
-                img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
-                id: c.actor.id,
-                color:
-                    colorMap[c.actor.id] ||
-                    (encounter
-                        ? c?.token?.document?.ring?.colors?.ring?.css || "#FFA500"
-                        : c?.document?.ring?.colors?.ring?.css || "#FFA500"),
-            })),
+        party: getActorsByAlliance("party", actors, encounter, colorMap),
+        enemies: getActorsByAlliance("opposition", actors, encounter, colorMap),
     };
     let seq = new Sequence({ moduleName: game.modules.get(MODULE_ID).title });
     let cnt = 1;
@@ -186,6 +154,33 @@ export async function vsAnimation() {
             // });
         }
         return seq;
+    }
+
+    /**
+     * Helper to get visible actors by alliance
+     * @param {'opposition' | 'party' | 'neutral'} alliance
+     * @param {*} actors
+     * @param {*} encounter
+     * @param {*} colorMap
+     * @returns
+     */
+    function getActorsByAlliance(alliance, actors, encounter, colorMap) {
+        return actors
+            .filter(
+                (c) =>
+                    c?.actor?.alliance === alliance &&
+                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+            )
+            .map((c) => ({
+                img: c?.actor?.img ?? "",
+                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
+                id: c.actor.id,
+                color:
+                    colorMap[c.actor.id] ||
+                    (encounter
+                        ? c?.token?.document?.ring?.colors?.ring?.css || "#FFA500"
+                        : c?.document?.ring?.colors?.ring?.css || "#FFA500"),
+            }));
     }
 
     function teamName(seq, { name, side = "left" }) {

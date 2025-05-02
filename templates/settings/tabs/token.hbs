@@ -2,6 +2,7 @@
     {{! Burst/Burrow }}
     <h2>
         <span
+            id="burst-burrow"
             data-tooltip-direction="LEFT"
             data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/burst-burrow.gif' />"
         >
@@ -133,10 +134,10 @@
         />
     </div>
 </span>
-
 <span>
     {{! Rotate on Attack }}
     <h2
+        id="rotate-on-attack"
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"
     >
@@ -213,6 +214,7 @@
 <span>
     {{! Shake on Attack }}
     <h2
+        id="screen-shake-on-attack"
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-attack.gif' />"
     >
@@ -256,6 +258,7 @@
 <span>
     {{! Shake on Damaged }}
     <h2
+        "screen-shake-on-damaged"
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-damaged.gif' />"
     >
@@ -368,6 +371,7 @@
 <span>
     {{! Target Dodges }}
     <h2
+        id="target-dodges"
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/dodge-on-miss.gif' />"
     >
@@ -445,10 +449,16 @@
     {{! Type }}
     <div class="form-group">
         <label for="settings.dodgeOnMiss.type">
-            <span data-tooltip-direction="LEFT" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.hint"}}">
+            <span
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.hint"}}"
+            >
                 {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.name"}}
             </span>
-            <sup data-tooltip-direction="LEFT" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.hint"}}">
+            <sup
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.hint"}}"
+            >
                 <i>
                     {{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.name"}}
                 </i>
@@ -462,6 +472,7 @@
 <span>
     {{! Token Shake }}
     <h2
+        id="token-shake"
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif' />"
     >
