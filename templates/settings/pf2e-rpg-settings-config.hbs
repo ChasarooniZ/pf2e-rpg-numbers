@@ -9,7 +9,7 @@
         {{#each tabs as |tab|}}
         <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
             {{#if tab.home}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this version=version}}
+            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this version=../version}}
             {{/if}}
             {{#if tab.rolls}}
             {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
