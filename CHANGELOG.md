@@ -1,4 +1,5 @@
 # [12.10.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.2...12.10.3) - Header Hider
+
 - Allowed for hiding the header button text
 - Fixed possible bug with `vs animation` not starting
 - Added a way to cancel out the `vs animation` when you click cancel on the name input dialog
@@ -11,17 +12,24 @@
 # [12.10.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.0...12.10.1) - Sneak Attack
 
 - **Updates**
-    - `VS Animation`
-        - Added better handling for visibility and outlines (🐛 @RoiLeaf)
-        - Creatures that are `undetected`, `unnoticed`, or marked as `hidden` in the combat tracker will not be shown in the animation
-            - Note: This will check if the creature also has these conditions from **any** creature
-            
-        - Creatures that are `hidden` or `concealed` will be displayed in Silhouette
-        - Note: The `pf2e perception` handling atm is very basic as it will only check for the 'Presence of the condition' and not specifically whether it is against to a relevant token
-        
-    - `Languages`
-    - Updated `Polish` translation (@Lioheart)
+  - `VS Animation`
     
+    - Added better handling for visibility and outlines (🐛 @RoiLeaf)
+      
+    - Creatures that are `undetected`, `unnoticed`, or marked as `hidden` in the combat tracker will not be shown in the animation
+      
+      - Note: This will check if the creature also has these conditions from **any** creature
+      
+    - Creatures that are `hidden` or `concealed` will be displayed in Silhouette
+      
+    - Note: The `pf2e perception` handling atm is very basic as it will only check for the 'Presence of the condition' and not specifically whether it is against to a relevant token
+      
+    
+  - `Languages`
+    
+  - Updated `Polish` translation (@Lioheart)
+    
+  
 
 # [12.10.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.9.20...12.10.0) - VS Everything
 
@@ -1171,6 +1179,12 @@
   - Text options
   - Crit Message idea
   
+
+## 12.10.3 - 2025-05-06
+
+- Allowed for hiding the header button text
+- Fixed possible bug with `vs animation` not starting
+- Added a way to cancel out the `vs animation` when you click cancel on the name input dialog
 
 ## 12.10.2 - 2025-04-29
 
