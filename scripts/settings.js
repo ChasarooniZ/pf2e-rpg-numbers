@@ -88,7 +88,7 @@ Hooks.on("init", () => {
     registerSetting({
         category: "actor-settings",
         id: "actor-settings.hide-button-text",
-        desc: "button-text",
+        desc: "hide-button-text",
         scope: "world",
         config: true,
         default: false,
