@@ -51,17 +51,6 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
-
-    registerSetting({
-        category: "actor-settings",
-        id: "actor-settings.hide-button-text",
-        desc: "button-text",
-        scope: "world",
-        config: false,
-        default: false,
-        type: Boolean,
-    });
-
     registerSetting({
         category: "actor-settings",
         id: "actor-settings.player-enabled",
@@ -95,6 +84,16 @@ Hooks.on("init", () => {
     registerTokenDamageShakeSettings();
 
     registerVersusSettings();
+
+    registerSetting({
+        category: "actor-settings",
+        id: "actor-settings.hide-button-text",
+        desc: "button-text",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
 
     registerSetting({
         category: "",
