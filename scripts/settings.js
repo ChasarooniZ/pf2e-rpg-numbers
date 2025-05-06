@@ -51,6 +51,17 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+
+    registerSetting({
+        category: "actor-settings",
+        id: "actor-settings.hide-button-text",
+        desc: "button-text",
+        scope: "world",
+        config: false,
+        default: false,
+        type: Boolean,
+    });
+
     registerSetting({
         category: "actor-settings",
         id: "actor-settings.player-enabled",
@@ -125,7 +136,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -146,7 +157,7 @@ Hooks.on("init", () => {
                 ui.notifications.error("You must have a token selected");
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });

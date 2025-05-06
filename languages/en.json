@@ -32,6 +32,10 @@
                 "player-enabled": {
                     "name": "Enable Actor Settings Button for Players",
                     "hint": "Allows players to see the actor setting button to customize things like crits"
+                },
+                "hide-button-text": {
+                    "name": "Hide Header Button Text",
+                    "hint": "Hide text in the display of header buttons in the various places they show (actor sheet, item sheet, etc.)"
                 }
             },
             "headers": {

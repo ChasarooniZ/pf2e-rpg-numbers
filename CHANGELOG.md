@@ -1,3 +1,6 @@
+# [12.10.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.2...12.10.3) - Header Hider
+- Allowed for hiding the header button text
+
 # [12.10.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.1...12.10.2) - Localization
 
 - Fixed wrong text being used for `VS Animation`'s `Duration` setting
