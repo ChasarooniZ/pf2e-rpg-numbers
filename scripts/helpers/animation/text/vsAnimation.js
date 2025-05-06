@@ -1,5 +1,7 @@
 import { getSetting, localize, MODULE_ID } from "../../misc.js";
 
+const startUpEach = 100;
+
 export async function vsAnimation() {
     if (!(game.combat?.combatants?.contents || canvas.tokens.controlled)) {
         ui.notifications.error("You need a combat encounter or tokens selected");
@@ -28,10 +30,9 @@ export async function vsAnimation() {
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
-                        "menu.versus.name.opponent"
-                    )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${
-                        defNames.opposition
+                    "menu.versus.name.opponent"
+                )}</label><br>
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
                     }">
                   </div>
                 </div>
@@ -56,6 +57,7 @@ export async function vsAnimation() {
             }).render(true, { width: 550 });
         });
     }
+    if (teamNames === null) return;
     const colorMap = game.users.players
         .filter((p) => p.character)
         .reduce((res, p) => {
@@ -65,7 +67,6 @@ export async function vsAnimation() {
 
     const encounter = game.combat;
     const maxDur = CONFIG.duration * 1000;
-    const startUpEach = 100;
     const art = {
         enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(

@@ -86,6 +86,16 @@ Hooks.on("init", () => {
     registerVersusSettings();
 
     registerSetting({
+        category: "actor-settings",
+        id: "actor-settings.hide-button-text",
+        desc: "hide-button-text",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+    });
+
+    registerSetting({
         category: "",
         id: "debug-mode",
         desc: "debug-mode",
@@ -125,7 +135,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -146,7 +156,7 @@ Hooks.on("init", () => {
                 ui.notifications.error("You must have a token selected");
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
