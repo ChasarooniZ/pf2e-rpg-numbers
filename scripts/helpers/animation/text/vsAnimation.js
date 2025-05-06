@@ -57,6 +57,7 @@ export async function vsAnimation() {
             }).render(true, { width: 550 });
         });
     }
+    if (teamNames === null) return;
     const colorMap = game.users.players
         .filter((p) => p.character)
         .reduce((res, p) => {

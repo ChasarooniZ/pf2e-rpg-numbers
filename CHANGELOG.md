@@ -1,5 +1,7 @@
 # [12.10.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.2...12.10.3) - Header Hider
 - Allowed for hiding the header button text
+- Fixed possible bug with `vs animation` not starting
+- Added a way to cancel out the `vs animation` when you click cancel on the name input dialog
 
 # [12.10.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.1...12.10.2) - Localization
 
