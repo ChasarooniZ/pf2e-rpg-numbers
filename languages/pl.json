@@ -32,6 +32,10 @@
                 "player-enabled": {
                     "name": "Włączenie przycisku ustawień aktorów dla graczy",
                     "hint": "Pozwala graczom zobaczyć przycisk ustawień aktora, aby dostosować takie rzeczy jak trafienia krytyczne."
+                },
+                "hide-button-text": {
+                    "name": "Ukryj tekst przycisku nagłówka",
+                    "hint": "Ukryj tekst w wyświetlaniu przycisków nagłówka w różnych miejscach, w których się pojawiają (karta aktora, karta przedmiotu itp.)."
                 }
             },
             "headers": {
