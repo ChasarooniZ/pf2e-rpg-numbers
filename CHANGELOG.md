@@ -1184,6 +1184,10 @@
   - Crit Message idea
   
 
+## 12.10.4 - 2025-05-08
+
+- Updated `Polish` translation (@Lioheart)
+
 ## 12.10.3 - 2025-05-06
 
 - Allowed for hiding the header button text
