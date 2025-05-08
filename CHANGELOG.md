@@ -1,3 +1,7 @@
+# [12.10.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.3...12.10.4) - Polish
+
+- Updated `Polish` translation (@Lioheart)
+
 # [12.10.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.2...12.10.3) - Header Hider
 
 - Allowed for hiding the header button text
