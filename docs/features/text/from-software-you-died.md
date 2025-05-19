@@ -3,7 +3,7 @@ layout: page
 title: From Software - You Died
 id: from-software-you-died
 previous_page: from-software-noun-verb
-next_page: api
+next_page: vs-animation
 ---
 
 Adds cool text to come on screen when you die in a game like Dark Souls that says something like `You Died` etc.

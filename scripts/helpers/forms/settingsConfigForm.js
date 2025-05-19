@@ -240,6 +240,25 @@ export class SettingsConfigForm extends FormApplication {
         html.find("#pf2e-rpg-export").on("click", (event) => {
             game.pf2eRPGNumbers.settings.export();
         });
+        // This should be placed in your Dialog's activateListeners method or after rendering.
+        html.find(".toc-link").on("click", function (event) {
+            const tabName = $(this).data("tab");
+            const targetId = $(this).data("target");
+
+            // Activate the correct tab (assuming Foundry's Tabs API)
+            const tabs = html.find(".tabs").data("tabs");
+            if (tabs) {
+                tabs.activate(tabName);
+            }
+
+            // Wait for the tab to become active before scrolling
+            setTimeout(() => {
+                const target = html.find(`#${targetId}`)[0];
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }, 100); // Adjust timeout if needed for your tab system
+        });
     }
 
     getData() {
