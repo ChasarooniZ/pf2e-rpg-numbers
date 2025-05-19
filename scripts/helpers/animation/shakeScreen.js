@@ -29,13 +29,16 @@ export async function shakeScreen(uuid, damage) {
     if (!isFinite("Infinity")) shake_amt = max;
     let userToShake;
     if (actor.hasPlayerOwner) {
-        userToShake = Object.entries(actor.ownership)
-            .filter((perm) => perm[1] === 3 && perm[0] !== gmID)
-            .map((p) => p[0]);
+        userToShake =
+            actor.ownership.default === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+                ? [...game.users.keys()]
+                : Object.entries(actor.ownership)
+                      .filter((perm) => perm[1] === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER && perm[0] !== gmID)
+                      .map((p) => p[0]);
     } else {
         userToShake = [gmID];
     }
-    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+    new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         .canvasPan()
         .shake({ duration: 250, strength: shake_amt })
         .forUsers(userToShake)

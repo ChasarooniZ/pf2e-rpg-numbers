@@ -10,11 +10,14 @@ export async function shakeOnAttack(token, outcome) {
         let userToShake = [gmID];
         const actor = token.actor;
         if (actor.hasPlayerOwner) {
-            userToShake = Object.entries(actor.ownership)
-                .filter((perm) => perm[1] === 3 && perm[0] !== gmID)
-                .map((p) => p[0]);
+            userToShake =
+                actor.ownership.default === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER
+                    ? [...game.users.keys()]
+                    : Object.entries(actor.ownership)
+                          .filter((perm) => perm[1] === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER && perm[0] !== gmID)
+                          .map((p) => p[0]);
         }
-        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+        new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
             .canvasPan()
             .shake({ duration: 250, strength })
             .forUsers(userToShake)
