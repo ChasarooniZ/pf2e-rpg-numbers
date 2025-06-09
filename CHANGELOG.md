@@ -1,3 +1,7 @@
+# [13.0.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.6...13.0.0) - v13
+
+-   Updated to v13
+
 # [12.10.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/12.10.5...12.10.6) - Prep Work
 
 -   Made a change to my waiting for `diceSoNice` that should at least allow testing of most features for v13
