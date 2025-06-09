@@ -23,7 +23,7 @@ export async function disgaea7Crit(actor, users, config) {
     imga.onload = ({ target }) => {
         const imgWidth = target.naturalWidth;
         const imgHeight = target.naturalHeight;
-        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+        new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
             //BG start
             .effect()
             .syncGroup(`disgaea-7-crit-${actor.uuid}`)

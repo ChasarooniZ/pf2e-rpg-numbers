@@ -1,13 +1,13 @@
 name: Publish new version to foundry
 on:
-  release:
-    types: [released]
+    release:
+        types: [released]
 jobs:
-  refresh-feed:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run fvtt apu
-        uses: JamesIves/fetch-api-data-action@v2
-        with:
-          endpoint: https://api.foundryvtt.com/_api/packages/release_version/
-          configuration: '{ "method": "POST", "headers": { "Content-Type": "application/json", "Authorization": "${{ secrets.FVTT_API_TOKEN }}" }, "body": { "id": "pf2e-rpg-numbers", "dry-run": false, "release": { "version": "${{github.event.release.tag_name}}", "manifest": "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json", "notes": "https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}", "compatibility": { "minimum": "11", "verified": "12", "maximum": "" } } } }'
+    refresh-feed:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Run fvtt apu
+              uses: JamesIves/fetch-api-data-action@v2
+              with:
+                  endpoint: https://api.foundryvtt.com/_api/packages/release_version/
+                  configuration: '{ "method": "POST", "headers": { "Content-Type": "application/json", "Authorization": "${{ secrets.FVTT_API_TOKEN }}" }, "body": { "id": "pf2e-rpg-numbers", "dry-run": false, "release": { "version": "${{github.event.release.tag_name}}", "manifest": "https://github.com/${{github.repository}}/releases/download/${{github.event.release.tag_name}}/module.json", "notes": "https://github.com/${{github.repository}}/releases/tag/${{github.event.release.tag_name}}", "compatibility": { "minimum": "13", "verified": "13", "maximum": "" } } } }'

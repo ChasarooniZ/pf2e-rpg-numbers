@@ -144,7 +144,7 @@ Hooks.on("init", () => {
         hint: localize("keybinds.activate-critical.success.hint"),
         editable: [
             {
-                key: "Z",
+                key: "KeyZ",
                 modifiers: ["Shift", "Alt"],
             },
         ],

@@ -95,7 +95,7 @@ export function personaCrit(actor, users, config) {
 
         video.onloadeddata = async () => {
             //await Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
-            new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+            new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
                 // BG Color
                 .effect()
                 .syncGroup(`p5-crit-${actor?.uuid}`)
@@ -144,11 +144,11 @@ export function personaCrit(actor, users, config) {
                 .volume(config.volume)
                 .forUsers(users)
                 .delay(config.delay)
-                .play({preload: true });
+                .play({ preload: true });
         };
     } else {
         //await Sequencer.Preloader.preloadForClients([config.art, config.sfx]);
-        new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+        new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
             // BG Color
             .effect()
             .syncGroup(`p5-crit-${actor?.uuid}`)
@@ -210,6 +210,6 @@ export function personaCrit(actor, users, config) {
             .volume(config.volume)
             .forUsers(users)
             .delay(config.delay)
-            .play({preload: true });
+            .play({ preload: true });
     }
 }

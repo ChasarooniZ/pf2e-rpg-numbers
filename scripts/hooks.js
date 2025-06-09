@@ -60,28 +60,33 @@ export async function applyTokenStatusEffect(token, status, isAdded) {
 export function getSceneControlButtons(controls, _b, _c) {
     if (!game.user.isGM && !getSetting("finishing-move.enabled-players")) return;
     let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
-    controls
-        .find((con) => con.name == "token")
-        .tools.push({
-            name: MODULE_ID,
-            title: localize("controls.finishing-move.name"),
-            icon: "fas fa-message-captions",
-            toggle: true,
-            visible: getSetting("finishing-move.enabled"),
-            active: isFinishingMove,
-            onClick: async (toggle) => {
-                game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
-            },
-            toolclip: {
-                src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
-                heading: localize("controls.finishing-move.toolclip.heading"),
-                items: [
-                    {
-                        paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"),
-                    },
-                ],
-            },
-        });
+
+    const toolData = {
+        name: 'finishing-move',
+        title: localize("controls.finishing-move.name"),
+        icon: "fas fa-message-captions",
+        toggle: true,
+        visible: getSetting("finishing-move.enabled"),
+        active: isFinishingMove,
+        onClick: async (toggle) => {
+            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
+        },
+        toolclip: {
+            src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
+            heading: localize("controls.finishing-move.toolclip.heading"),
+            items: [
+                {
+                    paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"),
+                },
+            ],
+        },
+    };
+
+    if (Array.isArray(controls)) {
+        controls.find((con) => con.name == "token").tools.push(toolData);
+    } else {
+        controls.tokens.tools['finishing-move'] = toolData;
+    }
 }
 
 /**
@@ -109,7 +114,7 @@ export async function getActorSheetHeaderButtons(sheet, buttons) {
     buttons.unshift({
         class: "rpg-numbers-actor-menu",
         icon: "fa-solid fa-dragon",
-        label: getSetting('actor-settings.hide-button-text') ? "" : localize("menu.actor-settings.label"),
+        label: getSetting("actor-settings.hide-button-text") ? "" : localize("menu.actor-settings.label"),
         onclick: () => {
             new ActorSettingsConfigForm({ actor: sheet.actor }).render(true);
         },
@@ -125,7 +130,7 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
     menu.unshift({
         class: "pf2e-rpg-numbers",
         icon: "fa-solid fa-dragon",
-        label: getSetting('actor-settings.hide-button-text') ? "" : localize("menu.actor-settings.label"),
+        label: getSetting("actor-settings.hide-button-text") ? "" : localize("menu.actor-settings.label"),
         onclick: async (_ev, itemD = item) => {
             const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
             // Create and display the dialog box

@@ -53,13 +53,15 @@ export async function fireEmblemCrit(actor, users, config) {
         .file(config.art)
         .spriteRotation(config.rotation)
         .animateProperty("sprite", "position.x", {
-            from: -2,
-            to: 4.5,
+            from: -1.2,
+            to: 1.8,
             screenSpace: true,
             duration: duration,
             ease: "easeInBack",
         })
+        .screenSpaceAnchor({ x: 0.5, y: 0.5 })
         .screenSpace()
+        .screenSpaceAboveUI()
         .screenSpaceScale({
             x: 0.134 * config.scale,
             y: 0.134 * config.scale,
@@ -78,7 +80,6 @@ export async function fireEmblemCrit(actor, users, config) {
         .duration(duration)
         .forUsers(users)
         .delay(config.delay)
-        .screenSpaceAboveUI()
         //Sound
         .sound()
         .file(config.sfx)

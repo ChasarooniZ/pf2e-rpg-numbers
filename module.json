@@ -4,8 +4,8 @@
     "description": "A module that adds a lot neat rpg and anime themed effects to pf2e.",
     "version": "#{VERSION}#",
     "compatibility": {
-        "minimum": "11",
-        "verified": "12"
+        "minimum": "13",
+        "verified": "13"
     },
     "authors": [
         {
@@ -18,8 +18,8 @@
                 "id": "pf2e",
                 "type": "system",
                 "compatibility": {
-                    "minimum": "5.0.0",
-                    "verified": "6.1.0"
+                    "minimum": "7.0.0",
+                    "verified": "7.0.0"
                 }
             }
         ],

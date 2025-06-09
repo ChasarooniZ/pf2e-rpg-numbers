@@ -12,33 +12,32 @@ import { getSetting, MODULE_ID } from "../../../misc.js";
 
 export async function fullscreenCrit(actor, users, config) {
     const duration = getSetting("critical.duration") * 1000;
-    const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+    const seq = new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         //Mask + image
         .effect()
         .file(config.art, {
-            antialiasing: 1
+            antialiasing: 1,
         })
         .screenSpace()
         .spriteRotation(config.rotation)
         .screenSpaceScale({
             x: 1,
             y: config.scale,
-            fitY: true,    // Causes the effect to set its height to fit the height of the screen
-            ratioX: true,  // If Y is scaled, setting this to true will preserve the width/height ratio
+            fitY: true, // Causes the effect to set its height to fit the height of the screen
+            ratioX: true, // If Y is scaled, setting this to true will preserve the width/height ratio
         })
         .screenSpacePosition({
             x: 0,
-            y: 0
+            y: 0,
         })
         .screenSpaceAnchor({
             x: 0.5 + config?.offset?.x,
-            y: 0.5 + config?.offset?.y
+            y: 0.5 + config?.offset?.y,
         })
         .screenSpaceAboveUI()
-        .forUsers(users)
+        .forUsers(users);
 
-    if (!config.art.endsWith(".webm"))
-        seq.duration(duration)
+    if (!config.art.endsWith(".webm")) seq.duration(duration);
 
     //Sound
     seq.sound()
@@ -47,5 +46,5 @@ export async function fullscreenCrit(actor, users, config) {
         .volume(config.volume)
         .forUsers(users)
         .delay(config.delay)
-        .play({preload: true });
+        .play({ preload: true });
 }
