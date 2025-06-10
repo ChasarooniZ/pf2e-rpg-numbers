@@ -113,7 +113,16 @@
         name="settings.critical.sound"
         value="{{settings.critical.sound}}"
     />
-    {{filePicker target="settings.critical.sound" type="audio"}}
+    <button
+        type="button"
+        class="file-picker"
+        data-type="audio"
+        data-target="settings.critical.sound"
+        data-tooltip="FILES.BrowseTooltip"
+        tabindex="-1"
+    >
+        <i class="fa-solid fa-file-import fa-fw"></i>
+    </button>
 </div>
 {{! Volume }}
 <div class="form-group">

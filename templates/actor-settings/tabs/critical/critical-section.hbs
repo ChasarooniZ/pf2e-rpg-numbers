@@ -140,13 +140,13 @@
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.name"}}
     </label>
-    {{rangePicker
-        value=data.rotation
-        name=(concat "settings.critical." type "." section ".rotation")
-        step=1
-        min=0
-        max=360
-    }}
+    <range-picker
+        name="settings.critical.{{type}}.{{section}}.rotation"
+        value="{{data.rotation}}"
+        min="0"
+        max="360"
+        step="1"
+    ></range-picker>
 </div>
 
 {{! Scale }}
@@ -194,5 +194,11 @@
     >
         {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.name"}}
     </label>
-    {{rangePicker value=data.volume name=(concat "settings.critical." type "." section ".volume") step=5 min=0 max=200}}
+    <range-picker
+        name="settings.critical.{{type}}.{{section}}.volume"
+        value="{{data.volume}}"
+        min="0"
+        max="200"
+        step="5"
+    ></range-picker>
 </div>

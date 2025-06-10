@@ -156,7 +156,7 @@ const settingsConfig = {
 };
 const tabList = Object.keys(settingsConfig);
 
-export class ActorSettingsConfigForm extends foundry.applications.ux.FormDataExtended {
+export class ActorSettingsConfigForm extends FormApplication {
     // lots of other things...
     constructor(options) {
         super(options);
