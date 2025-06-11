@@ -716,6 +716,7 @@
             },
             "actor-settings": {
                 "label": "PF2e RPG #s",
+                "title": "Ustawienia aktora PF2e RPG #s",
                 "critical": {
                     "headers": {
                         "default": "Domyślne",
