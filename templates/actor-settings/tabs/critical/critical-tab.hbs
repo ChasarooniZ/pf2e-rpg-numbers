@@ -1,11 +1,11 @@
 {{#if success}}
-    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.success"}}
-        <i class="fa-solid fa-check"></i></h2>
+    <h4>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.success"}}
+        <i class="fa-solid fa-check"></i></h4>
 {{/if}}
 {{#if failure}}
-    <h2>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.failure"}}
+    <h4>{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.headers.failure"}}
     <i class="fa-solid fa-xmark"></i>
-    </h2>
+    </h4>
 {{/if}}
 <div>
     {{> 'modules/pf2e-rpg-numbers/templates/actor-settings/tabs/critical/critical-section.hbs' this section="default" default=true type=type data=data.default}}

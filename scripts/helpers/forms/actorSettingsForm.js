@@ -9,7 +9,7 @@ const settingsConfig = {
     //     icon: "fa-dragon"
     // },
     critical: {
-        icon: "fa-explosion",
+        icon: "fas fa-explosion",
         tabs: {
             success: {
                 default: {
@@ -138,7 +138,7 @@ const settingsConfig = {
         },
     },
     token: {
-        icon: "fa-circle-user",
+        icon: "fas fa-circle-user",
         rotation: {
             offset: "token.rotation.offset",
         },
@@ -156,57 +156,98 @@ const settingsConfig = {
 };
 const tabList = Object.keys(settingsConfig);
 
-export class ActorSettingsConfigForm extends FormApplication {
-    // lots of other things...
-    constructor(options) {
+export class ActorSettingsConfigForm extends foundry.applications.api.HandlebarsApplicationMixin(
+    foundry.applications.api.ApplicationV2
+) {
+    constructor(options = {}) {
         super(options);
-        this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
+        this.rotationTouched = false;
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["form"],
-            popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs`,
-            id: "pf2e-rpg-numbers-actor-settings-form",
-            title: "Pf2e RPG #s Actor Config Menu",
+    static DEFAULT_OPTIONS = {
+        id: "pf2e-rpg-numbers-actor-settings-form",
+        form: {
+            handler: ActorSettingsConfigForm.#onSubmit,
+            closeOnSubmit: true,
+        },
+        popOut: true,
+        position: {
             width: 800,
-            height: 600,
-            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
-        });
+            height: "auto",
+        },
+        tag: "form",
+        window: {
+            icon: "fas fa-dragon",
+            title: "pf2e-rpg-numbers.menu.actor-settings.title",
+            contentClasses: ["standard-form"],
+            controls: [
+                {
+                    action: "kofi",
+                    label: "Support Me :P",
+                    icon: "fa-solid fa-mug-hot fa-beat-fade",
+                    onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+                },
+            ],
+        },
+        tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
+        actions: {
+            save: ActorSettingsConfigForm.save,
+            submit: ActorSettingsConfigForm.submit,
+            cancel: ActorSettingsConfigForm.cancel,
+            import: ActorSettingsConfigForm.import,
+            export: ActorSettingsConfigForm.export,
+        },
+    };
+
+    static async save() {
+        this._processForm(false); // Pass 'false' Fto not submit the form, only save
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-        // Add event listener for the Save button
-        html.find("#pf2e-rpg-save-actor").on("click", (event) => {
-            event.preventDefault();
-            this._processForm(html, false); // Pass 'false' Fto not submit the form, only save
-        });
-        html.find("#pf2e-rpg-submit-actor").on("click", (event) => {
-            event.preventDefault();
-            this._processForm(html, true); // Pass 'true' to indicate form submission
-        });
-        html.find("#pf2e-rpg-cancel-actor").on("click", (event) => {
-            event.preventDefault();
-            ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
-            this.close(); // Close the form without saving
-        });
-        html.find("#pf2e-rpg-import-actor").on("click", (event) => {
-            game.pf2eRPGNumbers.settings.import();
-            this.close();
-        });
-        html.find("#pf2e-rpg-export-actor").on("click", (event) => {
-            game.pf2eRPGNumbers.settings.export();
-        });
+    static async submit() {
+        this._processForm(true); // Pass 'true' to indicate form submission
+    }
 
+    static async cancel() {
+        ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
+        this.close(); // Close the form without saving
+    }
+
+    static async import() {
+        game.pf2eRPGNumbers.settings.import();
+        this.close();
+    }
+
+    static async export() {
+        game.pf2eRPGNumbers.settings.export();
+    }
+
+    get title() {
+        return "Pf2e RPG #s Actor Config Menu";
+    }
+
+    static PARTS = {
+        tabs: {
+            // Foundry-provided generic template
+            template: "templates/generic/tab-navigation.hbs",
+        },
+        main: {
+            template: "./modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs",
+            scrollable: [".tab.critical", ".tab.token"],
+        },
+        footer: {
+            template: "templates/generic/form-footer.hbs",
+        },
+    };
+
+    _onRender(context, options) {
+        // Add event listener for the Save button
         for (const state of ["success", "failure"]) {
             for (const type of ["checks", "default", "saves", "strikes"]) {
-                html.find(`#critical-test-${state}-${type}`).on("click", (event) => {
+                this.element.querySelector(`#critical-test-${state}-${type}`).addEventListener("click", (event) => {
                     event.preventDefault();
                     const type = $(event.currentTarget).data("type");
                     const section = $(event.target).data("section");
-                    const formData = this.getFormData(html).settings;
+                    const formData = this.getFormData(context).settings;
                     formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
                     console.log({ type, section, event });
                     createTestCritAnimation({
@@ -219,30 +260,23 @@ export class ActorSettingsConfigForm extends FormApplication {
                 });
             }
         }
-
-        // Token Rotation Code
-
-        const img = html.find("#angle-image")[0];
-        const canvasEl = html.find("#angle-canvas")[0];
-        const container = html.find("angle-image-container")[0];
-        const input = html.find('input[name="settings.token.rotation.offset"]')[0];
+        // // Token Rotation Code
+        const img = this.element.querySelector("#angle-image");
+        const canvasEl = this.element.querySelector("#angle-canvas");
+        const container = this.element.querySelector("angle-image-container");
+        const input = this.element.querySelector('input[name="settings.token.rotation.offset"]');
         const ctx = canvasEl.getContext("2d");
-
         function drawIndicator(angle) {
             ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-
             const width = canvasEl.width;
             const height = canvasEl.height;
             const centerX = width / 2;
             const centerY = height / 2;
-
             // Convert angle (0 = down) to radians
             const radians = ((360 - angle + 90) * Math.PI) / 180;
-
             // Draw line from center outward
             const edgeX = centerX + Math.cos(radians) * centerX;
             const edgeY = centerY + Math.sin(radians) * centerY;
-
             ctx.strokeStyle = "red";
             ctx.lineWidth = 8;
             ctx.beginPath();
@@ -250,11 +284,9 @@ export class ActorSettingsConfigForm extends FormApplication {
             ctx.lineTo(edgeX, edgeY);
             ctx.stroke();
         }
-
         img.addEventListener("load", () => {
             drawIndicator(parseInt(input.value) || 0);
         });
-
         img.addEventListener("click", (event) => {
             const rect = canvasEl.getBoundingClientRect();
             const width = rect.width;
@@ -263,19 +295,16 @@ export class ActorSettingsConfigForm extends FormApplication {
             const centerY = height / 2;
             const clickX = event.offsetX;
             const clickY = event.offsetY;
-
             const dx = clickX - centerX;
             const dy = clickY - centerY;
             let angle = Math.atan2(dy, dx) * (180 / Math.PI);
-
             // Convert to new system where 0° is down
             angle = (360 - angle + 90) % 360;
             angle = Math.round(angle / 5) * 5;
-
             input.value = angle;
             drawIndicator(angle);
+            this.rotationTouched = true; // Mark as touched
         });
-
         input.addEventListener("change", () => {
             let angle = parseInt(input.value, 10);
             if (isNaN(angle)) {
@@ -287,12 +316,13 @@ export class ActorSettingsConfigForm extends FormApplication {
             }
             input.value = angle;
             drawIndicator(angle);
+            this.rotationTouched = true; // Mark as touched
         });
     }
 
-    getData() {
+    _prepareContext(options) {
         checkAndSetDefaultActorFlagIfNotExist(this?.options?.actor);
-        const tabs = Object.keys(settingsConfig).map((tab) => {
+        const tabs = Object.keys(settingsConfig).reduce((acc, tab) => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
             for (const [key, value] of Object.entries(settings)) {
@@ -304,20 +334,41 @@ export class ActorSettingsConfigForm extends FormApplication {
                     }
                 }
             }
-            return {
+            if (tab === "token") tabSettings.tokenImg = getTokenImage(this.options?.actor?.prototypeToken);
+            acc[tab] = {
                 id: tab,
-                label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
-                title: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
+                cssClass: tab === "critical" ? "active" : "",
+                group: "primary",
+                label: `${MODULE_ID}.menu.settings.tabs.${tab}`,
                 icon: settingsConfig[tab].icon,
-                [tab]: true,
                 settings: tabSettings,
             };
-        });
+            return acc;
+        }, {});
 
-        const data = { tabs, actor: this.options?.actor, tokenImg: getTokenImage(this.options?.actor?.prototypeToken) };
+        const data = {
+            tabs,
+            actor: this.options?.actor,
+            tokenImg: getTokenImage(this.options?.actor?.prototypeToken),
+            buttons: [
+                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+                {
+                    type: "submit",
+                    action: "submit",
+                    icon: "fa-solid fa-floppy-disk-circle-arrow-right",
+                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.submit",
+                },
+                {
+                    type: "cancel",
+                    action: "cancel",
+                    icon: "fa-solid fa-xmark",
+                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.cancel",
+                },
+            ],
+        };
         console.log(data);
 
-        return foundry.utils.mergeObject(super.getData(), data);
+        return data;
     }
 
     _retrieveNestedSettings(settingGroup) {
@@ -341,14 +392,14 @@ export class ActorSettingsConfigForm extends FormApplication {
         return result;
     }
 
-    async _updateObject(event, formData) {
-        // Expand the flat form data into a nested object structure
-        // Debug log for inspecting the expanded form data
-        //console.log("Expanded Form Data:", { expandedData, formData });
-        //game.settings.set('myModuleName', 'myComplexSettingName', data);
+    static async #onSubmit(event, form, formData) {
+        const settings = foundry.utils.expandObject(formData.object);
+
+        await this.saveSettings(settings);
     }
 
-    async _processForm(html, submit = false) {
+    async _processForm(submit = false) {
+        const html = this.element;
         const formattedObject = this.getFormData(html);
 
         // // Handle saving or submitting
@@ -370,8 +421,12 @@ export class ActorSettingsConfigForm extends FormApplication {
         await this.options?.actor?.setFlag(MODULE_ID, "critical", crit);
 
         const token = DEFAULT_TOKEN;
-        token.rotation.offset =
-            Number(settings.token.rotation.offset) || getSetting("rotate-on-attack.default-rotation");
+        if (this.rotationTouched) {
+            token.rotation.offset =
+                Number(settings.token.rotation.offset) || getSetting("rotate-on-attack.default-rotation");
+        } else if (Number(settings.token.rotation.offset) === getSetting("rotate-on-attack.default-rotation")) {
+            delete token.rotation.offset;
+        }
 
         await this.options?.actor?.setFlag(MODULE_ID, "token", token);
     }

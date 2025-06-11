@@ -1,0 +1,67 @@
+.pf2e-rpg-actor-config-form .tab.critical {
+    height: 40rem;
+    overflow: auto;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        flex: 0 0 48%; /* Adjust the percentage to control column width */
+    }
+
+    .column.crit-test {
+        flex: 0 0 20%;
+    }
+
+    .column.success {
+        background-image: linear-gradient(to right, rgb(0 128 0 / 10%), rgb(0 128 0 / 4%), #ffff0000);
+    }
+    .column.failure {
+        background-image: linear-gradient(to left, rgb(255 0 0 / 10%), rgb(255 0 0 / 4%), #ffff0000);
+    }
+
+    .separator {
+        width: 1px;
+        background-color: var(--color-text-trait); /* Adjust color as needed */
+        margin: 0 10px; /* Adjust spacing as needed */
+    }
+}
+
+.pf2e-rpg-actor-config-form .tab.token {
+    #angle-image-container {
+        position: relative;
+        width: 100px;
+        height: 100px;
+    }
+    #angle-image {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        cursor: crosshair;
+    }
+    #angle-canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+
+    .column.angle-model {
+        flex: 0 0 23%;
+    }
+
+    .column.angle-text {
+        flex: 0 0 73%;
+        align-items: center;
+        display: flex;
+    }
+
+    .form-group.flex {
+        flex: 1;
+    }
+}

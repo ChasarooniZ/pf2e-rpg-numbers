@@ -14,7 +14,7 @@
         </div>
         <div class="column angle-model">
             <div id="angle-image-container">
-                <img id="angle-image" src="{{tokenImg}}" />
+                <img id="angle-image" src="{{settings.tokenImg}}" />
                 <canvas id="angle-canvas"></canvas>
             </div>
         </div>
@@ -38,40 +38,3 @@
         </select>
     </div>
 </div>
-
-<style type="text/css">
-    #angle-image-container {
-    position: relative;
-    width: 100px;
-    height: 100px;
-}
-#angle-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    cursor: crosshair;
-}
-#angle-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.column.angle-model {
-    flex: 0 0 23%
-}
-
-.column.angle-text {
-    flex: 0 0 73%;
-    align-items: center;
-    display: flex;
-}
-
-.form-group.flex {
-    flex: 1;
-}
-</style>
