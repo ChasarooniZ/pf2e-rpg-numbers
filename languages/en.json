@@ -47,8 +47,7 @@
                 },
                 "screen-shake": "Shake Screen on Damaged",
                 "token-dmg-shake": {
-                    "title": "Token Damage Shake",
-                    "scaling": "Token Damage Shake - Scaling"
+                    "title": "Token Damage Shake"
                 },
                 "shake-on-attack": "Shake Screen on Attack",
                 "rotate-on-attack": "Rotate on Attack",
@@ -300,33 +299,6 @@
                             "no": "Nothing",
                             "%-current-hp": "% Current HP",
                             "%-max-hp": "% Max HP"
-                        }
-                    },
-                    "distance": {
-                        "name": "Distance scaling type",
-                        "hint": "Scales the distance of the shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
-                        "choices": {
-                            "no": "No Scaling",
-                            "max": "Distance is the Max",
-                            "mid": "Distance is the Middle"
-                        }
-                    },
-                    "shakes": {
-                        "name": "Shake # scaling type",
-                        "hint": "Scale how many times they shake (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
-                        "choices": {
-                            "no": "No Scaling",
-                            "max": "Number of shakes is Max",
-                            "mid": "Number of shakes is Middle"
-                        }
-                    },
-                    "duration": {
-                        "name": "Duration scaling type",
-                        "hint": "Scale duration of shakes (no = no scaling, max = treat setting for this as maximum, mid = treat setting for this as the middle value)",
-                        "choices": {
-                            "no": "No Scaling",
-                            "max": "Duration is the Max",
-                            "mid": "Duration is the Middle"
                         }
                     }
                 }
