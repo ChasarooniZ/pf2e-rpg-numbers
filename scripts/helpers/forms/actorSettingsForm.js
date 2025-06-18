@@ -179,7 +179,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
         window: {
             icon: "fas fa-dragon",
             title: "pf2e-rpg-numbers.menu.actor-settings.title",
-            contentClasses: ["standard-form"],
+            contentClasses: ["standard-form", "flexcol"],
             controls: [
                 {
                     action: "kofi",
@@ -233,6 +233,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
         main: {
             template: "./modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs",
             scrollable: [".tab.critical", ".tab.token"],
+            classes: ["pf2e-rpg-actor-config-form", "form"],
         },
         footer: {
             template: "templates/generic/form-footer.hbs",
@@ -442,7 +443,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
 
     getFormData() {
         // Collect the form data from all inputs in the form
-        const formData = new FormDataExtended(this.form).object;
+        const formData = new foundry.applications.ux.FormDataExtended(this.form).object;
 
         // // Log the gathered form data for debugging purposes
         const formattedObject = foundry.utils.expandObject(formData);

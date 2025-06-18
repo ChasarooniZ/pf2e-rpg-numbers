@@ -34,7 +34,7 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     config.scale *= imgData.scale;
     config.art = config.art || imgData.img;
     config.sfx = config.sfx || (isSuccess ? getSetting("critical.sound") : "");
-    config.duration = duration = getSetting("critical.duration") * 1000;
+    config.duration = getSetting("critical.duration") * 1000;
 
     //Cancels animation based on config or imgData
     if (

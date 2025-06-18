@@ -1,5 +1,5 @@
 /* Taken from https://github.com/pwatson100/symbaroum/blob/master/tours/SymbaroumTour.js */
-export class EnhancedTour extends Tour {
+export class EnhancedTour extends foundry.nue.Tour {
     constructor(config) {
         super(config);
     }

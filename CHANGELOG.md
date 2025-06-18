@@ -1,3 +1,11 @@
+# Unreleased 
+
+- `Updated`
+  - **Menus**
+    - `Actor Settings Menu` has been updated to AppV2
+    - 
+  - Updated `Polish` translation (@Lioheart)
+
 # [13.0.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.0.0...13.0.1) - Investigating Warnings
 
 - Fixed minor warnings that showed for `filePicker` and `rangeFinder` handlebars templates

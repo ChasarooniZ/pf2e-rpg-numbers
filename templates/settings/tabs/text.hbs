@@ -1,11 +1,11 @@
 <span>
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />"
     >
         {{localize "pf2e-rpg-numbers.module-settings.headers.finishing-move.title"}}
         <i class="fa-regular fa-message"></i>
-    </h2>
+    </h4>
     {{! Enabled }}
     <div class="form-group">
         <label
@@ -96,22 +96,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.finishing-move.sound-effect.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.finishingMove.sound"
+        <file-picker
             name="settings.finishingMove.sound"
+            type="audio"
             value="{{settings.finishingMove.sound}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.finishingMove.sound"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Volume }}
     <div class="form-group">
@@ -166,7 +155,7 @@
     </div>
 </span>
 <span>
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-noun-verbed.gif' />"
     >
@@ -174,7 +163,7 @@
         -
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.noun-verbed"}}
         <i class="fa-solid fa-award"></i>
-    </h2>
+    </h4>
     {{! Enabled }}
     <div class="form-group">
         <label
@@ -234,22 +223,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.from-software.noun-verbed.sound-effect.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.fromSoftware.eldenRing.nounVerbed.sound"
+        <file-picker
             name="settings.fromSoftware.eldenRing.nounVerbed.sound"
+            type="audio"
             value="{{settings.fromSoftware.eldenRing.nounVerbed.sound}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.fromSoftware.eldenRing.nounVerbed.sound"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Volume }}
     <div class="form-group">
@@ -305,7 +283,7 @@
     </div>
 </span>
 <span>
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-death.gif' />"
     >
@@ -313,7 +291,7 @@
         -
         {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.death"}}
         <i class="fa-duotone fa-solid fa-tombstone"></i>
-    </h2>
+    </h4>
     {{! Enabled }}
     <div class="form-group">
         <label
@@ -374,22 +352,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.from-software.death.sound-effect.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.fromSoftware.eldenRing.death.sound"
+        <file-picker
             name="settings.fromSoftware.eldenRing.death.sound"
+            type="audio"
             value="{{settings.fromSoftware.eldenRing.death.sound}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.fromSoftware.eldenRing.death.sound"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Volume }}
     <div class="form-group">
@@ -443,13 +410,13 @@
     </div>
 </span>
 <span>
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/versus.gif' />"
     >
         {{localize "pf2e-rpg-numbers.module-settings.headers.versus"}}
         <i class="fa-regular fa-swords"></i>
-    </h2>
+    </h4>
     {{! Enabled on Combat Start }}
     <div class="form-group">
         <label

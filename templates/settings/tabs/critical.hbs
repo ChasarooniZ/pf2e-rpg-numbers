@@ -1,10 +1,10 @@
-<h2
+<h4
     data-tooltip-direction="LEFT"
     data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-fire-emblem-awakening.gif' /><img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-persona-5.gif' />"
 >
     {{localize "pf2e-rpg-numbers.module-settings.headers.critical"}}
     <i class="fa-solid fa-explosion"></i>
-</h2>
+</h4>
 {{! Enabled }}
 <div class="form-group">
     <label
@@ -107,22 +107,7 @@
     >
         {{localize "pf2e-rpg-numbers.module-settings.critical.sound.name"}}
     </label>
-    <input
-        type="text"
-        id="settings.critical.sound"
-        name="settings.critical.sound"
-        value="{{settings.critical.sound}}"
-    />
-    <button
-        type="button"
-        class="file-picker"
-        data-type="audio"
-        data-target="settings.critical.sound"
-        data-tooltip="FILES.BrowseTooltip"
-        tabindex="-1"
-    >
-        <i class="fa-solid fa-file-import fa-fw"></i>
-    </button>
+    <file-picker name="settings.critical.sound" type="audio" value="{{settings.critical.sound}}"></file-picker>
 </div>
 {{! Volume }}
 <div class="form-group">

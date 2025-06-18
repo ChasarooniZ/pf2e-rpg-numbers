@@ -15,6 +15,7 @@
             }
         },
         "module-settings": {
+            "version": "Version",
             "notes": {
                 "requires-jb2a-premium": {
                     "name": "JB2A+",
@@ -678,7 +679,7 @@
         },
         "menu": {
             "settings": {
-                "title": "Pf2e RPG #s Config Menu",
+                "title": "Pf2e RPG #s Settings Menu",
                 "buttons": {
                     "export": "Export Settings",
                     "import": "Import Settings",

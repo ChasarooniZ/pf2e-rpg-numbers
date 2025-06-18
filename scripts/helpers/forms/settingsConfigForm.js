@@ -1,15 +1,15 @@
-import { getSetting, MODULE_ID, setSetting } from "../misc.js";
+import { getSetting, KOFI_MESSAGE, MODULE_ID, setSetting } from "../misc.js";
 
 const settingsConfig = {
     home: {
-        icon: "fa-dragon",
+        icon: "fas fa-dragon",
         enabled: "enabled",
         "actor-settings": {
             "player-enabled": "actor-settings.player-enabled",
         },
     },
     rolls: {
-        icon: "fa-dice-d20",
+        icon: "fas fa-dice-d20",
         "dmg-numbers": {
             enabled: "dmg-enabled",
             whenTo: "dmg-on-apply-or-roll",
@@ -47,7 +47,7 @@ const settingsConfig = {
         },
     },
     token: {
-        icon: "fa-circle-user",
+        icon: "fas fa-circle-user",
         burstBurrow: {
             enabled: "burst-burrow.enabled",
             duration: { path: "burst-burrow.duration", type: "number", range: { min: 0, max: 300, step: 0.1 } },
@@ -111,7 +111,7 @@ const settingsConfig = {
         },
     },
     critical: {
-        icon: "fa-explosion",
+        icon: "fas fa-explosion",
         critical: {
             enabled: "critical.enabled",
             style: "critical.type",
@@ -125,7 +125,7 @@ const settingsConfig = {
         },
     },
     text: {
-        icon: "fa-message-captions",
+        icon: "fas fa-message-captions",
         finishingMove: {
             enabled: "finishing-move.enabled",
             playerEnabled: "finishing-move.enabled-players",
@@ -197,86 +197,144 @@ const settingsConfig = {
     },
 };
 
-export class SettingsConfigForm extends FormApplication {
+export class SettingsConfigForm extends foundry.applications.api.HandlebarsApplicationMixin(
+    foundry.applications.api.ApplicationV2
+) {
     // lots of other things...
     constructor(options) {
         super(options);
-        this.options = foundry.utils.mergeObject(this.constructor.defaultOptions, options);
     }
 
-    static get defaultOptions() {
-        return foundry.utils.mergeObject(super.defaultOptions, {
-            classes: ["form"],
-            popOut: true,
-            template: `modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs`,
-            id: "pf2e-rpg-numbers-settings-form",
-            title: "Pf2e RPG #s Config Menu",
+    static DEFAULT_OPTIONS = {
+        id: "pf2e-rpg-numbers-settings-form",
+        form: {
+            handler: SettingsConfigForm.#onSubmit,
+            closeOnSubmit: true,
+        },
+        popOut: true,
+        position: {
             width: 600,
             height: 600,
-            tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
-        });
+        },
+        tag: "form",
+        window: {
+            icon: "fas fa-dragon",
+            title: "pf2e-rpg-numbers.menu.settings.title",
+            contentClasses: ["standard-form", "flexcol"],
+            controls: [
+                {
+                    action: "kofi",
+                    label: KOFI_MESSAGE[Math.floor(Math.random() * KOFI_MESSAGE.length)],
+                    icon: "fa-solid fa-mug-hot fa-beat-fade",
+                    onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+                },
+            ],
+        },
+        tabs: [{ navSelector: ".tabs", contentSelector: ".content", initial: "tab1" }],
+        actions: {
+            save: SettingsConfigForm.save,
+            submit: SettingsConfigForm.submit,
+            cancel: SettingsConfigForm.cancel,
+            import: SettingsConfigForm.import,
+            export: SettingsConfigForm.export,
+        },
+    };
+
+    static PARTS = {
+        tabs: {
+            // Foundry-provided generic template
+            template: "templates/generic/tab-navigation.hbs",
+        },
+        main: {
+            template: "./modules/pf2e-rpg-numbers/templates/settings/pf2e-rpg-settings-config.hbs",
+            scrollable: [".tab.critical", ".tab.token"],
+            classes: ["pf2e-rpg-numbers-main", "pf2e-rpg-config-form"],
+        },
+        footer: {
+            template: "templates/generic/form-footer.hbs",
+            // classes: ["rpg-numbers-footer"]
+        },
+    };
+
+    static async save() {
+        this._processForm(false); // Pass 'false' Fto not submit the form, only save
     }
 
-    activateListeners(html) {
-        super.activateListeners(html);
-        // Add event listener for the Save button
-        html.find("#pf2e-rpg-save").on("click", (event) => {
-            event.preventDefault();
-            this._processForm(false); // Pass 'false' Fto not submit the form, only save
-        });
-        html.find("#pf2e-rpg-submit").on("click", (event) => {
-            event.preventDefault();
-            this._processForm(true); // Pass 'true' to indicate form submission
-        });
-        html.find("#pf2e-rpg-cancel").on("click", (event) => {
-            event.preventDefault();
-            ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
-            this.close(); // Close the form without saving
-        });
-        html.find("#pf2e-rpg-import").on("click", (event) => {
-            game.pf2eRPGNumbers.settings.import();
-            this.close(); // Close the form without saving
-        });
-        html.find("#pf2e-rpg-export").on("click", (event) => {
-            game.pf2eRPGNumbers.settings.export();
-        });
+    static async submit() {
+        this._processForm(true); // Pass 'true' to indicate form submission
     }
 
-    getData() {
-        const tabs = Object.keys(settingsConfig).map((tab) => {
+    static async cancel() {
+        ui.notifications.warn(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.cancel`));
+        this.close(); // Close the form without saving
+    }
+
+    static async import() {
+        game.pf2eRPGNumbers.settings.import();
+        this.close();
+    }
+
+    static async export() {
+        game.pf2eRPGNumbers.settings.export();
+    }
+
+    _onRender(context, options) {}
+
+    _prepareContext(options) {
+        const tabs = Object.keys(settingsConfig).reduce((acc, tab) => {
             const settings = settingsConfig[tab];
             const tabSettings = {};
-
-            for (const [key, value] of Object.entries(settings)) {
-                if (key !== "icon") {
-                    if (typeof value === "string") {
-                        tabSettings[key] = getSetting(value);
-                    } else if (value.type === "number") {
-                        tabSettings[key] = getNumberSetting(value?.path, value?.range);
-                    } else if (typeof value === "object") {
-                        tabSettings[key] = this._retrieveNestedSettings(value);
+            if (settings && typeof settings === "object") {
+                for (const [key, value] of Object.entries(settings)) {
+                    if (key !== "icon") {
+                        if (typeof value === "string") {
+                            tabSettings[key] = getSetting(value);
+                        } else if (value.type === "number") {
+                            tabSettings[key] = getNumberSetting(value?.path, value?.range);
+                        } else if (typeof value === "object") {
+                            tabSettings[key] = this._retrieveNestedSettings(value);
+                        }
                     }
                 }
             }
-            return {
+            acc[tab] = {
                 id: tab,
+                cssClass: tab === "home" ? "active" : "",
                 label: game.i18n.localize(`${MODULE_ID}.menu.settings.tabs.${tab}`),
+                group: "primary",
                 icon: settingsConfig[tab].icon,
                 [tab]: true,
                 settings: tabSettings,
             };
-        });
+
+            return acc;
+        }, {});
         console.log({ tabs });
 
         const disabled = {
             burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
         };
 
-        return foundry.utils.mergeObject(super.getData(), {
+        return {
             tabs,
             version: game?.modules?.get(MODULE_ID)?.version,
             disabled,
-        });
+            buttons: [
+                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+                {
+                    type: "submit",
+                    action: "submit",
+                    icon: "fa-solid fa-floppy-disk-circle-arrow-right",
+                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.submit",
+                },
+                {
+                    type: "cancel",
+                    action: "cancel",
+                    icon: "fa-solid fa-xmark",
+                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.cancel",
+                },
+            ],
+        };
     }
 
     _retrieveNestedSettings(settingGroup) {
@@ -293,32 +351,37 @@ export class SettingsConfigForm extends FormApplication {
         return result;
     }
 
-    async _updateObject(event, formData) {
-        // Expand the flat form data into a nested object structure
-        //console.log({ formData })
-        // Debug log for inspecting the expanded form data
-        //console.log("Expanded Form Data:", { expandedData, formData });
-        //game.settings.set('myModuleName', 'myComplexSettingName', data);
+    static async #onSubmit(event, form, formData) {
+        const settings = foundry.utils.expandObject(formData.object);
+
+        await this.saveSettings(settings);
     }
 
     async _processForm(submit = false) {
-        // Collect the form data from all inputs in the form
-        const formData = new FormDataExtended(this.form).object;
-
-        // Log the gathered form data for debugging purposes
-        console.log("Form Data:", foundry.utils.expandObject(formData));
+        const html = this.element;
+        const formattedObject = this.getFormData(html);
 
         // Handle saving or submitting
         if (submit) {
             // If submitting, call _updateObject to store the data
-            await this.saveSettings(foundry.utils.expandObject(formData));
+            await this.saveSettings(formattedObject);
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
             this.close();
         } else {
             // If saving, call _updateObject to store the data
-            await this.saveSettings(foundry.utils.expandObject(formData));
+            await this.saveSettings(formattedObject);
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
+    }
+
+    getFormData() {
+        // Collect the form data from all inputs in the form
+        const formData = new foundry.applications.ux.FormDataExtended(this.form).object;
+
+        // // Log the gathered form data for debugging purposes
+        const formattedObject = foundry.utils.expandObject(formData);
+        console.log("Form Data RPG#s:", formattedObject);
+        return formattedObject;
     }
 
     async saveSettings(data) {

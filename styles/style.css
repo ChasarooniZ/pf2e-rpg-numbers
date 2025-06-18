@@ -1,5 +1,4 @@
 .pf2e-rpg-actor-config-form .tab.critical {
-    height: 40rem;
     overflow: auto;
 
     .row {
@@ -64,4 +63,34 @@
     .form-group.flex {
         flex: 1;
     }
+}
+
+.pf2e-rpg-config-form {
+    overflow: auto;
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column {
+        flex: 0 0 48%;
+    }
+    .column > button {
+        justify-self: center;
+    }
+
+    .version-info {
+        display: inline-flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        text-align: right;
+        gap: 0.4em; /* space between icon and text */
+    }
+}
+
+.pf2e-rpg-numbers-main {
+    flex: 1;
+    height: 0;
 }

@@ -1,40 +1,48 @@
 <span>
     {{! Enabled }}
     <div class="form-group">
-        <label for="settings.enabled" 
-        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}">
+        <label for="settings.enabled" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.enabled.hint"}}">
             {{localize "pf2e-rpg-numbers.module-settings.enabled.name"}}
         </label>
         <input type="checkbox" id="settings.enabled" name="settings.enabled" {{checked settings.enabled}} />
     </div>
     {{! Actor Settings button Enabled for Players}}
     <div class="form-group">
-        <label for="settings.actor-settings.player-enabled" 
-                data-tooltip-direction="LEFT"
-        data-tooltip="{{localize "
-            pf2e-rpg-numbers.module-settings.actor-settings.player-enabled.hint"}}">
+        <label
+            for="settings.actor-settings.player-enabled"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{
+                localize "
+            pf2e-rpg-numbers.module-settings.actor-settings.player-enabled.hint"
+            }}"
+        >
             {{localize "pf2e-rpg-numbers.module-settings.actor-settings.player-enabled.name"}}
         </label>
-        <input type="checkbox" id="settings.actor-settings.player-enabled" name="settings.actor-settings.player-enabled"
-            {{checked settings.actor-settings.player-enabled}} />
+        <input
+            type="checkbox"
+            id="settings.actor-settings.player-enabled"
+            name="settings.actor-settings.player-enabled"
+            {{checked settings.actor-settings.player-enabled}}
+        />
     </div>
     <div class="row">
         <div class="column">
-            <button id="pf2e-rpg-import">
+            <button id="pf2e-rpg-import" data-action="import">
                 <i class="fas fa-file-import"></i>
                 {{localize "pf2e-rpg-numbers.menu.settings.buttons.import"}}
             </button>
         </div>
         <div class="column">
-            <button id="pf2e-rpg-export">
+            <button id="pf2e-rpg-export" data-action="export">
                 <i class="fas fa-file-export"></i>
                 {{localize "pf2e-rpg-numbers.menu.settings.buttons.export"}}
             </button>
         </div>
     </div>
-    <div>
-        <i>
+    <div class="version-info">
+        <sub>
+            <i class="fa-solid fa-tag"></i>
             {{version}}
-        </i>
+        </sub>
     </div>
 </span>

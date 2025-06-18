@@ -1,12 +1,12 @@
 <span>
     {{! Damage Numbers }}
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-numbers.gif' />"
     >
         {{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}
         <i class="fa-solid fa-swords"></i>
-    </h2>
+    </h4>
     {{! Enabled }}
     <div class="form-group">
         <label
@@ -198,13 +198,13 @@
 </span>
 <span>
     {{! Check Numbers }}
-    <h2
+    <h4
         data-tooltip-direction="LEFT"
         data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/check-text.gif' />"
     >
         {{localize "pf2e-rpg-numbers.module-settings.headers.check-animations.title"}}
         <i class="fa-regular fa-dice-d20"></i>
-    </h2>
+    </h4>
     {{! Enabled }}
     <div class="form-group">
         <label
@@ -283,10 +283,10 @@
             max=settings.check-animations.duration.range.max
         }}
     </div>
-    <h3>
+    <h5>
         {{localize "pf2e-rpg-numbers.module-settings.headers.check-animations.sfx"}}
         <i class="fa-solid fa-volume"></i>
-    </h3>
+    </h5>
     {{! SFX Enabled }}
     <div class="form-group">
         <label
@@ -382,22 +382,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalSuccess.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.check-animations.sfx.file.criticalSuccess"
+        <file-picker
             name="settings.check-animations.sfx.file.criticalSuccess"
+            type="audio"
             value="{{settings.check-animations.sfx.file.criticalSuccess}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.check-animations.sfx.file.criticalSuccess"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Sound Effect - Success }}
     <div class="form-group">
@@ -408,22 +397,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.success.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.check-animations.sfx.file.success"
+        <file-picker
             name="settings.check-animations.sfx.file.success"
+            type="audio"
             value="{{settings.check-animations.sfx.file.success}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.check-animations.sfx.file.success"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Sound Effect - Failure }}
     <div class="form-group">
@@ -434,22 +412,11 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.failure.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.check-animations.sfx.file.failure"
+        <file-picker
             name="settings.check-animations.sfx.file.failure"
+            type="audio"
             value="{{settings.check-animations.sfx.file.failure}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.check-animations.sfx.file.failure"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
     {{! Sound Effect - Critical Failure }}
     <div class="form-group">
@@ -462,21 +429,10 @@
         >
             {{localize "pf2e-rpg-numbers.module-settings.check-animations.sfx.file.criticalFailure.name"}}
         </label>
-        <input
-            type="text"
-            id="settings.check-animations.sfx.file.criticalFailure"
+        <file-picker
             name="settings.check-animations.sfx.file.criticalFailure"
+            type="audio"
             value="{{settings.check-animations.sfx.file.criticalFailure}}"
-        />
-        <button
-            type="button"
-            class="file-picker"
-            data-type="audio"
-            data-target="settings.check-animations.sfx.file.criticalFailure"
-            data-tooltip="FILES.BrowseTooltip"
-            tabindex="-1"
-        >
-            <i class="fa-solid fa-file-import fa-fw"></i>
-        </button>
+        ></file-picker>
     </div>
 </span>

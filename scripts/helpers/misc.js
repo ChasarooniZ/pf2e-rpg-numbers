@@ -1,6 +1,19 @@
 //const { ApplicationV2, HandlebarsApplicationMixin } = foundry.applications.api;
 export const MODULE_ID = "pf2e-rpg-numbers";
 
+export const KOFI_MESSAGE = [
+    "Support Me :P",
+    "Buy Me a Coffee",
+    "Support My Work",
+    "Fuel My Creativity",
+    "Coffee = Motivation",
+    "Send a Coffee Boost",
+    "Pay your tribute",
+    "Treat Me to a Brew",
+    "Be the coolest person you know",
+    "Fuel my Paizo addiction",
+];
+
 export function debugLog(data, context = "") {
     if (getSetting("debug-mode")) console.log(`PF2E-RPG-#s: ${context}`, data);
 }
@@ -26,9 +39,7 @@ export function waitForMessage(id, ms = 250, attempts = 120) {
         (function wait(count = 0) {
             if (count > attempts) return reject();
 
-            if (count != 0 && $(ui.chat.element).find(
-                `.message[data-message-id="${id}"]:not(.dsn-hide)`
-              ).length !== 0)
+            if (count != 0 && $(ui.chat.element).find(`.message[data-message-id="${id}"]:not(.dsn-hide)`).length !== 0)
                 return resolve();
 
             setTimeout(wait, ms, count + 1);
@@ -129,7 +140,7 @@ function transformData(dataArray) {
 //      * @this {MyApplication}                      The handler is called with the application as its bound scope
 //      * @param {SubmitEvent} event                   The originating form submission event
 //      * @param {HTMLFormElement} form                The form element that was submitted
-//      * @param {FormDataExtended} formData           Processed data for the submitted form
+//      * @param {foundry.applications.ux.FormDataExtended} formData           Processed data for the submitted form
 //      * @returns {Promise<void>}
 //      */
 //     static async myFormHandler(_event, _form, formData) {

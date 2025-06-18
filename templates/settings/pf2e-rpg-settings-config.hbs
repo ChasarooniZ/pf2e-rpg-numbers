@@ -1,104 +1,37 @@
-<form>
-    <nav class="tabs pf2e-rpg-config-form" data-group="primary-tabs">
-        {{#each tabs}}
-        <a class="item" data-tab="{{id}}"><i class="fas {{icon}}"></i> {{label}}</a>
-        {{/each}}
-    </nav>
-
-    <section class="content pf2e-rpg-config-form form">
-        {{#each tabs as |tab|}}
-        <div class="tab" data-tab="{{tab.id}}" data-group="primary-tabs">
-            {{#if tab.home}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' this version=version}}
-            {{/if}}
-            {{#if tab.rolls}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' this}}
-            {{/if}}
-            {{#if tab.token}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' this}}
-            {{/if}}
-            {{#if tab.critical}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' this}}
-            {{/if}}
-            {{#if tab.text}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' this}}
-            {{/if}}
-            {{#if tab.misc}}
-            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/misc.hbs' this}}
-            {{/if}}
-        </div>
-        {{/each}}
+<div>
+    <section
+        class='tab home {{tabs.home.cssClass}}'
+        data-group='primary'
+        data-tab='home'
+        >
+        {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' tabs.home version=version}}
     </section>
-
-    <footer class="pf2e-rpg-config-form">
-        <button id="pf2e-rpg-save">{{localize "pf2e-rpg-numbers.menu.settings.buttons.footer.save"}}</button>
-        <button id="pf2e-rpg-submit">{{localize "pf2e-rpg-numbers.menu.settings.buttons.footer.submit"}}</button>
-        <button id="pf2e-rpg-cancel">{{localize "pf2e-rpg-numbers.menu.settings.buttons.footer.cancel"}}</button>
-    </footer>
-</form>
-
-<style type="text/css">
-  /* Make the nav fixed at the top */
-nav.tabs.pf2e-rpg-config-form {
-    position: sticky;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure it stays on top */
-    display: flex;
-    justify-content: space-around;
-}
-
-/* Add padding to the content section to account for the fixed nav */
-section.content.pf2e-rpg-config-form {
-    margin-top: 10px; /* Adjust based on the height of your nav */
-    padding-bottom: 40px;
-}
-
-/* Make the footer fixed at the bottom */
-footer.pf2e-rpg-config-form {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure it stays on top */
-    display: flex;
-    justify-content: space-between; /* Spread the buttons out */
-    padding: 10px;
-    background: #000000bf;
-}
-
-/* Ensure buttons take up 1/3 of the footer width */
-footer.pf2e-rpg-config-form button {
-    flex: 1;
-    margin: 0 5px;
-    text-align: center;
-    height: 30px;
-}
-
-.row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.column {
-    flex: 0 0 48%; 
-}
-
-
-.align-right {
-    text-align: right;
-}
-
-
-nav.tabs.pf2e-rpg-config-form:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 150%;
-    background: #000000bf;
-    z-index: -1;
-}
-
-</style>
+    <section
+        class='tab rolls {{tabs.rolls.cssClass}}'
+        data-group='primary'
+        data-tab='rolls'
+        >
+        {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs' tabs.rolls}}
+    </section>
+    <section
+        class='tab token {{tabs.token.cssClass}}'
+        data-group='primary'
+        data-tab='token'
+        >
+        {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs' tabs.token}}
+    </section>
+    <section
+        class='tab critical {{tabs.critical.cssClass}}'
+        data-group='primary'
+        data-tab='critical'
+        >
+        {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/critical.hbs' tabs.critical}}
+    </section>
+    <section
+        class='tab text {{tabs.text.cssClass}}'
+        data-group='primary'
+        data-tab='text'
+        >
+        {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs' tabs.text}}
+    </section>
+</div>
