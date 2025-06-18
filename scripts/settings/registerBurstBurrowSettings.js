@@ -2,20 +2,20 @@ import { registerSetting } from "../helpers/misc.js";
 
 export function registerBurstBurrowSettings() {
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.enabled',
-        desc: 'enabled',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.enabled",
+        desc: "enabled",
+        scope: "world",
         config: false,
         default: false,
         type: Boolean,
     });
 
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.duration',
-        desc: 'duration',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.duration",
+        desc: "duration",
+        scope: "world",
         config: false,
         default: 10,
         range: {
@@ -27,20 +27,20 @@ export function registerBurstBurrowSettings() {
     });
 
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.persistent',
-        desc: 'persistent',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.persistent",
+        desc: "persistent",
+        scope: "world",
         config: false,
         default: false,
         type: Boolean,
     });
 
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.size-multiplier',
-        desc: 'size-multiplier',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.size-multiplier",
+        desc: "size-multiplier",
+        scope: "world",
         config: false,
         default: 1,
         range: {
@@ -52,36 +52,35 @@ export function registerBurstBurrowSettings() {
     });
 
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.ignore-speed',
-        desc: 'ignore-speed',
-        scope: 'world',
-        config: false,
-        default: false,
-        type: Boolean,
-    });
-    
-    registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.burrow-anim.enabled',
-        desc: 'burrow-anim.enabled',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.ignore-speed",
+        desc: "ignore-speed",
+        scope: "world",
         config: false,
         default: false,
         type: Boolean,
     });
 
-    
     registerSetting({
-        category: 'burst-burrow',
-        id: 'burst-burrow.burrow-anim.depth',
-        desc: 'burrow-anim.depth',
-        scope: 'world',
+        category: "burst-burrow",
+        id: "burst-burrow.burrow-anim.enabled",
+        desc: "burrow-anim.enabled",
+        scope: "world",
+        config: false,
+        default: false,
+        type: Boolean,
+    });
+
+    registerSetting({
+        category: "burst-burrow",
+        id: "burst-burrow.burrow-anim.depth",
+        desc: "burrow-anim.depth",
+        scope: "world",
         config: false,
         default: -10,
         range: {
-            min: 0,
-            max: -100,
+            min: -100,
+            max: 0,
             step: 1,
         },
         type: Number,

@@ -62,7 +62,7 @@ const settingsConfig = {
                 depth: {
                     path: "burst-burrow.burrow-anim.depth",
                     type: "number",
-                    range: { min: 0, max: -100, step: 1 },
+                    range: { min: -100, max: 0, step: 1 },
                 },
             },
         },
