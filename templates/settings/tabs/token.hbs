@@ -445,10 +445,16 @@
     {{! Type }}
     <div class="form-group">
         <label for="settings.dodgeOnMiss.type">
-            <span data-tooltip-direction="LEFT" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.hint"}}">
+            <span
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.hint"}}"
+            >
                 {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.type.name"}}
             </span>
-            <sup data-tooltip-direction="LEFT" data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.hint"}}">
+            <sup
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.hint"}}"
+            >
                 <i>
                     {{localize "pf2e-rpg-numbers.module-settings.notes.requires-jb2a-premium.name"}}
                 </i>
@@ -535,11 +541,6 @@
             max=settings.tokenShake.duration.range.max
         }}
     </div>
-    {{! Scaling }}
-    <h5>
-        {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.scaling"}}
-        <i class="fa-solid fa-chart-line"></i>
-    </h5>
     {{! Scaling Type }}
     <div class="form-group">
         <label
@@ -553,57 +554,6 @@
             {{selectOptions
                 settings.tokenShake.scaling.type.choices
                 selected=settings.tokenShake.scaling.type.value
-                localize=true
-            }}
-        </select>
-    </div>
-    {{! Scaling Distance }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.scaling.distance"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.distance.name"}}
-        </label>
-        <select id="settings.tokenShake.scaling.distance" name="settings.tokenShake.scaling.distance">
-            {{selectOptions
-                settings.tokenShake.scaling.distance.choices
-                selected=settings.tokenShake.scaling.distance.value
-                localize=true
-            }}
-        </select>
-    </div>
-    {{! Scaling Shakes }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.scaling.shakes"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.shakes.name"}}
-        </label>
-        <select id="settings.tokenShake.scaling.shakes" name="settings.tokenShake.scaling.shakes">
-            {{selectOptions
-                settings.tokenShake.scaling.shakes.choices
-                selected=settings.tokenShake.scaling.shakes.value
-                localize=true
-            }}
-        </select>
-    </div>
-    {{! Scaling Duration }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.scaling.duration"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.scaling.duration.name"}}
-        </label>
-        <select id="settings.tokenShake.scaling.duration" name="settings.tokenShake.scaling.duration">
-            {{selectOptions
-                settings.tokenShake.scaling.duration.choices
-                selected=settings.tokenShake.scaling.duration.value
                 localize=true
             }}
         </select>

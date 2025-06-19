@@ -1,3 +1,7 @@
+# [13.1.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.1.0...13.1.1) - Fix menu
+
+-   Removed vestigial elements of the settings menu
+
 # [13.1.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.0.1...13.1.0) - UI Upgrades
 
 -   `Updated`

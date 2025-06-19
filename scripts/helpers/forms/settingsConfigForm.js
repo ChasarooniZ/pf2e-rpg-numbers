@@ -73,9 +73,6 @@ const settingsConfig = {
             duration: { path: "tok-shake-duration", type: "number", range: { min: 0, max: 2000, step: 10 } },
             scaling: {
                 type: "tok-shake-scaling-type",
-                distance: "tok-shake-scaling-distance",
-                shakes: "tok-shake-scaling-shakes",
-                duration: "tok-shake-scaling-duration",
             },
         },
         rotateOnAttack: {

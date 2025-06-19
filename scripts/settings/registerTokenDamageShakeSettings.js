@@ -3,20 +3,20 @@ import { registerSetting } from "../helpers/misc.js";
 //TODO redo these settings
 export function registerTokenDamageShakeSettings() {
     registerSetting({
-        category: 'token-dmg-shake',
-        id: 'dmg-shake-directional-enabled',
-        desc: 'enabled',
-        scope: 'world',
+        category: "token-dmg-shake",
+        id: "dmg-shake-directional-enabled",
+        desc: "enabled",
+        scope: "world",
         config: false,
         default: true,
         type: Boolean,
     });
 
     registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-distance',
-        desc: 'distance',
-        scope: 'world',
+        category: "token-dmg-shake",
+        id: "tok-shake-distance",
+        desc: "distance",
+        scope: "world",
         config: false,
         default: 20,
         range: {
@@ -28,10 +28,10 @@ export function registerTokenDamageShakeSettings() {
     });
 
     registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-shakes',
-        desc: 'shakes',
-        scope: 'world',
+        category: "token-dmg-shake",
+        id: "tok-shake-shakes",
+        desc: "shakes",
+        scope: "world",
         config: false,
         default: 7,
         range: {
@@ -43,10 +43,10 @@ export function registerTokenDamageShakeSettings() {
     });
 
     registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-duration',
-        desc: 'duration',
-        scope: 'world',
+        category: "token-dmg-shake",
+        id: "tok-shake-duration",
+        desc: "duration",
+        scope: "world",
         config: false,
         default: 500,
         range: {
@@ -58,46 +58,13 @@ export function registerTokenDamageShakeSettings() {
     });
 
     registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-scaling-type',
-        desc: 'scaling.type',
-        scope: 'world',
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-type",
+        desc: "scaling.type",
+        scope: "world",
         config: false,
-        default: 'no',
+        default: "no",
         type: String,
-        choices: ['no', '%-current-hp', '%-max-hp'],
-    });
-
-    registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-scaling-distance',
-        desc: 'scaling.distance',
-        scope: 'world',
-        config: false,
-        default: 'mid',
-        type: String,
-        choices: ['no', 'max', 'mid'],
-    });
-
-    registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-scaling-shakes',
-        desc: 'scaling.shakes',
-        scope: 'world',
-        config: false,
-        default: 'no',
-        type: String,
-        choices: ['no', 'max', 'mid'],
-    });
-
-    registerSetting({
-        category: 'token-dmg-shake',
-        id: 'tok-shake-scaling-duration',
-        desc: 'scaling.duration',
-        scope: 'world',
-        config: false,
-        default: 'no',
-        type: String,
-        choices: ['no', 'max', 'mid'],
+        choices: ["no", "%-current-hp", "%-max-hp"],
     });
 }
