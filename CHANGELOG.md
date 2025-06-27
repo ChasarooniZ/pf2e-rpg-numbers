@@ -1228,6 +1228,18 @@
   - Crit Message idea
   
 
+## 13.2.0 - 2025-06-27
+
+- `Updated`
+    - This module now requires `Genga` (my system agnostic animation module)
+        - This will allow an easier animation creation workflow, and allow possible future expansion of some features to other systems
+        - The code for many animations has been moved to that repo
+        
+    - **VS Animation**
+        - Updated team name dialog to `DialogV2`
+        
+    
+
 ## 13.1.1 - 2025-06-19
 
 - Removed vestigial elements of the settings menu
