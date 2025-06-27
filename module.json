@@ -32,6 +32,15 @@
                     "minimum": "3.4.9",
                     "verified": "3.4.9"
                 }
+            },
+            {
+                "id": "genga",
+                "type": "module",
+                "manifest": "https://github.com/ChasarooniZ/anime-agnostic-animations/releases/latest/download/module.json",
+                "compatibility": {
+                    "minimum": "0.4.2",
+                    "verified": "0.4.2"
+                }
             }
         ]
     },
@@ -90,9 +99,7 @@
             }
         }
     ],
-    "styles": [
-      "styles/style.css"
-    ],
+    "styles": ["styles/style.css"],
     "url": "#{URL}#",
     "manifest": "#{MANIFEST}#",
     "download": "#{DOWNLOAD}#",

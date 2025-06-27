@@ -1,10 +1,6 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
 import { getSetting, localize, MODULE_ID } from "../../misc.js";
 import { getTokenImage } from "../token/shakeOnDamageToken.js";
-import { disgaea7Crit } from "./styles/disgaea7Crit.js";
-import { fireEmblemCrit } from "./styles/fireEmblemCrit.js";
-import { fullscreenCrit } from "./styles/fullscreenCrit.js";
-import { personaCrit } from "./styles/personaCrit.js";
 
 /**
  * Creates a critical animation based on the provided roll details.
@@ -68,6 +64,7 @@ export function createTestCritAnimation(data) {
         config.art = shouldUseToken ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
     config.sfx = config.sfx || (succFail === "success" ? getSetting("critical.sound") : "");
+    config.duration = getSetting("critical.duration") * 1000;
 
     displayCritAnimation(type, actor, [userID], config);
 }
@@ -196,22 +193,21 @@ function getEligibleUsers(rollDeets) {
  * @param {string} critType - The type of critical animation to display.
  * @param {object} actor - The actor object.
  * @param {string[]} users - The list of eligible user IDs.
- * @param {object} imgData - The image data for the animation.
  * @param {object} config - The animation configuration.
  */
-function displayCritAnimation(critType, actor, users, imgData, config) {
+function displayCritAnimation(critType, actor, users, config) {
     switch (critType) {
         case "disgaea-7":
-            disgaea7Crit(actor, users, imgData, config);
+            game.genga.api.crit.disgaea7(actor, users, config);
             break;
         case "fire-emblem":
-            fireEmblemCrit(actor, users, imgData, config);
+            game.genga.api.crit.fireEmblemAwakening(actor, users, config);
             break;
         case "fullscreen":
-            fullscreenCrit(actor, users, imgData, config);
+            game.genga.api.crit.fullscreen(actor, users, config);
             break;
         case "persona":
-            personaCrit(actor, users, imgData, config);
+            game.genga.api.crit.persona5(actor, users, config);
             break;
         default:
             ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`);
