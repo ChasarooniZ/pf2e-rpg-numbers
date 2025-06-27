@@ -13,10 +13,18 @@ import {
     //FinisherDialog,
     getSetting,
     MODULE_ID,
-    waitForMessage
+    waitForMessage,
 } from "./helpers/misc.js";
 import { getDamageList } from "./helpers/rollTerms.js";
-import { applyTokenStatusEffect, combatStart, getActorSheetHeaderButtons, getItemSheetHeaderButtons, getSceneControlButtons, preDeleteCombat, preUpdateToken } from "./hooks.js";
+import {
+    applyTokenStatusEffect,
+    combatStart,
+    getActorSheetHeaderButtons,
+    getItemSheetHeaderButtons,
+    getSceneControlButtons,
+    preDeleteCombat,
+    preUpdateToken,
+} from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 
@@ -43,7 +51,6 @@ Hooks.on("ready", () => {
             finishingMove(dat, msg);
 
             waitForMessage(msg.id).then(() => {
-
                 // RPG Numbers on Damage Roll
                 damageRollNumbers(dat, msg);
 
@@ -54,25 +61,23 @@ Hooks.on("ready", () => {
                 if (dat.isAttackRoll) {
                     // Rotate on Attack Roll
                     if (isRotateOnAttack()) {
-                        rotateOnAttack(msg)
+                        rotateOnAttack(msg);
                     }
                     if (isShakeOnAttack(msg.token.actor)) {
-                        shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome)
+                        shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
                     }
 
                     if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
-                        handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object)
+                        handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object);
                     }
                 }
 
                 //On Damage Application
                 onDamageApplication(dat, msg);
-
             });
-
         }
     });
-    Hooks.on("preUpdateToken", preUpdateToken)
+    Hooks.on("preUpdateToken", preUpdateToken);
     Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
 
     /**
@@ -90,9 +95,7 @@ Hooks.on("ready", () => {
     });*/
 
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
-    Hooks.on("combatStart", combatStart)
-
-
+    Hooks.on("combatStart", combatStart);
 
     if (game.user.isGM) {
         const version = game.modules.get(MODULE_ID).version;
@@ -103,6 +106,18 @@ Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is ready");
 });
 
+/**
+ * Extracts and structures data from a chat message for processing.
+ * @param {object} msg - The chat message object
+ * @returns {object} Object containing boolean flags and data about the message type and content
+ * @returns {boolean} returns.isDamageRoll - Whether this is a damage roll message
+ * @returns {boolean} returns.isCheckRoll - Whether this is a check roll message
+ * @returns {boolean} returns.isAttackRoll - Whether this is an attack roll message
+ * @returns {boolean} returns.isApplyDamage - Whether damage is being applied
+ * @returns {boolean} returns.isAppliedHealing - Whether healing is being applied
+ * @returns {object} returns.appliedDamage - Applied damage data from message flags
+ * @returns {object} returns.item - Item information with name property
+ */
 function getData(msg) {
     return {
         isDamageRoll: msg.isDamageRoll,
@@ -142,6 +157,11 @@ function activateShakeToken(dat, dmg) {
         shakeOnDamageToken(dat.appliedDamage?.uuid, dmg);
 }
 
+/**
+ * Determines if screen shake should occur on attack based on actor ownership and settings.
+ * @param {object} actor - The actor performing the attack
+ * @returns {boolean} Whether screen shake should be activated
+ */
 function isShakeOnAttack(actor) {
     if (!getSetting("shake-on-attack.enabled")) return false;
     const isPlayerOwned = actor.hasPlayerOwner;
@@ -156,20 +176,34 @@ function isShakeOnAttack(actor) {
     }
 }
 
+/**
+ * Checks if token rotation on attack is enabled.
+ * @returns {boolean} Whether rotation on attack is enabled
+ */
 function isRotateOnAttack() {
     return getSetting("rotate-on-attack");
 }
+
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
 
 function isDodgeOnMiss(outcome) {
-    return ['failure', 'criticalFailure'].includes(outcome) && getSetting('dodge-on-miss.enabled')
+    return ["failure", "criticalFailure"].includes(outcome) && getSetting("dodge-on-miss.enabled");
 }
 
+/**
+ * Processes and displays check roll results with optional critical animations.
+ * @param {object} dat - Data object from getData() containing roll information
+ * @param {object} msg - The chat message object
+ */
 function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
-    const doCrits = shouldDoCrits(msg?.token?.actor?.getFlag('pf2e-rpg-numbers', 'critical'), msg?.flags?.pf2e?.context?.outcome ?? "none");
+    const doCrits =
+        shouldDoCrits(
+            msg?.token?.actor?.getFlag("pf2e-rpg-numbers", "critical"),
+            msg?.flags?.pf2e?.context?.outcome ?? "none"
+        ) && msg?.flags?.pf2e?.context?.type !== "flat-check";
     //const doCritFailures = getSetting("critical.failure.enabled");
     if (dat.isCheckRoll && (doChecks || doCrits)) {
         const roll_deets = {
@@ -180,17 +214,22 @@ function checkRollNumbers(dat, msg) {
             type: msg.flags.pf2e.context.type,
         };
         if (doChecks) {
-            generateRollScroll(roll_deets)
+            generateRollScroll(roll_deets);
         }
         if (doCrits && roll_deets.outcome === "criticalSuccess") {
-            createCritAnimation(roll_deets, '', true)
+            createCritAnimation(roll_deets, "", true);
         }
         if (roll_deets.outcome === "criticalFailure") {
-            createCritAnimation(roll_deets, '', false)
+            createCritAnimation(roll_deets, "", false);
         }
     }
 }
 
+/**
+ * Processes damage roll results and generates damage scroll animations.
+ * @param {object} dat - Data object from getData() containing damage roll info
+ * @param {object} msg - The chat message object
+ */
 function damageRollNumbers(dat, msg) {
     if (dat.isDamageRoll && getSetting("dmg-enabled") && getSetting("dmg-on-apply-or-roll") === "roll") {
         const dmg_list = getDamageList(msg.rolls);
@@ -207,6 +246,11 @@ function damageRollNumbers(dat, msg) {
     }
 }
 
+/**
+ * Handles finishing move animations when the finishing move flag is active.
+ * @param {object} dat - Data object from getData() containing item information
+ * @param {object} msg - The chat message object
+ */
 function finishingMove(dat, msg) {
     if (getSetting("finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
         debugLog(
@@ -241,20 +285,29 @@ export function getTargetList(msg) {
     return tok ? [tok] : [];
 }
 
-export function createUpdateMessage() {
+/**
+ * Creates an update message in chat for GM recipients.
+ */
+export function createUpdateMessage(chatContent) {
     ChatMessage.create({
         content: chatContent,
         whisper: ChatMessage.getWhisperRecipients("GM"),
     });
 }
 
-function shouldDoCrits(flags, outcome) {
-    const succFail = (outcome === 'criticalSuccess' && 'success')
-        || (outcome === 'criticalFailure' && 'failure')
-        || 'none';
-    if (succFail === 'none') return false;
+/**
+ * Determines if critical animations should be displayed based on actor flags and outcome.
+ * @param {object} actorFlags - Actor-specific critical animation flags
+ * @param {string} outcome - The roll outcome ("criticalSuccess", "criticalFailure", etc.)
+ * @returns {boolean} Whether critical animations should be shown
+ */
+
+function shouldDoCrits(actorFlags, outcome) {
+    const succFail =
+        (outcome === "criticalSuccess" && "success") || (outcome === "criticalFailure" && "failure") || "none";
+    if (succFail === "none") return false;
     return (
-        flags?.[succFail]
-        && Object.values(flags?.[succFail])?.find(i => i.enabled === 'on')
-    ) || getSetting("critical.enabled")
+        (actorFlags?.[succFail] && Object.values(actorFlags?.[succFail])?.find((i) => i.enabled === "on")) ||
+        getSetting("critical.enabled")
+    );
 }
