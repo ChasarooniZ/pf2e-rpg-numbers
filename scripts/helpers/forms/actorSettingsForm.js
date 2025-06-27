@@ -185,7 +185,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
                     action: "kofi",
                     label: "Support Me :P",
                     icon: "fa-solid fa-mug-hot fa-beat-fade",
-                    onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+                    onClick: () => window.open("https://ko-fi.com/chasarooni", ""_blank""),
                 },
             ],
         },
