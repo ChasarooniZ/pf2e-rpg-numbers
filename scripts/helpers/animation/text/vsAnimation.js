@@ -18,10 +18,23 @@ export async function vsAnimation() {
     };
     let teamNames;
     if (CONFIG.showTeamNames) {
-        teamNames = await new Promise((resolve) => {
-            new Dialog({
+        teamNames = await await foundry.applications.api.DialogV2.prompt({
+            window: {
                 title: localize("menu.versus.name.title"),
-                content: `
+                controls: [
+                    {
+                        action: "kofi",
+                        label: "Support Dev",
+                        icon: "fa-solid fa-mug-hot fa-beat-fade",
+                        onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
+                    },
+                ],
+                icon: "far fa-swords",
+            },
+            position: {
+                width: 550,
+            },
+            content: `
               <form>
                 <div style="display: flex; align-items: center; gap: 20px; padding-bottom: 1.5em;">
                   <div>
@@ -30,31 +43,24 @@ export async function vsAnimation() {
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
-                    "menu.versus.name.opponent"
-                )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
+                        "menu.versus.name.opponent"
+                    )}</label><br>
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${
+                        defNames.opposition
                     }">
                   </div>
                 </div>
                 <div>
                 </div>
               </form>`,
-                buttons: {
-                    ok: {
-                        label: "OK",
-                        callback: (html) => {
-                            const party = html.find('[name="partyName"]').val();
-                            const opposition = html.find('[name="opponentName"]').val();
-                            resolve({ party, opposition });
-                        },
-                    },
-                    cancel: {
-                        label: "Cancel",
-                        callback: () => resolve(null),
-                    },
+            ok: {
+                label: "OK",
+                callback: (event, button, dialog) => {
+                    const party = button.form.elements.partyName.value;
+                    const opposition = button.form.elements.opponentName.value;
+                    return { party, opposition };
                 },
-                default: "ok",
-            }).render(true, { width: 550 });
+            },
         });
     }
     if (teamNames === null) return;

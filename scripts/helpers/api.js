@@ -8,10 +8,8 @@ import { exportSettings } from "./forms/exportSettings.js";
 import { importSettings } from "./forms/importSettings.js";
 import { migrateTokenSettingsToActorSettings } from "./library/migration.js";
 import { EnhancedTour } from "./library/EnhancedTour.js";
-import { eldenRingNounVerbed } from "./animation/text/fromSoftware/eldenRingNounVerbed.js";
-import { eldenRingDeath } from "./animation/text/fromSoftware/eldenRingDeath.js";
-import { sekiroDeath } from "./animation/text/fromSoftware/sekiroDeath.js";
 import { vsAnimation } from "./animation/text/vsAnimation.js";
+import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./animation/text/fromSoftwareText.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -44,13 +42,8 @@ export function createAPI() {
             },
         },
         fromSoftware: {
-            eldenRing: {
-                nounVerbed: eldenRingNounVerbed,
-                death: eldenRingDeath,
-            },
-            sekiro: {
-                death: sekiroDeath,
-            },
+            nounVerbed: fromSoftwareNounVerbed,
+            death: fromSoftwareDeath,
         },
         vs: {
             generate: vsAnimation,

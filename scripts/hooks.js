@@ -1,5 +1,4 @@
-import { fromSoftwareDeath } from "./helpers/animation/text/fromSoftwareText.js";
-import { eldenRingNounVerbed } from "./helpers/animation/text/fromSoftware/eldenRingNounVerbed.js";
+import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
 import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
@@ -20,7 +19,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 
     // If xpNeeded is 0, trigger the animation and exit
     if (xpNeeded === 0) {
-        eldenRingNounVerbed();
+        fromSoftwareNounVerbed();
         return;
     }
 
@@ -43,7 +42,7 @@ export async function preDeleteCombat(encounter, _changed, _userid) {
 
     // Trigger animation if conditions are met
     if ((xp?.xpPerPlayer ?? 0) >= xpNeeded) {
-        eldenRingNounVerbed();
+        fromSoftwareNounVerbed();
     }
 }
 export async function applyTokenStatusEffect(token, status, isAdded) {
@@ -62,7 +61,7 @@ export function getSceneControlButtons(controls, _b, _c) {
     let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
 
     const toolData = {
-        name: 'finishing-move',
+        name: "finishing-move",
         title: localize("controls.finishing-move.name"),
         icon: "fas fa-message-captions",
         toggle: true,
@@ -85,7 +84,7 @@ export function getSceneControlButtons(controls, _b, _c) {
     if (Array.isArray(controls)) {
         controls.find((con) => con.name == "token").tools.push(toolData);
     } else {
-        controls.tokens.tools['finishing-move'] = toolData;
+        controls.tokens.tools["finishing-move"] = toolData;
     }
 }
 

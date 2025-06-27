@@ -223,7 +223,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
                     action: "kofi",
                     label: KOFI_MESSAGE[Math.floor(Math.random() * KOFI_MESSAGE.length)],
                     icon: "fa-solid fa-mug-hot fa-beat-fade",
-                    onClick: () => window.open("https://ko-fi.com/chasarooni", ""_blank""),
+                    onClick: () => window.open("https://ko-fi.com/chasarooni", "_blank"),
                 },
             ],
         },
