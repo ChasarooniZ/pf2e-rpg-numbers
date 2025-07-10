@@ -1,4 +1,5 @@
-import { localize, MODULE_ID, registerSetting } from "./helpers/misc.js";
+import { localize, registerSetting } from "./helpers/misc.js";
+import { MODULE_ID } from "./helpers/const.js";
 import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
 import { registerScreenShakeSettings } from "./settings/registerScreenShakeSettings.js";
 import { registerDmgNumbersSettings } from "./settings/registerDmgNumbersSettings.js";
@@ -135,7 +136,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => { },
+        onUp: () => {},
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -156,7 +157,7 @@ Hooks.on("init", () => {
                 ui.notifications.error("You must have a token selected");
             }
         },
-        onUp: () => { },
+        onUp: () => {},
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });

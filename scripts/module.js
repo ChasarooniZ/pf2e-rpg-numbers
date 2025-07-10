@@ -12,9 +12,9 @@ import {
     doSomethingOnDamageApply,
     //FinisherDialog,
     getSetting,
-    MODULE_ID,
     waitForMessage,
 } from "./helpers/misc.js";
+import { MODULE_ID } from "./helpers/const.js";
 import { getDamageList } from "./helpers/rollTerms.js";
 import {
     applyTokenStatusEffect,

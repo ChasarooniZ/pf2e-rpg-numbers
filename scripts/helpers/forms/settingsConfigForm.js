@@ -1,4 +1,5 @@
-import { getSetting, KOFI_MESSAGE, MODULE_ID, setSetting } from "../misc.js";
+import { KOFI_MESSAGE, MODULE_ID } from "../const.js";
+import { getSetting, setSetting } from "../misc.js";
 
 const settingsConfig = {
     home: {

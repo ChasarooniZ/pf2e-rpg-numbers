@@ -1,3 +1,7 @@
+# [13.2.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.2.1...13.2.2) - Fix Token Shaking
+
+-   Fixes `Token Shake on Damage` not working (🐛 @Razytos)
+
 # [13.2.1](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.2.0...13.2.1) - Flat Checks
 
 -   `Updated`

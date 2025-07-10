@@ -1,4 +1,6 @@
-import { getSetting, MODULE_ID } from "../../misc.js";
+import { MS_TO_SEC } from "../../const.js";
+import { getSetting } from "../../misc.js";
+import { MODULE_ID } from "../../const.js";
 
 export function burstBurrow(data) {
     if (!data?.token) return;
@@ -9,12 +11,15 @@ export function burstBurrow(data) {
         );
         if (!hasBurrow) return;
     }
+    // In Seconds
+    const duration = getSetting("burst-burrow.duration") * MS_TO_SEC;
+    // Should the ground hole stay?
+    const persistent = getSetting("burst-burrow.persistent");
+    //Size of the FXs
+    const sizeMultiplier = getSetting("burst-burrow.size-multiplier");
 
-    const duration = getSetting("burst-burrow.duration") * 1000; // In Seconds
-    const persistent = getSetting("burst-burrow.persistent"); // Should the ground hole stay?
-    const sizeMultiplier = getSetting("burst-burrow.size-multiplier"); //Size of the FXs
     //Animation
-    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+    new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         .effect() //Ground FX
         .atLocation(data?.token)
         .file("jb2a.burrow.out.01.still_frame.0")
@@ -23,13 +28,13 @@ export function burstBurrow(data) {
         .belowTokens()
         .duration(duration)
         .fadeIn(600, { ease: "easeInExpo", delay: 200 })
-        .fadeOut(1000)
+        .fadeOut(MS_TO_SEC)
         .effect() //Burst FX
         .atLocation(data?.token)
         .file("jb2a.burrow.out.01.brown.1")
         .scaleToObject(3 * sizeMultiplier)
         .belowTokens()
-        .play({preload: true });
+        .play({ preload: true });
 }
 
 function crossesZero(a, b) {
@@ -48,7 +53,7 @@ export async function burrow(coord1, coord2, data) {
     if (coord1 === coord2) return;
     const token = data.token.object;
     const file = "jb2a.burrow.ranged.01.brown";
-    return new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+    return new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
         .animation()
         .on(token)
         .opacity(0)
@@ -64,5 +69,5 @@ export async function burrow(coord1, coord2, data) {
         .on(token)
         .fadeIn(500, { ease: "easeInCubic" })
         .opacity(1)
-        .play({preload: true });
+        .play({ preload: true });
 }

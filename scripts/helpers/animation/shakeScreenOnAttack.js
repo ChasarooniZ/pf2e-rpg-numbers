@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../misc.js";
+import { MODULE_ID } from "../const.js";
 
 export async function shakeOnAttack(token, outcome) {
     let strength = 10;

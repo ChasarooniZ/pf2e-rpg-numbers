@@ -1,5 +1,6 @@
 import { CRIT_OPTIONS_LABELS } from "../helpers/animation/crit/const.js";
-import { registerSetting, MODULE_ID } from "../helpers/misc.js";
+import { registerSetting } from "../helpers/misc.js";
+import { MODULE_ID } from "../helpers/const.js";
 
 export function registerCriticalSettings() {
     registerSetting({

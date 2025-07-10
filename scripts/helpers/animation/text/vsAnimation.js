@@ -1,4 +1,5 @@
-import { getSetting, localize, MODULE_ID } from "../../misc.js";
+import { getSetting, localize } from "../../misc.js";
+import { MODULE_ID, MS_TO_SEC } from "../../const.js";
 
 const startUpEach = 100;
 
@@ -72,7 +73,7 @@ export async function vsAnimation() {
         }, {});
 
     const encounter = game.combat;
-    const maxDur = CONFIG.duration * 1000;
+    const maxDur = CONFIG.duration * MS_TO_SEC;
     const art = {
         enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(

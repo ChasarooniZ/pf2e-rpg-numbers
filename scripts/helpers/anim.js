@@ -116,15 +116,14 @@ export function getTokenShakeScale(token, dmg) {
     }
 
     return result.map((it) => {
-        let scaling_option = getSetting(`tok-shake-scaling-${it}`);
         let val = values[it];
-        switch (scaling_option) {
-            case "no":
-                return val;
-            case "max":
-                return val * scale;
-            case "mid":
-                return val * scale * 2;
+        switch (it) {
+            case "distance":
+                return val * getMultiplier(scale, 2, 1);
+            case "shakes":
+                return Math.round(val * getMultiplier(scale, 1.7, 1));
+            case "duration":
+                return val * getMultiplier(scale, 2, 1);
             default:
                 return val;
         }
@@ -146,4 +145,17 @@ export function getMultiVisibleAndMsgVisible(tokens, msgWhispers) {
         if (users.length === 0) break;
     }
     return users.filter((player) => (msgWhispers.length === 0 ? true : msgWhispers.includes(player)));
+}
+
+/**
+ * Calculate duration multiplier based on percentage of health
+ * @param {number} percentHealth - Percentage of max health
+ * @param {number} max - Max multiplier
+ * @param {number} min - Min multiplier
+ * @returns {number} A value between 1 and 4 to scale duration
+ */
+function getMultiplier(percentHealth, max = 4, min = 1) {
+    const clampedHealth = Math.min(Math.max(0.1, percentHealth), 0.5);
+    const scaledHealth = ((clampedHealth - 0.1) * Math.max(max - 1, min - 1)) / 0.4;
+    return min + scaledHealth;
 }

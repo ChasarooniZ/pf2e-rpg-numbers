@@ -1,5 +1,6 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
-import { getSetting, localize, MODULE_ID } from "../../misc.js";
+import { getSetting, localize } from "../../misc.js";
+import { MODULE_ID, MS_TO_SEC } from "../../const.js";
 import { getTokenImage } from "../token/shakeOnDamageToken.js";
 
 /**
@@ -30,7 +31,7 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     config.scale *= imgData.scale;
     config.art = config.art || imgData.img;
     config.sfx = config.sfx || (isSuccess ? getSetting("critical.sound") : "");
-    config.duration = getSetting("critical.duration") * 1000;
+    config.duration = getSetting("critical.duration") * MS_TO_SEC;
 
     //Cancels animation based on config or imgData
     if (
@@ -64,7 +65,7 @@ export function createTestCritAnimation(data) {
         config.art = shouldUseToken ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
     config.sfx = config.sfx || (succFail === "success" ? getSetting("critical.sound") : "");
-    config.duration = getSetting("critical.duration") * 1000;
+    config.duration = getSetting("critical.duration") * MS_TO_SEC;
 
     displayCritAnimation(type, actor, [userID], config);
 }
@@ -147,7 +148,7 @@ function getAnimationConfig(config) {
     const successOrFail = config.isSuccess ? "success" : "failure";
 
     const data = {
-        delay: getSetting("critical.delay") * 1000,
+        delay: getSetting("critical.delay") * MS_TO_SEC,
         offset: { x: 0, y: 0 },
         sfx: config.isSuccess ? getSetting("critical.sound") : "",
         volume: getSetting("critical.volume") / 100,

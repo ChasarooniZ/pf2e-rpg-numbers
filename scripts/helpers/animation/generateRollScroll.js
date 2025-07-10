@@ -1,5 +1,6 @@
 import { getVisibleAndMsgVisibleUsers } from "../anim.js";
-import { getSetting, MODULE_ID } from "../misc.js";
+import { getSetting } from "../misc.js";
+import { MODULE_ID, MS_TO_SEC } from "../const.js";
 
 // Define constant colors outside the function to avoid recreating them on every call
 const colors = {
@@ -31,7 +32,7 @@ export async function generateRollScroll(roll_deets) {
         dropShadow: true,
         strokeThickness: 5,
     };
-    const duration = getSetting("check-duration") * 1000;
+    const duration = getSetting("check-duration") * MS_TO_SEC;
     let text;
 
     // Simplify text determination using a switch statement

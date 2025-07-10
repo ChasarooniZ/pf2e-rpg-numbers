@@ -1,6 +1,5 @@
 import { registerSetting } from "../helpers/misc.js";
 
-//TODO redo these settings
 export function registerTokenDamageShakeSettings() {
     registerSetting({
         category: "token-dmg-shake",

@@ -1,4 +1,5 @@
-import { getSetting, MODULE_ID } from "../../misc.js";
+import { getSetting } from "../../misc.js";
+import { MODULE_ID } from "../../const.js";
 
 /**
  * Creates a finishing move animation with text and sound effects.

@@ -1,4 +1,5 @@
-import { getSetting, MODULE_ID } from "../misc.js";
+import { MODULE_ID } from "../const.js";
+import { getSetting } from "../misc.js";
 
 /**
  * Shakes the screen based on damage taken and settings

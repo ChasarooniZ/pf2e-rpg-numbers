@@ -1,5 +1,5 @@
 import { getTokenShakeScale, getVisibleUsers } from "../../anim.js";
-import { MODULE_ID } from "../../misc.js";
+import { MODULE_ID } from "../../const.js";
 
 /**
  * Shakes a token to visualize damage
@@ -62,12 +62,15 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
     const values = generateShakeValues(shakes, movAmount);
     const iterationDuration = duration / values.length;
 
-    new Sequence({moduleName: game.modules.get(MODULE_ID).title})
+    new Sequence({ moduleName: game.modules.get(MODULE_ID).title })
+        .animation()
+        .on(token)
+        .opacity(0)
         .effect()
         .atLocation(token)
         .file(getTokenImage(token?.document))
         .scale({ x: token.document.texture.scaleX, y: token.document.texture.scaleY })
-        .scaleToObject(1)
+        .scaleToObject()
         .loopProperty("spriteContainer", "position.x", {
             values,
             duration: iterationDuration,
@@ -75,9 +78,12 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
             pingPong: true,
         })
         .duration(duration)
-        .waitUntilFinished()
         .forUsers(usersToPlayFor)
-        .play({preload: true });
+        .waitUntilFinished(-200)
+        .animation()
+        .on(token)
+        .opacity(1)
+        .play({ preload: true });
 }
 
 /**

@@ -1,7 +1,8 @@
 import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
-import { getSetting, localize, MODULE_ID } from "./helpers/misc.js";
+import { getSetting, localize } from "./helpers/misc.js";
+import { MODULE_ID } from "./helpers/const.js";
 import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
 
 /**

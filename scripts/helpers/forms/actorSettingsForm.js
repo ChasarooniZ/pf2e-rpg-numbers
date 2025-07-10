@@ -2,7 +2,8 @@ import { CRIT_OPTIONS } from "../animation/crit/const.js";
 import { createTestCritAnimation } from "../animation/crit/critAnimation.js";
 import { getTokenImage } from "../animation/token/shakeOnDamageToken.js";
 import { DEFAULT_CRIT, DEFAULT_TOKEN } from "../library/migration.js";
-import { getSetting, MODULE_ID } from "../misc.js";
+import { getSetting } from "../misc.js";
+import { MODULE_ID } from "../const.js";
 
 const settingsConfig = {
     // home: {

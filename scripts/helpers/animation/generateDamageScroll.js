@@ -1,5 +1,6 @@
 import { getFontScale, findTypeWithLargestTotal, getVisibleAndMsgVisibleUsers } from "../anim.js";
-import { getSetting, MODULE_ID } from "../misc.js";
+import { getSetting } from "../misc.js";
+import { MODULE_ID, MS_TO_SEC } from "../const.js";
 
 /**
  * Generates damage scrolling text for a passed in list of damage values
@@ -10,9 +11,9 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
     const settings = {
         fontSize: getSetting("font-size"),
         jitter: getSetting("jitter"),
-        duration: getSetting("duration") * 1000,
+        duration: getSetting("duration") * MS_TO_SEC,
         animScale: getSetting("animation-scale"),
-        waitTime: getSetting("wait-time-between-numbers") - getSetting("duration") * 1000,
+        waitTime: getSetting("wait-time-between-numbers") - getSetting("duration") * MS_TO_SEC,
         onlyGM: getSetting("show-only-GM"),
         topOffsetPercentage: getSetting("top-offset") / 100,
         showTotal: getSetting("show-total"),

@@ -1,4 +1,5 @@
-import { getSetting, localize, MODULE_ID, setSetting } from "../misc.js";
+import { getSetting, localize, setSetting } from "../misc.js";
+import { MODULE_ID } from "../const.js";
 const DEFAULT_VALUE = 'default';
 
 export const DEFAULT_CRIT_SECTION = {
