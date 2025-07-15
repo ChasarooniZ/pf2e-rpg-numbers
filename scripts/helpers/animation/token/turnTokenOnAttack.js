@@ -27,7 +27,7 @@ export async function turnTokenOnAttack(token, target) {
         .animation()
         .on(token)
         .rotateTowards(target, { duration: turnTime, ease: "easeOutCubic", rotationOffset })
-        .waitUntilFinished(turnTime * RETURN_DELAY_FACTOR)
+        .waitUntilFinished(turnTime * CONST.RETURN_DELAY_FACTOR)
         .animation()
         .on(token)
         .rotateIn(angle, turnTime, { ease: "easeInCubic" })
