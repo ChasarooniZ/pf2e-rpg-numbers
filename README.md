@@ -5,7 +5,7 @@
 ![Latest Release Download Count](https://img.shields.io/github/downloads/ChasarooniZ/pf2e-rpg-numbers/latest/module.zip)
 ![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fpf2e-rpg-numbers&colorB=4aa94a)
 
-[![](https://img.shields.io/badge/ko--fi-donate-%23FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/Chasarooni)
+<a href="https://gitlocalize.com/repo/10292?utm_source=badge"><img src="https://gitlocalize.com/repo/10292/whole_project/badge.svg" /></a> [![](https://img.shields.io/badge/ko--fi-donate-%23FF5E5B?style=flat-square&logo=ko-fi&logoColor=white)](https://ko-fi.com/Chasarooni)
 
 
 
