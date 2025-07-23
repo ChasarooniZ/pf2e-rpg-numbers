@@ -141,9 +141,9 @@ function getAnimationConfig(config) {
     const flags = config?.flags
         ? config.flags
         : {
-              critical: config.actor.getFlag("pf2e-rpg-numbers", "critical"),
-              token: config.actor.getFlag("pf2e-rpg-numbers", "token"),
-          };
+            critical: config.actor.getFlag("pf2e-rpg-numbers", "critical"),
+            token: config.actor.getFlag("pf2e-rpg-numbers", "token"),
+        };
 
     const successOrFail = config.isSuccess ? "success" : "failure";
 
@@ -198,6 +198,12 @@ function getEligibleUsers(rollDeets) {
  */
 function displayCritAnimation(critType, actor, users, config) {
     switch (critType) {
+        case "darkest-dungeon-crisis":
+            game.genga.api.crit.darkestDungeon.crisis(actor, users, config)
+            break;
+        case "darkest-dungeon-virtue":
+            game.genga.api.crit.darkestDungeon.virtue(actor, users, config)
+            break;
         case "disgaea-7":
             game.genga.api.crit.disgaea7(actor, users, config);
             break;

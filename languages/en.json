@@ -373,6 +373,8 @@
                     "name": "Animation Type",
                     "hint": "Choose type for critical animation",
                     "choices": {
+                        "darkest-dungeon-crisis": "Darkest Dungeon: Crisis",
+                        "darkest-dungeon-virtue": "Darkest Dungeon: Virtue",
                         "default": "—",
                         "disgaea-7": "Disgaea 7",
                         "fire-emblem": "Fire Emblem: Awakening",
