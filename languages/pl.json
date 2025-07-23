@@ -15,6 +15,7 @@
             }
         },
         "module-settings": {
+            "version": "Wersja",
             "notes": {
                 "requires-jb2a-premium": {
                     "name": "JB2A+",
@@ -46,8 +47,7 @@
                 },
                 "screen-shake": "Drgania ekranu podczas obrażeń",
                 "token-dmg-shake": {
-                    "title": "Potrząsanie tokenami podczas zadawania obrażeń",
-                    "scaling": "Potrząsanie tokenami podczas zadawania obrażeń - skalowanie"
+                    "title": "Potrząsanie tokenami podczas zadawania obrażeń"
                 },
                 "shake-on-attack": "Drgania ekranu podczas ataku",
                 "rotate-on-attack": "Obrót podczas ataku",
@@ -300,33 +300,6 @@
                             "%-current-hp": "% aktualnego PW",
                             "%-max-hp": "% maks. PW"
                         }
-                    },
-                    "distance": {
-                        "name": "Typ skalowania odległości",
-                        "hint": "Skaluje odległość wstrząsów (nie = brak skalowania, maks = traktuj ustawienie jako maksimum, środek = traktuj ustawienie jako wartość środkową)",
-                        "choices": {
-                            "no": "Brak skalowania",
-                            "max": "Odległość jest maksymalna",
-                            "mid": "Odległość jest średnia"
-                        }
-                    },
-                    "shakes": {
-                        "name": "Wstrząs # typ skalowania",
-                        "hint": "Skaluj, ile razy potrząśnie (nie = brak skalowania, maks = traktuj to ustawienie jako maksimum, środek = traktuj to ustawienie jako wartość środkową)",
-                        "choices": {
-                            "no": "Brak skalowania",
-                            "max": "Liczba wstrząsów jest maksymalna",
-                            "mid": "Liczba wstrząsów jest średnia"
-                        }
-                    },
-                    "duration": {
-                        "name": "Typ skalowania czasu trwania",
-                        "hint": "Skaluj czas trwania wstrząsów (nie = brak skalowania, maks = traktuj to ustawienie jako maksymalne, środek = traktuj to ustawienie jako wartość środkową)",
-                        "choices": {
-                            "no": "Brak skalowania",
-                            "max": "Czas trwania jest maksymalny",
-                            "mid": "Czas trwania jest średni"
-                        }
                     }
                 }
             },
@@ -400,6 +373,8 @@
                     "name": "Typ animacji",
                     "hint": "Wybierz typ animacji krytycznej",
                     "choices": {
+                        "darkest-dungeon-crisis": "Darkest Dungeon: Kryzys",
+                        "darkest-dungeon-virtue": "Darkest Dungeon: Cnota",
                         "default": "—",
                         "disgaea-7": "Disgaea 7",
                         "fire-emblem": "Ognisty emblemat: Przebudzenie",
@@ -678,7 +653,7 @@
         },
         "menu": {
             "settings": {
-                "title": "Menu konfiguracji Pf2e RPG #s",
+                "title": "Menu ustawień Pf2e RPG #s",
                 "buttons": {
                     "export": "Eksportuj ustawienia",
                     "import": "Importuj ustawienia",
