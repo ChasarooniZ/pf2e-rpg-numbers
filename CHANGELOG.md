@@ -2,6 +2,7 @@
 
 - **Updated**
   - Updated French translation (@rectulo)
+  - Updated Polish translation (@Lioheart(
 
 
 # [13.3.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.2.3...13.3.0) - A Darker Dungeon
