@@ -130,6 +130,12 @@ export function getTokenShakeScale(token, dmg) {
     });
 }
 
+export function getMessageVisible(msg) {
+    game.users.contents.map(u => u.id).filter((player) =>
+        msg.whisper.length === 0 ? true : msg.whisper.includes(player)
+    );
+}
+
 export function getVisibleAndMsgVisibleUsers(roll_deets) {
     return getVisibleUsers(roll_deets.token).filter((player) =>
         roll_deets.whisper.length === 0 ? true : roll_deets.whisper.includes(player)

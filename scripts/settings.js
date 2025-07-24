@@ -13,6 +13,7 @@ import { registerFinishingMovesSettings } from "./settings/registerFinishingMove
 import { registerFromSoftwareTextSettings } from "./settings/registerFromSoftwareTextSettings.js";
 import { registerBurstBurrowSettings } from "./settings/registerBurstBurrowSettings.js";
 import { registerVersusSettings } from "./settings/registerVersusSettings.js";
+import { registerDarkestDungeonStressSettings } from "./settings/registerDarkestDungeonStressSettings.js";
 
 Hooks.on("init", () => {
     loadTemplates([
@@ -85,6 +86,8 @@ Hooks.on("init", () => {
     registerTokenDamageShakeSettings();
 
     registerVersusSettings();
+
+    registerDarkestDungeonStressSettings() 
 
     registerSetting({
         category: "actor-settings",

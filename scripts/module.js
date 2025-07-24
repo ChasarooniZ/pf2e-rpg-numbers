@@ -27,6 +27,7 @@ import {
 } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
+import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -56,6 +57,8 @@ Hooks.on("ready", () => {
 
                 // RPG Numbers on Check Roll
                 checkRollNumbers(dat, msg);
+
+                handleDarkestDungeonStress(msg)
 
                 //Attack Roll Stuff
                 if (dat.isAttackRoll) {
