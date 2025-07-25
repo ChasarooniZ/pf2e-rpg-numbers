@@ -26,8 +26,8 @@ export function registerDarkestDungeonStressSettings() {
             for (const outcome of ['crit', 'crit-fail']) {
                 registerSetting({
                     category: "darkest-dungeon.stress",
-                    id: `darkest-dungeon.stress.${disposition}.${outcome}`,
-                    desc: `${disposition}.${type}.${outcome}`,
+                    id: `darkest-dungeon.stress.${disposition}.${type}.${outcome}`,
+                    desc: `${disposition}.${outcome}`,
                     scope: "world",
                     config: false,
                     default: true,
