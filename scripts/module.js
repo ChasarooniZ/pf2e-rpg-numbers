@@ -41,7 +41,6 @@ Hooks.on("init", () => {
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
-    handleUpdateMessage();
     // Noun Verbed Elden Ring
     Hooks.on("preDeleteCombat", preDeleteCombat);
     // You died Elden Ring
@@ -105,11 +104,13 @@ Hooks.on("ready", () => {
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
     Hooks.on("combatStart", combatStart);
 
-    if (game.user.isGM) {
-        const version = game.modules.get(MODULE_ID).version;
-        const lastVersion = getSetting("last-version");
-        handleUpdate(version, lastVersion);
-    }
+    // if (game.user.isGM) {
+    //     const version = game.modules.get(MODULE_ID).version;
+    //     const lastVersion = getSetting("last-version");
+    //     handleUpdate(version, lastVersion);
+    // }
+    
+    handleUpdateMessage();
 
     console.log("PF2e RPG Numbers is ready");
 });
