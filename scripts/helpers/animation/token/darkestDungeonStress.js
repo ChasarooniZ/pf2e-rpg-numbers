@@ -19,17 +19,24 @@ export function handleDarkestDungeonStress(msg) {
     switch (data.type) {
       case "perception-check":
       case "skill-check":
-        if (data.isCrit && token?.document?.disposition !== CONST.TOKEN_DISPOSITIONS.FRIENDLY)
+        if (data.isCrit &&
+          token?.document?.disposition !== CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
+          getSetting("darkest-dungeon.stress.hostile.skill.crit"))
           darkestDungeonStress(friendlyTarget ?? targets?.[0], users)
         break;
       case "attack-roll":
-        if (data.isCrit)
+        if (data.isCrit &&
+          getSetting("darkest-dungeon.stress.hostile.attack.crit")
+        )
           darkestDungeonStress(friendlyTarget ?? targets?.[0], users)
         break;
       case "saving-throw":
-        if (data.isCrit)
+        if (data.isCrit &&
+          getSetting("darkest-dungeon.stress.hostile.save.crit")
+        )
           darkestDungeonStress(friendlyTarget ?? targets?.[0], users)
-        if (data.isCritFail)
+        if (data.isCritFail &&
+          getSetting("darkest-dungeon.stress.hostile.save.crit-fail"))
           darkestDungeonStress(friendlyTarget ?? targets?.[0], users)
         break;
       default:
@@ -39,19 +46,24 @@ export function handleDarkestDungeonStress(msg) {
     switch (data.type) {
       case "perception-check":
       case "skill-check":
-        if (data.isCrit)
+        if (data.isCrit &&
+          getSetting("darkest-dungeon.stress.friendly.skill.crit"))
           darkestDungeonRelief(token, users)
-        if (data.isCritFail)
-          darkestDungeonStress(token, users)
+        // if (data.isCritFail &&
+        //   getSetting("darkest-dungeon.stress.friendly.skill.crit"))
+        //   darkestDungeonStress(token, users)
         break;
       case "attack-roll":
-        if (data.isCrit)
+        if (data.isCrit &&
+          getSetting("darkest-dungeon.stress.friendly.attack.crit"))
           darkestDungeonRelief(token, users)
         break;
       case "saving-throw":
-        if (data.isCrit)
+        if (data.isCrit &&
+          getSetting("darkest-dungeon.stress.friendly.save.crit"))
           darkestDungeonRelief(token, users)
-        if (data.isCritFail)
+        if (data.isCritFail &&
+          getSetting("darkest-dungeon.stress.friendly.attack.crit-fail"))
           darkestDungeonStress(token, users)
         break;
       default:

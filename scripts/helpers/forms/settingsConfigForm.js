@@ -45,7 +45,7 @@ const settingsConfig = {
                     criticalFailure: "check-animations.sfx.file.criticalFailure",
                 },
             },
-        },
+        }
     },
     token: {
         icon: "fas fa-circle-user",
@@ -106,6 +106,43 @@ const settingsConfig = {
             distance: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             delay: { path: "dodge-on-miss.delay", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             type: "dodge-on-miss.type",
+        },
+        darkestDungeon: {
+            stress: {
+                enabled: "darkest-dungeon.stress.enabled",
+                includeTarget: "darkest-dungeon.stress.include-target",
+                duration: "darkest-dungeon.stress.duration",
+                delayPerToken: "darkest-dungeon.stress.delay-per-token",
+                volume: "darkest-dungeon.stress.volume",
+                friendly: {
+                    skill: {
+                        crit: "darkest-dungeon.stress.friendly.skill.crit",
+                        critFail: "darkest-dungeon.stress.friendly.skill.crit-fail"
+                    },
+                    save: {
+                        crit: "darkest-dungeon.stress.friendly.save.crit",
+                        critFail: "darkest-dungeon.stress.friendly.save.crit-fail"
+                    },
+                    attack: {
+                        crit: "darkest-dungeon.stress.friendly.attack.crit",
+                        critFail: "darkest-dungeon.stress.friendly.attack.crit-fail"
+                    },
+                },
+                hostile: {
+                    skill: {
+                        crit: "darkest-dungeon.stress.hostile.skill.crit",
+                        critFail: "darkest-dungeon.stress.hostile.skill.crit-fail"
+                    },
+                    save: {
+                        crit: "darkest-dungeon.stress.hostile.save.crit",
+                        critFail: "darkest-dungeon.stress.hostile.save.crit-fail"
+                    },
+                    attack: {
+                        crit: "darkest-dungeon.stress.hostile.attack.crit",
+                        critFail: "darkest-dungeon.stress.hostile.attack.crit-fail"
+                    },
+                }
+            }
         },
     },
     critical: {
@@ -276,7 +313,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
         game.pf2eRPGNumbers.settings.export();
     }
 
-    _onRender(context, options) {}
+    _onRender(context, options) { }
 
     _prepareContext(options) {
         const tabs = Object.keys(settingsConfig).reduce((acc, tab) => {

@@ -424,6 +424,7 @@
             max=settings.dodgeOnMiss.distance.range.max
         }}
     </div>
+
     {{! Delay }}
     <div class="form-group">
         <label
@@ -558,4 +559,225 @@
             }}
         </select>
     </div>
+</span>
+<span>
+     {{! Darkest Dungeon Stress / Relief }}
+    <h4
+        data-tooltip-direction="LEFT"
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif' />"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.headers.darkest-dungeon.stress"}}
+        <i class="fa-duotone fa-wreath-laurel"></i>
+    </h4>
+    
+    {{! Enabled }}
+    <div class="form-group">
+        <label
+            for="settings.darkestDungeon.stress.enabled"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.enabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.enabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.darkestDungeon.stress.enabled"
+            name="settings.darkestDungeon.stress.enabled"
+            {{checked settings.darkestDungeon.stress.enabled}}
+        />
+    </div>
+
+    {{! Include Target }}
+    <div class="form-group">
+        <label
+            for="settings.darkestDungeon.stress.includeTarget"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.include-target.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.include-target.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.darkestDungeon.stress.includeTarget"
+            name="settings.darkestDungeon.stress.includeTarget"
+            {{checked settings.darkestDungeon.stress.includeTarget}}
+        />
+    </div>
+
+    {{! Duration }}
+    <div class="form-group">
+        <label
+            for="settings.darkestDungeon.stress.duration"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.duration.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.duration.name"}}
+        </label>
+        {{numberInput
+            settings.darkestDungeon.stress.duration.value
+            name="settings.darkestDungeon.stress.duration"
+            step=settings.darkestDungeon.stress.duration.range.step
+            min=settings.darkestDungeon.stress.duration.range.min
+            max=settings.darkestDungeon.stress.duration.range.max
+        }}
+    </div>
+
+    {{! Delay Per Token }}
+    <div class="form-group">
+        <label
+            for="settings.darkestDungeon.stress.delayPerToken"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.delay-per-token.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.delay-per-token.name"}}
+        </label>
+        {{numberInput
+            settings.darkestDungeon.stress.delayPerToken.value
+            name="settings.darkestDungeon.stress.delayPerToken"
+            step=settings.darkestDungeon.stress.delayPerToken.range.step
+            min=settings.darkestDungeon.stress.delayPerToken.range.min
+            max=settings.darkestDungeon.stress.delayPerToken.range.max
+        }}
+    </div>
+
+    
+    {{! Volume }}
+    <div class="form-group">
+        <label
+            for="settings.darkestDungeon.stress.volume"
+            data-tooltip-direction="LEFT"
+            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.volume.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.volume.name"}}
+        </label>
+        {{numberInput
+            settings.darkestDungeon.stress.volume.value
+            name="settings.darkestDungeon.stress.volume"
+            step=settings.darkestDungeon.stress.volume.range.step
+            min=settings.darkestDungeon.stress.volume.range.min
+            max=settings.darkestDungeon.stress.volume.range.max
+        }}
+    </div>
+
+    {{! Table of Enable some settings}}
+    <table class="darkest-dungeon-table">
+        <thead>
+            <tr>
+                <th class="left-aligned" colspan="2"></th>
+                <th class="header-cell">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.headers.attack"}}
+                </th>
+                <th class="header-cell">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.headers.skill"}}
+                </th>
+                <th class="header-cell">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.headers.save"}}
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="row-label" rowspan="2">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.friendly"}}
+                </td>
+                <td class="sub-label">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.crit"}}
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.friendly.attack.crit"
+                            name="settings.darkestDungeon.stress.friendly.attack.crit"
+                            {{checked settings.darkestDungeon.stress.friendly.attack.crit}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.friendly.skill.crit"
+                            name="settings.darkestDungeon.stress.friendly.skill.crit"
+                            {{checked settings.darkestDungeon.stress.friendly.skill.crit}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.friendly.save.crit"
+                            name="settings.darkestDungeon.stress.friendly.save.crit"
+                            {{checked settings.darkestDungeon.stress.friendly.save.crit}}
+                        />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="sub-label">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.crit-fail"}}
+                </td>
+                <td class="centered-content"></td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.friendly.skill.critFail"
+                            name="settings.darkestDungeon.stress.friendly.skill.critFail"
+                            {{checked settings.darkestDungeon.stress.friendly.skill.critFail}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content"></td>
+            </tr>
+            <tr>
+                <td class="row-label" rowspan="2">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.hostile"}}
+                </td>
+                <td class="sub-label">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.crit"}}
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.hostile.attack.crit"
+                            name="settings.darkestDungeon.stress.hostile.attack.crit"
+                            {{checked settings.darkestDungeon.stress.hostile.attack.crit}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.hostile.skill.crit"
+                            name="settings.darkestDungeon.stress.hostile.skill.crit"
+                            {{checked settings.darkestDungeon.stress.hostile.skill.crit}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.hostile.save.crit"
+                            name="settings.darkestDungeon.stress.hostile.save.crit"
+                            {{checked settings.darkestDungeon.stress.hostile.save.crit}}
+                        />
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="sub-label">
+                    {{localize"pf2e-rpg-numbers.module-settings.darkest-dungeon.stress.table.rows.crit-fail"}}
+                </td>
+                <td class="centered-content"></td>
+                <td class="centered-content">
+                    <span class="form-group">
+                        <input type="checkbox"
+                            id="settings.darkestDungeon.stress.hostile.skill.critFail"
+                            name="settings.darkestDungeon.stress.hostile.skill.critFail"
+                            {{checked settings.darkestDungeon.stress.hostile.skill.critFail}}
+                        />
+                    </span>
+                </td>
+                <td class="centered-content"></td>
+            </tr>
+        </tbody>
+    </table>
 </span>

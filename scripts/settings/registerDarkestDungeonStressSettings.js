@@ -1,4 +1,3 @@
-import { CRIT_OPTIONS_LABELS } from "../helpers/animation/crit/const.js";
 import { registerSetting } from "../helpers/misc.js";
 
 export function registerDarkestDungeonStressSettings() {
@@ -21,6 +20,22 @@ export function registerDarkestDungeonStressSettings() {
         default: true,
         type: Boolean,
     });
+
+    for (const disposition of ['friendly', 'hostile']) {
+        for (const type of ["skill", 'save', 'attack']) {
+            for (const outcome of ['crit', 'crit-fail']) {
+                registerSetting({
+                    category: "darkest-dungeon.stress",
+                    id: `darkest-dungeon.stress.${disposition}.${outcome}`,
+                    desc: `${disposition}.${type}.${outcome}`,
+                    scope: "world",
+                    config: false,
+                    default: true,
+                    type: Boolean,
+                });
+            }
+        }
+    }
 
     registerSetting({
         category: "darkest-dungeon.stress",

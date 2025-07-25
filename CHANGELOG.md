@@ -1,8 +1,11 @@
 # TODO
-
+- **New**
+  - `Darkest Dungeon: Stress / Relief`
+    - Adds a new animation that will either play the stress or relief icon on friendly tokens based on either Critical Success or Failures
 - **Updated**
   - Updated French translation (@rectulo)
-  - Updated Polish translation (@Lioheart(
+  - Updated Polish translation (@Lioheart)
+  - Updated `Genga` requirement to `0.6.0`
 
 
 # [13.3.0](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.2.3...13.3.0) - A Darker Dungeon
