@@ -320,14 +320,14 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             const targetId = $(this).data("target");
 
             // Activate the correct tab (assuming Foundry's Tabs API)
-            const tabs = html.find(".tabs").data("tabs");
+            const tabs = $(".pf2e-rpg-config-form").find(".tabs").data("tabs");
             if (tabs) {
                 tabs.activate(tabName);
             }
 
             // Wait for the tab to become active before scrolling
             setTimeout(() => {
-                const target = html.find(`#${targetId}`)[0];
+                const target = $(".pf2e-rpg-config-form").find(`#${targetId}`)[0];
                 if (target) {
                     target.scrollIntoView({ behavior: "smooth", block: "start" });
                 }

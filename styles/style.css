@@ -80,6 +80,13 @@
         justify-self: center;
     }
 
+    .toc-link {
+        color: var(--content-link-text-color);
+    }
+    .toc-link:hover {
+        color: var(--color-text-selection-bg);
+    }
+
     .version-info {
         display: inline-flex;
         align-items: center;

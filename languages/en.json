@@ -652,7 +652,7 @@
             "darkest-dungeon": {
                 "stress": {
                     "enabled": {
-                        "name": "Enable Darkest Dungeon Stress",
+                        "name": "Enable Darkest Dungeon Stress / Relief",
                         "hint": "Enable this feature allowing it to show the stress and relief animations for friendly tokens"
                     },
                     "include-target": {

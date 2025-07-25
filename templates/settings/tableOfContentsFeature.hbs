@@ -1,0 +1,13 @@
+<li>
+    <span
+        class="toc-link"
+        data-tab="{{tab}}"
+        data-target="{{feature}}"
+        data-tooltip-direction="LEFT"
+        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/{{vid}}.gif' />"
+    >
+        <i class="{{icon}}"></i>
+        {{localize (concat "pf2e-rpg-numbers.module-settings.headers." translation)}}
+    </span>
+    {{> 'modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs' new=new}}
+</li>

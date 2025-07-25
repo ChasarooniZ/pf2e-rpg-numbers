@@ -26,6 +26,7 @@ Hooks.on("init", () => {
         "modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs",
         "modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs",
         `modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs`,
+        `modules/pf2e-rpg-numbers/templates/settings/tableOfContentsFeature.hbs`,
         //Actor
         "modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs",
         "modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs",
