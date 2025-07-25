@@ -100,33 +100,52 @@
         padding: 10px 5px;
     }
 
-    th {
+    /* th {
         padding: 10px 5px;
-    }
+    } */
 
     .header-cell {
-        font-weight: normal;
+        font-weight: bold;
         text-align: center;
         vertical-align: bottom;
     }
 
     .row-label {
-        text-align: left;
+        font-weight: bold;
+        text-align: center;
         vertical-align: middle;
     }
 
     .sub-label {
-        text-align: right;
-        vertical-align: bottom;
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .critical-success {
+        color: var(--color-pf-text-critical-success);
+    }
+
+    .critical-failure {
+        color: var(--color-pf-text-critical-failure);
     }
 
     .centered-content {
-        text-align: center;
-        vertical-align: bottom;
+        justify-content: center;
     }
 
-    .left-aligned {
-        text-align: left;
-        vertical-align: bottom;
+    .friendly {
+        color: #33b6bb;
+    }
+
+    .hostile {
+        color: #e79821;
+    }
+
+    .left-border td:nth-last-child(-n + 3) {
+        border-left: 1px solid var(--color-disabled);
+    }
+
+    .left-border th:nth-last-child(-n + 3) {
+        border-left: 1px solid var(--color-disabled);
     }
 }

@@ -680,8 +680,8 @@
                         "rows": {
                             "friendly": "Friendly",
                             "hostile": "Hostile",
-                            "crit": "Crit",
-                            "crit-fail": "Crit Fail"
+                            "crit": "Critical Success",
+                            "crit-fail": "Critical Failure"
                         }
                     }
                 }

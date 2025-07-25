@@ -28,15 +28,20 @@ import {
 import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
+import { handleUpdateMessage } from "./updateMessage.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
+    loadTemplates([
+        `modules/${MODULE_ID}/templates/updateMessage.hbs`,
+    ])
     Hooks.on("getSceneControlButtons", getSceneControlButtons);
 });
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
+    handleUpdateMessage();
     // Noun Verbed Elden Ring
     Hooks.on("preDeleteCombat", preDeleteCombat);
     // You died Elden Ring
