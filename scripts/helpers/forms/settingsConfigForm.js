@@ -315,24 +315,28 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
 
     _onRender(context, options) {
         // This should be placed in your Dialog's activateListeners method or after rendering.
-        this.element.querySelector(".toc-link").addEventListener("click", function (event) {
-            const tabName = $(this).data("tab");
-            const targetId = $(this).data("target");
+        const links = this.element.querySelectorAll(".toc-link");
+        for (const link of links) {
+            link.addEventListener("click", function (event) {
+                const tabName = $(this).data("tab");
+                const targetId = $(this).data("target");
 
-            // Activate the correct tab (assuming Foundry's Tabs API)
-            const tabs = $(".pf2e-rpg-config-form").find(".tabs").data("tabs");
-            if (tabs) {
-                tabs.activate(tabName);
-            }
-
-            // Wait for the tab to become active before scrolling
-            setTimeout(() => {
-                const target = $(".pf2e-rpg-config-form").find(`#${targetId}`)[0];
-                if (target) {
-                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                // Activate the correct tab (assuming Foundry's Tabs API)
+                const tab = $("form#pf2e-rpg-numbers-settings-form").find(".tabs").find(`a[data-tab="${tabName}"]`)?.[0]
+                if (tab) {
+                    tab.click()
                 }
-            }, 100); // Adjust timeout if needed for your tab system
-        });
+
+                // Wait for the tab to become active before scrolling
+                setTimeout(() => {
+                    const target = $(".pf2e-rpg-config-form").find(`h4#${targetId}`)?.[0];
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }, 400); // Adjust timeout if needed for your tab system
+
+            });
+        }
     }
 
     _prepareContext(options) {
@@ -377,6 +381,13 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             newFeatures.version = currentVersion;
             setSetting('new-features');
         }
+
+        // Menu SFX
+        new Sequence()
+            .sound()
+            .file("modules/pf2e-rpg-numbers/resources/sounds/ui/fantasy-1/SkywardHero_UI_1_Open.ogg")
+            .volume(0.25)
+            .play({ local: true })
 
         return {
             tabs,
