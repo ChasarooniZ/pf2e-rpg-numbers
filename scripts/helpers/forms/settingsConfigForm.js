@@ -315,7 +315,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
 
     _onRender(context, options) {
         // This should be placed in your Dialog's activateListeners method or after rendering.
-        hthis.element.querySelector(".toc-link").addEventListener("click", function (event) {
+        this.element.querySelector(".toc-link").addEventListener("click", function (event) {
             const tabName = $(this).data("tab");
             const targetId = $(this).data("target");
 
@@ -370,7 +370,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
         };
 
-        const newFeatures = getSetting('new-features');
+        let newFeatures = getSetting('new-features');
         const currentVersion = game.modules.get(MODULE_ID).version;
         if (foundry.utils.isNewerVersion(currentVersion, newFeatures?.version ?? 0)) {
             newFeatures = NEW_FEATURE_BY_VERSION?.[currentVersion] ?? {};

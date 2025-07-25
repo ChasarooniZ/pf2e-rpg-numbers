@@ -46,7 +46,7 @@
             </h3>
             <ul>
                 <li>
-                    {{localize "pf2e-rpg-numbers.menu.settings.tabs.rolls"}}
+                    <i class="fa-solid fa-dice-d20"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.rolls"}}
                     <ul>
                         <li>
                             <span
@@ -60,7 +60,7 @@
                                 {{localize "pf2e-rpg-numbers.module-settings.headers.dmg-numbers"}}
                                 <i class="fa-solid fa-swords"></i>
                             </span>
-                            {{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' new=new.dmg-numbers}}
+                            {{> 'modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs' new=new?.dmg-numbers}}
                         </li>
                         <li>
                             <span
@@ -77,7 +77,7 @@
                     </ul>
                 </li>
                 <li>
-                    {{localize "pf2e-rpg-numbers.menu.settings.tabs.token"}}
+                    <i class="fas fa-circle-user"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.token"}}
                     <ul>
                         <li>
                             <span
@@ -161,12 +161,12 @@
                             >
                                 {{localize "pf2e-rpg-numbers.module-settings.headers.darkest-dungeon.stress"}}
                                 <i class="fa-duotone fa-wreath-laurel"></i>
-                            </span>{{> 'modules/pf2e-rpg-numbers/templates/settings/tabs/home.hbs' new=new.darkest-dungeon-stress}}
+                            </span>{{> 'modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs' new=new?.darkest-dungeon-stress}}
                         </li>
                     </ul>
                 </li>
                 <li>
-                    {{localize "pf2e-rpg-numbers.menu.settings.tabs.critical"}}
+                    <i class="fa-solid fa-explosion"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.critical"}}
                     <ul>
                         <li>
                             <span
@@ -183,7 +183,7 @@
                     </ul>
                 </li>
                 <li>
-                    {{localize "pf2e-rpg-numbers.menu.settings.tabs.text"}}
+                    <i class="fa-solid fa-message-captions"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.text"}}
                     <ul>
                         <li>
                             <span

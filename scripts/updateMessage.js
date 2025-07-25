@@ -31,7 +31,7 @@ export async function handleUpdateMessage() {
     );
     if (
         last_version === game.modules.get(MODULE_ID).version
-        || !game.modules.get(MODULE_ID).version.endsWith(".0")
+        && !game.modules.get(MODULE_ID).version.endsWith(".0")
     ) {
         return;
     }
