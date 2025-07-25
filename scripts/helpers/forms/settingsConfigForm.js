@@ -1,4 +1,4 @@
-import { KOFI_MESSAGE, MODULE_ID } from "../const.js";
+import { KOFI_MESSAGE, MODULE_ID, NEW_FEATURE_BY_VERSION } from "../const.js";
 import { getSetting, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -313,7 +313,27 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
         game.pf2eRPGNumbers.settings.export();
     }
 
-    _onRender(context, options) { }
+    _onRender(context, options) {
+        // This should be placed in your Dialog's activateListeners method or after rendering.
+        hthis.element.querySelector(".toc-link").addEventListener("click", function (event) {
+            const tabName = $(this).data("tab");
+            const targetId = $(this).data("target");
+
+            // Activate the correct tab (assuming Foundry's Tabs API)
+            const tabs = html.find(".tabs").data("tabs");
+            if (tabs) {
+                tabs.activate(tabName);
+            }
+
+            // Wait for the tab to become active before scrolling
+            setTimeout(() => {
+                const target = html.find(`#${targetId}`)[0];
+                if (target) {
+                    target.scrollIntoView({ behavior: "smooth", block: "start" });
+                }
+            }, 100); // Adjust timeout if needed for your tab system
+        });
+    }
 
     _prepareContext(options) {
         const tabs = Object.keys(settingsConfig).reduce((acc, tab) => {
@@ -350,10 +370,19 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
         };
 
+        const newFeatures = getSetting('new-features');
+        const currentVersion = game.modules.get(MODULE_ID).version;
+        if (foundry.utils.isNewerVersion(currentVersion, newFeatures?.version ?? 0)) {
+            newFeatures = NEW_FEATURE_BY_VERSION?.[currentVersion] ?? {};
+            newFeatures.version = currentVersion;
+            setSetting('new-features');
+        }
+
         return {
             tabs,
             version: game?.modules?.get(MODULE_ID)?.version,
             disabled,
+            new: newFeatures,
             buttons: [
                 { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
                 {

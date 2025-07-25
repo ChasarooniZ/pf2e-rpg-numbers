@@ -25,6 +25,7 @@ Hooks.on("init", () => {
         "modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs",
         "modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs",
         "modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs",
+        `modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs`,
         //Actor
         "modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs",
         "modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs",
@@ -118,6 +119,17 @@ Hooks.on("init", () => {
         default: "0.0.0",
         type: String,
     });
+
+    registerSetting({
+        category: "",
+        id: "new-features",
+        desc: "new-features",
+        scope: "world",
+        config: false,
+        default: {},
+        type: Object,
+    });
+
 
     game.keybindings.register(MODULE_ID, "activateFinishingMove", {
         name: localize("keybinds.activate-finishing-move.name"),

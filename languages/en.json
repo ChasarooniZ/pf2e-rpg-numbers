@@ -715,6 +715,10 @@
                     "critical": "Critical",
                     "text": "Text",
                     "misc": "Misc"
+                },
+                "table-of-contents": "Table of Contents",
+                "tooltip": {
+                    "new-feature": "New Feature"
                 }
             },
             "import": {

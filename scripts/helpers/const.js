@@ -15,3 +15,10 @@ export const KOFI_MESSAGE = [
 ];
 
 export const MS_TO_SEC = 1000;
+
+
+export const NEW_FEATURE_BY_VERSION = {
+    '13.4.0': {
+        'darkest-dungeon-stress': true
+    }
+}
