@@ -111,9 +111,9 @@ const settingsConfig = {
             stress: {
                 enabled: "darkest-dungeon.stress.enabled",
                 includeTarget: "darkest-dungeon.stress.include-target",
-                duration: "darkest-dungeon.stress.duration",
-                delayPerToken: "darkest-dungeon.stress.delay-per-token",
-                volume: "darkest-dungeon.stress.volume",
+                duration: { path: "darkest-dungeon.stress.duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
+                delayPerToken: { path: "darkest-dungeon.stress.delay-per-token", type: "number", range: { min: 0, max: 1000, step: 1 } },
+                volume: { path: "darkest-dungeon.stress.volume", type: "number", range: { min: 0, max: 100, step: 5 } },
                 friendly: {
                     skill: {
                         crit: "darkest-dungeon.stress.friendly.skill.crit",

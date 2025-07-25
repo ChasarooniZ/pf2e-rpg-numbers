@@ -1,3 +1,5 @@
+import { getTargetList } from "../../../module.js";
+import { getMessageVisible } from "../../anim.js";
 import { getSetting } from "../../misc.js";
 
 export function handleDarkestDungeonStress(msg) {
