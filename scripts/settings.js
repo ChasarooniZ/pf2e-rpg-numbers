@@ -13,6 +13,7 @@ import { registerFinishingMovesSettings } from "./settings/registerFinishingMove
 import { registerFromSoftwareTextSettings } from "./settings/registerFromSoftwareTextSettings.js";
 import { registerBurstBurrowSettings } from "./settings/registerBurstBurrowSettings.js";
 import { registerVersusSettings } from "./settings/registerVersusSettings.js";
+import { registerDarkestDungeonStressSettings } from "./settings/registerDarkestDungeonStressSettings.js";
 
 Hooks.on("init", () => {
     loadTemplates([
@@ -24,6 +25,8 @@ Hooks.on("init", () => {
         "modules/pf2e-rpg-numbers/templates/settings/tabs/rolls.hbs",
         "modules/pf2e-rpg-numbers/templates/settings/tabs/text.hbs",
         "modules/pf2e-rpg-numbers/templates/settings/tabs/token.hbs",
+        `modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs`,
+        `modules/pf2e-rpg-numbers/templates/settings/tableOfContentsFeature.hbs`,
         //Actor
         "modules/pf2e-rpg-numbers/templates/actor-settings/actor-settings.hbs",
         "modules/pf2e-rpg-numbers/templates/actor-settings/tabs/home.hbs",
@@ -86,6 +89,8 @@ Hooks.on("init", () => {
 
     registerVersusSettings();
 
+    registerDarkestDungeonStressSettings() 
+
     registerSetting({
         category: "actor-settings",
         id: "actor-settings.hide-button-text",
@@ -115,6 +120,17 @@ Hooks.on("init", () => {
         default: "0.0.0",
         type: String,
     });
+
+    registerSetting({
+        category: "",
+        id: "new-features",
+        desc: "new-features",
+        scope: "world",
+        config: false,
+        default: {},
+        type: Object,
+    });
+
 
     game.keybindings.register(MODULE_ID, "activateFinishingMove", {
         name: localize("keybinds.activate-finishing-move.name"),

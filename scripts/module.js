@@ -27,9 +27,14 @@ import {
 } from "./hooks.js";
 import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
+import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
+import { handleUpdateMessage } from "./updateMessage.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
+    loadTemplates([
+        `modules/${MODULE_ID}/templates/updateMessage.hbs`,
+    ])
     Hooks.on("getSceneControlButtons", getSceneControlButtons);
 });
 
@@ -56,6 +61,8 @@ Hooks.on("ready", () => {
 
                 // RPG Numbers on Check Roll
                 checkRollNumbers(dat, msg);
+
+                handleDarkestDungeonStress(msg)
 
                 //Attack Roll Stuff
                 if (dat.isAttackRoll) {
@@ -97,11 +104,13 @@ Hooks.on("ready", () => {
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
     Hooks.on("combatStart", combatStart);
 
-    if (game.user.isGM) {
-        const version = game.modules.get(MODULE_ID).version;
-        const lastVersion = getSetting("last-version");
-        handleUpdate(version, lastVersion);
-    }
+    // if (game.user.isGM) {
+    //     const version = game.modules.get(MODULE_ID).version;
+    //     const lastVersion = getSetting("last-version");
+    //     handleUpdate(version, lastVersion);
+    // }
+    
+    handleUpdateMessage();
 
     console.log("PF2e RPG Numbers is ready");
 });

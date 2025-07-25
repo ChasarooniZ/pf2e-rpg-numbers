@@ -1,0 +1,94 @@
+<div
+    style="border: 2px solid #2078b2;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #ffffff67;
+  margin: 10px 0;
+  box-shadow: 0 2px 4px rgba(32, 178, 170, 0.15);"
+>
+    <h5 style="color: #053e64">
+        <i class="{{icon}}"></i>
+        {{name}}
+    </h5>
+    <i>
+        Version
+        <b>
+            {{version}}
+        </b>
+        brings the following changes:
+    </i>
+    <br />
+    <br />
+    {{#if isNew}}
+        <b>
+            New
+            <i class="fa-solid fa-sparkles"></i>
+        </b>
+        <br />
+        <ul>
+            {{#each new}}
+                {{#if this.item}}
+                    <li>
+                        {{#if this.feat}}
+                            <code>
+                                {{this.item}}
+                            </code>
+                        {{else}}
+                            {{this.item}}
+                        {{/if}}
+                        {{#if this.hasChild}}
+                            <ul>
+                                {{#each this.children}}
+                                    <li>
+                                        {{this}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    {{/if}}
+    {{#if isUpdate}}
+        <b>
+            Updated
+            <i class="fa-solid fa-comments"></i>
+        </b>
+        <br />
+        <ul>
+            {{#each update}}
+                {{#if this.item}}
+                    <li>
+                        {{#if this.feat}}
+                            <code>
+                                {{this.item}}
+                            </code>
+                        {{else}}
+                            {{this.item}}
+                        {{/if}}
+                        {{#if this.hasChild}}
+                            <ul>
+                                {{#each this.children}}
+                                    <li>
+                                        {{this}}
+                                    </li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ul>
+    {{/if}}
+    <br />
+    Thanks for attending this patch note update, if you'd like to support my development time and get access to
+    <i style="color:darkgray">
+        Literally nothing just bragging rights
+    </i>
+    consider supporting me on
+    <a href="https://ko-fi.com/chasarooni" style="color:#44ACD1">
+        Kofi
+    </a>
+    <br />
+</div>

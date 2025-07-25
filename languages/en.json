@@ -67,6 +67,9 @@
                     }
                 },
                 "versus": "VS Animation",
+                "darkest-dungeon": {
+                    "stress": "Darkest Dungeon: Stress / Relief"
+                },
                 "debug": "Debug"
             },
             "dmg-numbers": {
@@ -646,6 +649,43 @@
                     "hint": "How long (in seconds) should the vs animation be?"
                 }
             },
+            "darkest-dungeon": {
+                "stress": {
+                    "enabled": {
+                        "name": "Enable Darkest Dungeon Stress / Relief",
+                        "hint": "Enable this feature allowing it to show the stress and relief animations for friendly tokens"
+                    },
+                    "include-target": {
+                        "name": "Include the Target?",
+                        "hint": "When enabled shows the stress animations including that token that was targetted and not just its allies"
+                    },
+                    "duration": {
+                        "name": "Duration (s)",
+                        "hint": "How long in seconds should each animation play"
+                    },
+                    "delay-per-token": {
+                        "name": "Delay between Tokens (ms)",
+                        "hint": "How long to wait in seconds before playing the next animation on the next token"
+                    },
+                    "volume": {
+                        "name": "Volume",
+                        "hint": "Volume of the Stress SFX"
+                    },
+                    "table": {
+                        "headers": {
+                            "attack": "Attack",
+                            "save": "Save",
+                            "skill": "Skill"
+                        },
+                        "rows": {
+                            "friendly": "Friendly",
+                            "hostile": "Hostile",
+                            "crit": "Critical Success",
+                            "crit-fail": "Critical Failure"
+                        }
+                    }
+                }
+            },
             "debug-mode": {
                 "name": "Debug Mode",
                 "hint": "Have the console receive messages for different stuff"
@@ -675,6 +715,10 @@
                     "critical": "Critical",
                     "text": "Text",
                     "misc": "Misc"
+                },
+                "table-of-contents": "Table of Contents",
+                "tooltip": {
+                    "new-feature": "New Feature"
                 }
             },
             "import": {

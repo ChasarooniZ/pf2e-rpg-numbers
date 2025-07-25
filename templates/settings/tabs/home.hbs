@@ -39,6 +39,191 @@
             </button>
         </div>
     </div>
+    <div>
+        <fieldset>
+            <h3>
+                {{localize "pf2e-rpg-numbers.menu.settings.table-of-contents"}}
+            </h3>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-dice-d20"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.rolls"}}
+                    <ul>
+                        {{> 'modules/pf2e-rpg-numbers/templates/settings/tableOfContentsFeature.hbs'
+                            tab='rolls'
+                            feature='damage-numbers'
+                            translation="dmg-numbers"
+                            icon='fa-solid fa-swords'
+                            vid='damage-numbers'
+                            new=new.damage-numbers
+                        }}
+                        {{> 'modules/pf2e-rpg-numbers/templates/settings/tableOfContentsFeature.hbs'
+                            tab='rolls'
+                            feature='check-numbers'
+                            translation="check-animations.title"
+                            vid='check-text'
+                            icon='fa-regular fa-dice-d20'
+                            new=new.check-numbers
+                        }}
+                    </ul>
+                </li>
+                <li>
+                    <i class="fas fa-circle-user"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.token"}}
+                    <ul>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="burst-burrow"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/burst-burrow.gif' />"
+                            >
+                                <i class="fa-solid fa-shovel"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.burst-burrow"}}
+                                
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="rotate-on-attack"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"
+                            >
+                               <i class="fa-solid fa-rotate-right"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-attack"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="shake-on-attack"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-attack.gif' />"
+                            >
+                                <i class="fa-solid fa-salt-shaker"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.shake-on-attack"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="shake-on-damaged"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/shake-on-damaged.gif' />"
+                            >
+                                <i class="fa-solid fa-house-crack"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.screen-shake"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="target-dodges"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/dodge-on-miss.gif' />"
+                            >
+                                <i class="fa-solid fa-transporter-3"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.dodge-on-miss"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="token-shake"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/damage-shake.gif' />"
+                            >
+                                <i class="fa-duotone fa-solid fa-left-right"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.token-dmg-shake.title"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="token"
+                                data-target="darkest-dungeon-stress"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/darkest-dungeon-stress.gif' />"
+                            >
+                                <i class="fa-duotone fa-wreath-laurel"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.darkest-dungeon.stress"}}
+                            </span>{{> 'modules/pf2e-rpg-numbers/templates/settings/newFeature.hbs' new=new?.darkest-dungeon-stress}}
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="fa-solid fa-explosion"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.critical"}}
+                    <ul>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="critical"
+                                data-target="critical"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-fire-emblem-awakening.gif' /><img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/crit-persona-5.gif' />"
+                            >
+                                <i class="fa-solid fa-explosion"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.critical"}}
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <i class="fa-solid fa-message-captions"></i> {{localize "pf2e-rpg-numbers.menu.settings.tabs.text"}}
+                    <ul>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="text"
+                                data-target="finishing-move"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/finishing-move.gif' />"
+                            >
+                                <i class="fa-regular fa-message"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.finishing-move.title"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="text"
+                                data-target="from-software-noun-verbed"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-noun-verbed.gif' />"
+                            >
+                                <i class="fa-solid fa-award"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.title"}}
+                                -
+                                {{localize
+                                    "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.noun-verbed"
+                                }}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="text"
+                                data-target="from-software-death"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/from-soft-elden-ring-death.gif' />"
+                            >
+                                <i class="fa-duotone fa-solid fa-tombstone"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.title"}}
+                                -
+                                {{localize "pf2e-rpg-numbers.module-settings.headers.fromSoftware.elden-ring.death"}}
+                            </span>
+                        </li>
+                        <li>
+                            <span
+                                class="toc-link"
+                                data-tab="text"
+                                data-target="versus"
+                                data-tooltip-direction="LEFT"
+                                data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/versus.gif' />"
+                            >
+                                <i class="fa-regular fa-swords"></i> {{localize "pf2e-rpg-numbers.module-settings.headers.versus"}}
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </fieldset>
+    </div>
+
     <div class="version-info">
         <sub>
             <i class="fa-solid fa-tag"></i>

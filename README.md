@@ -84,3 +84,6 @@ A: This module will only support the **PF2e** system
     -   Free for use under the Pixabay Content License
 -   `correct-answer-tone`
     -   Free to use under Mixkit License
+- UI SFX
+  - Fantasy UI SFX by Assets: Atelier Magicae || Ririsaurus/Riri Hinasaki
+  - Terms of Use:  You may use this for commercial, non-commercial, and personal uses. Do not redistribute.

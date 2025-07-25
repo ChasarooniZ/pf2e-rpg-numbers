@@ -80,6 +80,13 @@
         justify-self: center;
     }
 
+    .toc-link {
+        color: var(--content-link-text-color);
+    }
+    .toc-link:hover {
+        color: var(--color-text-selection-bg);
+    }
+
     .version-info {
         display: inline-flex;
         align-items: center;
@@ -93,4 +100,59 @@
 .pf2e-rpg-numbers-main {
     flex: 1;
     height: 0;
+}
+
+.darkest-dungeon-table {
+    td {
+        padding: 10px 5px;
+    }
+
+    /* th {
+        padding: 10px 5px;
+    } */
+
+    .header-cell {
+        font-weight: bold;
+        text-align: center;
+        vertical-align: bottom;
+    }
+
+    .row-label {
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    .sub-label {
+        text-align: center;
+        vertical-align: center;
+    }
+
+    .critical-success {
+        color: var(--color-pf-text-critical-success);
+    }
+
+    .critical-failure {
+        color: var(--color-pf-text-critical-failure);
+    }
+
+    .centered-content {
+        justify-content: center;
+    }
+
+    .friendly {
+        color: #33b6bb;
+    }
+
+    .hostile {
+        color: #e79821;
+    }
+
+    .left-border td:nth-last-child(-n + 3) {
+        border-left: 1px solid var(--color-disabled);
+    }
+
+    .left-border th:nth-last-child(-n + 3) {
+        border-left: 1px solid var(--color-disabled);
+    }
 }

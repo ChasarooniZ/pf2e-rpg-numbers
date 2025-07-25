@@ -10,6 +10,7 @@ import { migrateTokenSettingsToActorSettings } from "./library/migration.js";
 import { EnhancedTour } from "./library/EnhancedTour.js";
 import { vsAnimation } from "./animation/text/vsAnimation.js";
 import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./animation/text/fromSoftwareText.js";
+import { darkestDungeonRelief, darkestDungeonStress } from "./animation/token/darkestDungeonStress.js";
 
 export function createAPI() {
     game.pf2eRPGNumbers = {
@@ -47,6 +48,10 @@ export function createAPI() {
         },
         vs: {
             generate: vsAnimation,
+        },
+        darkestDungeon: {
+            relief: function (token) { darkestDungeonRelief(token) },
+            stress: function (token) { darkestDungeonStress(token) },
         },
         settings: {
             export: exportSettings,

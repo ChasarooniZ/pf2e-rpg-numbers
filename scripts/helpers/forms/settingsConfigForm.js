@@ -1,4 +1,4 @@
-import { KOFI_MESSAGE, MODULE_ID } from "../const.js";
+import { KOFI_MESSAGE, MODULE_ID, NEW_FEATURE_BY_VERSION } from "../const.js";
 import { getSetting, setSetting } from "../misc.js";
 
 const settingsConfig = {
@@ -45,7 +45,7 @@ const settingsConfig = {
                     criticalFailure: "check-animations.sfx.file.criticalFailure",
                 },
             },
-        },
+        }
     },
     token: {
         icon: "fas fa-circle-user",
@@ -106,6 +106,43 @@ const settingsConfig = {
             distance: { path: "dodge-on-miss.distance", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             delay: { path: "dodge-on-miss.delay", type: "number", range: { min: 0, max: 3, step: 0.1 } },
             type: "dodge-on-miss.type",
+        },
+        darkestDungeon: {
+            stress: {
+                enabled: "darkest-dungeon.stress.enabled",
+                includeTarget: "darkest-dungeon.stress.include-target",
+                duration: { path: "darkest-dungeon.stress.duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
+                delayPerToken: { path: "darkest-dungeon.stress.delay-per-token", type: "number", range: { min: 0, max: 1000, step: 1 } },
+                volume: { path: "darkest-dungeon.stress.volume", type: "number", range: { min: 0, max: 100, step: 5 } },
+                friendly: {
+                    skill: {
+                        crit: "darkest-dungeon.stress.friendly.skill.crit",
+                        critFail: "darkest-dungeon.stress.friendly.skill.crit-fail"
+                    },
+                    save: {
+                        crit: "darkest-dungeon.stress.friendly.save.crit",
+                        critFail: "darkest-dungeon.stress.friendly.save.crit-fail"
+                    },
+                    attack: {
+                        crit: "darkest-dungeon.stress.friendly.attack.crit",
+                        critFail: "darkest-dungeon.stress.friendly.attack.crit-fail"
+                    },
+                },
+                hostile: {
+                    skill: {
+                        crit: "darkest-dungeon.stress.hostile.skill.crit",
+                        critFail: "darkest-dungeon.stress.hostile.skill.crit-fail"
+                    },
+                    save: {
+                        crit: "darkest-dungeon.stress.hostile.save.crit",
+                        critFail: "darkest-dungeon.stress.hostile.save.crit-fail"
+                    },
+                    attack: {
+                        crit: "darkest-dungeon.stress.hostile.attack.crit",
+                        critFail: "darkest-dungeon.stress.hostile.attack.crit-fail"
+                    },
+                }
+            }
         },
     },
     critical: {
@@ -276,7 +313,31 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
         game.pf2eRPGNumbers.settings.export();
     }
 
-    _onRender(context, options) {}
+    _onRender(context, options) {
+        // This should be placed in your Dialog's activateListeners method or after rendering.
+        const links = this.element.querySelectorAll(".toc-link");
+        for (const link of links) {
+            link.addEventListener("click", function (event) {
+                const tabName = $(this).data("tab");
+                const targetId = $(this).data("target");
+
+                // Activate the correct tab (assuming Foundry's Tabs API)
+                const tab = $("form#pf2e-rpg-numbers-settings-form").find(".tabs").find(`a[data-tab="${tabName}"]`)?.[0]
+                if (tab) {
+                    tab.click()
+                }
+
+                // Wait for the tab to become active before scrolling
+                setTimeout(() => {
+                    const target = $(".pf2e-rpg-config-form").find(`h4#${targetId}`)?.[0];
+                    if (target) {
+                        target.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }, 400); // Adjust timeout if needed for your tab system
+
+            });
+        }
+    }
 
     _prepareContext(options) {
         const tabs = Object.keys(settingsConfig).reduce((acc, tab) => {
@@ -313,10 +374,26 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
         };
 
+        let newFeatures = getSetting('new-features');
+        const currentVersion = game.modules.get(MODULE_ID).version;
+        if (foundry.utils.isNewerVersion(currentVersion, newFeatures?.version ?? 0)) {
+            newFeatures = NEW_FEATURE_BY_VERSION?.[currentVersion] ?? {};
+            newFeatures.version = currentVersion;
+            setSetting('new-features');
+        }
+
+        // Menu SFX
+        new Sequence()
+            .sound()
+            .file("modules/pf2e-rpg-numbers/resources/sounds/ui/fantasy-1/SkywardHero_UI_1_Open.ogg")
+            .volume(0.25)
+            .play({ local: true })
+
         return {
             tabs,
             version: game?.modules?.get(MODULE_ID)?.version,
             disabled,
+            new: newFeatures,
             buttons: [
                 { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
                 {
