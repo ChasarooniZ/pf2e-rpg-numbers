@@ -76,7 +76,7 @@ async function dodgeOnMiss(token, target) {
         CONST.DODGE.START_RAY.x,
         CONST.DODGE.START_RAY.y,
         directionRay.angle + CONST.DODGE.ANGLE.ADJUST.RADIANS,
-        direction
+        direction()
     );
     const loopBody = { duration: duration / 2, gridUnits: true };
     const scale = (target.document.width + target.document.height) / 2;
