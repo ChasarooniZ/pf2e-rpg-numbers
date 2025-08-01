@@ -1,3 +1,9 @@
+# [13.4.3](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.2...13.4.3) - Some Clarification
+
+- **Updated**
+    - Updated some settings descriptions to clarify what features work with what
+    - Updated `Finishing Moves` dialog to `DialogV2`
+
 # [13.4.2](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.1...13.4.2) - Fixes
 
 - **Updated**

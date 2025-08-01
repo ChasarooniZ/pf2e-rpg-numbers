@@ -79,7 +79,7 @@
                 },
                 "on-apply-or-roll": {
                     "name": "Show on...",
-                    "hint": "[NOTE] If you set on apply, this module will both reveal the resistance/weakness amt as players see the final number, and will only let you see 1 number for your damage roll",
+                    "hint": "[NOTE] If you set on apply, this module will both reveal the resistance/weakness amt as players see the final number, and will ignore toyr Split Numbers setting to show only 1 number",
                     "choices": {
                         "apply": "Apply Damage",
                         "roll": "Roll"
@@ -112,7 +112,7 @@
                 },
                 "damage-split": {
                     "name": "Split Numbers by",
-                    "hint": "How to split damage numbers from roll (None: total only, By Type: By damage type, All: Splits all terms)",
+                    "hint": "How to split damage numbers from roll (None: total only, By Type: By damage type, All: Splits all terms). Note: This setting has no effect if you have 'Show On' set to Apply Damage",
                     "choices": {
                         "none": "None",
                         "by-damage-type": "By Damage Type",
@@ -817,7 +817,8 @@
             },
             "item": {
                 "finishing-move": {
-                    "name": "Finishing Move Name"
+                    "name": "Finishing Move Name",
+                    "hint": "Name for finishing move. You can use '|' to split the lines such as 'Line 1|Line 2'"
                 }
             },
             "versus": {

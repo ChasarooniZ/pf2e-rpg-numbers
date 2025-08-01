@@ -134,38 +134,30 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
         onclick: async (_ev, itemD = item) => {
             const existingValue = item.getFlag("pf2e-rpg-numbers", "finishing-move.name") || "";
             // Create and display the dialog box
-            new Dialog({
-                title: localize("menu.item.finishing-move.name"),
+            await foundry.applications.api.DialogV2.prompt({
+                window: { title: localize("menu.item.finishing-move.name") },
                 content: `
                 <form>
                     <div class="form-group">
-                    <label for="finishing-move-name">${localize("menu.item.finishing-move.name")}</label>
+                    <label for="finishing-move-name" data-tooltip="${localize("menu.item.finishing-move.hint")}">${localize("menu.item.finishing-move.name")}</label>
                     <input type="text" id="finishing-move-name" name="finishingMoveName" value="${existingValue}" />
                     </div>
                 </form>
                 `,
-                buttons: {
-                    save: {
-                        label: localize("menu.settings.buttons.footer.save"),
-                        callback: async (html) => {
-                            // Get the new value from the text input
-                            const newValue = html.find("#finishing-move-name").val().trim();
+                ok: {
+                    label: localize("menu.settings.buttons.footer.save"),
+                    callback: async (event, button, dialog) => {
+                        const newValue = button.form.elements['finishing-move-name'].value.trim();
+                        // Save the new value to the module flag
+                        await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
 
-                            // Save the new value to the module flag
-                            await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
-
-                            // Optionally, show a message or perform additional actions here
-                            ui.notifications.info(
-                                localize("display-text.notifications.finishing-move.settings.item.update", { newValue })
-                            );
-                        },
-                    },
-                    cancel: {
-                        label: localize("menu.settings.buttons.footer.cancel"),
-                    },
-                },
-                default: "save",
-            }).render(true);
+                        // Optionally, show a message or perform additional actions here
+                        ui.notifications.info(
+                            localize("display-text.notifications.finishing-move.settings.item.update", { newValue })
+                        );
+                    }
+                }
+            })
         },
     });
     return menu;
