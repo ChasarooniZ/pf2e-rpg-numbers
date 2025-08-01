@@ -144,7 +144,7 @@ async function bounceOffTarget(token, target, filter = {}) {
         .file("jb2a.impact.008.orange")
         .filter("ColorMatrix", filter)
         .scaleToObject()
-        .anchor(CONST.ANCHOR.BURST)
+        .anchor(CONST.BOUNCE.ANCHOR.BURST)
         .mirrorX()
         .waitUntilFinished(CONST.DELAY_FINISH.SPARK)
         .forUsers(users)
@@ -156,7 +156,7 @@ async function bounceOffTarget(token, target, filter = {}) {
         .rotateTowards(token, { rotationOffset: CONST.BOUNCE.ROTATION.OPPOSITE - CONST.BOUNCE.ROTATION.OFFSET })
         .scaleToObject(CONST.BOUNCE.SIZE_MULT.SPARK)
         .mirrorY()
-        .spriteAnchor(CONST.ANCHOR.SPARK)
+        .spriteAnchor(CONST.BOUNCE.ANCHOR.SPARK)
         .forUsers(users)
         //Spark Right
         .effect()
@@ -165,7 +165,7 @@ async function bounceOffTarget(token, target, filter = {}) {
         .filter("ColorMatrix", filter)
         .rotateTowards(token, { rotationOffset: CONST.BOUNCE.ROTATION.OPPOSITE + CONST.BOUNCE.ROTATION.OFFSET })
         .scaleToObject(CONST.BOUNCE.SIZE_MULT.SPARK)
-        .spriteAnchor(CONST.ANCHOR.SPARK)
+        .spriteAnchor(CONST.BOUNCE.ANCHOR.SPARK)
         .forUsers(users)
         .play({ preload: true });
 }
