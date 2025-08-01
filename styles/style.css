@@ -1,5 +1,6 @@
 .pf2e-rpg-actor-config-form .tab.critical {
     overflow: auto;
+    height: 60vh;
 
     .row {
         display: flex;
