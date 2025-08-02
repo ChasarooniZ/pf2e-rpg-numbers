@@ -1,3 +1,9 @@
+# [13.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.5...13.4.6) - Bounce off Fixed
+
+-   **Updated**
+    -   `Target Dodges`
+        -   Fixed last issue causing the `Bounce Off` animation to fail (🐛 @YoSoy-Ed)
+
 # [13.4.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.4...13.4.5) - Bounce off Target
 
 -   **Updated**

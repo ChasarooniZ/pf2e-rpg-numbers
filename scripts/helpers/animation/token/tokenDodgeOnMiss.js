@@ -146,7 +146,7 @@ async function bounceOffTarget(token, target, filter = {}) {
         .scaleToObject()
         .anchor(CONST.BOUNCE.ANCHOR.BURST)
         .mirrorX()
-        .waitUntilFinished(CONST.DELAY_FINISH.SPARK)
+        .waitUntilFinished(CONST.BOUNCE.DELAY_FINISH.SPARK)
         .forUsers(users)
         //Spark Left
         .effect()
