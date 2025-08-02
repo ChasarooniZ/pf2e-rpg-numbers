@@ -1,3 +1,7 @@
+## Upcoming
+
+  - Updated French translation (@rectulo)
+
 # [13.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.5...13.4.6) - Bounce off Fixed
 
 - **Updated**
