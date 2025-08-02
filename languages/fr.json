@@ -67,6 +67,9 @@
           }
         },
         "versus": "Animation Vs",
+        "darkest-dungeon": {
+          "stress": "Darkest Dungeon : Stress / Soulagement"
+        },
         "debug": "Débogage"
       },
       "dmg-numbers": {
@@ -76,7 +79,7 @@
         },
         "on-apply-or-roll": {
           "name": "Montre...",
-          "hint": "[NOTE] Si vous choisissez 'en appliquant les dégâts', ce module révèlera les résistances/faiblesses de sorte que les joueurs verront le nombre définitif et cela ne vous permettra que de voir 1 seul nombre sur votre jet de dégâts",
+          "hint": "[NOTE] Si vous choisissez d'appliquer, ce module révèlera à la fois les résistances et les faiblesses lorsque les joueurs verront le nombre final et ignorera le réglage Nombre divisé pour ne montrer qu'1 seul nombre",
           "choices": {
             "apply": "En appliquant les dégâts",
             "roll": "sur le jet"
@@ -104,14 +107,14 @@
           "choices": {
             "percentRemainingHealth": "% des PV restants",
             "percentMaxHealth": "% du max de PV",
-            "none": "Aucune—"
+            "none": "—"
           }
         },
         "damage-split": {
           "name": "Division des dégâts...",
-          "hint": "Comment seront divisés les mombres de dégâts du jet (Aucun : total uniquement, par type : par type de dégâts, Tous : divise tous les termes)",
+          "hint": "Comme diviser les nombres de dégâts d'un tirage (Aucun : total seulement, Par type: Par type de dégâts, Tous : Montrer chaque dégât). Note : Ce réglage n'a aucun effet si vous avez régler sur 'Montrer' à Appliquer les dégâts",
           "choices": {
-            "none": "Aucune",
+            "none": "Aucun",
             "by-damage-type": "Par type de dégâts",
             "all": "Tous"
           }
@@ -643,12 +646,49 @@
         },
         "duration": {
           "name": "Durée",
-          "hint": "Combien de temps (en secondes) l'animation restera affiché ?"
+          "hint": "Combien de temps (en secondes) l'animation restera affichée ?"
+        }
+      },
+      "darkest-dungeon": {
+        "stress": {
+          "enabled": {
+            "name": "Activer Stress / Soulagement de Darkest Dungeon",
+            "hint": "Activer cette fonctionnalité lui permet d'afficher les animations stress et soulagement pour les jetons amicaux"
+          },
+          "include-target": {
+            "name": "Inclure la cible ?",
+            "hint": "En cas d'activation, montre les animations de stress y compris au jeton qui a été ciblé et pas juste à ses alliés"
+          },
+          "duration": {
+            "name": "Durée(s)",
+            "hint": "Combien de temps en secondes chaque animation doit être montrée"
+          },
+          "delay-per-token": {
+            "name": "Délai entre les jetons (ms)",
+            "hint": "Intervalle en millisecondes avant de montrer l'animation sur le jeton suivant"
+          },
+          "volume": {
+            "name": "Volume",
+            "hint": "Volume de l'effet de stress"
+          },
+          "table": {
+            "headers": {
+              "attack": "Attaque",
+              "save": "Jet de sauvegarde",
+              "skill": "Compétence"
+            },
+            "rows": {
+              "friendly": "Amical",
+              "hostile": "Hostile",
+              "crit": "Succès critique",
+              "crit-fail": "Échec critique"
+            }
+          }
         }
       },
       "debug-mode": {
         "name": "Mode débogage",
-        "hint": "permettre que la console reçoive des messages sur différents sujets"
+        "hint": "Permettre à la console de recevoir des messages sur différents sujets"
       }
     },
     "menu": {
@@ -675,6 +715,10 @@
           "critical": "Critique",
           "text": "Texte",
           "misc": "Divers"
+        },
+        "table-of-contents": "Table des matières",
+        "tooltip": {
+          "new-feature": "Nouvelle fonctionnalité"
         }
       },
       "import": {
@@ -708,8 +752,8 @@
             "test": "Tester"
           },
           "enabled": {
-            "name": "remplacement activé ?",
-            "hint": "remplace si pas si crit animation est activé",
+            "name": "Remplacement activé ?",
+            "hint": "Remplace si cette animation critique est activée ou non",
             "choices": {
               "default": "—",
               "on": "Activé",
@@ -773,7 +817,8 @@
       },
       "item": {
         "finishing-move": {
-          "name": "Nom de Technique signature"
+          "name": "Nom de Technique signature",
+          "hint": "Nom de la technique signature. Vous pouvez utiliser '|' pour des sauts de lignes. ('Ligne 1|Ligne 2')"
         }
       },
       "versus": {
