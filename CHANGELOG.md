@@ -1,16 +1,18 @@
 # [13.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.5...13.4.6) - Bounce off Fixed
 
--   **Updated**
-    -   `Target Dodges`
-        -   Fixed last issue causing the `Bounce Off` animation to fail (🐛 @YoSoy-Ed)
+- **Updated**
+    - `Target Dodges`
+        - Fixed last issue causing the `Bounce Off` animation to fail (🐛 @YoSoy-Ed)
+        
+    
 
 # [13.4.5](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.4...13.4.5) - Bounce off Target
 
 - **Updated**
-    - `Target Dodges`
-        - Fixed longstanding issue causing the `Bounce Off` animation to fail
-        
+  - `Target Dodges`
+    - Fixed longstanding issue causing the `Bounce Off` animation to fail
     
+  
 
 # [13.4.4](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.3...13.4.4) - Actor Crit Fix
 
@@ -2002,13 +2004,21 @@
   - Crit Message idea
   
 
-## 13.4.5 - 2025-08-01
+## 13.4.6 - 2025-08-02
 
 - **Updated**
     - `Target Dodges`
-        - Fixed longstanding issue causing the `Bounce Off` animation to fail
+        - Fixed last issue causing the `Bounce Off` animation to fail (🐛 @YoSoy-Ed)
         
     
+
+## 13.4.5 - 2025-08-01
+
+- **Updated**
+  - `Target Dodges`
+    - Fixed longstanding issue causing the `Bounce Off` animation to fail
+    
+  
 
 ## 13.4.4 - 2025-08-01
 
