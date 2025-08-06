@@ -19,7 +19,8 @@ body:
         2. Click on '....'
         3. Scroll down to '....'
         4. See error
-      value: 1. 
+      value: |
+        1. 
     validations:
       required: true
 
