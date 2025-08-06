@@ -3,6 +3,7 @@
 -   **Updated**
     -   `Darkest Dungeon Crisis/Virtue` - Fixed issue where users filter was not being passed (🐛 @TheTenk)
     -   To fix this updated required **Genga** version to `0.7.2`
+    -   Updated French translation (@rectulo)
 
 # [13.4.6](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.5...13.4.6) - Bounce off Fixed
 
@@ -1835,6 +1836,12 @@
     -   performance optimization
     -   Text options
     -   Crit Message idea
+
+## 13.4.6 - 2025-08-02
+
+-   **Updated**
+    -   `Target Dodges`
+        -   Fixed last issue causing the `Bounce Off` animation to fail (🐛 @YoSoy-Ed)
 
 ## 13.4.5 - 2025-08-01
 

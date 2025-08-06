@@ -24,6 +24,7 @@ body:
 
   - type: textarea
     attributes:
+
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
     validations:
@@ -41,14 +42,14 @@ body:
       label: PF2e RPG Numbers Version
       description: 12.6.11 etc.
     validations:
-      required: true
+      required: false
 
   - type: input
     attributes:
       label: Sequencer Version
       description: 3.4.8 etc.
     validations:
-      required: true
+      required: false
 
 
   - type: textarea
