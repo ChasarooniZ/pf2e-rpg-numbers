@@ -38,8 +38,8 @@
                 "type": "module",
                 "manifest": "https://github.com/ChasarooniZ/anime-agnostic-animations/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "0.7.1",
-                    "verified": "0.7.1"
+                    "minimum": "0.7.2",
+                    "verified": "0.7.2"
                 }
             }
         ]
