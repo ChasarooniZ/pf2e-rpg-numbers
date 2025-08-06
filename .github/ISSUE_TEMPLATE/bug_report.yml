@@ -19,11 +19,13 @@ body:
         2. Click on '....'
         3. Scroll down to '....'
         4. See error
+      value: 1. 
     validations:
       required: true
 
   - type: textarea
     attributes:
+
       label: Expected behavior
       description: A clear and concise description of what you expected to happen.
     validations:
@@ -40,17 +42,15 @@ body:
     attributes:
       label: PF2e RPG Numbers Version
       description: 12.6.11 etc.
-      value: current
     validations:
-      required: true
+      required: false
 
   - type: input
     attributes:
       label: Sequencer Version
       description: 3.4.8 etc.
-      value: current
     validations:
-      required: true
+      required: false
 
 
   - type: textarea
