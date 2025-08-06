@@ -40,6 +40,7 @@ body:
     attributes:
       label: PF2e RPG Numbers Version
       description: 12.6.11 etc.
+      value: current
     validations:
       required: true
 
@@ -47,6 +48,7 @@ body:
     attributes:
       label: Sequencer Version
       description: 3.4.8 etc.
+      value: current
     validations:
       required: true
 
