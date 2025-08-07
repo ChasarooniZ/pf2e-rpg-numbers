@@ -1,3 +1,11 @@
+# 13.4.0 - VISION
+
+-   **New**
+    -   Added support for `Pf2e Visioner` for visibility
+-   **Updated**
+    -   For the changelog am dropping linking the version diff in the changelog, if you want to check version differences you can compare them from the release section
+    -   I apologize to those who might have used this 🙏 (I just lost patience for it)
+
 # [13.4.7](https://github.com/ChasarooniZ/pf2e-rpg-numbers/compare/13.4.6...13.4.7) - DD Crit Fixes
 
 - **Updated**

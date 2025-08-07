@@ -1,3 +1,4 @@
+import { getTokenIDsThatSeeTokenPerception, getTokenIDsThatSeeTokenVisioner, isPerceptionActive, isVisionerActive } from "./compatability.js";
 import { getSetting } from "./misc.js";
 
 /**
@@ -47,13 +48,12 @@ export function getVisibleUsers(tok) {
         tok = tok.document;
     }
     if (!tok?.hidden) {
-        // check vision if pf2e perception active
-        if (game.modules.get("pf2e-perception")?.active) {
+        if (isVisionerActive() || isPerceptionActive()) {
             let cantSee = [];
-            for (const key in tok?.flags?.["pf2e-perception"]?.data) {
-                if (["undetected", "unnoticed"].includes(tok?.flags?.["pf2e-perception"]?.data?.[key]?.visibility)) {
-                    cantSee.push(canvas.tokens.get(key)?.actor?.uuid);
-                }
+            if (isVisionerActive()) {
+                cantSee = getTokenIDsThatSeeTokenVisioner(tok);
+            } else if (isPerceptionActive()) {
+                cantSee = getTokenIDsThatSeeTokenPerception(tok)
             }
             list = list.concat(
                 game.users.players.filter((u) => !cantSee.includes(u?.character?.uuid)).map((u) => u.id)

@@ -1,5 +1,6 @@
 import { getSetting, localize } from "../../misc.js";
 import { MODULE_ID, MS_TO_SEC } from "../../const.js";
+import { isHiddenPerception, isHiddenVisioner, isVisiblePerception, isVisibleVisioner } from "../../compatability.js";
 
 const startUpEach = 100;
 
@@ -44,11 +45,10 @@ export async function vsAnimation() {
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
-                        "menu.versus.name.opponent"
-                    )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${
-                        defNames.opposition
-                    }">
+                "menu.versus.name.opponent"
+            )}</label><br>
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
+                }">
                   </div>
                 </div>
                 <div>
@@ -77,13 +77,17 @@ export async function vsAnimation() {
     const art = {
         enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(
-                (c) =>
+                (c, _id, combatants) =>
                     c?.actor?.alliance === "opposition" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+                    (encounter ?
+                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
+                        isVisible(c?.document, combatants.map(c => c?.document)))
             )
-            .map((c) => ({
+            .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
+                visible: encounter ?
+                    !isHidden(c.token, combatants.map(c => c.token)) :
+                    !isHidden(c?.document, combatants.map(c => c?.document)),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
@@ -93,13 +97,17 @@ export async function vsAnimation() {
             })),
         party: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(
-                (c) =>
+                (c, _id, combatants) =>
                     c?.actor?.alliance === "party" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+                    (encounter ?
+                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
+                        isVisible(c?.document, combatants.map(c => c?.document)))
             )
-            .map((c) => ({
+            .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
+                visible: encounter ?
+                    !isHidden(c.token, combatants.map(c => c.token)) :
+                    !isHidden(c?.document, combatants.map(c => c?.document)),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
@@ -217,23 +225,21 @@ export async function vsAnimation() {
         return seq;
     }
 
-    function isVisible(tokenDoc) {
+    function isVisible(tokenDoc, combatantTokens) {
         return (
             tokenDoc?.visible &&
-            !Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
-                ["undetected", "unnoticed"].includes(item?.visibility)
-            ) &&
-            !tokenDoc.actor.conditions.bySlug("undetected")?.length
+            !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
+            isVisiblePerception(tokenDoc) &&
+            isVisibleVisioner(tokenDoc, combatantTokens)
         );
     }
 
-    function isHidden(tokenDoc) {
+    function isHidden(tokenDoc, combatantTokens) {
         return (
             !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
             !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
-            Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
-                ["hidden", "concealed"].includes(item?.visibility)
-            )
+            isHiddenPerception(tokenDoc) ||
+            isHiddenVisioner(tokenDoc, combatantTokens)
         );
     }
 }
