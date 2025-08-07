@@ -79,11 +79,15 @@ export async function vsAnimation() {
             .filter(
                 (c, _id, combatants) =>
                     c?.actor?.alliance === "opposition" &&
-                    (encounter ? !c?.hidden && isVisible(c.token, comb) : isVisible(c?.document))
+                    (encounter ?
+                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
+                        isVisible(c?.document, combatants.map(c => c?.document)))
             )
             .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
+                visible: encounter ?
+                    !isHidden(c.token, combatants.map(c => c.token)) :
+                    !isHidden(c?.document, combatants.map(c => c?.document)),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
@@ -95,11 +99,15 @@ export async function vsAnimation() {
             .filter(
                 (c, _id, combatants) =>
                     c?.actor?.alliance === "party" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+                    (encounter ?
+                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
+                        isVisible(c?.document, combatants.map(c => c?.document)))
             )
             .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
+                visible: encounter ?
+                    !isHidden(c.token, combatants.map(c => c.token)) :
+                    !isHidden(c?.document, combatants.map(c => c?.document)),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
