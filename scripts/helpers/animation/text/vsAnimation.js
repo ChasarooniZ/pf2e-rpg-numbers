@@ -1,6 +1,6 @@
 import { getSetting, localize } from "../../misc.js";
 import { MODULE_ID, MS_TO_SEC } from "../../const.js";
-import { isHiddenPerception, isHiddenVisioner, isVisiblePerception } from "../../compatability.js";
+import { isHiddenPerception, isHiddenVisioner, isVisiblePerception, isVisibleVisioner } from "../../compatability.js";
 
 const startUpEach = 100;
 
@@ -228,8 +228,8 @@ export async function vsAnimation() {
     function isVisible(tokenDoc, combatantTokens) {
         return (
             tokenDoc?.visible &&
-            isVisiblePerception(tokenDoc) &&
             !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
+            isVisiblePerception(tokenDoc) &&
             isVisibleVisioner(tokenDoc, combatantTokens)
         );
     }
