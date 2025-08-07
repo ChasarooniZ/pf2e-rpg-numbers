@@ -44,11 +44,10 @@ export async function vsAnimation() {
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
-                        "menu.versus.name.opponent"
-                    )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${
-                        defNames.opposition
-                    }">
+                "menu.versus.name.opponent"
+            )}</label><br>
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
+                }">
                   </div>
                 </div>
                 <div>
@@ -77,11 +76,11 @@ export async function vsAnimation() {
     const art = {
         enemies: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(
-                (c) =>
+                (c, _id, combatants) =>
                     c?.actor?.alliance === "opposition" &&
-                    (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
+                    (encounter ? !c?.hidden && isVisible(c.token, comb) : isVisible(c?.document))
             )
-            .map((c) => ({
+            .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
                 visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
                 id: c.actor.id,
@@ -93,11 +92,11 @@ export async function vsAnimation() {
             })),
         party: (encounter ? encounter.combatants.contents : canvas.tokens.controlled)
             .filter(
-                (c) =>
+                (c, _id, combatants) =>
                     c?.actor?.alliance === "party" &&
                     (encounter ? !c?.hidden && isVisible(c.token) : isVisible(c?.document))
             )
-            .map((c) => ({
+            .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
                 visible: encounter ? !isHidden(c.token) : !isHidden(c?.document),
                 id: c.actor.id,
@@ -217,22 +216,37 @@ export async function vsAnimation() {
         return seq;
     }
 
-    function isVisible(tokenDoc) {
+    function isVisible(tokenDoc, combatantTokens) {
         return (
             tokenDoc?.visible &&
             !Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
                 ["undetected", "unnoticed"].includes(item?.visibility)
             ) &&
-            !tokenDoc.actor.conditions.bySlug("undetected")?.length
+            !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
+            (
+                !game.modules.get("pf2e-visioner")?.active ||
+                !combatantTokens.some(tok =>
+                    game.modules.get("pf2e-visioner").api
+                        .getVisibility(tok.id, tokenDoc.id) === 'undetected'
+                )
+            )
         );
     }
 
-    function isHidden(tokenDoc) {
+    function isHidden(tokenDoc, combatantsTokens) {
         return (
             !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
             !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
             Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
                 ["hidden", "concealed"].includes(item?.visibility)
+            ) || (
+                game.modules.get("pf2e-visioner")?.active &&
+                combatantTokens.some(tok =>
+                    ['hidden', 'concealed'].includes(
+                        game.modules.get("pf2e-visioner").api
+                            .getVisibility(tok.id, tokenDoc.id)
+                    )
+                )
             )
         );
     }

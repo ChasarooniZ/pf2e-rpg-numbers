@@ -47,8 +47,16 @@ export function getVisibleUsers(tok) {
         tok = tok.document;
     }
     if (!tok?.hidden) {
-        // check vision if pf2e perception active
-        if (game.modules.get("pf2e-perception")?.active) {
+        if (game.modules.get("pf2e-visioner")?.active) {
+            let cantSee = [];
+            const api = game.modules.get("pf2e-visioner").api;
+            for (const tokenID of canvas.tokens.placeables.map(t => t.id)) {
+                if (api.getVisibility(tokenID, tok.id) === 'undetected') {
+                    cantSee.push(canvas.tokens.get(tokenID)?.actor?.uuid)
+                }
+            }
+        } else if (game.modules.get("pf2e-perception")?.active) {
+            // check vision if pf2e perception active
             let cantSee = [];
             for (const key in tok?.flags?.["pf2e-perception"]?.data) {
                 if (["undetected", "unnoticed"].includes(tok?.flags?.["pf2e-perception"]?.data?.[key]?.visibility)) {
