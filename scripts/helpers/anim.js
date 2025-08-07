@@ -55,6 +55,9 @@ export function getVisibleUsers(tok) {
                     cantSee.push(canvas.tokens.get(tokenID)?.actor?.uuid)
                 }
             }
+            list = list.concat(
+                game.users.players.filter((u) => !cantSee.includes(u?.character?.uuid)).map((u) => u.id)
+            );
         } else if (game.modules.get("pf2e-perception")?.active) {
             // check vision if pf2e perception active
             let cantSee = [];
