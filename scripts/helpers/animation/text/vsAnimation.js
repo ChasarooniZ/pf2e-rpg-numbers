@@ -1,5 +1,6 @@
 import { getSetting, localize } from "../../misc.js";
 import { MODULE_ID, MS_TO_SEC } from "../../const.js";
+import { isHiddenPerception, isHiddenVisioner, isVisiblePerception } from "../../compatability.js";
 
 const startUpEach = 100;
 
@@ -219,35 +220,18 @@ export async function vsAnimation() {
     function isVisible(tokenDoc, combatantTokens) {
         return (
             tokenDoc?.visible &&
-            !Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
-                ["undetected", "unnoticed"].includes(item?.visibility)
-            ) &&
+            isVisiblePerception(tokenDoc) &&
             !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
-            (
-                !game.modules.get("pf2e-visioner")?.active ||
-                !combatantTokens.some(tok =>
-                    game.modules.get("pf2e-visioner").api
-                        .getVisibility(tok.id, tokenDoc.id) === 'undetected'
-                )
-            )
+            isVisibleVisioner(tokenDoc, combatantTokens)
         );
     }
 
-    function isHidden(tokenDoc, combatantsTokens) {
+    function isHidden(tokenDoc, combatantTokens) {
         return (
             !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
             !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
-            Object.values(tokenDoc.flags?.["pf2e-perception"]?.data ?? {})?.some((item) =>
-                ["hidden", "concealed"].includes(item?.visibility)
-            ) || (
-                game.modules.get("pf2e-visioner")?.active &&
-                combatantTokens.some(tok =>
-                    ['hidden', 'concealed'].includes(
-                        game.modules.get("pf2e-visioner").api
-                            .getVisibility(tok.id, tokenDoc.id)
-                    )
-                )
-            )
+            isHiddenPerception(tokenDoc) ||
+            isHiddenVisioner(tokenDoc, combatantTokens)
         );
     }
 }
