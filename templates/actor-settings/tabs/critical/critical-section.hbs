@@ -134,15 +134,42 @@
     ></range-picker>
 </div>
 
-{{! Scale }}
+<div class="row">
+    <div class="column">
+        {{! Scale }}
+        <div class="form-group">
+            <label
+                for="settings.critical.{{type}}.{{section}}.scale"
+                data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
+            </label>
+            {{numberInput data.scale name=(concat "settings.critical." type "." section ".scale") step=0.05 min=0 max=5}}
+        </div>
+    </div>
+    <div class="column">
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.critical.{{type}}.{{section}}.duration"
+                data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.duration.name"}}
+            </label>
+            {{numberInput data.duration name=(concat "settings.critical." type "." section ".duration") step=0.05 min=0 max=400}}
+        </div>
+    </div>
+</div>
+
+{{! Image Delay }}
 <div class="form-group">
     <label
-        for="settings.critical.{{type}}.{{section}}.scale"
-        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.hint"}}"
+        for="settings.critical.{{type}}.{{section}}.imagedelay"
+        data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.imagedelay.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
+        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.imagedelay.name"}}
     </label>
-    {{numberInput data.scale name=(concat "settings.critical." type "." section ".scale") step=0.05 min=0 max=5}}
+    {{numberInput data.imagedelay name=(concat "settings.critical." type "." section ".imagedelay") step=0.05 min=0 max=5}}
 </div>
 
 {{! SFX }}

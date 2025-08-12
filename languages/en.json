@@ -795,6 +795,14 @@
                     "color": {
                         "name": "Color",
                         "hint": "Set this to override the default crit color"
+                    },
+                    "duration": {
+                        "name": "Duration",
+                        "hint": "How long in seconds should the animation play (in seconds), if set to 0 it will default to the world setting for duration"
+                    },
+                    "imagedelay": {
+                        "name": "Art Delay",
+                        "hint": "How long to delay the art for (in seconds), this does not affect the sound for the crit and is added to overall delay"
                     }
                 },
                 "token": {

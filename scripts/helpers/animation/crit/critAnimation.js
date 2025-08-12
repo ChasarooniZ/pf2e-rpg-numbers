@@ -65,7 +65,6 @@ export function createTestCritAnimation(data) {
         config.art = shouldUseToken ? getTokenImage(actor.prototypeToken) : actor?.img;
     }
     config.sfx = config.sfx || (succFail === "success" ? getSetting("critical.sound") : "");
-    config.duration = getSetting("critical.duration") * MS_TO_SEC;
 
     displayCritAnimation(type, actor, [userID], config);
 }
@@ -152,6 +151,7 @@ function getAnimationConfig(config) {
         offset: { x: 0, y: 0 },
         sfx: config.isSuccess ? getSetting("critical.sound") : "",
         volume: getSetting("critical.volume") / 100,
+        duration: getSetting("critical.duration") * MS_TO_SEC
     };
     let result = {};
 
@@ -237,6 +237,8 @@ function getCritActorSettings(data, successOrFail, flags, type = "default") {
     result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale ?? 1;
     result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || "";
     result.type = typeSpecificSettings?.type === "default" ? baseSettings?.type : typeSpecificSettings?.type;
+    result.imagedelay = (typeSpecificSettings?.imagedelay * MS_TO_SEC) || (baseSettings?.imagedelay ?? 0);
+    result.duration = (typeSpecificSettings?.duration * MS_TO_SEC) || (baseSettings?.duration ?? 1);
 
     const volume =
         (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;

@@ -20,7 +20,8 @@ export function doSomethingOnDamageApply() {
     );
 }
 
-export function waitForMessage(id, ms = 250, attempts = 120) {
+export function waitForMessage(id, ms = 250, attempts = 120, dontWait = false) {
+    if (dontWait) return Promise.resolve();
     return new Promise(function (resolve, reject) {
         (function wait(count = 0) {
             if (count > attempts) return reject();

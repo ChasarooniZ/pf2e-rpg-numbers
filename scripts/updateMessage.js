@@ -6,6 +6,16 @@ const sampleData = {
 };
 
 const updateData = {
+    '13.6.0': {
+        new: [
+            { item: "Added handling for `PF2e Toolbelt` rolls and rerolls" },
+            { item: "Critical", feat: true },
+            { children: ["Added `Art Delay` setting to delay the art portion", "Added `Duration` setting to set the total effect duration"] },
+        ],
+        update: [
+            { item: "Required **Genga** version to `0.7.3`" },
+        ],
+    },
     '13.4.0': {
         new: [
             { item: "Darkest Dungeon: Stress / Relief", feat: true },

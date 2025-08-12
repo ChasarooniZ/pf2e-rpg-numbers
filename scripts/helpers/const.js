@@ -22,3 +22,11 @@ export const NEW_FEATURE_BY_VERSION = {
         'darkest-dungeon-stress': true
     }
 }
+
+export const DEGREES_OF_SUCCESS = [
+    "criticalFailure",
+    "failure",
+    "success",
+    "criticalSuccess",
+    "none"
+]
