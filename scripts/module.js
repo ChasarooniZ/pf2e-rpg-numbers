@@ -25,7 +25,6 @@ import {
     preDeleteCombat,
     preUpdateToken,
 } from "./hooks.js";
-import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 import { handleUpdateMessage } from "./updateMessage.js";
