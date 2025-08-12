@@ -1,3 +1,6 @@
+- **Updated**
+    - Updated French translation (@rectulo)
+
 # 13.6.0 - Toolbelt handling
 
 - **New**
