@@ -29,6 +29,7 @@ import { handleUpdate } from "./helpers/library/migration.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 import { handleUpdateMessage } from "./updateMessage.js";
+import { handleToolbeltTarget } from "./helpers/toolbeltHandlers.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -46,43 +47,7 @@ Hooks.on("ready", () => {
     // You died Elden Ring
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
-        if (game.user.id === userid) {
-            if (!getSetting("enabled")) return;
-            debugLog({
-                msg,
-            });
-            const dat = getData(msg);
-            //Finishing Moves
-            finishingMove(dat, msg);
-
-            waitForMessage(msg.id).then(() => {
-                // RPG Numbers on Damage Roll
-                damageRollNumbers(dat, msg);
-
-                // RPG Numbers on Check Roll
-                checkRollNumbers(dat, msg);
-
-                handleDarkestDungeonStress(msg)
-
-                //Attack Roll Stuff
-                if (dat.isAttackRoll) {
-                    // Rotate on Attack Roll
-                    if (isRotateOnAttack()) {
-                        rotateOnAttack(msg);
-                    }
-                    if (isShakeOnAttack(msg.token.actor)) {
-                        shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
-                    }
-
-                    if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
-                        handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object);
-                    }
-                }
-
-                //On Damage Application
-                onDamageApplication(dat, msg);
-            });
-        }
+        handleMessage(msg, userid)
     });
     Hooks.on("preUpdateToken", preUpdateToken);
     Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
@@ -109,8 +74,10 @@ Hooks.on("ready", () => {
     //     const lastVersion = getSetting("last-version");
     //     handleUpdate(version, lastVersion);
     // }
-    
+
     handleUpdateMessage();
+
+    if (game?.toolbelt?.active) handleToolbeltTarget()
 
     console.log("PF2e RPG Numbers is ready");
 });
@@ -206,7 +173,7 @@ function isDodgeOnMiss(outcome) {
  * @param {object} dat - Data object from getData() containing roll information
  * @param {object} msg - The chat message object
  */
-function checkRollNumbers(dat, msg) {
+export function checkRollNumbers(dat, msg) {
     const doChecks = getSetting("check-enabled");
     const doCrits =
         shouldDoCrits(
@@ -319,4 +286,45 @@ function shouldDoCrits(actorFlags, outcome) {
         (actorFlags?.[succFail] && Object.values(actorFlags?.[succFail])?.find((i) => i.enabled === "on")) ||
         getSetting("critical.enabled")
     );
+}
+
+
+export async function handleMessage(msg, userid, dontWait = false) {
+    if (game.user.id === userid) {
+        if (!getSetting("enabled")) return;
+        debugLog({
+            msg,
+        });
+        const dat = getData(msg); 
+        //Finishing Moves
+        finishingMove(dat, msg);
+
+        waitForMessage(msg.id, 250, 120, dontWait).then(() => {
+            // RPG Numbers on Damage Roll
+            damageRollNumbers(dat, msg);
+
+            // RPG Numbers on Check Roll
+            checkRollNumbers(dat, msg);
+
+            handleDarkestDungeonStress(msg)
+
+            //Attack Roll Stuff
+            if (dat.isAttackRoll) {
+                // Rotate on Attack Roll
+                if (isRotateOnAttack()) {
+                    rotateOnAttack(msg);
+                }
+                if (isShakeOnAttack(msg.token.actor)) {
+                    shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
+                }
+
+                if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
+                    handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object);
+                }
+            }
+
+            //On Damage Application
+            onDamageApplication(dat, msg);
+        });
+    }
 }
