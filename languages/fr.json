@@ -795,6 +795,14 @@
           "color": {
             "name": "Couleur",
             "hint": "Régler ceci pour remplacer la couleur de critique par défaut"
+          },
+          "duration": {
+            "name": "Durée",
+            "hint": "Combien de temps l'animation sera jouée (en seconds). Si elle est fixée à 0 elle utilisera le réglage du monde pour la durée"
+          },
+          "imagedelay": {
+            "name": "Délai avant illustration",
+            "hint": "Combien de temps faut-il retarder l'illustration (en secondes), cela n'affecte pas le son du coup critique et s'ajoute au délai global"
           }
         },
         "token": {
