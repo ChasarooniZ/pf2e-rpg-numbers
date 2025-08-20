@@ -6,6 +6,7 @@
 -   **Updated**
     -   Updated token effects to use `.copySprite()`
     -   Updated French translation (@rectulo)
+    -   Now requires **Sequencer** `3.6.10`
 
 # 13.6.0 - Toolbelt handling
 
