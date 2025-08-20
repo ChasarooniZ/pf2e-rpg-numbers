@@ -24,6 +24,7 @@ import {
     getSceneControlButtons,
     preDeleteCombat,
     preUpdateToken,
+    targetToken,
 } from "./hooks.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
@@ -67,6 +68,8 @@ Hooks.on("ready", () => {
 
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
     Hooks.on("combatStart", combatStart);
+
+    Hooks.on("targetToken", targetToken)
 
     // if (game.user.isGM) {
     //     const version = game.modules.get(MODULE_ID).version;
@@ -294,7 +297,7 @@ export async function handleMessage(msg, userid, dontWait = false) {
         debugLog({
             msg,
         });
-        const dat = getData(msg); 
+        const dat = getData(msg);
         //Finishing Moves
         finishingMove(dat, msg);
 
