@@ -4,7 +4,7 @@
     -   `Turn Tokens on Target`
         -   Add new option for tokens to turn towards the token they target
 -   **Updated**
-    -   Updated token effects to use `.from()`
+    -   Updated token effects to use `.copySprite()`
     -   Updated French translation (@rectulo)
 
 # 13.6.0 - Toolbelt handling

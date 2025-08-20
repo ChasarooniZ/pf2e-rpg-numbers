@@ -67,6 +67,17 @@ export function registerSetting(data) {
     game.settings.register(MODULE_ID, data.id, settingData);
 }
 
+export function averageTokenPosition(tokens) {
+    const it = tokens.map(t => t.center).reduce((tot, cur) => {
+        tot.x += cur.x;
+        tot.y += cur.y;
+        return tot;
+    }, { x: 0, y: 0 });
+
+    return { x: it.x / tokens.length, y: it.y / tokens.length }
+}
+
+
 function transformData(dataArray) {
     const result = {};
 

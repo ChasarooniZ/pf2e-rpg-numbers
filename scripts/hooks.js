@@ -1,7 +1,7 @@
 import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
-import { getSetting, localize } from "./helpers/misc.js";
+import { averageTokenPosition, getSetting, localize } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
 import { turnTokensToTarget } from "./helpers/animation/token/turnTokenOnTarget.js";
@@ -187,12 +187,17 @@ export async function preUpdateToken(token, changes, _misc, _id) {
 
 
 //TODO Consider a complicated use case where it returns to the original position when all tokens have been untargetted
-export async function targetToken(user, targetToken, isAdded) {
+export async function targetToken(user, targetToken, isTargeted) {
     if (game.user.id !== user.id) return;
-    if (!isAdded) return;
-    const tokensToRotate = canvas.tokens.controlled.length > 0 ?
+    if (!isTargeted) return;
+    const targets = Array.from(game.user.targets);
+    const tokensToRotate = (canvas.tokens.controlled.length > 0 ?
         canvas.tokens.controlled :
-        canvas.tokens.placeables.filter(t => game.user?.character?.uuid === t?.actor?.uuid);
+        canvas.tokens.placeables.filter(t => game.user?.character?.uuid === t?.actor?.uuid)
+    ).filter(tok => !targets.some(t => t.id !== tok.id));
+
+
+    //const targetPos = averageTokenPosition(targets)
     turnTokensToTarget(tokensToRotate, targetToken);
 }
 

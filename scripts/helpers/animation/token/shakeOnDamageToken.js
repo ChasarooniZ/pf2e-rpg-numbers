@@ -68,7 +68,7 @@ async function shakeWithSequencer(token, shakeDistancePercent, shakes, duration,
         .opacity(0)
         .effect()
         .atLocation(token)
-        .from(token)
+        .copySprite(token)
         .scaleToObject(1, { considerTokenScale: true })
         .loopProperty("spriteContainer", "position.x", {
             values,
