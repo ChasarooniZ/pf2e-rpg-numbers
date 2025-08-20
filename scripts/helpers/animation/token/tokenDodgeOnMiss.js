@@ -92,7 +92,7 @@ async function dodgeOnMiss(token, target) {
         .effect()
         .delay(delay)
         .atLocation(target)
-        .from(target)
+        .copySprite(target)
         .scaleToObject(1, { considerTokenScale: true })
         .animateProperty("spriteContainer", "position.x", {
             from: 0,

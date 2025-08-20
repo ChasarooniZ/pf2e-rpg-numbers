@@ -190,15 +190,16 @@ export async function preUpdateToken(token, changes, _misc, _id) {
 export async function targetToken(user, targetToken, isTargeted) {
     if (game.user.id !== user.id) return;
     if (!isTargeted) return;
-    const targets = Array.from(game.user.targets);
+    // TODO maybe useful if handle turn towards the average of targets
+    // const targets = Array.from(game.user.targets);
     const tokensToRotate = (canvas.tokens.controlled.length > 0 ?
         canvas.tokens.controlled :
         canvas.tokens.placeables.filter(t => game.user?.character?.uuid === t?.actor?.uuid)
-    ).filter(tok => !targets.some(t => t.id !== tok.id));
+    ).filter(tok => tok.id !== targetToken.id);
 
 
     //const targetPos = averageTokenPosition(targets)
-    turnTokensToTarget(tokensToRotate, targetToken);
+    turnTokensToTarget(tokensToRotate, targetToken, getSetting("rotate-on-target.return"));
 }
 
 export function combatStart(encounter, _turn) {

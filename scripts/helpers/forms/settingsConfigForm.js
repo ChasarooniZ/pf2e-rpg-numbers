@@ -86,6 +86,10 @@ const settingsConfig = {
                 range: { min: -360, max: 360, step: 1 },
             },
         },
+        rotateOnTarget: {
+            enabled: "rotate-on-target.enabled",
+            return: "rotate-on-target.return"
+        },
         screenShake: {
             onDamaged: {
                 enabled: "shake-enabled",

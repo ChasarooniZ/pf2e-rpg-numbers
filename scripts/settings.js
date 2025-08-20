@@ -89,7 +89,7 @@ Hooks.on("init", () => {
 
     registerVersusSettings();
 
-    registerDarkestDungeonStressSettings() 
+    registerDarkestDungeonStressSettings()
 
     registerSetting({
         category: "actor-settings",
@@ -152,7 +152,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -173,7 +173,7 @@ Hooks.on("init", () => {
                 ui.notifications.error("You must have a token selected");
             }
         },
-        onUp: () => {},
+        onUp: () => { },
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
