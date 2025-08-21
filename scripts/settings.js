@@ -6,7 +6,7 @@ import { registerDmgNumbersSettings } from "./settings/registerDmgNumbersSetting
 import { registerTokenDamageShakeSettings } from "./settings/registerTokenDamageShakeSettings.js";
 import { registerCheckAnimationSettings } from "./settings/registerCheckAnimationSettings.js";
 import { registerShakeScreenOnAttackSettings } from "./settings/registerShakeScreenOnAttackSettings.js";
-import { registerRotateOnAttackSettings } from "./settings/registerRotateOnAttackSettings.js";
+import { registerRotateSettings } from "./settings/registerRotateSettings.js";
 import { registerDodgeOnMissSettings } from "./settings/registerDodgeOnMissSettings.js";
 import { registerCriticalSettings } from "./settings/registerCriticalSettings.js";
 import { registerFinishingMovesSettings } from "./settings/registerFinishingMovesSettings.js";
@@ -79,7 +79,7 @@ Hooks.on("init", () => {
 
     registerFromSoftwareTextSettings();
 
-    registerRotateOnAttackSettings();
+    registerRotateSettings();
 
     registerScreenShakeSettings();
 
