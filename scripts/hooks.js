@@ -189,6 +189,7 @@ export async function preUpdateToken(token, changes, _misc, _id) {
 //TODO Consider a complicated use case where it returns to the original position when all tokens have been untargetted
 export async function targetToken(user, targetToken, isTargeted) {
     if (game.user.id !== user.id) return;
+    if (!getSetting("rotate-on-target.enabled")) return;
     if (!isTargeted) return;
     // TODO maybe useful if handle turn towards the average of targets
     // const targets = Array.from(game.user.targets);

@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../../const.js";
+import { MODULE_ID, ROTATION } from "../../const.js";
 import { getTurnTime } from "./turnTokenOnAttack.js";
 
 
@@ -18,7 +18,7 @@ export async function turnTokensToTarget(tokens, target, doReturn = true) {
             .animation()
             .on(token)
             .rotateTowards(target, { duration: turnTime, rotationOffset })
-            .waitUntilFinished(turnTime * CONST.RETURN_DELAY_FACTOR)
+            .waitUntilFinished(turnTime * ROTATION.RETURN_DELAY_FACTOR)
             //Rotate Back
             .animation()
             .playIf(doReturn)
