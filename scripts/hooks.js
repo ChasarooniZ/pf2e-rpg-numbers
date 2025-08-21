@@ -1,9 +1,10 @@
 import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
-import { getSetting, localize } from "./helpers/misc.js";
+import { averageTokenPosition, getSetting, localize } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
+import { turnTokensToTarget } from "./helpers/animation/token/turnTokenOnTarget.js";
 
 /**
  * Handles pre-deletion actions for combat encounters.
@@ -182,6 +183,24 @@ export async function preUpdateToken(token, changes, _misc, _id) {
             burrow(coord1, coord2, { token });
         }
     }
+}
+
+
+//TODO Consider a complicated use case where it returns to the original position when all tokens have been untargetted
+export async function targetToken(user, targetToken, isTargeted) {
+    if (game.user.id !== user.id) return;
+    if (!getSetting("rotate-on-target.enabled")) return;
+    if (!isTargeted) return;
+    // TODO maybe useful if handle turn towards the average of targets
+    // const targets = Array.from(game.user.targets);
+    const tokensToRotate = (canvas.tokens.controlled.length > 0 ?
+        canvas.tokens.controlled :
+        canvas.tokens.placeables.filter(t => game.user?.character?.uuid === t?.actor?.uuid)
+    ).filter(tok => tok.id !== targetToken.id);
+
+
+    //const targetPos = averageTokenPosition(targets)
+    turnTokensToTarget(tokensToRotate, targetToken, getSetting("rotate-on-target.return"));
 }
 
 export function combatStart(encounter, _turn) {

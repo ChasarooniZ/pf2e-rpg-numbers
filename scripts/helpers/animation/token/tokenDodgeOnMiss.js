@@ -92,9 +92,8 @@ async function dodgeOnMiss(token, target) {
         .effect()
         .delay(delay)
         .atLocation(target)
-        .file(getTokenImage(target?.document))
-        .scale({ x: target?.document?.texture?.scaleX ?? 0, y: target?.document?.texture?.scaleY ?? 0 })
-        .scaleToObject()
+        .copySprite(target)
+        .scaleToObject(1, { considerTokenScale: true })
         .animateProperty("spriteContainer", "position.x", {
             from: 0,
             to: position.x,

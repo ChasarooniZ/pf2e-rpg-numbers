@@ -30,3 +30,8 @@ export const DEGREES_OF_SUCCESS = [
     "criticalSuccess",
     "none"
 ]
+
+export const ROTATION = {
+    SIZE_SCALE_FACTOR: 0.5,
+    RETURN_DELAY_FACTOR: 0.5,
+}

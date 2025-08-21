@@ -134,81 +134,134 @@
     </div>
 </span>
 <span>
-    {{! Rotate on Attack }}
-    <h4
-        id="rotate-on-attack"
-        data-tooltip-direction="LEFT"
-        data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"
-    >
-        {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-attack"}}
+    <h3 id="rotate">
+        {{localize "pf2e-rpg-numbers.module-settings.headers.rotate"}}
         <i class="fa-solid fa-rotate-right"></i>
-    </h4>
-    {{! Enabled }}
-    <div class="form-group">
-        <label
-            for="settings.rotateOnAttack.enabled"
+    </h3>
+    <span>
+        {{! Rotate Settings}}
+
+        {{! Duration }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.duration"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.name"}}
+            </label>
+            {{numberInput
+                settings.rotateOnAttack.duration.value
+                name="settings.rotateOnAttack.duration"
+                step=settings.rotateOnAttack.duration.range.step
+                min=settings.rotateOnAttack.duration.range.min
+                max=settings.rotateOnAttack.duration.range.max
+            }}
+        </div>
+        {{! Scale on Size }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.scaleOnSize"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnAttack.scaleOnSize"
+                name="settings.rotateOnAttack.scaleOnSize"
+                {{checked settings.rotateOnAttack.scaleOnSize}}
+            />
+        </div>
+        {{! Default Rotation }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.defaultRotation"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.name"}}
+            </label>
+            {{numberInput
+                settings.rotateOnAttack.defaultRotation.value
+                name="settings.rotateOnAttack.defaultRotation"
+                step=settings.rotateOnAttack.defaultRotation.range.step
+                min=settings.rotateOnAttack.defaultRotation.range.min
+                max=settings.rotateOnAttack.defaultRotation.range.max
+            }}
+        </div>
+    </span>
+    <span>
+        {{! Rotate on Attack }}
+        <h4
+            id="rotate-on-attack"
             data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.hint"}}"
+            data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-attack.gif' />"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.name"}}
-        </label>
-        <input
-            type="checkbox"
-            id="settings.rotateOnAttack.enabled"
-            name="settings.rotateOnAttack.enabled"
-            {{checked settings.rotateOnAttack.enabled}}
-        />
-    </div>
-    {{! Duration }}
-    <div class="form-group">
-        <label
-            for="settings.rotateOnAttack.duration"
+            {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-attack"}}
+            <i class="fa-solid fa-bow-arrow"></i>
+        </h4>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnAttack.enabled"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnAttack.enabled"
+                name="settings.rotateOnAttack.enabled"
+                {{checked settings.rotateOnAttack.enabled}}
+            />
+        </div>
+    </span>
+    <span>
+        {{! Rotate on Target }}
+        <h4
+            id="rotate-on-target"
             data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.hint"}}"
+            data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-target.gif' />"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.name"}}
-        </label>
-        {{numberInput
-            settings.rotateOnAttack.duration.value
-            name="settings.rotateOnAttack.duration"
-            step=settings.rotateOnAttack.duration.range.step
-            min=settings.rotateOnAttack.duration.range.min
-            max=settings.rotateOnAttack.duration.range.max
-        }}
-    </div>
-    {{! Scale on Size }}
-    <div class="form-group">
-        <label
-            for="settings.rotateOnAttack.scaleOnSize"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.name"}}
-        </label>
-        <input
-            type="checkbox"
-            id="settings.rotateOnAttack.scaleOnSize"
-            name="settings.rotateOnAttack.scaleOnSize"
-            {{checked settings.rotateOnAttack.scaleOnSize}}
-        />
-    </div>
-    {{! Default Rotation }}
-    <div class="form-group">
-        <label
-            for="settings.rotateOnAttack.defaultRotation"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.default-rotation.name"}}
-        </label>
-        {{numberInput
-            settings.rotateOnAttack.defaultRotation.value
-            name="settings.rotateOnAttack.defaultRotation"
-            step=settings.rotateOnAttack.defaultRotation.range.step
-            min=settings.rotateOnAttack.defaultRotation.range.min
-            max=settings.rotateOnAttack.defaultRotation.range.max
-        }}
-    </div>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-target"}}
+            <i class="fa-light fa-reflect-both"></i>
+        </h4>
+        {{! Enabled }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnTarget.enabled"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.enabled.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.enabled.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnTarget.enabled"
+                name="settings.rotateOnTarget.enabled"
+                {{checked settings.rotateOnTarget.enabled}}
+            />
+        </div>
+        {{! Return? }}
+        <div class="form-group">
+            <label
+                for="settings.rotateOnTarget.return"
+                data-tooltip-direction="LEFT"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.return.hint"}}"
+            >
+                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.return.name"}}
+            </label>
+            <input
+                type="checkbox"
+                id="settings.rotateOnTarget.return"
+                name="settings.rotateOnTarget.return"
+                {{checked settings.rotateOnTarget.return}}
+            />
+        </div>
+    </span>
 </span>
 <span>
     {{! Shake on Attack }}

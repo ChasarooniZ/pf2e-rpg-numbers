@@ -50,7 +50,9 @@
                     "title": "Token Damage Shake"
                 },
                 "shake-on-attack": "Shake Screen on Attack",
+                "rotate": "Rotate",
                 "rotate-on-attack": "Rotate on Attack",
+                "rotate-on-target": "Rotate on Target",
                 "dodge-on-miss": "Target Dodges",
                 "finishing-move": {
                     "title": "Finishing Moves"
@@ -349,6 +351,16 @@
                 "default-rotation": {
                     "name": "Default Rotation",
                     "hint": "The default rotation for tokens unless overrode"
+                }
+            },
+            "rotate-on-target": {
+                "enabled": {
+                    "name": "Enable Rotate on Target",
+                    "hint": "When you target a token the token(s) you have set as your user's actor or the tokens you have selected if you have any selected turn towards the targetted, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
+                },
+                "return": {
+                    "name": "Return?",
+                    "hint": "Should the token return to its previous original rotation it had after rotating to the target?"
                 }
             },
             "critical": {
