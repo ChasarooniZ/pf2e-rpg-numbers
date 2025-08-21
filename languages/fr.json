@@ -50,7 +50,9 @@
           "title": "Secouer le jeton blessé"
         },
         "shake-on-attack": "Secouer l'écran lors de l'attaque",
+        "rotate": "Rotation",
         "rotate-on-attack": "Rotation lors de l'attaque",
+        "rotate-on-target": "Rotation vers la cible",
         "dodge-on-miss": "Cible esquive",
         "finishing-move": {
           "title": "Montrer les techniques signature"
@@ -349,6 +351,16 @@
         "default-rotation": {
           "name": "Rotation par défaut",
           "hint": "La rotation par défaut pour les jetons"
+        }
+      },
+      "rotate-on-target": {
+        "enabled": {
+          "name": "Activer la rotation sur la cible",
+          "hint": "Lorsque vous ciblez un jeton, le(s) jeton(s) que vous avez définis comme acteur de l'utilisateur ou ceux que vous avez sélectionnés (si vous en avez sélectionné), se tournent vers la cible avant de reprendre leur position initiale. Vous pouvez maintenir l'orientation de votre jeton pour que le jeton lui fasse face."
+        },
+        "return": {
+          "name": "Revenir à l'orientation initiale ?",
+          "hint": "Le jeton doit-il revenir à son orientation précédente après s'être tourné vers la cible ?"
         }
       },
       "critical": {
