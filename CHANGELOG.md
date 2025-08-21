@@ -1,3 +1,8 @@
+# 13.7.1 - French
+
+- **Updated**
+  - Updated French translation (@rectulo)
+
 # 13.7.0 - Target Spotted
 
 - **New**
