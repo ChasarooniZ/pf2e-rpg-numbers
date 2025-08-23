@@ -19,10 +19,10 @@
       "notes": {
         "requires-jb2a-premium": {
           "name": "JB2A+",
-          "hint": "Requires JB2A Premium for some or all parts of this feature"
+          "hint": "Nécessite JB2A Premium pour certaines parties de cette fonctionnalité"
         },
         "new-feature": {
-          "hint": "New Feature!"
+          "hint": "Nouvelle fonctionnalité !"
         }
       },
       "enabled": {
@@ -64,7 +64,7 @@
           "title": "du programme",
           "elden-ring": {
             "title": "Affichage Elden Ring",
-            "noun-verbed": "'Nom conjugué' (noun-verbed)",
+            "noun-verbed": "'Nom conjugué'",
             "death": "Vous êtes mort"
           }
         },
@@ -181,7 +181,7 @@
             "name": "Effets sonores sur les jets...",
             "hint": "Choisissez si vous voulez des effets sonores sur les jets d'attaque, les tests ou les deux",
             "choices": {
-              "both": "Tout",
+              "both": "Tous",
               "attacks": "des attaques seulement",
               "checks": "des tests seulement"
             }
@@ -211,7 +211,7 @@
           },
           "file": {
             "criticalSuccess": {
-              "name": "Effet sonore succès crit",
+              "name": "Effet sonore : Succès crit",
               "hint": "Choisissez l'effet sonore (Note. Ceci ne fait rien si vous avez opté pour 'Succès ou échec')"
             },
             "success": {
