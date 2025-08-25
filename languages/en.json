@@ -16,6 +16,11 @@
         },
         "module-settings": {
             "version": "Version",
+            "settings-menu": {
+                "name": "PF2e RPG Numbers & More Settings",
+                "label": "Open Settings Menu",
+                "hint": "Settings for the PF2e RPG Numbers & More"
+            },
             "notes": {
                 "requires-jb2a-premium": {
                     "name": "JB2A+",
@@ -846,6 +851,13 @@
                     "party": "Party Team Name",
                     "opponent": "Opponent Team Name",
                     "title": "Enter Team Names"
+                },
+                "tooltip": {
+                    "party-name": "The default name for the party is whatever you set your current active party actor's name to"
+                },
+                "button": {
+                    "yes": "Play Animation",
+                    "no": "Cancel Animation"
                 }
             }
         },

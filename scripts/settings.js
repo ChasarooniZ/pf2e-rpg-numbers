@@ -37,9 +37,9 @@ Hooks.on("init", () => {
     ]);
 
     game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
-        name: "PF2e RPG Settings",
-        label: "PF2e RPG Settings", // The text label used in the button
-        hint: "Settings for the PF2e RPG settings",
+        name: localize('module-settings.settings-menu.name'),
+        label: localize('module-settings.settings-menu.label'), // The text label used in the button
+        hint: localize('module-settings.settings-menu.hint'),
         icon: "fas fa-dragon", // A Font Awesome icon used in the submenu button
         type: SettingsConfigForm, // A FormApplication subclass
         restricted: true, // Restrict this submenu to gamemaster only?

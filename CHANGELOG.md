@@ -1,3 +1,12 @@
+# 13.7.1
+
+-   **Updated**
+    -   Added localization options for settings menu button
+    -   **VS Animation**
+        -   Added explicit cancel button
+        -   Added tooltip to animation question itself to make it clearer how to change the default
+        -   Setup autofocus on the enemy team name input
+
 # 13.7.0
 
 -   **New**

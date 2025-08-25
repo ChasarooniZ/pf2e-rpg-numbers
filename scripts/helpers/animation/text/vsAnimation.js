@@ -20,7 +20,7 @@ export async function vsAnimation() {
     };
     let teamNames;
     if (CONFIG.showTeamNames) {
-        teamNames = await await foundry.applications.api.DialogV2.prompt({
+        teamNames = await await foundry.applications.api.DialogV2.confirm({
             window: {
                 title: localize("menu.versus.name.title"),
                 controls: [
@@ -39,7 +39,7 @@ export async function vsAnimation() {
             content: `
               <form>
                 <div style="display: flex; align-items: center; gap: 20px; padding-bottom: 1.5em;">
-                  <div>
+                  <div data-tooltip="${localize("menu.versus.tooltip.party-name")}">
                     <label for="partyName" style="text-align: center;">${localize("menu.versus.name.party")}</label><br>
                     <input type="text" id="partyName" name="partyName" style="width: 250px;" value="${defNames.party}">
                   </div>
@@ -47,19 +47,24 @@ export async function vsAnimation() {
                     <label for="opponentName" style="text-align: center;">${localize(
                 "menu.versus.name.opponent"
             )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
+                    <input type="text" id="opponentName" name="opponentName" autofocus style="width: 250px;" value="${defNames.opposition
                 }">
                   </div>
                 </div>
                 <div>
                 </div>
               </form>`,
-            ok: {
-                label: "OK",
+            yes: {
+                label: localize("menu.versus.button.yes"),
                 callback: (event, button, dialog) => {
                     const party = button.form.elements.partyName.value;
                     const opposition = button.form.elements.opponentName.value;
                     return { party, opposition };
+                },
+            },
+            no: {
+                label: localize("menu.versus.button.no"),
+                callback: (event, button, dialog) => {
                 },
             },
         });
