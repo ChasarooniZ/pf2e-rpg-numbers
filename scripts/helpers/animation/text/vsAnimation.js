@@ -16,7 +16,7 @@ export async function vsAnimation() {
 
     const defNames = {
         party: game.actors?.party?.name ?? "",
-        opposition: "",
+        opposition: " ",
     };
     let teamNames;
     if (CONFIG.showTeamNames) {
@@ -41,19 +41,26 @@ export async function vsAnimation() {
                 <div style="display: flex; align-items: center; gap: 20px; padding-bottom: 1.5em;">
                   <div data-tooltip="${localize("menu.versus.tooltip.party-name")}">
                     <label for="partyName" style="text-align: center;">${localize("menu.versus.name.party")}</label><br>
-                    <input type="text" id="partyName" name="partyName" style="width: 250px;" value="${defNames.party}">
+                    <input type="text" id="partyName" name="partyName" style="width: 250px;" value="${defNames.party}" />
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
                 "menu.versus.name.opponent"
             )}</label><br>
-                    input type="text" id="opponentName" name="opponentName" autofocus style="width: 250px;" value="${defNames.opposition
-                }">
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
+                }" />
                   </div>
                 </div>
                 <div>
                 </div>
               </form>`,
+            render: (html) => {
+                setTimeout(() => {
+                    const opponentNameInput = $(html.target.element).find('#opponentName');
+                    opponentNameInput.select();
+                }, 500)
+
+            },
             yes: {
                 label: localize("menu.versus.button.yes"),
                 callback: (event, button, dialog) => {
@@ -65,11 +72,12 @@ export async function vsAnimation() {
             no: {
                 label: localize("menu.versus.button.no"),
                 callback: (event, button, dialog) => {
+                    return null;
                 },
             },
         });
     }
-    if (teamNames === null) return;
+    if (teamNames === null || teamNames === "no") return;
     const colorMap = game.users.players
         .filter((p) => p.character)
         .reduce((res, p) => {
