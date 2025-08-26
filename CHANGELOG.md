@@ -1,3 +1,8 @@
+# 13.7.3
+
+-   **Updated**
+    -   Updated `From Software Death/Noun Verbed` macros to better match the api
+
 # 13.7.2
 
 -   **Updated**
