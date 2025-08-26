@@ -1,9 +1,9 @@
-# 13.7.3
+# 13.7.3 - Long Time Coming
 
 -   **Updated**
     -   Updated `From Software Death/Noun Verbed` macros to better match the api
 
-# 13.7.2
+# 13.7.2 - Speed Up
 
 - **Updated**
     - `VS Animation`
