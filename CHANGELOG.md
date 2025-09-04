@@ -2,6 +2,8 @@
 
 - **Updated**
     - Added extra/packing for the packs in this module
+    - `Token Shake on Damaged`
+        - Updated the enable text to include a warning about the possibility of tokens turning invisible
     - `Critical`
         - Fix some logic for the `Show On...` settings (🐛 @Fumu)
 

@@ -72,11 +72,12 @@ export function createTestCritAnimation(data) {
 /**
  * Determines if the critical hit animation should be canceled.
  * @param {object} rollDeets - The details of the roll.
- * @returns {boolean} True if the animation should be canceled, false otherwise.
+ * @returns {'default' | 'yes' | 'no'} True if the animation should be canceled, false otherwise.
  */
-function shouldCancelCriticalHit(rollDeets, isEnabled) {
-    if (isEnabled) return false;
-    if (rollDeets.type !== "custom") return false;
+function shouldCancelCriticalHit(rollDeets, enabledType) {
+    if (enabledType === 'no') return false;
+    if (enabledType === 'yes') return true;
+    if (rollDeets.type === "custom") return false;
 
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");

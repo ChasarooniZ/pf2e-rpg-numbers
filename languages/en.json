@@ -283,7 +283,7 @@
             "token-dmg-shake": {
                 "enabled": {
                     "name": "Enable Token Shaking on Damage",
-                    "hint": "When you apply damage to a token cause it to shake"
+                    "hint": "When you apply damage to a token cause it to shake (Note: This can behave unexpectedly if you have an inconsistent internet connection, if your tokens become hidden, you'll need to set their opacity back to the expected value)"
                 },
                 "distance": {
                     "name": "Shake Distance",
