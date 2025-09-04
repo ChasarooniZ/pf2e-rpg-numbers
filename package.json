@@ -1,0 +1,45 @@
+{
+  "name": "pf2e-rpg-numbers",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite",
+    "extract": "node macros/extract.mjs && eslint ./data --fix",
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --fix --cache",
+    "pack": "node macros/pack.mjs",
+    "link": "node macros/link.mjs"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.19.0",
+    "@foundryvtt/foundryvtt-cli": "^1.1.0",
+    "@lucide/svelte": "^0.526.0",
+    "@sveltejs/vite-plugin-svelte": "^6.1.0",
+    "@tailwindcss/vite": "^4.1.11",
+    "@types/jquery": "^3.5.32",
+    "autoprefixer": "^10.4.21",
+    "chalk": "^5.4.1",
+    "cssnano": "^7.1.0",
+    "eslint": "^9.32.0",
+    "eslint-plugin-antfu": "^3.1.1",
+    "eslint-plugin-format": "^1.0.1",
+    "foundry-pf2e": "github:7H3LaughingMan/foundry-pf2e",
+    "foundryvtt-sync": "github:MrVauxs/FoundryVTT-Sync",
+    "postcss-prefixwrap": "^1.56.0",
+    "postcss-preset-env": "^10.2.4",
+    "postcss-replace": "^2.0.1",
+    "postcss-simple-vars": "^7.0.1",
+    "prompts": "^2.4.2",
+    "svelte": "^5.37.0",
+    "svelte-preprocess": "^6.0.3",
+    "tailwindcss": "^4.1.11",
+    "typescript": "^5.8.3",
+    "vite-plugin-lucide-preprocess": "^1.4.0"
+  },
+  "browserslist": [
+    ">5%",
+    "not IE 11"
+  ]
+}

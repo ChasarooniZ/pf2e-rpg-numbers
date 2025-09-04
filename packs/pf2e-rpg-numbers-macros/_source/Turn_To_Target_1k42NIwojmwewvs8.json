@@ -1,0 +1,39 @@
+{
+  "name": "Turn To Target",
+  "type": "script",
+  "author": "J3oConv1eQRLao6j",
+  "img": "icons/svg/lever.svg",
+  "scope": "global",
+  "command": "// Accepts token to turn and the target to turn towards\nconst target = game.user.targets?.first();\nif (!token || !target) {\n    ui.notifications.error(\"Token and Target must be set\")\n    return;\n}\ngame.pf2eRPGNumbers.turnTokenAttack.generate(token, target);",
+  "folder": "vRUQwu6aarOI3Mgw",
+  "ownership": {
+    "default": 0,
+    "J3oConv1eQRLao6j": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "2ffa766c5cf81a410659e52c6f0c3322d18acb73",
+      "sourceId": "Macro.DA3fpLRPqN8r2TRw"
+    },
+    "advanced-macros": {
+      "runForSpecificUser": ""
+    },
+    "macro-wheel": {
+      "activeCondition": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726284478915,
+    "modifiedTime": 1726291063975,
+    "lastModifiedBy": "J3oConv1eQRLao6j",
+    "exportSource": null
+  },
+  "_id": "1k42NIwojmwewvs8",
+  "sort": 0,
+  "_key": "!macros!1k42NIwojmwewvs8"
+}

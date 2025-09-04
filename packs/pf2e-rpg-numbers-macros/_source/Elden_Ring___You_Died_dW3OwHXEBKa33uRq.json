@@ -1,0 +1,35 @@
+{
+  "folder": "rngZJOfNPRnS74nx",
+  "name": "Elden Ring - You Died",
+  "type": "script",
+  "_id": "dW3OwHXEBKa33uRq",
+  "author": "J3oConv1eQRLao6j",
+  "img": "icons/sundries/flags/banner-skull-red.webp",
+  "scope": "global",
+  "command": "/**\n * Creates an Elden Ring-style \"Death\" sequence.\n * @param {Object} options - Configuration options.\n * @param {string} [options.type] - The type of Death to display\n * - ['elden-ring', 'sekiro']\n * @param {string} [options.text] - The text to display.\n * @param {string} [options.sound] - The sound effect file path.\n * @param {number} [options.fontSize] - The font size for the text.\n * @param {number} [options.duration] - The duration of the sequence in seconds.\n * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.\n */\nconst options = {}\nawait game.pf2eRPGNumbers.fromSoftware.death(options)",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "J3oConv1eQRLao6j": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "4abcc43a66c9f3a28bf3443225a851ee836e6a39"
+    },
+    "macro-wheel": {
+      "activeCondition": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726291560756,
+    "modifiedTime": 1756218444266,
+    "lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+    "exportSource": null
+  },
+  "_key": "!macros!dW3OwHXEBKa33uRq"
+}

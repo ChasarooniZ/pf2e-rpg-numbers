@@ -1,0 +1,31 @@
+{
+  "name": "From Software Popups",
+  "sorting": "a",
+  "folder": null,
+  "type": "Macro",
+  "_id": "rngZJOfNPRnS74nx",
+  "description": "",
+  "sort": 0,
+  "color": null,
+  "flags": {
+    "macro-wheel": {
+      "folderImg": "icons/svg/d20-grey.svg",
+      "presetCondition": "",
+      "condition": ""
+    },
+    "scene-packer": {
+      "hash": "5d8faaa58edbb5559912eec845b3d876132c6f84"
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726284495463,
+    "modifiedTime": 1726284495463,
+    "lastModifiedBy": "J3oConv1eQRLao6j"
+  },
+  "_key": "!folders!rngZJOfNPRnS74nx"
+}

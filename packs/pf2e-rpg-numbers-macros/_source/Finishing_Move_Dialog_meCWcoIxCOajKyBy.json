@@ -1,0 +1,35 @@
+{
+  "name": "Finishing Move Dialog",
+  "type": "script",
+  "_id": "meCWcoIxCOajKyBy",
+  "author": "J3oConv1eQRLao6j",
+  "img": "icons/magic/movement/trail-streak-pink.webp",
+  "scope": "global",
+  "command": "// Input text to the function to run the finishing move \n// game.pf2eRPGNumbers.finishingMove.generate(moveName)\n  new Dialog({\n    title: \"Finishing Move\",\n    content: `\n      <form>\n        <div class=\"form-group\">\n          <label for=\"moveName\">Finishing Move Name:</label>\n          <input type=\"text\" id=\"moveName\" name=\"moveName\">\n        </div>\n      </form>\n    `,\n    buttons: {\n      submit: {\n        icon: '<i class=\"fas fa-check\"></i>',\n        label: \"Generate\",\n        callback: (html) => {\n          const moveName = html.find(\"#moveName\").val();\n          if (moveName) {\n            game.pf2eRPGNumbers.finishingMove.generate(moveName);\n          } else {\n            ui.notifications.warn(\"Please enter a finishing move name.\");\n          }\n        }\n      },\n      cancel: {\n        icon: '<i class=\"fas fa-times\"></i>',\n        label: \"Cancel\"\n      }\n    },\n    default: \"submit\",\n    close: () => {}\n  }).render(true);",
+  "folder": "vRUQwu6aarOI3Mgw",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "J3oConv1eQRLao6j": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "993f0acd2273269a022be63a3d4508da435e5a38"
+    },
+    "macro-wheel": {
+      "activeCondition": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726290851518,
+    "modifiedTime": 1726291013714,
+    "lastModifiedBy": "J3oConv1eQRLao6j",
+    "exportSource": null
+  },
+  "_key": "!macros!meCWcoIxCOajKyBy"
+}

@@ -76,9 +76,19 @@ export function createTestCritAnimation(data) {
  */
 function shouldCancelCriticalHit(rollDeets, isEnabled) {
     if (isEnabled) return false;
+    if (rollDeets.type !== "custom") return false;
+
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");
-    return rollDeets.type !== "custom" && ((showOn === "checks" && isAttack) || (showOn === "attacks" && !isAttack));
+
+    switch (showOn) {
+        case "attacks":
+            return !isAttack;
+        case "checks":
+            return isAttack
+        case "both":
+            return false;
+    }
 }
 
 /**

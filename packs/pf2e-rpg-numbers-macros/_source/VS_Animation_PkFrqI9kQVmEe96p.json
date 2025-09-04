@@ -1,0 +1,32 @@
+{
+  "name": "VS Animation",
+  "type": "script",
+  "_id": "PkFrqI9kQVmEe96p",
+  "author": "vj8VUT8j7Wtzy3Y2",
+  "img": "icons/skills/melee/weapons-crossed-swords-yellow-teal.webp",
+  "scope": "global",
+  "command": "game.pf2eRPGNumbers.vs.generate()",
+  "folder": "7p8AOsyZEXha6u0A",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "vj8VUT8j7Wtzy3Y2": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "c7374da16d2eb36514918045df974a8b8bfc6235"
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.11.1",
+    "createdTime": 1745886124663,
+    "modifiedTime": 1745886140355,
+    "lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+    "exportSource": null
+  },
+  "_key": "!macros!PkFrqI9kQVmEe96p"
+}

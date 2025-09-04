@@ -1,0 +1,35 @@
+{
+  "folder": "rngZJOfNPRnS74nx",
+  "name": "Elden Ring - Noun Verbed",
+  "type": "script",
+  "_id": "CA75dZQMqzGEDneY",
+  "author": "J3oConv1eQRLao6j",
+  "img": "icons/sundries/flags/banner-sword-blue.webp",
+  "scope": "global",
+  "command": "/**\n * Creates an Elden Ring-style \"Noun Verbed\" sequence.\n * @param {Object} options - Configuration options.\n * @param {string} [options.type] - The type of Text to display\n * - ['elden-ring']\n * @param {string} [options.text] - The text to display.\n * @param {string} [options.sound] - The sound effect file path.\n * @param {number} [options.fontSize] - The font size for the text.\n * @param {number} [options.duration] - The duration of the sequence in seconds.\n * @returns {Promise<Sequence>} A promise that resolves to the played Sequence.\n */\nconst options = {}\nawait game.pf2eRPGNumbers.fromSoftware.nounVerbed(options)",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "J3oConv1eQRLao6j": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "4fcf8314ca1b0136aa222a93f18feccb93695011"
+    },
+    "macro-wheel": {
+      "activeCondition": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726291484487,
+    "modifiedTime": 1756218468500,
+    "lastModifiedBy": "vj8VUT8j7Wtzy3Y2",
+    "exportSource": null
+  },
+  "_key": "!macros!CA75dZQMqzGEDneY"
+}

@@ -1,0 +1,35 @@
+{
+  "name": "Trigger Crit Animation",
+  "type": "script",
+  "_id": "MTwZsNzJNmZSy4uk",
+  "author": "J3oConv1eQRLao6j",
+  "img": "icons/logo-scifi.png",
+  "scope": "global",
+  "command": "// Has 2 inputs\n// - Token (the token to activate it on)\n// - type (\"persona\" or \"fire-emblem\")\ngame.pf2eRPGNumbers.critAnimation.generate(token)",
+  "folder": "vRUQwu6aarOI3Mgw",
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "J3oConv1eQRLao6j": 3
+  },
+  "flags": {
+    "scene-packer": {
+      "hash": "6554c7df55aa5dff33823ead1edca29cbc41dde3"
+    },
+    "macro-wheel": {
+      "activeCondition": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "13.347",
+    "systemId": "pf2e",
+    "systemVersion": "6.3.1",
+    "createdTime": 1726291195761,
+    "modifiedTime": 1726291270340,
+    "lastModifiedBy": "J3oConv1eQRLao6j",
+    "exportSource": null
+  },
+  "_key": "!macros!MTwZsNzJNmZSy4uk"
+}
