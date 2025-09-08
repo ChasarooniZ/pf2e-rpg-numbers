@@ -1,3 +1,8 @@
+## Unreleased
+
+- **Updated**
+  - Updated French translation (@rectulo)
+
 # 13.7.4 - Fixes
 
 - **Updated**
