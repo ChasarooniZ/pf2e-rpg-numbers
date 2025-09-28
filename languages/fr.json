@@ -16,6 +16,11 @@
     },
     "module-settings": {
       "version": "Version",
+      "settings-menu": {
+        "name": "Réglages de PF2e RPG Numbers & more",
+        "label": "Open Settings Menu",
+        "hint": "Paramètres de RPG PF2e : Numbers & more"
+      },
       "notes": {
         "requires-jb2a-premium": {
           "name": "JB2A+",
@@ -278,7 +283,7 @@
       "token-dmg-shake": {
         "enabled": {
           "name": "Activer le tremblement du jeton sur les dégâts",
-          "hint": "Lorsque vous appliquez des dégâts à un jeton, cela le fait trembler"
+          "hint": "Appliquez des dégâts à un jeton le fait trembler (Remarque : cela peut se comporter de manière inattendue si vous avez une connexion Internet instable. Si vos jetons sont cachés, vous devrez rétablir leur opacité à la valeur attendue)."
         },
         "distance": {
           "name": "Distance de tremblement",
@@ -846,6 +851,13 @@
           "party": "Nom de l'équipe du groupe",
           "opponent": "Nom de l'équipe opposée",
           "title": "Entrer le nom des équipes"
+        },
+        "tooltip": {
+          "party-name": "Le nom par défaut du groupe est celui donné à l'acteur de votre groupe actif actuel"
+        },
+        "button": {
+          "yes": "Jouer l'animation",
+          "no": "Annuler l'animation"
         }
       }
     },
