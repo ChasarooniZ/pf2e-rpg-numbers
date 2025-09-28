@@ -87,8 +87,9 @@ export function darkestDungeonStress(token, users = game.users.contents.map(u =>
 function darkestDungeonHelper(token, isStress, users) {
   const tokDoc = token?.document ? token?.document : token;
   const tokens = canvas.tokens.placeables
-    .filter(t => t.document.disposition === tokDoc.disposition)
-    .filter(t => getSetting("darkest-dungeon.stress.include-target") ? true : t.id !== token.id)
+    .filter(t => t.document.disposition === tokDoc.disposition &&
+      getSetting("darkest-dungeon.stress.include-target") ? true : t.id !== token.id &&
+      !game.combat || game?.combat?.combatants?.some(c => c.token.id === t.id))
     .sort((a, b) => a.distanceTo(token) - b.distanceTo(token));
 
   const config = {

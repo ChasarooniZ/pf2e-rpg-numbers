@@ -1,3 +1,8 @@
+# 13.7.5 - Fixes 2
+- **Updated**
+    - `Darkest Dungeon: Stress / Relief`
+      - Updated so that tokens selected are only those in combat if there is a combat
+      - 
 # 13.7.4 - Fixes
 
 - **Updated**
