@@ -2,9 +2,11 @@
 
 - **Updated**
   - `Darkest Dungeon: Stress / Relief`
+    
     - Updated so that tokens selected are only those in combat if there is a combat
     
   - Updated French translation (🌐 @rectulo)
+    
   
 
 # 13.7.4 - Fixes
@@ -2106,13 +2108,23 @@
   - Crit Message idea
   
 
+## 13.7.6 - 2025-10-02
+
+- **Updated**
+  - `Darkest Dungeon: Stress / Relief`
+    - Fixed bug where all tokens show stress/relief animation (🐛 @Simon Magnus)
+    
+  
+
 ## 13.7.5 - 2025-09-28
 
 - **Updated**
   - `Darkest Dungeon: Stress / Relief`
+    
     - Updated so that tokens selected are only those in combat if there is a combat
     
   - Updated French translation (🌐 @rectulo)
+    
   
 
 ## 13.7.4 - 2025-09-04
