@@ -31,7 +31,6 @@ export function createCritAnimation(rollDeets, critType, isSuccess = true) {
     config.scale *= imgData.scale;
     config.art = config.art || imgData.img;
     config.sfx = config.sfx || (isSuccess ? getSetting("critical.sound") : "");
-    config.duration = getSetting("critical.duration") * MS_TO_SEC;
 
     //Cancels animation based on config or imgData
     if (
@@ -249,7 +248,9 @@ function getCritActorSettings(data, successOrFail, flags, type = "default") {
     result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || "";
     result.type = typeSpecificSettings?.type === "default" ? baseSettings?.type : typeSpecificSettings?.type;
     result.imagedelay = (typeSpecificSettings?.imagedelay * MS_TO_SEC) || (baseSettings?.imagedelay ?? 0);
-    result.duration = (typeSpecificSettings?.duration * MS_TO_SEC) || (baseSettings?.duration ?? 1);
+    result.duration = (typeSpecificSettings?.duration !== undefined ? typeSpecificSettings.duration * MS_TO_SEC : null)
+    || (baseSettings?.duration !== undefined ? baseSettings.duration * MS_TO_SEC : null)
+    || data.duration;
 
     const volume =
         (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
