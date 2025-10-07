@@ -377,6 +377,10 @@
                     "name": "Enable Critical Animations - For You",
                     "hint": "Enable cool animations to show for critical hits for yourself. (Note. actors have options to have alternative image)"
                 },
+                "bypass-immunity": {
+                    "name": "Bypass Immunity",
+                    "hint": "Show critical animations even for creatures immune to critical hits"
+                },
                 "sound": {
                     "name": "Sound",
                     "hint": "Sound to use for critical animation"
@@ -434,6 +438,7 @@
                     "name": "Delay",
                     "hint": "How long to delay when the critical animation shows up in seconds"
                 }
+                
             },
             "burst-burrow": {
                 "enabled": {
