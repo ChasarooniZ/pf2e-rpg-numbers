@@ -80,13 +80,9 @@ function shouldCancelCriticalHit(rollDeets, enabledType) {
     
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");
-
+    
     if (isAttack && !getSetting("critical.bypass-immunity") && hasTargetCritImmunity(rollDeets.target)) {
         return true;
-    }
-        if (hasTargetCritImmunity(rollDeets.target)) {
-            return true;
-        }
     }
 
     switch (showOn) {
