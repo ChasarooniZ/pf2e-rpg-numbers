@@ -3,11 +3,15 @@
 - `Crit`
   - Adds detection for creatures with immunity to critical hits (💻 @Bullesta)
   - Adds a Bypass Immunity toggle in the Critical Hit settings (It’s enabled by default)
- 
+  
+
 # 13.7.6  - Missing Parenthesis
+
 - **Updated**
   - `Darkest Dungeon: Stress / Relief`
     - Fixed bug where all tokens show stress/relief animation (🐛 @simon Magnus)
+    
+  
 
 # 13.7.5 - Fixes 2
 
@@ -2117,6 +2121,13 @@
   - performance optimization
   - Text options
   - Crit Message idea
+  
+
+## 13.7.7 - 2025-10-07
+
+- `Crit`
+  - Adds detection for creatures with immunity to critical hits (💻 @Bullesta)
+  - Adds a Bypass Immunity toggle in the Critical Hit settings (It’s enabled by default)
   
 
 ## 13.7.6 - 2025-10-02
