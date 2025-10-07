@@ -153,6 +153,7 @@ const settingsConfig = {
         icon: "fas fa-explosion",
         critical: {
             enabled: "critical.enabled",
+            bypassImmunity: "critical.bypass-immunity",
             style: "critical.type",
             checksOrAttacks: "critical.show-on",
             pcOrNPC: "critical.show-on-token-type",

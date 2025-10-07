@@ -15,6 +15,16 @@ export function registerCriticalSettings() {
 
     registerSetting({
         category: "critical",
+        id: "critical.bypass-immunity",
+        desc: "enabled",
+        scope: "world",
+        config: false,
+        default: true,
+        type: Boolean,
+    });
+
+    registerSetting({
+        category: "critical",
         id: "critical.player-enabled",
         desc: "player-enabled",
         scope: "player",
