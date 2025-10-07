@@ -77,9 +77,15 @@ function shouldCancelCriticalHit(rollDeets, enabledType) {
     if (enabledType === 'no') return false;
     if (enabledType === 'yes') return true;
     if (rollDeets.type === "custom") return false;
-
+    
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");
+
+    if (isAttack && !getSetting("critical.bypass-immunity")) {
+        if (hasTargetCritImmunity(rollDeets.target)) {
+            return true;
+        }
+    }
 
     switch (showOn) {
         case "attacks":
@@ -88,6 +94,30 @@ function shouldCancelCriticalHit(rollDeets, enabledType) {
             return isAttack
         case "both":
             return false;
+    }
+}
+
+/**
+ * Checks if the target has critical hit immunity (PF2e)
+ * @param {object} target - The target object with actor UUID
+ * @returns {boolean} True if target is immune to critical hits
+ */
+function hasTargetCritImmunity(target) {
+    if (!target?.actor) return false;
+
+    try {
+        const targetActor = fromUuidSync(target.actor);
+        
+        if (!targetActor?.system?.attributes?.immunities) return false;
+
+        const hasCritImmunity = targetActor.system.attributes.immunities.find(
+            immunity => immunity?.type === "critical-hits"
+        );
+
+        return !!hasCritImmunity;
+    } catch (error) {
+        console.warn("PF2e RPG #s: Error checking critical immunity:", error);
+        return false; // a failsafe if for whatever reason we cannot determine immunity
     }
 }
 
@@ -237,7 +267,6 @@ function getCritActorSettings(data, successOrFail, flags, type = "default") {
     const result = { ...data };
     const typeSpecificSettings = flags?.critical?.[successOrFail]?.[type];
     const baseSettings = flags?.critical?.[successOrFail]?.default;
-
     result.art = typeSpecificSettings?.art || baseSettings?.art || "";
     result.enabled =
         typeSpecificSettings?.enabled === "default" ? baseSettings?.enabled : typeSpecificSettings?.enabled;
@@ -251,7 +280,6 @@ function getCritActorSettings(data, successOrFail, flags, type = "default") {
     result.duration = (typeSpecificSettings?.duration !== undefined ? typeSpecificSettings.duration * MS_TO_SEC : null)
     || (baseSettings?.duration !== undefined ? baseSettings.duration * MS_TO_SEC : null)
     || data.duration;
-
     const volume =
         (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
     result.volume = (volume * result.volume) / 100;
