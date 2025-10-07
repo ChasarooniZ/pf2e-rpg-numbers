@@ -190,6 +190,7 @@ export function checkRollNumbers(dat, msg) {
             whisper: msg.whisper,
             roll: msg.rolls[0]?.total ?? "",
             type: msg.flags.pf2e.context.type,
+            target: msg?.flags?.pf2e?.context?.target,
         };
         if (doChecks) {
             generateRollScroll(roll_deets);
