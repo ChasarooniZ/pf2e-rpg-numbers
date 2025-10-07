@@ -1,3 +1,9 @@
+# 13.7.6 - Bullets
+
+- `Crit`
+  - Adds detection for creatures with immunity to critical hits (💻 @Bullesta)
+  - Adds a Bypass Immunity toggle in the Critical Hit settings (It’s enabled by default)
+
 # 13.7.5 - Fixes 2
 
 - **Updated**
