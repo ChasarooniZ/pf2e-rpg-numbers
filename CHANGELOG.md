@@ -1,3 +1,8 @@
+# 13.7.9 - Polish Translation
+
+- **Updated**
+  - Updated Polish translation (🌐 @Lioheart)
+
 # 13.7.8 - French Translation
 
 - **Updated**
