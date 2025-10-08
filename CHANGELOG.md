@@ -2,6 +2,7 @@
 
 - **Updated**
   - Updated French translation (🌐 @rectulo)
+  
 
 # 13.7.7 - Bullets
 
@@ -2126,6 +2127,12 @@
   - performance optimization
   - Text options
   - Crit Message idea
+  
+
+## 13.7.8 - 2025-10-08
+
+- **Updated**
+  - Updated French translation (🌐 @rectulo)
   
 
 ## 13.7.7 - 2025-10-07
