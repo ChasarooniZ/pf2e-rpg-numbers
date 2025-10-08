@@ -1,3 +1,8 @@
+# 13.7.8 - French Translation
+
+- **Updated**
+  - Updated French translation (🌐 @rectulo)
+
 # 13.7.7 - Bullets
 
 - `Crit`
