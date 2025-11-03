@@ -22,6 +22,22 @@
         {{checked settings.critical.enabled}}
     />
 </div>
+{{! Bypass Immunity }}
+<div class="form-group">
+    <label
+        for="settings.critical.bypassImmunity"
+        data-tooltip-direction="LEFT"
+        data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.critical.bypass-immunity.hint"}}"
+    >
+        {{localize "pf2e-rpg-numbers.module-settings.critical.bypass-immunity.name"}}
+    </label>
+    <input
+        type="checkbox"
+        id="settings.critical.bypassImmunity"
+        name="settings.critical.bypassImmunity"
+        {{checked settings.critical.bypassImmunity}}
+    />
+</div>
 {{! Style }}
 <div class="form-group">
     <label

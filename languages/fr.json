@@ -377,6 +377,10 @@
           "name": "Activer les animations critiques - Pour vous",
           "hint": "Active des animations sympas sur les coups critiques pour vous-même (Note. les acteurs ont des options pour disposer d'images alternatives)."
         },
+        "bypass-immunity": {
+          "name": "Franchir l'immunité",
+          "hint": "Montrer les animations critiques même pour les créatures immunisées contre les coups critiques"
+        },
         "sound": {
           "name": "Son",
           "hint": "Son à utiliser sur les animations critiques"
