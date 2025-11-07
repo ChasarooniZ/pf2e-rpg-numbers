@@ -2,7 +2,7 @@
 
 - **Updated**
   - Fix issue where `check animations` `Display As...` wouldn't properly save the settings
-  - Fixed `Save` causing the dialog to automatically close
+  - ~~Fixed `Save` causing the dialog to automatically close~~
   - Simplified some of the localizations to use prexisting localization from the system
   
 
