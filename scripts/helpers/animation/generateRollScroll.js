@@ -44,10 +44,10 @@ export async function generateRollScroll(roll_deets) {
             text =
                 type === "attack-roll" || outcome === "none"
                     ? roll
-                    : game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${outcome}`);
+                    : game.i18n.localize(`PF2E.Check.Result.Degree.Check.${outcome}`);
             break;
         case "outcome":
-            text = outcome === "none" ? roll : game.i18n.localize(`pf2e-rpg-numbers.display-text.outcomes.${outcome}`);
+            text = outcome === "none" ? roll : game.i18n.localize(`PF2E.Check.Result.Degree.Check.${outcome}`);
             break;
         default:
             break;

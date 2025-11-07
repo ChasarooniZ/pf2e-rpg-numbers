@@ -45,7 +45,7 @@ const settingsConfig = {
                     criticalFailure: "check-animations.sfx.file.criticalFailure",
                 },
             },
-        }
+        },
     },
     token: {
         icon: "fas fa-circle-user",
@@ -88,7 +88,7 @@ const settingsConfig = {
         },
         rotateOnTarget: {
             enabled: "rotate-on-target.enabled",
-            return: "rotate-on-target.return"
+            return: "rotate-on-target.return",
         },
         screenShake: {
             onDamaged: {
@@ -115,38 +115,46 @@ const settingsConfig = {
             stress: {
                 enabled: "darkest-dungeon.stress.enabled",
                 includeTarget: "darkest-dungeon.stress.include-target",
-                duration: { path: "darkest-dungeon.stress.duration", type: "number", range: { min: 0, max: 10, step: 0.1 } },
-                delayPerToken: { path: "darkest-dungeon.stress.delay-per-token", type: "number", range: { min: 0, max: 1000, step: 1 } },
+                duration: {
+                    path: "darkest-dungeon.stress.duration",
+                    type: "number",
+                    range: { min: 0, max: 10, step: 0.1 },
+                },
+                delayPerToken: {
+                    path: "darkest-dungeon.stress.delay-per-token",
+                    type: "number",
+                    range: { min: 0, max: 1000, step: 1 },
+                },
                 volume: { path: "darkest-dungeon.stress.volume", type: "number", range: { min: 0, max: 100, step: 5 } },
                 friendly: {
                     skill: {
                         crit: "darkest-dungeon.stress.friendly.skill.crit",
-                        critFail: "darkest-dungeon.stress.friendly.skill.crit-fail"
+                        critFail: "darkest-dungeon.stress.friendly.skill.crit-fail",
                     },
                     save: {
                         crit: "darkest-dungeon.stress.friendly.save.crit",
-                        critFail: "darkest-dungeon.stress.friendly.save.crit-fail"
+                        critFail: "darkest-dungeon.stress.friendly.save.crit-fail",
                     },
                     attack: {
                         crit: "darkest-dungeon.stress.friendly.attack.crit",
-                        critFail: "darkest-dungeon.stress.friendly.attack.crit-fail"
+                        critFail: "darkest-dungeon.stress.friendly.attack.crit-fail",
                     },
                 },
                 hostile: {
                     skill: {
                         crit: "darkest-dungeon.stress.hostile.skill.crit",
-                        critFail: "darkest-dungeon.stress.hostile.skill.crit-fail"
+                        critFail: "darkest-dungeon.stress.hostile.skill.crit-fail",
                     },
                     save: {
                         crit: "darkest-dungeon.stress.hostile.save.crit",
-                        critFail: "darkest-dungeon.stress.hostile.save.crit-fail"
+                        critFail: "darkest-dungeon.stress.hostile.save.crit-fail",
                     },
                     attack: {
                         crit: "darkest-dungeon.stress.hostile.attack.crit",
-                        critFail: "darkest-dungeon.stress.hostile.attack.crit-fail"
+                        critFail: "darkest-dungeon.stress.hostile.attack.crit-fail",
                     },
-                }
-            }
+                },
+            },
         },
     },
     critical: {
@@ -327,9 +335,11 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
                 const targetId = $(this).data("target");
 
                 // Activate the correct tab (assuming Foundry's Tabs API)
-                const tab = $("form#pf2e-rpg-numbers-settings-form").find(".tabs").find(`a[data-tab="${tabName}"]`)?.[0]
+                const tab = $("form#pf2e-rpg-numbers-settings-form")
+                    .find(".tabs")
+                    .find(`a[data-tab="${tabName}"]`)?.[0];
                 if (tab) {
-                    tab.click()
+                    tab.click();
                 }
 
                 // Wait for the tab to become active before scrolling
@@ -339,7 +349,6 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
                         target.scrollIntoView({ behavior: "smooth", block: "start" });
                     }
                 }, 400); // Adjust timeout if needed for your tab system
-
             });
         }
     }
@@ -379,12 +388,12 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             burstBurrow: !Sequencer.Database.getPathsUnder("jb2a.burrow.out").length,
         };
 
-        let newFeatures = getSetting('new-features');
+        let newFeatures = getSetting("new-features");
         const currentVersion = game.modules.get(MODULE_ID).version;
         if (foundry.utils.isNewerVersion(currentVersion, newFeatures?.version ?? 0)) {
             newFeatures = NEW_FEATURE_BY_VERSION?.[currentVersion] ?? {};
             newFeatures.version = currentVersion;
-            setSetting('new-features');
+            setSetting("new-features");
         }
 
         // Menu SFX
@@ -392,7 +401,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             .sound()
             .file("modules/pf2e-rpg-numbers/resources/sounds/ui/fantasy-1/SkywardHero_UI_1_Open.ogg")
             .volume(0.25)
-            .play({ local: true })
+            .play({ local: true });
 
         return {
             tabs,
@@ -400,7 +409,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             disabled,
             new: newFeatures,
             buttons: [
-                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save", callback: () => {} },
                 {
                     type: "submit",
                     action: "submit",
@@ -411,7 +420,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
                     type: "cancel",
                     action: "cancel",
                     icon: "fa-solid fa-xmark",
-                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.cancel",
+                    label: "Cancel",
                 },
             ],
         };

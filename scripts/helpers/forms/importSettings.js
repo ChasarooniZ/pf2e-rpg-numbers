@@ -42,7 +42,7 @@ export function importSettings() {
             },
             cancel: {
                 icon: '<i class="fas fa-times"></i>',
-                label: game.i18n.localize(`${MODULE_ID}.menu.import.buttons.cancel`),
+                label: game.i18n.localize(`Cancel`),
             },
         },
         default: "import",

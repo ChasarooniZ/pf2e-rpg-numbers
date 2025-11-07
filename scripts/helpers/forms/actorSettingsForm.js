@@ -6,7 +6,7 @@ import { getSetting } from "../misc.js";
 import { MODULE_ID } from "../const.js";
 
 const outcomes = ["success", "failure"];
-const types = ["default", "strikes", "checks", "saves"]
+const types = ["default", "strikes", "checks", "saves"];
 
 const settingsConfig = {
     // home: {
@@ -260,7 +260,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
             actor: this.options?.actor,
             tokenImg: getTokenImage(this.options?.actor?.prototypeToken),
             buttons: [
-                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save" },
+                { type: "save", action: "save", icon: "fa-solid fa-save", label: "SETTINGS.Save", callback: () => {} },
                 {
                     type: "submit",
                     action: "submit",
@@ -271,7 +271,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
                     type: "cancel",
                     action: "cancel",
                     icon: "fa-solid fa-xmark",
-                    label: "pf2e-rpg-numbers.menu.settings.buttons.footer.cancel",
+                    label: "Cancel",
                 },
             ],
         };

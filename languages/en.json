@@ -438,7 +438,6 @@
                     "name": "Delay",
                     "hint": "How long to delay when the critical animation shows up in seconds"
                 }
-                
             },
             "burst-burrow": {
                 "enabled": {
@@ -692,19 +691,6 @@
                     "volume": {
                         "name": "Volume",
                         "hint": "Volume of the Stress SFX"
-                    },
-                    "table": {
-                        "headers": {
-                            "attack": "Attack",
-                            "save": "Save",
-                            "skill": "Skill"
-                        },
-                        "rows": {
-                            "friendly": "Friendly",
-                            "hostile": "Hostile",
-                            "crit": "Critical Success",
-                            "crit-fail": "Critical Failure"
-                        }
                     }
                 }
             },
@@ -721,13 +707,12 @@
                     "import": "Import Settings",
                     "footer": {
                         "save": "Save",
-                        "submit": "Submit",
-                        "cancel": "Cancel"
+                        "submit": "Submit"
                     }
                 },
                 "notification": {
                     "save": "Settings saved successfully!",
-                    "submit": "Settings submitted successfully!",
+                    "submit": "Settings saved and submitted successfully!",
                     "cancel": "Settings menu closed without saving"
                 },
                 "tabs": {
@@ -747,8 +732,7 @@
                 "title": "PF2e RPG Settings Import",
                 "content": "Upload Settings JSON",
                 "buttons": {
-                    "import": "Import",
-                    "cancel": "Cancel"
+                    "import": "Import"
                 },
                 "notification": {
                     "success": "Pf2e RPG Settings Imported!",
@@ -761,11 +745,7 @@
                 "critical": {
                     "headers": {
                         "default": "Default",
-                        "strikes": "Strikes",
-                        "checks": "Checks",
-                        "saves": "Saves",
-                        "failure": "Critical Failure",
-                        "success": "Critical Success"
+                        "checks": "Checks"
                     },
                     "tooltip": {
                         "test": "Test Critical Animation with Current Settings"
@@ -867,12 +847,6 @@
             }
         },
         "display-text": {
-            "outcomes": {
-                "criticalFailure": "Critical Failure",
-                "failure": "Failure",
-                "success": "Success",
-                "criticalSuccess": "Critical Success"
-            },
             "notifications": {
                 "migrate-token-settings-12-7": "Migrating {actorName}'s PF2e RPG # Flags",
                 "finishing-move": {
