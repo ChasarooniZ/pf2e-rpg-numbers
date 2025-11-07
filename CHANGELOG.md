@@ -1,9 +1,10 @@
 # 13.7.10 - Fix Bugs
 
 - **Updated**
-    - Fix issue where `check animations` `Display As...` wouldn't properly save the settings
-    - Fixed `Save` causing the dialog to automatically close
-    - Simplified some of the localizations to use prexisting localization from the system
+  - Fix issue where `check animations` `Display As...` wouldn't properly save the settings
+  - Fixed `Save` causing the dialog to automatically close
+  - Simplified some of the localizations to use prexisting localization from the system
+  
 
 # 13.7.9 - Polish Translation
 
@@ -2140,6 +2141,14 @@
   - performance optimization
   - Text options
   - Crit Message idea
+  
+
+## 13.7.10 - 2025-11-07
+
+- **Updated**
+  - Fix issue where `check animations` `Display As...` wouldn't properly save the settings
+  - Fixed `Save` causing the dialog to automatically close
+  - Simplified some of the localizations to use prexisting localization from the system
   
 
 ## 13.7.9 - 2025-11-07
