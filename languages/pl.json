@@ -691,19 +691,6 @@
           "volume": {
             "name": "Głośność",
             "hint": "Głośność efektu dźwiękowego Stresu"
-          },
-          "table": {
-            "headers": {
-              "attack": "Atak",
-              "save": "Rzut obronny",
-              "skill": "Umiejętność"
-            },
-            "rows": {
-              "friendly": "Przyjazny",
-              "hostile": "Wrogi",
-              "crit": "Krytyczny Sukces",
-              "crit-fail": "Krytyczna Porażka"
-            }
           }
         }
       },
@@ -720,13 +707,12 @@
           "import": "Importuj ustawienia",
           "footer": {
             "save": "Zapisz",
-            "submit": "Zatwierdź",
-            "cancel": "Anuluj"
+            "submit": "Zatwierdź"
           }
         },
         "notification": {
           "save": "Ustawienia zostały pomyślnie zapisane!",
-          "submit": "Ustawienia zostały pomyślnie zatwierdzone!",
+          "submit": "Ustawienia zostały zapisane i przesłane pomyślnie!",
           "cancel": "Menu ustawień zamknięte bez zapisania"
         },
         "tabs": {
@@ -746,8 +732,7 @@
         "title": "Import ustawień PF2e RPG",
         "content": "Prześlij ustawienia JSON",
         "buttons": {
-          "import": "Importuj",
-          "cancel": "Anuluj"
+          "import": "Importuj"
         },
         "notification": {
           "success": "Ustawienia Pf2e RPG zaimportowane!",
@@ -760,11 +745,7 @@
         "critical": {
           "headers": {
             "default": "Domyślne",
-            "strikes": "Ataki",
-            "checks": "Testy",
-            "saves": "Rzuty obronne",
-            "failure": "Krytyczna Porażka",
-            "success": "Krytyczny Sukces"
+            "checks": "Testy"
           },
           "tooltip": {
             "test": "Testowanie animacji krytyków z bieżącymi ustawieniami"
@@ -866,12 +847,6 @@
       }
     },
     "display-text": {
-      "outcomes": {
-        "criticalFailure": "Krytyczna Porażka",
-        "failure": "Porażka",
-        "success": "Sukces",
-        "criticalSuccess": "Krytyczny Sukces"
-      },
       "notifications": {
         "migrate-token-settings-12-7": "Migracja {actorName} do PF2e RPG # Flagi",
         "finishing-move": {
