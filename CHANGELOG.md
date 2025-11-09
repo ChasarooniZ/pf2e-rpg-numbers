@@ -1,3 +1,8 @@
+# 13.7.11 - Polish Translation 2
+
+- **Updated**
+  - Updated Polish translation (🌐 @Lioheart)
+ 
 # 13.7.10 - Fix Bugs
 
 - **Updated**
