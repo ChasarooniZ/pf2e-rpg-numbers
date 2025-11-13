@@ -1,12 +1,13 @@
 # 13.7.12 - French Translation 2
-  
+
 - Updated French translation (🌐 @rectulo)
 
 # 13.7.11 - Polish Translation 2
 
 - **Updated**
   - Updated Polish translation (🌐 @Lioheart)
- 
+  
+
 # 13.7.10 - Fix Bugs
 
 - **Updated**
@@ -2151,6 +2152,10 @@
   - Text options
   - Crit Message idea
   
+
+## 13.7.12 - 2025-11-13
+
+- Updated French translation (🌐 @rectulo)
 
 ## 13.7.10 - 2025-11-07
 
