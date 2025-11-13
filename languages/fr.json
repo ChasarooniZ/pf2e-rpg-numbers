@@ -691,19 +691,6 @@
           "volume": {
             "name": "Volume",
             "hint": "Volume de l'effet de stress"
-          },
-          "table": {
-            "headers": {
-              "attack": "Attaque",
-              "save": "Jet de sauvegarde",
-              "skill": "Compétence"
-            },
-            "rows": {
-              "friendly": "Amical",
-              "hostile": "Hostile",
-              "crit": "Succès critique",
-              "crit-fail": "Échec critique"
-            }
           }
         }
       },
@@ -720,13 +707,12 @@
           "import": "Importer les paramètres",
           "footer": {
             "save": "Sauvegarder",
-            "submit": "Soumettre",
-            "cancel": "Effacer"
+            "submit": "Soumettre"
           }
         },
         "notification": {
           "save": "Paramètres enregistrés avec succès !",
-          "submit": "Paramètres soumis avec succès !",
+          "submit": "Paramètres enregistrés et soumis avec succès !",
           "cancel": "Menu des paramètres fermé sans sauvegarder"
         },
         "tabs": {
@@ -746,8 +732,7 @@
         "title": "Importer les paramètres de PF2e JdR",
         "content": "Charger les paramètres du JSON",
         "buttons": {
-          "import": "Importer",
-          "cancel": "Effacer"
+          "import": "Importer"
         },
         "notification": {
           "success": "Paramètres de Pf2e JdR importés !",
@@ -760,11 +745,7 @@
         "critical": {
           "headers": {
             "default": "Défaut",
-            "strikes": "Frappes",
-            "checks": "Tests",
-            "saves": "Jets de sauvegarde",
-            "failure": "Échec critique",
-            "success": "Succès critique"
+            "checks": "Tests"
           },
           "tooltip": {
             "test": "Tester l'animation des critiques avec les paramètres actuels"
@@ -866,12 +847,6 @@
       }
     },
     "display-text": {
-      "outcomes": {
-        "criticalFailure": "Échec critique",
-        "failure": "Échec",
-        "success": "Succès",
-        "criticalSuccess": "Succès critique"
-      },
       "notifications": {
         "migrate-token-settings-12-7": "Migre les réglages de {actorName} de PF2e JdR ",
         "finishing-move": {
