@@ -1,3 +1,7 @@
+# 13.7.12 - French Translation 2
+  
+- Updated French translation (🌐 @rectulo)
+
 # 13.7.11 - Polish Translation 2
 
 - **Updated**
