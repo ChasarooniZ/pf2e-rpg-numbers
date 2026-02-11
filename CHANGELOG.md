@@ -3,6 +3,7 @@
   - Actor setting to disable token rotation (@TheTenk)
 - **Updated**
   - Cleaned up the code for readability
+  - Fixed issue with `Elden Ring` Noun Verbed
 
 # 13.7.12 - French Translation 2
 
