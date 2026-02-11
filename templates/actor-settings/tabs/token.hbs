@@ -1,4 +1,20 @@
 <div>
+    {{! Disable Token Rotation}}
+    <div class="form-group">
+        <label
+            for="settings.token.rotation.disabled"
+            data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.token.rotation.disabled.hint"}}"
+        >
+            {{localize "pf2e-rpg-numbers.menu.actor-settings.token.rotation.disabled.name"}}
+        </label>
+        <input
+            type="checkbox"
+            id="settings.token.rotation.disabled"
+            name="settings.token.rotation.disabled"
+            {{checked settings.token.rotation.disabled}}
+        />
+    </div>
+
     {{! Token Rotation}}
     <div class="row">
         <div class="column angle-text">

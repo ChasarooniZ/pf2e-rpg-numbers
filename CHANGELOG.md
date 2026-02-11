@@ -1,3 +1,9 @@
+# 13.7.13 - Options and Cleanup
+- **Added**
+  - Actor setting to disable token rotation (@TheTenk)
+- **Updated**
+  - Cleaned up the code for readability
+
 # 13.7.12 - French Translation 2
 
 - Updated French translation (🌐 @rectulo)

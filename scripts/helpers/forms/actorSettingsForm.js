@@ -48,6 +48,7 @@ const settingsConfig = {
     token: {
         icon: "fas fa-circle-user",
         rotation: {
+            disabled: "token.rotation.disabled",
             offset: "token.rotation.offset",
         },
         dodgeOnMiss: {
@@ -157,7 +158,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
                     const type = $(event.currentTarget).data("type");
                     const section = $(event.target).data("section");
                     const formData = this.getFormData(context).settings;
-                    formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
+                    formData.critical = critProcessHelper(formData.critical, structuredClone(DEFAULT_CRIT));
                     console.log({ type, section, event });
                     createTestCritAnimation({
                         userID: game.user.id,
@@ -172,7 +173,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
         // // Token Rotation Code
         const img = this.element.querySelector("#angle-image");
         const canvasEl = this.element.querySelector("#angle-canvas");
-        const container = this.element.querySelector("angle-image-container");
+        // const container = this.element.querySelector("angle-image-container");
         const input = this.element.querySelector('input[name="settings.token.rotation.offset"]');
         const ctx = canvasEl.getContext("2d");
         function drawIndicator(angle) {
@@ -194,7 +195,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
             ctx.stroke();
         }
         img.addEventListener("load", () => {
-            drawIndicator(parseInt(input.value) || 0);
+            drawIndicator(Number.parseInt(input.value) || 0);
         });
         img.addEventListener("click", (event) => {
             const rect = canvasEl.getBoundingClientRect();
@@ -215,8 +216,8 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
             this.rotationTouched = true; // Mark as touched
         });
         input.addEventListener("change", () => {
-            let angle = parseInt(input.value, 10);
-            if (isNaN(angle)) {
+            let angle = Number.parseInt(input.value, 10);
+            if (Number.isNaN(angle)) {
                 angle = 0; // Default to 0 if invalid input
             } else if (angle > 359) {
                 angle = angle % 360;
@@ -326,7 +327,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
 
     async saveSettings(data) {
         const settings = data.settings;
-        const crit = critProcessHelper(settings.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
+        const crit = critProcessHelper(settings.critical, structuredClone(DEFAULT_CRIT));
         await this.options?.actor?.setFlag(MODULE_ID, "critical", crit);
 
         const token = DEFAULT_TOKEN;
@@ -361,7 +362,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
 }
 
 function getNestedProperty(obj, path) {
-    return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+    return path.split(".").reduce((acc, part) => acc?.[part], obj);
 }
 
 function getDefaultVariable(flag) {
@@ -395,7 +396,7 @@ function critProcessHelper(data, result) {
     const succFail = ["success", "failure"];
 
     // Create a deep copy of the result object
-    const res = JSON.parse(JSON.stringify(result));
+    const res = structuredClone(result);
 
     for (const state of succFail) {
         for (const type of types) {
@@ -404,20 +405,25 @@ function critProcessHelper(data, result) {
     }
     return res;
 }
+
 function critSettingsFormatted(data, state, type) {
     return {
         art: data[state][type].art,
         enabled: data[state][type].enabled,
         offset: {
-            x: isNaN(Number(data[state][type].offset.x)) ? 0 : Number(data[state][type].offset.x),
-            y: isNaN(Number(data[state][type].offset.y)) ? 0 : Number(data[state][type].offset.y),
+            x: setToDefaultIfNaN({ value: data[state][type].offset.x, def: 0 }),
+            y: setToDefaultIfNaN({ value: data[state][type].offset.y, def: 0 }),
         },
-        rotation: isNaN(Number(data[state][type].rotation)) ? 0 : Number(data[state][type].rotation),
-        scale: isNaN(Number(data[state][type].scale)) ? 1 : Number(data[state][type].scale),
-        imagedelay: isNaN(Number(data[state][type].imagedelay)) ? 0 : Number(data[state][type].imagedelay),
-        duration: isNaN(Number(data[state][type].duration)) ? 0 : Number(data[state][type].duration),
+        rotation: setToDefaultIfNaN({ value: data[state][type].rotation, def: 0 }),
+        scale: setToDefaultIfNaN({ value: data[state][type].scale, def: 1 }),
+        imagedelay: setToDefaultIfNaN({ value: data[state][type].imagedelay, def: 0 }),
+        duration: setToDefaultIfNaN({ value: data[state][type].duration, def: 0 }),
         sfx: data[state][type].sfx,
         type: data[state][type].type,
-        volume: isNaN(Number(data[state][type].volume)) ? 100 : Number(data[state][type].volume),
+        volume: setToDefaultIfNaN({ value: data[state][type].volume, def: 100 }),
     };
+}
+
+function setToDefaultIfNaN({ value, def }) {
+    return Number.isNaN(Number(value)) ? def : Number(value);
 }

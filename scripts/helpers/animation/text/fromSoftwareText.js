@@ -47,10 +47,10 @@ export async function fromSoftwareNounVerbed(options = {}) {
 
     const final_options = {
         ...options,
-        text: options.text ?? getSetting(`from-software.noun-verbed.text`),
-        sound: options.sound ?? getSetting(`from-software.noun-verbed.sound-effect`),
-        fontSize: options.fontSize ?? getSetting(`from-software.noun-verbed.font-size`),
-        duration: options.duration ?? getSetting(`from-software.noun-verbed.duration`),
+        text: options?.text ?? getSetting(`from-software.noun-verbed.text`),
+        sound: options?.sound ?? getSetting(`from-software.noun-verbed.sound-effect`),
+        fontSize: options?.fontSize ?? getSetting(`from-software.noun-verbed.font-size`),
+        duration: options?.duration ?? getSetting(`from-software.noun-verbed.duration`),
     };
 
     switch (type) {

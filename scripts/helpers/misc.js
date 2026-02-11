@@ -24,7 +24,7 @@ export function waitForMessage(id, ms = 250, attempts = 120, dontWait = false) {
     if (dontWait) return Promise.resolve();
     return new Promise(function (resolve, reject) {
         (function wait(count = 0) {
-            if (count > attempts) return reject();
+            if (count > attempts) return reject(Error("No Message Found for DsN"));
 
             if (count != 0 && $(ui.chat.element).find(`.message[data-message-id="${id}"]:not(.dsn-hide)`).length !== 0)
                 return resolve();
@@ -68,15 +68,19 @@ export function registerSetting(data) {
 }
 
 export function averageTokenPosition(tokens) {
-    const it = tokens.map(t => t.center).reduce((tot, cur) => {
-        tot.x += cur.x;
-        tot.y += cur.y;
-        return tot;
-    }, { x: 0, y: 0 });
+    const it = tokens
+        .map((t) => t.center)
+        .reduce(
+            (tot, cur) => {
+                tot.x += cur.x;
+                tot.y += cur.y;
+                return tot;
+            },
+            { x: 0, y: 0 }
+        );
 
-    return { x: it.x / tokens.length, y: it.y / tokens.length }
+    return { x: it.x / tokens.length, y: it.y / tokens.length };
 }
-
 
 function transformData(dataArray) {
     const result = {};

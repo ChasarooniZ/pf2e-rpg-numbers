@@ -808,6 +808,12 @@
                     }
                 },
                 "token": {
+                    "rotation": {
+                        "disabled": {
+                            "name": "Disable Token Rotation",
+                            "hint": "Sets whether or not the token will rotate when module settings such as Turn on Attack etc."
+                        }
+                    },
                     "rotation-offset": {
                         "name": "Turn On Attack - Rotation Offset",
                         "hint": "Sets how much to offset the turn on attack rotation by. Down ⬇ 0, Right ➡ 90, Up ⬆ 180, Left ⬅ 270"
