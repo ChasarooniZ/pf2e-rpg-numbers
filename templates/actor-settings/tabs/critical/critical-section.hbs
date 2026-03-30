@@ -36,7 +36,7 @@
         for="settings.critical.{{type}}.{{section}}.enabled"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
+        <i class="fa-solid fa-light-switch-on"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.enabled.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.enabled">
         {{selectOptions settings.choices.enabled selected=data.enabled localize=true}}
@@ -49,7 +49,7 @@
         for="settings.critical.{{type}}.{{section}}.type"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
+        <i class="fa-duotone fa-solid fa-masks-theater"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.type.name"}}
     </label>
     <select name="settings.critical.{{type}}.{{section}}.type">
         {{selectOptions settings.choices.type selected=data.type localize=true}}
@@ -62,7 +62,7 @@
         for="settings.critical.{{type}}.{{section}}.art"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.name"}}
+        <i class="fa-solid fa-image"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.art.name"}}
     </label>
     <file-picker name="settings.critical.{{type}}.{{section}}.art" type="imagevideo" value="{{data.art}}"></file-picker>
 </div>
@@ -123,7 +123,7 @@
         for="settings.critical.{{type}}.{{section}}.rotation"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.name"}}
+        <i class="fa-solid fa-rotate"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.rotation.name"}}
     </label>
     <range-picker
         name="settings.critical.{{type}}.{{section}}.rotation"
@@ -142,7 +142,7 @@
                 for="settings.critical.{{type}}.{{section}}.scale"
                 data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
+                <i class="fa-solid fa-arrow-up-right-and-arrow-down-left-from-center"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.scale.name"}}
             </label>
             {{numberInput data.scale name=(concat "settings.critical." type "." section ".scale") step=0.05 min=0 max=5}}
         </div>
@@ -167,7 +167,7 @@
         for="settings.critical.{{type}}.{{section}}.imagedelay"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.imagedelay.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.imagedelay.name"}}
+        <i class="fa-solid fa-pause"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.imagedelay.name"}}
     </label>
     {{numberInput data.imagedelay name=(concat "settings.critical." type "." section ".imagedelay") step=0.05 min=0 max=5}}
 </div>
@@ -178,7 +178,7 @@
         for="settings.critical.{{type}}.{{section}}.sfx"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.name"}}
+        <i class="fa-solid fa-file-audio"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.sfx.name"}}
     </label>
     <file-picker name="settings.critical.{{type}}.{{section}}.sfx" type="audio" value="{{data.sfx}}"></file-picker>
 </div>
@@ -189,7 +189,7 @@
         for="settings.critical.{{type}}.{{section}}.volume"
         data-tooltip="{{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.hint"}}"
     >
-        {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.name"}}
+        <i class="fa-solid fa-volume"></i> {{localize "pf2e-rpg-numbers.menu.actor-settings.critical.volume.name"}}
     </label>
     <range-picker
         name="settings.critical.{{type}}.{{section}}.volume"

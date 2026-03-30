@@ -3,6 +3,7 @@ description: Suggest an idea for this module
 title: '[Feature] '
 labels: 'enhancement'
 assignees: 'ChasarooniZ'
+projects: ["ChasarooniZ/2"]
 body:
   - type: markdown
     attributes:
