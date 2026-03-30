@@ -8,10 +8,9 @@ import { turnTokensToTarget } from "./turnTokenOnTarget.js";
  * @param {*} target Person they are attacking
  */
 export async function turnTokenOnAttack(token, target) {
-    if (!token || !target || token === target) return;
-    turnTokensToTarget([token], target)
+    if (!token || !target || token === target || token?.actor?.getFlag(MODULE_ID, "rotation.disabled")) return;
+    turnTokensToTarget([token], target);
 }
-
 
 export function getTurnTime(token) {
     const tokenSize = (token.document.height + token.document.width) / 2;
@@ -23,5 +22,7 @@ export function getTurnTime(token) {
 }
 
 export function getRotationOffset(token) {
-    return token?.actor?.getFlag(MODULE_ID, "token")?.rotation?.offset ?? getSetting("rotate-on-attack.default-rotation");
+    return (
+        token?.actor?.getFlag(MODULE_ID, "token")?.rotation?.offset ?? getSetting("rotate-on-attack.default-rotation")
+    );
 }

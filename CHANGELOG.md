@@ -3,6 +3,13 @@
 - **Update**
     - Added icons to actor crit customization menu
 
+# 13.7.13 - Options and Cleanup
+- **Added**
+  - Actor setting to disable token rotation (@TheTenk)
+- **Updated**
+  - Cleaned up the code for readability
+  - Fixed issue with `Elden Ring` Noun Verbed
+
 # 13.7.12 - French Translation 2
 
 - Updated French translation (🌐 @rectulo)

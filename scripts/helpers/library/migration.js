@@ -91,7 +91,7 @@ export async function migrateActorTokenSettings(actor) {
                     rotation: flags?.critRotation ?? 0,
                     sfx: flags?.critSFX ?? '', //Note should also accept JB2A * card
                     volume: 100,
-                    scale: !isNaN(flags?.critScale) ? (flags?.critScale / 100) : 0,
+                    scale: Number.isNaN(flags?.critScale) ? 0 : (flags?.critScale / 100),
                     art: getCritImageLegacy(flags),
                     type: 'default'
                 },
@@ -137,13 +137,13 @@ function getCritImageLegacy(flags) {
 //12.8.2
 async function fixDamageDuration() {
     const dmgDuration = getSetting('duration');
-    if (isNaN(dmgDuration))
+    if (Number.isNaN(dmgDuration))
         await setSetting('duration', 2)
 }
 
 //12.8.2
 async function fixDamageJitter() {
     const dmgJitter = getSetting('jitter');
-    if (isNaN(dmgJitter))
+    if (Number.isNaN(dmgJitter))
         await setSetting('jitter', 0)
 }
