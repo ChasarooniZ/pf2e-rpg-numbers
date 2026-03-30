@@ -80,7 +80,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
         },
         popOut: true,
         position: {
-            width: 800,
+            width: 900,
             height: "auto",
         },
         tag: "form",
