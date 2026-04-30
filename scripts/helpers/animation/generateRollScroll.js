@@ -93,7 +93,6 @@ function handleSFX(outcome, type, seq, actorType, usersToPlayFor) {
                     ignoreSFX = true;
                     break;
                 case "all":
-                    ignoreSFX = false;
                     break;
                 case "success-or-fail":
                     outcome = outcome.replace("success", "").toLowerCase();
@@ -116,7 +115,7 @@ function addSFX(outcome, seq, usersToPlayFor) {
         const sfxOptions = sfx
             .slice(1, -1)
             .split(",")
-            .map((it) => it.replace(/"/g, ""));
+            .map((it) => it.replaceAll('"', ""));
         sfx = Sequencer.Helpers.random_array_element(sfxOptions);
     }
     seq.sound()

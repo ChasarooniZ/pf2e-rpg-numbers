@@ -1,7 +1,16 @@
 # Unreleased
 
+## 14.0.0
+
 - **Update**
+    - Added support for FVTT `v14` (`v13` is the new Minimum version)
+    - Updated to require **Genga** `1.0.0`
+    - Updated to require **Sequencer** `4.0.1`
     - Added icons to actor crit customization menu
+    - Fixed bug causing `Darkest Dungeon Stress` to show the opposite for Player rolled Values
+    - Sets TokenMagic FX settings to required settings on first load to prevent issues with it's default settings
+    - Migrated some animations and logic to Genga to allow system agnostic reuse
+    - Migrated and removed some settings (mostly related to token specific features)
 
 # 13.7.12 - French Translation 2
 

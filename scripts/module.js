@@ -30,24 +30,24 @@ import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 import { handleUpdateMessage } from "./updateMessage.js";
 import { handleToolbeltTarget } from "./helpers/toolbeltHandlers.js";
+import { setTokenMagicFXSettings } from "./settings.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
-    loadTemplates([
-        `modules/${MODULE_ID}/templates/updateMessage.hbs`,
-    ])
+    loadTemplates([`modules/${MODULE_ID}/templates/updateMessage.hbs`]);
     Hooks.on("getSceneControlButtons", getSceneControlButtons);
 });
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
+    setTokenMagicFXSettings();
     // Noun Verbed Elden Ring
     Hooks.on("preDeleteCombat", preDeleteCombat);
     // You died Elden Ring
     Hooks.on("applyTokenStatusEffect", applyTokenStatusEffect);
     Hooks.on("createChatMessage", async function (msg, _status, userid) {
-        handleMessage(msg, userid)
+        handleMessage(msg, userid);
     });
     Hooks.on("preUpdateToken", preUpdateToken);
     Hooks.on("getActorSheetHeaderButtons", getActorSheetHeaderButtons);
@@ -69,7 +69,7 @@ Hooks.on("ready", () => {
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
     Hooks.on("combatStart", combatStart);
 
-    Hooks.on("targetToken", targetToken)
+    Hooks.on("targetToken", targetToken);
 
     // if (game.user.isGM) {
     //     const version = game.modules.get(MODULE_ID).version;
@@ -79,7 +79,7 @@ Hooks.on("ready", () => {
 
     handleUpdateMessage();
 
-    if (game?.toolbelt?.active) handleToolbeltTarget()
+    if (game?.toolbelt?.active) handleToolbeltTarget();
 
     console.log("PF2e RPG Numbers is ready");
 });
@@ -291,7 +291,6 @@ function shouldDoCrits(actorFlags, outcome) {
     );
 }
 
-
 export async function handleMessage(msg, userid, dontWait = false) {
     if (game.user.id === userid) {
         if (!getSetting("enabled")) return;
@@ -309,7 +308,7 @@ export async function handleMessage(msg, userid, dontWait = false) {
             // RPG Numbers on Check Roll
             checkRollNumbers(dat, msg);
 
-            handleDarkestDungeonStress(msg)
+            handleDarkestDungeonStress(msg);
 
             //Attack Roll Stuff
             if (dat.isAttackRoll) {

@@ -133,47 +133,14 @@
         />
     </div>
 </span>
+
+{{! Rotate Settings}}
 <span>
     <h3 id="rotate">
         {{localize "pf2e-rpg-numbers.module-settings.headers.rotate"}}
         <i class="fa-solid fa-rotate-right"></i>
     </h3>
     <span>
-        {{! Rotate Settings}}
-
-        {{! Duration }}
-        <div class="form-group">
-            <label
-                for="settings.rotateOnAttack.duration"
-                data-tooltip-direction="LEFT"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.hint"}}"
-            >
-                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.duration.name"}}
-            </label>
-            {{numberInput
-                settings.rotateOnAttack.duration.value
-                name="settings.rotateOnAttack.duration"
-                step=settings.rotateOnAttack.duration.range.step
-                min=settings.rotateOnAttack.duration.range.min
-                max=settings.rotateOnAttack.duration.range.max
-            }}
-        </div>
-        {{! Scale on Size }}
-        <div class="form-group">
-            <label
-                for="settings.rotateOnAttack.scaleOnSize"
-                data-tooltip-direction="LEFT"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.hint"}}"
-            >
-                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-attack.scale-on-size.name"}}
-            </label>
-            <input
-                type="checkbox"
-                id="settings.rotateOnAttack.scaleOnSize"
-                name="settings.rotateOnAttack.scaleOnSize"
-                {{checked settings.rotateOnAttack.scaleOnSize}}
-            />
-        </div>
         {{! Default Rotation }}
         <div class="form-group">
             <label
@@ -446,58 +413,6 @@
             {{checked settings.dodgeOnMiss.enabled}}
         />
     </div>
-    {{! Duration }}
-    <div class="form-group">
-        <label
-            for="settings.dodgeOnMiss.duration"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.duration.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.duration.name"}}
-        </label>
-        {{numberInput
-            settings.dodgeOnMiss.duration.value
-            name="settings.dodgeOnMiss.duration"
-            step=settings.dodgeOnMiss.duration.range.step
-            min=settings.dodgeOnMiss.duration.range.min
-            max=settings.dodgeOnMiss.duration.range.max
-        }}
-    </div>
-    {{! Distance }}
-    <div class="form-group">
-        <label
-            for="settings.dodgeOnMiss.distance"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.distance.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.distance.name"}}
-        </label>
-        {{numberInput
-            settings.dodgeOnMiss.distance.value
-            name="settings.dodgeOnMiss.distance"
-            step=settings.dodgeOnMiss.distance.range.step
-            min=settings.dodgeOnMiss.distance.range.min
-            max=settings.dodgeOnMiss.distance.range.max
-        }}
-    </div>
-
-    {{! Delay }}
-    <div class="form-group">
-        <label
-            for="settings.dodgeOnMiss.delay"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.delay.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.dodge-on-miss.delay.name"}}
-        </label>
-        {{numberInput
-            settings.dodgeOnMiss.delay.value
-            name="settings.dodgeOnMiss.delay"
-            step=settings.dodgeOnMiss.delay.range.step
-            min=settings.dodgeOnMiss.delay.range.min
-            max=settings.dodgeOnMiss.delay.range.max
-        }}
-    </div>
 
     {{! Type }}
     <div class="form-group">
@@ -522,8 +437,8 @@
         </select>
     </div>
 </span>
+{{! Token Damaged Shake }}
 <span>
-    {{! Token Shake }}
     <h4
         id="token-shake"
         data-tooltip-direction="LEFT"
@@ -547,57 +462,6 @@
             name="settings.tokenShake.enabled"
             {{checked settings.tokenShake.enabled}}
         />
-    </div>
-    {{! Distance }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.distance"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.distance.name"}}
-        </label>
-        {{numberInput
-            settings.tokenShake.distance.value
-            name="settings.tokenShake.distance"
-            step=settings.tokenShake.distance.range.step
-            min=settings.tokenShake.distance.range.min
-            max=settings.tokenShake.distance.range.max
-        }}
-    </div>
-    {{! Shakes }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.shakes"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.shakes.name"}}
-        </label>
-        {{numberInput
-            settings.tokenShake.shakes.value
-            name="settings.tokenShake.shakes"
-            step=settings.tokenShake.shakes.range.step
-            min=settings.tokenShake.shakes.range.min
-            max=settings.tokenShake.shakes.range.max
-        }}
-    </div>
-    {{! Duration }}
-    <div class="form-group">
-        <label
-            for="settings.tokenShake.duration"
-            data-tooltip-direction="LEFT"
-            data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.hint"}}"
-        >
-            {{localize "pf2e-rpg-numbers.module-settings.token-dmg-shake.duration.name"}}
-        </label>
-        {{numberInput
-            settings.tokenShake.duration.value
-            name="settings.tokenShake.duration"
-            step=settings.tokenShake.duration.range.step
-            min=settings.tokenShake.duration.range.min
-            max=settings.tokenShake.duration.range.max
-        }}
     </div>
     {{! Scaling Type }}
     <div class="form-group">

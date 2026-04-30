@@ -5,7 +5,7 @@
     "version": "#{VERSION}#",
     "compatibility": {
         "minimum": "13",
-        "verified": "13"
+        "verified": "14"
     },
     "authors": [
         {
@@ -18,8 +18,8 @@
                 "id": "pf2e",
                 "type": "system",
                 "compatibility": {
-                    "minimum": "7.0.0",
-                    "verified": "7.0.0"
+                    "minimum": "7.11.0",
+                    "verified": "7.11.0"
                 }
             }
         ],
@@ -29,8 +29,8 @@
                 "type": "module",
                 "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "3.6.10",
-                    "verified": "3.6.10"
+                    "minimum": "4.0.1",
+                    "verified": "4.0.1"
                 }
             },
             {
@@ -38,8 +38,8 @@
                 "type": "module",
                 "manifest": "https://github.com/ChasarooniZ/anime-agnostic-animations/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "0.7.3",
-                    "verified": "0.7.3"
+                    "minimum": "1.0.0",
+                    "verified": "1.0.0"
                 }
             }
         ]
