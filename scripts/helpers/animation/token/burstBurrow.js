@@ -1,6 +1,6 @@
-import { MS_TO_SEC } from "../../const.js";
+import { MS_TO_SEC, MODULE_ID } from "../../const.js";
 import { getSetting } from "../../misc.js";
-import { MODULE_ID } from "../../const.js";
+//TODO rework this such that it just uses whether or not your speed is set to burrow, and it emerges you when you leave burrow movement mode
 
 export function burstBurrow(data) {
     if (!data?.token) return;

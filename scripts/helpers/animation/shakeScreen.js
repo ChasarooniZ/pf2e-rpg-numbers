@@ -27,7 +27,7 @@ export async function shakeScreen(uuid, damage) {
             shake_amt = max * (damage / (hp.max + (includeTempHP ? hp.temp : 0)));
             break;
     }
-    if (!isFinite("Infinity")) shake_amt = max;
+    if (!Number.isFinite("Infinity")) shake_amt = max;
     let userToShake;
     if (actor.hasPlayerOwner) {
         userToShake =

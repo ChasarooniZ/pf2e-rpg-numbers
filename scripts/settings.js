@@ -1,4 +1,4 @@
-import { localize, registerSetting } from "./helpers/misc.js";
+import { getSetting, localize, registerSetting, setSetting } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
 import { registerScreenShakeSettings } from "./settings/registerScreenShakeSettings.js";
@@ -37,9 +37,9 @@ Hooks.on("init", () => {
     ]);
 
     game.settings.registerMenu(MODULE_ID, "pf2eRPGSettingsMenu", {
-        name: localize('module-settings.settings-menu.name'),
-        label: localize('module-settings.settings-menu.label'), // The text label used in the button
-        hint: localize('module-settings.settings-menu.hint'),
+        name: localize("module-settings.settings-menu.name"),
+        label: localize("module-settings.settings-menu.label"), // The text label used in the button
+        hint: localize("module-settings.settings-menu.hint"),
         icon: "fas fa-dragon", // A Font Awesome icon used in the submenu button
         type: SettingsConfigForm, // A FormApplication subclass
         restricted: true, // Restrict this submenu to gamemaster only?
@@ -52,6 +52,15 @@ Hooks.on("init", () => {
         scope: "world",
         config: false,
         default: true,
+        type: Boolean,
+    });
+
+    registerSetting({
+        id: "token-magic.setup",
+        desc: "token-magic.setup",
+        scope: "world",
+        config: false,
+        default: false,
         type: Boolean,
     });
 
@@ -89,7 +98,7 @@ Hooks.on("init", () => {
 
     registerVersusSettings();
 
-    registerDarkestDungeonStressSettings()
+    registerDarkestDungeonStressSettings();
 
     registerSetting({
         category: "actor-settings",
@@ -131,7 +140,6 @@ Hooks.on("init", () => {
         type: Object,
     });
 
-
     game.keybindings.register(MODULE_ID, "activateFinishingMove", {
         name: localize("keybinds.activate-finishing-move.name"),
         hint: localize("keybinds.activate-finishing-move.hint"),
@@ -152,7 +160,7 @@ Hooks.on("init", () => {
                     .click();
             }
         },
-        onUp: () => { },
+        onUp: () => {},
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
@@ -173,8 +181,16 @@ Hooks.on("init", () => {
                 ui.notifications.error("You must have a token selected");
             }
         },
-        onUp: () => { },
+        onUp: () => {},
         restricted: false,
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
 });
+
+export async function setTokenMagicFXSettings() {
+    if (game.modules.get("tokenmagic")?.active && getSetting("token-magic.setup")) {
+        game.settings.set("tokenmagic", "autoTemplateSettings", false);
+        game.settings.set("tokenmagic", "defaultTemplateOnHover", false);
+        setSetting("token-magic.setup");
+    }
+}
