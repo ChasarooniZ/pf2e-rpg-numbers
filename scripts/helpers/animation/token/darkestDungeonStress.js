@@ -22,52 +22,60 @@ export function handleDarkestDungeonStress(msg) {
         (tokDoc?.disposition === CONST.TOKEN_DISPOSITIONS.HOSTILE ||
             tokDoc?.disposition === CONST.TOKEN_DISPOSITIONS.NEUTRAL)
     ) {
-        switch (data.type) {
-            case "perception-check":
-            case "skill-check":
-                if (
-                    data.isCrit &&
-                    tokDoc?.disposition !== CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
-                    getSetting("darkest-dungeon.stress.hostile.skill.crit")
-                )
-                    darkestDungeonStress(friendlyTarget, users);
-                break;
-            case "attack-roll":
-                if (data.isCrit && getSetting("darkest-dungeon.stress.hostile.attack.crit"))
-                    darkestDungeonStress(friendlyTarget, users);
-                break;
-            case "saving-throw":
-                if (data.isCrit && getSetting("darkest-dungeon.stress.hostile.save.crit"))
-                    darkestDungeonStress(friendlyTarget, users);
-                if (data.isCritFail && getSetting("darkest-dungeon.stress.hostile.save.crit-fail"))
-                    darkestDungeonStress(friendlyTarget, users);
-                break;
-            default:
-                break;
-        }
+        handleHostile(data, tokDoc, friendlyTarget, users);
     } else if (tokDoc?.disposition === CONST.TOKEN_DISPOSITIONS.FRIENDLY) {
-        switch (data.type) {
-            case "perception-check":
-            case "skill-check":
-                if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.skill.crit"))
-                    darkestDungeonRelief(token, users);
-                // if (data.isCritFail &&
-                //   getSetting("darkest-dungeon.stress.friendly.skill.crit"))
-                //   darkestDungeonStress(token, users)
-                break;
-            case "attack-roll":
-                if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.attack.crit"))
-                    darkestDungeonRelief(token, users);
-                break;
-            case "saving-throw":
-                if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.save.crit"))
-                    darkestDungeonRelief(token, users);
-                if (data.isCritFail && getSetting("darkest-dungeon.stress.friendly.attack.crit-fail"))
-                    darkestDungeonStress(token, users);
-                break;
-            default:
-                break;
-        }
+        handleParty(data, token, users);
+    }
+}
+
+function handleParty(data, token, users) {
+    switch (data.type) {
+        case "perception-check":
+        case "skill-check":
+            if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.skill.crit"))
+                darkestDungeonRelief(token, users);
+            // if (data.isCritFail &&
+            //   getSetting("darkest-dungeon.stress.friendly.skill.crit"))
+            //   darkestDungeonStress(token, users)
+            break;
+        case "attack-roll":
+            if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.attack.crit"))
+                darkestDungeonRelief(token, users);
+            break;
+        case "saving-throw":
+            if (data.isCrit && getSetting("darkest-dungeon.stress.friendly.save.crit"))
+                darkestDungeonRelief(token, users);
+            if (data.isCritFail && getSetting("darkest-dungeon.stress.friendly.attack.crit-fail"))
+                darkestDungeonStress(token, users);
+            break;
+        default:
+            break;
+    }
+}
+
+function handleHostile(data, tokDoc, friendlyTarget, users) {
+    switch (data.type) {
+        case "perception-check":
+        case "skill-check":
+            if (
+                data.isCrit &&
+                tokDoc?.disposition !== CONST.TOKEN_DISPOSITIONS.FRIENDLY &&
+                getSetting("darkest-dungeon.stress.hostile.skill.crit")
+            )
+                darkestDungeonStress(friendlyTarget, users);
+            break;
+        case "attack-roll":
+            if (data.isCrit && getSetting("darkest-dungeon.stress.hostile.attack.crit"))
+                darkestDungeonStress(friendlyTarget, users);
+            break;
+        case "saving-throw":
+            if (data.isCrit && getSetting("darkest-dungeon.stress.hostile.save.crit"))
+                darkestDungeonStress(friendlyTarget, users);
+            if (data.isCritFail && getSetting("darkest-dungeon.stress.hostile.save.crit-fail"))
+                darkestDungeonStress(friendlyTarget, users);
+            break;
+        default:
+            break;
     }
 }
 

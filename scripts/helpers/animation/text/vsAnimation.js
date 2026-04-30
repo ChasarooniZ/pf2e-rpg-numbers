@@ -45,10 +45,11 @@ export async function vsAnimation() {
                   </div>
                   <div>
                     <label for="opponentName" style="text-align: center;">${localize(
-                "menu.versus.name.opponent"
-            )}</label><br>
-                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${defNames.opposition
-                }" />
+                        "menu.versus.name.opponent"
+                    )}</label><br>
+                    <input type="text" id="opponentName" name="opponentName" style="width: 250px;" value="${
+                        defNames.opposition
+                    }" />
                   </div>
                 </div>
                 <div>
@@ -56,10 +57,9 @@ export async function vsAnimation() {
               </form>`,
             render: (html) => {
                 setTimeout(() => {
-                    const opponentNameInput = $(html.target.element).find('#opponentName');
+                    const opponentNameInput = $(html.target.element).find("#opponentName");
                     opponentNameInput.select();
-                }, 500)
-
+                }, 500);
             },
             yes: {
                 label: localize("menu.versus.button.yes"),
@@ -92,15 +92,28 @@ export async function vsAnimation() {
             .filter(
                 (c, _id, combatants) =>
                     c?.actor?.alliance === "opposition" &&
-                    (encounter ?
-                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
-                        isVisible(c?.document, combatants.map(c => c?.document)))
+                    (encounter
+                        ? !c?.hidden &&
+                          isVisible(
+                              c.token,
+                              combatants.map((c) => c.token)
+                          )
+                        : isVisible(
+                              c?.document,
+                              combatants.map((c) => c?.document)
+                          ))
             )
             .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ?
-                    !isHidden(c.token, combatants.map(c => c.token)) :
-                    !isHidden(c?.document, combatants.map(c => c?.document)),
+                visible: encounter
+                    ? !isHidden(
+                          c.token,
+                          combatants.map((c) => c.token)
+                      )
+                    : !isHidden(
+                          c?.document,
+                          combatants.map((c) => c?.document)
+                      ),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
@@ -112,15 +125,28 @@ export async function vsAnimation() {
             .filter(
                 (c, _id, combatants) =>
                     c?.actor?.alliance === "party" &&
-                    (encounter ?
-                        (!c?.hidden && isVisible(c.token, combatants.map(c => c.token))) :
-                        isVisible(c?.document, combatants.map(c => c?.document)))
+                    (encounter
+                        ? !c?.hidden &&
+                          isVisible(
+                              c.token,
+                              combatants.map((c) => c.token)
+                          )
+                        : isVisible(
+                              c?.document,
+                              combatants.map((c) => c?.document)
+                          ))
             )
             .map((c, _id, combatants) => ({
                 img: c?.actor?.img ?? "",
-                visible: encounter ?
-                    !isHidden(c.token, combatants.map(c => c.token)) :
-                    !isHidden(c?.document, combatants.map(c => c?.document)),
+                visible: encounter
+                    ? !isHidden(
+                          c.token,
+                          combatants.map((c) => c.token)
+                      )
+                    : !isHidden(
+                          c?.document,
+                          combatants.map((c) => c?.document)
+                      ),
                 id: c.actor.id,
                 color:
                     colorMap[c.actor.id] ||
@@ -237,22 +263,22 @@ export async function vsAnimation() {
             .zIndex(100);
         return seq;
     }
+}
 
-    function isVisible(tokenDoc, combatantTokens) {
-        return (
-            tokenDoc?.visible &&
-            !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
-            isVisiblePerception(tokenDoc) &&
-            isVisibleVisioner(tokenDoc, combatantTokens)
-        );
-    }
+function isVisible(tokenDoc, combatantTokens) {
+    return (
+        tokenDoc?.visible &&
+        !tokenDoc.actor.conditions.bySlug("undetected")?.length &&
+        isVisiblePerception(tokenDoc) &&
+        isVisibleVisioner(tokenDoc, combatantTokens)
+    );
+}
 
-    function isHidden(tokenDoc, combatantTokens) {
-        return (
-            !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
-            !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
-            isHiddenPerception(tokenDoc) ||
-            isHiddenVisioner(tokenDoc, combatantTokens)
-        );
-    }
+function isHidden(tokenDoc, combatantTokens) {
+    return (
+        !!tokenDoc.actor.conditions.bySlug("hidden")?.length ||
+        !!tokenDoc.actor.conditions.bySlug("concealed")?.length ||
+        isHiddenPerception(tokenDoc) ||
+        isHiddenVisioner(tokenDoc, combatantTokens)
+    );
 }

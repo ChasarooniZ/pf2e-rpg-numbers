@@ -1,4 +1,4 @@
-import { MODULE_ID, ROTATION } from "../../const.js";
+import { MODULE_ID } from "../../const.js";
 import { getRotationOffset, getTurnTime } from "./turnTokenOnAttack.js";
 
 export async function turnTokensToTarget(tokens, target, doReturn = true) {
@@ -14,10 +14,7 @@ export async function turnTokensToTarget(tokens, target, doReturn = true) {
         for (const token of tokens) {
             const rotationOffset = token?.actor?.getFlag(MODULE_ID, "token")?.rotation?.offset ?? 0;
             const turnTime = getTurnTime(token);
-            seq
-                .animation()
-                .on(token)
-                .rotateTowards(target, { duration: turnTime, rotationOffset });
+            seq.animation().on(token).rotateTowards(target, { duration: turnTime, rotationOffset });
         }
         seq.play();
     }

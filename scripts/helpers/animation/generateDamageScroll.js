@@ -52,7 +52,7 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
         strokeThickness: 5,
     };
 
-    const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
+    const seq = new Sequence({ moduleName: game.modules.get(MODULE_ID).title });
 
     for (const target_id of targets) {
         const tok = game.canvas.tokens.get(target_id);
@@ -92,7 +92,11 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
 
             seq.effect()
                 .syncGroup(`${msg.id}-breakdown-${index}`)
-                .atLocation(tok, { offset: { y: topOffset }, gridUnits: true, randomOffset: isNaN(settings?.jitter) ? 0 : settings.jitter })
+                .atLocation(tok, {
+                    offset: { y: topOffset },
+                    gridUnits: true,
+                    randomOffset: Number.isNaN(settings?.jitter) ? 0 : settings.jitter,
+                })
                 .text(`${dmg.value}`, style)
                 .anchor({ x: 0.5, y: 0.8 })
                 .duration(settings.duration)
@@ -117,5 +121,5 @@ export async function generateDamageScroll(dmg_list, targets, msg) {
         });
     }
 
-    seq.play({preload: true });
+    seq.play({ preload: true });
 }

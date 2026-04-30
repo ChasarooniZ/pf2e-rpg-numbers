@@ -38,7 +38,7 @@ export function burstBurrow(data) {
 }
 
 function crossesZero(a, b) {
-    if (isNaN(a) || isNaN(b)) return false;
+    if (Number.isNaN(a) || Number.isNaN(b)) return false;
     return Math.min(a, b) < 0 && Math.max(a, b) >= 0;
 }
 
