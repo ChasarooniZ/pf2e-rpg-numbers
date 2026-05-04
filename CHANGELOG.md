@@ -1,5 +1,11 @@
 # Unreleased
 
+## 14.0.1
+
+- Updated to require **Sequencer** `4.0.2` to fix some misc bugs
+- Updated to require **Genga** `1.0.2`
+- Updated French translation (🌐 @rectulo)
+
 ## 14.0.0
 
 - **Update**

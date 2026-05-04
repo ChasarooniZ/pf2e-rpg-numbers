@@ -29,8 +29,8 @@
                 "type": "module",
                 "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "4.0.1",
-                    "verified": "4.0.1"
+                    "minimum": "4.0.2",
+                    "verified": "4.0.2"
                 }
             },
             {
@@ -38,8 +38,8 @@
                 "type": "module",
                 "manifest": "https://github.com/ChasarooniZ/anime-agnostic-animations/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "1.0.0",
-                    "verified": "1.0.0"
+                    "minimum": "1.0.2",
+                    "verified": "1.0.2"
                 }
             }
         ]
