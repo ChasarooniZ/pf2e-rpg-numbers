@@ -157,7 +157,7 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
                     const type = $(event.currentTarget).data("type");
                     const section = $(event.target).data("section");
                     const formData = this.getFormData(context).settings;
-                    formData.critical = critProcessHelper(formData.critical, JSON.parse(JSON.stringify(DEFAULT_CRIT)));
+                    formData.critical = critProcessHelper(formData.critical, structuredClone(DEFAULT_CRIT));
                     console.log({ type, section, event });
                     createTestCritAnimation({
                         userID: game.user.id,
@@ -215,8 +215,8 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
             this.rotationTouched = true; // Mark as touched
         });
         input.addEventListener("change", () => {
-            let angle = parseInt(input.value, 10);
-            if (isNaN(angle)) {
+            let angle = Number.parseInt(input.value, 10);
+            if (Number.isNaN(angle)) {
                 angle = 0; // Default to 0 if invalid input
             } else if (angle > 359) {
                 angle = angle % 360;

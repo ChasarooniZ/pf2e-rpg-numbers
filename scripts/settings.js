@@ -74,6 +74,16 @@ Hooks.on("init", () => {
         type: Boolean,
     });
 
+     registerSetting({
+        category: "token-prone-rotate",
+        id: "token-prone-rotate.enabled",
+        desc: "enabled",
+        scope: "world",
+        config: false,
+        default: false,
+        type: Boolean,
+    });
+
     registerBurstBurrowSettings();
 
     registerCheckAnimationSettings();
