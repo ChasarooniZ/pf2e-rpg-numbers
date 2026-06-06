@@ -148,7 +148,7 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
                 ok: {
                     label: localize("menu.settings.buttons.footer.save"),
                     callback: async (event, button, dialog) => {
-                        const newValue = button.form.elements['finishing-move-name'].value.trim();
+                        const newValue = button.form.elements["finishing-move-name"].value.trim();
                         // Save the new value to the module flag
                         await item.setFlag("pf2e-rpg-numbers", "finishing-move.name", newValue);
 
@@ -156,9 +156,9 @@ export function getItemSheetHeaderButtons(itemSheet, menu) {
                         ui.notifications.info(
                             localize("display-text.notifications.finishing-move.settings.item.update", { newValue })
                         );
-                    }
-                }
-            })
+                    },
+                },
+            });
         },
     });
     return menu;
@@ -185,7 +185,6 @@ export async function preUpdateToken(token, changes, _misc, _id) {
     }
 }
 
-
 //TODO Consider a complicated use case where it returns to the original position when all tokens have been untargetted
 export async function targetToken(user, targetToken, isTargeted) {
     if (game.user.id !== user.id) return;
@@ -193,11 +192,11 @@ export async function targetToken(user, targetToken, isTargeted) {
     if (!isTargeted) return;
     // TODO maybe useful if handle turn towards the average of targets
     // const targets = Array.from(game.user.targets);
-    const tokensToRotate = (canvas.tokens.controlled.length > 0 ?
-        canvas.tokens.controlled :
-        canvas.tokens.placeables.filter(t => game.user?.character?.uuid === t?.actor?.uuid)
-    ).filter(tok => tok.id !== targetToken.id);
-
+    const tokensToRotate = (
+        canvas.tokens.controlled.length > 0
+            ? canvas.tokens.controlled
+            : canvas.tokens.placeables.filter((t) => game.user?.character?.uuid === t?.actor?.uuid)
+    ).filter((tok) => tok.id !== targetToken.id);
 
     //const targetPos = averageTokenPosition(targets)
     turnTokensToTarget(tokensToRotate, targetToken, getSetting("rotate-on-target.return"));
@@ -207,4 +206,9 @@ export function combatStart(encounter, _turn) {
     if (getSetting("vs.combat-start") && game.user.isGM) {
         vsAnimation();
     }
+}
+
+export function renderChatInput(chatlog, elements) {
+    const chatMessage = elements["#chat-message"];
+    console.log({ chatMessage, chatlog, elements });
 }
