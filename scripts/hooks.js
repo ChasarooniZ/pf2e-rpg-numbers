@@ -210,8 +210,7 @@ export function combatStart(encounter, _turn) {
 }
 
 export function renderChatInput() {
-    console.log("------------hi");
-    let body = document.getElementsByTagName("body")[0];
+    let body = document.getElementById("chat");
 
     if (body?.querySelector("#pf2e-rpg-numbers-finishing-move-button")) return;
 

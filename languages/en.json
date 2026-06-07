@@ -844,6 +844,9 @@
                     "yes": "Play Animation",
                     "no": "Cancel Animation"
                 }
+            },
+            "finishing-move": {
+                "activaate"
             }
         },
         "display-text": {
