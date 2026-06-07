@@ -158,9 +158,15 @@
     }
 }
 
-div..finishing-move-dialog-item {
+div.finishing-move-dialog-item {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 5px;
+
+    img {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+    }
 }
