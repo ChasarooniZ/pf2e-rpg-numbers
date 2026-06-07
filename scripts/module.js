@@ -24,6 +24,7 @@ import {
     getSceneControlButtons,
     preDeleteCombat,
     preUpdateToken,
+    renderChatInput,
     targetToken,
 } from "./hooks.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
@@ -36,6 +37,7 @@ import { setTokenMagicFXSettings } from "./settings.js";
 Hooks.on("init", () => {
     loadTemplates([`modules/${MODULE_ID}/templates/updateMessage.hbs`]);
     Hooks.on("getSceneControlButtons", getSceneControlButtons);
+    Hooks.on("renderChatInput", renderChatInput);
 });
 
 Hooks.on("ready", () => {

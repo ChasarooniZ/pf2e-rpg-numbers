@@ -29,3 +29,7 @@ function toggleFinishingMoveControl() {
     const controlSelector = `li.control-tool.toggle[aria-label="${game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.name")}"]`;
     document.querySelector(controlSelector)?.click();
 }
+
+export async function finishingMoveDialog() {
+    ui.notifications.info("I was Clicked");
+}

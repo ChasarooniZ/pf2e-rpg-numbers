@@ -5,6 +5,7 @@ import { averageTokenPosition, getSetting, localize } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
 import { turnTokensToTarget } from "./helpers/animation/token/turnTokenOnTarget.js";
+import { finishingMoveDialog } from "./helpers/animation/text/finishingMove.js";
 
 /**
  * Handles pre-deletion actions for combat encounters.
@@ -208,7 +209,28 @@ export function combatStart(encounter, _turn) {
     }
 }
 
-export function renderChatInput(chatlog, elements) {
-    const chatMessage = elements["#chat-message"];
-    console.log({ chatMessage, chatlog, elements });
+export function renderChatInput() {
+    console.log("------------hi");
+    let body = document.getElementById("chat");
+
+    if (body?.querySelector("#pf2e-rpg-numbers-finishing-move-button")) return;
+
+    const chatInput = body.querySelector("#chat-message");
+    if (!chatInput) {
+        console.error("Could not find #chat-message element");
+        return;
+    }
+
+    const buttonHTML = `<button id="pf2e-rpg-numbers-finishing-move-button">
+        <i class="fa-solid fa-message-exclamation"></i> Finishing Move
+    </button>`;
+
+    chatInput.insertAdjacentHTML("beforebegin", buttonHTML);
+
+    const button = body.querySelector("#pf2e-rpg-numbers-finishing-move-button");
+
+    button.addEventListener("click", async function (event) {
+        event.preventDefault();
+        await finishingMoveDialog();
+    });
 }
