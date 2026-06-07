@@ -1,3 +1,4 @@
+import { MODULE_ID } from "../../const.js";
 import { getSetting } from "../../misc.js";
 
 /**
@@ -31,5 +32,49 @@ function toggleFinishingMoveControl() {
 }
 
 export async function finishingMoveDialog() {
-    ui.notifications.info("I was Clicked");
+    const items = game.messages.contents
+        .filter((msg) => msg.isOwner && msg?.item)
+        .map((msg) => ({
+            name: msg?.item?.name,
+            img: msg?.item?.img,
+            label: msg?.item?.getFlag(MODULE_ID, "finishing-move.name") || msg?.item?.name,
+        }))
+        .reverse()
+        .slice(0, 5);
+
+    const itemHTML = items
+        .map(
+            (item, cnt) => `
+        <div class="finishing-move-dialog-item">
+            <input type="radio" id="${item.name}" name="section" value="${item.name}" ${cnt === 0 ? "checked" : ""} />
+            <img src="${item.img}" data-tooltip="${item.name}" />
+            <label for="${item.name}">${item.label}</label>
+        </div>`
+        )
+        .join("");
+
+    let guess;
+    try {
+        guess = await foundry.applications.api.DialogV2.prompt({
+            window: { title: "Finishing Move" },
+            content: `
+      <input name="guess" type="string" autofocus placeholder="Enter custom finishing move..." />
+    <div>
+      <strong>Recent Items (for finishing moves)</strong>
+      ${itemHTML}
+    </div>`,
+            ok: {
+                label: "Show Finishing Move",
+                callback: (event, button, dialog) => button.form.elements,
+            },
+        });
+    } catch {
+        console.log("Finishing Move Failed.");
+        return;
+    }
+
+    const manual = guess?.guess?.value;
+    const selected = guess?.section?.value;
+
+    game.pf2eRPGNumbers.finishingMove.generate(manual || selected);
 }

@@ -157,3 +157,10 @@
         border-left: 1px solid var(--color-disabled);
     }
 }
+
+div..finishing-move-dialog-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
