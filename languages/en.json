@@ -846,7 +846,12 @@
                 }
             },
             "finishing-move": {
-                "activaate"
+                "activate": {
+                    "title": "Finishing Move",
+                    "custom": "Enter custom finishing move...",
+                    "recent-items": "Recent Items (for finishing moves)",
+                    "button": "Display Finishing Move"
+                }
             }
         },
         "display-text": {

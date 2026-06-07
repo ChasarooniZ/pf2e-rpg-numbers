@@ -48,6 +48,7 @@ export async function finishingMoveDialog() {
     // Critical Hit, Someone critically fails your save, Highest Rank Spell slot (if slotted), 3 action activites?
 
     // TODO also add an option to choose whether or not the finishing move also triggers your critical hit
+    // Base the crit type based on the item selected MAYBE (Otherwise use general)
 
     const itemHTML = items
         .map(
