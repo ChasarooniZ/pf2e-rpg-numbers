@@ -1,5 +1,9 @@
 # Unreleased
 
+## 14.0.2
+
+- Allowed negative image delay in actor critical setting (❔ @TheTenk)
+
 ## 14.0.1
 
 - Updated to require **Sequencer** `4.0.2` to fix some misc bugs

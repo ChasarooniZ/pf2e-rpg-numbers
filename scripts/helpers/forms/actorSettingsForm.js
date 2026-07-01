@@ -310,15 +310,12 @@ export class ActorSettingsConfigForm extends foundry.applications.api.Handlebars
     async _processForm(submit = false) {
         const html = this.element;
         const formattedObject = this.getFormData(html);
-
-        // // Handle saving or submitting
+        
         if (submit) {
-            // If submitting, call _updateObject to store the data
             await this.saveSettings(formattedObject);
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.submit`));
             this.close();
         } else {
-            // If saving, call _updateObject to store the data
             await this.saveSettings(formattedObject);
             ui.notifications.info(game.i18n.localize(`${MODULE_ID}.menu.settings.notification.save`));
         }
