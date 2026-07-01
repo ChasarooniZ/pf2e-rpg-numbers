@@ -170,3 +170,19 @@ div.finishing-move-dialog-item {
         object-fit: contain;
     }
 }
+
+button#pf2e-rpg-numbers-finishing-move-button.glow {
+    animation: finishingActiveGlow 2.5s 2;
+}
+
+@keyframes finishingActiveGlow {
+    0% {
+        background: var(--button-background-color);
+    }
+    50% {
+        background: #fd782f;
+    }
+    100% {
+        background: var(--button-background-color);
+    }
+}

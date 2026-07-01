@@ -197,8 +197,18 @@ export function checkRollNumbers(dat, msg) {
         if (doChecks) {
             generateRollScroll(roll_deets);
         }
-        if (doCrits && roll_deets.outcome === "criticalSuccess") {
-            createCritAnimation(roll_deets, "", true);
+        if (roll_deets.outcome === "criticalSuccess") {
+            const fmButton = document.querySelector("#pf2e-rpg-numbers-finishing-move-button");
+            if (fmButton) {
+                fmButton.classList.add("glow");
+                setTimeout(() => {
+                    fmButton.classList.remove("glow");
+                }, 5000);
+            }
+
+            if (doCrits) {
+                createCritAnimation(roll_deets, "", true);
+            }
         }
         if (roll_deets.outcome === "criticalFailure") {
             createCritAnimation(roll_deets, "", false);
