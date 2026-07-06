@@ -6,9 +6,7 @@ export function burstBurrow(data) {
     if (!data?.token) return;
     if (!crossesZero(data?.elevationA, data?.elevationB)) return;
     if (!getSetting("burst-burrow.ignore-speed")) {
-        const hasBurrow = data?.token?.actor?.system?.attributes?.speed?.otherSpeeds?.some(
-            (spd) => spd.type === "burrow"
-        );
+        const hasBurrow = data?.token?.actor?.movement?.speeds?.burrow;
         if (!hasBurrow) return;
     }
     // In Seconds

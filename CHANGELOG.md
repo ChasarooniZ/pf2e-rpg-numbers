@@ -1,5 +1,9 @@
 # Unreleased
 
+## 14.0.3
+
+- Fixed issue causing burrowing feature to not work (💻 @Pmmf)
+
 ## 14.0.2
 
 - Allowed negative image delay in actor critical setting (❔ @TheTenk)
