@@ -1,5 +1,19 @@
 # Unreleased
 
+## 14.1.0
+
+- **New**
+    - Reworked `Finishing Move` feature
+        - ~~Button in the Token Controls~~ -> Button above the Chat Box
+        - Now allows you to input a custom finishing move or to use the default you set for that item
+    - `Bounce on Attack` - Bounces to the target when you attack
+    - Reworked some settings for various features (some have just been removed etc.)
+    - Underlying animations for `Dodge`, `Rotate Towards Target`, `Damage Shake` now use motion
+- **Updated**
+    - Removed `Rotate on Target` to be added to `Anim` at some point
+    - Updated `Genga` requirement to `1.3.1`
+    - Updated `Sequencer` requirement to `4.3.0`
+
 ## 14.0.3
 
 - Fixed issue causing burrowing feature to not work (💻 @Pmmf)

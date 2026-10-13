@@ -27,19 +27,17 @@
             {
                 "id": "sequencer",
                 "type": "module",
-                "manifest": "https://github.com/fantasycalendar/FoundryVTT-Sequencer/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "4.0.2",
-                    "verified": "4.0.2"
+                    "minimum": "4.3.0",
+                    "verified": "4.3.0"
                 }
             },
             {
                 "id": "genga",
                 "type": "module",
-                "manifest": "https://github.com/ChasarooniZ/anime-agnostic-animations/releases/latest/download/module.json",
                 "compatibility": {
-                    "minimum": "1.0.2",
-                    "verified": "1.0.2"
+                    "minimum": "1.3.1",
+                    "verified": "1.3.1"
                 }
             }
         ]

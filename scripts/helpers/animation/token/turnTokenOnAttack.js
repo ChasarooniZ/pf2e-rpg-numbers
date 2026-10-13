@@ -1,5 +1,5 @@
-import { getSetting } from "../../misc.js";
-import { MODULE_ID, MS_TO_SEC, ROTATION } from "../../const.js";
+import { gengaAPI, getSetting } from "../../misc.js";
+import { MODULE_ID } from "../../const.js";
 
 /**
  * Turns token towards target when attacking
@@ -8,16 +8,7 @@ import { MODULE_ID, MS_TO_SEC, ROTATION } from "../../const.js";
  */
 export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
-    game.genga.api.token.rotateToTarget(token, target?.center, getRotationOffset(token));
-}
-
-export function getTurnTime(token) {
-    const tokenSize = (token.document.height + token.document.width) / 2;
-    const baseTurnTime = getSetting("rotate-on-attack.duration") * MS_TO_SEC;
-    const turnTimeScale = getSetting("rotate-on-attack.scale-on-size")
-        ? 1 + (tokenSize - 1) * ROTATION.SIZE_SCALE_FACTOR
-        : 1;
-    return baseTurnTime * turnTimeScale;
+    gengaAPI().token.rotateToTarget(token, target?.center, getRotationOffset(token));
 }
 
 export function getRotationOffset(token) {

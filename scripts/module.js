@@ -25,13 +25,13 @@ import {
     preDeleteCombat,
     preUpdateToken,
     renderChatInput,
-    targetToken,
 } from "./hooks.js";
 import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js";
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 import { handleUpdateMessage } from "./updateMessage.js";
 import { handleToolbeltTarget } from "./helpers/toolbeltHandlers.js";
 import { setTokenMagicFXSettings } from "./settings.js";
+import { tokenBounceOnAttack } from "./helpers/animation/token/tokenBounceOnAttack.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
@@ -70,8 +70,6 @@ Hooks.on("ready", () => {
 
     Hooks.on("getItemSheetHeaderButtons", getItemSheetHeaderButtons);
     Hooks.on("combatStart", combatStart);
-
-    Hooks.on("targetToken", targetToken);
 
     // if (game.user.isGM) {
     //     const version = game.modules.get(MODULE_ID).version;
@@ -166,6 +164,13 @@ function isRotateOnAttack() {
 
 function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
+}
+
+function isBounceOnAttack() {
+    return getSetting("bounce-on-attack");
+}
+function bounceOnAttack(msg) {
+    tokenBounceOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
 
 function isDodgeOnMiss(outcome) {
@@ -328,6 +333,11 @@ export async function handleMessage(msg, userid, dontWait = false) {
                 if (isRotateOnAttack()) {
                     rotateOnAttack(msg);
                 }
+
+                if (isBounceOnAttack()) {
+                    bounceOnAttack(msg);
+                }
+
                 if (isShakeOnAttack(msg.token.actor)) {
                     shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
                 }

@@ -76,19 +76,16 @@ const settingsConfig = {
                 type: "tok-shake-scaling-type",
             },
         },
+        bounceOnAttack: {
+            enabled: "bounce-on-attack",
+        },
         rotateOnAttack: {
             enabled: "rotate-on-attack",
-            duration: { path: "rotate-on-attack.duration", type: "number", range: { min: 0, max: 2, step: 0.1 } },
-            scaleOnSize: "rotate-on-attack.scale-on-size",
             defaultRotation: {
                 path: "rotate-on-attack.default-rotation",
                 type: "number",
                 range: { min: -360, max: 360, step: 1 },
             },
-        },
-        rotateOnTarget: {
-            enabled: "rotate-on-target.enabled",
-            return: "rotate-on-target.return",
         },
         screenShake: {
             onDamaged: {

@@ -1,5 +1,5 @@
 import { MODULE_ID } from "../../const.js";
-import { getSetting, localize } from "../../misc.js";
+import { gengaAPI, getSetting, localize } from "../../misc.js";
 
 /**
  * Creates a finishing move animation with text and sound effects.
@@ -16,7 +16,7 @@ export async function createFinishingMoveAnimation(text) {
         quality: getSetting("finishing-move.quality"),
     };
 
-    game.genga.api.text.finishingMove.BBB(text, settings);
+    gengaAPI().text.finishingMove.BBB(text, settings);
 
     if (!getSetting("finishing-move.keep-on")) {
         toggleFinishingMoveControl();

@@ -68,37 +68,22 @@ export function registerSetting(data) {
 }
 
 export function averageTokenPosition(tokens) {
-    const it = tokens.map(t => t.center).reduce((tot, cur) => {
-        tot.x += cur.x;
-        tot.y += cur.y;
-        return tot;
-    }, { x: 0, y: 0 });
+    const it = tokens
+        .map((t) => t.center)
+        .reduce(
+            (tot, cur) => {
+                tot.x += cur.x;
+                tot.y += cur.y;
+                return tot;
+            },
+            { x: 0, y: 0 }
+        );
 
-    return { x: it.x / tokens.length, y: it.y / tokens.length }
+    return { x: it.x / tokens.length, y: it.y / tokens.length };
 }
 
-
-function transformData(dataArray) {
-    const result = {};
-
-    for (const item of dataArray) {
-        const keys = item.key.split(".");
-        let temp = result;
-
-        for (let i = 0; i < keys.length; i++) {
-            const key = keys[i];
-            if (i === keys.length - 1) {
-                temp[key] = item.value;
-            } else {
-                if (!temp[key]) {
-                    temp[key] = {};
-                }
-                temp = temp[key];
-            }
-        }
-    }
-
-    return { settings: result };
+export function gengaAPI() {
+    return game.genga.api;
 }
 
 // export class FinisherDialog extends ApplicationV2 {
