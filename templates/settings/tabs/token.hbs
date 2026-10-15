@@ -186,46 +186,32 @@
             />
         </div>
     </span>
+</span>
+<span>
     <span>
-        {{! Rotate on Target }}
+        {{! Bounce on Attack }}
         <h4
-            id="rotate-on-target"
+            id="bounce-on-attack"
             data-tooltip-direction="LEFT"
-            data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/rotate-on-target.gif' />"
+            data-tooltip="<img src='https://raw.githubusercontent.com/ChasarooniZ/pf2e-rpg-numbers/refs/heads/main/assets/feature-vids/bounce-on-attack.gif' />"
         >
-            {{localize "pf2e-rpg-numbers.module-settings.headers.rotate-on-target"}}
-            <i class="fa-light fa-reflect-both"></i>
+            {{localize "pf2e-rpg-numbers.module-settings.headers.bounce-on-attack"}}
+            <i class="fa-solid fa-basketball"></i>
         </h4>
         {{! Enabled }}
         <div class="form-group">
             <label
-                for="settings.rotateOnTarget.enabled"
+                for="settings.bounceOnAttack.enabled"
                 data-tooltip-direction="LEFT"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.enabled.hint"}}"
+                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.bounce-on-attack.enabled.hint"}}"
             >
-                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.enabled.name"}}
+                {{localize "pf2e-rpg-numbers.module-settings.bounce-on-attack.enabled.name"}}
             </label>
             <input
                 type="checkbox"
-                id="settings.rotateOnTarget.enabled"
-                name="settings.rotateOnTarget.enabled"
-                {{checked settings.rotateOnTarget.enabled}}
-            />
-        </div>
-        {{! Return? }}
-        <div class="form-group">
-            <label
-                for="settings.rotateOnTarget.return"
-                data-tooltip-direction="LEFT"
-                data-tooltip="{{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.return.hint"}}"
-            >
-                {{localize "pf2e-rpg-numbers.module-settings.rotate-on-target.return.name"}}
-            </label>
-            <input
-                type="checkbox"
-                id="settings.rotateOnTarget.return"
-                name="settings.rotateOnTarget.return"
-                {{checked settings.rotateOnTarget.return}}
+                id="settings.bounceOnAttack.enabled"
+                name="settings.bounceOnAttack.enabled"
+                {{checked settings.bounceOnAttack.enabled}}
             />
         </div>
     </span>

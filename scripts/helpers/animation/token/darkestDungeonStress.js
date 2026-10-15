@@ -1,6 +1,6 @@
 import { getTargetList } from "../../../module.js";
 import { getMessageVisible } from "../../anim.js";
-import { getSetting } from "../../misc.js";
+import { gengaAPI, getSetting } from "../../misc.js";
 
 export function handleDarkestDungeonStress(msg) {
     if (!getSetting("darkest-dungeon.stress.enabled")) return;
@@ -105,5 +105,5 @@ function darkestDungeonHelper(token, isStress, users) {
         volume: getSetting("darkest-dungeon.stress.volume") / 100,
     };
 
-    game.genga.api.darkestDungeonStress(tokens, config, users);
+    gengaAPI().darkestDungeonStress(tokens, config, users);
 }

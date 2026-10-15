@@ -1,4 +1,4 @@
-import { getSetting } from "../../misc.js";
+import { gengaAPI, getSetting } from "../../misc.js";
 
 /**
  * Creates a From Software-style "Death" sequence.
@@ -23,10 +23,10 @@ export async function fromSoftwareDeath(options = {}) {
 
     switch (type) {
         case "elden-ring":
-            game.genga.api.fromSoftware.death.eldenRing(final_options);
+            gengaAPI().fromSoftware.death.eldenRing(final_options);
             break;
         case "sekiro":
-            game.genga.api.fromSoftware.death.sekiro(final_options);
+            gengaAPI().fromSoftware.death.sekiro(final_options);
             break;
         default:
             console.error(`Invalid From Software death ${type}`);
@@ -55,7 +55,7 @@ export async function fromSoftwareNounVerbed(options = {}) {
 
     switch (type) {
         case "elden-ring":
-            game.genga.api.fromSoftware.nounVerbed.eldenRing(final_options);
+            gengaAPI().fromSoftware.nounVerbed.eldenRing(final_options);
             break;
         default:
             console.error(`Invalid From Software Elden Ring ${type}`);

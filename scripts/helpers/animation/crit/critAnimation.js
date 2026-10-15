@@ -1,5 +1,5 @@
 import { getVisibleAndMsgVisibleUsers } from "../../anim.js";
-import { getSetting, localize } from "../../misc.js";
+import { gengaAPI, getSetting, localize } from "../../misc.js";
 import { MODULE_ID, MS_TO_SEC } from "../../const.js";
 import { getTokenImage } from "../token/shakeOnDamageToken.js";
 
@@ -48,7 +48,8 @@ export function createTestCritAnimation(data) {
 
     const config = getAnimationConfig({ flags: settings, type: section, isSuccess: succFail === "success" });
 
-    const type = config?.type !== "default" ? config?.type ?? getSetting("critical.type") : getSetting("critical.type");
+    const type =
+        config?.type !== "default" ? (config?.type ?? getSetting("critical.type")) : getSetting("critical.type");
 
     if (config.type === "default" && succFail === "failure") {
         ui.notifications.error(localize("display-text.notifications.critical.failure.error"));
@@ -74,13 +75,13 @@ export function createTestCritAnimation(data) {
  * @returns {'default' | 'yes' | 'no'} True if the animation should be canceled, false otherwise.
  */
 function shouldCancelCriticalHit(rollDeets, enabledType) {
-    if (enabledType === 'no') return false;
-    if (enabledType === 'yes') return true;
+    if (enabledType === "no") return false;
+    if (enabledType === "yes") return true;
     if (rollDeets.type === "custom") return false;
-    
+
     const isAttack = rollDeets.type === "attack-roll";
     const showOn = getSetting("critical.show-on");
-    
+
     if (isAttack && !getSetting("critical.bypass-immunity") && hasTargetCritImmunity(rollDeets.target)) {
         return true;
     }
@@ -89,7 +90,7 @@ function shouldCancelCriticalHit(rollDeets, enabledType) {
         case "attacks":
             return !isAttack;
         case "checks":
-            return isAttack
+            return isAttack;
         case "both":
             return false;
     }
@@ -105,11 +106,11 @@ function hasTargetCritImmunity(target) {
 
     try {
         const targetActor = fromUuidSync(target.actor);
-        
+
         if (!targetActor?.system?.attributes?.immunities) return false;
 
         const hasCritImmunity = targetActor.system.attributes.immunities.find(
-            immunity => immunity?.type === "critical-hits"
+            (immunity) => immunity?.type === "critical-hits"
         );
 
         return !!hasCritImmunity;
@@ -178,9 +179,9 @@ function getAnimationConfig(config) {
     const flags = config?.flags
         ? config.flags
         : {
-            critical: config.actor.getFlag("pf2e-rpg-numbers", "critical"),
-            token: config.actor.getFlag("pf2e-rpg-numbers", "token"),
-        };
+              critical: config.actor.getFlag("pf2e-rpg-numbers", "critical"),
+              token: config.actor.getFlag("pf2e-rpg-numbers", "token"),
+          };
 
     const successOrFail = config.isSuccess ? "success" : "failure";
 
@@ -189,7 +190,7 @@ function getAnimationConfig(config) {
         offset: { x: 0, y: 0 },
         sfx: config.isSuccess ? getSetting("critical.sound") : "",
         volume: getSetting("critical.volume") / 100,
-        duration: getSetting("critical.duration") * MS_TO_SEC
+        duration: getSetting("critical.duration") * MS_TO_SEC,
     };
     let result = {};
 
@@ -237,22 +238,22 @@ function getEligibleUsers(rollDeets) {
 function displayCritAnimation(critType, actor, users, config) {
     switch (critType) {
         case "darkest-dungeon-crisis":
-            game.genga.api.crit.darkestDungeon.crisis(actor, users, config)
+            gengaAPI().crit.darkestDungeon.crisis(actor, users, config);
             break;
         case "darkest-dungeon-virtue":
-            game.genga.api.crit.darkestDungeon.virtue(actor, users, config)
+            gengaAPI().crit.darkestDungeon.virtue(actor, users, config);
             break;
         case "disgaea-7":
-            game.genga.api.crit.disgaea7(actor, users, config);
+            gengaAPI().crit.disgaea7(actor, users, config);
             break;
         case "fire-emblem":
-            game.genga.api.crit.fireEmblemAwakening(actor, users, config);
+            gengaAPI().crit.fireEmblemAwakening(actor, users, config);
             break;
         case "fullscreen":
-            game.genga.api.crit.fullscreen(actor, users, config);
+            gengaAPI().crit.fullscreen(actor, users, config);
             break;
         case "persona":
-            game.genga.api.crit.persona5(actor, users, config);
+            gengaAPI().crit.persona5(actor, users, config);
             break;
         default:
             ui.notifications.error(`PF2e RPG #s: Unrecognized crit animation type: ${crit - type}`);
@@ -271,15 +272,16 @@ function getCritActorSettings(data, successOrFail, flags, type = "default") {
     result.offset.x = (typeSpecificSettings?.offset?.x || (baseSettings?.offset?.x ?? 0)) / 100;
     result.offset.y = (typeSpecificSettings?.offset?.y || (baseSettings?.offset?.y ?? 0)) / 100;
     result.rotation = typeSpecificSettings?.rotation || (baseSettings?.rotation ?? 0);
-    result.scale = typeSpecificSettings?.scale === 1 ? baseSettings?.scale ?? 1 : typeSpecificSettings?.scale ?? 1;
+    result.scale = typeSpecificSettings?.scale === 1 ? (baseSettings?.scale ?? 1) : (typeSpecificSettings?.scale ?? 1);
     result.sfx = typeSpecificSettings?.sfx || baseSettings?.sfx || "";
     result.type = typeSpecificSettings?.type === "default" ? baseSettings?.type : typeSpecificSettings?.type;
-    result.imagedelay = (typeSpecificSettings?.imagedelay * MS_TO_SEC) || (baseSettings?.imagedelay ?? 0);
-    result.duration = (typeSpecificSettings?.duration !== undefined ? typeSpecificSettings.duration * MS_TO_SEC : null)
-    || (baseSettings?.duration !== undefined ? baseSettings.duration * MS_TO_SEC : null)
-    || data.duration;
+    result.imagedelay = typeSpecificSettings?.imagedelay * MS_TO_SEC || (baseSettings?.imagedelay ?? 0);
+    result.duration =
+        (typeSpecificSettings?.duration !== undefined ? typeSpecificSettings.duration * MS_TO_SEC : null) ||
+        (baseSettings?.duration !== undefined ? baseSettings.duration * MS_TO_SEC : null) ||
+        data.duration;
     const volume =
-        (typeSpecificSettings?.volume === 100 ? baseSettings?.volume ?? 100 : typeSpecificSettings?.volume) ?? 100;
+        (typeSpecificSettings?.volume === 100 ? (baseSettings?.volume ?? 100) : typeSpecificSettings?.volume) ?? 100;
     result.volume = (volume * result.volume) / 100;
 
     return result;

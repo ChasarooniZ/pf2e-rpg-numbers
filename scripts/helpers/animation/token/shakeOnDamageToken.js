@@ -1,4 +1,5 @@
 import { getTokenShakeScale } from "../../anim.js";
+import { gengaAPI } from "../../misc.js";
 
 /**
  * Shakes a token to visualize damage
@@ -13,7 +14,7 @@ export async function shakeOnDamageToken(actor_uuid, dmg) {
 
     const [shakeDistancePercent, shakes, duration] = getTokenShakeScale(token, dmg);
 
-    game.genga.api.token.shakeToken(token, shakeDistancePercent, shakes, duration);
+    gengaAPI().token.shakeToken({ token, shakeDistancePercent, shakes, duration });
 }
 
 /**

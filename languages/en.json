@@ -57,7 +57,7 @@
                 "shake-on-attack": "Shake Screen on Attack",
                 "rotate": "Rotate",
                 "rotate-on-attack": "Rotate on Attack",
-                "rotate-on-target": "Rotate on Target",
+                "bounce-on-attack": "Bounce on Attack",
                 "dodge-on-miss": "Target Dodges",
                 "finishing-move": {
                     "title": "Finishing Moves"
@@ -283,7 +283,7 @@
             "token-dmg-shake": {
                 "enabled": {
                     "name": "Enable Token Shaking on Damage",
-                    "hint": "When you apply damage to a token cause it to shake (Note: This can behave unexpectedly if you have an inconsistent internet connection, if your tokens become hidden, you'll need to set their opacity back to the expected value)"
+                    "hint": "When you apply damage to a token cause it to shake"
                 },
                 "distance": {
                     "name": "Shake Distance",
@@ -340,6 +340,12 @@
                     }
                 }
             },
+            "bounce-on-attack": {
+                "enabled": {
+                    "name": "Enable Bounce on Attack",
+                    "hint": "When you attack the token bounces towards who they are attacking"
+                }
+            },
             "rotate-on-attack": {
                 "enabled": {
                     "name": "Enable Rotate on Attack",
@@ -356,16 +362,6 @@
                 "default-rotation": {
                     "name": "Default Rotation",
                     "hint": "The default rotation for tokens unless overrode"
-                }
-            },
-            "rotate-on-target": {
-                "enabled": {
-                    "name": "Enable Rotate on Target",
-                    "hint": "When you target a token the token(s) you have set as your user's actor or the tokens you have selected if you have any selected turn towards the targetted, then turns back to its original rotation. You can set the rotation offset to determine where the token faces."
-                },
-                "return": {
-                    "name": "Return?",
-                    "hint": "Should the token return to its previous original rotation it had after rotating to the target?"
                 }
             },
             "critical": {
@@ -869,6 +865,9 @@
                         "error": "Error: Invalid configuration. Set Critical Failure crit Type for this actor"
                     }
                 }
+            },
+            "ui": {
+
             }
         },
         "keybinds": {

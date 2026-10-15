@@ -69,26 +69,20 @@ const settingsConfig = {
         },
         tokenShake: {
             enabled: "dmg-shake-directional-enabled",
-            distance: { path: "tok-shake-distance", type: "number", range: { min: 1, max: 100, step: 1 } },
-            shakes: { path: "tok-shake-shakes", type: "number", range: { min: 1, max: 20, step: 1 } },
-            duration: { path: "tok-shake-duration", type: "number", range: { min: 0, max: 2000, step: 10 } },
             scaling: {
                 type: "tok-shake-scaling-type",
             },
         },
+        bounceOnAttack: {
+            enabled: "bounce-on-attack",
+        },
         rotateOnAttack: {
             enabled: "rotate-on-attack",
-            duration: { path: "rotate-on-attack.duration", type: "number", range: { min: 0, max: 2, step: 0.1 } },
-            scaleOnSize: "rotate-on-attack.scale-on-size",
             defaultRotation: {
                 path: "rotate-on-attack.default-rotation",
                 type: "number",
                 range: { min: -360, max: 360, step: 1 },
             },
-        },
-        rotateOnTarget: {
-            enabled: "rotate-on-target.enabled",
-            return: "rotate-on-target.return",
         },
         screenShake: {
             onDamaged: {
@@ -176,8 +170,6 @@ const settingsConfig = {
         icon: "fas fa-message-captions",
         finishingMove: {
             enabled: "finishing-move.enabled",
-            playerEnabled: "finishing-move.enabled-players",
-            keepOn: "finishing-move.keep-on",
             usePlayerColor: "finishing-move.use-player-color",
             quality: { path: "finishing-move.quality", type: "number", range: { min: 1, max: 5, step: 1 } },
             sound: "finishing-move.sound-effect",
@@ -259,6 +251,7 @@ export class SettingsConfigForm extends foundry.applications.api.HandlebarsAppli
             handler: SettingsConfigForm.#onSubmit,
             closeOnSubmit: true,
         },
+        classes: ["pf2e-rpg-numbers-settings"],
         popOut: true,
         position: {
             width: 600,

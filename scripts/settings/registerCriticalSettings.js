@@ -9,7 +9,7 @@ export function registerCriticalSettings() {
         desc: "enabled",
         scope: "world",
         config: false,
-        default: true,
+        default: false,
         type: Boolean,
     });
 

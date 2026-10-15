@@ -171,6 +171,14 @@ div.finishing-move-dialog-item {
     }
 }
 
+/* #pf2e-rpg-numbers-settings-form .window-content {
+    overflow: hidden auto;
+} */
+
+#pf2e-rpg-numbers-settings-form .window-content .pf2e-rpg-numbers-main {
+    overflow: hidden auto;
+}
+
 button#pf2e-rpg-numbers-finishing-move-button.glow {
     animation: finishingActiveGlow 2.5s 2;
 }

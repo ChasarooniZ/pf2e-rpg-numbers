@@ -16,22 +16,13 @@ export const KOFI_MESSAGE = [
 
 export const MS_TO_SEC = 1000;
 
-
 export const NEW_FEATURE_BY_VERSION = {
-    '13.4.0': {
-        'darkest-dungeon-stress': true
-    }
-}
+    "13.4.0": {
+        "darkest-dungeon-stress": true,
+    },
+    "14.1.0": {
+        "bounce-on-attack": true,
+    },
+};
 
-export const DEGREES_OF_SUCCESS = [
-    "criticalFailure",
-    "failure",
-    "success",
-    "criticalSuccess",
-    "none"
-]
-
-export const ROTATION = {
-    SIZE_SCALE_FACTOR: 0.5,
-    RETURN_DELAY_FACTOR: 0.5,
-}
+export const DEGREES_OF_SUCCESS = ["criticalFailure", "failure", "success", "criticalSuccess", "none"];

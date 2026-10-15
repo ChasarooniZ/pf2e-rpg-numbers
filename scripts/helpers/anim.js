@@ -1,4 +1,9 @@
-import { getTokenIDsThatSeeTokenPerception, getTokenIDsThatSeeTokenVisioner, isPerceptionActive, isVisionerActive } from "./compatability.js";
+import {
+    getTokenIDsThatSeeTokenPerception,
+    getTokenIDsThatSeeTokenVisioner,
+    isPerceptionActive,
+    isVisionerActive,
+} from "./compatability.js";
 import { getSetting } from "./misc.js";
 
 /**
@@ -53,7 +58,7 @@ export function getVisibleUsers(tok) {
             if (isVisionerActive()) {
                 cantSee = getTokenIDsThatSeeTokenVisioner(tok);
             } else if (isPerceptionActive()) {
-                cantSee = getTokenIDsThatSeeTokenPerception(tok)
+                cantSee = getTokenIDsThatSeeTokenPerception(tok);
             }
             list = list.concat(
                 game.users.players.filter((u) => !cantSee.includes(u?.character?.uuid)).map((u) => u.id)
@@ -65,39 +70,12 @@ export function getVisibleUsers(tok) {
     return list;
 }
 
-//WIP?
-// export function damageShakeRollDamage(token, targets) {
-//     targets.forEach((target) => {
-//         const default_shake = target === token || !token;
-//         const { x: tok_x, y: tok_y, w: tok_width } = target;
-//         let ray = new Ray(token, target);
-//         const shake_distance = 0.2;
-//         let ray_projection_amt = (tok_width / ray.distance) * shake_distance;
-//         const shakes = 7;
-//         const seq = new Sequence({moduleName: game.modules.get(MODULE_ID).title});
-//         for (let i = 0; i < shakes; i++) {
-//             const sign = i % 2 === 0 ? 1 : -1;
-//             let details = ray.project(1 + sign * ray_projection_amt);
-//             if (default_shake) details = { x: tok_x + tok_width * shake_distance * sign, y: tok_y };
-//             details.ease = "easeInOutSine";
-//             seq.animation().waitUntilFinished(10).on(target).moveSpeed(10).moveTowards(details);
-//         }
-
-//         seq.animation()
-//             .waitUntilFinished()
-//             .on(target)
-//             .moveSpeed(10)
-//             .moveTowards({ x: tok_x, y: tok_y, ease: "easeInOutSine" })
-//             .play({preload: true });
-//     });
-// }
-
 export function getTokenShakeScale(token, dmg) {
     const result = ["distance", "shakes", "duration"];
     let values = {
-        distance: getSetting("tok-shake-distance") / 100,
-        shakes: getSetting("tok-shake-shakes"),
-        duration: getSetting("tok-shake-duration"),
+        distance: 0.075,
+        shakes: 6,
+        duration: 400,
     };
     const scaleType = getSetting("tok-shake-scaling-type");
     const hp = token.actor.system.attributes.hp;
@@ -121,7 +99,7 @@ export function getTokenShakeScale(token, dmg) {
             case "distance":
                 return val * getMultiplier(scale, 2, 1);
             case "shakes":
-                return Math.round(val * getMultiplier(scale, 1.7, 1));
+                return Math.round(val * getMultiplier(scale, 2, 0.5));
             case "duration":
                 return val * getMultiplier(scale, 2, 1);
             default:
@@ -131,9 +109,9 @@ export function getTokenShakeScale(token, dmg) {
 }
 
 export function getMessageVisible(msg) {
-    game.users.contents.map(u => u.id).filter((player) =>
-        msg.whisper.length === 0 ? true : msg.whisper.includes(player)
-    );
+    game.users.contents
+        .map((u) => u.id)
+        .filter((player) => (msg.whisper.length === 0 ? true : msg.whisper.includes(player)));
 }
 
 export function getVisibleAndMsgVisibleUsers(roll_deets) {

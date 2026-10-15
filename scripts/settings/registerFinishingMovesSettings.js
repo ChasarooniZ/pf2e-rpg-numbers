@@ -9,28 +9,7 @@ export function registerFinishingMovesSettings() {
         config: false,
         default: true,
         type: Boolean,
-    });
-
-    registerSetting({
-        category: 'finishing-move',
-        id: 'finishing-move.enabled-players',
-        desc: 'enabled-players',
-        scope: 'world',
-        config: false,
-        default: false,
-        type: Boolean,
-        requiresReload: true,
-    });
-
-    registerSetting({
-        category: 'finishing-move',
-        id: 'finishing-move.keep-on',
-        desc: 'keep-on',
-        scope: 'world',
-        config: false,
-        default: false,
-        type: Boolean,
-    });
+    })
 
     registerSetting({
         category: 'finishing-move',

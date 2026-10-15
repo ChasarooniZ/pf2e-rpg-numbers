@@ -1,5 +1,5 @@
 import { MS_TO_SEC } from "../../const.js";
-import { getSetting } from "../../misc.js";
+import { gengaAPI, getSetting } from "../../misc.js";
 
 export async function handleDodgeOnMiss(token, target) {
     const targetActor = target?.actor;
@@ -36,12 +36,12 @@ export async function handleDodgeOnMiss(token, target) {
  * @param {*} target Defend Token
  */
 async function dodgeOnMiss(token, target) {
-    game.genga.api.token.dodgeTarget(target, token?.center);
+    gengaAPI().token.dodgeTarget(token, target?.center);
 }
 
 async function bounceOffTarget(token, target, filter = {}) {
     const delay = getSetting("dodge-on-miss.delay") * MS_TO_SEC;
-    game.genga.api.token.bounceOffTarget(token, target, delay, filter);
+    gengaAPI().token.bounceOffTarget(token, target, delay, filter);
 }
 
 const COLOR_FILTER = {

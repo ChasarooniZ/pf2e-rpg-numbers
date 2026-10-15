@@ -57,7 +57,6 @@
         "shake-on-attack": "Drgania ekranu podczas ataku",
         "rotate": "Obrót",
         "rotate-on-attack": "Obrót podczas ataku",
-        "rotate-on-target": "Obróć w kierunku celu",
         "dodge-on-miss": "Uniki celu",
         "finishing-move": {
           "title": "Ciosy kończące"
@@ -356,16 +355,6 @@
         "default-rotation": {
           "name": "Domyślny obrót",
           "hint": "Domyślny obrót tokenów, chyba że zostanie zastąpiony"
-        }
-      },
-      "rotate-on-target": {
-        "enabled": {
-          "name": "Włącz obrót w kierunku celu",
-          "hint": "Po wybraniu tokenu tokeny ustawione jako aktor użytkownika lub wybrane tokeny, jeśli zostały wybrane, obracają się w kierunku wybranego tokenu, a następnie wracają do pierwotnego położenia. Można ustawić przesunięcie obrotu, aby określić kierunek, w którym token będzie skierowany."
-        },
-        "return": {
-          "name": "Powrót?",
-          "hint": "Czy token powinien powrócić do swojego pierwotnego położenia po obróceniu w kierunku celu?"
         }
       },
       "critical": {

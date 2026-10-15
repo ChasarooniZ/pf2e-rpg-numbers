@@ -1,12 +1,11 @@
-import { getSetting, localize, registerSetting, setSetting } from "./helpers/misc.js";
+import { localize, registerSetting } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { SettingsConfigForm } from "./helpers/forms/settingsConfigForm.js";
 import { registerScreenShakeSettings } from "./settings/registerScreenShakeSettings.js";
 import { registerDmgNumbersSettings } from "./settings/registerDmgNumbersSettings.js";
-import { registerTokenDamageShakeSettings } from "./settings/registerTokenDamageShakeSettings.js";
 import { registerCheckAnimationSettings } from "./settings/registerCheckAnimationSettings.js";
 import { registerShakeScreenOnAttackSettings } from "./settings/registerShakeScreenOnAttackSettings.js";
-import { registerRotateSettings } from "./settings/registerRotateSettings.js";
+import { registerTokenMotionSettings } from "./settings/registerTokenMotionSettings.js";
 import { registerDodgeOnMissSettings } from "./settings/registerDodgeOnMissSettings.js";
 import { registerCriticalSettings } from "./settings/registerCriticalSettings.js";
 import { registerFinishingMovesSettings } from "./settings/registerFinishingMovesSettings.js";
@@ -88,13 +87,11 @@ Hooks.on("init", () => {
 
     registerFromSoftwareTextSettings();
 
-    registerRotateSettings();
+    registerTokenMotionSettings();
 
     registerScreenShakeSettings();
 
     registerShakeScreenOnAttackSettings();
-
-    registerTokenDamageShakeSettings();
 
     registerVersusSettings();
 
@@ -139,31 +136,6 @@ Hooks.on("init", () => {
         default: {},
         type: Object,
     });
-
-    game.keybindings.register(MODULE_ID, "activateFinishingMove", {
-        name: localize("keybinds.activate-finishing-move.name"),
-        hint: localize("keybinds.activate-finishing-move.hint"),
-        editable: [
-            {
-                key: "KeyQ",
-                modifiers: ["Shift"],
-            },
-        ],
-        onDown: () => {
-            if (!game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
-                document
-                    .querySelector(
-                        `li.control-tool.toggle[aria-label="${game.i18n.localize(
-                            "pf2e-rpg-numbers.controls.finishing-move.name"
-                        )}"]`
-                    )
-                    .click();
-            }
-        },
-        onUp: () => {},
-        restricted: false,
-        precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
-    });
     game.keybindings.register(MODULE_ID, "activateCriticalAnimation", {
         name: localize("keybinds.activate-critical.success.name"),
         hint: localize("keybinds.activate-critical.success.hint"),
@@ -186,11 +158,3 @@ Hooks.on("init", () => {
         precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
     });
 });
-
-export async function setTokenMagicFXSettings() {
-    if (game.modules.get("tokenmagic")?.active && getSetting("token-magic.setup")) {
-        game.settings.set("tokenmagic", "autoTemplateSettings", false);
-        game.settings.set("tokenmagic", "defaultTemplateOnHover", false);
-        setSetting("token-magic.setup");
-    }
-}
