@@ -136,31 +136,6 @@ Hooks.on("init", () => {
         default: {},
         type: Object,
     });
-
-    game.keybindings.register(MODULE_ID, "activateFinishingMove", {
-        name: localize("keybinds.activate-finishing-move.name"),
-        hint: localize("keybinds.activate-finishing-move.hint"),
-        editable: [
-            {
-                key: "KeyQ",
-                modifiers: ["Shift"],
-            },
-        ],
-        onDown: () => {
-            if (!game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
-                document
-                    .querySelector(
-                        `li.control-tool.toggle[aria-label="${game.i18n.localize(
-                            "pf2e-rpg-numbers.controls.finishing-move.name"
-                        )}"]`
-                    )
-                    .click();
-            }
-        },
-        onUp: () => {},
-        restricted: false,
-        precedence: CONST.KEYBINDING_PRECEDENCE.NORMAL,
-    });
     game.keybindings.register(MODULE_ID, "activateCriticalAnimation", {
         name: localize("keybinds.activate-critical.success.name"),
         hint: localize("keybinds.activate-critical.success.hint"),
