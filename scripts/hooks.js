@@ -1,10 +1,9 @@
 import { fromSoftwareDeath, fromSoftwareNounVerbed } from "./helpers/animation/text/fromSoftwareText.js";
 import { burrow, burstBurrow } from "./helpers/animation/token/burstBurrow.js";
 import { ActorSettingsConfigForm } from "./helpers/forms/actorSettingsForm.js";
-import { averageTokenPosition, getSetting, localize } from "./helpers/misc.js";
+import { getSetting, localize } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { vsAnimation } from "./helpers/animation/text/vsAnimation.js";
-import { turnTokensToTarget } from "./helpers/animation/token/turnTokenOnTarget.js";
 import { finishingMoveDialog } from "./helpers/animation/text/finishingMove.js";
 
 /**
@@ -56,38 +55,6 @@ export async function applyTokenStatusEffect(token, status, isAdded) {
         if (userId) {
             fromSoftwareDeath({ users: [userId] });
         }
-    }
-}
-
-export function getSceneControlButtons(controls, _b, _c) {
-    if (!game.user.isGM && !getSetting("finishing-move.enabled-players")) return;
-    let isFinishingMove = !!game.user.getFlag(MODULE_ID, "finishingMoveActive");
-
-    const toolData = {
-        name: "finishing-move",
-        title: localize("controls.finishing-move.name"),
-        icon: "fas fa-message-captions",
-        toggle: true,
-        visible: getSetting("finishing-move.enabled"),
-        active: isFinishingMove,
-        onClick: async (toggle) => {
-            game.user.setFlag(MODULE_ID, "finishingMoveActive", toggle);
-        },
-        toolclip: {
-            src: "modules/pf2e-rpg-numbers/resources/videos/finishing-move-toolclip.webm",
-            heading: localize("controls.finishing-move.toolclip.heading"),
-            items: [
-                {
-                    paragraph: localize("controls.finishing-move.toolclip.items.description.paragraph"),
-                },
-            ],
-        },
-    };
-
-    if (Array.isArray(controls)) {
-        controls.find((con) => con.name == "token").tools.push(toolData);
-    } else {
-        controls.tokens.tools["finishing-move"] = toolData;
     }
 }
 
@@ -186,23 +153,6 @@ export async function preUpdateToken(token, changes, _misc, _id) {
     }
 }
 
-//TODO Consider a complicated use case where it returns to the original position when all tokens have been untargetted
-export async function targetToken(user, targetToken, isTargeted) {
-    if (game.user.id !== user.id) return;
-    if (!getSetting("rotate-on-target.enabled")) return;
-    if (!isTargeted) return;
-    // TODO maybe useful if handle turn towards the average of targets
-    // const targets = Array.from(game.user.targets);
-    const tokensToRotate = (
-        canvas.tokens.controlled.length > 0
-            ? canvas.tokens.controlled
-            : canvas.tokens.placeables.filter((t) => game.user?.character?.uuid === t?.actor?.uuid)
-    ).filter((tok) => tok.id !== targetToken.id);
-
-    //const targetPos = averageTokenPosition(targets)
-    turnTokensToTarget(tokensToRotate, targetToken, getSetting("rotate-on-target.return"));
-}
-
 export function combatStart(encounter, _turn) {
     if (getSetting("vs.combat-start") && game.user.isGM) {
         vsAnimation();
@@ -210,6 +160,7 @@ export function combatStart(encounter, _turn) {
 }
 
 export function renderChatInput() {
+    if (!getSetting("finishing-move.enabled")) return;
     let body = document.getElementById("chat");
 
     if (body?.querySelector("#pf2e-rpg-numbers-finishing-move-button")) return;
@@ -221,7 +172,7 @@ export function renderChatInput() {
     }
 
     const buttonHTML = `<button id="pf2e-rpg-numbers-finishing-move-button">
-        <i class="fa-solid fa-message-exclamation"></i> Finishing Move
+        <i class="fa-solid fa-message-exclamation"></i> ${game.i18n.localize("pf2e-rpg-numbers.controls.finishing-move.toolclip.heading")}
     </button>`;
 
     chatInput.insertAdjacentHTML("beforebegin", buttonHTML);

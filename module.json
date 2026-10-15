@@ -36,8 +36,8 @@
                 "id": "genga",
                 "type": "module",
                 "compatibility": {
-                    "minimum": "1.3.1",
-                    "verified": "1.3.1"
+                    "minimum": "1.3.5",
+                    "verified": "1.3.5"
                 }
             }
         ]

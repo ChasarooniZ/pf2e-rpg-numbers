@@ -8,7 +8,7 @@ import { MODULE_ID } from "../../const.js";
  */
 export async function turnTokenOnAttack(token, target) {
     if (!token || !target || token === target) return;
-    gengaAPI().token.rotateToTarget(token, target?.center, getRotationOffset(token));
+    gengaAPI().token.rotateToTarget(token, target?.center, getRotationOffset(token) - 90);
 }
 
 export function getRotationOffset(token) {

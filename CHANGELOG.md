@@ -11,7 +11,9 @@
     - Underlying animations for `Dodge`, `Rotate Towards Target`, `Damage Shake` now use motion
 - **Updated**
     - Removed `Rotate on Target` to be added to `Anim` at some point
-    - Updated `Genga` requirement to `1.3.1`
+    - Removed `Token Magic FX` from recommended
+    - Removed `DSN` support in the meantime
+    - Updated `Genga` requirement to `1.3.5`
     - Updated `Sequencer` requirement to `4.3.0`
 
 ## 14.0.3

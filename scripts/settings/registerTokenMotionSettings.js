@@ -1,6 +1,6 @@
 import { registerSetting } from "../helpers/misc.js";
 
-export function registerRotateSettings() {
+export function registerTokenMotionSettings() {
     // Rotate on Attack
     registerSetting({
         category: "rotate-on-attack",
@@ -36,5 +36,26 @@ export function registerRotateSettings() {
         config: false,
         default: false,
         type: Boolean,
+    });
+
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "dmg-shake-directional-enabled",
+        desc: "enabled",
+        scope: "world",
+        config: false,
+        default: true,
+        type: Boolean,
+    });
+
+    registerSetting({
+        category: "token-dmg-shake",
+        id: "tok-shake-scaling-type",
+        desc: "scaling.type",
+        scope: "world",
+        config: false,
+        default: "%-max-hp",
+        type: String,
+        choices: ["no", "%-current-hp", "%-max-hp"],
     });
 }

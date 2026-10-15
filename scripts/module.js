@@ -1,5 +1,4 @@
 import { createCritAnimation } from "./helpers/animation/crit/critAnimation.js";
-import { createFinishingMoveAnimation } from "./helpers/animation/text/finishingMove.js";
 import { generateDamageScroll } from "./helpers/animation/generateDamageScroll.js";
 import { generateRollScroll } from "./helpers/animation/generateRollScroll.js";
 import { shakeOnDamageToken } from "./helpers/animation/token/shakeOnDamageToken.js";
@@ -12,7 +11,6 @@ import {
     doSomethingOnDamageApply,
     //FinisherDialog,
     getSetting,
-    waitForMessage,
 } from "./helpers/misc.js";
 import { MODULE_ID } from "./helpers/const.js";
 import { getDamageList } from "./helpers/rollTerms.js";
@@ -21,7 +19,6 @@ import {
     combatStart,
     getActorSheetHeaderButtons,
     getItemSheetHeaderButtons,
-    getSceneControlButtons,
     preDeleteCombat,
     preUpdateToken,
     renderChatInput,
@@ -30,20 +27,17 @@ import { handleDodgeOnMiss } from "./helpers/animation/token/tokenDodgeOnMiss.js
 import { handleDarkestDungeonStress } from "./helpers/animation/token/darkestDungeonStress.js";
 import { handleUpdateMessage } from "./updateMessage.js";
 import { handleToolbeltTarget } from "./helpers/toolbeltHandlers.js";
-import { setTokenMagicFXSettings } from "./settings.js";
 import { tokenBounceOnAttack } from "./helpers/animation/token/tokenBounceOnAttack.js";
 
 // HOOKS STUFF
 Hooks.on("init", () => {
     loadTemplates([`modules/${MODULE_ID}/templates/updateMessage.hbs`]);
-    Hooks.on("getSceneControlButtons", getSceneControlButtons);
     Hooks.on("renderChatInput", renderChatInput);
 });
 
 Hooks.on("ready", () => {
     console.log("PF2e RPG Numbers is starting");
     createAPI();
-    setTokenMagicFXSettings();
     // Noun Verbed Elden Ring
     Hooks.on("preDeleteCombat", preDeleteCombat);
     // You died Elden Ring
@@ -238,25 +232,7 @@ function damageRollNumbers(dat, msg) {
             },
             "Damage: "
         );
-        waitForMessage(msg.id).then(() => generateDamageScroll(dmg_list, targets, msg));
-    }
-}
-
-/**
- * Handles finishing move animations when the finishing move flag is active.
- * @param {object} dat - Data object from getData() containing item information
- * @param {object} msg - The chat message object
- */
-function finishingMove(dat, msg) {
-    if (getSetting("finishing-move.enabled") && game.user.getFlag(MODULE_ID, "finishingMoveActive")) {
-        debugLog(
-            {
-                item: dat.item,
-            },
-            "Finishing Move"
-        );
-        const name = msg?.item?.getFlag(MODULE_ID, "finishing-move.name") || dat.item.name;
-        createFinishingMoveAnimation(name);
+        generateDamageScroll(dmg_list, targets, msg);
     }
 }
 
@@ -315,40 +291,35 @@ export async function handleMessage(msg, userid, dontWait = false) {
             msg,
         });
         const dat = getData(msg);
-        //Finishing Moves
-        finishingMove(dat, msg);
+        // RPG Numbers on Damage Roll
+        damageRollNumbers(dat, msg);
 
-        waitForMessage(msg.id, 250, 120, dontWait).then(() => {
-            // RPG Numbers on Damage Roll
-            damageRollNumbers(dat, msg);
+        // RPG Numbers on Check Roll
+        checkRollNumbers(dat, msg);
 
-            // RPG Numbers on Check Roll
-            checkRollNumbers(dat, msg);
+        handleDarkestDungeonStress(msg);
 
-            handleDarkestDungeonStress(msg);
-
-            //Attack Roll Stuff
-            if (dat.isAttackRoll) {
-                // Rotate on Attack Roll
-                if (isRotateOnAttack()) {
-                    rotateOnAttack(msg);
-                }
-
-                if (isBounceOnAttack()) {
-                    bounceOnAttack(msg);
-                }
-
-                if (isShakeOnAttack(msg.token.actor)) {
-                    shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
-                }
-
-                if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
-                    handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object);
-                }
+        //Attack Roll Stuff
+        if (dat.isAttackRoll) {
+            // Rotate on Attack Roll
+            if (isRotateOnAttack()) {
+                rotateOnAttack(msg);
             }
 
-            //On Damage Application
-            onDamageApplication(dat, msg);
-        });
+            if (isBounceOnAttack()) {
+                bounceOnAttack(msg);
+            }
+
+            if (isShakeOnAttack(msg.token.actor)) {
+                shakeOnAttack(msg.token, msg.flags.pf2e.context.outcome);
+            }
+
+            if (msg?.token && msg?.target?.token && isDodgeOnMiss(msg.flags.pf2e.context?.outcome ?? "none")) {
+                handleDodgeOnMiss(msg?.token?.object, msg?.target?.token?.object);
+            }
+        }
+
+        //On Damage Application
+        onDamageApplication(dat, msg);
     }
 }
