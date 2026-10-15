@@ -844,6 +844,14 @@
           "yes": "Jouer l'animation",
           "no": "Annuler l'animation"
         }
+      },
+      "finishing-move": {
+        "activate": {
+          "title": "Coup de grâce",
+          "custom": "Entrer le coup de grâce personnalisé...",
+          "recent-items": "Objets récents (pour les coups de grâce)",
+          "button": "Afficher les coups de grâce"
+        }
       }
     },
     "display-text": {
