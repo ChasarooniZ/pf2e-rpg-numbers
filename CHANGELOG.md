@@ -10,6 +10,8 @@
     - Reworked some settings for various features (some have just been removed etc.)
     - Underlying animations for `Dodge`, `Rotate Towards Target`, `Damage Shake` now use motion
 - **Updated**
+    - Fixed issue with animation causing error when there is no token (🐛 @yjeroen)
+    - Fixed warning for preloading with no file on damage numbers
     - Removed `Rotate on Target` to be added to `Anim` at some point
     - Removed `Token Magic FX` from recommended
     - Removed `DSN` support in the meantime

@@ -23,6 +23,7 @@ const colors = {
 export async function generateRollScroll(roll_deets) {
     // Destructure frequently used variables
     const { outcome, token, roll, type } = roll_deets;
+    if (!token) return;
     const fontSize = getSetting("check-font-size");
     const theme = getSetting("check-color-scheme");
     const style = {
@@ -76,7 +77,7 @@ export async function generateRollScroll(roll_deets) {
 
     // Simplify sound effect handling
     const seq_handled = handleSFX(outcome, type, seq, token?.actor?.type, usersToPlayFor);
-    seq_handled.play({ preload: true });
+    seq_handled.play();
 }
 
 function handleSFX(outcome, type, seq, actorType, usersToPlayFor) {
