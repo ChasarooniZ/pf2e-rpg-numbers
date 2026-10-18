@@ -3,7 +3,7 @@
 ## 14.1.2
 
 - **Updated**
-    - `Bounce on Attack` - Removed ranged attacks from that listing
+    - `Bounce on Attack` - Removed ranged attacks from bounce on attack to avoid the awkward "throws a spell by moving forward"
 
 ## 14.1.1
 
