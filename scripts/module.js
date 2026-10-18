@@ -160,8 +160,8 @@ function rotateOnAttack(msg) {
     turnTokenOnAttack(msg?.token?.object, msg?.target?.token?.object);
 }
 
-function isBounceOnAttack() {
-    return getSetting("bounce-on-attack");
+function isBounceOnAttack(msg) {
+    return getSetting("bounce-on-attack") && !msg?.flags?.pf2e?.context?.options?.includes("item:ranged");
 }
 function bounceOnAttack(msg) {
     tokenBounceOnAttack(msg?.token?.object, msg?.target?.token?.object);

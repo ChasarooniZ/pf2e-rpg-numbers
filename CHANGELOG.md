@@ -1,10 +1,15 @@
 # Unreleased
 
+## 14.1.2
+
+- **Updated**
+    - `Bounce on Attack` - Removed ranged attacks from that listing
+
 ## 14.1.1
 
 - **Updated**
-  - Cleaned up leftover code 
-    - Updated `Genga` requirement to `1.3.6`
+    - Cleaned up leftover code
+        - Updated `Genga` requirement to `1.3.6`
 
 ## 14.1.0
 
