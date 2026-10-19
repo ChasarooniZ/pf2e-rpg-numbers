@@ -1,5 +1,9 @@
 # Unreleased
 
+## 14.1.3
+
+- Fixed typo introduced in `14.1.2` that breaks the whole module (🐛 @Ethmaker)
+
 ## 14.1.2
 
 - **Updated**
