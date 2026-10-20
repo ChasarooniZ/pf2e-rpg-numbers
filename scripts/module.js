@@ -161,7 +161,11 @@ function rotateOnAttack(msg) {
 }
 
 function isBounceOnAttack(msg) {
-    return getSetting("bounce-on-attack") && !msg?.flags?.pf2e?.context?.options?.includes("item:ranged");
+    return (
+        getSetting("bounce-on-attack") &&
+        !msg?.flags?.pf2e?.context?.options?.includes("item:ranged") &&
+        !msg?.flags?.pf2e?.context?.options?.includes("item:type:spell")
+    );
 }
 function bounceOnAttack(msg) {
     tokenBounceOnAttack(msg?.token?.object, msg?.target?.token?.object);

@@ -1,5 +1,9 @@
 # Unreleased
 
+## 14.1.5
+
+- `Bounce on Attack` - Exclude spells as well
+
 ## 14.1.4
 
 - Fix to the fix
