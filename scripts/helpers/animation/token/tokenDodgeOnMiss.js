@@ -36,7 +36,7 @@ export async function handleDodgeOnMiss(token, target) {
  * @param {*} target Defend Token
  */
 async function dodgeOnMiss(token, target) {
-    gengaAPI().token.dodgeTarget(token, target?.center);
+    gengaAPI().token.dodgeTarget(target, token?.center);
 }
 
 async function bounceOffTarget(token, target, filter = {}) {

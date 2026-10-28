@@ -1,5 +1,9 @@
 # Unreleased
 
+## 14.1.6
+
+- Fixed `Dodge on Miss` playing on the wrong token (🐛 @TheTenk)
+
 ## 14.1.5
 
 - `Bounce on Attack` - Exclude spells as well
